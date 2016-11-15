@@ -2,23 +2,63 @@
 
 <% @offers.each do |offer| %>
   <%= link_to offer_path(offer), {class: "list-group-item"} do %>
-    <div>
-      <div>
+    <div class="row">
+      <div class="col-xs-9">
         <p><%= offer.title %></p>
-        <p><%= offer.description %></p>
-        <ul>
-          <% offer.languages.each do |language| %>
-            <li><%= language.name %></li>
-          <% end %>
-        </ul>
-        <ul>
-          <% offer.means.each do |mean| %>
-            <li><%= mean.name %></li>
-          <% end %>
-        </ul>
+
+        <div>
+          <p>Track record:
+            <strong><%= offer.deals_closed.count %></strong>
+          </p>
+
+          <p>Satisfaction:
+            <% unless offer.global_rating.nil? %>
+              <% (offer.global_rating.to_i).times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+              <% (5 - offer.global_rating.to_i).times do %>
+                <i class="fa fa-star" aria-hidden="true"></i>
+              <% end %>
+              <strong><%= (offer.global_rating / 5 * 100).to_i %> %</strong>
+            <% else %>
+              <% 5.times do %>
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+              <% end %>
+            <% end %>
+          </p>
+
+          <p>Prices:
+            <% unless offer.median_price.nil? %>
+              $<%= offer.min_price.to_i %> -
+              <strong>$<%= offer.median_price.to_i %></strong> -
+              $<%= offer.max_price.to_i %>
+            <% else %>
+              -
+            <% end %>
+          </p>
+        </div>
+
+        <div>
+          <p><%= offer.description[0..350] %> ... <strong>more</strong></p>
+        </div>
+
+        <div>
+          <ul class = "list-inline">
+            <% offer.languages.each do |language| %>
+              <li><%= language.name %></li>
+            <% end %>
+          </ul>
+          <ul class = "list-inline">
+            <% offer.means.each do |mean| %>
+              <li><%= mean.name %></li>
+            <% end %>
+          </ul>
+        </div>
       </div>
-      <div>
+
+      <div class="col-xs-3">
         <p><%= offer.advisor.first_name %> <%= offer.advisor.last_name.first %>.</p>
+        <p><%= offer.advisor.grade %></p>
         <p><%= offer.advisor.address %></p>
       </div>
     </div>

@@ -1,52 +1,88 @@
-<div>
-  <h1><%= @offer.title %></h1>
-  <p>Track record: <%= @offer.deals.count %></p>
+<h1><%= @offer.title %></h1>
 
-  <p>Satisfaction:
-    <% (@offer.deals.first.client_rating.to_i).times do %>
-      <i class="fa fa-star" aria-hidden="true"></i>
-    <% end %>
-    <% (5 - @offer.deals.first.client_rating.to_i).times do %>
-      <i class="fa fa-star" aria-hidden="true"></i>
-    <% end %>
-  </p>
+<div class="row">
+  <div class="col-xs-9">
+    <div>
+      <p>Track record:
+        <strong><%= @offer.deals_closed.count %></strong>
+      </p>
 
-  <p><%= @offer.description %></p>
-  <ul>
-    <% @offer.languages.each do |language| %>
-      <li><%= language.name %></li>
-    <% end %>
-  </ul>
-  <ul>
-    <% @offer.means.each do |mean| %>
-      <li><%= mean.name %></li>
-    <% end %>
-  </ul>
+      <p>Satisfaction:
+        <% unless @offer.global_rating.nil? %>
+          <% (@offer.global_rating.to_i).times do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          <% (5 - @offer.global_rating.to_i).times do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          <strong><%= (@offer.global_rating / 5 * 100).to_i %> %</strong>
+        <% else %>
+          <% 5.times do %>
+            <i class="fa fa-star-o" aria-hidden="true"></i>
+          <% end %>
+        <% end %>
+      </p>
 
+      <p>Prices:
+        <% unless @offer.median_price.nil? %>
+          $<%= @offer.min_price.to_i %> -
+          <strong>$<%= @offer.median_price.to_i %></strong> -
+          $<%= @offer.max_price.to_i %>
+        <% else %>
+          -
+        <% end %>
+      </p>
+    </div>
+
+    <div>
+      <p><%= @offer.description %></p>
+    </div>
+
+    <div>
+       <ul class="list-inline">
+        <% @offer.languages.each do |language| %>
+          <li><%= language.name %></li>
+        <% end %>
+      </ul>
+      <ul class="list-inline">
+        <% @offer.means.each do |mean| %>
+          <li><%= mean.name %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-xs-3">
+    <p><%= @offer.advisor.first_name %> <%= @offer.advisor.last_name.first %>.</p>
+    <p><%= @offer.advisor.grade %></p>
+    <p><%= @offer.advisor.address %></p>
+  </div>
 </div>
 
 <hr>
 
-<h3>Reviews (<%= @offer.deals.where(client_review: !nil).count %>)</h3>
+<h3>Reviews (<%= @offer.deals_reviewed.count %>)</h3>
 <hr>
 <div>
   <div>
     <% @offer.deals.each do |deal| %>
-      <div>
-        <%= deal.client.first_name %> <%= deal.client.last_name.first %>.
-      </div>
-      <div>
-        <% (deal.client_rating.to_i).times do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
-        <% end %>
-        <% (5 - deal.client_rating.to_i).times do %>
-          <i class="fa fa-star" aria-hidden="true"></i>
-        <% end %>
-      </div>
-      <div>
-        <%= deal.client_review %>
-      </div>
-      <hr>
+      <% unless deal.client_review.nil? %>
+        <div>
+          <%= deal.client.first_name %> <%= deal.client.last_name.first %>.
+        </div>
+        <div>
+          <% (deal.client_rating.to_i).times do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          <% (5 - deal.client_rating.to_i).times do %>
+            <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= deal.client_review %>
+        </div>
+        <hr>
+      <% end %>
     <% end %>
   </div>
 </div>
