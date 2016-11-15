@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :offers
-  has_many :deals
-  has_many :deals, through: :offer
+  has_many :offers, foreign_key: 'advisor_id'
+  has_many :deals, foreign_key: 'client_id'
+  has_many :advisor_deals, through: :offers, source: :deals
 
 end
