@@ -1,3 +1,3 @@
 class Offer < ApplicationRecord
-  belongs_to :advisor_id, class_name: 'User'
+  belongs_to :advisor, class_name: 'User'
 end

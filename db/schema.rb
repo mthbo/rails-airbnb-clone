@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20161115114417) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mean_of_communications", force: :cascade do |t|
+  create_table "means", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -70,13 +70,13 @@ ActiveRecord::Schema.define(version: 20161115114417) do
     t.index ["offer_id"], name: "index_offer_languages_on_offer_id", using: :btree
   end
 
-  create_table "offer_mean_of_communications", force: :cascade do |t|
-    t.integer  "mean_of_communication_id"
+  create_table "offer_means", force: :cascade do |t|
+    t.integer  "mean_id"
     t.integer  "offer_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.index ["mean_of_communication_id"], name: "index_offer_mean_of_communications_on_mean_of_communication_id", using: :btree
-    t.index ["offer_id"], name: "index_offer_mean_of_communications_on_offer_id", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mean_id"], name: "index_offer_means_on_mean_id", using: :btree
+    t.index ["offer_id"], name: "index_offer_means_on_offer_id", using: :btree
   end
 
   create_table "offers", force: :cascade do |t|
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20161115114417) do
   add_foreign_key "deals", "users", column: "client_id"
   add_foreign_key "offer_languages", "languages"
   add_foreign_key "offer_languages", "offers"
-  add_foreign_key "offer_mean_of_communications", "mean_of_communications"
-  add_foreign_key "offer_mean_of_communications", "offers"
+  add_foreign_key "offer_means", "means"
+  add_foreign_key "offer_means", "offers"
   add_foreign_key "offers", "users", column: "advisor_id"
 end

@@ -1,2 +1,0 @@
-class MeanOfCommunication < ApplicationRecord
-end
