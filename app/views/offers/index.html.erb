@@ -1,0 +1,26 @@
+<h1>Offers</h1>
+
+<% @offers.each do |offer| %>
+  <%= link_to offer_path(offer), {class: "list-group-item"} do %>
+    <div>
+      <div>
+        <p><%= offer.title %></p>
+        <p><%= offer.description %></p>
+        <ul>
+          <% offer.languages.each do |language| %>
+            <li><%= language.name %></li>
+          <% end %>
+        </ul>
+        <ul>
+          <% offer.means.each do |mean| %>
+            <li><%= mean.name %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div>
+        <p><%= offer.advisor.first_name %> <%= offer.advisor.last_name.first %>.</p>
+        <p><%= offer.advisor.address %></p>
+      </div>
+    </div>
+  <% end %>
+<% end %>
