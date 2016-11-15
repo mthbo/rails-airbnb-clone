@@ -10,9 +10,16 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
   </head>
   <body>
+    <% if current_user %>
+      <%= render 'shared/navbar_logged' %>
+    <% else %>
+      <%= render 'shared/navbar' %>
+    <% end %>
+
     <div class="container">
       <%= yield %>
     </div>
+
     <%= javascript_include_tag 'application' %>
     <%= cloudinary_js_config %>
   </body>
