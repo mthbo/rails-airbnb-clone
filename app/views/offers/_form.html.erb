@@ -1,0 +1,10 @@
+<%= simple_form_for(@offer) do |f| %>
+  <%= f.error_notification message: 'Please fill all the fields below' %>
+
+  <%= f.input :title, placeholder: "Enter a title" %>
+  <%= f.input :description, placeholder: "Enter a description" %>
+  <%= f.association :languages, as: :check_boxes  %>
+  <%= f.association :means, as: :check_boxes  %>
+
+  <%= f.button :submit, "Create offer", class: "btn btn-primary" %>
+<% end %>
