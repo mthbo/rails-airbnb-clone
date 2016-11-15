@@ -1,0 +1,2 @@
+class MeanOfCommunication < ApplicationRecord
+end
