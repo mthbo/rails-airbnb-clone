@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :offers, foreign_key: 'advisor_id'
+  has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
   has_many :deals, foreign_key: 'client_id'
   has_many :advisor_deals, through: :offers, source: :deals
 
@@ -28,6 +28,14 @@ class User < ApplicationRecord
 
   def advisor_deals_reviewed
     advisor_deals.where.not(client_review: nil)
+  end
+
+  def deals_closed
+    deals.where.not(closed_at: nil)
+  end
+
+  def deals_reviewed
+    deals.where.not(client_review: nil)
   end
 
 end
