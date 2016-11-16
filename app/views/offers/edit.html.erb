@@ -4,3 +4,7 @@
     <%= render 'form' %>
 
 </div>
+
+<div class="btn btn-default">
+  <%= link_to "Delete this offer", offer_path(@offer), {class: "btn btn-default", method: :delete, data: { confirm: "Are you sure you want to delete this offer?" }} %>
+</div>

@@ -39,7 +39,7 @@ class OffersController < ApplicationController
 
   def destroy
     @offer.destroy
-    redirect_to user
+    redirect_to @offer.advisor
   end
 
   private
