@@ -32,7 +32,7 @@ means = [
     email: Faker::Internet.email,
     address: "#{Faker::Address.city}, #{Faker::Address.country_code}",
     bio: Faker::Lorem.paragraph(20),
-    birth_date: Faker::Date.between(60.years.ago, Date.today),
+    birth_date: Faker::Date.between(60.years.ago, Date.today)
   )
 
 end
