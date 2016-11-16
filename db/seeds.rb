@@ -24,7 +24,7 @@ means = [
 
 10.times do
 
-  User.create(
+  user = User.new(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     password:  Faker::Internet.password,
@@ -34,21 +34,23 @@ means = [
     bio: Faker::Lorem.paragraph(20),
     birth_date: Faker::Date.between(60.years.ago, Date.today)
   )
+  user.save!
 
 end
 
 10.times do
-  Offer.create(
+  offer = Offer.new(
     title: Faker::Name.title,
     description: Faker::Lorem.paragraph(20),
     advisor: User.find(rand(1..10)),
     languages: languages.sample(rand(1..4)),
     means: means.sample(rand(1..5))
   )
+  offer.save!
 end
 
 5.times do
-  Deal.create(
+  deal = Deal.new(
     offer: Offer.find(rand(1..10)),
     client: User.find(rand(1..10)),
     request: Faker::Lorem.paragraph(10),
@@ -63,11 +65,12 @@ end
     client_rating: (0..5).to_a.sample,
     advisor_rating: (0..5).to_a.sample
   )
+  deal.save!
 end
 
 
 5.times do
-  Deal.create(
+  deal = Deal.new(
     offer: Offer.find(rand(1..10)),
     client: User.find(rand(1..10)),
     request: Faker::Lorem.paragraph(10),
@@ -77,10 +80,11 @@ end
     proposition_at: Faker::Time.between(3.days.ago, 4.days.ago),
     accepted_at: Faker::Time.between(1.day.ago, 2.days.ago)
   )
+  deal.save!
 end
 
 5.times do
-  Deal.create(
+  deal = Deal.new(
     offer: Offer.find(rand(1..10)),
     client: User.find(rand(1..10)),
     request: Faker::Lorem.paragraph(10),
@@ -89,15 +93,17 @@ end
     proposition: Faker::Lorem.paragraph(10),
     proposition_at: Faker::Time.between(1.day.ago, 2.days.ago)
   )
+  deal.save!
 end
 
 5.times do
-  Deal.create(
+  deal = Deal.new(
     offer: Offer.find(rand(1..10)),
     client: User.find(rand(1..10)),
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Date.forward(34)
   )
+  deal.save!
 end
 
 urls = [
