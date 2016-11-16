@@ -1,4 +1,9 @@
 <div>
+  <% unless @user.photo.nil? %>
+    <%= cl_image_tag @user.photo.path %>
+  <% else %>
+    <%= image_tag "photo_client.png" %>
+  <% end %>
   <p><%= @user.first_name %> <%= @user.last_name.first %>.</p>
   <p><%= @user.grade %></p>
   <p><%= @user.address %></p>

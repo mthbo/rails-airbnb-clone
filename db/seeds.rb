@@ -23,6 +23,7 @@ means = [
 ]
 
 10.times do
+
   User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -31,8 +32,9 @@ means = [
     email: Faker::Internet.email,
     address: "#{Faker::Address.city}, #{Faker::Address.country_code}",
     bio: Faker::Lorem.paragraph(20),
-    birth_date: Faker::Date.between(60.years.ago, Date.today)
+    birth_date: Faker::Date.between(60.years.ago, Date.today),
   )
+
 end
 
 10.times do
@@ -97,5 +99,37 @@ end
     deadline: Faker::Date.forward(34)
   )
 end
+
+urls = [
+  'http://lorempixel.com/100/100/people/1/',
+  'http://lorempixel.com/100/100/people/2/',
+  'http://lorempixel.com/100/100/people/3/',
+  'http://lorempixel.com/100/100/people/4/',
+  'http://lorempixel.com/100/100/people/5/',
+  'http://lorempixel.com/100/100/people/6/',
+  'http://lorempixel.com/100/100/people/7/',
+  'http://lorempixel.com/100/100/people/8/',
+  'http://lorempixel.com/100/100/people/9/',
+  'http://lorempixel.com/100/100/people/10/'
+]
+
+
+user1 = User.find(1)
+user2 = User.find(2)
+user3 = User.find(3)
+user4 = User.find(4)
+user5 = User.find(5)
+user6 = User.find(6)
+user7 = User.find(7)
+user8 = User.find(8)
+user9 = User.find(9)
+user10 = User.find(10)
+
+users = [user1, user2, user3, user4, user5, user6, user7, user8, user9, user10]
+
+users.each_with_index do |user, index|
+  user.photo_url = urls[index]
+end
+
 
 

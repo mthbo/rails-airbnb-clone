@@ -57,6 +57,11 @@
       </div>
 
       <div class="col-xs-3">
+        <% unless offer.advisor.photo.nil? %>
+          <%= cl_image_tag offer.advisor.photo.path %>
+        <% else %>
+          <%= image_tag "photo_client.png" %>
+        <% end %>
         <p><%= offer.advisor.first_name %> <%= offer.advisor.last_name.first %>.</p>
         <p><%= offer.advisor.grade %></p>
         <p><%= offer.advisor.address %></p>
