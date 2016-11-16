@@ -9,6 +9,12 @@
   <p><%= @user.bio %></p>
 </div>
 
+<div>
+  <% if @user == current_user %>
+    <%= link_to "Edit my profile", edit_user_registration_path %>
+  <% end %>
+</div>
+
 <h2>My offers</h2>
 
 <% @user.offers.each do |offer| %>
@@ -65,10 +71,20 @@
             <% end %>
           </ul>
         </div>
+
       </div>
     </div>
   <% end %>
+  <div>
+    <% if @user == current_user %>
+      <%= link_to "Edit offer", edit_offer_path(offer) %>
+    <% end %>
+  </div>
 <% end %>
+
+<div class="btn btn-default">
+    <%= link_to "Create offer", new_offer_path %>
+</div>
 
 <h2>Reviews as advisor (<%= @user.advisor_deals_reviewed.count %>)</h2>
 <hr>
