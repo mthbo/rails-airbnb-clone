@@ -29,7 +29,7 @@ means = [
     password:  Faker::Internet.password,
     phone_number: Faker::PhoneNumber.cell_phone,
     email: Faker::Internet.email,
-    address: "#{Faker::Address.street_address}, #{Faker::Address.zip} #{Faker::Address.city}, #{Faker::Address.country}",
+    address: "#{Faker::Address.city}, #{Faker::Address.country_code}",
     bio: Faker::Lorem.paragraph(20),
     birth_date: Faker::Date.between(60.years.ago, Date.today)
   )

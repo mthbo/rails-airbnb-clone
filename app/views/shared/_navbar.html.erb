@@ -4,17 +4,16 @@
     <%= image_tag "tipswell_logo.png" %>
   <% end %>
 
-  <!-- Search form -->
-  <form action="/offers" class="navbar-wagon-search">
-    <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
-    <button type="submit" class="navbar-wagon-search-btn">
-      <i class="fa fa-search"></i>
-    </button>
-  </form>
-
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
 
+    <!-- Search form -->
+    <form action="/offers" class="navbar-wagon-search">
+      <input type="text" class="navbar-wagon-search-input" placeholder="Search something">
+      <button type="submit" class="navbar-wagon-search-btn">
+        <i class="fa fa-search"></i>
+      </button>
+    </form>
 
     <%= link_to "Give tips", new_user_session_path, { class: "navbar-wagon-item navbar-wagon-button btn" } %>
 
