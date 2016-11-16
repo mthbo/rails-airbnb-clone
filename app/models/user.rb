@@ -8,6 +8,8 @@ class User < ApplicationRecord
   has_many :deals, foreign_key: 'client_id'
   has_many :advisor_deals, through: :offers, source: :deals
 
+  has_attachment :photo
+
   def grade
     if advisor_deals_closed.count > 20
       return "Champion"
