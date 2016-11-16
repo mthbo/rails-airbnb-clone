@@ -66,6 +66,10 @@
   <% end %>
 </div>
 
+<div class="btn btn-default">
+  <%= link_to "Ask a proposition", new_offer_deal_path(@offer) %>
+</div>
+
 <hr>
 
 <h2>Reviews (<%= @offer.deals_reviewed.count %>)</h2>

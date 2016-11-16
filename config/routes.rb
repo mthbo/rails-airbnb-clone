@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show]
 
-  resources :offers
+  resources :offers do
+    resources :deals, only: [:show, :new, :create, :edit, :update]
+  end
 
 end
