@@ -82,9 +82,11 @@
   </div>
 <% end %>
 
-<div class="btn btn-default">
-    <%= link_to "Create offer", new_offer_path %>
-</div>
+<% if @user == current_user %>
+  <div class="btn btn-default">
+      <%= link_to "Create offer", new_offer_path %>
+  </div>
+<% end %>
 
 <h2>Reviews as advisor (<%= @user.advisor_deals_reviewed.count %>)</h2>
 <hr>
