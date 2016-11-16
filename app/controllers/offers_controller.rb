@@ -49,7 +49,7 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:title, :description)
+    params.require(:offer).permit(:title, :description, mean_ids: [], language_ids: [])
   end
 
 end

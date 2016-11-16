@@ -8,6 +8,8 @@ class Offer < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
+  validates :languages, presence: true
+  validates :means, presence: true
 
   def global_rating
     unless deals_reviewed.count.zero?
