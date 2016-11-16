@@ -51,4 +51,4 @@ class DealsController < ApplicationController
 #     params.require(:offer).permit(:title, :description)
 #   end
 
-# end
+end
