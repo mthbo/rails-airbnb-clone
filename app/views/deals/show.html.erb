@@ -5,6 +5,24 @@
     <h1>Deal with <%= @deal.client.name_anonymous %></h1>
   <% end %>
 
-  <h3><%= @offer.title %></h3>
-  <p></p>
+<ul class="list-unstyled">
+  <li>
+    Status: <%= @deal.status %>
+  </li>
+  <li>
+    Deadline: <%= @deal.deadline %>
+  </li>
+  <li>
+    Proposition: <%= @deal.proposition %>
+  </li>
+  <li>
+     Request: <%= @deal.request %>
+  </li>
+</ul>
+
+
+  <div>
+    <%= render "shared/offercard", offer: @deal.offer %>
+  </div>
+
 </div>
