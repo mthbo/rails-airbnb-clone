@@ -1,8 +1,12 @@
 <div class="wrapper text-center padded-2">
-  <% unless current_user.photo.nil? %>
-    <%= cl_image_tag current_user.photo.path, {class: "avatar-xlarge"} %>
+  <% avatar_url = current_user.facebook_picture_url || "photo_client.png" %>
+
+  <% if avatar_url == current_user.facebook_picture_url %>
+    <%= image_tag avatar_url, class: "avatar-xlarge" %>
+  <% elsif current_user.photo == nil %>
+    <%= image_tag avatar_url, class: "avatar-xlarge" %>
   <% else %>
-    <%= image_tag "photo_client.png", {class: "avatar-xlarge"} %>
+    <%= cl_image_tag current_user.photo.path, class: "avatar-xlarge" %>
   <% end %>
   <h1><%= current_user.first_name %></h1>
   <h3>My dashboard</h3>
