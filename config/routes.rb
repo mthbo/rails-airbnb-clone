@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :offers do
-    resources :deals, only: [:show, :new, :create, :edit, :update]
+    resources :deals, only: [:index, :show, :new, :create, :edit, :update]
   end
+
+  get '/dashboard', to: 'pages#dashboard'
 
 end

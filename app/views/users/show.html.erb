@@ -9,8 +9,7 @@
   <% else @user.photo.path %>
     <%= cl_image_tag @user.photo.path, class: "avatar-xlarge" %>
   <% end %>
-
-  <h1><%= @user.first_name %> <%= @user.last_name.first %>.</h1>
+  <h1><%= @user.name_anonymous %></h1>
   <h3><%= @user.grade %></h3>
   <h4><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= @user.address %></h4>
 </div>

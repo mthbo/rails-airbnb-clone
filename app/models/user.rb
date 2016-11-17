@@ -11,16 +11,32 @@ class User < ApplicationRecord
 
   has_attachment :photo
 
+  def name_anonymous
+    "#{first_name} #{last_name.first}."
+  end
+
   def grade
     if advisor_deals_closed.count > 20
-      return "Champion"
+      "Champion"
     elsif advisor_deals_closed.count > 10
-      return "Senior Advisor"
+      "Senior Advisor"
     elsif advisor_deals_closed.count > 3
-      return "Advisor"
+      "Advisor"
     else
-      return "Roockie"
+      "Roockie"
     end
+  end
+
+  def advisor_deals_request
+    advisor_deals.where(proposition_at: nil)
+  end
+
+  def advisor_deals_proposition
+    advisor_deals.where('proposistion_at IS NOT NULL and accepted_at IS NULL')
+  end
+
+  def advisor_deals_open
+    advisor_deals.where('accepted_at IS NOT NULL and closed_at IS NULL')
   end
 
   def advisor_deals_closed
@@ -29,6 +45,18 @@ class User < ApplicationRecord
 
   def advisor_deals_reviewed
     advisor_deals.where.not(client_review: nil)
+  end
+
+  def deals_request
+    deals.where(proposition_at: nil)
+  end
+
+  def deals_proposition
+    deals.where('proposition_at IS NOT NULL and accepted_at IS NULL')
+  end
+
+  def deals_open
+    deals.where('accepted_at IS NOT NULL and closed_at IS NULL')
   end
 
   def deals_closed
