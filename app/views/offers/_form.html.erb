@@ -3,8 +3,8 @@
 
   <%= f.input :title, placeholder: "Enter a title" %>
   <%= f.input :description, placeholder: "Enter a description" %>
-  <%= f.association :languages, as: :check_boxes  %>
-  <%= f.association :means, as: :check_boxes  %>
+  <%= f.association :languages, as: :check_boxes, include_hidden: false %>
+  <%= f.association :means, as: :check_boxes, include_hidden: false %>
 
-  <%= f.button :submit, "Create offer", class: "btn btn-primary" %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
