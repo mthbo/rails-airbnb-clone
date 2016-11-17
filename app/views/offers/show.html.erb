@@ -56,10 +56,15 @@
 
     <%= link_to user_path(@offer.advisor) do %>
       <div class="col-xs-3">
-        <% unless @offer.advisor.photo.nil? %>
-          <%= cl_image_tag @offer.advisor.photo.path, {class: "avatar-large"} %>
+
+        <% avatar_url = @offer.advisor.facebook_picture_url || "photo_client.png" %>
+
+        <% if avatar_url == @offer.advisor.facebook_picture_url %>
+          <%= image_tag avatar_url, class: "avatar-large" %>
+        <% elsif @offer.advisor.photo == nil %>
+          <%= image_tag avatar_url, class: "avatar-large" %>
         <% else %>
-          <%= image_tag "photo_client.png", {class: "avatar-large"} %>
+          <%= cl_image_tag @offer.advisor.photo.path, class: "avatar-large" %>
         <% end %>
         <p><%= @offer.advisor.name_anonymous %></p>
         <p><%= @offer.advisor.grade %></p>
