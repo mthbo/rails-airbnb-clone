@@ -6,7 +6,7 @@
     <%= image_tag avatar_url, class: "avatar-xlarge" %>
   <% elsif @user.photo == nil %>
     <%= image_tag avatar_url, class: "avatar-xlarge" %>
-  <% else @user.photo.path %>
+  <% else %>
     <%= cl_image_tag @user.photo.path, class: "avatar-xlarge" %>
   <% end %>
   <h1><%= @user.name_anonymous %></h1>

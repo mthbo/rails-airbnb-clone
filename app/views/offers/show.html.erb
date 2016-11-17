@@ -63,7 +63,7 @@
           <%= image_tag avatar_url, class: "avatar-large" %>
         <% elsif @offer.advisor.photo == nil %>
           <%= image_tag avatar_url, class: "avatar-large" %>
-        <% else @offer.advisor.photo.path %>
+        <% else %>
           <%= cl_image_tag @offer.advisor.photo.path, class: "avatar-large" %>
         <% end %>
         <p><%= @offer.advisor.name_anonymous %></p>

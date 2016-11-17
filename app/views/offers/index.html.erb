@@ -65,7 +65,7 @@
             <%= image_tag avatar_url, class: "avatar-medium" %>
           <% elsif offer.advisor.photo == nil %>
             <%= image_tag avatar_url, class: "avatar-medium" %>
-          <% else offer.advisor.photo.path %>
+          <% else %>
             <%= cl_image_tag offer.advisor.photo.path, class: "avatar-medium" %>
           <% end %>
           <p><%= offer.advisor.name_anonymous %></p>
