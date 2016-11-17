@@ -10,83 +10,78 @@
 </div>
 
 <div class="container">
-
-  <div>
-    <h2>Client acitivity</h2>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <h3>Requests</h3>
-        <% current_user.deals_request.each do |deal| %>
-          <%= link_to offer_deal_path(deal.offer, deal) do %>
-            <div>
-              <% unless deal.advisor.photo.nil? %>
-                <%= cl_image_tag deal.advisor.photo.path, {class: "avatar"} %>
-              <% else %>
-                <%= image_tag "photo_client.png", {class: "avatar"} %>
-              <% end %>
-              <p><%= deal.advisor.name_anonymous %></p>
-              <p><%= deal.offer.title %></p>
-              <p><%= deal.deadline %></p>
-            </div>
-          <% end %>
+  <h2>Client acitivity</h2>
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <h3>Requests</h3>
+      <% current_user.deals_request.each do |deal| %>
+        <%= link_to offer_deal_path(deal.offer, deal) do %>
+          <div>
+            <% unless deal.advisor.photo.nil? %>
+              <%= cl_image_tag deal.advisor.photo.path, {class: "avatar"} %>
+            <% else %>
+              <%= image_tag "photo_client.png", {class: "avatar"} %>
+            <% end %>
+            <p><%= deal.advisor.name_anonymous %></p>
+            <p><%= deal.offer.title %></p>
+            <p><%= deal.deadline %></p>
+          </div>
         <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <h3>Propositions</h3>
-        <% current_user.deals_proposition.each do |deal| %>
-          <%= link_to offer_deal_path(deal.offer, deal) do %>
-            <div>
-              <% unless deal.advisor.photo.nil? %>
-                <%= cl_image_tag deal.advisor.photo.path, {class: "avatar"} %>
-              <% else %>
-                <%= image_tag "photo_client.png", {class: "avatar"} %>
-              <% end %>
-              <p><%= deal.advisor.name_anonymous %></p>
-              <p><%= deal.offer.title %></p>
-              <p><%= deal.deadline %></p>
-              <p>$<%= deal.price %></p>
-            </div>
-          <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <h3>Propositions</h3>
+      <% current_user.deals_proposition.each do |deal| %>
+        <%= link_to offer_deal_path(deal.offer, deal) do %>
+          <div>
+            <% unless deal.advisor.photo.nil? %>
+              <%= cl_image_tag deal.advisor.photo.path, {class: "avatar"} %>
+            <% else %>
+              <%= image_tag "photo_client.png", {class: "avatar"} %>
+            <% end %>
+            <p><%= deal.advisor.name_anonymous %></p>
+            <p><%= deal.offer.title %></p>
+            <p><%= deal.deadline %></p>
+            <p>$<%= deal.price %></p>
+          </div>
         <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <h3>Open</h3>
-        <% current_user.deals_open.each do |deal| %>
-          <%= link_to offer_deal_path(deal.offer, deal) do %>
-            <div>
-              <% unless deal.advisor.photo.nil? %>
-                <%= cl_image_tag deal.advisor.photo.path, {class: "avatar"} %>
-              <% else %>
-                <%= image_tag "photo_client.png", {class: "avatar"} %>
-              <% end %>
-              <p><%= deal.advisor.name_anonymous %></p>
-              <p><%= deal.offer.title %></p>
-              <p><%= deal.deadline %></p>
-              <p>$<%= deal.price %></p>
-            </div>
-          <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <h3>Open</h3>
+      <% current_user.deals_open.each do |deal| %>
+        <%= link_to offer_deal_path(deal.offer, deal) do %>
+          <div>
+            <% unless deal.advisor.photo.nil? %>
+              <%= cl_image_tag deal.advisor.photo.path, {class: "avatar"} %>
+            <% else %>
+              <%= image_tag "photo_client.png", {class: "avatar"} %>
+            <% end %>
+            <p><%= deal.advisor.name_anonymous %></p>
+            <p><%= deal.offer.title %></p>
+            <p><%= deal.deadline %></p>
+            <p>$<%= deal.price %></p>
+          </div>
         <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-6 col-md-3">
-        <h3>Closed</h3>
-        <div>
-        <% current_user.deals_closed.each do |deal| %>
-          <%= link_to offer_deal_path(deal.offer, deal) do %>
-            <div>
-              <% unless deal.advisor.photo.nil? %>
-                <%= cl_image_tag deal.advisor.photo.path, {class: "avatar"} %>
-              <% else %>
-                <%= image_tag "photo_client.png", {class: "avatar"} %>
-              <% end %>
-              <p><%= deal.advisor.name_anonymous %></p>
-              <p><%= deal.offer.title %></p>
-              <p><%= deal.deadline %></p>
-              <p>$<%= deal.price %></p>
-            </div>
-          <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-md-3">
+      <h3>Closed</h3>
+      <% current_user.deals_closed.each do |deal| %>
+        <%= link_to offer_deal_path(deal.offer, deal) do %>
+          <div>
+            <% unless deal.advisor.photo.nil? %>
+              <%= cl_image_tag deal.advisor.photo.path, {class: "avatar"} %>
+            <% else %>
+              <%= image_tag "photo_client.png", {class: "avatar"} %>
+            <% end %>
+            <p><%= deal.advisor.name_anonymous %></p>
+            <p><%= deal.offer.title %></p>
+            <p><%= deal.deadline %></p>
+            <p>$<%= deal.price %></p>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-
 </div>
