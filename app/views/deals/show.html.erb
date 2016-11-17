@@ -1,0 +1,10 @@
+ <div class="container">
+  <% if @deal.client == current_user %>
+    <h1>Deal with <%= @deal.advisor.name_anonymous %></h1>
+  <% else %>
+    <h1>Deal with <%= @deal.client.name_anonymous %></h1>
+  <% end %>
+
+  <h3><%= @offer.title %></h3>
+  <p></p>
+</div>
