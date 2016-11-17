@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'faker'
 
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
@@ -23,6 +24,7 @@ gem "jquery-fileupload-rails"
 gem "coffee-rails"
 
 gem 'devise'
+gem 'omniauth-facebook'
 
 group :development, :test do
   gem 'binding_of_caller'
