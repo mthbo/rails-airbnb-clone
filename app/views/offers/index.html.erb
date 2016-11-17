@@ -59,12 +59,17 @@
         </div>
 
         <div class="col-xs-3">
-          <% unless offer.advisor.photo.nil? %>
-            <%= cl_image_tag offer.advisor.photo.path, {class: "avatar-medium"} %>
-          <% else %>
-            <%= image_tag "photo_client.png", {class: "avatar-medium"} %>
+          <% avatar_url = offer.advisor.facebook_picture_url || "photo_client.png" %>
+
+          <% if avatar_url == offer.advisor.facebook_picture_url %>
+            <%= image_tag avatar_url, class: "avatar-medium" %>
+          <% elsif offer.advisor.photo == nil %>
+            <%= image_tag avatar_url, class: "avatar-medium" %>
+          <% else offer.advisor.photo.path %>
+            <%= cl_image_tag offer.advisor.photo.path, class: "avatar-medium" %>
           <% end %>
-          <p><%= offer.advisor.first_name %> <%= offer.advisor.last_name.first %>.</p>
+
+          <p><%= offer.advisor.first_name + ' ' + offer.advisor.last_name.first %>.</p>
           <p><%= offer.advisor.grade %></p>
           <p><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= offer.advisor.address %></p>
         </div>
