@@ -1,6 +1,6 @@
 class DealsController < ApplicationController
-  before_action :find_deal, only: [:show]
-  before_action :find_offer, only: [:create, :new, :show]
+  before_action :find_deal, only: [:show, :update]
+  before_action :find_offer, only: [:create, :new, :show, :update]
 
   def show
   end
@@ -21,18 +21,15 @@ class DealsController < ApplicationController
     end
   end
 
-#   def edit
-#   end
-
-#   def update
-#     if @offer.update(offer_params)
-#       flash[:notice] = "#{@offer.title} has been updated"
-#       redirect_to offer_path(@offer)
-#     else
-#       flash[:alert] = "Offer has not been updated"
-#       render :edit
-#     end
-#   end
+  def update
+    if @deal.update(deal_params)
+      flash[:notice] = "A proposition has been sent to #{@deal.client.name_anonymous} regarding the offer '#{@offer.title}'"
+      redirect_to offer_deal_path(@offer, @deal)
+    else
+      flash[:alert] = "No request has been sent"
+      render 'deal/show'
+    end
+  end
 
   private
 
@@ -45,7 +42,7 @@ class DealsController < ApplicationController
   end
 
   def deal_params
-    params.require(:deal).permit(:request, :deadline)
+    params.require(:deal).permit(:request, :deadline, :price, :proposition, :proposition_at, :accepted_at, :closed_at)
   end
 
 end
