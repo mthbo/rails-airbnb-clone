@@ -1,11 +1,46 @@
-.footer{
-    display: block;
-    text-align: center;
-    font-size: 0.8em;
-    border-radius: 5px;
-    box-shadow: 1px 1px 5px #000;
-    color: #888;
-    background: #E6E6E6;
-    padding: 70px;
 
-}// Your footer style
+
+
+.footer-distributed {
+    background-color: $light-gray;
+    box-shadow: 0, 1px, 1px, 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    font: bold 16px sans-serif;
+    text-align: left;
+    padding: 50px 60px;
+    margin-top: 80px;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.footer-left {
+    float: left;
+    text-decoration: none;
+}
+
+.footer-links {
+    color: white;
+    margin: 0, 0, 10px;
+    padding: 0;
+    text-decoration: none;
+}
+
+.footer-company-name {
+    color: $light-green;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 0;
+    text-decoration: none;
+}
+
+.footer-links a {
+  text-decoration: none;
+  margin-right: 10px;
+}
+
+.footer-links a:hover {
+  color: $light-green;
+}
+
+
