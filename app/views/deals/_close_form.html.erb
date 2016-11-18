@@ -1,0 +1,5 @@
+<%= simple_form_for [@offer, @deal] do |f| %>
+  <%= f.error_notification message: 'Please fill all the fields below' %>
+  <%= f.input :closed_at, as: :hidden, :input_html => { value: DateTime.now } %>
+  <%= f.button :submit, "Close the deal", class: "btn btn-primary" %>
+<% end %>

@@ -1,27 +1,61 @@
- <div class="container">
-  <% if @deal.client == current_user %>
-    <h1>Deal with <%= @deal.advisor.name_anonymous %></h1>
-  <% else %>
-    <h1>Deal with <%= @deal.client.name_anonymous %></h1>
+ <div class="container padded padded-top">
+
+  <h2>
+    Deal with
+    <% if @deal.client == current_user %>
+      <%= @deal.advisor.name_anonymous %>
+    <% else %>
+      <%= @deal.client.name_anonymous %>
+    <% end %>
+    | <span class="yellow"><%= @deal.status %></span>
+  </h2>
+  <h4>
+    <% unless @deal.closed? %>
+      <span class= "date-format">due for <%= @deal.deadline.strftime("%a %d, %Y") %></span>
+    <% else %>
+      <span class= "date-format">closed <%= @deal.closed_at.strftime("%a %d, %Y") %></span>
+    <% end %>
+  </h4>
+
+  <% if @deal.open? %>
+    <div class="padded">
+      <%= render "close_form" %>
+    </div>
   <% end %>
 
-<ul class="list-unstyled">
-  <li>
-    Status: <%= @deal.status %>
-  </li>
-  <li>
-    Deadline: <%= @deal.deadline %>
-  </li>
-  <li>
-    Proposition: <%= @deal.proposition %>
-  </li>
-  <li>
-     Request: <%= @deal.request %>
-  </li>
-</ul>
+  <div class="padded">
+    <% unless @deal.request? %>
+      <h3>Proposition</h3>
+      <h4><span class= "date-format">sent on <%= @deal.proposition_at.strftime("%a %d, %Y") %></span></h4>
+      <p><%= @deal.proposition %></p>
+      <p>Price: <strong>$<%= @deal.price.to_i %></strong></p>
+
+      <% if @deal.proposition? %>
+        <% if @deal.client == current_user  %>
+          <%= render "acceptation_form" %>
+        <% else %>
+          <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
+        <% end %>
+      <% else %>
+        <p><small>Proposition accepted on <%= @deal.accepted_at.strftime("%a %d, %Y") %></small></p>
+      <% end %>
+    <% else %>
+      <% if @deal.advisor == current_user  %>
+        <%= render "proposition_form" %>
+      <% else %>
+        <p><small>Waiting for <%= @deal.advisor.name_anonymous %> proposition</small></p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="padded">
+    <h3>Request</h3>
+    <h4><span class= "date-format">sent on <%= @deal.created_at.strftime("%a %d, %Y") %></span></h4>
+    <p><%= @deal.request %></p>
+  </div>
 
 
-  <div>
+  <div class="padded">
     <%= render "shared/offer_card", offer: @deal.offer %>
   </div>
 
