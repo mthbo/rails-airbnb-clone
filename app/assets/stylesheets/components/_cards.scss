@@ -1,0 +1,22 @@
+.card {
+  height: 200px;
+  background-size: cover !important;
+  color: white;
+  position: relative;
+  border-radius: 5px;
+  margin: 15px 5px;
+}
+
+.card-title {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  height: 35px;
+  width: 100%;
+  background-color: white;
+  opacity: 0.6;
+  font-family: $special-font;
+  font-size: 22px;
+  color: $extra-dark-gray;
+  padding: 5px 10px;
+}

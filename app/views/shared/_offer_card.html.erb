@@ -10,15 +10,15 @@
         <p>Satisfaction:
           <% unless offer.global_rating.nil? %>
             <% (offer.global_rating.to_i).times do %>
-              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star yellow" aria-hidden="true"></i>
             <% end %>
             <% (5 - offer.global_rating.to_i).times do %>
-              <i class="fa fa-star" aria-hidden="true"></i>
+              <i class="fa fa-star medium-gray" aria-hidden="true"></i>
             <% end %>
             <strong><%= (offer.global_rating / 5 * 100).to_i %> %</strong>
           <% else %>
             <% 5.times do %>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <i class="fa fa-star-o medium-gray" aria-hidden="true"></i>
             <% end %>
           <% end %>
         </p>

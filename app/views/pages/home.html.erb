@@ -1,30 +1,90 @@
-<div class="wrapper text-center padded-5">
-  <h1>Get unique tips for everyday life moments.</h1>
-  <h3>Tipswell connects people seeking advice with others in the know.</h3>
+<div class="wrapper banner text-center padded padded-top">
+  <div class="container">
 
-  <form action="/offers" class="form-inline">
-    <input type="text" class="form-control input-lg" placeholder="Search something">
-    <button type="submit" class="btn btn-default btn-lg">
-      <i class="fa fa-search"></i>
-    </button>
-  </form>
-</div>
+    <h1>Get unique tips for everyday life moments.</h1>
+    <h3>Tipswell connects people seeking advice with others in the know.</h3>
 
-<div class="container text-center padded-5">
-  <div class="row">
-    <h2>Inspirations</h2>
+    <div class="row">
+      <form action="/offers">
+        <div class="input-group input-group-lg col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 search-bar">
+          <input type="text" class="form-control" placeholder="What are you looking for">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="button" type="submit"><i class="fa fa-search"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
-<div class="wrapper text-center padded-5">
-  <div class="row">
-    <h2>How it works</h2>
+<div class="container inspirations padded-bottom">
+  <div class="text-center padded">
+    <h2>Be adviced, save time and pain, broaden perspectives.</h2>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render "shared/card", attr: ['plan-trip.jpg', 'Plan a trip'] %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render "shared/card", attr: ['diy.jpg', 'Do it yourself'] %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render "shared/card", attr: ['new-playgrounds.jpg', 'Find new playgrounds'] %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render "shared/card", attr: ['launch-business.jpg', 'Launch a business'] %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render "shared/card", attr: ['money.jpg', 'Manage your money'] %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render "shared/card", attr: ['discover-treasures.jpg', 'Discover treasures'] %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render "shared/card", attr: ['paperwork.jpg', 'Simplify paperwork'] %>
+      </div>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <%= render "shared/card", attr: ['move-abroad.jpg', 'Move abroad'] %>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="container text-center padded-5">
+<div class="wrapper padded text-center">
+  <div class="container">
+    <div class="process">
+      <h2>Get tailor-made quality advice, naturally.</h2>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <%= image_tag 'find-advisor.png' %>
+          <h3>Find an advisor</h3>
+          <div class="circle">1</div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <%= image_tag 'get-proposal.png' %>
+          <h3>Get a proposal</h3>
+          <div class="circle">2</div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <%= image_tag 'be-adviced.png' %>
+          <h3>Be adviced</h3>
+          <div class="circle">3</div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <%= image_tag 'evaluate.png' %>
+          <h3>Evaluate your experience</h3>
+          <div class="circle">4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container text-center padded">
   <div class="row">
-    <h2>Give tips</h2>
+    <h2>Your knowledge and your experience have value.</h2>
+    <h3>Become an advisor.</h3>
+    <%= link_to "Give tips", new_offer_path, { class: "btn btn-lg btn-success btn-homepage" } %>
+
   </div>
 </div>
 
