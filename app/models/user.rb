@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_proposition
-    advisor_deals.where('proposistion_at IS NOT NULL and accepted_at IS NULL')
+    advisor_deals.where('proposition_at IS NOT NULL and accepted_at IS NULL')
   end
 
   def advisor_deals_open
