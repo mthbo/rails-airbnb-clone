@@ -11,6 +11,10 @@
     left: 0;
     right: 0;
     z-index: 5;
+    &:hover {
+      background-color: $medium-gray;
+      opacity: 0.1;
+    }
   }
   & .profile {
     height: 300px;
