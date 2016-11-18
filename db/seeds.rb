@@ -16,10 +16,10 @@ languages = [
 
 means = [
   Mean.create(name: "SMS"),
-  Mean.create(name: "Facetime"),
+  Mean.create(name: "Visio-call"),
   Mean.create(name: "Call"),
-  Mean.create(name: "Minitel"),
-  Mean.create(name: "Date")
+  Mean.create(name: "Email"),
+  Mean.create(name: "Meeting")
 ]
 
 users = []
