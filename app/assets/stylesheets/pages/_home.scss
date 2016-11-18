@@ -4,7 +4,7 @@
  * ------------------------------------- */
 
 .wrapper {
-  background: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(66, 211, 170, 0.3) 100%);
+  background: $gradient;
 }
 
 .banner {
@@ -19,6 +19,7 @@
 .search-bar {
   padding-bottom: 2em;
   input {
+    z-index: 0 !important;
     height: 60px !important;
     background-color: white;
     font-size: 30px;
@@ -29,6 +30,7 @@
   };
   span {
     button {
+      z-index: 0 !important;
       height: 60px !important;
       width: 60px !important;
       background-color: $yellow;
