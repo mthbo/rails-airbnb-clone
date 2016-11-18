@@ -1,28 +1,53 @@
- <div class="container">
-  <% if @deal.client == current_user %>
-    <h1>Deal with <%= @deal.advisor.name_anonymous %></h1>
-  <% else %>
-    <h1>Deal with <%= @deal.client.name_anonymous %></h1>
-  <% end %>
+ <div class="container padded padded-top">
 
-<ul class="list-unstyled">
-  <li>
-    Status: <%= @deal.status %>
-  </li>
-  <li>
-    Deadline: <%= @deal.deadline %>
-  </li>
-  <li>
-    Proposition: <%= @deal.proposition %>
-  </li>
-  <li>
-     Request: <%= @deal.request %>
-  </li>
-</ul>
+  <h2>
+    Deal with
+    <% if @deal.client == current_user %>
+      <%= @deal.advisor.name_anonymous %>
+    <% else %>
+      <%= @deal.client.name_anonymous %>
+    <% end %>
+    | <span class="yellow"><%= @deal.status %></span>
+  </h2>
+  <h4>
+    <% unless @deal.closed? %>
+      <span class= "date-format">due for <%= @deal.deadline.strftime("%a %d, %Y") %></span>
+    <% else %>
+      <span class= "date-format">closed <%= @deal.closed_at.strftime("%a %d, %Y") %></span>
+    <% end %>
+  </h4>
 
+<% unless @deal.request? %>
+  <div class="padded">
+    <h3>Proposition</h3>
+    <h4><span class= "date-format">sent on <%= @deal.proposition_at.strftime("%a %d, %Y") %></span></h4>
+    <p><%= @deal.proposition %></p>
+    <p>Price: <strong>$<%= @deal.price.to_i %></strong></p>
 
-  <div>
-    <%= render "shared/offer_card", offer: @deal.offer %>
+    <% if @deal.proposition? %>
+      <% if @deal.client == current_user  %>
+        <button class="btn btn-primary">Accept the proposition</button>
+      <% else %>
+        <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
+      <% end %>
+    <% else %>
+      <p><small>Proposition accepted on <%= @deal.accepted_at.strftime("%a %d, %Y") %></small></p>
+    <% end %>
   </div>
+<% end %>
+
+<div class="padded">
+  <h3>Request</h3>
+  <h4><span class= "date-format">sent on <%= @deal.created_at.strftime("%a %d, %Y") %></span></h4>
+  <p><%= @deal.request %></p>
+  <% if @deal.advisor == current_user  %>
+    <button class="btn btn-primary">Send proposition</button>
+  <% end %>
+</div>
+
+
+<div class="padded">
+  <%= render "shared/offer_card", offer: @deal.offer %>
+</div>
 
 </div>

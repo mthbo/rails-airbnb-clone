@@ -20,15 +20,19 @@ class Deal < ApplicationRecord
     end
   end
 
-  def proposition?
-    !proposition_at.nil?
+  def request?
+    status == "Request"
   end
 
-  def accepted?
-    !accepted_at.nil?
+  def proposition?
+    status == "Proposition"
+  end
+
+  def open?
+    status == "Open"
   end
 
   def closed?
-    !closed_at.nil?
+    status == "Closed"
   end
 end
