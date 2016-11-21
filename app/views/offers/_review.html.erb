@@ -1,0 +1,14 @@
+<div>
+  <%= user.name_anonymous %>
+</div>
+<div>
+  <% (rating.to_i).times do %>
+    <i class="fa fa-star" aria-hidden="true"></i>
+  <% end %>
+  <% (5 - rating.to_i).times do %>
+    <i class="fa fa-star" aria-hidden="true"></i>
+  <% end %>
+</div>
+<div>
+  <%= review %>
+</div>

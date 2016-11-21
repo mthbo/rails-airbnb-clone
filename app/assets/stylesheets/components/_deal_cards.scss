@@ -1,13 +1,5 @@
 .process-step {
   padding: 20px 0;
-  a {
-    text-decoration: none;
-    &:hover{
-      .deal_card {
-      background-color: $extra-light-gray;
-      }
-    };
-  }
 }
 
 .deal_card {
@@ -17,6 +9,18 @@
   padding: 10px 5px;
   margin: 20px 0;
   border-radius: 5px;
+  position: relative;
+  & .link {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    &:hover {
+      background-color: $medium-gray;
+      opacity: 0.1;
+    }
+  }
 }
 
 .deal-avatar {

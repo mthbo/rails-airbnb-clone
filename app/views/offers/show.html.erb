@@ -10,29 +10,11 @@
         </p>
 
         <p>Satisfaction:
-          <% unless @offer.global_rating.nil? %>
-            <% (@offer.global_rating.to_i).times do %>
-              <i class="fa fa-star" aria-hidden="true"></i>
-            <% end %>
-            <% (5 - @offer.global_rating.to_i).times do %>
-              <i class="fa fa-star" aria-hidden="true"></i>
-            <% end %>
-            <strong><%= (@offer.global_rating / 5 * 100).to_i %> %</strong>
-          <% else %>
-            <% 5.times do %>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
-            <% end %>
-          <% end %>
+          <%= render 'offers/satisfaction', offer: @offer %>
         </p>
 
         <p>Prices:
-          <% unless @offer.median_price.nil? %>
-            $<%= @offer.min_price.to_i %> -
-            <strong>$<%= @offer.median_price.to_i %></strong> -
-            $<%= @offer.max_price.to_i %>
-          <% else %>
-            -
-          <% end %>
+          <%= render 'offers/prices', offer: @offer %>
         </p>
       </div>
 
@@ -41,31 +23,15 @@
       </div>
 
       <div>
-         <ul class="list-inline">
-          <% @offer.languages.each do |language| %>
-            <li><%= language.name %></li>
-          <% end %>
-        </ul>
-        <ul class="list-inline">
-          <% @offer.means.each do |mean| %>
-            <li><%= mean.name %></li>
-          <% end %>
-        </ul>
+         <%= render 'offers/languages', offer: @offer %>
+         <%= render 'offers/means', offer: @offer %>
       </div>
     </div>
 
     <%= link_to user_path(@offer.advisor) do %>
       <div class="col-xs-3">
         <div class="offer-profile text-center">
-          <% avatar_url = @offer.advisor.facebook_picture_url || "photo_client.png" %>
-
-          <% if avatar_url == @offer.advisor.facebook_picture_url %>
-            <%= image_tag avatar_url, class: "avatar-large" %>
-          <% elsif @offer.advisor.photo == nil %>
-            <%= image_tag avatar_url, class: "avatar-large" %>
-          <% else %>
-            <%= cl_image_tag @offer.advisor.photo.path, class: "avatar-large" %>
-          <% end %>
+          <%= render 'shared/avatar', user: @offer.advisor, size: 'avatar-large' %>
           <p><%= @offer.advisor.name_anonymous %></p>
           <p><%= @offer.advisor.grade %></p>
           <p><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= @offer.advisor.address %></p>
@@ -86,25 +52,10 @@
   <h2>Reviews (<%= @offer.deals_reviewed.count %>)</h2>
   <hr>
   <div>
-    <div>
-      <% @offer.deals_reviewed.each do |deal| %>
-        <div>
-          <%= deal.client.first_name %> <%= deal.client.last_name.first %>.
-        </div>
-        <div>
-          <% (deal.client_rating.to_i).times do %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-          <% (5 - deal.client_rating.to_i).times do %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-        </div>
-        <div>
-          <%= deal.client_review %>
-        </div>
-        <hr>
-      <% end %>
-    </div>
+    <% @offer.deals_reviewed.each do |deal| %>
+      <%= render 'review', user: deal.client, rating: deal.client_rating, review: deal.client_review %>
+      <hr>
+    <% end %>
   </div>
 
 </div>

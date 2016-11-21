@@ -15,7 +15,9 @@
       </button>
     </form>
 
+    <!-- Give tips button -->
     <%= link_to "Give tips", new_offer_path, { class: "navbar-wagon-item navbar-wagon-button btn" } %>
+
     <!-- Notification link-->
     <a href="" class="navbar-wagon-item navbar-wagon-link">
       <div class="badge-container">
@@ -28,35 +30,17 @@
     <div class="navbar-wagon-item">
       <div class="dropdown">
 
-        <% avatar_url = current_user.facebook_picture_url || "photo_client.png" %>
-
-        <% if avatar_url == current_user.facebook_picture_url %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <% elsif current_user.photo == nil %>
-          <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <% else %>
-          <%= cl_image_tag current_user.photo.path, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-        <% end %>
+        <div class="dropdown-toggle" id="navbar-wagon-menu", data-toggle="dropdown">
+          <%= render 'shared/avatar', user: current_user, size: 'avatar' %>
+        </div>
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li>
-            <%= link_to user_path(current_user) do %>
-             Profile
-            <% end %>
-          </li>
-          <li>
-            <%= link_to dashboard_path do %>
-             Dashboard
-            <% end %>
-          </li>
-          <li>
-            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-          </li>
+          <li><%= link_to "Profile", user_path(current_user) %></li>
+          <li><%= link_to "Dashboard", dashboard_path %></li>
+          <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
     </div>
-
-    <!-- Button (call-to-action) -->
 
   </div>
 
@@ -65,9 +49,9 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <li><%= link_to "Profile", user_path(current_user) %></li>
+        <li><%= link_to "Dashboard", dashboard_path %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
       </ul>
     </div>
   </div>

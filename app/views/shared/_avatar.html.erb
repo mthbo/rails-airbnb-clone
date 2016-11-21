@@ -1,0 +1,9 @@
+<% avatar_url = user.facebook_picture_url || "avatar.png" %>
+
+<% if avatar_url == user.facebook_picture_url %>
+  <%= image_tag avatar_url, class: size %>
+<% elsif user.photo.nil? %>
+  <%= image_tag avatar_url, class: size %>
+<% else %>
+  <%= cl_image_tag user.photo.path, class: size %>
+<% end %>

@@ -1,0 +1,38 @@
+<div class="offer-card">
+  <div class="row">
+    <div class="col-xs-12">
+      <h2><%= offer.title %></h2>
+      <div class="row row-padding">
+        <div class="col-xs-4">
+          <p>Track record:
+            <strong><%= offer.deals_closed.count %></strong>
+          </p>
+        </div>
+        <div class="col-xs-4">
+          <p>Satisfaction:
+            <%= render 'offers/satisfaction', offer: offer %>
+          </p>
+        </div>
+
+        <div class="col-xs-4">
+          <p>Prices:
+            <%= render 'offers/prices', offer: offer %>
+          </p>
+        </div>
+      </div>
+
+      <div class="description">
+        <p><%= offer.description[0..350] %> ... <strong>more</strong></p>
+      </div>
+
+      <div class="row row-padding">
+        <div class="col-xs-4">
+          <%= render 'offers/languages', offer: offer %>
+        </div>
+        <div class="col-xs-5">
+          <%= render 'offers/means', offer: offer %>
+        </div>
+      </div>
+    </div>
+  <%= link_to "", offer_path(offer), class: "link" %>
+</div>

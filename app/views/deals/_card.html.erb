@@ -1,11 +1,6 @@
-<%= link_to offer_deal_path(deal.offer, deal) do %>
   <div class="deal_card">
     <div class="deal-avatar text-center">
-      <% unless user.photo.nil? %>
-        <%= cl_image_tag user.photo.path, {class: "avatar"} %>
-      <% else %>
-        <%= image_tag "photo_client.png", {class: "avatar"} %>
-      <% end %>
+      <%= render 'shared/avatar', user: user, size: 'avatar' %>
       <h3><%= user.name_anonymous %><h3>
     </div>
     <div class="deal-abstract text-left">
@@ -13,5 +8,5 @@
       <p>due for: <strong><%= deal.deadline.strftime("%a %d, %Y") %></strong></p>
       <p>price: <strong>$<%= deal.price.to_i %></strong></p>
     </div>
+    <%= link_to "", offer_deal_path(deal.offer, deal), class: "link" %>
   </div>
-<% end %>

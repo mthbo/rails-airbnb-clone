@@ -1,13 +1,5 @@
 <div class="wrapper text-center padded-top">
-  <% avatar_url = current_user.facebook_picture_url || "photo_client.png" %>
-
-  <% if avatar_url == current_user.facebook_picture_url %>
-    <%= image_tag avatar_url, class: "avatar-xlarge" %>
-  <% elsif current_user.photo == nil %>
-    <%= image_tag avatar_url, class: "avatar-xlarge" %>
-  <% else %>
-    <%= cl_image_tag current_user.photo.path, class: "avatar-xlarge" %>
-  <% end %>
+  <%= render 'shared/avatar', user: current_user, size: 'avatar-xlarge' %>
   <h1><%= current_user.first_name %></h1>
   <h3>My dashboard</h3>
   <p><%= link_to "See my profile", user_path(current_user) %></p>
@@ -32,7 +24,7 @@
         <h3>Request</h3>
         <div class="process-step">
           <% current_user.deals_request.each do |deal| %>
-            <%= render "shared/deal_card", deal: deal, user: deal.advisor %>
+            <%= render "deals/card", deal: deal, user: deal.advisor %>
           <% end %>
         </div>
       </div>
@@ -40,7 +32,7 @@
         <h3>Proposition</h3>
         <div class="process-step">
           <% current_user.deals_proposition.each do |deal| %>
-            <%= render "shared/deal_card", deal: deal, user: deal.advisor %>
+            <%= render "deals/card", deal: deal, user: deal.advisor %>
           <% end %>
         </div>
       </div>
@@ -48,7 +40,7 @@
         <h3>Open</h3>
         <div class="process-step">
           <% current_user.deals_open.each do |deal| %>
-            <%= render "shared/deal_card", deal: deal, user: deal.advisor %>
+            <%= render "deals/card", deal: deal, user: deal.advisor %>
           <% end %>
         </div>
       </div>
@@ -56,7 +48,7 @@
         <h3>Closed</h3>
         <div class="process-step">
           <% current_user.deals_closed.each do |deal| %>
-            <%= render "shared/deal_card", deal: deal, user: deal.advisor %>
+            <%= render "deals/card", deal: deal, user: deal.advisor %>
           <% end %>
         </div>
       </div>
@@ -69,7 +61,7 @@
         <h3>Request</h3>
         <div class="process-step">
           <% current_user.advisor_deals_request.each do |deal| %>
-            <%= render "shared/deal_card", deal: deal, user: deal.client %>
+            <%= render "deals/card", deal: deal, user: deal.client %>
           <% end %>
         </div>
       </div>
@@ -77,7 +69,7 @@
         <h3>Proposition</h3>
         <div class="process-step">
           <% current_user.advisor_deals_proposition.each do |deal| %>
-            <%= render "shared/deal_card", deal: deal, user: deal.client %>
+            <%= render "deals/card", deal: deal, user: deal.client %>
           <% end %>
         </div>
       </div>
@@ -85,7 +77,7 @@
         <h3>Open</h3>
         <div class="process-step">
           <% current_user.advisor_deals_open.each do |deal| %>
-            <%= render "shared/deal_card", deal: deal, user: deal.client %>
+            <%= render "deals/card", deal: deal, user: deal.client %>
           <% end %>
         </div>
       </div>
@@ -93,7 +85,7 @@
         <h3>Closed</h3>
         <div class="process-step">
           <% current_user.advisor_deals_closed.each do |deal| %>
-            <%= render "shared/deal_card", deal: deal, user: deal.client %>
+            <%= render "deals/card", deal: deal, user: deal.client %>
           <% end %>
         </div>
       </div>

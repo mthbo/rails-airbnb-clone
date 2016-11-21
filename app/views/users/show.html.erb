@@ -1,14 +1,7 @@
 <div class="wrapper text-center padded padded-top">
 
-  <% avatar_url = @user.facebook_picture_url || "photo_client.png" %>
+  <%= render 'shared/avatar', user: @user, size: 'avatar-xlarge' %>
 
-  <% if avatar_url == @user.facebook_picture_url %>
-    <%= image_tag avatar_url, class: "avatar-xlarge" %>
-  <% elsif @user.photo == nil %>
-    <%= image_tag avatar_url, class: "avatar-xlarge" %>
-  <% else %>
-    <%= cl_image_tag @user.photo.path, class: "avatar-xlarge" %>
-  <% end %>
   <h1><%= @user.name_anonymous %></h1>
   <h3><%= @user.grade %></h3>
   <h4><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= @user.address %></h4>
@@ -103,59 +96,25 @@
   <h2>Reviews as advisor (<%= @user.advisor_deals_reviewed.count %>)</h2>
   <hr>
   <div>
-    <div>
-      <% @user.advisor_deals_reviewed.each do |deal| %>
-        <div>
-          <%= deal.client.first_name %> <%= deal.client.last_name.first %>.
-        </div>
-        <div>
-          <% (deal.client_rating.to_i).times do %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-          <% (5 - deal.client_rating.to_i).times do %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-        </div>
-        <div>
-          <%= deal.client_review %>
-        </div>
-        <div>
-          <%= link_to offer_path(deal.offer) do %>
-            <%= deal.offer.title %>
-          <% end %>
-        </div>
-        <hr>
+    <% @user.advisor_deals_reviewed.each do |deal| %>
+      <%= render 'offers/review', user: deal.client, rating: deal.client_rating, review: deal.client_review %>
+      <%= link_to offer_path(deal.offer) do %>
+        <%= deal.offer.title %>
       <% end %>
-    </div>
+      <hr>
+    <% end %>
   </div>
 
   <h2>Reviews as client (<%= @user.deals_reviewed.count %>)</h2>
   <hr>
   <div>
-    <div>
-      <% @user.deals_reviewed.each do |deal| %>
-        <div>
-          <%= deal.advisor.first_name %> <%= deal.advisor.last_name.first %>.
-        </div>
-        <div>
-          <% (deal.advisor_rating.to_i).times do %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-          <% (5 - deal.advisor_rating.to_i).times do %>
-            <i class="fa fa-star" aria-hidden="true"></i>
-          <% end %>
-        </div>
-        <div>
-          <%= deal.advisor_review %>
-        </div>
-        <div>
-          <%= link_to offer_path(deal.offer) do %>
-            <%= deal.offer.title %>
-          <% end %>
-        </div>
-        <hr>
+    <% @user.deals_reviewed.each do |deal| %>
+      <%= render 'offers/review', deal: deal, user: deal.client, rating: deal.client_rating, review: deal.client_review %>
+      <%= link_to offer_path(deal.offer) do %>
+        <%= deal.offer.title %>
       <% end %>
-    </div>
+      <hr>
+    <% end %>
   </div>
 
 </div>
