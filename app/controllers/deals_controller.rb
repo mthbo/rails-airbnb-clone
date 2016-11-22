@@ -6,11 +6,13 @@ class DealsController < ApplicationController
   end
 
   def new
-    @deal = Deal.new
+    @deal = @offer.deals.new
+    authorize @deal
   end
 
   def create
     @deal = @offer.deals.new(deal_params)
+    authorize @deal
     @deal.client = current_user
     if @deal.save
       flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} regarding the offer '#{@offer.title}'"
@@ -35,6 +37,7 @@ class DealsController < ApplicationController
 
   def find_deal
     @deal = Deal.find(params[:id])
+    authorize @deal
   end
 
   def find_offer

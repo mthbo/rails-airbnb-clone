@@ -27,65 +27,9 @@
   <h2>My offers</h2>
 
   <% @user.offers.each do |offer| %>
-    <%= link_to offer_path(offer), {class: "list-group-item"} do %>
-      <div class="row">
-        <div class="col-xs-12">
-          <h3><%= offer.title %></h3>
-
-          <div>
-            <p>Track record:
-              <strong><%= offer.deals_closed.count %></strong>
-            </p>
-
-            <p>Satisfaction:
-              <% unless offer.global_rating.nil? %>
-                <% (offer.global_rating.to_i).times do %>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                <% end %>
-                <% (5 - offer.global_rating.to_i).times do %>
-                  <i class="fa fa-star" aria-hidden="true"></i>
-                <% end %>
-                <strong><%= (offer.global_rating / 5 * 100).to_i %> %</strong>
-              <% else %>
-                <% 5.times do %>
-                  <i class="fa fa-star-o" aria-hidden="true"></i>
-                <% end %>
-              <% end %>
-            </p>
-
-            <p>Prices:
-              <% unless offer.median_price.nil? %>
-                $<%= offer.min_price.to_i %> -
-                <strong>$<%= offer.median_price.to_i %></strong> -
-                $<%= offer.max_price.to_i %>
-              <% else %>
-                -
-              <% end %>
-            </p>
-          </div>
-
-          <div>
-            <p><%= offer.description[0..350] %> ... <strong>more</strong></p>
-          </div>
-
-          <div>
-            <ul class = "list-inline">
-              <% offer.languages.each do |language| %>
-                <li><%= language.name %></li>
-              <% end %>
-            </ul>
-            <ul class = "list-inline">
-              <% offer.means.each do |mean| %>
-                <li><%= mean.name %></li>
-              <% end %>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    <% end %>
+    <%= render "offers/card_no_profile", offer: offer %>
     <div>
-      <% if @user == current_user %>
+      <% if policy(offer).edit? %>
         <%= link_to "Edit offer", edit_offer_path(offer) %>
       <% end %>
     </div>

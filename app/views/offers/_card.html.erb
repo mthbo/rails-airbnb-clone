@@ -46,5 +46,7 @@
       </div>
     </div>
   </div>
-  <%= link_to "", offer_path(offer), class: "link" %>
+  <% if policy(offer).show? %>
+    <%= link_to "", offer_path(offer), class: "link" %>
+  <% end %>
 </div>
