@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= @user.name_anonymous %><%= "- Profile | Tipswell" %>
+<% end %>
+
 <div class="wrapper text-center padded padded-top">
 
   <%= render 'shared/avatar', user: @user, size: 'avatar-xlarge' %>

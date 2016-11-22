@@ -1,3 +1,7 @@
+<% content_for :title do %>
+  <%= "Dashboard | Tipswell" %>
+<% end %>
+
 <div class="wrapper text-center padded-top">
   <%= render 'shared/avatar', user: current_user, size: 'avatar-xlarge' %>
   <h1><%= current_user.first_name %></h1>
