@@ -3,18 +3,20 @@ class OffersController < ApplicationController
   before_action :find_offer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @offers = Offer.all
+    @offers = policy_scope(Offer)
   end
 
   def show
   end
 
   def new
-    @offer = Offer.new
+    @offer = current_user.offers.new
+    authorize @offer
   end
 
   def create
     @offer = current_user.offers.new(offer_params)
+    authorize @offer
     if @offer.save
       flash[:notice] = "#{@offer.title} has been created"
       redirect_to offer_path(@offer)
@@ -46,6 +48,7 @@ class OffersController < ApplicationController
 
   def find_offer
     @offer = Offer.find(params[:id])
+    authorize @offer
   end
 
   def offer_params
