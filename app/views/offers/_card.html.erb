@@ -22,7 +22,7 @@
       </div>
 
       <div class="description">
-        <p><%= offer.description[0..350] %> ... <strong>more</strong></p>
+        <p><%= offer.description[0..250] %> ... <strong>more</strong></p>
       </div>
 
       <div class="row row-padding">
@@ -39,9 +39,9 @@
       <div class="text-center profile">
         <div>
           <%= render 'shared/avatar', user: offer.advisor, size: 'avatar-medium' %>
-          <p><%= offer.advisor.name_anonymous %></p>
-          <p><%= offer.advisor.grade %></p>
-          <p><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= offer.advisor.address %></p>
+          <h1><%= offer.advisor.name_anonymous %></h1>
+          <h3><%= offer.advisor.grade %></h3>
+          <h4><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= offer.advisor.address %></h4>
         </div>
       </div>
     </div>

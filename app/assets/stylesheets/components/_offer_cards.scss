@@ -1,28 +1,11 @@
 .offer-card {
+  background-color: white;
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   position: relative;
   height: 300px;
   padding: 10px 10px 10px 30px;
-  & .link {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    &:hover {
-      background-color: $medium-gray;
-      opacity: 0.1;
-    }
-  }
-  & .profile {
-    height: 300px;
-    margin: -10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: $gradient;
-  }
+  &
 
   & .row-padding{
     padding-bottom: 10px;
@@ -41,7 +24,26 @@
   }
 }
 
+.flag img {
+  height: 22px;
+}
 
-
+.profile {
+    height: 300px;
+    margin: -10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: $gradient;
+    h1 {
+      font-size: 22px;
+    };
+    h3 {
+      font-size: 18px;
+    };
+    h4 {
+      font-size: 16px;
+    };
+  }
 
 

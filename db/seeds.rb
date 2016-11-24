@@ -10,8 +10,15 @@ languages = [
   Language.create(name: "Spanish"),
   Language.create(name: "Italian"),
   Language.create(name: "German"),
-  Language.create(name: "Syrian"),
-  Language.create(name: "Créole")
+  Language.create(name: "Chinese"),
+  Language.create(name: "Danish"),
+  Language.create(name: "Dutch"),
+  Language.create(name: "Hindi"),
+  Language.create(name: "Japanese"),
+  Language.create(name: "Portuguese"),
+  Language.create(name: "Russian"),
+  Language.create(name: "Swahili"),
+  Language.create(name: "Arabic")
 ]
 
 means = [
