@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
 
   resources :offers do
+    # not nested?
     resources :deals, only: [:index, :show, :new, :create, :edit, :update]
   end
 
