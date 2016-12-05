@@ -84,10 +84,18 @@
 
       <% unless current_user == @offer.advisor %>
         <div class="padded-top">
-          <div class="btn btn-primary btn-block btn-proposition">
-            <%= link_to "Ask a proposition", new_offer_deal_path(@offer) %>
+          <% unless @deal.id.present? %>
+            <%= render 'deals/interest', offer: @offer, deal: @deal %>
+          <% else %>
+            <p>Interested!</p>
+          <% end %>
+
+          <div type="button" class="btn btn-primary btn-block btn-proposition" data-toggle="modal" data-target="#request">
+            Ask for a proposition
           </div>
+          <%= render 'deals/request', offer: @offer, deal: @deal %>
         </div>
+
       <% end %>
     </div>
 

@@ -7,6 +7,11 @@ class OffersController < ApplicationController
   end
 
   def show
+    unless deal_interest.present?
+      @deal = @offer.deals.new
+    else
+      @deal = deal_interest
+    end
   end
 
   def new
@@ -53,6 +58,10 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:title, :description, mean_ids: [], language_ids: [])
+  end
+
+  def deal_interest
+    @offer.deals.where(client: current_user, status: :interest).last
   end
 
 end

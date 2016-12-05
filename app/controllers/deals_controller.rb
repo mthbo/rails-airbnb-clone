@@ -1,22 +1,19 @@
 class DealsController < ApplicationController
   before_action :find_deal, only: [:show, :update]
-  before_action :find_offer, only: [:create, :new, :show, :update]
+  before_action :find_offer, only: [:create]
 
   def show
-  end
-
-  def new
-    @deal = @offer.deals.new
-    authorize @deal
   end
 
   def create
     @deal = @offer.deals.new(deal_params)
     authorize @deal
     @deal.client = current_user
+
+# à bouger
     if @deal.save
-      flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} regarding the offer '#{@offer.title}'"
-      redirect_to offer_path(@offer)
+      flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
+      redirect_to deal_path(@deal)
     else
       flash[:alert] = "No request has been sent"
       render :new
@@ -24,9 +21,10 @@ class DealsController < ApplicationController
   end
 
   def update
+    raise
     if @deal.update(deal_params)
-      flash[:notice] = "A proposition has been sent to #{@deal.client.name_anonymous} regarding the offer '#{@offer.title}'"
-      redirect_to offer_deal_path(@offer, @deal)
+      flash[:notice] = "A proposition has been sent to #{@deal.client.name_anonymous} for the offer '#{@deal.offer.title}'"
+      redirect_to deal_path(@deal)
     else
       flash[:alert] = "No request has been sent"
       render 'deal/show'
@@ -41,11 +39,26 @@ class DealsController < ApplicationController
   end
 
   def find_offer
-    @offer = Offer.find(params[:offer_id])
+    @offer = Offer.find(params[:deal][:offer_id])
   end
 
   def deal_params
-    params.require(:deal).permit(:request, :status, :deadline, :amount, :proposition, :request_at, :proposition_at, :accepted_at, :closed_at)
+    params.require(:deal).permit(:offer_id, :request, :status, :deadline, :amount, :proposition, :request_at, :proposition_at, :accepted_at, :closed_at)
+  end
+
+  def deal_interest
+  end
+
+  def deal_request
+  end
+
+  def deal_proposition
+  end
+
+  def deal_acceptation
+  end
+
+  def deal_close
   end
 
 end

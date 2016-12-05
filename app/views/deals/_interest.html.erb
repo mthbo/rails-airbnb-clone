@@ -1,0 +1,4 @@
+<%= simple_form_for deal do |f| %>
+  <%= f.hidden_field :offer_id, value: offer.id %>
+  <%= f.button :submit, "Add to wishlist", class: "btn btn-primary btn-block btn-proposition" %>
+<% end %>
