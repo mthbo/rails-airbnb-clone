@@ -55,14 +55,15 @@ offers = []
 end
 
 deals1 =[]
-5.times do
+10.times do
   deals1 << Deal.create(
+    status: :closed,
     offer: offers.sample,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(0.days.ago, 1.day.ago),
     proposition: Faker::Lorem.paragraph(10),
-    price:  Faker::Commerce.price,
+    amount:  Faker::Commerce.price,
     proposition_at: Faker::Time.between(5.days.ago, 6.days.ago),
     accepted_at: Faker::Time.between(3.days.ago, 4.days.ago),
     closed_at: Faker::Time.between(1.day.ago, 2.days.ago),
@@ -76,11 +77,12 @@ end
 deals2 = []
 5.times do
   deals2 << Deal.create(
+    status: :open,
     offer: offers.sample,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Date.forward(14),
-    price:  Faker::Commerce.price,
+    amount:  Faker::Commerce.price,
     proposition: Faker::Lorem.paragraph(10),
     proposition_at: Faker::Time.between(3.days.ago, 4.days.ago),
     accepted_at: Faker::Time.between(1.day.ago, 2.days.ago)
@@ -90,11 +92,12 @@ end
 deals3 = []
 5.times do
   deals3 << Deal.create(
+    status: :proposition,
     offer: offers.sample,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Date.forward(24),
-    price:  Faker::Commerce.price,
+    amount:  Faker::Commerce.price,
     proposition: Faker::Lorem.paragraph(10),
     proposition_at: Faker::Time.between(1.day.ago, 2.days.ago)
   )
@@ -103,10 +106,20 @@ end
 deals4 = []
 5.times do
   deals4 << Deal.create(
+    status: :request,
     offer: offers.sample,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Date.forward(34)
+  )
+end
+
+deals5 = []
+5.times do
+  deals5 << Deal.create(
+    status: :interest,
+    offer: offers.sample,
+    client: users.sample
   )
 end
 

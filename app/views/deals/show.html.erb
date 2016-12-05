@@ -32,7 +32,7 @@
       <h3>Proposition</h3>
       <h4><span class= "date-format">sent on <%= @deal.proposition_at.strftime("%a %d, %Y") %></span></h4>
       <p><%= @deal.proposition %></p>
-      <p>Price: <strong>$<%= @deal.price.to_i %></strong></p>
+      <p>Amount: <strong><%= money_without_cents_and_with_symbol(@deal.amount) %></strong></p>
 
       <% if @deal.proposition? %>
         <% if @deal.client == current_user  %>

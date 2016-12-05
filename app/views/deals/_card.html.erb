@@ -6,7 +6,7 @@
     <div class="deal-abstract text-left">
       <h2><%= deal.offer.title %></h2>
       <p>due for: <strong><%= deal.deadline.strftime("%a %d, %Y") %></strong></p>
-      <p>price: <strong>$<%= deal.price.to_i %></strong></p>
+      <p>amount: <strong><%= money_without_cents_and_with_symbol(deal.amount) %></strong></p>
     </div>
     <%= link_to "", offer_deal_path(deal.offer, deal), class: "link" %>
   </div>

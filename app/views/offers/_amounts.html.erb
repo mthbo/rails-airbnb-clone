@@ -1,0 +1,7 @@
+<% unless offer.median_amount.nil? %>
+  <%= money_without_cents_and_with_symbol(offer.min_amount) %> -
+  <strong><%= money_without_cents_and_with_symbol(offer.median_amount) %></strong> -
+  <%= money_without_cents_and_with_symbol(offer.max_amount) %>
+<% else %>
+  -
+<% end %>

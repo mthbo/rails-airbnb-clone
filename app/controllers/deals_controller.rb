@@ -45,7 +45,7 @@ class DealsController < ApplicationController
   end
 
   def deal_params
-    params.require(:deal).permit(:request, :deadline, :price, :proposition, :proposition_at, :accepted_at, :closed_at)
+    params.require(:deal).permit(:request, :status, :deadline, :amount, :proposition, :request_at, :proposition_at, :accepted_at, :closed_at)
   end
 
 end
