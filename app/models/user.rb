@@ -23,7 +23,7 @@ class User < ApplicationRecord
     elsif advisor_deals_closed.count > 3
       "Advisor"
     else
-      "Roockie"
+      "Rookie"
     end
   end
 

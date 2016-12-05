@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205090605) do
+ActiveRecord::Schema.define(version: 20161205161425) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,24 @@ ActiveRecord::Schema.define(version: 20161205090605) do
     t.index ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent", using: :btree
   end
 
+  create_table "deal_languages", force: :cascade do |t|
+    t.integer  "deal_id"
+    t.integer  "language_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["deal_id"], name: "index_deal_languages_on_deal_id", using: :btree
+    t.index ["language_id"], name: "index_deal_languages_on_language_id", using: :btree
+  end
+
+  create_table "deal_means", force: :cascade do |t|
+    t.integer  "deal_id"
+    t.integer  "mean_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deal_id"], name: "index_deal_means_on_deal_id", using: :btree
+    t.index ["mean_id"], name: "index_deal_means_on_mean_id", using: :btree
+  end
+
   create_table "deals", force: :cascade do |t|
     t.integer  "offer_id"
     t.text     "request"
@@ -37,8 +55,6 @@ ActiveRecord::Schema.define(version: 20161205090605) do
     t.text     "proposition"
     t.text     "client_review"
     t.text     "advisor_review"
-    t.integer  "client_rating"
-    t.integer  "advisor_rating"
     t.datetime "proposition_at"
     t.datetime "accepted_at"
     t.datetime "closed_at"
@@ -62,6 +78,15 @@ ActiveRecord::Schema.define(version: 20161205090605) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "objectives", force: :cascade do |t|
+    t.text     "description"
+    t.integer  "rating"
+    t.integer  "deal_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["deal_id"], name: "index_objectives_on_deal_id", using: :btree
   end
 
   create_table "offer_languages", force: :cascade do |t|
@@ -118,8 +143,13 @@ ActiveRecord::Schema.define(version: 20161205090605) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "deal_languages", "deals"
+  add_foreign_key "deal_languages", "languages"
+  add_foreign_key "deal_means", "deals"
+  add_foreign_key "deal_means", "means"
   add_foreign_key "deals", "offers"
   add_foreign_key "deals", "users", column: "client_id"
+  add_foreign_key "objectives", "deals"
   add_foreign_key "offer_languages", "languages"
   add_foreign_key "offer_languages", "offers"
   add_foreign_key "offer_means", "means"
