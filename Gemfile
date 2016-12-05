@@ -26,6 +26,7 @@ gem "coffee-rails"
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'pundit'
+gem 'money-rails'
 
 group :development, :test do
   gem 'binding_of_caller'

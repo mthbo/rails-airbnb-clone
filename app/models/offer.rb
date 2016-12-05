@@ -19,26 +19,27 @@ class Offer < ApplicationRecord
     end
   end
 
-  def min_price
-    deals_closed.minimum(:price)
+  def min_amount
+    Money.new(deals_closed.minimum(:amount_cents))
   end
 
-  def max_price
-    deals_closed.maximum(:price)
+  def max_amount
+    Money.new(deals_closed.maximum(:amount_cents))
   end
 
-  def median_price
+  def median_amount
     unless deals_closed.count.zero?
-      prices = []
-      deals_closed.each { |deal| prices << deal.price }
-      prices.sort!
-      len = prices.length
-      (prices[(len - 1) / 2] + prices[len / 2]) / 2
+      amounts = []
+      deals_closed.each { |deal| amounts << deal.amount_cents }
+      amounts.sort!
+      len = amounts.length
+      median_cents = (amounts[(len - 1) / 2] + amounts[len / 2]) / 2
+      Money.new(median_cents)
     end
   end
 
   def deals_closed
-    deals.where.not(closed_at: nil)
+    deals.where(status: :closed)
   end
 
   def deals_reviewed

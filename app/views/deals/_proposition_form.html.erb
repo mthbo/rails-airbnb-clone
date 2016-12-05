@@ -2,7 +2,7 @@
   <%= f.error_notification message: 'Please fill all the fields below' %>
 
   <%= f.input :proposition, placeholder: "Detail your proposition" %>
-  <%= f.input :price, placeholder: "Enter a price" %>
+  <%= f.input :amount, placeholder: "Propose an amount" %>
   <%= f.input :deadline %>
   <%= f.input :proposition_at, as: :hidden, :input_html => { value: DateTime.now } %>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117112913) do
+ActiveRecord::Schema.define(version: 20161205090605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20161117112913) do
     t.integer  "offer_id"
     t.text     "request"
     t.datetime "deadline"
-    t.float    "price"
     t.text     "proposition"
     t.text     "client_review"
     t.text     "advisor_review"
@@ -43,9 +42,13 @@ ActiveRecord::Schema.define(version: 20161117112913) do
     t.datetime "proposition_at"
     t.datetime "accepted_at"
     t.datetime "closed_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "client_id"
+    t.integer  "amount_cents",   default: 0, null: false
+    t.json     "payment"
+    t.integer  "status",         default: 0
+    t.datetime "request_at"
     t.index ["offer_id"], name: "index_deals_on_offer_id", using: :btree
   end
 

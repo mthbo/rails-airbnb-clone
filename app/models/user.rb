@@ -28,39 +28,43 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_request
-    advisor_deals.where(proposition_at: nil)
+    advisor_deals.where(status: :request)
   end
 
   def advisor_deals_proposition
-    advisor_deals.where('proposition_at IS NOT NULL and accepted_at IS NULL')
+    advisor_deals.where(status: :proposition)
   end
 
   def advisor_deals_open
-    advisor_deals.where('accepted_at IS NOT NULL and closed_at IS NULL')
+    advisor_deals.where(status: :open)
   end
 
   def advisor_deals_closed
-    advisor_deals.where.not(closed_at: nil)
+    advisor_deals.where(status: :closed)
   end
 
   def advisor_deals_reviewed
     advisor_deals.where.not(client_review: nil)
   end
 
+  def deals_interest
+    deals.where(status: :interest)
+  end
+
   def deals_request
-    deals.where(proposition_at: nil)
+    deals.where(status: :request)
   end
 
   def deals_proposition
-    deals.where('proposition_at IS NOT NULL and accepted_at IS NULL')
+    deals.where(status: :proposition)
   end
 
   def deals_open
-    deals.where('accepted_at IS NOT NULL and closed_at IS NULL')
+    deals.where(status: :open)
   end
 
   def deals_closed
-    deals.where.not(closed_at: nil)
+    deals.where(status: :closed)
   end
 
   def deals_reviewed
