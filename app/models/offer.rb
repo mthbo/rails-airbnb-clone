@@ -1,6 +1,7 @@
 class Offer < ApplicationRecord
   belongs_to :advisor, class_name: 'User'
   has_many :deals
+  has_many :pinned_offers, dependent: :destroy
   has_many :offer_means, dependent: :destroy
   has_many :means, through: :offer_means
   has_many :offer_languages, dependent: :destroy

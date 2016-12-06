@@ -9,10 +9,11 @@ Rails.application.routes.draw do
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users, only: [:show]
 
-  resources :offers
-
-  resources :deals, only: [:show, :create, :update, :destroy] do
-    resources :objectives, only: [:create, :update, :destroy]
+  resources :offers, shallow: true do
+    resources :pinned_offers, only: [:create, :destroy]
+    resources :deals, only: [:show, :new, :create, :edit, :update] do
+      resources :objectives, only: [:create, :update, :destroy]
+    end
   end
 
 end

@@ -1,28 +1,29 @@
 class DealsController < ApplicationController
   before_action :find_deal, only: [:show, :update, :destroy]
-  before_action :find_offer, only: [:create]
+  before_action :find_offer, only: [:new, :create]
 
   def show
+  end
+
+  def new
+    @deal = @offer.deals.new
+    authorize @deal
   end
 
   def create
     @deal = @offer.deals.new(deal_params)
     authorize @deal
     @deal.client = current_user
-    if @deal.interest?
-      @deal.save
-      redirect_to offer_path(@offer)
+    if @deal.save
+      flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
+      redirect_to deal_path(@deal)
     else
-      # work on this
-
-      if @deal.save
-        flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
-        redirect_to deal_path(@deal)
-      else
-        flash[:alert] = "No request has been sent"
-        render 'deals/request', offer: @offer, deal: @deal
-      end
+      flash[:alert] = "No request has been sent"
+      render :new
     end
+  end
+
+  def edit
   end
 
   def update
@@ -34,7 +35,7 @@ class DealsController < ApplicationController
       redirect_to deal_path(@deal)
     else
       flash[:alert] = "No request has been sent"
-      render 'deal/show'
+      render 'deal/show', 'data-toggle' => "modal", 'data-target' => "#request"
     end
   end
 
@@ -51,7 +52,7 @@ class DealsController < ApplicationController
   end
 
   def find_offer
-    @offer = Offer.find(params[:deal][:offer_id])
+    @offer = Offer.find(params[:offer_id])
   end
 
   def deal_params
@@ -69,16 +70,6 @@ class DealsController < ApplicationController
       mean_ids: [],
       language_ids: []
     )
-  end
-
-  def deal_interest
-    @offer.deals.where(client: current_user, status: :interest).last
-  end
-
-  def deal_interest
-  end
-
-  def deal_request
   end
 
   def deal_proposition

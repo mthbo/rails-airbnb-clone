@@ -45,7 +45,7 @@
   <hr>
   <div>
     <% @user.advisor_deals_reviewed.each do |deal| %>
-      <%= render 'offers/review', user: deal.client, rating: deal.client_rating, review: deal.client_review %>
+      <%= render 'offers/review', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review %>
       <%= link_to offer_path(deal.offer) do %>
         <%= deal.offer.title %>
       <% end %>
@@ -57,7 +57,7 @@
   <hr>
   <div>
     <% @user.deals_reviewed.each do |deal| %>
-      <%= render 'offers/review', deal: deal, user: deal.client, rating: deal.client_rating, review: deal.client_review %>
+      <%= render 'offers/review', deal: deal, user: deal.advisor, review: deal.advisor_review %>
       <%= link_to offer_path(deal.offer) do %>
         <%= deal.offer.title %>
       <% end %>

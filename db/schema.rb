@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205161425) do
+ActiveRecord::Schema.define(version: 20161206132035) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,7 +64,6 @@ ActiveRecord::Schema.define(version: 20161205161425) do
     t.integer  "amount_cents",   default: 0, null: false
     t.json     "payment"
     t.integer  "status",         default: 0
-    t.datetime "request_at"
     t.index ["offer_id"], name: "index_deals_on_offer_id", using: :btree
   end
 
@@ -115,6 +114,15 @@ ActiveRecord::Schema.define(version: 20161205161425) do
     t.integer  "advisor_id"
   end
 
+  create_table "pinned_offers", force: :cascade do |t|
+    t.integer  "offer_id"
+    t.integer  "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_pinned_offers_on_client_id", using: :btree
+    t.index ["offer_id"], name: "index_pinned_offers_on_offer_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -155,4 +163,6 @@ ActiveRecord::Schema.define(version: 20161205161425) do
   add_foreign_key "offer_means", "means"
   add_foreign_key "offer_means", "offers"
   add_foreign_key "offers", "users", column: "advisor_id"
+  add_foreign_key "pinned_offers", "offers"
+  add_foreign_key "pinned_offers", "users", column: "client_id"
 end

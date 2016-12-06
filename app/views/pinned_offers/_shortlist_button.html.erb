@@ -1,0 +1,11 @@
+<% if user_signed_in? && offer.advisor != current_user %>
+  <% if pinned_offer.id.nil? %>
+    <%= link_to offer_pinned_offers_path(offer), method: :post, class: "medium-gray" do %>
+      <i class="fa fa-bookmark" aria-hidden="true"></i>
+    <% end %>
+  <% else %>
+    <%= link_to pinned_offer_path(pinned_offer), method: :delete, class: "yellow" do %>
+      <i class="fa fa-bookmark" aria-hidden="true"></i>
+    <% end %>
+  <% end %>
+<% end %>

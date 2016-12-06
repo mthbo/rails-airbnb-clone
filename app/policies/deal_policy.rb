@@ -12,7 +12,4 @@ class DealPolicy < ApplicationPolicy
     record.advisor == user || record.client == user
   end
 
-  def destroy?
-    record.client == user && record.interest?
-  end
 end

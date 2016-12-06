@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
   has_many :deals, foreign_key: 'client_id'
+  has_many :pinned_offers, foreign_key: 'client_id', dependent: :destroy
   has_many :advisor_deals, through: :offers, source: :deals
 
   has_attachment :photo
@@ -45,10 +46,6 @@ class User < ApplicationRecord
 
   def advisor_deals_reviewed
     advisor_deals.where.not(client_review: nil)
-  end
-
-  def deals_interest
-    deals.where(status: :interest)
   end
 
   def deals_request

@@ -1,14 +1,16 @@
 <div>
   <%= user.name_anonymous %>
 </div>
-<div>
-  <% (rating.to_i).times do %>
-    <i class="fa fa-star yellow" aria-hidden="true"></i>
-  <% end %>
-  <% (5 - rating.to_i).times do %>
-    <i class="fa fa-star medium-gray" aria-hidden="true"></i>
-  <% end %>
-</div>
+<% if deal.client == user %>
+  <div>
+    <% (rating.to_i).times do %>
+      <i class="fa fa-star yellow" aria-hidden="true"></i>
+    <% end %>
+    <% (5 - rating.to_i).times do %>
+      <i class="fa fa-star medium-gray" aria-hidden="true"></i>
+    <% end %>
+  </div>
+<% end %>
 <div>
   <%= review %>
 </div>
