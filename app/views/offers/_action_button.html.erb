@@ -1,0 +1,5 @@
+<% if policy(offer).edit? %>
+  <p><%= link_to "Edit offer", edit_offer_path(offer) %></p>
+<% elsif policy(offer).show? %>
+  <%= link_to "Get a proposition", new_offer_deal_path(offer), class: "btn btn-blue" %>
+<% end %>

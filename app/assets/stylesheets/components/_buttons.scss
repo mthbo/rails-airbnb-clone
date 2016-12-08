@@ -26,8 +26,22 @@
   }
 }
 
+.btn-green {
+  border: $green solid 1px;
+  color: $green;
+  background-color: rgba(255,255,255,0.8);
+  &:hover {
+    color: white;
+    background-color: $green;
+  }
+  &:active {
+    color: white;
+    background-color: $dark-green;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
-  .btn-blue {
+  .btn-blue, .btn-green {
     font-size: 14px;
   }
 }

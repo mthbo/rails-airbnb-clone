@@ -58,6 +58,11 @@
   background: white;
 }
 
+
+body {
+  color: $dark-gray;
+}
+
 h1 {
   color: $blue;
   font-size: 40px;
@@ -91,6 +96,14 @@ h6 {
   color: $dark-gray;
   font-weight: bolder;
   font-size: 16px;
+}
+
+a {
+  color: $green;
+  &:hover {
+    text-decoration: none;
+    color: $dark-green;
+  }
 }
 
 .yellow {
