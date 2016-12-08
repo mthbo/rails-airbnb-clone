@@ -1,49 +1,108 @@
 .offer-card {
   background-color: white;
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-  margin-bottom: 50px;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.3);
+  border-radius: 5px;
+  margin-top: 50px;
   position: relative;
-  height: 300px;
-  padding: 10px 10px 10px 30px;
-  &
+  min-height: 270px;
+  display: flex;
+  overflow: hidden;
+}
 
-  & .row-padding{
-    padding-bottom: 10px;
-  }
+.offer-card-content {
+  flex: 1 1 auto;
+  padding: 0 30px 20px 30px;
+  position: relative;
+}
 
-  & h2 {
-    padding-bottom: 10px;
-  }
+.offer-card-profile {
+  background: $gradient;
+  flex: 0 0 200px;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  h1 {
+    font-size: 22px;
+  };
+  h3 {
+    font-size: 18px;
+  };
+  h4 {
+    font-size: 16px;
+  };
+}
 
-  & p {
-    padding-bottom: 10px;
-  }
-
-  & .description{
-    height: 100px;
+.offer-card-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 5px;
+  &:hover {
+    box-shadow: inset 0 0 3px 0 $medium-gray;
   }
 }
 
-.flag img {
-  height: 22px;
+.offer-card-pin {
+  position: absolute;
+  right: 45px;
+  top: 0;
+  z-index:2;
 }
 
-.profile {
-    height: 300px;
-    margin: -10px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: $gradient;
-    h1 {
-      font-size: 22px;
+.offer-card-proposition {
+  position: absolute;
+  right: 45px;
+  bottom: 28px;
+  z-index:2;
+}
+
+@media (max-width: $screen-sm-max) {
+  .offer-card {
+    flex-wrap: wrap;
+  }
+  .offer-card-content {
+    width: 100%;
+  }
+  .offer-card-profile {
+    flex: 1 0 auto;
+    flex-direction: row;
+    text-align: left;
+    padding: 10px 35px;
+    h1, h3 {
+      margin-top: 5px;
     };
-    h3 {
+  }
+  .offer-card-profile-avatar {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .offer-card-content {
+    padding: 0 0 10px 0;
+  };
+  .offer-card-profile {
+    padding: 10px 15px;
+    h1 {
       font-size: 18px;
     };
-    h4 {
+    h3 {
       font-size: 16px;
     };
+    h4 {
+      font-size: 14px;
+    };
   }
-
+  .offer-card-pin {
+    right: 15px;
+  }
+  .offer-card-proposition {
+    right: 15px;
+    bottom: 18px;
+  }
+}
 

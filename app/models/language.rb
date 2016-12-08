@@ -3,20 +3,20 @@ class Language < ApplicationRecord
   has_many :offers, through: :offer_languages
 
   FLAGS = {
-  "French" => "france.png",
-  "English" => "united-kingdom.png",
-  "Spanish" => "spain.png",
-  "Italian" => "italy.png",
-  "German" => "germany.png",
-  "Chinese" => "china.png",
-  "Danish" => "denmark.png",
-  "Dutch" => "netherlands.png",
-  "Hindi" => "india.png",
-  "Japanese" => "japan.png",
-  "Portuguese" => "portugal.png",
-  "Russian" => "russia.png",
-  "Swahili" => "kenya.png",
-  "Arabic" => "saudi-arabia.png",
+  "French" => "france.svg",
+  "English" => "united-kingdom.svg",
+  "Spanish" => "spain.svg",
+  "Italian" => "italy.svg",
+  "German" => "germany.svg",
+  "Chinese" => "china.svg",
+  "Danish" => "denmark.svg",
+  "Dutch" => "netherlands.svg",
+  "Hindi" => "india.svg",
+  "Japanese" => "japan.svg",
+  "Portuguese" => "portugal.svg",
+  "Russian" => "russia.svg",
+  "Swahili" => "kenya.svg",
+  "Arabic" => "saudi-arabia.svg",
   }
 
   def flag

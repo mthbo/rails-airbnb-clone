@@ -1,0 +1,43 @@
+.review {
+  display: flex;
+  align-items: center;
+}
+
+.review-user {
+  flex: 0 0 100px;
+  margin-right: 15px;
+  text-align: center;
+  p {
+    padding-top: 10px;
+    color: $blue;
+  }
+  a:hover {
+    text-decoration: none;
+    img {
+      border: white solid 1px;
+    }
+  }
+}
+
+.review-content{
+  flex: 0 1 auto;
+}
+
+@media (max-width: $screen-xs-max) {
+  .review {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .review-user {
+    margin-right: 0;
+    text-align: left;
+    flex: 0 1 auto;
+    p {
+      font-size: 16px;
+    }
+  }
+  .review-content {
+    flex: 0 0 auto;
+  }
+}

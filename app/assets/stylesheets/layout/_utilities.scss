@@ -4,11 +4,16 @@
  * Feel free to change them and create your own
  * ------------------------------------- */
 
+.wrapper {
+  background: $gradient;
+}
+
 .wrapper-gray {
   background-color: $extra-light-gray;
 }
 
 // Paddings
+
 .padded {
   padding-top: 2em;
   padding-bottom: 2em;
@@ -20,6 +25,14 @@
 
 .padded-bottom {
   padding-bottom: 6em;
+}
+
+.small-padded-bottom {
+  padding-bottom: 1em;
+}
+
+.small-padded-top {
+  padding-top: 1em;
 }
 
 // Align
@@ -40,6 +53,9 @@
 }
 .bg-dark-blue {
   background: #3b5998;
+}
+.bg-white {
+  background: white;
 }
 
 h1 {
@@ -85,14 +101,35 @@ h6 {
   color: $medium-gray
 }
 
-.link {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  &:hover {
-    background-color: $blue;
-    opacity: 0.1;
+.dark-gray {
+  color: $dark-gray
+}
+
+@media (max-width: $screen-xs-max) {
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+
+  h3 {
+    font-size: 22px;
+  }
+
+  h4 {
+    font-size: 18px;
+  }
+
+  h5 {
+    font-size: 16px;
+  }
+
+  h6 {
+    font-size: 14px;
+  }
+  p, ul, ol {
+    font-size: 14px;
   }
 }

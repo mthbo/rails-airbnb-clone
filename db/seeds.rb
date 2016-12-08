@@ -125,17 +125,8 @@ deals4 = []
   )
 end
 
-deals5 = []
-5.times do
-  offer = offers.sample
-  deals5 << Deal.create(
-    status: :interest,
-    offer: offer,
-    client: users.sample
-  )
-end
 
-30.times do
+45.times do
   Objective.create(
     description: Faker::Lorem.sentence,
     rating: (0..5).to_a.sample,

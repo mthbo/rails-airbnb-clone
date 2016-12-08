@@ -49,4 +49,8 @@ class Offer < ApplicationRecord
     deals.where.not(client_review: nil)
   end
 
+  def pinned(user)
+    self.pinned_offers.where(client: user).last
+  end
+
 end

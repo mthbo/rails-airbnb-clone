@@ -1,0 +1,17 @@
+.flag-icon img {
+  height: 22px;
+}
+
+.amount-icon img {
+  height: 20px;
+  margin-right: 10px;
+}
+
+@media (max-width: $screen-xs-max) {
+  .amount-icon img {
+    height: 18px;
+  }
+  .flag-icon img {
+    height: 20px;
+  }
+}

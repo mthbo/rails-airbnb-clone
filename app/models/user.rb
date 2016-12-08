@@ -18,13 +18,13 @@ class User < ApplicationRecord
 
   def grade
     if advisor_deals_closed.count > 20
-      "Champion"
+      "Guide"
     elsif advisor_deals_closed.count > 10
-      "Senior Advisor"
+      "Champion"
     elsif advisor_deals_closed.count > 3
       "Advisor"
     else
-      "Rookie"
+      "Papoter"
     end
   end
 

@@ -7,8 +7,6 @@ class OffersController < ApplicationController
   end
 
   def show
-    @deal = deal_ongoing.present? ? deal_ongoing : @offer.deals.new
-    @pinned_offer = offer_pinned.present? ? offer_pinned : @offer.pinned_offers.new
   end
 
   def new
@@ -55,14 +53,6 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:title, :description, mean_ids: [], language_ids: [])
-  end
-
-  def deal_ongoing
-    @offer.deals.where(client: current_user).where.not(status: :closed).last
-  end
-
-  def offer_pinned
-    @offer.pinned_offers.where(client: current_user).last
   end
 
 end

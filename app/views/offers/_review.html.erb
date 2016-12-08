@@ -1,16 +1,17 @@
-<div>
-  <%= user.name_anonymous %>
-</div>
-<% if deal.client == user %>
-  <div>
-    <% (rating.to_i).times do %>
-      <i class="fa fa-star yellow" aria-hidden="true"></i>
-    <% end %>
-    <% (5 - rating.to_i).times do %>
-      <i class="fa fa-star medium-gray" aria-hidden="true"></i>
+<div class="review">
+  <div class="review-user">
+    <%= link_to user_path(user) do %>
+      <div class="hidden-xs">
+        <%= render 'shared/avatar', user: user, size: 'avatar-standard' %>
+      </div>
+      <p><%= user.name_anonymous %></p>
     <% end %>
   </div>
-<% end %>
-<div>
-  <%= review %>
+  <div class="review-content">
+    <% if deal.rating.present? %>
+      <%= render 'deals/satisfaction', rating: deal.rating %>
+    <% end %>
+    <p><%= review %></p>
+  </div>
 </div>
+<hr>
