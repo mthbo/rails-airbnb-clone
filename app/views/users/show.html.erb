@@ -2,39 +2,42 @@
   <%= @user.name_anonymous %><%= "- Profile | Papoters" %>
 <% end %>
 
-<div class="wrapper text-center small-padded-bottom padded-top">
+<div class="padded-top-xxl padded-bottom-xs bg-gradient text-center">
   <div class="container">
     <%= render 'shared/avatar', user: @user, size: 'avatar-xlarge' %>
     <h1><%= @user.name_anonymous %></h1>
     <h3><%= @user.grade %></h3>
     <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= @user.address %></h4>
+    <% if @user == current_user %>
+      <p><%= link_to "Go to my dashboard", dashboard_path %></p>
+    <% end %>
   </div>
 </div>
 
-<div class="padded padded-bottom">
+<div class="padded-top-m padded-bottom-xl">
   <div class="container">
     <div class="row">
       <div class="col-xs-6">
         <h2>About me</h2>
       </div>
-      <div class="col-xs-6 text-right small-padded-top">
+      <div class="col-xs-6 text-right padded-top-s">
         <% if @user == current_user %>
-        <p class="small-padded-top"><%= link_to "Edit my profile", edit_user_registration_path %></p>
+          <p><%= link_to "Edit my profile", edit_user_registration_path %></p>
         <% end %>
       </div>
     </div>
-    <p class="small-padded-top"><%= @user.bio %></p>
+    <p class="padded-top-xs"><%= @user.bio %></p>
   </div>
 </div>
 
-<div class="wrapper-gray padded padded-bottom">
+<div class="bg-gray padded-top-m padded-bottom-xl">
   <div class="container">
 
     <div class="row">
       <div class="col-xs-6">
         <h2>My offers</h2>
       </div>
-      <div class="col-xs-6 text-right small-padded-top">
+      <div class="col-xs-6 text-right padded-top-xs">
         <% if @user == current_user %>
           <%= link_to "Create new offer", new_offer_path, class: "btn btn-green"  %>
         <% end %>
@@ -52,7 +55,7 @@
   </div>
 </div>
 
-<div class="padded padded-bottom">
+<div class="padded-top-m padded-bottom-xl">
   <div class="container">
 
     <h2>Reviews as advisor (<%= @user.advisor_deals_reviewed.count %>)</h2>
