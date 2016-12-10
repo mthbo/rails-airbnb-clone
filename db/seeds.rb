@@ -59,7 +59,7 @@ deals1 =[]
 10.times do
   offer = offers.sample
   deals1 << Deal.create(
-    status: :closed,
+    status: 3,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
@@ -76,11 +76,21 @@ deals1 =[]
   )
 end
 
+deals1.each do |deal|
+  3.times do
+    Objective.create(
+      description: Faker::Lorem.sentence,
+      rating: (0..5).to_a.sample,
+      deal: deal
+    )
+  end
+end
+
 deals2 = []
 5.times do
   offer = offers.sample
   deals2 << Deal.create(
-    status: :open,
+    status: 2,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
@@ -94,11 +104,20 @@ deals2 = []
   )
 end
 
+deals2.each do |deal|
+  3.times do
+    Objective.create(
+      description: Faker::Lorem.sentence,
+      deal: deal
+    )
+  end
+end
+
 deals3 = []
 5.times do
   offer = offers.sample
   deals3 << Deal.create(
-    status: :proposition,
+    status: 1,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
@@ -111,40 +130,26 @@ deals3 = []
   )
 end
 
+deals3.each do |deal|
+  3.times do
+    Objective.create(
+      description: Faker::Lorem.sentence,
+      deal: deal
+    )
+  end
+end
+
 deals4 = []
 5.times do
   offer = offers.sample
   deals4 << Deal.create(
-    status: :request,
+    status: 0,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Date.forward(34),
     languages: offer.languages,
     means: offer.means
-  )
-end
-
-
-45.times do
-  Objective.create(
-    description: Faker::Lorem.sentence,
-    rating: (0..5).to_a.sample,
-    deal: deals1.sample
-  )
-end
-
-15.times do
-  Objective.create(
-    description: Faker::Lorem.sentence,
-    deal: deals2.sample
-  )
-end
-
-15.times do
-  Objective.create(
-    description: Faker::Lorem.sentence,
-    deal: deals3.sample
   )
 end
 
