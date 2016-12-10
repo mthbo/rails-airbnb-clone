@@ -1,38 +1,34 @@
 class Deal < ApplicationRecord
   belongs_to :client, class_name: 'User'
   belongs_to :offer
+  has_many :objectives, dependent: :destroy
+  has_many :deal_means, dependent: :destroy
+  has_many :means, through: :deal_means
+  has_many :deal_languages, dependent: :destroy
+  has_many :languages, through: :deal_languages
+
   monetize :amount_cents
-  enum status: [ :interest, :request, :proposition, :open, :closed ]
+  enum status: [ :request, :proposition, :open, :closed ]
+
+  validates :languages, presence: { message: "At least one language must me selected" }
+  validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   def advisor
     self.offer.advisor
   end
 
-  # def status
-  #   if !closed_at.nil?
-  #     "Closed"
-  #   elsif !accepted_at.nil?
-  #     "Open"
-  #   elsif !proposition_at.nil?
-  #     "Proposition"
-  #   else
-  #     "Request"
-  #   end
-  # end
+  def rating
+    if rated_objectives.present?
+      sum = 0
+      rated_objectives.each { |objective| sum += objective.rating }
+      sum.fdiv(rated_objectives.count)
+    else
+      nil
+    end
+  end
 
-  # def request?
-  #   status == "Request"
-  # end
+  def rated_objectives
+    objectives.where.not(rating: nil)
+  end
 
-  # def proposition?
-  #   status == "Proposition"
-  # end
-
-  # def open?
-  #   status == "Open"
-  # end
-
-  # def closed?
-  #   status == "Closed"
-  # end
 end

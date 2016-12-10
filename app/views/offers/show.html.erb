@@ -1,95 +1,130 @@
 <% content_for :title do %>
-  <%= @offer.title %><%= " | Tipswell" %>
+  <%= @offer.title %><%= " | Papoters" %>
 <% end %>
 
-<div class="container padded-top">
+<div class="padded-top-xxl padded-bottom-xxl bg-gray">
+  <div class="container">
+    <div class="row padded-top-xs">
 
-  <div class="row">
-    <div class="col-xs-9">
-      <div class="offer-general">
-        <div class="row">
-          <h1><%= @offer.title %></h1>
-          <div class="padded">
-            <%= @offer.description %>
-          </div>
-        </div>
+      <div class="col-xs-12 col-md-9">
+        <div class="offer-container">
+          <div class="container-fluid">
+            <div class="offer-sub-container">
 
-        <div class="row">
-          <div class="offer-details">
-            <div class="col-xs-6">
-              <h6>Languages spoken</h6>
-              <ul class = "list-unstyled">
-                <% @offer.languages.each do |language| %>
-                  <li class="flag">
-                    <%= image_tag "flags/" + language.flag %>
-                    <%= language.name %>
-                  </li>
-                <% end %>
-              </ul>
+              <div class="offer-general">
+                <div class="row">
+                  <div class="col-xs-10">
+                    <h1><%= @offer.title %></h1>
+                  </div>
+                  <div class="col-xs-2 text-right">
+                    <% if @offer.advisor == current_user %>
+                      <%= render 'offers/status_trigger', offer: @offer %>
+                    <% else %>
+                      <h1 data-pin-offer-id="<%= @offer.id %>"><%= render 'pinned_offers/pin_button', offer: @offer %></h1>
+                    <% end %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 padded-top-xs">
+                    <p><%= @offer.description %></p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="offer-details">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-4 padded-bottom-xs">
+                    <h6>Languages spoken</h6>
+                    <ul class = "list-unstyled">
+                      <% @offer.languages.each do |language| %>
+                        <li class="flag-icon">
+                          <%= image_tag "flags/" + language.flag %>
+                          <%= language.name %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 padded-bottom-xs">
+                    <h6>Means of communication</h6>
+                    <ul class = "list-unstyled">
+                      <% @offer.means.each do |mean| %>
+                        <li>
+                          <i class="fa fa-<%= mean.picto %> fa-fw fa-lg" aria-hidden="true"></i>
+                          <%= mean.name %>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                  <div class="col-xs-12 col-sm-4 text-right padded-bottom-xs">
+                    <%= render 'offers/action_button', offer: @offer %>
+                  </div>
+                </div>
+              </div>
+
             </div>
-            <div class="col-xs-6">
-              <h6>Means of communication</h6>
-              <ul class = "list-unstyled">
-                <% @offer.means.each do |mean| %>
-                  <li>
-                    <i class="fa fa-<%= mean.picto %> fa-fw fa-lg" aria-hidden="true"></i>
-                    <%= mean.name %>
-                  </li>
+          </div>
+
+          <div class="hidden-md hidden-lg">
+            <div class="offer-profile bg-gradient">
+              <div class="offer-profile-avatar">
+                <%= render 'shared/avatar', user: @offer.advisor, size: 'avatar-medium' %>
+              </div>
+              <div>
+                <h1><%= @offer.advisor.name_anonymous %></h1>
+                <h3><%= @offer.advisor.grade %></h3>
+                <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= @offer.advisor.address %></h4>
+              </div>
+              <%= link_to "", user_path(@offer.advisor), class: "link offer-profile-link" %>
+            </div>
+          </div>
+
+          <div class="container-fluid padded-bottom-m">
+            <div class="offer-sub-container">
+
+              <div class="offer-stat">
+                <h2>Offer history</h2>
+                <hr>
+                <div class="offer-stat-content">
+                  <div class="row">
+                    <div class="col-xs-4 col-sm-2">
+                      <p><strong><%= @offer.deals_closed.count %></strong>  deals</p>
+                    </div>
+                    <div class="col-xs-8 col-sm-5 text-right">
+                      <%= render 'offers/satisfaction', offer: @offer %>
+                    </div>
+                    <div class="col-xs-12 col-sm-5 text-right">
+                      <%= render 'offers/amounts', offer: @offer %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="offer-reviews">
+                <h3>Reviews (<%= @offer.deals_reviewed.count %>)</h3>
+                <% @offer.deals_reviewed.each do |deal| %>
+                  <%= render 'deals/review', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.updated_at %>
                 <% end %>
-              </ul>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="offer-stat padded">
-        <hr>
-        <h2>Deal history</h2>
-          <div class="col-xs-4">
-            Track record:
-            <strong><%= @offer.deals_closed.count %></strong>
+      <div class="hidden-xs hidden-sm col-md-3">
+        <div class="offer-profile text-center bg-gradient">
+          <div class="offer-profile-avatar">
+            <%= render 'shared/avatar', user: @offer.advisor, size: 'avatar-large' %>
           </div>
-          <div class="col-xs-4">
-            Satisfaction:
-            <%= render 'offers/satisfaction', offer: @offer %>
-          </div>
-          <div class="col-xs-4">
-            Amounts:
-            <%= render 'offers/amounts', offer: @offer %>
+          <div>
+            <h1><%= @offer.advisor.name_anonymous %></h1>
+            <h3><%= @offer.advisor.grade %></h3>
+            <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= @offer.advisor.address %></h4>
+            <%= link_to "", user_path(@offer.advisor), class: "link offer-profile-link" %>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <hr>
-        <h3>Reviews (<%= @offer.deals_reviewed.count %>)</h3>
-        <div>
-          <% @offer.deals_reviewed.each do |deal| %>
-            <%= render 'review', user: deal.client, rating: deal.client_rating, review: deal.client_review %>
-            <hr>
-          <% end %>
-        </div>
-      </div>
     </div>
-
-    <div class="col-xs-3">
-      <div class="offer-profile text-center">
-        <%= render 'shared/avatar', user: @offer.advisor, size: 'avatar-large' %>
-        <h1><%= @offer.advisor.name_anonymous %></h1>
-        <h3><%= @offer.advisor.grade %></h3>
-        <h4><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= @offer.advisor.address %></h4>
-        <%= link_to "", user_path(@offer.advisor), class: "link" %>
-      </div>
-
-      <% unless current_user == @offer.advisor %>
-        <div class="padded-top">
-          <div class="btn btn-primary btn-block btn-proposition">
-            <%= link_to "Ask a proposition", new_offer_deal_path(@offer) %>
-          </div>
-        </div>
-      <% end %>
-    </div>
-
   </div>
 </div>

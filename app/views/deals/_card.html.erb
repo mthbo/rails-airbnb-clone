@@ -8,5 +8,5 @@
       <p>due for: <strong><%= deal.deadline.strftime("%a %d, %Y") %></strong></p>
       <p>amount: <strong><%= money_without_cents_and_with_symbol(deal.amount) %></strong></p>
     </div>
-    <%= link_to "", offer_deal_path(deal.offer, deal), class: "link" %>
+    <%= link_to "", deal_path(deal), class: "link" %>
   </div>

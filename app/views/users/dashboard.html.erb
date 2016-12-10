@@ -1,0 +1,100 @@
+<% content_for :title do %>
+  <%= "My dashboard | Papoters" %>
+<% end %>
+
+<div class="padded-top-xxl bg-gradient text-center">
+  <div class="container">
+    <h1>My dashboard</h1>
+    <p><%= link_to "See my profile", user_path(@user) %></p>
+  </div>
+
+  <div class="tabs">
+    <a class="tab active" data-target="#client-activity">
+      <h3>Client acitivity</h3>
+    </a>
+    <a class="tab" data-target="#advisor-activity">
+      <h3>Advisor acitivity</h3>
+    </a>
+  </div>
+</div>
+
+
+<div class="padded-top-s padded-bottom-xxl text-center">
+  <div class="container">
+
+    <div id="client-activity" class="tab-content">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h3>Request</h3>
+          <div class="process-step">
+            <% @user.deals_request.each do |deal| %>
+              <%= render "deals/card", deal: deal, user: deal.advisor %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h3>Proposition</h3>
+          <div class="process-step">
+            <% @user.deals_proposition.each do |deal| %>
+              <%= render "deals/card", deal: deal, user: deal.advisor %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h3>Open</h3>
+          <div class="process-step">
+            <% @user.deals_open.each do |deal| %>
+              <%= render "deals/card", deal: deal, user: deal.advisor %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h3>Closed</h3>
+          <div class="process-step">
+            <% @user.deals_closed.each do |deal| %>
+              <%= render "deals/card", deal: deal, user: deal.advisor %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="advisor-activity" class="tab-content hidden">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h3>Request</h3>
+          <div class="process-step">
+            <% @user.advisor_deals_request.each do |deal| %>
+              <%= render "deals/card", deal: deal, user: deal.client %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h3>Proposition</h3>
+          <div class="process-step">
+            <% @user.advisor_deals_proposition.each do |deal| %>
+              <%= render "deals/card", deal: deal, user: deal.client %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h3>Open</h3>
+          <div class="process-step">
+            <% @user.advisor_deals_open.each do |deal| %>
+              <%= render "deals/card", deal: deal, user: deal.client %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3">
+          <h3>Closed</h3>
+          <div class="process-step">
+            <% @user.advisor_deals_closed.each do |deal| %>
+              <%= render "deals/card", deal: deal, user: deal.client %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

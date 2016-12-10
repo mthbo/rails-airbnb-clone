@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
   has_many :deals, foreign_key: 'client_id'
+  has_many :pinned_offers, foreign_key: 'client_id', dependent: :destroy
   has_many :advisor_deals, through: :offers, source: :deals
 
   has_attachment :photo
@@ -17,13 +18,13 @@ class User < ApplicationRecord
 
   def grade
     if advisor_deals_closed.count > 20
-      "Champion"
+      "Guide"
     elsif advisor_deals_closed.count > 10
-      "Senior Advisor"
+      "Champion"
     elsif advisor_deals_closed.count > 3
       "Advisor"
     else
-      "Roockie"
+      "Papoter"
     end
   end
 
@@ -45,10 +46,6 @@ class User < ApplicationRecord
 
   def advisor_deals_reviewed
     advisor_deals.where.not(client_review: nil)
-  end
-
-  def deals_interest
-    deals.where(status: :interest)
   end
 
   def deals_request

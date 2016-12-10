@@ -1,21 +1,26 @@
 class Offer < ApplicationRecord
   belongs_to :advisor, class_name: 'User'
   has_many :deals
+  has_many :pinned_offers, dependent: :destroy
   has_many :offer_means, dependent: :destroy
   has_many :means, through: :offer_means
   has_many :offer_languages, dependent: :destroy
   has_many :languages, through: :offer_languages
 
-  validates :title, presence: true
-  validates :description, presence: true
-  validates :languages, presence: true
-  validates :means, presence: true
+  enum status: [ :active, :inactive ]
+
+  validates :title, presence: { message: "The offer must have a title" }
+  validates :description, presence: { message: "The offer must have a description" }
+  validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }
+  validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   def global_rating
-    unless deals_reviewed.count.zero?
+    if deals_reviewed.present?
       sum = 0
-      deals_reviewed.each { |deal| sum += deal.client_rating }
-      sum.fdiv(deals_reviewed.count)
+      deals_reviewed.each { |deal| sum += deal.rating }
+      return sum.fdiv(deals_reviewed.count)
+    else
+      return nil
     end
   end
 
@@ -28,7 +33,7 @@ class Offer < ApplicationRecord
   end
 
   def median_amount
-    unless deals_closed.count.zero?
+    if deals_closed.present?
       amounts = []
       deals_closed.each { |deal| amounts << deal.amount_cents }
       amounts.sort!
@@ -44,6 +49,10 @@ class Offer < ApplicationRecord
 
   def deals_reviewed
     deals.where.not(client_review: nil)
+  end
+
+  def pinned(user)
+    self.pinned_offers.where(client: user).last
   end
 
 end

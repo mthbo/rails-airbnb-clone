@@ -1,6 +1,6 @@
 class DealsController < ApplicationController
-  before_action :find_deal, only: [:show, :update]
-  before_action :find_offer, only: [:create, :new, :show, :update]
+  before_action :find_deal, only: [:show, :update, :destroy]
+  before_action :find_offer, only: [:new, :create]
 
   def show
   end
@@ -15,22 +15,33 @@ class DealsController < ApplicationController
     authorize @deal
     @deal.client = current_user
     if @deal.save
-      flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} regarding the offer '#{@offer.title}'"
-      redirect_to offer_path(@offer)
+      flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
+      redirect_to deal_path(@deal)
     else
       flash[:alert] = "No request has been sent"
       render :new
     end
   end
 
+  def edit
+  end
+
   def update
+
+    # work on this
+
     if @deal.update(deal_params)
-      flash[:notice] = "A proposition has been sent to #{@deal.client.name_anonymous} regarding the offer '#{@offer.title}'"
-      redirect_to offer_deal_path(@offer, @deal)
+      flash[:notice] = "A proposition has been sent to #{@deal.client.name_anonymous} for the offer '#{@deal.offer.title}'"
+      redirect_to deal_path(@deal)
     else
       flash[:alert] = "No request has been sent"
-      render 'deal/show'
+      render 'deal/show', 'data-toggle' => "modal", 'data-target' => "#request"
     end
+  end
+
+  def destroy
+    @deal.destroy
+    redirect_to @deal.offer
   end
 
   private
@@ -45,7 +56,29 @@ class DealsController < ApplicationController
   end
 
   def deal_params
-    params.require(:deal).permit(:request, :status, :deadline, :amount, :proposition, :request_at, :proposition_at, :accepted_at, :closed_at)
+    params.require(:deal).permit(
+      :offer_id,
+      :request,
+      :status,
+      :deadline,
+      :amount,
+      :proposition,
+      :request_at,
+      :proposition_at,
+      :accepted_at,
+      :closed_at,
+      mean_ids: [],
+      language_ids: []
+    )
+  end
+
+  def deal_proposition
+  end
+
+  def deal_acceptation
+  end
+
+  def deal_close
   end
 
 end

@@ -1,68 +1,82 @@
 <% content_for :title do %>
-  <%= @user.name_anonymous %><%= "- Profile | Tipswell" %>
+  <%= @user.name_anonymous %><%= "- Profile | Papoters" %>
 <% end %>
 
-<div class="wrapper text-center padded padded-top">
-
-  <%= render 'shared/avatar', user: @user, size: 'avatar-xlarge' %>
-
-  <h1><%= @user.name_anonymous %></h1>
-  <h3><%= @user.grade %></h3>
-  <h4><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= @user.address %></h4>
+<div class="padded-top-xxl padded-bottom-xs bg-gradient text-center">
+  <div class="container">
+    <%= render 'shared/avatar', user: @user, size: 'avatar-xlarge' %>
+    <h1><%= @user.name_anonymous %></h1>
+    <h3><%= @user.grade %></h3>
+    <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= @user.address %></h4>
+    <% if @user == current_user %>
+      <p><%= link_to "Go to my dashboard", dashboard_path %></p>
+    <% end %>
+  </div>
 </div>
 
-<div class="container">
-
-  <div>
-    <h2>About me</h2>
-    <p><%= @user.bio %></p>
+<div class="padded-top-m padded-bottom-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6 col-lg-5 col-lg-offset-1">
+        <h2>About me</h2>
+      </div>
+      <div class="col-xs-6 col-lg-5 text-right padded-top-s">
+        <% if @user == current_user %>
+          <p><%= link_to "Edit my profile", edit_user_registration_path %></p>
+        <% end %>
+      </div>
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
+        <p><%= @user.bio %></p>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div>
-    <% if @user == current_user %>
-      <%= link_to "Edit my profile", edit_user_registration_path %>
-    <% end %>
-  </div>
+<div class="bg-gray padded-top-m padded-bottom-xl">
+  <div class="container">
 
-  <h2>My offers</h2>
+    <div class="row">
+      <div class="col-xs-6 col-lg-5 col-lg-offset-1">
+        <h2>My offers</h2>
+      </div>
+      <div class="col-xs-6 col-lg-5 text-right padded-top-xs">
+        <% if @user == current_user %>
+          <%= link_to "Create new offer", new_offer_path, class: "btn btn-green"  %>
+        <% end %>
+      </div>
+    </div>
 
-  <% @user.offers.each do |offer| %>
-    <%= render "offers/card_no_profile", offer: offer %>
-    <div>
-      <% if policy(offer).edit? %>
-        <%= link_to "Edit offer", edit_offer_path(offer) %>
+    <div class="row">
+      <% @user.offers.each do |offer| %>
+        <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+          <%= render "offers/card_profile", offer: offer %>
+        </div>
       <% end %>
     </div>
-  <% end %>
 
-  <% if @user == current_user %>
-    <div class="btn btn-default">
-        <%= link_to "Create offer", new_offer_path %>
+  </div>
+</div>
+
+<div class="padded-top-m padded-bottom-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+
+        <h2>Reviews as advisor (<%= @user.advisor_deals_reviewed.count %>)</h2>
+        <div>
+          <% @user.advisor_deals_reviewed.each do |deal| %>
+            <%= render 'deals/review_with_link', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.updated_at %>
+          <% end %>
+        </div>
+
+        <h2>Reviews as client (<%= @user.deals_reviewed.count %>)</h2>
+        <div>
+          <% @user.deals_reviewed.each do |deal| %>
+            <%= render 'deals/review_with_link', deal: deal, user: deal.advisor, rating: nil, review: deal.advisor_review, date: deal.updated_at %>
+          <% end %>
+        </div>
+
+      </div>
     </div>
-  <% end %>
-
-  <h2>Reviews as advisor (<%= @user.advisor_deals_reviewed.count %>)</h2>
-  <hr>
-  <div>
-    <% @user.advisor_deals_reviewed.each do |deal| %>
-      <%= render 'offers/review', user: deal.client, rating: deal.client_rating, review: deal.client_review %>
-      <%= link_to offer_path(deal.offer) do %>
-        <%= deal.offer.title %>
-      <% end %>
-      <hr>
-    <% end %>
   </div>
-
-  <h2>Reviews as client (<%= @user.deals_reviewed.count %>)</h2>
-  <hr>
-  <div>
-    <% @user.deals_reviewed.each do |deal| %>
-      <%= render 'offers/review', deal: deal, user: deal.client, rating: deal.client_rating, review: deal.client_review %>
-      <%= link_to offer_path(deal.offer) do %>
-        <%= deal.offer.title %>
-      <% end %>
-      <hr>
-    <% end %>
-  </div>
-
 </div>

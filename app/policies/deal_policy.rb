@@ -1,4 +1,5 @@
 class DealPolicy < ApplicationPolicy
+
   def show?
     record.advisor == user || record.client == user
   end
@@ -10,4 +11,5 @@ class DealPolicy < ApplicationPolicy
   def update?
     record.advisor == user || record.client == user
   end
+
 end

@@ -1,18 +1,18 @@
 <% content_for :title do %>
-  <%= @offer.title %><%= " - Edit | Tipswell" %>
+  <%= @offer.title %><%= " - Edit | Papoters" %>
 <% end %>
 
-<div class="container padded-top">
+<div class="padded-top-xxl padded-bottom-xxl bg-gray">
+  <div class="container">
 
-  <div>
-      <h1>Edit offer</h1>
+    <div>
+        <h1>Edit offer</h1>
+        <%= render 'form' %>
+    </div>
 
-      <%= render 'form' %>
+    <div class="btn btn-green">
+      <%= link_to "Delete this offer", offer_path(@offer), {class: "btn btn-default", method: :delete, data: { confirm: "Are you sure you want to delete this offer?" }} %>
+    </div>
 
   </div>
-
-  <div class="btn btn-default">
-    <%= link_to "Delete this offer", offer_path(@offer), {class: "btn btn-default", method: :delete, data: { confirm: "Are you sure you want to delete this offer?" }} %>
-  </div>
-
 </div>

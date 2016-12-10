@@ -1,66 +1,68 @@
 <% content_for :title do %>
-  <%= "Deal | Tipswell" %>
+  <%= "Deal | Papoters" %>
 <% end %>
 
-<div class="container padded padded-top">
+<div class="padded-top-xxl padded-bottom-xxl">
+  <div class="container">
 
-  <h2>
-    Deal with
-    <% if @deal.client == current_user %>
-      <%= @deal.advisor.name_anonymous %>
-    <% else %>
-      <%= @deal.client.name_anonymous %>
+    <h2>
+      Deal with
+      <% if @deal.client == current_user %>
+        <%= @deal.advisor.name_anonymous %>
+      <% else %>
+        <%= @deal.client.name_anonymous %>
+      <% end %>
+      | <span class="yellow"><%= @deal.status %></span>
+    </h2>
+    <h4>
+      <% unless @deal.closed? %>
+        <span class= "date-format">due for <%= @deal.deadline.strftime("%a %d, %Y") %></span>
+      <% else %>
+        <span class= "date-format">closed <%= @deal.closed_at.strftime("%a %d, %Y") %></span>
+      <% end %>
+    </h4>
+
+    <% if @deal.open? %>
+      <div class="padded-top-s padded-bottom-s">
+        <%= render "close_form" %>
+      </div>
     <% end %>
-    | <span class="yellow"><%= @deal.status %></span>
-  </h2>
-  <h4>
-    <% unless @deal.closed? %>
-      <span class= "date-format">due for <%= @deal.deadline.strftime("%a %d, %Y") %></span>
-    <% else %>
-      <span class= "date-format">closed <%= @deal.closed_at.strftime("%a %d, %Y") %></span>
-    <% end %>
-  </h4>
 
-  <% if @deal.open? %>
-    <div class="padded">
-      <%= render "close_form" %>
-    </div>
-  <% end %>
+    <div class="padded-top-s padded-bottom-s">
+      <% unless @deal.request? %>
+        <h3>Proposition</h3>
+        <h4><span class= "date-format">sent on <%= @deal.proposition_at.strftime("%a %d, %Y") %></span></h4>
+        <p><%= @deal.proposition %></p>
+        <p>Amount: <strong><%= money_without_cents_and_with_symbol(@deal.amount) %></strong></p>
 
-  <div class="padded">
-    <% unless @deal.request? %>
-      <h3>Proposition</h3>
-      <h4><span class= "date-format">sent on <%= @deal.proposition_at.strftime("%a %d, %Y") %></span></h4>
-      <p><%= @deal.proposition %></p>
-      <p>Amount: <strong><%= money_without_cents_and_with_symbol(@deal.amount) %></strong></p>
-
-      <% if @deal.proposition? %>
-        <% if @deal.client == current_user  %>
-          <%= render "acceptation_form" %>
+        <% if @deal.proposition? %>
+          <% if @deal.client == current_user  %>
+            <%= render "acceptation_form" %>
+          <% else %>
+            <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
+          <% end %>
         <% else %>
-          <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
+          <p><small>Proposition accepted on <%= @deal.accepted_at.strftime("%a %d, %Y") %></small></p>
         <% end %>
       <% else %>
-        <p><small>Proposition accepted on <%= @deal.accepted_at.strftime("%a %d, %Y") %></small></p>
+        <% if @deal.advisor == current_user  %>
+          <%= render "proposition_form" %>
+        <% else %>
+          <p><small>Waiting for <%= @deal.advisor.name_anonymous %> proposition</small></p>
+        <% end %>
       <% end %>
-    <% else %>
-      <% if @deal.advisor == current_user  %>
-        <%= render "proposition_form" %>
-      <% else %>
-        <p><small>Waiting for <%= @deal.advisor.name_anonymous %> proposition</small></p>
-      <% end %>
-    <% end %>
+    </div>
+
+    <div class="padded-top-s padded-bottom-s">
+      <h3>Request</h3>
+      <h4><span class= "date-format">sent on <%= @deal.created_at.strftime("%a %d, %Y") %></span></h4>
+      <p><%= @deal.request %></p>
+    </div>
+
+
+    <div class="padded-top-s padded-bottom-s">
+      <%= render "offers/card", offer: @deal.offer %>
+    </div>
+
   </div>
-
-  <div class="padded">
-    <h3>Request</h3>
-    <h4><span class= "date-format">sent on <%= @deal.created_at.strftime("%a %d, %Y") %></span></h4>
-    <p><%= @deal.request %></p>
-  </div>
-
-
-  <div class="padded">
-    <%= render "offers/card", offer: @deal.offer %>
-  </div>
-
 </div>

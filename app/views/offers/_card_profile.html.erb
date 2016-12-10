@@ -1,0 +1,60 @@
+<div class="offer-card profile-offer-card">
+
+  <div class="offer-card-content">
+    <div class="container-fluid">
+
+      <div class="row padded-bottom-xs">
+        <div class="col-xs-10">
+          <h2><%= offer.title %></h2>
+        </div>
+      </div>
+      <div class="row padded-bottom-xs">
+        <div class="col-xs-4 col-sm-2">
+          <p><strong><%= offer.deals_closed.count %></strong>
+            deals</p>
+        </div>
+        <div class="col-xs-8 col-sm-5 text-right">
+            <%= render 'offers/satisfaction', offer: offer %>
+        </div>
+        <div class="col-xs-12 col-sm-5 text-right">
+            <%= render 'offers/amounts', offer: offer %>
+        </div>
+      </div>
+
+      <div class="padded-bottom-xs">
+        <p><%= offer.description[0..250] %> ... <strong>more</strong></p>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <%= render 'offers/languages', offer: offer %>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <%= render 'offers/means', offer: offer %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="offer-card-pin">
+        <% if offer.advisor == current_user %>
+          <%= render 'offers/status_trigger', offer: @offer %>
+        <% else %>
+          <h2 data-pin-offer-id="<%= offer.id %>"><%= render 'pinned_offers/pin_button', offer: offer %></h2>
+        <% end %>
+      </div>
+
+      <div class="offer-card-proposition">
+        <%= render 'offers/action_button', offer: offer %>
+      </div>
+
+    </div>
+  </div>
+
+  <% if policy(offer).show? %>
+    <%= link_to "", offer_path(offer), class: "link offer-card-link" %>
+  <% end %>
+
+</div>
