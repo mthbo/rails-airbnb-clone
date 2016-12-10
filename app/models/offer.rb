@@ -7,6 +7,8 @@ class Offer < ApplicationRecord
   has_many :offer_languages, dependent: :destroy
   has_many :languages, through: :offer_languages
 
+  enum status: [ :active, :inactive ]
+
   validates :title, presence: { message: "The offer must have a title" }
   validates :description, presence: { message: "The offer must have a description" }
   validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }

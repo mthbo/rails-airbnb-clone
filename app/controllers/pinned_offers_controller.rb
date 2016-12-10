@@ -3,19 +3,24 @@ class PinnedOffersController < ApplicationController
   before_action :find_offer, only: [:create]
 
   def create
-    pinned_offer = @offer.pinned_offers.new
-    authorize pinned_offer
-    pinned_offer.client = current_user
-    pinned_offer.save
-    flash[:notice] = "#{@offer.title} has been added to your shortlist"
-    redirect_to offer_path(@offer)
+    @pinned_offer = @offer.pinned_offers.new
+    authorize @pinned_offer
+    @pinned_offer.client = current_user
+    if @pinned_offer.save
+      respond_to do |format|
+        format.html { redirect_to offer_path(@offer) }
+        format.js
+      end
+    end
   end
 
   def destroy
     @pinned_offer.destroy
     @offer = @pinned_offer.offer
-    flash[:notice] = "#{@offer.title} has been removed from your shortlist"
-    redirect_to offer_path(@offer)
+    respond_to do |format|
+      format.html { redirect_to offer_path(@offer) }
+      format.js
+    end
   end
 
   private

@@ -5,6 +5,11 @@ class UsersController < ApplicationController
   def show
   end
 
+  def dashboard
+    @user = current_user
+    authorize @user
+  end
+
   private
 
   def find_user

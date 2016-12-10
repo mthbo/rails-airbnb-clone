@@ -1,14 +1,14 @@
 .pin-offer-button {
   color: $medium-gray;
   &:hover {
-    color: $yellow;
+    color: $dark-gray;
   }
 }
 
 .unpin-offer-button {
   color: $yellow;
   &:hover {
-    color: $medium-gray;
+    color: $light-yellow;
   }
 }
 

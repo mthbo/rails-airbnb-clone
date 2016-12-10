@@ -1,12 +1,10 @@
-<% unless offer.advisor == current_user %>
-  <% pinned_offer = offer.pinned(current_user) %>
-  <% unless pinned_offer.present? %>
-    <%= link_to offer_pinned_offers_path(offer), method: :post, class: "pin-offer-button" do %>
-      <i class="fa fa-bookmark" aria-hidden="true"></i>
-    <% end %>
-  <% else %>
-    <%= link_to pinned_offer_path(pinned_offer), method: :delete, class: "unpin-offer-button" do %>
-      <i class="fa fa-bookmark" aria-hidden="true"></i>
-    <% end %>
+<% pinned_offer = offer.pinned(current_user) %>
+<% if !pinned_offer.present? && user_signed_in? %>
+  <%= link_to offer_pinned_offers_path(offer), method: :post, remote: :true, class: "pin-offer-button" do %>
+    <i class="fa fa-bookmark" aria-hidden="true"></i>
+  <% end %>
+<% elsif user_signed_in? %>
+  <%= link_to pinned_offer_path(pinned_offer), method: :delete, remote: :true, class: "unpin-offer-button" do %>
+    <i class="fa fa-bookmark" aria-hidden="true"></i>
   <% end %>
 <% end %>

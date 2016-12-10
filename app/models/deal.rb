@@ -7,11 +7,11 @@ class Deal < ApplicationRecord
   has_many :deal_languages, dependent: :destroy
   has_many :languages, through: :deal_languages
 
-  validates :languages, presence: { message: "At least one language must me selected" }
-  validates :means, presence: { message: "At least one mean of communication must me selected" }
-
   monetize :amount_cents
   enum status: [ :request, :proposition, :open, :closed ]
+
+  validates :languages, presence: { message: "At least one language must me selected" }
+  validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   def advisor
     self.offer.advisor

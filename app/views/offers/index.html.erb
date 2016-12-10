@@ -4,14 +4,18 @@
 
 <div class="padded-top-xxl padded-bottom-xxl bg-gray">
   <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-    <div>
-      <h1>Offers</h1>
-      <% @offers.each do |offer| %>
-        <%= render "offers/card", offer: offer %>
-      <% end %>
+        <div>
+          <h1>Offers</h1>
+          <% @offers.each do |offer| %>
+            <%= render "offers/card", offer: offer %>
+          <% end %>
+        </div>
+
+      </div>
     </div>
-
   </div>
 </div>
 

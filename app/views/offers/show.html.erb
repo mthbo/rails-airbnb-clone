@@ -17,7 +17,11 @@
                     <h1><%= @offer.title %></h1>
                   </div>
                   <div class="col-xs-2 text-right">
-                    <h1><%= render 'pinned_offers/pin_button', offer: @offer %></h1>
+                    <% if @offer.advisor == current_user %>
+                      <%= render 'offers/status_trigger', offer: @offer %>
+                    <% else %>
+                      <h1 data-pin-offer-id="<%= @offer.id %>"><%= render 'pinned_offers/pin_button', offer: @offer %></h1>
+                    <% end %>
                   </div>
                 </div>
                 <div class="row">

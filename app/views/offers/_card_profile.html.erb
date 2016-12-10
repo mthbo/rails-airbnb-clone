@@ -39,7 +39,11 @@
       </div>
 
       <div class="offer-card-pin">
-        <h2><%= render 'pinned_offers/pin_button', offer: offer %></h2>
+        <% if offer.advisor == current_user %>
+          <%= render 'offers/status_trigger', offer: @offer %>
+        <% else %>
+          <h2 data-pin-offer-id="<%= offer.id %>"><%= render 'pinned_offers/pin_button', offer: offer %></h2>
+        <% end %>
       </div>
 
       <div class="offer-card-proposition">
