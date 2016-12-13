@@ -11,11 +11,13 @@ Rails.application.routes.draw do
 
   get '/dashboard', to: 'users#dashboard'
 
-  resources :offers, shallow: true do
+  resources :offers, only: [:show, :new, :create, :edit, :update, :destroy], shallow: true do
     resources :pinned_offers, only: [:create, :destroy]
     resources :deals, only: [:show, :new, :create, :edit, :update] do
       resources :objectives, only: [:create, :update, :destroy]
     end
   end
+
+  get '/search', to: 'offers#index'
 
 end

@@ -68,6 +68,13 @@
   background: $gradient;
 }
 
+// Borders
+
+.bd-gray {
+  border-color: $light-gray;
+}
+
+
 // Fonts
 
 body {
@@ -75,7 +82,7 @@ body {
 }
 h1 {
   color: $blue;
-  font-size: 40px;
+  font-size: 37px;
 }
 h2 {
   color: $blue;
@@ -99,7 +106,10 @@ h5 {
 }
 h6 {
   color: $dark-gray;
-  font-weight: bolder;
+  font-size: 16px;
+}
+p, ul, ol {
+  font-weight: lighter;
   font-size: 16px;
 }
 
@@ -140,10 +150,10 @@ a {
 
 @media (max-width: $screen-xs-max) {
   h1 {
-    font-size: 30px;
+    font-size: 28px;
   }
   h2 {
-    font-size: 25px;
+    font-size: 24px;
   }
   h3 {
     font-size: 22px;
@@ -157,7 +167,7 @@ a {
   h6 {
     font-size: 14px;
   }
-  p, ul, ol {
-    font-size: 14px;
+  p, ul, ol, label {
+    font-size: 14px !important;
   }
 }

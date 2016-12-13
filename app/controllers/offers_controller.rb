@@ -3,7 +3,7 @@ class OffersController < ApplicationController
   before_action :find_offer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @offers = policy_scope(Offer)
+    @offers = policy_scope(Offer).search(params[:search]) if params[:search]
   end
 
   def show

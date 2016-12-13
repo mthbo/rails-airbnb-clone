@@ -1,47 +1,60 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
-
 .home-banner {
+  height: 100vh;
+}
+
+.home-banner-title {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   h1 {
-    padding-top: 1em;
-  };
-  h3 {
-    padding: 1em 0 2em 0;
+    flex: 0 1 800px;
+    font-size: 60px;
+    font-weight: lighter;
   }
 }
 
-.search-bar {
-  padding-bottom: 2em;
-  input {
-    z-index: 0 !important;
-    height: 60px !important;
-    background-color: white;
-    font-size: 30px;
-    font-weight: lighter;
-    opacity: 0.6;
-    color: $extra-dark-gray;
-    border: 1px solid $medium-gray;
-  };
-  span {
-    button {
-      z-index: 0 !important;
-      height: 60px !important;
-      width: 60px !important;
-      background-color: $yellow;
-      opacity: 0.8;
-      border: 1px solid $medium-gray;
-      font-size: 30px;
-      color: white;
-      border: none;
-      &:hover {
-        background-color: $yellow;
-        color: white;
-        opacity: 1;
-      }
-    }
+.home-banner-search {
+  height: 50vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#search-form {
+  flex: 0 1 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form-input {
+  height: 70px;
+  flex: 0 1 700px;
+  border: none;
+  border-bottom: 2px $yellow solid;
+  margin-right: 30px;
+  font-size: 35px;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+    border-bottom: 3px $yellow solid;
   }
+}
+
+.btn-search {
+  height: 70px;
+  flex: 0 0 70px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgba(255,255,255,0.5);
+  color: $yellow;
+  border: $yellow 2px solid;
+  border-radius: 50%;
+  font-size: 30px;
+  &:hover {
+    background-color: $yellow;
+  };
 }
 
 .inspirations {
@@ -81,4 +94,30 @@
 .btn-homepage {
  margin: 2em;
  width: 150px;
+}
+
+@media (max-width: $screen-xs-max) {
+  .home-banner-title {
+    h1 {
+      font-size: 35px;
+    }
+  }
+  .search-form-input {
+    height: 40px;
+    margin-right: 10px;
+    font-size: 16px;
+    border-bottom: 1px $yellow solid;
+    &:focus {
+      border-bottom: 2px $yellow solid;
+    }
+  }
+  .btn-search {
+    height: 40px;
+    flex: 0 0 40px;
+    font-size: 16px;
+    border: $yellow 1px solid;
+  }
+  #search-form {
+    flex: 0 1 500px;
+  }
 }

@@ -1,25 +1,25 @@
-<div class="navbar-wagon navbar-wagon-fixed">
+<div class="my-navbar my-navbar-fixed">
   <!-- Logo -->
-  <%= link_to root_path, { class: "navbar-wagon-brand" } do %>
+  <%= link_to root_path, { class: "my-navbar-brand" } do %>
     <%= image_tag "papoters_logo.svg" %>
   <% end %>
 
   <!-- Right Navigation -->
-  <div class="navbar-wagon-right hidden-xs hidden-sm">
+  <div class="my-navbar-right hidden-xs hidden-sm">
 
     <!-- Search form -->
-    <form action="/offers" class="navbar-wagon-search">
-      <input type="text" class="navbar-wagon-search-input" placeholder="Search tips">
-      <button type="submit" class="navbar-wagon-search-btn">
+    <form action="/offers" class="my-navbar-search">
+      <input type="text" class="my-navbar-search-input" placeholder="Search tips">
+      <button type="submit" class="my-navbar-search-btn">
         <i class="fa fa-search"></i>
       </button>
     </form>
 
     <!-- Give tips button -->
-    <%= link_to "Give tips", new_offer_path, { class: "navbar-wagon-item navbar-wagon-button btn" } %>
+    <%= link_to "Give tips", new_offer_path, { class: "my-navbar-item my-navbar-button btn" } %>
 
     <!-- Notification link-->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">
+    <a href="" class="my-navbar-item my-navbar-link">
       <div class="badge-container">
         <i class="fa fa-envelope-o"></i>
         <div class="badge badge-blue">3</div>
@@ -27,14 +27,14 @@
     </a>
 
     <!-- Profile picture and dropdown -->
-    <div class="navbar-wagon-item">
+    <div class="my-navbar-item">
       <div class="dropdown">
 
-        <div class="dropdown-toggle" id="navbar-wagon-menu", data-toggle="dropdown">
+        <div class="dropdown-toggle" id="my-navbar-menu", data-toggle="dropdown">
           <%= render 'shared/avatar', user: current_user, size: 'avatar' %>
         </div>
 
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+        <ul class="dropdown-menu dropdown-menu-right my-navbar-dropdown-menu">
           <li><%= link_to "Profile", user_path(current_user) %></li>
           <li><%= link_to "Dashboard", dashboard_path %></li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
@@ -45,10 +45,10 @@
   </div>
 
   <!-- Dropdown appearing on mobile only -->
-  <div class="navbar-wagon-item hidden-md hidden-lg">
+  <div class="my-navbar-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+      <ul class="dropdown-menu dropdown-menu-right my-navbar-dropdown-menu">
         <li><%= link_to "Profile", user_path(current_user) %></li>
         <li><%= link_to "Dashboard", dashboard_path %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>

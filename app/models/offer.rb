@@ -14,6 +14,10 @@ class Offer < ApplicationRecord
   validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
+  def self.search(search)
+    where("title ILIKE ?", "%#{search}%") + where("description ILIKE ?", "%#{search}%")
+  end
+
   def global_rating
     if deals_reviewed.present?
       sum = 0

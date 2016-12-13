@@ -4,24 +4,23 @@
 
 <div class="bg-gradient">
 
-  <div class="home-banner padded-top-xxl padded-bottom-l text-center">
+  <div class="home-banner text-center">
     <div class="container">
 
-      <div class="padded-top-m padded-bottom-m">
+      <div class="home-banner-title padded-top-xxl">
         <h1>Be advised for whatever you need, anytime, anywhere.</h1>
       </div>
 
-      <div class="row">
-        <form action="/offers">
-          <div class="input-group input-group-lg col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 search-bar">
-            <input type="text" class="form-control" placeholder="What are you looking for">
-            <span class="input-group-btn">
-              <button class="btn btn-default" type="button" type="submit"><i class="fa fa-search"></i></button>
-            </span>
-          </div>
-        </form>
-      </div>
+      <div class="home-banner-search padded-top-s">
 
+        <%= form_tag(search_path, method: "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Look for knowledgeable people", class: "search-form-input" %>
+          <%= button_tag(type: 'submit', class: "btn btn-search") do %>
+            <i class='fa fa-search'></i>
+          <% end %>
+        <% end %>
+
+      </div>
     </div>
   </div>
 
@@ -108,4 +107,28 @@
   </div>
 
 </div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+
+    function checkScroll(){
+      var startY = $('.my-navbar').height() * 2;
+
+      if($(window).scrollTop() < startY) {
+        $('.my-navbar').addClass("my-navbar-scrolled");
+        $('#my-navbar-search').hide();
+      } else {
+        $('.my-navbar').removeClass("my-navbar-scrolled");
+        $('#my-navbar-search').show();
+      }
+    }
+
+    if($('.my-navbar').length > 0){
+      $(window).on("scroll load resize", function(){
+        checkScroll();
+      });
+    }
+
+  <% end %>
+<% end %>
 

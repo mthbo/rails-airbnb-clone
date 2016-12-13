@@ -1,7 +1,8 @@
 /* Main class */
-.navbar-wagon {
-  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+.my-navbar {
+  box-shadow: none;
   background: white;
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
   transition: all 0.3s ease;
   display: flex;
   height: 70px;
@@ -10,8 +11,13 @@
   justify-content: space-between;
 }
 
-/* Optional class to fix the navbar on top */
-.navbar-wagon-fixed {
+.my-navbar-scrolled {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Optional class to fix the my-navbar on top */
+.my-navbar-fixed {
   position: fixed;
   left: 0px;
   top: 0px;
@@ -20,91 +26,105 @@
 }
 
 /* Navbar logo */
-.navbar-wagon-brand img {
+.my-navbar-brand img {
   height: 45px;
 }
 
 /* Navbar right section (with form, links, button) */
-.navbar-wagon-right {
+.my-navbar-middle {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.my-navbar-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 /* Navbar item */
-.navbar-wagon-item {
+.my-navbar-item {
   flex: 0 0 auto;
   cursor: pointer;
   padding: 0 20px;
 }
 
 /* Navbar standard link */
-.navbar-wagon-link {
-  color: #616668;
-  font-size: 14px;
+.my-navbar-link {
+  color: $dark-gray;
+  font-size: 16px;
 }
-.navbar-wagon-link:hover {
-  color: #da552f;
+.my-navbar-link:hover {
+  color: $green;
   text-decoration: none;
 }
 
 /* Navbar right button */
-.navbar-wagon-button {
-  margin-left: 10px;
+.my-navbar-button {
+  margin: 0 20px;
   padding: 0 20px;
-  border-radius: $border-radius-base;
   line-height: 40px;
-  background-color: $green;
-  color: white;
-  font-size: 14px;
-  border: none;
-}
-.navbar-wagon-button:hover {
-  color: white;
-  background: $dark-gray;
+  font-size: 16px;
+  background-color: transparent !important;
+  &:hover {
+    background-color: $green !important;
+  }
 }
 
 /* Navbar search form */
-.navbar-wagon-search {
-  flex: 0 1 300px;
+#my-navbar-search {
+  flex: 0 1 400px;
   display: flex;
   justify-content: flex-end;
   padding: 0 10px;
   position: relative;
 }
-.navbar-wagon-search-btn {
+
+.my-navbar-search-btn {
   line-height: 40px;
-  color: #E6E6E6;
+  color: $medium-gray;
   border: none;
   background: transparent;
   position: absolute;
   right: 14px;
   top: -2px;
   z-index: 1;
+  &:hover {
+    color: $yellow;
+  };
+  &:focus {
+    outline: none;
+    color: $yellow;
+  }
 }
-.navbar-wagon-search-input {
-  flex: 0 1 300px;
+
+.my-navbar-search-input {
+  flex: 0 1 400px;
   transition: all 0.15s ease;
   line-height: 40px;
-  font-weight: lighter;
-  color: #666666;
-  border: 1px solid #E6E6E6;
-  border-radius: 5px;
-  padding: 0 10px;
-  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid $medium-gray;
+  background: transparent;
+  padding-right: 30px;
+  font-size: 16px;
   outline: none;
-}
-.navbar-wagon-search-input:focus  {
-  border: 1px solid #CCCCCC;
+  &:focus {
+    border-bottom: 1px solid $yellow;
+    .my-navbar-search-btn {
+      color: $yellow;
+    }
+  }
 }
 
 /* Navbar dropdown menu */
-.navbar-wagon-dropdown-menu {
+.my-navbar-dropdown-menu {
   margin-top: 15px;
   box-shadow: 1px 1px 4px #E6E6E6;
   border-color: #E6E6E6;
 }
-.navbar-wagon-dropdown-menu li > a {
+.my-navbar-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
   color: #999999 !important;
@@ -112,11 +132,11 @@
   line-height: 22px !important;
   padding: 10px 20px;
 }
-.navbar-wagon-dropdown-menu li > a:hover {
+.my-navbar-dropdown-menu li > a:hover {
   background: transparent !important;
   color: black !important;
 }
-.navbar-wagon-dropdown-menu:before {
+.my-navbar-dropdown-menu:before {
   content: ' ';
   height: 10px;
   width: 10px;
@@ -130,10 +150,11 @@
 }
 
 @media (max-width: $screen-xs-max) {
-  .navbar-wagon {
+  .my-navbar {
     height: 55px;
+    padding: 0px 15px;
   };
-  .navbar-wagon-brand img {
+  .my-navbar-brand img {
     height: 35px;
   }
 }
