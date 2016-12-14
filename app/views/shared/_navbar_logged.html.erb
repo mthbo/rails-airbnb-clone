@@ -4,27 +4,29 @@
     <%= image_tag "papoters_logo.svg" %>
   <% end %>
 
-  <!-- Right Navigation -->
-  <div class="my-navbar-right hidden-xs hidden-sm">
-
+  <div class="my-navbar-middle hidden-xs hidden-sm">
     <!-- Search form -->
-    <form action="/offers" class="my-navbar-search">
-      <input type="text" class="my-navbar-search-input" placeholder="Search tips">
-      <button type="submit" class="my-navbar-search-btn">
-        <i class="fa fa-search"></i>
-      </button>
-    </form>
+    <%= form_tag(search_path, method: "get", id: "my-navbar-search") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Look for knowledgeable people", class: "my-navbar-search-input" %>
+      <%= button_tag(type: 'submit', class: "my-navbar-search-btn") do %>
+        <i class='fa fa-search'></i>
+      <% end %>
+    <% end %>
+  </div>
+
+  <!-- Right Navigation -->
+  <div class="my-navbar-right hidden-xs">
 
     <!-- Give tips button -->
-    <%= link_to "Give tips", new_offer_path, { class: "my-navbar-item my-navbar-button btn" } %>
+    <%= link_to "Give advice", be_advisor_path, { class: "my-navbar-button my-navbar-item btn" } %>
 
     <!-- Notification link-->
-    <a href="" class="my-navbar-item my-navbar-link">
+    <%= link_to dashboard_path, { class: "my-navbar-item" } do %>
       <div class="badge-container">
         <i class="fa fa-envelope-o"></i>
-        <div class="badge badge-blue">3</div>
+        <div class="badge badge-yellow">3</div>
       </div>
-    </a>
+    <% end %>
 
     <!-- Profile picture and dropdown -->
     <div class="my-navbar-item">
@@ -45,7 +47,7 @@
   </div>
 
   <!-- Dropdown appearing on mobile only -->
-  <div class="my-navbar-item hidden-md hidden-lg">
+  <div class="my-navbar-item hidden-sm hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right my-navbar-dropdown-menu">

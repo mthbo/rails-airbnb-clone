@@ -1,15 +1,31 @@
-/* -------------------------------------
- * Your CSS code for flash notices and alerts
-* ------------------------------------- */
+.flash {
+  position: fixed;
+  left: 0px;
+  top: 70px;
+  z-index: 1;
+  width: 100%;
+}
 
 .alert {
   margin: 0;
   text-align: center;
   color: white;
+  padding: 10px 15px;
 }
+
+.fade.in {
+  opacity: 0.4;
+}
+
 .alert-info {
-  background: $light-green;
+  background: $green;
 }
 .alert-error {
-  background: $light-red;
+  background: $red;
+}
+
+@media (max-width: $screen-xs-max) {
+  .flash {
+    top: 55px;
+  }
 }

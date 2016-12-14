@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  <%= "Be advisor | Papoters" %>
+<% end %>
+
+<div class="padded-top-xxl padded-bottom-xxl bg-reverse-gradient">
+  <div class="container">
+    <h1>Be advisor</h1>
+  </div>
+</div>
+
+<% content_for(:js) do %>
+  <%= javascript_tag do %>
+
+    function checkScroll(){
+      var startY = $('.my-navbar').height() * 2;
+
+      if($(window).scrollTop() < startY) {
+        $('.my-navbar').addClass("my-navbar-scrolled");
+        $('#my-navbar-search').hide();
+      } else {
+        $('.my-navbar').removeClass("my-navbar-scrolled");
+        $('#my-navbar-search').show();
+      }
+    }
+
+    if($('.my-navbar').length > 0){
+      $(window).on("scroll load resize", function(){
+        checkScroll();
+      });
+    }
+
+    $('#arrow-down').on('click', function(event) {
+      event.preventDefault();
+      window.scroll({ top: $('.home-banner').height(), left: 0, behavior: 'smooth' });
+    });
+
+  <% end %>
+<% end %>

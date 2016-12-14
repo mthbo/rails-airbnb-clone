@@ -15,7 +15,7 @@
 }
 
 .home-banner-search {
-  height: 50vh;
+  height: 40vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -55,13 +55,27 @@
   &:hover {
     background-color: $yellow;
   };
+  &:active {
+    background-color: $yellow;
+  };
+  &:focus {
+    color: $yellow;
+  };
 }
 
-.inspirations {
+.home-banner-arrow{
+  height: 10vh;
+}
 
-  h2 {
-    padding-bottom: 1.5em;
+#arrow-down {
+  font-size: 50px;
+  color: $medium-gray;
+  &:hover {
+    color: $blue;
   }
+}
+
+.home-inspirations {
 }
 
 .process {
@@ -91,9 +105,23 @@
   margin-bottom: 20px;
 }
 
-.btn-homepage {
- margin: 2em;
- width: 150px;
+.btn-homepage-give {
+  margin: 2em;
+  padding: 15px 20px;
+  font-size: 20px;
+  width: 150px;
+  border: $green solid 1px;
+  color: $green;
+  background-color: rgba(255,255,255, 0.4);
+  &:hover {
+    background-color: $green;
+  };
+  &:active {
+    background-color: $dark-green;
+  };
+  &:focus {
+    color: $green;
+  };
 }
 
 @media (max-width: $screen-xs-max) {
@@ -119,5 +147,8 @@
   }
   #search-form {
     flex: 0 1 500px;
+  }
+  #arrow-down {
+    font-size: 30px;
   }
 }

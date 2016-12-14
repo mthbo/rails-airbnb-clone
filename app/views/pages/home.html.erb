@@ -12,24 +12,29 @@
       </div>
 
       <div class="home-banner-search padded-top-s">
-
         <%= form_tag(search_path, method: "get", id: "search-form") do %>
           <%= text_field_tag :search, params[:search], placeholder: "Look for knowledgeable people", class: "search-form-input" %>
           <%= button_tag(type: 'submit', class: "btn btn-search") do %>
             <i class='fa fa-search'></i>
           <% end %>
         <% end %>
+      </div>
 
+      <div class="home-banner-arrow">
+        <%= link_to root_path, id: "arrow-down" do %>
+          <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+        <% end %>
       </div>
     </div>
   </div>
 
-  <div class="padded-top-m padded-bottom-xl text-center">
+  <div class="padded-top-xxl padded-bottom-xxl text-center">
     <div class="container">
-      <div class="inspirations">
+      <div class="home-inspirations">
 
-        <h2>Get unique tips for everyday life moments.</h2>
-
+        <div class="padded-bottom-m">
+          <h2>Get unique tips for everyday life moments.</h2>
+        </div>
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-4">
             <%= render "shared/card", picture: 'plan-trip.jpg', title: 'Plan a trip' %>
@@ -99,8 +104,8 @@
       <div class="become-advisor">
 
         <h2>Your knowledge and your experience have value.</h2>
-        <h3>Become an advisor.</h3>
-        <%= link_to "Give tips", new_offer_path, { class: "btn btn-lg btn-success btn-homepage" } %>
+        <h3>Interested in being an advisor?</h3>
+        <%= link_to "Give advice", be_advisor_path, { class: "btn btn-homepage-give" } %>
 
       </div>
     </div>
@@ -128,6 +133,11 @@
         checkScroll();
       });
     }
+
+    $('#arrow-down').on('click', function(event) {
+      event.preventDefault();
+      window.scroll({ top: $('.home-banner').height(), left: 0, behavior: 'smooth' });
+    });
 
   <% end %>
 <% end %>

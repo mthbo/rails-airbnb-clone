@@ -22,15 +22,17 @@
 
 .btn {
   border-radius: 4px;
-  background-color: rgba(255,255,255,0.8);
   &:focus {
     outline: none;
+  };
+  &:active {
+    color: white;
   };
   &:active:focus {
     outline: none;
     color: white;
   };
-  &:hover, &:active {
+  &:hover {
     color: white !important;
   };
 }
@@ -44,39 +46,52 @@
 .btn-gray {
   border: $dark-gray solid 1px;
   color: $dark-gray;
+  background-color: rgba(255,255,255,0.8);
   &:hover {
     background-color: $dark-gray;
   };
   &:active {
     background-color: $extra-dark-gray;
-  }
+  };
+  &:focus {
+    color: $dark-gray;
+  };
 }
 
 .btn-blue {
   border: $blue solid 1px;
   color: $blue;
+  background-color: rgba(255,255,255,0.8);
   &:hover {
     background-color: $blue;
   };
   &:active {
     background-color: $dark-blue;
-  }
+  };
+  &:focus {
+    color: $blue;
+  };
 }
 
 .btn-green {
   border: $green solid 1px;
   color: $green;
+  background-color: rgba(255,255,255,0.8);
   &:hover {
     background-color: $green;
   };
   &:active {
     background-color: $dark-green;
-  }
+  };
+  &:focus {
+    color: $green;
+  };
 }
 
 .btn-facebook {
   border: #3b5998 solid 1px;
   color: #3b5998;
+  background-color: rgba(255,255,255,0.8);
   &:hover {
     background-color: #3b5998;
   };

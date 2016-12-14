@@ -55,10 +55,15 @@
 .my-navbar-link {
   color: $dark-gray;
   font-size: 16px;
-}
-.my-navbar-link:hover {
-  color: $green;
-  text-decoration: none;
+  line-height: 40px;
+  &:hover {
+    text-decoration: none;
+    border-bottom: $yellow solid 1px;
+    color: $extra-dark-gray;
+  }
+  &:focus {
+    text-decoration: none;
+  }
 }
 
 /* Navbar right button */
@@ -67,10 +72,18 @@
   padding: 0 20px;
   line-height: 40px;
   font-size: 16px;
-  background-color: transparent !important;
+  border: $green solid 1px;
+  color: $green;
+  background-color: transparent;
   &:hover {
-    background-color: $green !important;
-  }
+    background-color: $green;
+  };
+  &:active {
+    background-color: $dark-green;
+  };
+  &:focus {
+    color: $green;
+  };
 }
 
 /* Navbar search form */
@@ -127,7 +140,7 @@
 .my-navbar-dropdown-menu li > a {
   transition: color 0.3s ease;
   font-weight: lighter !important;
-  color: #999999 !important;
+  color: $dark-gray !important;
   font-size: 15px !important;
   line-height: 22px !important;
   padding: 10px 20px;
