@@ -24,6 +24,13 @@
   background: $red;
 }
 
+.close {
+  opacity: 0.5;
+  &:hover {
+    opacity: 0.7
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .flash {
     top: 55px;
