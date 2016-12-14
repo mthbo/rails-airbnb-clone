@@ -36,6 +36,7 @@
   margin-right: 30px;
   font-size: 35px;
   background-color: transparent;
+  border-radius: 0;
   &:focus {
     outline: none;
     border-bottom: 3px $yellow solid;
@@ -82,34 +83,12 @@
 }
 
 .process {
-  h2 {
-    padding-bottom: 1.5em;
-  }
   h3 {
-    font-family: $special-font;
-    font-size: 22px;
-    color: $dark-gray;
+    font-size: 20px;
   }
-}
-
-.circle {
-  display: inline-block;
-  width: 34px;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 16px;
-  background-color: $blue;
-  color: white;
-  font-family: $special-font;
-  line-height: 1.4;
-  border-radius: 50%;
-  margin-bottom: 20px;
 }
 
 .btn-homepage-give {
-  margin: 2em;
   padding: 15px 20px;
   font-size: 20px;
   width: 150px;

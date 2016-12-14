@@ -2,9 +2,12 @@
   height: 22px;
 }
 
-.amount-icon img {
-  height: 20px;
+.amount-icon {
   margin-right: 10px;
+  img {
+    height: 20px;
+    margin-bottom: 5px;
+  }
 }
 
 @media (max-width: $screen-xs-max) {
