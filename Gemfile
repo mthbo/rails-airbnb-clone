@@ -28,6 +28,8 @@ gem 'omniauth-facebook'
 gem 'pundit'
 gem 'money-rails'
 
+gem 'rails-assets-smoothscroll', source: 'https://rails-assets.org'
+
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'

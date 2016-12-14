@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :deals, foreign_key: 'client_id'
   has_many :pinned_offers, foreign_key: 'client_id', dependent: :destroy
   has_many :advisor_deals, through: :offers, source: :deals
+  has_many :messages
 
   has_attachment :photo
 

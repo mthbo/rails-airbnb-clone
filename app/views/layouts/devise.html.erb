@@ -14,22 +14,21 @@
 
   <body>
 
-    <% if current_user %>
-      <%= render 'shared/navbar_logged' %>
-    <% else %>
-      <%= render 'shared/navbar' %>
-    <% end %>
+    <div class="padded-top-m padded-bottom-xxl bg-gradient devise-form-wrapper">
 
-    <%= render 'shared/flash' %>
-
-    <%= yield %>
-
-
-    <%= render "shared/footer" %>
+      <div class="container-fluid">
+        <div class="devise-form-top">
+          <%= link_to root_path, { class: "devise-form-logo" } do %>
+            <%= image_tag "papoters_logo.svg" %>
+          <% end %>
+        </div>
+        <div class="devise-form bg-white-transparent">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
 
     <%= javascript_include_tag 'application' %>
-    <%= cloudinary_js_config %>
-    <%= yield(:js) %>
   </body>
 
 </html>

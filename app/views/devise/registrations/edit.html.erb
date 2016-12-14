@@ -4,28 +4,40 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :first_name, required: true, autofocus: true %>
-    <%= f.input :last_name, required: true, autofocus: true %>
-    <%= f.input :birth_date %>
-    <%= f.input :email, required: true, autofocus: true %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :first_name, required: true, autofocus: true, label: false, placeholder: "First name", input_html: { class: 'devise-form-input' } %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :last_name, required: true, autofocus: true, label: false, placeholder: "Last name", input_html: { class: 'devise-form-input' } %>
+      </div>
+      <div class="col-xs-12">
+        <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Email", input_html: { class: 'devise-form-input' } %>
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+        <% end %>
+      </div>
+      <div class="col-xs-12">
+        <%= f.input :birth_date %>
+      </div>
+      <div class="col-xs-12">
+        <%= f.input :address, label: false, placeholder: "Address", input_html: { class: 'devise-form-input' } %>
+      </div>
+      <div class="col-xs-12">
+        <%= f.input :phone_number, label: false, placeholder: "Phone number", input_html: { class: 'devise-form-input' } %>
+      </div>
+      <div class="col-xs-12">
+        <%= f.input :bio, label: false, placeholder: "Tell people more about yourself", input_html: { class: 'devise-form-input' } %>
+      </div>
 
+      <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
+      <%= f.input :photo, as: :attachinary %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-    <%= f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false %>
-    <%= f.input :password_confirmation, required: false %>
-    <%= f.input :address %>
-    <%= f.input :bio %>
-    <%= f.input :phone_number %>
-    <%= f.input :current_password, hint: "we need your current password to confirm your changes", required: true %>
-    <%= f.input :photo, as: :attachinary %>
-
-
+    </div>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update", class: "btn-form btn-gray" %>
   </div>
 <% end %>
 
