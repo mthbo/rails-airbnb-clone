@@ -132,10 +132,11 @@ p, ul, ol {
 // Links
 
 a {
-  color: $green;
+  color: $blue;
+  font-weight: bolder;
   &:hover {
     text-decoration: none;
-    color: $dark-green;
+    color: $yellow;
   }
 }
 

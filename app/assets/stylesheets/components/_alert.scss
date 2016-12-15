@@ -9,12 +9,15 @@
 .alert {
   margin: 0;
   text-align: center;
-  color: white;
   padding: 10px 15px;
+  p {
+    color: white;
+    font-weight: normal;
+  }
 }
 
 .fade.in {
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .alert-info {
@@ -25,10 +28,9 @@
 }
 
 .close {
-  opacity: 0.5;
-  &:hover {
-    opacity: 0.7
-  }
+  color: white;
+  font-weight: lighter;
+  opacity: 1;
 }
 
 @media (max-width: $screen-xs-max) {

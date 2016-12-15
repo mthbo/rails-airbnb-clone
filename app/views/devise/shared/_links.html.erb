@@ -23,7 +23,11 @@
 </div>
 
 <%- if devise_mapping.omniauthable? && controller_name != 'passwords' && controller_name != 'confirmations' %>
-  <hr class="bd-gray">
+  <div class="or-facebook padded-top-xs padded-bottom-s">
+    <div></div>
+    <p>OR</p>
+    <div></div>
+  </div>
   <div class="text-center">
     <%- resource_class.omniauth_providers.each do |provider| %>
       <%= link_to omniauth_authorize_path(resource_name, provider), {class: "btn btn-form btn-facebook"} do %>

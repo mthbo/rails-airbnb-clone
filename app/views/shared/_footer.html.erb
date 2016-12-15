@@ -1,21 +1,35 @@
-<footer class="footer-distributed">
+<div class="footer-wrapper">
+  <div class="container padded-top-m padded-bottom-s">
+    <div class="footer-box">
 
-      <div class="footer-left">
-        <p class="footer-links">
-          <%= link_to "Home", root_path %>
-          <% if current_user %>
-            <%= link_to "My profile", user_path(current_user) %>
-          <% else %>
-            <%= link_to "My profile", new_user_session_path %>
-          <% end %>
+        <div class="padded-bottom-xs footer-box-left">
+          <p>
+            <%= link_to "Find advice", root_path %>
+            <%= link_to "Give advice", be_advisor_path %>
+            <%= link_to "About", root_path %>
+            <%= link_to "Q&A", root_path %>
+            <%= link_to "Careers", root_path %>
+            <%= link_to "Terms & Privacy", root_path %>
+            <%= link_to "Contact", root_path %>
+          </p>
+        </div>
 
+        <div class="padded-bottom-xs footer-box-right">
+          <ul class="list-inline">
+            <li>
+              <%= link_to "https://www.facebook.com/Papoters-354685034893271/" do %>
+                <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+              <% end %>
+              <%= link_to "https://www.facebook.com/Papoters-354685034893271/" do %>
+                <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+              <% end %>
+              <%= link_to "https://www.facebook.com/Papoters-354685034893271/" do %>
+                <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+              <% end %>
+            </li>
+          </ul>
+        </div>
 
-          <%= link_to "Contact", root_path %>
-        </p>
-
-        <p class="footer-company-name">Papoters &copy; 2016</p>
-
-      </div>
-      </div>
-
-    </footer>
+    </div>
+  </div>
+</div>

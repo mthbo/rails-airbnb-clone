@@ -1,3 +1,9 @@
+.home {
+  h2 {
+    font-size: 35px;
+  }
+}
+
 .home-banner {
   height: 100vh;
 }
@@ -107,6 +113,11 @@
 }
 
 @media (max-width: $screen-xs-max) {
+  .home {
+    h2 {
+      font-size: 26px;
+    }
+  }
   .home-banner-title {
     h1 {
       font-size: 35px;

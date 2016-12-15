@@ -33,6 +33,22 @@
   }
 }
 
+.or-facebook {
+  display: flex;
+  align-items: center;
+  div {
+    height: 1px;
+    margin: 7px 0;
+    flex: 1 1 auto;
+    background-color: $medium-gray;
+  }
+  p {
+    line-height: 15px;
+    margin: 0 10px;
+    color: $medium-gray;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .devise-form-logo img {
     height: 35px;

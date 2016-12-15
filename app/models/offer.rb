@@ -18,6 +18,10 @@ class Offer < ApplicationRecord
     where("title ILIKE ?", "%#{search}%") + where("description ILIKE ?", "%#{search}%")
   end
 
+  def pinned(user)
+    self.pinned_offers.where(client: user).last
+  end
+
   def global_rating
     if deals_reviewed.present?
       sum = 0
@@ -53,10 +57,6 @@ class Offer < ApplicationRecord
 
   def deals_reviewed
     deals.where.not(client_review: nil)
-  end
-
-  def pinned(user)
-    self.pinned_offers.where(client: user).last
   end
 
 end
