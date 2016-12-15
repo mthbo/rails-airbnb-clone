@@ -62,14 +62,14 @@
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-        <h2>Reviews as advisor (<%= @user.advisor_deals_reviewed.count %>)</h2>
+        <h2><%= @user.advisor_deals_reviewed.count %>  <%= "review".pluralize(@user.advisor_deals_reviewed.count) %> as advisor</h2>
         <div>
           <% @user.advisor_deals_reviewed.each do |deal| %>
             <%= render 'deals/review_with_link', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.updated_at %>
           <% end %>
         </div>
 
-        <h2>Reviews as client (<%= @user.deals_reviewed.count %>)</h2>
+        <h2><%= @user.deals_reviewed.count %>  <%= "review".pluralize(@user.deals_reviewed.count) %> as client</h2>
         <div>
           <% @user.deals_reviewed.each do |deal| %>
             <%= render 'deals/review_with_link', deal: deal, user: deal.advisor, rating: nil, review: deal.advisor_review, date: deal.updated_at %>

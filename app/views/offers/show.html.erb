@@ -87,7 +87,7 @@
                 <div class="offer-stat-content">
                   <div class="row">
                     <div class="col-xs-4 col-sm-2">
-                      <p><strong><%= @offer.deals_closed.count %></strong>  deals</p>
+                      <p><strong><%= @offer.deals_closed.count %></strong>  <%= "deal".pluralize(@offer.deals_closed.count) %></p>
                     </div>
                     <div class="col-xs-8 col-sm-5 text-right">
                       <%= render 'offers/satisfaction', offer: @offer %>
@@ -100,7 +100,7 @@
               </div>
 
               <div class="offer-reviews">
-                <h3>Reviews (<%= @offer.deals_reviewed.count %>)</h3>
+                <h3><%= @offer.deals_reviewed.count %>  <%= "review".pluralize(@offer.deals_reviewed.count) %></h3>
                 <% @offer.deals_reviewed.each do |deal| %>
                   <%= render 'deals/review', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.updated_at %>
                 <% end %>
