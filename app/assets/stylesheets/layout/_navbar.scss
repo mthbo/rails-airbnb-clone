@@ -80,7 +80,7 @@
     background-color: $green;
   };
   &:active {
-    background-color: $dark-green;
+    background-color: $green;
   };
   &:focus {
     color: $green;
@@ -89,7 +89,7 @@
 
 /* Navbar search form */
 #my-navbar-search {
-  flex: 0 1 400px;
+  flex: 0 1 300px;
   display: flex;
   justify-content: flex-end;
   padding: 0 10px;
@@ -115,7 +115,7 @@
 }
 
 .my-navbar-search-input {
-  flex: 0 1 400px;
+  flex: 0 1 300px;
   transition: all 0.15s ease;
   line-height: 40px;
   border: none;

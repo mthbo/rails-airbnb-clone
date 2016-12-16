@@ -18,6 +18,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:address, :photo, :bio, :password, :phone_number, :birth_date])
   end
 
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) ||
+      if resource.is_a?(User)
+        user_path(current_user)
+      else
+        super
+      end
+  end
+
   private
 
   def skip_pundit?
