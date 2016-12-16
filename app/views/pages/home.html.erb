@@ -11,9 +11,9 @@
         <h1>Be advised for whatever you need, anytime, anywhere.</h1>
       </div>
 
-      <div class="home-banner-search padded-top-s">
+      <div class="home-banner-content padded-top-s">
         <%= form_tag(search_path, method: "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Look for knowledgeable people", class: "search-form-input" %>
+          <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "search-form-input" %>
           <%= button_tag(type: 'submit', class: "btn btn-search") do %>
             <i class='fa fa-search'></i>
           <% end %>
@@ -22,6 +22,7 @@
 
       <div class="home-banner-arrow">
         <%= link_to root_path, id: "arrow-down" do %>
+          <p>Tell me more</p>
           <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
         <% end %>
       </div>
@@ -42,7 +43,7 @@
   </div>
 
   <div class="padded-top-m padded-bottom-m bg-white-transparent text-center">
-    <div class="process">
+    <div class="home-process">
       <div class="container">
 
         <div class="padded-bottom-m">
@@ -77,8 +78,8 @@
       <div class="container">
 
         <div class="padded-bottom-l">
-          <h2>Your knowledge and your experience have value.</h2>
-          <h2>Don't be shy!</h2>
+          <h2>Interested in being advisor?</h2>
+          <h3>Don't be shy, your knowledge and your experience have value!</h3>
         </div>
         <%= link_to "Give advice", be_advisor_path, { class: "btn btn-homepage-give" } %>
       </div>
@@ -90,28 +91,11 @@
 <% content_for(:js) do %>
   <%= javascript_tag do %>
 
-    function checkScroll(){
-      var startY = $('.my-navbar').height() * 2;
-
-      if($(window).scrollTop() < startY) {
-        $('.my-navbar').addClass("my-navbar-scrolled");
-        $('#my-navbar-search').hide();
-      } else {
-        $('.my-navbar').removeClass("my-navbar-scrolled");
-        $('#my-navbar-search').show();
-      }
-    }
-
     if($('.my-navbar').length > 0){
       $(window).on("scroll load resize", function(){
         checkScroll();
       });
     }
-
-    $('#arrow-down').on('click', function(event) {
-      event.preventDefault();
-      window.scroll({ top: $('.home-banner').height(), left: 0, behavior: 'smooth' });
-    });
 
   <% end %>
 <% end %>

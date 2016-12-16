@@ -2,37 +2,39 @@
   <%= "Be advisor | Papoters" %>
 <% end %>
 
-<div class="padded-top-xxl padded-bottom-xxl bg-reverse-gradient">
-  <div class="container">
-    <h1>Be advisor</h1>
+<div class="home bg-reverse-gradient">
+
+  <div class="home-banner text-center">
+    <div class="container">
+
+      <div class="home-banner-title padded-top-xxl">
+        <h1>Your knowledge and your experience have value.</h1>
+      </div>
+
+      <div class="home-banner-content padded-top-s">
+        <%= link_to "Offer your services as advisor", user_signed_in? ? user_path(current_user) : new_user_session_path, class: "offer-services" %>
+      </div>
+
+      <div class="home-banner-arrow">
+        <%= link_to be_advisor_path, id: "arrow-down" do %>
+          <p>Tell me more</p>
+          <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+        <% end %>
+      </div>
+
+    </div>
   </div>
+
 </div>
 
 <% content_for(:js) do %>
   <%= javascript_tag do %>
-
-    function checkScroll(){
-      var startY = $('.my-navbar').height() * 2;
-
-      if($(window).scrollTop() < startY) {
-        $('.my-navbar').addClass("my-navbar-scrolled");
-        $('#my-navbar-search').hide();
-      } else {
-        $('.my-navbar').removeClass("my-navbar-scrolled");
-        $('#my-navbar-search').show();
-      }
-    }
 
     if($('.my-navbar').length > 0){
       $(window).on("scroll load resize", function(){
         checkScroll();
       });
     }
-
-    $('#arrow-down').on('click', function(event) {
-      event.preventDefault();
-      window.scroll({ top: $('.home-banner').height(), left: 0, behavior: 'smooth' });
-    });
 
   <% end %>
 <% end %>
