@@ -1,4 +1,4 @@
-<hr>
+<hr class="bd-gray">
 <div class="review">
   <div class="review-user">
     <%= link_to user_path(user) do %>
@@ -6,13 +6,15 @@
         <%= render 'shared/avatar', user: user, size: 'avatar-standard' %>
       </div>
       <h1><%= user.name_anonymous %></h1>
-      <p class="medium-gray"><%= date.strftime("%d %b %Y") %></p>
     <% end %>
   </div>
   <div class="review-content">
-    <% unless rating.nil? %>
-      <%= render 'deals/satisfaction', rating: rating %>
-    <% end %>
+    <div class="review-content-top">
+      <% unless rating.nil? %>
+        <%= render 'deals/satisfaction', rating: rating %>
+      <% end %>
+      <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
+    </div>
     <p><%= review %></p>
   </div>
 </div>

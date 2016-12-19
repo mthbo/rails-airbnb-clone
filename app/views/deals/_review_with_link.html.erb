@@ -1,4 +1,4 @@
-<hr>
+<hr class="bd-gray">
 <div class="review">
   <div class="review-user">
     <%= link_to user_path(user) do %>
@@ -7,12 +7,16 @@
       </div>
       <h1><%= user.name_anonymous %></h1>
     <% end %>
-    <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
   </div>
   <div class="review-content">
-    <% unless rating.nil? %>
-      <%= render 'deals/satisfaction', rating: rating %>
-    <% end %>
+    <div class="review-content-top">
+      <div>
+        <% unless rating.nil? %>
+          <%= render 'deals/satisfaction', rating: rating %>
+        <% end %>
+      </div>
+      <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
+    </div>
     <p><%= review %></p>
     <p><%= link_to "#{deal.offer.title}", offer_path(deal.offer)%></p>
   </div>

@@ -38,6 +38,50 @@
     </div>
   </div>
 
+  <div class="padded-top-m padded-bottom-m bg-white-transparent text-center">
+    <div class="home-process">
+      <div class="container">
+
+        <div class="padded-bottom-m">
+          <h2>Get the fair reward for the value you provide.</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+            <%= image_tag 'process/offers.png' %>
+            <h3><strong>1</strong> | Publish offers</h3>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+            <%= image_tag 'process/answer-requests.png' %>
+            <h3><strong>2</strong> | Respond to requests</h3>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+            <%= image_tag 'process/give-advice.png' %>
+            <h3><strong>3</strong> | Give advice</h3>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+            <%= image_tag 'process/evaluate.png' %>
+            <h3><strong>4</strong> | Build your reputation</h3>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="padded-top-l padded-bottom-xxl text-center">
+    <div class="become-advisor">
+      <div class="container">
+
+        <div class="padded-bottom-l">
+          <h2>Interested in being advisor?</h2>
+          <h3>Don't be shy, your knowledge and your experience have value!</h3>
+        </div>
+        <%= link_to "Give advice", be_advisor_path, { class: "btn btn-homepage-give" } %>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <% content_for(:js) do %>
