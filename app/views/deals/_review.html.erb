@@ -3,7 +3,7 @@
   <div class="review-user">
     <%= link_to user_path(user) do %>
       <div class="hidden-xs">
-        <%= render 'shared/avatar', user: user, size: 'avatar-standard' %>
+        <%= render 'users/avatar', user: user, size: 'avatar-standard' %>
       </div>
       <h1><%= user.name_anonymous %></h1>
     <% end %>

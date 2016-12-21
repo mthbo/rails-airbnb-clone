@@ -67,12 +67,10 @@
           <div class="hidden-md hidden-lg">
             <div class="offer-profile bg-gradient">
               <div class="offer-profile-avatar">
-                <%= render 'shared/avatar', user: @offer.advisor, size: 'avatar-medium' %>
+                <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-medium' %>
               </div>
               <div>
-                <h1><%= @offer.advisor.name_anonymous %></h1>
-                <h3><%= @offer.advisor.grade %></h3>
-                <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= @offer.advisor.address %></h4>
+                <%= render 'users/info', user: @offer.advisor %>
               </div>
               <%= link_to "", user_path(@offer.advisor), class: "link offer-profile-link" %>
             </div>
@@ -114,14 +112,12 @@
       <div class="hidden-xs hidden-sm col-md-3">
         <div class="offer-profile text-center bg-gradient">
           <div class="offer-profile-avatar">
-            <%= render 'shared/avatar', user: @offer.advisor, size: 'avatar-large' %>
+            <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-large' %>
           </div>
           <div>
-            <h1><%= @offer.advisor.name_anonymous %></h1>
-            <h3><%= @offer.advisor.grade %></h3>
-            <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= @offer.advisor.address_short %></h4>
-            <%= link_to "", user_path(@offer.advisor), class: "link offer-profile-link" %>
+            <%= render 'users/info', user: @offer.advisor %>
           </div>
+          <%= link_to "", user_path(@offer.advisor), class: "link offer-profile-link" %>
         </div>
       </div>
 

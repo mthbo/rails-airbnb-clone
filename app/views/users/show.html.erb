@@ -2,12 +2,10 @@
   <%= @user.name_anonymous %><%= "- Profile | Papoters" %>
 <% end %>
 
-<div class="padded-top-xxl padded-bottom-xs bg-gradient text-center">
+<div class="padded-top-xxl padded-bottom-xs bg-gradient text-center user-top">
   <div class="container">
-    <%= render 'shared/avatar', user: @user, size: 'avatar-xlarge' %>
-    <h1><%= @user.name_anonymous %></h1>
-    <h3><%= @user.grade %></h3>
-    <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= @user.address_short %></h4>
+    <%= render 'users/avatar', user: @user, size: 'avatar-xlarge' %>
+    <%= render 'users/info', user: @user %>
     <% if @user == current_user %>
       <p><%= link_to "Go to my dashboard", dashboard_path %></p>
     <% end %>

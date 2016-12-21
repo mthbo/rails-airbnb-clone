@@ -20,6 +20,15 @@ class User < ApplicationRecord
     "#{first_name} #{last_name.first}."
   end
 
+  def age
+    if birth_date
+      today = Date.today
+      d = Date.new(today.year, birth_date.month, birth_date.day)
+      age = d.year - birth_date.year - (d > today ? 1 : 0)
+      "#{age} yr"
+    end
+  end
+
   def country_name
     country_data = ISO3166::Country[country]
     country_data.translations[I18n.locale.to_s] || country_data.name

@@ -52,12 +52,10 @@
 
   <div class="offer-card-profile bg-gradient">
     <div class="offer-card-profile-avatar">
-      <%= render 'shared/avatar', user: offer.advisor, size: 'avatar-medium' %>
+      <%= render 'users/avatar', user: offer.advisor, size: 'avatar-medium' %>
     </div>
     <div>
-      <h1><%= offer.advisor.name_anonymous %></h1>
-      <h3><%= offer.advisor.grade %></h3>
-      <h4><i class="fa fa-map-marker" aria-hidden="true"></i>  <%= offer.advisor.address_short %></h4>
+      <%= render 'users/info', user: offer.advisor %>
     </div>
   </div>
 
