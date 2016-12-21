@@ -27,8 +27,21 @@
   justify-content: center;
 }
 
+.home-switch-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
 #search-form {
   flex: 0 1 700px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#switch-search-form {
+  flex: 0 1 500px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,6 +60,12 @@
     outline: none;
     border-bottom: 3px $yellow solid;
   }
+}
+
+.switch-search-input  {
+  height: 50px;
+  flex: 0 1 500px;
+  font-size: 25px;
 }
 
 .btn-search {
@@ -68,6 +87,12 @@
   &:focus {
     color: $yellow;
   };
+}
+
+.btn-switch {
+  height: 50px;
+  flex: 0 0 50px;
+  font-size: 25px;
 }
 
 .offer-services {

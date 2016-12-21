@@ -16,6 +16,7 @@ gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem 'country_select'
 gem 'autoprefixer-rails'
 
 gem 'cloudinary', '1.1.0'
@@ -27,8 +28,12 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'pundit'
 gem 'money-rails'
+gem 'geocoder'
 
-gem 'rails-assets-smoothscroll', source: 'https://rails-assets.org'
+source "https://rails-assets.org" do
+  gem 'rails-assets-smoothscroll'
+  gem 'rails-assets-bootstrap-datepicker'
+end
 
 group :development, :test do
   gem 'binding_of_caller'

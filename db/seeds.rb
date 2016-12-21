@@ -38,7 +38,7 @@ users = []
     password:  Faker::Internet.password,
     phone_number: Faker::PhoneNumber.cell_phone,
     email: Faker::Internet.email,
-    address: "#{Faker::Address.city}, #{Faker::Address.country_code}",
+    address: "Paris, France",
     bio: Faker::Lorem.paragraph(20),
     birth_date: Faker::Date.between(60.years.ago, Date.today)
   )

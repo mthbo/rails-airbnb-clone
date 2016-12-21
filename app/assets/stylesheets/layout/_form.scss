@@ -1,5 +1,5 @@
 .devise-form {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 5px 30px 30px 30px;
   border-radius: 0 0 10px 10px;
@@ -8,12 +8,8 @@
   }
 }
 
-.devise-form-wrapper {
-  min-height: 100vh;
-}
-
 .devise-form-top {
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   height: 100 px;
   padding: 30px;
@@ -26,14 +22,14 @@
 }
 
 .devise-form-input {
-  height: 50px;
+  height: 45px;
   &:focus {
     border-color: $light-blue;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $light-blue;
   }
 }
 
-.or-facebook {
+.form-separation {
   display: flex;
   align-items: center;
   div {
@@ -45,7 +41,16 @@
   p {
     line-height: 15px;
     margin: 0 10px;
-    color: $medium-gray;
+    color: $dark-gray;
+  }
+}
+
+.form-group.user_photo {
+  ul {
+    list-style: none;
+  }
+  input > input {
+    margin: 50px;
   }
 }
 

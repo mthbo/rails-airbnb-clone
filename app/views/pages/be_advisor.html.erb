@@ -43,25 +43,25 @@
       <div class="container">
 
         <div class="padded-bottom-m">
-          <h2>Get the fair reward for the value you provide.</h2>
+          <h2>Build your reputation and make yourself valuable.</h2>
         </div>
 
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/offers.png' %>
+            <%= image_tag 'process/offers.svg' %>
             <h3><strong>1</strong> | Publish offers</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/answer-requests.png' %>
+            <%= image_tag 'process/answer-requests.svg' %>
             <h3><strong>2</strong> | Respond to requests</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/give-advice.png' %>
+            <%= image_tag 'process/give-advice.svg' %>
             <h3><strong>3</strong> | Give advice</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/evaluate.png' %>
-            <h3><strong>4</strong> | Build your reputation</h3>
+            <%= image_tag 'process/get-rewards.svg' %>
+            <h3><strong>4</strong> | Get your rewards!</h3>
           </div>
         </div>
 
@@ -70,14 +70,23 @@
   </div>
 
   <div class="padded-top-l padded-bottom-xxl text-center">
-    <div class="become-advisor">
+    <div class="home-switch">
       <div class="container">
 
         <div class="padded-bottom-l">
-          <h2>Interested in being advisor?</h2>
-          <h3>Don't be shy, your knowledge and your experience have value!</h3>
+          <h2>Need some insight about what to do?</h2>
+          <h3>Have a look on what people are already offering on Papoters.</h3>
         </div>
-        <%= link_to "Give advice", be_advisor_path, { class: "btn btn-homepage-give" } %>
+
+        <div class="home-switch-content">
+          <%= form_tag(search_path, method: "get", id: "switch-search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "switch-search-input search-form-input" %>
+            <%= button_tag(type: 'submit', class: "btn btn-switch btn-search") do %>
+              <i class='fa fa-search'></i>
+            <% end %>
+          <% end %>
+        </div>
+
       </div>
     </div>
   </div>

@@ -11,10 +11,30 @@ class User < ApplicationRecord
   has_many :advisor_deals, through: :offers, source: :deals
   has_many :messages
 
-  has_attachment :photo
+  has_attachment :photo, accept: [:jpg, :png, :gif]
+
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
 
   def name_anonymous
     "#{first_name} #{last_name.first}."
+  end
+
+  def country_name
+    country_data = ISO3166::Country[country]
+    country_data.translations[I18n.locale.to_s] || country_data.name
+  end
+
+  def address_short
+    if city && country
+      "#{city}, #{country_name}"
+    elsif city && !country
+      "#{city}"
+    elsif !city && country
+      "#{country_name}"
+    else
+      " - "
+    end
   end
 
   def grade

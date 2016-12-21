@@ -5,4 +5,5 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require smoothscroll
+//= require bootstrap-datepicker
 //= require_tree .
