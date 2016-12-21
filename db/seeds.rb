@@ -35,10 +35,11 @@ users = []
   users << User.create(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    password:  Faker::Internet.password,
+    password: "secret",
     phone_number: Faker::PhoneNumber.cell_phone,
     email: Faker::Internet.email,
-    address: "Paris, France",
+    city: Faker::Address.city,
+    country: Faker::Address.country_code,
     bio: Faker::Lorem.paragraph(20),
     birth_date: Faker::Date.between(60.years.ago, Date.today)
   )
