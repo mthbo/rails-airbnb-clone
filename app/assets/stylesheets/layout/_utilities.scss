@@ -14,6 +14,13 @@
   min-height: 100vh;
 }
 
+// Bootstrap columns
+
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 // Paddings
 
 .padded-top-xs {
@@ -137,6 +144,9 @@ label {
 .yellow {
   color: $yellow;
 }
+.green {
+  color: $green;
+}
 .medium-gray {
   color: $medium-gray
 }
@@ -172,6 +182,9 @@ a {
 // Mobile
 
 @media (max-width: $screen-xs-max) {
+  .padded-top-xxl {
+    padding-top: 5em;
+  }
   .main-wrapper {
     min-height: 70vh;
   }

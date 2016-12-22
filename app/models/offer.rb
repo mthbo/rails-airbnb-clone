@@ -51,6 +51,18 @@ class Offer < ApplicationRecord
     end
   end
 
+  def deals_request
+    deals.where(status: :request)
+  end
+
+  def deals_proposition
+    deals.where(status: :proposition)
+  end
+
+  def deals_open
+    deals.where(status: :open)
+  end
+
   def deals_closed
     deals.where(status: :closed)
   end

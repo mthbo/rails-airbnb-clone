@@ -18,6 +18,14 @@
       <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
     </div>
     <p><%= review %></p>
-    <p><%= link_to "#{deal.offer.title}", offer_path(deal.offer)%></p>
+    <p>
+      <% if user == deal.client %>
+        <span class="green"><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;as advisor </span>
+      <% else %>
+        <span class="yellow"><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;as client </span>
+      <% end %>
+      &nbsp; | &nbsp;
+      <%= link_to "#{deal.offer.title}", offer_path(deal.offer)%>
+    </p>
   </div>
 </div>

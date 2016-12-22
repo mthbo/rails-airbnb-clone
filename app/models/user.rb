@@ -6,7 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
-  has_many :deals, foreign_key: 'client_id'
+  has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal'
   has_many :pinned_offers, foreign_key: 'client_id', dependent: :destroy
   has_many :advisor_deals, through: :offers, source: :deals
   has_many :messages
@@ -58,6 +58,10 @@ class User < ApplicationRecord
     end
   end
 
+  def deals
+    client_deals + advisor_deals
+  end
+
   def advisor_deals_request
     advisor_deals.where(status: :request)
   end
@@ -75,28 +79,52 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_reviewed
-    advisor_deals.where.not(client_review: nil)
+    advisor_deals.where.not(client_review: nil).order(client_review_at: :desc)
+  end
+
+  def client_deals_request
+    client_deals.where(status: :request)
+  end
+
+  def client_deals_proposition
+    client_deals.where(status: :proposition)
+  end
+
+  def client_deals_open
+    client_deals.where(status: :open)
+  end
+
+  def client_deals_closed
+    client_deals.where(status: :closed)
+  end
+
+  def client_deals_reviewed
+    client_deals.where.not(client_review: nil).order(advisor_review_at: :desc)
   end
 
   def deals_request
-    deals.where(status: :request)
+    advisor_deals_requests + client_deals_requests
   end
 
   def deals_proposition
-    deals.where(status: :proposition)
+    advisor_deals_proposition + client_deals_proposition
   end
 
   def deals_open
-    deals.where(status: :open)
+    advisor_deals_open + client_deals_open
   end
 
   def deals_closed
-    deals.where(status: :closed)
+    advisor_deals_closed + client_deals_closed
   end
 
   def deals_reviewed
-    deals.where.not(client_review: nil)
+    deals_sorted = (advisor_deals_reviewed + client_deals_reviewed).sort_by do |deal|
+      deal.client == self ? deal.advisor_review_at : deal.client_review_at
+    end
+    deals_sorted.reverse
   end
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)

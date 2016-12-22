@@ -98,9 +98,17 @@
               </div>
 
               <div class="offer-reviews">
-                <h3><%= @offer.deals_reviewed.count %>  <%= "review".pluralize(@offer.deals_reviewed.count) %></h3>
-                <% @offer.deals_reviewed.each do |deal| %>
-                  <%= render 'deals/review', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.updated_at %>
+                <h3><%= pluralize(@offer.deals_reviewed.count, "review") %></h3>
+                <% if @offer.deals_reviewed.present? %>
+                  <% @offer.deals_reviewed.each do |deal| %>
+                    <%= render 'deals/review', deal: deal %>
+                  <% end %>
+                <% elsif @offer.advisor == current_user %>
+                  <hr class="bd-gray">
+                  <p>You didn't get any review for this offer yet.</p>
+                <% else %>
+                  <hr class="bd-gray">
+                  <p><%= @offer.advisor.first_name %> didn't get any review for this offer yet.</p>
                 <% end %>
               </div>
 

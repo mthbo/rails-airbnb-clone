@@ -10,4 +10,8 @@ class UserPolicy < ApplicationPolicy
   def dashboard?
     user == record
   end
+
+  def destroy?
+    user == record
+  end
 end

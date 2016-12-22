@@ -72,6 +72,8 @@ deals1 =[]
     closed_at: Faker::Time.between(1.day.ago, 2.days.ago),
     client_review: Faker::Lorem.paragraph(10),
     advisor_review: Faker::Lorem.paragraph(10),
+    client_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
+    advisor_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
     languages: offer.languages,
     means: offer.means
   )
@@ -155,22 +157,22 @@ deals4 = []
 end
 
 
-urls = [
-  'http://lorempixel.com/100/100/people/1/',
-  'http://lorempixel.com/100/100/people/2/',
-  'http://lorempixel.com/100/100/people/3/',
-  'http://lorempixel.com/100/100/people/4/',
-  'http://lorempixel.com/100/100/people/5/',
-  'http://lorempixel.com/100/100/people/6/',
-  'http://lorempixel.com/100/100/people/7/',
-  'http://lorempixel.com/100/100/people/8/',
-  'http://lorempixel.com/100/100/people/9/',
-  'http://lorempixel.com/100/100/people/10/'
-]
+# urls = [
+#   'http://lorempixel.com/100/100/people/1/',
+#   'http://lorempixel.com/100/100/people/2/',
+#   'http://lorempixel.com/100/100/people/3/',
+#   'http://lorempixel.com/100/100/people/4/',
+#   'http://lorempixel.com/100/100/people/5/',
+#   'http://lorempixel.com/100/100/people/6/',
+#   'http://lorempixel.com/100/100/people/7/',
+#   'http://lorempixel.com/100/100/people/8/',
+#   'http://lorempixel.com/100/100/people/9/',
+#   'http://lorempixel.com/100/100/people/10/'
+# ]
 
-users.each_with_index do |user, index|
-  user.photo_url = urls[index]
-end
+# users.each_with_index do |user, index|
+#   user.photo_url = urls[index]
+# end
 
 
 

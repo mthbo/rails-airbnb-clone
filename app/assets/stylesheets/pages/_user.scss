@@ -3,3 +3,26 @@
     margin-top: 20px;
   }
 }
+
+.dashboard-link {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.dashboard-link-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 30px;
+  color: $medium-gray;
+  p {
+    width: 80px;
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .dashboard-link {
+    justify-content: center;
+  }
+}
