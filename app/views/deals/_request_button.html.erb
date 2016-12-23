@@ -1,0 +1,5 @@
+<% if policy(offer.deals.new).new? %>
+  <%= link_to new_offer_deal_path(offer), class: "btn btn-yellow" do %>
+    <i class="fa fa-paper-plane" aria-hidden="true"></i>  &nbsp;&nbsp;Get in touch
+  <% end %>
+<% end %>

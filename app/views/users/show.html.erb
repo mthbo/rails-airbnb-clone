@@ -5,11 +5,13 @@
 <div class="padded-top-xxl padded-bottom-xs bg-gradient text-center user-top">
   <div class="container">
     <div class="row row-eq-height">
+
       <div class="col-xs-12 col-sm-6 col-sm-offset-3">
         <%= render 'users/avatar', user: @user, size: 'avatar-xlarge' %>
         <%= render 'users/info', user: @user %>
       </div>
-      <% if @user == current_user %>
+
+      <% if policy(@user).dashboard? %>
         <div class="col-xs-12 col-sm-3 col-lg-2 dashboard-link">
           <%= link_to dashboard_path, class: "dashboard-link-arrow" do %>
             <p>Go to my dashboard</p>
@@ -17,6 +19,7 @@
           <% end %>
         </div>
       <% end %>
+
     </div>
   </div>
 </div>
@@ -24,24 +27,27 @@
 <div class="padded-top-xs padded-bottom-xl">
   <div class="container">
     <div class="row">
-      <div class="col-xs-6 col-lg-5 col-lg-offset-1">
-        <h2>About me</h2>
+
+      <div class="<%= @user == current_user ? 'col-xs-6 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
+        <h2>About <%= @user == current_user ? "me" : @user.first_name %></h2>
       </div>
-      <div class="col-xs-6 col-lg-5 text-right padded-top-s">
-        <% if @user == current_user %>
+      <% if policy(@user).edit? %>
+        <div class="col-xs-6 col-lg-5 text-right padded-top-s">
           <p><%= link_to "Edit my profile", edit_user_registration_path %></p>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
+
       <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
         <% if @user.bio.present? %>
           <p><%= @user.bio %></p>
-        <% elsif @user == current_user %>
+        <% elsif policy(@user).edit? %>
           <p>You haven't provide information about yourself.</p>
           <p><%= link_to "Edit your profile", edit_user_registration_path %> to let people know more about you.</p>
         <% else %>
           <p><%= @user.first_name %> hasn't provide personnal information yet.</p>
         <% end %>
       </div>
+
     </div>
   </div>
 </div>
@@ -50,19 +56,19 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-xs-6 col-lg-5 col-lg-offset-1">
-        <h2>My offers</h2>
+      <div class="<%= @user == current_user ? 'col-xs-6 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
+        <h2><%= @user == current_user ? "My" : "#{@user.first_name}'s" %> offers</h2>
       </div>
-      <div class="col-xs-6 col-lg-5 text-right padded-top-xs">
-        <% if @user == current_user %>
+      <% if policy(@user.offers.new).new? %>
+        <div class="col-xs-6 col-lg-5 text-right padded-top-xs">
           <%= link_to "Create an offer", new_offer_path, class: "btn btn-green"  %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
 
       <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
-        <% if @user.offers.present? %>
-          <% @user.offers.each do |offer| %>
-              <%= render "offers/card_profile", offer: offer %>
+        <% if @user.offers_published.present? %>
+          <% @user.offers_published.each do |offer| %>
+            <%= render "offers/card_profile", offer: offer %>
           <% end %>
         <% elsif @user == current_user %>
           <p>You have no offer published.</p>

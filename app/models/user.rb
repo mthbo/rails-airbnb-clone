@@ -58,6 +58,31 @@ class User < ApplicationRecord
     end
   end
 
+  def pinned(offer)
+    pinned_offers.find_by(offer: offer)
+  end
+
+  def offers_active
+    offers_active = offers.where(status: :active).sort_by do |offer|
+      offer.deals_closed.count
+    end
+    offers_active.reverse
+  end
+
+  def offers_inactive
+    offers_inactive = offers.where(status: :inactive).sort_by do |offer|
+      offer.deals_closed.count
+    end
+    offers_inactive.reverse
+  end
+
+  def offers_published
+    offers_published = offers.where.not(status: :archived).sort_by do |offer|
+      offer.deals_closed.count
+    end
+    offers_published.reverse
+  end
+
   def deals
     client_deals + advisor_deals
   end
@@ -116,6 +141,10 @@ class User < ApplicationRecord
 
   def deals_closed
     advisor_deals_closed + client_deals_closed
+  end
+
+  def deals_ongoing
+    deals_proposition + deals_open
   end
 
   def deals_reviewed

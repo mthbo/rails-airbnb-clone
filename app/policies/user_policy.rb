@@ -1,7 +1,4 @@
 class UserPolicy < ApplicationPolicy
-  def show?
-    true
-  end
 
   def update?
     user == record
@@ -12,6 +9,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user == record
+    user == record && user.deals_ongoing.blank?
   end
 end

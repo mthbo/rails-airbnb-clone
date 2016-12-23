@@ -1,9 +1,9 @@
 <% pinned_offer = offer.pinned(current_user) %>
-<% if pinned_offer.blank? && user_signed_in? %>
+<% if pinned_offer.blank? %>
   <%= link_to offer_pinned_offers_path(offer), method: :post, remote: :true, class: "pin-offer-button" do %>
-    <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+    <i class="fa fa-thumb-tack fa-rotate-90" aria-hidden="true"></i>
   <% end %>
-<% elsif user_signed_in? %>
+<% elsif policy(pinned_offer).destroy? %>
   <%= link_to pinned_offer_path(pinned_offer), method: :delete, remote: :true, class: "unpin-offer-button" do %>
     <i class="fa fa-thumb-tack" aria-hidden="true"></i>
   <% end %>

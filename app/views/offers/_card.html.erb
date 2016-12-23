@@ -7,6 +7,11 @@
         <div class="col-xs-10">
           <h2><%= offer.title %></h2>
         </div>
+        <div class="col-xs-12">
+          <div data-offer-info-id="<%= offer.id %>">
+            <%= render 'offers/status_info', offer: offer %>
+          </div>
+        </div>
       </div>
       <div class="row padded-bottom-xs">
         <div class="col-xs-4 col-sm-2">
@@ -37,14 +42,28 @@
         </div>
       </div>
 
-      <div class="offer-card-pin">
-        <% unless offer.advisor == current_user %>
-          <h2 data-pin-offer-id="<%= offer.id %>"><%= render 'pinned_offers/pin_button', offer: offer %></h2>
-        <% end %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="offer-card-top-right">
+          <% if policy(offer).update? %>
+            <div class="offer-trigger">
+              <div data-offer-status-id="<%= offer.id %>" id="truc" class="offer-trigger-slider">
+                <%= render 'offers/status_trigger', offer: offer %>
+              </div>
+            </div>
+          <% else %>
+            <h2 data-pin-offer-id="<%= offer.id %>">
+              <%= render 'pinned_offers/pin_button', offer: offer %>
+            </h2>
+          <% end %>
+        </div>
+      <% end %>
 
-      <div class="offer-card-proposition">
-        <%= render 'offers/action_button', offer: offer %>
+      <div class="offer-card-bottom-right">
+        <% if policy(offer).edit? %>
+          <p><%= link_to "Edit offer", edit_offer_path(offer) %></p>
+        <% elsif offer.active? %>
+          <%= render 'deals/request_button', offer: offer %>
+        <% end %>
       </div>
 
     </div>

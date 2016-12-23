@@ -1,0 +1,26 @@
+<% unless @offer.errors.any? %>
+  var $trigger_slider = $('[data-offer-status-id=<%= @offer.id %>]');
+  var $trigger_button = $('[data-offer-status-id=<%= @offer.id %>] .offer-trigger-btn');
+  var $status_info_box = $('[data-offer-info-id=<%= @offer.id %>]');
+
+  if ($trigger_button.hasClass('activate-offer')) {
+    $trigger_button.animate({left:"+=24px"}, 'fast', function() {
+      $(this).remove();
+      var $new_trigger_button = $("<%= j render 'offers/status_trigger', offer: @offer %>").hide();
+      $trigger_slider.append($new_trigger_button);
+      $new_trigger_button.show();
+    });
+  } else if ($trigger_button.hasClass('inactivate-offer')) {
+    $trigger_button.animate({right:"+=24px"}, 'fast', function() {
+      $(this).remove();
+      var $new_trigger_button = $("<%= j render 'offers/status_trigger', offer: @offer %>").hide();
+      $trigger_slider.append($new_trigger_button);
+      $new_trigger_button.show();
+    });
+  }
+
+  var $status_info = $("<%= j render 'offers/status_info', offer: @offer %>").hide();
+  $status_info_box.empty();
+  $status_info_box.append($status_info);
+  $status_info.fadeIn();
+<% end %>

@@ -1,7 +1,0 @@
-<% if policy(offer).edit? %>
-  <p><%= link_to "Edit offer", edit_offer_path(offer) %></p>
-<% elsif policy(offer).show? %>
-  <%= link_to new_offer_deal_path(offer), class: "btn btn-blue" do %>
-    <i class="fa fa-paper-plane" aria-hidden="true"></i>  &nbsp;&nbsp;Get in touch
-  <% end %>
-<% end %>
