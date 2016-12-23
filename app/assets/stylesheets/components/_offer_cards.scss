@@ -42,14 +42,14 @@
   border-radius: 5px;
 }
 
-.offer-card-pin {
+.offer-card-top-right {
   position: absolute;
   right: 45px;
   top: 0;
   z-index:2;
 }
 
-.offer-card-proposition {
+.offer-card-bottom-right {
   position: absolute;
   right: 45px;
   bottom: 28px;
@@ -96,10 +96,10 @@
       font-size: 14px;
     };
   }
-  .offer-card-pin {
+  .offer-card-top-right {
     right: 15px;
   }
-  .offer-card-proposition {
+  .offer-card-bottom-right {
     right: 15px;
     bottom: 18px;
   }

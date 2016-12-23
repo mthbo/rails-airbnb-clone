@@ -6,6 +6,10 @@
   padding: 15px 30px;
 }
 
+.offer-general {
+  position: relative;
+}
+
 .offer-details {
   padding-top: 2em;
   h6 {
@@ -24,8 +28,8 @@
 }
 
 .offer-profile {
-  height: 350px;
-  padding-top: 50px;
+  min-height: 350px;
+  padding: 50px 10px;
   border-radius: 0 15px 0 0;
   position: relative;
   h1 {
@@ -44,11 +48,23 @@
   border-radius: 0 15px 0 0;
 }
 
+.offer-top-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+
+.offer-trigger {
+  margin-top: 29px;
+}
+
 @media (max-width: $screen-sm-max) {
   .offer-container {
     border-radius: 15px;
   };
   .offer-profile {
+    min-height: auto;
     height: auto;
     display: flex;
     align-items: center;
@@ -73,10 +89,10 @@
 @media (max-width: $screen-xs-max) {
   .offer-sub-container {
     padding: 10px 0;
-  }
+  };
   .offer-details {
     padding-top: 1em;
-  }
+  };
   .offer-profile {
     padding: 10px 15px;
     h1 {
@@ -88,5 +104,8 @@
     h4 {
       font-size: 14px;
     };
+  };
+  .offer-trigger {
+    margin-top: 26px;
   }
 }

@@ -1,7 +1,8 @@
 <% unless @pinned_offer.errors.any? %>
-  $('[data-pin-offer-id=<%= @offer.id %>] .pin-offer-button').fadeOut();
-  $('[data-pin-offer-id=<%= @offer.id %>]').empty();
-  var unpin_button = $("<%= j render 'pinned_offers/pin_button', offer: @offer %>").hide();
-  $('[data-pin-offer-id=<%= @offer.id %>]').append(unpin_button);
-  unpin_button.fadeIn();
+  var $pin_box = $('[data-pin-offer-id=<%= @offer.id %>]')
+  $pin_box.hide();
+  $pin_box.empty();
+  var $unpin_button = $("<%= j render 'pinned_offers/pin_button', offer: @offer %>");
+  $pin_box.append($unpin_button);
+  $pin_box.slideDown('fast');
 <% end %>

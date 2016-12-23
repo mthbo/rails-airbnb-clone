@@ -5,7 +5,7 @@ class DealPolicy < ApplicationPolicy
   end
 
   def create?
-    record.advisor != user
+    record.advisor != user && record.offer.active?
   end
 
   def update?

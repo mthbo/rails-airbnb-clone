@@ -3,11 +3,7 @@ class OffersController < ApplicationController
   before_action :find_offer, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:search].present?
-      @offers = policy_scope(Offer).search(params[:search])
-    else
-      @offers = policy_scope(Offer)
-    end
+    @offers = policy_scope(Offer).search(params[:search])
   end
 
   def show
@@ -35,10 +31,15 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
-      flash[:notice] = "#{@offer.title} has been updated"
-      redirect_to offer_path(@offer)
+      respond_to do |format|
+        format.html {
+          flash[:notice] = "#{@offer.title} has been updated"
+          redirect_to offer_path(@offer)
+        }
+        format.js
+      end
     else
-      flash[:alert] = "Offer has not been updated"
+      flash[:alert] = "#{@offer.title} hasn't been updated"
       render :edit
     end
   end
@@ -56,7 +57,7 @@ class OffersController < ApplicationController
   end
 
   def offer_params
-    params.require(:offer).permit(:title, :description, mean_ids: [], language_ids: [])
+    params.require(:offer).permit(:title, :description, :status, mean_ids: [], language_ids: [])
   end
 
 end

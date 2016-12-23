@@ -1,13 +1,13 @@
 class Offer < ApplicationRecord
   belongs_to :advisor, class_name: 'User'
-  has_many :deals
+  has_many :deals, dependent: :nullify
   has_many :pinned_offers, dependent: :destroy
   has_many :offer_means, dependent: :destroy
   has_many :means, through: :offer_means
   has_many :offer_languages, dependent: :destroy
   has_many :languages, through: :offer_languages
 
-  enum status: [ :active, :inactive ]
+  enum status: [ :active, :inactive, :archived ]
 
   validates :title, presence: { message: "The offer must have a title" }
   validates :description, presence: { message: "The offer must have a description" }
@@ -15,11 +15,15 @@ class Offer < ApplicationRecord
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   def self.search(search)
-    where("title ILIKE ?", "%#{search}%") + where("description ILIKE ?", "%#{search}%")
+    if search.present?
+      where(status: :active).where("title ILIKE ?", "%#{search}%") + where(status: :active).where("description ILIKE ?", "%#{search}%")
+    else
+      where(status: :active)
+    end
   end
 
   def pinned(user)
-    self.pinned_offers.where(client: user).last
+    pinned_offers.find_by(client: user)
   end
 
   def global_rating
@@ -51,8 +55,24 @@ class Offer < ApplicationRecord
     end
   end
 
+  def deals_request
+    deals.where(status: :request)
+  end
+
+  def deals_proposition
+    deals.where(status: :proposition)
+  end
+
+  def deals_open
+    deals.where(status: :open)
+  end
+
   def deals_closed
     deals.where(status: :closed)
+  end
+
+  def deals_ongoing
+    deals_proposition + deals_open
   end
 
   def deals_reviewed

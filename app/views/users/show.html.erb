@@ -4,73 +4,117 @@
 
 <div class="padded-top-xxl padded-bottom-xs bg-gradient text-center user-top">
   <div class="container">
-    <%= render 'users/avatar', user: @user, size: 'avatar-xlarge' %>
-    <%= render 'users/info', user: @user %>
-    <% if @user == current_user %>
-      <p><%= link_to "Go to my dashboard", dashboard_path %></p>
-    <% end %>
-  </div>
-</div>
+    <div class="row row-eq-height">
 
-<div class="padded-top-m padded-bottom-xl">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-6 col-lg-5 col-lg-offset-1">
-        <h2>About me</h2>
+      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+        <%= render 'users/avatar', user: @user, size: 'avatar-xlarge' %>
+        <%= render 'users/info', user: @user %>
       </div>
-      <div class="col-xs-6 col-lg-5 text-right padded-top-s">
-        <% if @user == current_user %>
-          <p><%= link_to "Edit my profile", edit_user_registration_path %></p>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
-        <p><%= @user.bio %></p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="bg-gray padded-top-m padded-bottom-xl">
-  <div class="container">
-
-    <div class="row">
-      <div class="col-xs-6 col-lg-5 col-lg-offset-1">
-        <h2>My offers</h2>
-      </div>
-      <div class="col-xs-6 col-lg-5 text-right padded-top-xs">
-        <% if @user == current_user %>
-          <%= link_to "Create new offer", new_offer_path, class: "btn btn-green"  %>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="row">
-      <% @user.offers.each do |offer| %>
-        <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-          <%= render "offers/card_profile", offer: offer %>
+      <% if policy(@user).dashboard? %>
+        <div class="col-xs-12 col-sm-3 col-lg-2 dashboard-link">
+          <%= link_to dashboard_path, class: "dashboard-link-arrow" do %>
+            <p>Go to my dashboard</p>
+            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+          <% end %>
         </div>
       <% end %>
-    </div>
 
+    </div>
   </div>
 </div>
 
-<div class="padded-top-m padded-bottom-xl">
+<div class="padded-top-xs padded-bottom-xl">
+  <div class="container">
+    <div class="row">
+
+      <div class="<%= @user == current_user ? 'col-xs-6 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
+        <h2>About <%= @user == current_user ? "me" : @user.first_name %></h2>
+      </div>
+      <% if policy(@user).edit? %>
+        <div class="col-xs-6 col-lg-5 text-right padded-top-s">
+          <p><%= link_to "Edit my profile", edit_user_registration_path %></p>
+        </div>
+      <% end %>
+
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
+        <% if @user.bio.present? %>
+          <p><%= @user.bio %></p>
+        <% elsif policy(@user).edit? %>
+          <p>You haven't provide information about yourself.</p>
+          <p><%= link_to "Edit your profile", edit_user_registration_path %> to let people know more about you.</p>
+        <% else %>
+          <p><%= @user.first_name %> hasn't provide personnal information yet.</p>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="bg-gray padded-top-xs padded-bottom-xl">
+  <div class="container">
+    <div class="row">
+
+      <div class="<%= @user == current_user ? 'col-xs-6 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
+        <h2><%= @user == current_user ? "My" : "#{@user.first_name}'s" %> offers</h2>
+      </div>
+      <% if policy(@user.offers.new).new? %>
+        <div class="col-xs-6 col-lg-5 text-right padded-top-xs">
+          <%= link_to "Create an offer", new_offer_path, class: "btn btn-green"  %>
+        </div>
+      <% end %>
+
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
+        <% if @user.offers_published.present? %>
+          <% @user.offers_published.each do |offer| %>
+            <%= render "offers/card_profile", offer: offer %>
+          <% end %>
+        <% elsif @user == current_user %>
+          <p>You have no offer published.</p>
+          <p>You can <%= link_to "create an offer", new_offer_path %> or <%= link_to "check this out", be_advisor_path %> if you need to know more about being an advisor on Papoters.</p>
+        <% else %>
+          <p><%= @user.first_name %> has no offer published.</p>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="padded-top-xs padded-bottom-xl">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-        <h2><%= @user.advisor_deals_reviewed.count %>  <%= "review".pluralize(@user.advisor_deals_reviewed.count) %> as advisor</h2>
-        <div>
-          <% @user.advisor_deals_reviewed.each do |deal| %>
-            <%= render 'deals/review_with_link', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.updated_at %>
-          <% end %>
-        </div>
+        <h2>
+          <%= pluralize(@user.deals_reviewed.count, "review") %>
+        </h2>
+        <h5>
+          <span class="green">
+            <i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;<%= @user.advisor_deals_reviewed.count %>
+          </span>
+          &nbsp; | &nbsp;
+          <span class="yellow">
+            <i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;<%= @user.client_deals_reviewed.count %>
+          </span>
+        </h5>
 
-        <h2><%= @user.deals_reviewed.count %>  <%= "review".pluralize(@user.deals_reviewed.count) %> as client</h2>
         <div>
-          <% @user.deals_reviewed.each do |deal| %>
-            <%= render 'deals/review_with_link', deal: deal, user: deal.advisor, rating: nil, review: deal.advisor_review, date: deal.updated_at %>
+          <% if  @user.deals_reviewed.present? %>
+            <% @user.deals_reviewed.each do |deal| %>
+              <% if deal.advisor == @user %>
+                <%= render 'deals/review_all', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.client_review_at %>
+              <% else %>
+                <%= render 'deals/review_all', deal: deal, user: deal.advisor, rating: nil, review: deal.advisor_review, date: deal.advisor_review_at %>
+              <% end %>
+            <% end %>
+          <% elsif @user == current_user %>
+            <hr class="bd-gray">
+            <p>You didn't get any reviews yet.</p>
+          <% else %>
+            <hr class="bd-gray">
+            <p><%= @user.first_name %> didn't get any reviews yet.</p>
           <% end %>
         </div>
 

@@ -5,6 +5,6 @@ class PinnedOffer < ApplicationRecord
   validates :client, uniqueness: { scope: :offer, message: "This offer is already in your shortlist" }
 
   def advisor
-    self.offer.advisor
+    offer.advisor
   end
 end

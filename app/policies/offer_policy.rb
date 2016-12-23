@@ -1,13 +1,5 @@
 class OfferPolicy < ApplicationPolicy
 
-  def show?
-    if record.advisor == user
-      scope.where(:id => record.id).exists?
-    else
-      scope.where(:id => record.id).exists? && record.active?
-    end
-  end
-
   def create?
     record.advisor == user
   end
@@ -17,12 +9,12 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.advisor == user
+    record.advisor == user && record.deals_ongoing.blank?
   end
 
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where.not(status: :archived)
     end
   end
 end
