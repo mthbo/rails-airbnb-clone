@@ -12,7 +12,6 @@ gem 'faker'
 
 gem 'sass-rails'
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
@@ -30,6 +29,7 @@ gem 'omniauth-facebook'
 gem 'pundit'
 gem 'money-rails'
 gem 'geocoder'
+gem 'kaminari'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'

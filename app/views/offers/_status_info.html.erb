@@ -2,7 +2,7 @@
   <% if offer.active? %>
     <h6 class="green">This offer is active, people can send you requests. Switch to status 'inactive' if you don't want to be contacted.</h6>
   <% elsif offer.inactive? %>
-    <h6 class="medium-gray">This offer is inactive, people can't send you requests at this time. Switch to status 'active' if you want to be contacted.</h6>
+    <h6 class="medium-gray">This offer is inactive, people can't send you requests. Switch to status 'active' if you want to be contacted.</h6>
   <% end %>
 <% elsif offer.inactive? %>
   <h6 class="medium-gray">This offer is inactive. <%= offer.advisor.first_name %> doesn't accept any requests for this offer at this time.</h6>

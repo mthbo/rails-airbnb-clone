@@ -1,5 +1,6 @@
 .pin-offer-button {
   color: $medium-gray;
+  position: relative;
   &:hover {
     color: $dark-gray;
   };
@@ -11,6 +12,7 @@
 
 .unpin-offer-button {
   color: $yellow;
+  position: relative;
   &:hover {
     color: $light-yellow;
   };
@@ -162,7 +164,7 @@
 
 
 @media (max-width: $screen-xs-max) {
-  .btn-blue, .btn-green, .btn-facebook, .btn-gray {
+  .btn-blue, .btn-green, .btn-facebook, .btn-gray, .btn-yellow {
     font-size: 14px;
   };
   .btn-form {

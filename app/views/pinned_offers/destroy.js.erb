@@ -1,9 +1,12 @@
 <% unless @pinned_offer.errors.any? %>
-  var $pin_box = $('[data-pin-offer-id=<%= @offer.id %>]')
-  $pin_box.slideUp('fast', function() {
-    $(this).empty();
-    var $pin_button = $("<%= j render 'pinned_offers/pin_button', offer: @offer %>");
-    $(this).append($pin_button);
-    $(this).fadeIn();
+  var $pin_box = $('[data-pin-offer-id=<%= @offer.id %>]');
+  var $unpin_button = $('[data-pin-offer-id=<%= @offer.id %>] .unpin-offer-button');
+  $unpin_button.animate({top:"-=10px"}, 200, 'swing', function() {
+    $unpin_button.animate({top:"+=10px"}, 200, function() {
+      $(this).remove();
+      var $pin_button = $("<%= j render 'pinned_offers/pin_button', offer: @offer %>").hide();
+      $pin_box.append($pin_button);
+      $pin_button.show();
+    });
   });
 <% end %>
