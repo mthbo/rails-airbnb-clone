@@ -7,6 +7,7 @@ class OffersController < ApplicationController
   end
 
   def show
+    @deals_reviewed = @offer.deals_reviewed.page(params[:page])
   end
 
   def new

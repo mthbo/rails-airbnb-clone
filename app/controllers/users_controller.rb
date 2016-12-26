@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :find_user, only: [:show]
 
   def show
+    @deals_reviewed = @user.deals_reviewed.page(params[:page])
   end
 
   def dashboard

@@ -66,15 +66,23 @@
       <% end %>
 
       <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
-        <% if @user.offers_published.present? %>
-          <% @user.offers_published.each do |offer| %>
-            <%= render "offers/card_profile", offer: offer %>
+        <% if @user == current_user %>
+          <% if @user.offers_published.present? %>
+            <% @user.offers_published.each do |offer| %>
+              <%= render "offers/card_profile", offer: offer %>
+            <% end %>
+          <% else %>
+            <p>You have no offer published.</p>
+            <p>You can <%= link_to "create an offer", new_offer_path %> or <%= link_to "check this out", be_advisor_path %> if you need to know more about being an advisor on Papoters.</p>
           <% end %>
-        <% elsif @user == current_user %>
-          <p>You have no offer published.</p>
-          <p>You can <%= link_to "create an offer", new_offer_path %> or <%= link_to "check this out", be_advisor_path %> if you need to know more about being an advisor on Papoters.</p>
         <% else %>
-          <p><%= @user.first_name %> has no offer published.</p>
+          <% if @user.offers_active.present? %>
+            <% @user.offers_active.each do |offer| %>
+              <%= render "offers/card_profile", offer: offer %>
+            <% end %>
+          <% else %>
+            <p><%= @user.first_name %> has no offer published.</p>
+          <% end %>
         <% end %>
       </div>
 
@@ -88,7 +96,7 @@
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
         <h2>
-          <%= pluralize(@user.deals_reviewed.count, "review") %>
+          <%= pluralize(@deals_reviewed.total_count, "review") %>
         </h2>
         <h5>
           <span class="green">
@@ -101,14 +109,14 @@
         </h5>
 
         <div>
-          <% if  @user.deals_reviewed.present? %>
-            <% @user.deals_reviewed.each do |deal| %>
-              <% if deal.advisor == @user %>
-                <%= render 'deals/review_all', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.client_review_at %>
-              <% else %>
-                <%= render 'deals/review_all', deal: deal, user: deal.advisor, rating: nil, review: deal.advisor_review, date: deal.advisor_review_at %>
-              <% end %>
-            <% end %>
+          <% if  @deals_reviewed.present? %>
+            <div id="user_reviews_page">
+              <%= render 'reviews' %>
+            </div>
+            <div class="text-center padded-top-s" id="user-reviews-paginator" >
+              <%= link_to_previous_page @deals_reviewed, '< Previous', remote: true %>
+              <%= link_to_next_page @deals_reviewed, 'Next >', remote: true %>
+            </div>
           <% elsif @user == current_user %>
             <hr class="bd-gray">
             <p>You didn't get any reviews yet.</p>
