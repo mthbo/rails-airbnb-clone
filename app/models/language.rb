@@ -2,6 +2,8 @@ class Language < ApplicationRecord
   has_many :offer_languages
   has_many :offers, through: :offer_languages
 
+  default_scope -> { order(name: :ASC) }
+
   FLAGS = {
     "French" => "france.svg",
     "English" => "united-kingdom.svg",
@@ -21,5 +23,9 @@ class Language < ApplicationRecord
 
   def flag
     FLAGS[self.name]
+  end
+
+  def name_illustrated
+    "<span class='flag-icon'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name}</span>".html_safe
   end
 end

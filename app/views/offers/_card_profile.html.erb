@@ -1,10 +1,18 @@
-<div class="offer-card profile-offer-card">
+<div class="offer-card">
 
   <div class="offer-card-content">
     <div class="container-fluid">
 
       <div class="row padded-bottom-xs">
-        <div class="col-xs-10">
+        <div class=
+          <% if offer.advisor == current_user %>
+            <%= "col-xs-10" %>
+          <% elsif user_signed_in? %>
+            <%= "col-xs-11" %>
+          <% else %>
+            <%= "col-xs-12" %>
+          <% end %>
+        >
           <h2><%= offer.title %></h2>
         </div>
         <div class="col-xs-12">
@@ -30,7 +38,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-7">
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <%= render 'offers/languages', offer: offer %>
@@ -46,7 +54,7 @@
         <div class="offer-card-top-right">
           <% if policy(offer).update? %>
             <div class="offer-trigger">
-              <div data-offer-status-id="<%= offer.id %>" id="truc" class="offer-trigger-slider">
+              <div data-offer-status-id="<%= offer.id %>" class="offer-trigger-slider">
                 <%= render 'offers/status_trigger', offer: offer %>
               </div>
             </div>

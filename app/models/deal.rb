@@ -15,7 +15,7 @@ class Deal < ApplicationRecord
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   def advisor
-    self.offer.advisor
+    offer.advisor
   end
 
   def rating

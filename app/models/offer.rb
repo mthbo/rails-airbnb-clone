@@ -76,7 +76,7 @@ class Offer < ApplicationRecord
   end
 
   def deals_reviewed
-    deals.where.not(client_review: nil)
+    deals.where.not(client_review: nil).order(client_review_at: :desc)
   end
 
 end

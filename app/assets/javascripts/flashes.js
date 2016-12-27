@@ -4,6 +4,6 @@ $(document).ready(function(){
     $('.alert').fadeOut('slow', function() {
       $(this).remove();
     });
-  }, 1500);
+  }, 2500);
 
 });

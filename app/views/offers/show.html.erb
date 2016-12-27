@@ -15,7 +15,15 @@
 
                 <div class="row">
 
-                  <div class=<%= user_signed_in? ? "col-xs-10" : "col-xs-12" %> >
+                  <div class=
+                    <% if @offer.advisor == current_user %>
+                      <%= "col-xs-10" %>
+                    <% elsif user_signed_in? %>
+                      <%= "col-xs-11" %>
+                    <% else %>
+                      <%= "col-xs-12" %>
+                    <% end %>
+                  >
                     <h2><%= @offer.title %></h2>
                   </div>
 
@@ -124,11 +132,15 @@
               </div>
 
               <div class="offer-reviews">
-                <h3><%= pluralize(@offer.deals_reviewed.count, "review") %></h3>
-                <% if @offer.deals_reviewed.present? %>
-                  <% @offer.deals_reviewed.each do |deal| %>
-                    <%= render 'deals/review', deal: deal %>
-                  <% end %>
+                <h3><%= pluralize(@deals_reviewed.total_count, "review") %></h3>
+                <% if @deals_reviewed.present? %>
+                  <div id="offer_reviews_page">
+                    <%= render 'reviews' %>
+                  </div>
+                  <div class="text-center padded-top-s" id="offer-reviews-paginator" >
+                    <%= link_to_previous_page @deals_reviewed, '< Previous', remote: true %>
+                    <%= link_to_next_page @deals_reviewed, 'Next >', remote: true %>
+                  </div>
                 <% elsif @offer.advisor == current_user %>
                   <hr class="bd-gray">
                   <p>You didn't get any review for this offer yet.</p>

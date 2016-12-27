@@ -17,8 +17,11 @@
   }
   li {
     line-height: 1.8em;
-    img, i {
+    i {
       margin: 0 10px;
+    };
+    img {
+      margin: 0 12px;
     };
   }
 }
@@ -57,6 +60,10 @@
 
 .offer-trigger {
   margin-top: 29px;
+}
+
+#offer-reviews-paginator {
+  font-weight: lighter;
 }
 
 @media (max-width: $screen-sm-max) {

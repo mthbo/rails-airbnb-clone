@@ -1,5 +1,9 @@
-.flag-icon img {
-  height: 22px;
+.flag-icon {
+  display: flex;
+  align-items: center;
+  img {
+    height: 22px;
+  }
 }
 
 .amount-icon {

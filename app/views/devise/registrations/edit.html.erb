@@ -1,79 +1,80 @@
+<% content_for :title do %>
+  <%= "Papoters | Edit profile" %>
+<% end %>
+
 <h2>Edit my profile</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
+  <div class="form-separation padded-top-xs padded-bottom-s">
+    <div></div>
+    <p><strong>About me</strong></p>
+    <div></div>
+  </div>
 
-    <div class="form-separation padded-top-xs padded-bottom-s">
-      <div></div>
-      <p><strong>About me</strong></p>
-      <div></div>
+  <div class="padded-bottom-xs">
+    <p>Take time to provide information about yourself.</p>
+    <p>People need to know who you are and where you come from before dealing with you, this is just human!</p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :first_name, required: true, label: false, placeholder: "First name", input_html: { class: 'custom-form-input' } %>
     </div>
-
-    <div class="padded-bottom-xs">
-      <p>Please take time to provide information about yourself.</p>
-      <p>People need to know who you are and where you come from before dealing with you, this is just human!</p>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :last_name, required: true, label: false, placeholder: "Last name", input_html: { class: 'custom-form-input' } %>
     </div>
-
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :first_name, required: true, label: false, placeholder: "First name", input_html: { class: 'devise-form-input' } %>
-      </div>
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :last_name, required: true, label: false, placeholder: "Last name", input_html: { class: 'devise-form-input' } %>
-      </div>
-      <div class="col-xs-12">
-        <%= f.input :bio, label: false, placeholder: "Describe yourself (history, experiences, studies, hobbies, ...)", input_html: { class: 'devise-form-input', rows: "10" } %>
-      </div>
-      <div class="col-xs-12 col-sm-7">
-        <%= f.input :photo, as: :attachinary, label: "Profile picture", placeholder: false,  input_html: { class: 'devise-form-input' } %>
-      </div>
-      <div class="col-xs-12 col-sm-5">
-        <%= f.input :birth_date, as: :string, placeholder: "mm/dd/yyyy", input_html: { class: 'devise-form-input datepicker form-inline', :value => resource.birth_date ? localize(resource.birth_date, format: "%d/%m/%Y") : nil } %>
-      </div>
+    <div class="col-xs-12">
+      <%= f.input :bio, label: false, placeholder: "Describe yourself (history, experiences, studies, hobbies, ...)", input_html: { class: 'custom-form-input', rows: "10" } %>
     </div>
-
-    <div class="form-separation padded-top-s padded-bottom-s">
-      <div></div>
-      <p><strong>Contact details</strong></p>
-      <div></div>
+    <div class="col-xs-12 col-sm-7">
+      <%= f.input :photo, as: :attachinary, label: "Profile picture", placeholder: false,  input_html: { class: 'custom-form-input' } %>
     </div>
-
-    <div class="padded-bottom-xs">
-      <p>Your contact details won't be disclosed publicly, apart from your city and country of residence.</p>
-      <p>Each time you make a deal on Papoters, your contact details may be communicated to the other party upon your approval.</p>
-    </div>
-
-    <div class="row">
-
-      <div class="col-xs-12 col-sm-7">
-        <%= f.input :email, required: true, placeholder: "my-email@host.com", input_html: { class: 'devise-form-input' } %>
-
-        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-          <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-        <% end %>
-      </div>
-      <div class="col-xs-12 col-sm-5">
-        <%= f.input :phone_number, placeholder: "+33 6 ** ** ** **", input_html: { class: 'devise-form-input' } %>
-      </div>
-      <div class="col-xs-12">
-        <%= f.input :address, placeholder: "Street number and name", input_html: { class: 'devise-form-input' } %>
-      </div>
-      <div class="col-xs-4 col-sm-3">
-        <%= f.input :zip_code, label: false, placeholder: "Zip code", input_html: { class: 'devise-form-input' } %>
-      </div>
-      <div class="col-xs-8 col-sm-4">
-        <%= f.input :city, label: false, placeholder: "City", input_html: { class: 'devise-form-input' } %>
-      </div>
-      <div class="col-xs-12 col-sm-5">
-        <%= f.input :country, label: false, prompt: "-- Country --", input_html: { class: 'devise-form-input' } %>
-      </div>
-
+    <div class="col-xs-12 col-sm-5">
+      <%= f.input :birth_date, as: :string, placeholder: "mm/dd/yyyy", input_html: { class: 'custom-form-input datepicker', value: resource.birth_date ? localize(resource.birth_date, format: "%d/%m/%Y") : nil } %>
     </div>
   </div>
 
-  <div class="form-actions text-right padded-top-s">
+  <div class="form-separation padded-top-s padded-bottom-s">
+    <div></div>
+    <p><strong>Contact details</strong></p>
+    <div></div>
+  </div>
+
+  <div class="padded-bottom-xs">
+    <p>Your contact details won't be disclosed publicly, apart from your city and country of residence.</p>
+    <p>Each time you make a deal on Papoters, your contact details may be communicated to the other party upon your approval.</p>
+  </div>
+
+  <div class="row">
+
+    <div class="col-xs-12 col-sm-7">
+      <%= f.input :email, required: true, placeholder: "my-email@host.com", input_html: { class: 'custom-form-input' } %>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+      <% end %>
+    </div>
+    <div class="col-xs-12 col-sm-5">
+      <%= f.input :phone_number, placeholder: "+33 6 ** ** ** **", input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-12">
+      <%= f.input :address, placeholder: "Street number and name", input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-4 col-sm-3">
+      <%= f.input :zip_code, label: false, placeholder: "Zip code", input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-8 col-sm-4">
+      <%= f.input :city, label: false, placeholder: "City", input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-12 col-sm-5">
+      <%= f.input :country, label: false, prompt: "-- Country --", input_html: { class: 'custom-form-input' } %>
+    </div>
+
+  </div>
+
+  <div class="text-right padded-top-s">
     <%= f.button :submit, "Update profile", class: "btn-form btn-gray" %>
   </div>
 <% end %>
@@ -88,10 +89,11 @@
   <div></div>
 </div>
 
+<div class="padded-bottom-xs">
+  <p>Cancelling your account will destroy all your history on Papoters (offers, reviews, etc.).</p>
+  <p>Please note that you can't cancel your account if you still have open deals.</p>
+</div>
+
 <div class="text-center">
-  <div class="padded-bottom-s">
-    <p>Cancelling your account will destroy all your history on Papoters (offers, reviews, etc.).</p>
-    <p>Please note that you can't cancel your account if you still have open deals.</p>
-  </div>
   <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Cancelling your account will destroy all your history on Papoters (offers, reviews, etc.). Are you sure you want to do it?" }, method: :delete, class: "btn btn-form btn-red" %>
 </div>

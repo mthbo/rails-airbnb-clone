@@ -83,10 +83,6 @@ class User < ApplicationRecord
     offers_published.reverse
   end
 
-  def deals
-    client_deals + advisor_deals
-  end
-
   def advisor_deals_request
     advisor_deals.where(status: :request)
   end
@@ -124,7 +120,11 @@ class User < ApplicationRecord
   end
 
   def client_deals_reviewed
-    client_deals.where.not(client_review: nil).order(advisor_review_at: :desc)
+    client_deals.where.not(advisor_review: nil).order(advisor_review_at: :desc)
+  end
+
+  def deals
+    client_deals + advisor_deals
   end
 
   def deals_request
@@ -148,10 +148,13 @@ class User < ApplicationRecord
   end
 
   def deals_reviewed
-    deals_sorted = (advisor_deals_reviewed + client_deals_reviewed).sort_by do |deal|
-      deal.client == self ? deal.advisor_review_at : deal.client_review_at
-    end
-    deals_sorted.reverse
+    # deals_sorted = (advisor_deals_reviewed + client_deals_reviewed).sort_by do |deal|
+    #   deal.client == self ? deal.advisor_review_at : deal.client_review_at
+    # end
+    # deals_sorted.reverse
+    deals_as_advisor = Deal.where(offer: self.offers).where.not(client_review: nil)
+    deals_as_client = Deal.where(client: self).where.not(advisor_review: nil)
+    deals_as_advisor.or(deals_as_client).order(client_review_at: :desc)
   end
 
 

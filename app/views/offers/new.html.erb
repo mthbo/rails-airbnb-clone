@@ -1,14 +1,11 @@
 <% content_for :title do %>
-  <%= "New offer | Papoters" %>
+  <%= "Papoters | Create offer" %>
 <% end %>
 
-<div class="padded-top-xxl padded-bottom-xxl bg-gray">
-  <div class="container">
+<h2>Create an offer</h2>
 
-    <div>
-        <h1>New offer</h1>
-        <%= render 'form' %>
-    </div>
+<%= render 'form' %>
 
-  </div>
+<div class="text-right padded-top-xs">
+  <p><%= link_to "Back to profile", :back %></p>
 </div>
