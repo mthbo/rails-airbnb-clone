@@ -89,10 +89,11 @@
   <div></div>
 </div>
 
+<div class="padded-bottom-xs">
+  <p>Cancelling your account will destroy all your history on Papoters (offers, reviews, etc.).</p>
+  <p>Please note that you can't cancel your account if you still have open deals.</p>
+</div>
+
 <div class="text-center">
-  <div class="padded-bottom-s">
-    <p>Cancelling your account will destroy all your history on Papoters (offers, reviews, etc.).</p>
-    <p>Please note that you can't cancel your account if you still have open deals.</p>
-  </div>
   <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Cancelling your account will destroy all your history on Papoters (offers, reviews, etc.). Are you sure you want to do it?" }, method: :delete, class: "btn btn-form btn-red" %>
 </div>

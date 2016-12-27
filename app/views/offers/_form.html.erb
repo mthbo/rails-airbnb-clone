@@ -1,21 +1,33 @@
 <%= simple_form_for(@offer) do |f| %>
   <%= f.error_notification message: 'Please fill all the fields below' %>
 
-  <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "Title", input_html: { class: 'custom-form-input' } %>
+  <div class="padded-bottom-xs">
+    <p>Describe your offer and give it a catchy title.</p>
+    <p>Provide the appropriate level of information to be as convincing as possible (what you know better than anyone else, which experience or learning legitimate your expertise, ...). Also tell what is not part of your expertise to avoid disconnected requests.</p>
+  </div>
+
+  <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "Give your offer a title", input_html: { class: 'custom-form-input' } %>
   <%= f.input :description, label: false, placeholder: "Describe your offer", input_html: { class: 'custom-form-input', rows: "10" } %>
+
+  <div class="padded-top-xs padded-bottom-xs">
+    <h6>Languages</h6>
+    <p>Select the languages you accept to communicate with people on this offer.</p>
+  </div>
 
   <div class="custom-check-boxes">
     <%= f.association :languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
   </div>
+
+  <div class="padded-top-xs padded-bottom-xs">
+    <h6>Means of communication</h6>
+    <p>Select the means you accept to communicate with people on this offer.</p>
+  </div>
+
   <div class="custom-check-boxes">
     <%= f.association :means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
   </div>
 
   <div class="text-right">
     <%= f.button :submit, class: "btn-form btn-gray" %>
-  </div>
-
-  <div class="text-right padded-top-xs">
-    <p><%= link_to "Back to profile", :back %></p>
   </div>
 <% end %>
