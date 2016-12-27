@@ -1,4 +1,4 @@
-.devise-form {
+.custom-form {
   max-width: 600px;
   margin: 0 auto;
   padding: 5px 30px 30px 30px;
@@ -8,7 +8,7 @@
   }
 }
 
-.devise-form-top {
+.custom-form-top {
   max-width: 600px;
   margin: 0 auto;
   height: 100 px;
@@ -17,11 +17,11 @@
   background-color: rgba(255,255,255,0.8);
 }
 
-.devise-form-logo img {
+.custom-form-logo img {
   height: 45px;
 }
 
-.devise-form-input {
+.custom-form-input {
   height: 45px;
   &:focus {
     border-color: $light-blue;
@@ -54,17 +54,50 @@
   }
 }
 
+.custom-check-boxes .check_boxes {
+  display: flex;
+  flex-wrap: wrap;
+  .checkbox {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    margin: 0;
+    max-width: 160px;
+    label {
+      flex: 1 1 auto;
+      margin: 3px;
+      padding: 10px 15px;
+      border-radius: 2px;
+      border: solid 1px $light-gray;
+      background-color: white;
+      color: $dark-gray;
+      img {
+        margin-right: 12px;
+      };
+      i {
+        margin-right: 10px;
+      }
+      input {
+        display: none;
+      }
+    }
+  };
+  .help-block {
+    flex: 0 0 100%;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
-  .devise-form-logo img {
+  .custom-form-logo img {
     height: 35px;
   };
-  .devise-form {
+  .custom-form {
   padding: 5px 10px 30px 10px;
   };
-  .devise-form-top {
+  .custom-form-top {
     padding: 10px;
   };
-  .devise-form-input {
+  .custom-form-input {
     height: 40px;
     font-size: 14px;
   }

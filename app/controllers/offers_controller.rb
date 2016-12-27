@@ -1,6 +1,7 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_offer, only: [:show, :edit, :update, :destroy]
+  layout 'devise', only: [:new, :create, :edit, :update]
 
   def index
     @offers = policy_scope(Offer).search(params[:search])
@@ -22,7 +23,6 @@ class OffersController < ApplicationController
       flash[:notice] = "#{@offer.title} has been created"
       redirect_to offer_path(@offer)
     else
-      flash[:alert] = "No offer has been created"
       render :new
     end
   end
@@ -40,7 +40,6 @@ class OffersController < ApplicationController
         format.js
       end
     else
-      flash[:alert] = "#{@offer.title} hasn't been updated"
       render :edit
     end
   end

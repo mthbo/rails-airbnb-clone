@@ -1,7 +1,11 @@
 <% if offer.active? %>
-  <%= link_to offer_path(offer, offer:{status: :inactive}), method: :patch, remote: :true, class: "offer-trigger-btn inactivate-offer" do %>
-  <% end %>
+  <div class="offer-trigger-slider inactivate-offer-slider">
+    <%= link_to offer_path(offer, offer:{status: :inactive}), method: :patch, remote: :true, class: "offer-trigger-btn inactivate-offer-btn" do %>
+    <% end %>
+  </div>
 <% elsif offer.inactive? %>
-  <%= link_to offer_path(offer, offer:{status: :active}), method: :patch, remote: :true, class: "offer-trigger-btn activate-offer" do %>
-  <% end %>
+  <div class="offer-trigger-slider activate-offer-slider">
+    <%= link_to offer_path(offer, offer:{status: :active}), method: :patch, remote: :true, class: "offer-trigger-btn activate-offer-btn" do %>
+    <% end %>
+  </div>
 <% end %>

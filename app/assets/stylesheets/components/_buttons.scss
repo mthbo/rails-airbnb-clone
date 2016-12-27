@@ -23,12 +23,19 @@
 }
 
 .offer-trigger-slider {
-  height: 26px;
-  width: 52px;
-  border: 1px solid $dark-gray;
+  height: 24px;
+  width: 48px;
   border-radius: 13px;
-  background-color: $extra-light-gray;
+  background-color: $green;
   position: relative;
+}
+
+.activate-offer-slider {
+  background-color: $medium-gray;
+}
+
+.inactivate-offer-slider {
+  background-color: $green;
 }
 
 .offer-trigger-btn {
@@ -37,16 +44,15 @@
   height: 20px;
   width: 20px;
   border-radius: 50%;
+  background-color: white;
 }
 
-.inactivate-offer {
+.inactivate-offer-btn {
   right: 2px;
-  background-color: $green;
 }
 
-.activate-offer {
+.activate-offer-btn {
   left: 2px;
-  background-color: $medium-gray;
 }
 
 .btn {
@@ -172,8 +178,8 @@
     height: 40px;
   };
   .offer-trigger-slider {
-    height: 22px;
-    width: 44px;
+    height: 20px;
+    width: 40px;
     border-radius: 11px;
   };
   .offer-trigger-btn {
