@@ -23,7 +23,7 @@
       </div>
       <div class="row padded-bottom-xs">
         <div class="col-xs-4 col-sm-2">
-          <p><strong><%= offer.deals_closed.count %></strong>  <%= "deal".pluralize(offer.deals_closed.count) %></p>
+          <%= render 'offers/advice_sessions', offer: offer %>
         </div>
         <div class="col-xs-8 col-sm-5 text-right">
             <%= render 'offers/satisfaction', offer: offer %>

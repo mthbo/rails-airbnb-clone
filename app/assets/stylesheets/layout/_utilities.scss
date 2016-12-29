@@ -143,6 +143,10 @@ label {
   font-weight: normal;
 }
 
+.special-font {
+  font-family: $special-font;
+}
+
 // Colors
 
 .yellow {
@@ -150,6 +154,9 @@ label {
 }
 .green {
   color: $green;
+}
+.blue {
+  color: $blue;
 }
 .medium-gray {
   color: $medium-gray
