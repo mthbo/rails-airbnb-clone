@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <%= "Deal | Papoters" %>
+  <%= "Papoters | Session n° #{@deal.id}" %>
 <% end %>
 
 <div class="padded-top-xxl padded-bottom-xxl">
@@ -59,10 +59,26 @@
       <p><%= @deal.request %></p>
     </div>
 
+  </div>
+</div>
 
-    <div class="padded-top-s padded-bottom-s">
-      <%= render "offers/card", offer: @deal.offer %>
+<div class="bg-gray padded-top-s padded-bottom-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+        <h2>Related offer</h2>
+        <% if policy(@deal.offer).show? %>
+          <%= render "offers/card_profile", offer: @deal.offer %>
+        <% else %>
+          <% if @deal.advisor == current_user %>
+            <p>You have permanently removed the offer <span class="font-weight-normal">"<%= @deal.offer.title %>"</span>.</p>
+            <p><%= link_to "Go to your profile", user_path(@deal.client) %> to create new offers.</p>
+          <% elsif @deal.client == current_user %>
+            <p><%= @deal.advisor.first_name %> has permanently removed the offer <span class="font-weight-normal">"<%= @deal.offer.title %>"</span>.</p>
+            <p>Check out the <%= link_to "profile of #{@deal.advisor.first_name}", user_path(@deal.advisor) %> for active offers.</p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-
   </div>
 </div>

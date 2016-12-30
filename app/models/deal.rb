@@ -6,7 +6,7 @@ class Deal < ApplicationRecord
   has_many :means, through: :deal_means
   has_many :deal_languages, dependent: :destroy
   has_many :languages, through: :deal_languages
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   monetize :amount_cents
   enum status: [ :request, :proposition, :open, :closed ]

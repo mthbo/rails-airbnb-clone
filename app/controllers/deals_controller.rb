@@ -3,6 +3,7 @@ class DealsController < ApplicationController
   before_action :find_offer, only: [:new, :create]
 
   def show
+    @message = Message.new
   end
 
   def new
@@ -21,9 +22,6 @@ class DealsController < ApplicationController
       flash[:alert] = "No request has been sent"
       render :new
     end
-  end
-
-  def edit
   end
 
   def update

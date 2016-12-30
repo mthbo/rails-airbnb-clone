@@ -26,6 +26,10 @@ class Offer < ApplicationRecord
     pinned_offers.find_by(client: user)
   end
 
+  def pending_deal(user)
+    deals_pending.find_by(client: user)
+  end
+
   def global_rating
     if deals_reviewed.present?
       sum = 0
@@ -71,8 +75,12 @@ class Offer < ApplicationRecord
     deals.where(status: :closed)
   end
 
+  def deals_pending
+    deals_request.or(deals_proposition)
+  end
+
   def deals_ongoing
-    deals_proposition + deals_open
+    deals_proposition.or(deals_open)
   end
 
   def deals_reviewed
