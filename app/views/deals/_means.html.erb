@@ -1,0 +1,8 @@
+<ul class = "list-unstyled">
+  <% deal.means.each do |mean| %>
+    <li class="icons-list mean-icons means-long">
+      <i class="fa fa-<%= mean.picto %> fa-fw fa-lg" aria-hidden="true"></i>
+      <%= mean.name %>
+    </li>
+  <% end %>
+</ul>

@@ -1,9 +1,29 @@
-.flag-icon {
+.icons-list {
+  line-height: 1.8em;
+  margin-left: 10px;
+}
+
+.flag-icons {
   display: flex;
   align-items: center;
   img {
     height: 22px;
   }
+}
+
+.flags-long {
+  img {
+    margin-right: 12px;
+  }
+}
+
+.mean-icons {
+}
+
+.means-long {
+  i {
+    margin-right: 10px;
+  };
 }
 
 .amount-icon {
@@ -18,7 +38,7 @@
   .amount-icon img {
     height: 18px;
   }
-  .flag-icon img {
+  .flag-icons img {
     height: 20px;
   }
 }

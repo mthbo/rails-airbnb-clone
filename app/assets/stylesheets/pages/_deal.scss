@@ -5,3 +5,31 @@
   font-size: 16px;
   color: $dark-gray;
 }
+
+.session-conversation {
+  border: 1px solid $light-gray;
+  height: 70vh;
+}
+
+.session-status-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.session-status {
+  flex: 1 0 auto;
+}
+
+.session-status-arrow {
+  flex: 0 1 auto;
+  margin: 0 5px;
+}
+
+.session-proposition-top {
+  display: flex;
+  justify-content: space-between;
+}

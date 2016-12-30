@@ -5,7 +5,7 @@ class DealPolicy < ApplicationPolicy
   end
 
   def create?
-    record.advisor != user && record.offer.active? && record.offer.deals_pending.where(client: user).blank?
+    record.advisor != user && record.offer.active? && record.offer.deals_ongoing.where(client: user).blank?
   end
 
   def update?

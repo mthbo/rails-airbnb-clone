@@ -1,0 +1,8 @@
+<ul class = "list-unstyled">
+  <% deal.languages.each do |language| %>
+    <li class="icons-list flag-icons flags-long">
+      <%= image_tag "flags/" + language.flag %>
+      <%= language.name %>
+    </li>
+  <% end %>
+</ul>

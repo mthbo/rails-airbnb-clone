@@ -30,6 +30,10 @@ class Offer < ApplicationRecord
     deals_pending.find_by(client: user)
   end
 
+  def open_deal(user)
+    deals_open.find_by(client: user)
+  end
+
   def global_rating
     if deals_reviewed.present?
       sum = 0
@@ -80,7 +84,7 @@ class Offer < ApplicationRecord
   end
 
   def deals_ongoing
-    deals_proposition.or(deals_open)
+    deals_pending.or(deals_open)
   end
 
   def deals_reviewed

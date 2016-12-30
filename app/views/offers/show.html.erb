@@ -63,25 +63,11 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-4 padded-bottom-xs">
                     <h6>Languages spoken</h6>
-                    <ul class = "list-unstyled">
-                      <% @offer.languages.each do |language| %>
-                        <li class="flag-icon">
-                          <%= image_tag "flags/" + language.flag %>
-                          <%= language.name %>
-                        </li>
-                      <% end %>
-                    </ul>
+                    <%= render 'offers/languages_long', offer: @offer %>
                   </div>
                   <div class="col-xs-12 col-sm-4 padded-bottom-xs">
                     <h6>Means of communication</h6>
-                    <ul class = "list-unstyled">
-                      <% @offer.means.each do |mean| %>
-                        <li>
-                          <i class="fa fa-<%= mean.picto %> fa-fw fa-lg" aria-hidden="true"></i>
-                          <%= mean.name %>
-                        </li>
-                      <% end %>
-                    </ul>
+                    <%= render 'offers/means_long', offer: @offer %>
                   </div>
                   <div class="col-xs-12 col-sm-4 text-right padded-bottom-xs">
                     <% if policy(@offer).edit? %>

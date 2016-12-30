@@ -70,13 +70,4 @@ class DealsController < ApplicationController
     )
   end
 
-  def deal_proposition
-  end
-
-  def deal_acceptation
-  end
-
-  def deal_close
-  end
-
 end

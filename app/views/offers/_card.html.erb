@@ -21,6 +21,7 @@
           </div>
         </div>
       </div>
+
       <div class="row padded-bottom-xs">
         <div class="col-xs-4 col-sm-2">
           <%= render 'offers/advice_sessions', offer: offer %>
@@ -34,7 +35,7 @@
       </div>
 
       <div class="padded-bottom-xs">
-        <p><%= offer.description[0..250] %> ... <strong>more</strong></p>
+        <%= render 'offers/summary', offer: offer %>
       </div>
 
       <div class="row">

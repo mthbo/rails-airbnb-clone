@@ -61,6 +61,10 @@
   padding-bottom: 6em;
 }
 
+.no-margin-top {
+  margin-top: 0;
+}
+
 // Backgrounds
 
 .bg-gray {
@@ -143,6 +147,10 @@ label {
   font-weight: normal;
 }
 
+.font-weight-bolder {
+  font-weight: bolder;
+}
+
 .special-font {
   font-family: $special-font;
 }
@@ -157,6 +165,9 @@ label {
 }
 .blue {
   color: $blue;
+}
+.red {
+  color: $red;
 }
 .medium-gray {
   color: $medium-gray
