@@ -1,0 +1,43 @@
+<div class="session-proposition-top">
+  <h4 class="font-weight-normal">Proposition</h4>
+  <div class="session-proposition-figures">
+    <p>
+      <span class="amount-icon">
+        <%= image_tag 'objective.svg' %>
+      </span>
+      <strong><%= @deal.objectives.count %></strong>
+    </p>
+    <p>
+      <span class="amount-icon">
+        <%= image_tag 'amount.svg' %>
+      </span>
+      <strong><%= money_without_cents_and_with_symbol(@deal.amount) %></strong>
+    </p>
+    <p>
+      <span class="amount-icon">
+        <%= image_tag 'date.svg' %>
+      </span>
+      <strong><%= @deal.deadline.strftime("%d %b %Y") %></strong>
+    </p>
+  </div>
+</div>
+
+<div class="session-proposition bg-white-transparent">
+  <div class="padded-bottom-xs">
+    <h6>Session <%= "target".pluralize(@deal.objectives.count) %></h6>
+    <% @deal.objectives.each_with_index do |objective, i| %>
+      <p><strong><%= i + 1 %> &nbsp; | &nbsp; </strong><%= objective.description %></p>
+    <% end %>
+  </div>
+  <p><%= @deal.proposition %></p>
+  <div class="row">
+    <div class="col-xs-6">
+      <h6>Languages</h6>
+      <%= render 'languages', deal: @deal %>
+    </div>
+    <div class="col-xs-6">
+      <h6>Means of communication</h6>
+      <%= render 'means', deal: @deal %>
+    </div>
+  </div>
+</div>

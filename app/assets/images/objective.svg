@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>target</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pictos" transform="translate(-465.000000, -162.000000)">
+            <g id="target" transform="translate(465.000000, 162.000000)">
+                <g id="Group">
+                    <g id="Rectangle-path" fill="#4A4A4A">
+                        <rect x="13.1911111" y="0" width="1.61777778" height="6.50222222"></rect>
+                        <rect x="21.4977778" y="13.1911111" width="6.50222222" height="1.61777778"></rect>
+                        <rect x="0" y="13.1911111" width="6.50222222" height="1.61777778"></rect>
+                        <rect x="13.1911111" y="21.4977778" width="1.61777778" height="6.50222222"></rect>
+                    </g>
+                    <path d="M14,9.33333333 C11.4177778,9.33333333 9.33333333,11.4177778 9.33333333,14 C9.33333333,16.5822222 11.4177778,18.6666667 14,18.6666667 C16.5822222,18.6666667 18.6666667,16.5822222 18.6666667,14 C18.6666667,11.4177778 16.5822222,9.33333333 14,9.33333333 L14,9.33333333 L14,9.33333333 Z" id="Shape" stroke="#4A4A4A" fill="#FFC938"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

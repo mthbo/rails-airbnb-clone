@@ -2,91 +2,86 @@
   <%= "Papoters | Session n° #{@deal.id}" %>
 <% end %>
 
-<div class="padded-top-xxl padded-bottom-xxl">
+<div class="padded-top-xxl padded-bottom-xxl bg-gradient">
   <div class="container">
+
     <div class="row">
       <div class="col-xs-12 padded-bottom-s">
-        <h3>
-          <strong class=
-          <% if @deal.open? %>
-            "green"
-          <% elsif @deal.closed? %>
-            "red"
-          <% else %>
-            "blue"
-          <% end %>
-          >#session-<%= @deal.id %></strong>
-          <% if @deal.client ==  current_user && @deal.advisor %>
-            with <%= link_to "#{@deal.advisor.name_anonymous}", user_path(@deal.advisor) %>
-          <% elsif @deal.advisor ==  current_user && @deal.client %>
-            with <%= link_to "#{@deal.client.name_anonymous}", user_path(@deal.client) %>
-          <% end %>
-          <% if @deal.offer %>
-            &nbsp; | &nbsp; for "<%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %>"
-          <% end %>
-        </h3>
+        <div class="session-title">
+
+          <h3>
+            <strong class=
+            <% if @deal.open? %>
+              "green"
+            <% elsif @deal.closed? %>
+              "red"
+            <% else %>
+              "blue"
+            <% end %>
+            >#session-<%= @deal.id %></strong>
+            <% if @deal.client ==  current_user && @deal.advisor %>
+              with <%= link_to "#{@deal.advisor.name_anonymous}", user_path(@deal.advisor) %>
+            <% elsif @deal.advisor ==  current_user && @deal.client %>
+              with <%= link_to "#{@deal.client.name_anonymous}", user_path(@deal.client) %>
+            <% end %>
+            <% if @deal.offer %>
+              &nbsp; | &nbsp; for "<%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %>"
+            <% end %>
+          </h3>
+
+        </div>
       </div>
     </div>
 
     <div class="row">
 
       <div class="col-xs-12 col-md-6">
+        <div class="session-info">
 
-        <hr class="bd-gray no-margin-top">
-        <%= render 'status' %>
-        <hr class="bd-gray">
+          <div class="padded-bottom-s">
+            <%= render 'status' %>
+          </div>
 
-        <div class="padded-bottom-s">
-          <% if @deal.request? && @deal.client == current_user %>
-            <p>Your request has been sent to <%= @deal.advisor.first_name %>. You should receive a proposition soon if <%= @deal.advisor.first_name %> can meet your needs.</p>
-          <% elsif @deal.request? && @deal.advisor == current_user %>
-            <p><%= @deal.client.first_name %> has sent you a request. Answer with a proposition if you figure you can meet the needs of <%= @deal.client.first_name %>.</p>
-          <% elsif @deal.advisor %>
-            <h3>Proposition</h3>
-            <div class="session-proposition-top">
-              <p>Amount: <strong><%= money_without_cents_and_with_symbol(@deal.amount) %></strong></p>
-              <p>Deadline: <strong><%= @deal.deadline.strftime("%d %b %Y") %></strong></p>
-            </div>
-            <% @deal.objectives.each do |objective| %>
-              <hr>
-              <p><%= objective.description %></p>
-            <% end %>
-            <hr>
-            <p><%= @deal.proposition %></p>
-            <hr>
-            <div class="row">
-              <div class="col-xs-6 col-sm-5">
-                <h6>Languages</h6>
-                <%= render 'languages', deal: @deal %>
+          <div class="padded-bottom-xs">
+            <% if @deal.request? && @deal.client == current_user %>
+              <p>Your request has been sent to <%= @deal.advisor.first_name %>. You should receive a proposition soon if <%= @deal.advisor.first_name %> can meet your needs.</p>
+
+            <% elsif @deal.request? && @deal.advisor == current_user %>
+              <p><%= @deal.client.first_name %> has sent you a request. Answer with a proposition if you figure you can meet the needs of <%= @deal.client.first_name %>.</p>
+
+            <% elsif @deal.advisor %>
+              <div class="padded-bottom-xs">
+                <%= render 'proposition' %>
               </div>
-              <div class="col-xs-6 col-sm-5">
-                <h6>Means of communication</h6>
-                <%= render 'means', deal: @deal %>
-              </div>
-            </div>
-          <% end %>
-        </div>
 
-        <div>
-          <% if @deal.proposition? %>
-            <% if @deal.client == current_user  %>
-              <%= render "acceptation_form" %>
-            <% else %>
-              <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
             <% end %>
-          <% end %>
+          </div>
 
-          <% if @deal.open? %>
-            <div class="padded-top-s padded-bottom-s">
-              <%= render "close_form" %>
-            </div>
-          <% end %>
+          <div>
+            <% if @deal.proposition? %>
+              <% if @deal.client == current_user  %>
+                <%= render "acceptation_form" %>
+              <% else %>
+                <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
+              <% end %>
+            <% end %>
+
+            <% if @deal.open? %>
+              <div class="padded-top-s padded-bottom-s">
+                <%= render "close_form" %>
+              </div>
+            <% end %>
+          </div>
+
         </div>
-
       </div>
 
       <div class="col-xs-12 col-md-6">
         <div class="session-conversation">
+
+          <div class="session-conversation-box">
+
+          </div>
 
         </div>
       </div>
