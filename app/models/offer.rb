@@ -68,7 +68,7 @@ class Offer < ApplicationRecord
   end
 
   def deals_proposition
-    deals.where(status: :proposition)
+    deals.where(status: :proposition).or(deals.where(status: :proposition_declined))
   end
 
   def deals_open

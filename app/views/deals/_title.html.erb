@@ -1,0 +1,22 @@
+<h3>
+  <strong class=
+  <% if @deal.open? %>
+    "green"
+  <% elsif @deal.closed? %>
+    "red"
+  <% else %>
+    "blue"
+  <% end %>
+  >#session-<%= @deal.id %></strong>
+  <% if @deal.client ==  current_user && @deal.advisor %>
+    with <%= link_to "#{@deal.advisor.name_anonymous}", user_path(@deal.advisor) %>
+  <% elsif @deal.advisor ==  current_user && @deal.client %>
+    with <%= link_to "#{@deal.client.name_anonymous}", user_path(@deal.client) %>
+  <% end %>
+  for
+  <% if @deal.offer %>
+    "<%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %>"
+  <% else %>
+    " - "
+  <% end %>
+</h3>

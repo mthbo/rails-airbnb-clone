@@ -9,13 +9,20 @@ class Deal < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   monetize :amount_cents
-  enum status: [ :request, :proposition, :open, :closed ]
+  enum status: [ :request, :proposition, :proposition_declined, :open, :closed ]
 
+  validates :proposition, presence: true, on: :update
+  validates :request, presence: true
+  validates :deadline, presence: true
   validates :languages, presence: { message: "At least one language must me selected" }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   def advisor
     offer.advisor
+  end
+
+  def proposition_any?
+    proposition? || proposition_declined?
   end
 
   def rating

@@ -18,6 +18,9 @@ Rails.application.routes.draw do
   resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
     resources :pinned_offers, only: [:create, :destroy]
     resources :deals, only: [:show, :new, :create, :update, :destroy], path: 'sessions' do
+      member do
+        get 'proposition', to: 'deals#proposition'
+      end
       resources :objectives, only: [:create, :update, :destroy]
     end
   end

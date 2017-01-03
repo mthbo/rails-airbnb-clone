@@ -1,0 +1,11 @@
+<!-- <hr class="bd-gray"> -->
+
+<% if @deal.advisor == current_user %>
+  <p>Cancel the session if you don't want to pursue. Note that you won't be able to cancel the session after a proposition is sent, unless <%= @deal.client.first_name %> declines it.</p>
+<% elsif @deal.client == current_user %>
+  <p>Cancel the session if you don't want to pursue. Note that you won't be able to cancel the session once you accept a proposition.</p>
+<% end %>
+<div class="text-center padded-top-xs">
+  <%= link_to "Cancel the session", deal_path(@deal), data: { confirm: "Are you sure you want to cancell this session?" }, method: :delete, class: "btn btn-form btn-red" %>
+</div>
+

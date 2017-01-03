@@ -23,12 +23,15 @@
 </div>
 
 <div class="session-proposition bg-white-transparent">
-  <div class="padded-bottom-xs">
+  <div>
     <h6>Session <%= "target".pluralize(@deal.objectives.count) %></h6>
     <% @deal.objectives.each_with_index do |objective, i| %>
       <p><strong><%= i + 1 %> &nbsp; | &nbsp; </strong><%= objective.description %></p>
     <% end %>
   </div>
+</div>
+
+<div class="session-proposition bg-white-transparent" id="proposition-details">
   <p><%= @deal.proposition %></p>
   <div class="row">
     <div class="col-xs-6">
@@ -40,4 +43,25 @@
       <%= render 'means', deal: @deal %>
     </div>
   </div>
+</div>
+
+<div class="session-proposition-toggle bg-white-transparent text-center">
+  <%= link_to '#', id: "proposition-toggle" do  %>
+    <p>See details &nbsp;
+      <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+    </p>
+    <p class="hidden">Hide details &nbsp;
+      <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+    </p>
+  <% end %>
+</div>
+
+<div class="session-proposition-bottom text-right">
+  <% if @deal.proposition? %>
+    <% if @deal.client == current_user  %>
+      <%= render "acceptation_form" %>
+    <% else %>
+      <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
+    <% end %>
+  <% end %>
 </div>

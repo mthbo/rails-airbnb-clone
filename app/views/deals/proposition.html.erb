@@ -1,0 +1,54 @@
+<% content_for :title do %>
+  <%= "Papoters | #session-#{@deal.id} proposition" %>
+<% end %>
+
+<h2>New proposition</h2>
+
+<%= simple_form_for @deal do |f| %>
+  <%= f.error_notification message: 'Please fill all the fields below' %>
+
+  <div class="padded-bottom-xs">
+    <p>Describe your proposition.</p>
+    <p>Bla bla</p>
+  </div>
+
+  <%= f.input :proposition, label: false, placeholder: "Detail your proposition", input_html: { class: 'custom-form-input', rows: "10" } %>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :amount, required: true, label: false, placeholder: "Propose an amount", input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :deadline, as: :string, placeholder: "mm/dd/yyyy", input_html: { class: 'custom-form-input datepicker', value: @deal.deadline ? localize(@deal.deadline, format: "%d/%m/%Y") : nil } %>
+    </div>
+  </div>
+
+  <div class="padded-top-xs padded-bottom-xs">
+    <h6>Languages</h6>
+    <p>Select the languages you accept to communicate with people on this offer.</p>
+  </div>
+
+  <div class="custom-check-boxes">
+    <%= f.association :languages, collection: @deal.languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
+
+  <div class="padded-top-xs padded-bottom-xs">
+    <h6>Means of communication</h6>
+    <p>Select the means you accept to communicate with people on this offer.</p>
+  </div>
+
+  <div class="custom-check-boxes">
+    <%= f.association :means, collection: @deal.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
+
+  <%= f.input :proposition_at, as: :hidden, :input_html => { value: DateTime.now } %>
+  <%= f.hidden_field :status, value: :proposition %>
+
+  <div class="text-right">
+    <%= f.button :submit, "Send", class: "btn-form btn-gray" %>
+  </div>
+<% end %>
+
+<div class="text-right padded-top-xs">
+  <p><%= link_to "Back to session", deal_path(@deal) %></p>
+</div>

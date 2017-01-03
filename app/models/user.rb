@@ -88,7 +88,7 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_proposition
-    advisor_deals.where(status: :proposition)
+    advisor_deals.where(status: :proposition).or(advisor_deals.where(status: :proposition_declined))
   end
 
   def advisor_deals_open
@@ -108,7 +108,7 @@ class User < ApplicationRecord
   end
 
   def client_deals_proposition
-    client_deals.where(status: :proposition)
+    client_deals.where(status: :proposition).or(client_deals.where(status: :proposition_declined))
   end
 
   def client_deals_open
@@ -148,10 +148,6 @@ class User < ApplicationRecord
   end
 
   def deals_reviewed
-    # deals_sorted = (advisor_deals_reviewed + client_deals_reviewed).sort_by do |deal|
-    #   deal.client == self ? deal.advisor_review_at : deal.client_review_at
-    # end
-    # deals_sorted.reverse
     deals_as_advisor = Deal.where(offer: self.offers).where.not(client_review: nil)
     deals_as_client = Deal.where(client: self).where.not(advisor_review: nil)
     deals_as_advisor.or(deals_as_client).order(client_review_at: :desc)
