@@ -1,22 +1,12 @@
 <p>
-  <span class="amount-icon">
-    <%= image_tag 'amount.svg' %>
-  </span>
-  <% unless offer.median_amount.nil? %>
-    <span class="medium-gray">
-      <%= money_without_cents_and_with_symbol(offer.min_amount) %>
-      &mdash;
-    </span>
-    <strong>
-      <%= money_without_cents_and_with_symbol(offer.median_amount) %>
-    </strong>
-    <span class="medium-gray">
-      &mdash;
-      <%= money_without_cents_and_with_symbol(offer.max_amount) %>
-    </span>
+  <span class="amount-icon"><%= image_tag 'amount.svg' %></span>
+  <% if offer.free? %>
+    <strong>FREE</strong>
+  <% elsif offer.median_amount.nil? %>
+    <span class="medium-gray">No price yet</span>
   <% else %>
-    <strong>
-      FREE
-    </strong>
+    <span class="medium-gray"><%= money_without_cents_and_with_symbol(offer.min_amount) %> &mdash; </span>
+    <strong><%= money_without_cents_and_with_symbol(offer.median_amount) %></strong>
+    <span class="medium-gray"> &mdash; <%= money_without_cents_and_with_symbol(offer.max_amount) %></span>
   <% end %>
 </p>
