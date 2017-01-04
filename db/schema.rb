@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161219191402) do
+ActiveRecord::Schema.define(version: 20170104120315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 20161219191402) do
     t.datetime "created_at",                    null: false
     t.datetime "updated_at",                    null: false
     t.integer  "client_id"
-    t.integer  "amount_cents",      default: 0, null: false
+    t.integer  "amount_cents"
     t.json     "payment"
     t.integer  "status",            default: 0
     t.datetime "client_review_at"
@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(version: 20161219191402) do
     t.datetime "updated_at",              null: false
     t.integer  "advisor_id"
     t.integer  "status",      default: 0
+    t.integer  "pricing",     default: 0
   end
 
   create_table "pinned_offers", force: :cascade do |t|

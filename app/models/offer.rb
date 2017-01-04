@@ -8,6 +8,7 @@ class Offer < ApplicationRecord
   has_many :languages, through: :offer_languages
 
   enum status: [ :active, :inactive, :archived ]
+  enum pricing: [ :free, :priced ]
 
   validates :title, presence: { message: "The offer must have a title" }
   validates :description, presence: { message: "The offer must have a description" }
