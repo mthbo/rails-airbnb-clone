@@ -23,7 +23,9 @@
           </div>
 
           <div class="padded-bottom-s">
-            <% if @deal.request? %>
+            <% if @deal.cancelled? %>
+              <%= render 'cancelled_part' %>
+            <% elsif @deal.request? %>
               <%= render 'request_part' %>
             <% else %>
               <%= render 'proposition_part' %>
@@ -31,7 +33,7 @@
           </div>
 
           <div class="padded-bottom-s">
-            <% if policy(@deal).destroy? %>
+            <% if policy(@deal).cancel? %>
               <%= render 'cancellation' %>
             <% end %>
 

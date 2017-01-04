@@ -60,7 +60,7 @@ deals1 =[]
 10.times do
   offer = offers.sample
   deals1 << Deal.create(
-    status: 3,
+    status: 4,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
@@ -93,7 +93,7 @@ deals2 = []
 5.times do
   offer = offers.sample
   deals2 << Deal.create(
-    status: 2,
+    status: 3,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),

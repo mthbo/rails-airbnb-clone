@@ -1,25 +1,40 @@
 <% content_for :title do %>
-  <%= "Papoters | #session-#{@deal.id} proposition" %>
+  <%= "Papoters | Proposition for #session-#{@deal.id}" %>
 <% end %>
 
-<h2>New proposition</h2>
+<h2>New proposition for <%= link_to "#session-#{@deal.id}", deal_path(@deal) %></h2>
+
+<p>It's time to unveil your action plan to meet the needs of <%= @deal.client.first_name %>.</p>
+<p>Start by setting some targets for the session (at least one). You will be rated on the achievement of these targets.</p>
+
 
 <%= simple_form_for @deal do |f| %>
   <%= f.error_notification message: 'Please fill all the fields below' %>
 
   <div class="padded-bottom-xs">
-    <p>Describe your proposition.</p>
-    <p>Bla bla</p>
+    <p>Now describe the information you will provide and how you will do this. Also tell what you can't provide to avoid disappointed hopes.</p>
   </div>
 
-  <%= f.input :proposition, label: false, placeholder: "Detail your proposition", input_html: { class: 'custom-form-input', rows: "10" } %>
+  <%= f.input :proposition, label: false, placeholder: "Detail your proposition", input_html: { class: 'custom-form-input', rows: "7" } %>
+
+  <div class="padded-top-xs">
+    <p>Propose a deadline for this session.</p>
+  </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <%= f.input :amount, required: true, label: false, placeholder: "Propose an amount", input_html: { class: 'custom-form-input' } %>
+    <div class="col-xs-6 col-sm-5">
+      <%= f.input :deadline, label: false, as: :string, placeholder: "mm/dd/yyyy", input_html: { class: 'custom-form-input datepicker', value: @deal.deadline ? localize(@deal.deadline, format: "%d/%m/%Y") : nil } %>
     </div>
-    <div class="col-xs-12 col-sm-6">
-      <%= f.input :deadline, as: :string, placeholder: "mm/dd/yyyy", input_html: { class: 'custom-form-input datepicker', value: @deal.deadline ? localize(@deal.deadline, format: "%d/%m/%Y") : nil } %>
+  </div>
+
+
+  <div class="padded-top-xs">
+    <p>Propose a price for this session.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-6 col-sm-5">
+      <%= f.input :amount, required: true, label: false, placeholder: "XX €", input_html: { class: 'custom-form-input' } %>
     </div>
   </div>
 

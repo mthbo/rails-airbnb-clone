@@ -1,22 +1,27 @@
 <h3>
   <strong class=
-  <% if @deal.open? %>
-    "green"
-  <% elsif @deal.closed? %>
-    "red"
-  <% else %>
-    "blue"
-  <% end %>
+    <% if @deal.open? %>
+      "green"
+    <% elsif @deal.closed? || @deal.cancelled? %>
+      "red"
+    <% else %>
+      "blue"
+    <% end %>
   >#session-<%= @deal.id %></strong>
-  <% if @deal.client ==  current_user && @deal.advisor %>
-    with <%= link_to "#{@deal.advisor.name_anonymous}", user_path(@deal.advisor) %>
+
+  <% if @deal.client.nil? %>
+    &nbsp; (the user account has beeen cancelled)
+  <% elsif @deal.client ==  current_user && @deal.advisor %>
+    &nbsp; with <%= link_to "#{@deal.advisor.name_anonymous}", user_path(@deal.advisor) %>
   <% elsif @deal.advisor ==  current_user && @deal.client %>
-    with <%= link_to "#{@deal.client.name_anonymous}", user_path(@deal.client) %>
+    &nbsp; with <%= link_to "#{@deal.client.name_anonymous}", user_path(@deal.client) %>
   <% end %>
-  for
-  <% if @deal.offer %>
-    "<%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %>"
+
+  <% if @deal.offer.nil? %>
+    ""
+  <% elsif @deal.offer.archived? %>
+    &nbsp; for "<%= @deal.offer.title %>"
   <% else %>
-    " - "
+    &nbsp; for "<%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %>"
   <% end %>
 </h3>

@@ -1,4 +1,8 @@
-<!-- <hr class="bd-gray"> -->
+<div class="form-separation padded-top-xs padded-bottom-s">
+  <div></div>
+  <p class="font-weight-normal">Session cancellation</p>
+  <div></div>
+</div>
 
 <% if @deal.advisor == current_user %>
   <p>Cancel the session if you don't want to pursue. Note that you won't be able to cancel the session after a proposition is sent, unless <%= @deal.client.first_name %> declines it.</p>
@@ -6,6 +10,6 @@
   <p>Cancel the session if you don't want to pursue. Note that you won't be able to cancel the session once you accept a proposition.</p>
 <% end %>
 <div class="text-center padded-top-xs">
-  <%= link_to "Cancel the session", deal_path(@deal), data: { confirm: "Are you sure you want to cancell this session?" }, method: :delete, class: "btn btn-form btn-red" %>
+  <%= link_to "Cancel the session", deal_path(@deal, deal:{status: :cancelled}), data: { confirm: "Are you sure you want to cancell this session?" }, method: :patch, class: "btn btn-form btn-red" %>
 </div>
 

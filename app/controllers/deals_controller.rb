@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  before_action :find_deal, only: [:show, :update, :proposition, :destroy]
+  before_action :find_deal, only: [:show, :update, :proposition]
   before_action :find_offer, only: [:new, :create]
   layout 'devise', only: [:new, :create, :proposition, :update]
 
@@ -36,11 +36,6 @@ class DealsController < ApplicationController
       render :proposition
       flash[:alert] = "Session has not been updated"
     end
-  end
-
-  def destroy
-    @deal.destroy
-    redirect_to @deal.offer
   end
 
   private

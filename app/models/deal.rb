@@ -9,9 +9,9 @@ class Deal < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   monetize :amount_cents
-  enum status: [ :request, :proposition, :proposition_declined, :open, :closed ]
+  enum status: [ :request, :proposition, :proposition_declined, :open, :closed, :cancelled ]
 
-  validates :proposition, presence: true, on: :update
+  validates :proposition, presence: true, on: :proposition
   validates :request, presence: true
   validates :deadline, presence: true
   validates :languages, presence: { message: "At least one language must me selected" }

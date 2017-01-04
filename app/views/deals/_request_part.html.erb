@@ -1,13 +1,12 @@
 <% if @deal.client == current_user %>
-  <p class="font-weight-normal blue">Your request has been sent to <%= @deal.advisor.first_name %>. You should receive a proposition soon if <%= @deal.advisor.first_name %> can meet your needs.</p>
+  <p class="font-weight-normal blue">You sent a request to <%= @deal.advisor.first_name %>. You should receive a proposition soon if <%= @deal.advisor.first_name %> can meet your needs.</p>
 
 <% elsif @deal.advisor == current_user %>
-  <p class="font-weight-normal blue"><%= @deal.client.first_name %> has sent you a request. Answer with a proposition if you figure you can meet the needs of <%= @deal.client.first_name %>.</p>
+  <p class="font-weight-normal blue"><%= @deal.client.first_name %> sent you a request. Answer with a proposition if you can meet the needs of <%= @deal.client.first_name %>.</p>
+   <p>Feel free to ask questions if you need more details before sending a proposition.</p>
 
-  <div class="text-center padded-bottom-s">
+  <div class="text-center padded-top-xs padded-bottom-s">
     <%= link_to 'Send proposition', proposition_deal_path(@deal), class: "btn btn-form btn-blue" %>
   </div>
-
-  <hr class="bd-gray">
 
 <% end %>

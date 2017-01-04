@@ -8,16 +8,16 @@ class DealPolicy < ApplicationPolicy
     record.advisor != user && record.offer.active? && record.offer.deals_ongoing.where(client: user).blank?
   end
 
+  def cancel?
+    ((record.request? || record.proposition_declined?) && (record.advisor == user || record.client == user)) || (record.proposition? && record.client == user)
+  end
+
   def proposition?
     record.advisor == user
   end
 
   def update?
     record.advisor == user || record.client == user
-  end
-
-  def destroy?
-    ((record.request? || record.proposition_declined?) && (record.advisor == user || record.client == user)) || (record.proposition? && record.client == user)
   end
 
 end
