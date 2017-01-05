@@ -11,19 +11,18 @@
     <% end %>
   >#session-<%= @deal.id %></strong>
 
-  <% if @deal.client.nil? %>
-    &nbsp; (the user account has beeen cancelled)
-  <% elsif @deal.client ==  current_user && @deal.advisor %>
-    &nbsp; with <%= link_to "#{@deal.advisor.name_anonymous}", user_path(@deal.advisor) %>
+  &nbsp; with
+  <% if @deal.client ==  current_user && @deal.advisor %>
+    <%= link_to "#{@deal.advisor.name_anonymous}", user_path(@deal.advisor) %>
   <% elsif @deal.advisor ==  current_user && @deal.client %>
-    &nbsp; with <%= link_to "#{@deal.client.name_anonymous}", user_path(@deal.client) %>
+    <%= link_to "#{@deal.client.name_anonymous}", user_path(@deal.client) %>
+  <% else %>
+    (user account cancelled)
   <% end %>
 
-  <% if @deal.offer.nil? %>
-    ""
-  <% elsif @deal.offer.archived? %>
+  <% if @deal.offer && @deal.offer.archived? %>
     &nbsp; for "<%= @deal.offer.title %>"
-  <% else %>
+  <% elsif @deal.offer %>
     &nbsp; for "<%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %>"
   <% end %>
 </h3>

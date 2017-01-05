@@ -35,6 +35,7 @@ class OffersController < ApplicationController
       respond_to do |format|
         format.html {
           if @offer.archived?
+            @offer.pinned_offers.destroy_all
             flash[:notice] = "'#{@offer.title}' has been removed"
             redirect_to user_path(current_user)
           else

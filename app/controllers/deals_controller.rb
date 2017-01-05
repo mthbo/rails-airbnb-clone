@@ -20,7 +20,6 @@ class DealsController < ApplicationController
       flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
       redirect_to deal_path(@deal)
     else
-      flash[:alert] = "No request has been sent"
       render :new
     end
   end
@@ -34,7 +33,6 @@ class DealsController < ApplicationController
       flash[:notice] = "Session has been updated"
     else
       render :proposition
-      flash[:alert] = "Session has not been updated"
     end
   end
 

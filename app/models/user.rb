@@ -62,29 +62,23 @@ class User < ApplicationRecord
     end
   end
 
+
   # User offers
 
   def offers_active
-    offers_active = offers.where(status: :active).sort_by do |offer|
-      offer.deals_closed.count
-    end
-    offers_active.reverse
+    offers.where(status: :active).order(updated_at: :desc)
   end
 
   def offers_inactive
-    offers_inactive = offers.where(status: :inactive).sort_by do |offer|
-      offer.deals_closed.count
-    end
-    offers_inactive.reverse
+    offers.where(status: :inactive).order(updated_at: :desc)
   end
 
   def offers_published
-    offers_published = offers.where.not(status: :archived).sort_by do |offer|
-      offer.deals_closed.count
-    end
-    offers_published.reverse
+    offers.where.not(status: :archived).order(updated_at: :desc)
   end
 
+
+  # User sessions as advisor
 
   def advisor_deals_request
     advisor_deals.where(status: :request)
@@ -94,17 +88,28 @@ class User < ApplicationRecord
     advisor_deals.where(status: :proposition).or(advisor_deals.where(status: :proposition_declined))
   end
 
+  def advisor_deals_pending
+    advisor_deals_request.or(advisor_deals_proposition)
+  end
+
   def advisor_deals_open
-    advisor_deals.where(status: :open)
+    advisor_deals.where(status: :open).or(advisor_deals.where(status: :open_expired))
+  end
+
+  def advisor_deals_ongoing
+    advisor_deals_pending.or(advisor_deals_open)
   end
 
   def advisor_deals_closed
-    advisor_deals.where(status: :closed)
+    advisor_deals.where(status: :closed).order(closed_at: :desc)
   end
 
   def advisor_deals_reviewed
     advisor_deals.where.not(client_review: nil).order(client_review_at: :desc)
   end
+
+
+  # User sessions as client
 
   def client_deals_request
     client_deals.where(status: :request)
@@ -114,48 +119,68 @@ class User < ApplicationRecord
     client_deals.where(status: :proposition).or(client_deals.where(status: :proposition_declined))
   end
 
+  def client_deals_pending
+    client_deals_request.or(client_deals_proposition)
+  end
+
   def client_deals_open
-    client_deals.where(status: :open)
+    client_deals.where(status: :open).or(client_deals.where(status: :open_expired))
+  end
+
+  def client_deals_ongoing
+    client_deals_pending.or(client_deals_open)
   end
 
   def client_deals_closed
-    client_deals.where(status: :closed)
+    client_deals.where(status: :closed).order(closed_at: :desc)
   end
 
   def client_deals_reviewed
     client_deals.where.not(advisor_review: nil).order(advisor_review_at: :desc)
   end
 
+
+  # All user sessions
+
   def deals
-    client_deals + advisor_deals
+    deals_as_advisor = Deal.where(offer: self.offers)
+    deals_as_client = Deal.where(client: self)
+    deals_as_advisor.or(deals_as_client)
   end
 
   def deals_request
-    advisor_deals_requests + client_deals_requests
+    deals.where(status: :request)
   end
 
   def deals_proposition
-    advisor_deals_proposition + client_deals_proposition
+    deals.where(status: :proposition).or(deals.where(status: :proposition_declined))
+  end
+
+  def deals_pending
+    deals_request.or(deals_proposition)
   end
 
   def deals_open
-    advisor_deals_open + client_deals_open
-  end
-
-  def deals_closed
-    advisor_deals_closed + client_deals_closed
+    deals.where(status: :open).or(deals.where(status: :open_expired))
   end
 
   def deals_ongoing
-    deals_proposition + deals_open
+    deals_pending.or(deals_open)
+  end
+
+  def deals_closed
+    deals.where(status: :closed).order(closed_at: :desc)
   end
 
   def deals_reviewed
     deals_as_advisor = Deal.where(offer: self.offers).where.not(client_review: nil)
     deals_as_client = Deal.where(client: self).where.not(advisor_review: nil)
+    # TODO: Try to write a join query to order by dates
     deals_as_advisor.or(deals_as_client).order(client_review_at: :desc)
   end
 
+
+  # Facebook oauth
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.to_h.slice(:provider, :uid)

@@ -31,8 +31,6 @@ class Offer < ApplicationRecord
       sum = 0
       deals_reviewed.each { |deal| sum += deal.rating }
       return sum.fdiv(deals_reviewed.count)
-    else
-      return nil
     end
   end
 
