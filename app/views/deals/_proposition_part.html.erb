@@ -57,11 +57,9 @@
 </div>
 
 <div class="session-proposition-bottom text-right">
-  <% if @deal.proposition? %>
-    <% if @deal.client == current_user  %>
-      <%= render "acceptation_form" %>
-    <% else %>
-      <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
-    <% end %>
+  <% if policy(@deal).open_or_decline? %>
+    <%= render "acceptation_form" %>
+  <% else %>
+    <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
   <% end %>
 </div>

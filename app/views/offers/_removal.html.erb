@@ -1,0 +1,49 @@
+<div class="form-separation padded-top-s padded-bottom-s">
+  <div></div>
+  <p><strong>Offer removal</strong></p>
+  <div></div>
+</div>
+
+<% if policy(@offer).remove? %>
+
+  <div class="padded-bottom-xs">
+    <p>Remove this offer if you don't want to receive requests on this topic anymore.</p>
+    <p>Romoving an offer is irreversible, remind that you can also switch offer status to 'inactive' and reactivate it later.</p>
+  </div>
+
+
+  <div class="text-center padded-top-xs">
+    <button type="button" class="btn btn-form btn-red" data-toggle="modal" data-target="#offer-removal">
+      Remove this offer
+    </button>
+  </div>
+
+
+  <div class="modal fade" id="offer-removal" tabindex="-1" role="dialog" aria-labelledby="offerRemovalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title font-weight-normal" id="offerRemovalLabel">Offer removal</h4>
+        </div>
+        <div class="modal-body">
+          <p>Removing an offer is irreversible. If you want to offer services on the same topic, you will need to publish a new offer (meaning a fresh start for your reputation and your stats).</p>
+          <p>Are you sure you want to do this?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
+          <%= link_to "Remove this offer", offer_path(@offer, offer:{status: :archived}), method: :patch, class: "btn btn-form btn-red" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="padded-bottom-xs">
+    <p>You can't remove this offer right now.</p>
+    <p><%= link_to "Close or cancel all ongoing sessions", dashboard_path %> for this offer before removing it.</p>
+    <p>Remind that you can also switch offer status to 'inactive' and reactivate it later.</p>
+  </div>
+
+<% end %>

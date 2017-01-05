@@ -20,7 +20,7 @@ class OffersController < ApplicationController
     @offer = current_user.offers.new(offer_params)
     authorize @offer
     if @offer.save
-      flash[:notice] = "#{@offer.title} has been created"
+      flash[:notice] = "'#{@offer.title}' has been created"
       redirect_to offer_path(@offer)
     else
       render :new
@@ -34,10 +34,11 @@ class OffersController < ApplicationController
     if @offer.update(offer_params)
       respond_to do |format|
         format.html {
-          flash[:notice] = "#{@offer.title} has been updated"
           if @offer.archived?
+            flash[:notice] = "'#{@offer.title}' has been removed"
             redirect_to user_path(current_user)
           else
+            flash[:notice] = "'#{@offer.title}' has been updated"
             redirect_to offer_path(@offer)
           end
         }

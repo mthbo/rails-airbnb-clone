@@ -1,6 +1,8 @@
 class Language < ApplicationRecord
-  has_many :offer_languages
+  has_many :offer_languages, dependent: :destroy
   has_many :offers, through: :offer_languages
+  has_many :deal_languages, dependent: :destroy
+  has_many :deals, through: :deal_languages
 
   default_scope -> { order(name: :ASC) }
 

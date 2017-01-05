@@ -36,12 +36,6 @@
             <% if policy(@deal).cancel? %>
               <%= render 'cancellation' %>
             <% end %>
-
-            <% if @deal.open? %>
-              <div class="padded-top-s padded-bottom-s">
-                <%= render "close_form" %>
-              </div>
-            <% end %>
           </div>
 
         </div>

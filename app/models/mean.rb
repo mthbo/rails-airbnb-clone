@@ -1,6 +1,8 @@
 class Mean < ApplicationRecord
-  has_many :offer_means
+  has_many :offer_means, dependent: :destroy
   has_many :offers, through: :offer_means
+  has_many :deal_means, dependent: :destroy
+  has_many :deals, through: :deal_means
 
   default_scope -> { order(name: :ASC) }
 

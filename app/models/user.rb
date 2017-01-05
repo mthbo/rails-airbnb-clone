@@ -6,15 +6,17 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook]
 
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
-  has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal'
+  has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal', dependent: :nullify
   has_many :pinned_offers, foreign_key: 'client_id', dependent: :destroy
   has_many :advisor_deals, through: :offers, source: :deals
-  has_many :messages
+  has_many :messages, dependent: :nullify
 
   has_attachment :photo, accept: [:jpg, :png, :gif]
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  # User information
 
   def name_anonymous
     "#{first_name} #{last_name.first}."
@@ -46,6 +48,8 @@ class User < ApplicationRecord
     end
   end
 
+  # User stat
+
   def grade
     if advisor_deals_closed.count > 20
       "Guide"
@@ -58,9 +62,7 @@ class User < ApplicationRecord
     end
   end
 
-  def pinned(offer)
-    pinned_offers.find_by(offer: offer)
-  end
+  # User offers
 
   def offers_active
     offers_active = offers.where(status: :active).sort_by do |offer|
@@ -82,6 +84,7 @@ class User < ApplicationRecord
     end
     offers_published.reverse
   end
+
 
   def advisor_deals_request
     advisor_deals.where(status: :request)

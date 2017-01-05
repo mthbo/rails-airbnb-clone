@@ -2,6 +2,8 @@
   <strong class=
     <% if @deal.open? %>
       "green"
+    <% elsif @deal.open_expired? %>
+      "orange"
     <% elsif @deal.closed? || @deal.cancelled? %>
       "red"
     <% else %>

@@ -10,9 +10,8 @@ class Deal < ApplicationRecord
 
   monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000 }
 
-  enum status: [ :request, :proposition, :proposition_declined, :open, :closed, :cancelled ]
+  enum status: [ :request, :proposition, :proposition_declined, :open, :open_expired, :closed, :cancelled ]
 
-  validates :proposition, presence: true, on: :proposition
   validates :request, presence: true
   validates :deadline, presence: true
   validates :languages, presence: { message: "At least one language must me selected" }

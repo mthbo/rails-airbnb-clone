@@ -82,7 +82,7 @@ deals1 = []
 10.times do
   offer = offers.sample
   deals1 << Deal.create(
-    status: 4,
+    status: 5,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
@@ -103,7 +103,7 @@ end
 10.times do
   offer = offers.sample
   deals1 << Deal.create(
-    status: 4,
+    status: 5,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
@@ -136,7 +136,7 @@ deals1_free = []
 10.times do
   offer = offers_free.sample
   deals1_free << Deal.create(
-    status: 4,
+    status: 5,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
@@ -157,7 +157,7 @@ end
 3.times do
   offer = offer_new_priced
   deals1_free << Deal.create(
-    status: 4,
+    status: 5,
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
