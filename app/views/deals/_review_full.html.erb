@@ -25,7 +25,13 @@
         <span class="yellow"><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;as client </span>
       <% end %>
       &nbsp; | &nbsp;
-      <%= link_to "#{deal.offer.title}", offer_path(deal.offer)%>
+      <% if policy(deal.offer).show? %>
+        <%= link_to "#{deal.offer.title}", offer_path(deal.offer)%>
+      <% elsif deal.offer %>
+        <%= deal.offer.title %>
+      <% else %>
+        -
+      <% end %>
     </p>
   </div>
 </div>

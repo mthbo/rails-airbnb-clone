@@ -1,14 +1,52 @@
 <% content_for :title do %>
-  <%= "Proposition request | Papoters" %>
+  <%= "Papoters | Request for #{@offer.title}" %>
 <% end %>
 
-<div class="padded-top-xxl padded-bottom-xxl bg-gray">
-  <div class="container">
+<h2>Request for "<%= link_to "#{@offer.title}", offer_path(@offer) %>"</h2>
 
-    <div>
-        <h1>Get a proposition</h1>
-        <%= render 'request_form' %>
-    </div>
+<%= simple_form_for [@offer, @deal]  do |f| %>
+  <%= f.error_notification message: 'Please fill all the fields below' %>
 
+  <div class="padded-bottom-xs">
+    <p>It's time to explain what you need advice for. Try to be specific to help <%= @offer.advisor.first_name %> makes a proposition that fits your needs.</p>
   </div>
+
+  <%= f.input :request, label: false, placeholder: "Detail your needs", input_html: { class: 'custom-form-input', rows: "5" } %>
+
+  <div class="padded-top-xs">
+    <p>What is your deadline?</p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-5">
+      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>
+".html_safe, label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', value: @deal.deadline ? localize(@deal.deadline, format: "%d %b %Y") : nil } %>
+    </div>
+  </div>
+
+  <div class="padded-top-xs">
+    <p>Select the language(s) you accept to communicate with <%= @offer.advisor.first_name %>.</p>
+  </div>
+
+  <div class="custom-check-boxes">
+    <%= f.association :languages, collection: @offer.languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
+
+  <div class="padded-top-xs">
+    <p>Select the mean(s) you accept to communicate with <%= @offer.advisor.first_name %>.</p>
+  </div>
+
+  <div class="custom-check-boxes">
+    <%= f.association :means, collection: @offer.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
+
+  <div class="text-right padded-top-xs">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+      <i class='fa fa-paper-plane' aria-hidden='true'></i>&nbsp;&nbsp; Send request
+    <% end %>
+  </div>
+<% end %>
+
+<div class="text-right padded-top-xs">
+  <p><%= link_to "Go back", :back %></p>
 </div>

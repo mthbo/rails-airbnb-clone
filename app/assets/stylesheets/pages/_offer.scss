@@ -15,15 +15,6 @@
   h6 {
     margin-top: 0;
   }
-  li {
-    line-height: 1.8em;
-    i {
-      margin: 0 10px;
-    };
-    img {
-      margin: 0 12px;
-    };
-  }
 }
 
 .offer-stat-content {
@@ -64,6 +55,10 @@
 
 #offer-reviews-paginator {
   font-weight: lighter;
+  a {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 }
 
 @media (max-width: $screen-sm-max) {

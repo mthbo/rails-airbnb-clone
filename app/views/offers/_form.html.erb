@@ -3,14 +3,13 @@
 
   <div class="padded-bottom-xs">
     <p>Describe your offer and give it a catchy title.</p>
-    <p>Provide the appropriate level of information to be as convincing as possible (what you know better than anyone else, which experience or learning legitimate your expertise, ...). Also tell what is not part of your expertise to avoid disconnected requests.</p>
+    <p>Be clear, be specific and be original : your mission is to convince people you are the expert they need!</p>
   </div>
 
   <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "Give your offer a title", input_html: { class: 'custom-form-input' } %>
-  <%= f.input :description, label: false, placeholder: "Describe your offer", input_html: { class: 'custom-form-input', rows: "10" } %>
+  <%= f.input :description, label: false, placeholder: "Describe your offer (what you know better than anyone else, what is your method, which experiences make you an expert, etc.)", input_html: { class: 'custom-form-input', rows: "10" } %>
 
   <div class="padded-top-xs padded-bottom-xs">
-    <h6>Languages</h6>
     <p>Select the languages you accept to communicate with people on this offer.</p>
   </div>
 
@@ -19,7 +18,6 @@
   </div>
 
   <div class="padded-top-xs padded-bottom-xs">
-    <h6>Means of communication</h6>
     <p>Select the means you accept to communicate with people on this offer.</p>
   </div>
 

@@ -1,5 +1,5 @@
 <% content_for :title do %>
-  <%= "Papoters | " %><%= @offer.title %>
+  <%= "Papoters | #{@offer.title}" %>
 <% end %>
 
 <div class="padded-top-xxl padded-bottom-xxl bg-gray">
@@ -63,25 +63,11 @@
                 <div class="row">
                   <div class="col-xs-12 col-sm-4 padded-bottom-xs">
                     <h6>Languages spoken</h6>
-                    <ul class = "list-unstyled">
-                      <% @offer.languages.each do |language| %>
-                        <li class="flag-icon">
-                          <%= image_tag "flags/" + language.flag %>
-                          <%= language.name %>
-                        </li>
-                      <% end %>
-                    </ul>
+                    <%= render 'offers/languages_long', offer: @offer %>
                   </div>
                   <div class="col-xs-12 col-sm-4 padded-bottom-xs">
                     <h6>Means of communication</h6>
-                    <ul class = "list-unstyled">
-                      <% @offer.means.each do |mean| %>
-                        <li>
-                          <i class="fa fa-<%= mean.picto %> fa-fw fa-lg" aria-hidden="true"></i>
-                          <%= mean.name %>
-                        </li>
-                      <% end %>
-                    </ul>
+                    <%= render 'offers/means_long', offer: @offer %>
                   </div>
                   <div class="col-xs-12 col-sm-4 text-right padded-bottom-xs">
                     <% if policy(@offer).edit? %>
@@ -114,12 +100,12 @@
             <div class="offer-sub-container">
 
               <div class="offer-stat">
-                <h2>Offer history</h2>
+                <h3>Session history</h3>
                 <hr class="bd-gray">
                 <div class="offer-stat-content">
                   <div class="row">
                     <div class="col-xs-4 col-sm-2">
-                      <p><strong><%= @offer.deals_closed.count %></strong>  <%= "deal".pluralize(@offer.deals_closed.count) %></p>
+                      <%= render 'offers/advice_sessions', offer: @offer %>
                     </div>
                     <div class="col-xs-8 col-sm-5 text-right">
                       <%= render 'offers/satisfaction', offer: @offer %>

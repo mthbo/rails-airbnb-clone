@@ -1,7 +1,95 @@
-.date-format {
-  background-color: $light-yellow;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 16px;
-  color: $dark-gray;
+.session-status-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid $medium-gray;
+  border-bottom: 1px solid $medium-gray;
+  padding: 15px 0;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.session-status {
+  flex: 1 0 auto;
+}
+
+.session-status-arrow {
+  flex: 0 1 auto;
+  margin: 0 5px;
+}
+
+.session-proposition-top {
+  background-color: rgba(255,255,255,0.8);
+  padding: 5px 25px;
+  border-radius: 10px 10px 0 0;
+}
+
+.session-proposition-toggle {
+  padding: 10px 15px;
+  p {
+    margin: 0;
+  }
+}
+
+.session-proposition {
+  padding: 10px 25px;
+}
+
+#proposition-details {
+  display: none;
+}
+
+.session-proposition-bottom {
+  background-color: rgba(255,255,255,0.8);
+  padding: 25px;
+  border-radius: 0 0 10px 10px;
+}
+
+.session-proposition-figures {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-conversation-box {
+  border: 1px solid $light-gray;
+  height: 70vh;
+  background-color: white;
+}
+
+@media (max-width: $screen-md-max) {
+  .session-proposition-top {
+    padding: 5px 15px;
+  };
+  .session-proposition {
+    padding: 10px 15px;
+  };
+  .session-proposition-bottom {
+    padding: 25px 15px;
+  }
+}
+
+@media (max-width: $screen-sm-max) {
+  .session-proposition-top {
+    padding: 5px 25px;
+  };
+  .session-proposition {
+    padding: 10px 25px;
+  };
+  .session-proposition-bottom {
+    padding: 25px;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .session-proposition-top {
+    padding: 5px 15px;
+  };
+  .session-proposition {
+    padding: 10px 15px;
+  };
+  .session-proposition-bottom {
+    padding: 25px 15px;
+  }
 }

@@ -11,13 +11,16 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
     }
 
-  resources :users, only: [:show]
+  resources :users, only: [:show, :destroy]
 
   get '/dashboard', to: 'users#dashboard'
 
   resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
     resources :pinned_offers, only: [:create, :destroy]
-    resources :deals, only: [:show, :new, :create, :edit, :update] do
+    resources :deals, only: [:show, :new, :create, :update], path: 'sessions' do
+      member do
+        get 'proposition', to: 'deals#proposition'
+      end
       resources :objectives, only: [:create, :update, :destroy]
     end
   end

@@ -1,0 +1,74 @@
+<% content_for :title do %>
+  <%= "Papoters | Proposition for #session-#{@deal.id}" %>
+<% end %>
+
+<h2>New proposition for <%= link_to "#session-#{@deal.id}", deal_path(@deal) %></h2>
+
+<p>It's time to unveil your action plan to meet the needs of <%= @deal.client.first_name %>.</p>
+<p>Start by setting some targets for the session (at least one). You will be rated on the achievement of these targets.</p>
+
+
+<%= simple_form_for @deal do |f| %>
+  <%= f.error_notification message: 'Please fill all the fields below' %>
+
+  <div class="padded-bottom-xs">
+    <p>Now describe the information you will provide and how you will do this. Also tell what you can't provide to avoid disappointed hopes.</p>
+  </div>
+
+  <%= f.input :proposition, label: false, placeholder: "Detail your proposition", input_html: { class: 'custom-form-input', rows: "7" } %>
+
+  <div class="padded-top-xs">
+    <p>Propose a deadline for this session.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-5">
+      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>
+".html_safe ,label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', value: @deal.deadline ? localize(@deal.deadline, format: "%d %b %Y") : nil } %>
+    </div>
+  </div>
+
+  <div class="padded-top-xs">
+    <p>Propose one or more language(s) to communicate with <%= @deal.client.first_name %> for this session.</p>
+  </div>
+
+  <div class="custom-check-boxes">
+    <%= f.association :languages, collection: @deal.languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
+
+  <div class="padded-top-xs">
+    <p>Propose one or more mean(s) to communicate with <%= @deal.client.first_name %> for this session.</p>
+  </div>
+
+  <div class="custom-check-boxes">
+    <%= f.association :means, collection: @deal.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
+
+  <div class="padded-top-xs">
+    <% if @deal.offer.priced? %>
+      <p>Propose a price for this session.</p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-5">
+          <%= f.input :amount, as: :custom, symbol: Money.default_currency.symbol, required: true, label: false, placeholder: "00,00", input_html: { class: 'custom-form-input', type: "Number" } %>
+        </div>
+      </div>
+    <% elsif @deal.offer.deals_closed.count <= 3 %>
+      <p>This session will be <strong>for free</strong>. You need <strong><%= 3 - @deal.offer.deals_closed.count %> more session</strong> for this offer to start proposing priced services.</p>
+    <% else %>
+      <p>This session will be <strong>for free</strong>. <% link_to "Edit your offer", edit_offer_path(@offer) %> if you want to propose priced services.</p>
+    <% end %>
+  </div>
+
+  <%= f.input :proposition_at, as: :hidden, :input_html => { value: DateTime.now } %>
+  <%= f.hidden_field :status, value: :proposition %>
+
+  <div class="text-right padded-top-xs">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+      <i class='fa fa-paper-plane' aria-hidden='true'></i>&nbsp;&nbsp; Send proposition
+    <% end %>
+  </div>
+<% end %>
+
+<div class="text-right padded-top-xs">
+  <p><%= link_to "Back to session", deal_path(@deal) %></p>
+</div>

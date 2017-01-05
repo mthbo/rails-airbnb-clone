@@ -16,10 +16,6 @@
   }
 }
 
-.fade.in {
-  opacity: 0.6;
-}
-
 .alert-info {
   background: $green;
 }
@@ -36,5 +32,8 @@
 @media (max-width: $screen-xs-max) {
   .flash {
     top: 55px;
+  };
+  .alert {
+    font-size: 14px;
   }
 }

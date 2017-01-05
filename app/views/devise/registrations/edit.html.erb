@@ -14,8 +14,7 @@
   </div>
 
   <div class="padded-bottom-xs">
-    <p>Take time to provide information about yourself.</p>
-    <p>People need to know who you are and where you come from before dealing with you, this is just human!</p>
+    <p>Take time to provide information about yourself. People need to know who you are and where you come from before conversing with you.</p>
   </div>
 
   <div class="row">
@@ -32,7 +31,8 @@
       <%= f.input :photo, as: :attachinary, label: "Profile picture", placeholder: false,  input_html: { class: 'custom-form-input' } %>
     </div>
     <div class="col-xs-12 col-sm-5">
-      <%= f.input :birth_date, as: :string, placeholder: "mm/dd/yyyy", input_html: { class: 'custom-form-input datepicker', value: resource.birth_date ? localize(resource.birth_date, format: "%d/%m/%Y") : nil } %>
+      <%= f.input :birth_date, as: :custom, symbol: "<i class='fa fa-birthday-cake fa-fw' aria-hidden='true'></i>
+".html_safe, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', value: resource.birth_date ? localize(resource.birth_date, format: "%d %b %Y") : nil } %>
     </div>
   </div>
 
@@ -44,20 +44,22 @@
 
   <div class="padded-bottom-xs">
     <p>Your contact details won't be disclosed publicly, apart from your city and country of residence.</p>
-    <p>Each time you make a deal on Papoters, your contact details may be communicated to the other party upon your approval.</p>
+    <p>For each open session, your contact details may be communicated to the other party upon your approval.</p>
   </div>
 
   <div class="row">
 
     <div class="col-xs-12 col-sm-7">
-      <%= f.input :email, required: true, placeholder: "my-email@host.com", input_html: { class: 'custom-form-input' } %>
+      <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>
+".html_safe, label: false, required: true, placeholder: "my-email@host.com", input_html: { class: 'custom-form-input' } %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
     </div>
     <div class="col-xs-12 col-sm-5">
-      <%= f.input :phone_number, placeholder: "+33 6 ** ** ** **", input_html: { class: 'custom-form-input' } %>
+      <%= f.input :phone_number, as: :custom, symbol: "<i class='fa fa-phone fa-fw' aria-hidden='true'></i>
+".html_safe, label: false, placeholder: "+33 * ** ** ** **", input_html: { class: 'custom-form-input' } %>
     </div>
     <div class="col-xs-12">
       <%= f.input :address, placeholder: "Street number and name", input_html: { class: 'custom-form-input' } %>
@@ -83,17 +85,4 @@
   <p><%= link_to "Back to profile", :back %></p>
 </div>
 
-<div class="form-separation padded-top-s padded-bottom-s">
-  <div></div>
-  <p><strong>Account cancellation</strong></p>
-  <div></div>
-</div>
-
-<div class="padded-bottom-xs">
-  <p>Cancelling your account will destroy all your history on Papoters (offers, reviews, etc.).</p>
-  <p>Please note that you can't cancel your account if you still have open deals.</p>
-</div>
-
-<div class="text-center">
-  <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Cancelling your account will destroy all your history on Papoters (offers, reviews, etc.). Are you sure you want to do it?" }, method: :delete, class: "btn btn-form btn-red" %>
-</div>
+<%= render 'cancellation' %>

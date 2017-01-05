@@ -6,16 +6,23 @@ class Deal < ApplicationRecord
   has_many :means, through: :deal_means
   has_many :deal_languages, dependent: :destroy
   has_many :languages, through: :deal_languages
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
-  monetize :amount_cents
-  enum status: [ :request, :proposition, :open, :closed ]
+  monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000 }
 
+  enum status: [ :request, :proposition, :proposition_declined, :open, :open_expired, :closed, :cancelled ]
+
+  validates :request, presence: true
+  validates :deadline, presence: true
   validates :languages, presence: { message: "At least one language must me selected" }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   def advisor
-    offer.advisor
+    offer.advisor unless offer.nil?
+  end
+
+  def proposition_any?
+    proposition? || proposition_declined?
   end
 
   def rating

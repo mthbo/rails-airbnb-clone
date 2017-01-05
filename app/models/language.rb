@@ -1,6 +1,8 @@
 class Language < ApplicationRecord
-  has_many :offer_languages
+  has_many :offer_languages, dependent: :destroy
   has_many :offers, through: :offer_languages
+  has_many :deal_languages, dependent: :destroy
+  has_many :deals, through: :deal_languages
 
   default_scope -> { order(name: :ASC) }
 
@@ -26,6 +28,6 @@ class Language < ApplicationRecord
   end
 
   def name_illustrated
-    "<span class='flag-icon'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name}</span>".html_safe
+    "<span class='flag-icons flags-long'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name}</span>".html_safe
   end
 end

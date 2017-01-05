@@ -2,4 +2,8 @@
   <%= link_to new_offer_deal_path(offer), class: "btn btn-yellow" do %>
     <i class="fa fa-paper-plane" aria-hidden="true"></i>  &nbsp;&nbsp;Get in touch
   <% end %>
+<% elsif  offer.pending_deal(current_user).present? %>
+  <p><%= link_to "Pending session", deal_path(offer.pending_deal(current_user)) %></p>
+<% elsif  offer.open_deal(current_user).present? %>
+  <p><%= link_to "Open session", deal_path(offer.open_deal(current_user)) %></p>
 <% end %>

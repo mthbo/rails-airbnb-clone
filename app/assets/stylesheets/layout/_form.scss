@@ -29,6 +29,12 @@
   }
 }
 
+.custom-input-addon {
+  background-color: $extra-light-gray;
+  min-width: 46px;
+  color: $dark-gray;
+}
+
 .form-separation {
   display: flex;
   align-items: center;
@@ -69,14 +75,11 @@
       padding: 10px 15px;
       border-radius: 2px;
       border: solid 1px $light-gray;
-      background-color: white;
+      background-color: rgba(255,255,255,0.5);
       color: $dark-gray;
-      img {
-        margin-right: 12px;
+      &:hover {
+        background-color: white !important;
       };
-      i {
-        margin-right: 10px;
-      }
       input {
         display: none;
       }
@@ -99,6 +102,13 @@
   };
   .custom-form-input {
     height: 40px;
+    font-size: 14px;
+  }
+  .custom-input-addon {
+    font-size: 14px;
+    min-width: 43px;
+  }
+  .help-block {
     font-size: 14px;
   }
 }

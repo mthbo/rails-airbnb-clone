@@ -1,0 +1,64 @@
+<div class="session-status-box">
+
+  <div class="text-center session-status">
+    <p class="<%= @deal.request? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Request</p>
+    <p class="<%= @deal.request? ? 'blue' : 'medium-gray' %>"><small><%= @deal.created_at.strftime("%d %b %Y") %></small></p>
+  </div>
+
+  <div class="medium-gray session-status-arrow">
+    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+  </div>
+
+  <div class="text-center session-status">
+    <p class="<%= @deal.proposition_any? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Proposition</p>
+    <% if @deal.proposition_at %>
+      <p class="<%= @deal.proposition_any? ? 'blue' : 'medium-gray' %>"><small><%= @deal.proposition_at.strftime("%d %b %Y") %></small></p>
+    <% else %>
+      <p class="medium-gray %>"><small> - </small></p>
+    <% end %>
+  </div>
+
+  <div class="medium-gray session-status-arrow">
+    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+  </div>
+
+  <div class="text-center session-status">
+    <p class=
+      <% if @deal.open? %>
+        "font-weight-bolder green"
+      <% elsif @deal.open_expired? %>
+        "font-weight-bolder orange"
+      <% else %>
+        "font-weight-normal medium-gray"
+      <% end %>
+    >Open</p>
+    <% if @deal.accepted_at %>
+      <p class=
+        <% if @deal.open? %>
+          "green"
+        <% elsif @deal.open_expired? %>
+          "orange"
+        <% else %>
+          "medium-gray"
+        <% end %>
+      ><small><%= @deal.accepted_at.strftime("%d %b %Y") %></small>
+      </p>
+    <% else %>
+      <p class="medium-gray %>"><small> - </small></p>
+    <% end %>
+  </div>
+
+  <div class="medium-gray session-status-arrow">
+    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+  </div>
+
+  <div class="text-center session-status">
+    <p class="<%= @deal.closed? ? 'font-weight-bolder red' : 'font-weight-normal medium-gray' %>" >Closed</p>
+    <% if @deal.closed_at %>
+      <p class="<%= @deal.closed? ? 'red' : 'medium-gray' %>"><small><%= @deal.closed_at.strftime("%d %b %Y") %></small></p>
+    <% else %>
+      <p class="medium-gray %>"><small> - </small></p>
+    <% end %>
+  </div>
+
+</div>

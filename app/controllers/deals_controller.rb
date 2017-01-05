@@ -1,8 +1,10 @@
 class DealsController < ApplicationController
-  before_action :find_deal, only: [:show, :update, :destroy]
+  before_action :find_deal, only: [:show, :update, :proposition]
   before_action :find_offer, only: [:new, :create]
+  layout 'devise', only: [:new, :create, :proposition, :update]
 
   def show
+    @message = Message.new
   end
 
   def new
@@ -18,30 +20,20 @@ class DealsController < ApplicationController
       flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
       redirect_to deal_path(@deal)
     else
-      flash[:alert] = "No request has been sent"
       render :new
     end
   end
 
-  def edit
+  def proposition
   end
 
   def update
-
-    # work on this
-
     if @deal.update(deal_params)
-      flash[:notice] = "A proposition has been sent to #{@deal.client.name_anonymous} for the offer '#{@deal.offer.title}'"
       redirect_to deal_path(@deal)
+      flash[:notice] = "Session has been updated"
     else
-      flash[:alert] = "No request has been sent"
-      render 'deal/show', 'data-toggle' => "modal", 'data-target' => "#request"
+      render :proposition
     end
-  end
-
-  def destroy
-    @deal.destroy
-    redirect_to @deal.offer
   end
 
   private
@@ -70,15 +62,6 @@ class DealsController < ApplicationController
       mean_ids: [],
       language_ids: []
     )
-  end
-
-  def deal_proposition
-  end
-
-  def deal_acceptation
-  end
-
-  def deal_close
   end
 
 end
