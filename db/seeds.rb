@@ -23,11 +23,11 @@ languages = [
 ]
 
 means = [
-  Mean.create(name: "SMS"),
-  Mean.create(name: "Visio-call"),
+  Mean.create(name: "Messaging"),
   Mean.create(name: "Call"),
-  Mean.create(name: "Email"),
-  Mean.create(name: "Meeting")
+  Mean.create(name: "Video call"),
+  Mean.create(name: "Meeting"),
+  Mean.create(name: "Sign language")
 ]
 
 users = []

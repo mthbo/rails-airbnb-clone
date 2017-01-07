@@ -17,6 +17,9 @@ class Deal < ApplicationRecord
   validates :languages, presence: { message: "At least one language must me selected" }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
+  validates :proposition, presence: true, if: :proposition?
+  validates :proposition_deadline, presence: true, if: :proposition?
+
   def advisor
     offer.advisor unless offer.nil?
   end

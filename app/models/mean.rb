@@ -4,14 +4,12 @@ class Mean < ApplicationRecord
   has_many :deal_means, dependent: :destroy
   has_many :deals, through: :deal_means
 
-  default_scope -> { order(name: :ASC) }
-
   PICTOS = {
-    "SMS" => 'comments',
-    "Visio-call" => 'video-camera',
+    "Messaging" => 'comments',
     "Call" => 'phone',
-    "Email" => 'envelope',
-    "Meeting" => 'coffee'
+    "Video call" => 'video-camera',
+    "Meeting" => 'coffee',
+    "Sign language" => 'sign-language'
   }
 
   def picto

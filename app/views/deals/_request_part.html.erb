@@ -1,5 +1,5 @@
 <% if @deal.client == current_user %>
-  <p class="font-weight-normal blue">You sent a request to <%= @deal.advisor.first_name %>. You should receive a proposition soon if <%= @deal.advisor.first_name %> can meet your needs.</p>
+  <p class="font-weight-normal blue">You sent a request to <%= @deal.advisor.first_name %>. You should get a proposition back if <%= @deal.advisor.first_name %> can meet your needs.</p>
 
 <% elsif @deal.advisor == current_user %>
   <p class="font-weight-normal blue"><%= @deal.client.first_name %> sent you a request. Answer with a proposition if you can meet the needs of <%= @deal.client.first_name %>.</p>

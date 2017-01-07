@@ -59,6 +59,7 @@ class DealsController < ApplicationController
       :proposition_at,
       :accepted_at,
       :closed_at,
+      :proposition_deadline,
       mean_ids: [],
       language_ids: []
     )
