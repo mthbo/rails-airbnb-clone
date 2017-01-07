@@ -16,14 +16,27 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  validates :first_name, presence: { message: "You must have a first name" }, length: { minimum: 2 }
+  validates :last_name, presence: { message: "You must have a last name" }, length: { minimum: 2 }
+
+  validates :bio, length: { minimum: 50, message: "Your bio is too short, please tell a little more!" }, allow_blank: true
+
   # User information
+
+  def first_name=(s)
+    write_attribute(:first_name, s.to_s.capitalize)
+  end
+
+  def last_name=(s)
+    write_attribute(:last_name, s.to_s.capitalize)
+  end
 
   def name_anonymous
     "#{first_name} #{last_name.first}."
   end
 
   def age
-    if birth_date
+    if birth_date.present?
       today = Date.today
       d = Date.new(today.year, birth_date.month, birth_date.day)
       age = d.year - birth_date.year - (d > today ? 1 : 0)
@@ -31,17 +44,23 @@ class User < ApplicationRecord
     end
   end
 
+  def city=(s)
+    write_attribute(:city, s.to_s.capitalize)
+  end
+
   def country_name
-    country_data = ISO3166::Country[country]
-    country_data.translations[I18n.locale.to_s] || country_data.name
+    if country.present?
+      country_data = ISO3166::Country[country]
+      country_data.translations[I18n.locale.to_s] || country_data.name
+    end
   end
 
   def address_short
-    if city && country
+    if city.present? && country.present?
       "#{city}, #{country_name}"
-    elsif city && !country
+    elsif city.present? && country.blank?
       "#{city}"
-    elsif !city && country
+    elsif city.blank? && country.present?
       "#{country_name}"
     else
       " - "

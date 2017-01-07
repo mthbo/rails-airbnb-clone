@@ -32,7 +32,7 @@
     </div>
     <div class="col-xs-12 col-sm-5">
       <%= f.input :birth_date, as: :custom, symbol: "<i class='fa fa-birthday-cake fa-fw' aria-hidden='true'></i>
-".html_safe, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', value: resource.birth_date ? localize(resource.birth_date, format: "%d %b %Y") : nil } %>
+".html_safe, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, value: resource.birth_date ? localize(resource.birth_date, format: "%d %b %Y") : nil } %>
     </div>
   </div>
 
@@ -51,7 +51,7 @@
 
     <div class="col-xs-12 col-sm-7">
       <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>
-".html_safe, label: false, required: true, placeholder: "my-email@host.com", input_html: { class: 'custom-form-input' } %>
+".html_safe, label: false, required: true, placeholder: "me@myhost.com", input_html: { class: 'custom-form-input', type: 'email' } %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
@@ -59,7 +59,7 @@
     </div>
     <div class="col-xs-12 col-sm-5">
       <%= f.input :phone_number, as: :custom, symbol: "<i class='fa fa-phone fa-fw' aria-hidden='true'></i>
-".html_safe, label: false, placeholder: "+33 * ** ** ** **", input_html: { class: 'custom-form-input' } %>
+".html_safe, label: false, placeholder: "+33 * ** ** ** **", input_html: { class: 'custom-form-input', type: 'tel' } %>
     </div>
     <div class="col-xs-12">
       <%= f.input :address, placeholder: "Street number and name", input_html: { class: 'custom-form-input' } %>

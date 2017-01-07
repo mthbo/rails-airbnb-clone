@@ -27,6 +27,9 @@
     border-color: $light-blue;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px $light-blue;
   }
+  &[readonly="readonly"] {
+    background-color: white;
+  }
 }
 
 .custom-input-addon {
@@ -68,7 +71,7 @@
     flex: 1 1 auto;
     justify-content: space-between;
     margin: 0;
-    max-width: 160px;
+    max-width: 180px;
     label {
       flex: 1 1 auto;
       margin: 3px;
@@ -110,5 +113,10 @@
   }
   .help-block {
     font-size: 14px;
+  }
+  .custom-check-boxes .check_boxes {
+    .checkbox {
+      max-width: 170px;
+    }
   }
 }

@@ -18,9 +18,9 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-12 col-sm-5">
+    <div class="col-xs-12 col-sm-6">
       <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>
-".html_safe, label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', value: @deal.deadline ? localize(@deal.deadline, format: "%d %b %Y") : nil } %>
+".html_safe, label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, value: @deal.deadline ? localize(@deal.deadline, format: "%d %b %Y") : nil } %>
     </div>
   </div>
 
