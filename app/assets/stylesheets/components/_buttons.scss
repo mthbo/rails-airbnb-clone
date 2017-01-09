@@ -168,9 +168,25 @@
   };
 }
 
+.btn-objective {
+  border-radius: 4px;
+  border: $medium-gray solid 1px;
+  color: $dark-gray;
+  background-color: $extra-light-gray;
+  &:hover {
+    background-color: $medium-gray;
+  };
+  &:active {
+    background-color: $dark-gray;
+  };
+  &:focus {
+    color: $medium-gray;
+  };
+}
+
 
 @media (max-width: $screen-xs-max) {
-  .btn-blue, .btn-green, .btn-facebook, .btn-gray, .btn-yellow, .btn-red {
+  .btn-blue, .btn-green, .btn-facebook, .btn-gray, .btn-yellow, .btn-red, .btn-objective {
     font-size: 14px;
   };
   .btn-form {

@@ -93,6 +93,25 @@
   }
 }
 
+.objective-form {
+  display: flex;
+  .objective_description {
+    flex: 1 1 auto;
+  };
+  .btn-objective {
+    flex: 0 0 45px;
+    margin-left: 10px;
+    height: 45px
+  }
+}
+
+#proposition-objectives {
+  background-color: rgba(255,255,255,0.8);
+  border: 1px dotted $medium-gray;
+  border-radius: 3px;
+  padding: 10px 15px 5px 15px;
+}
+
 @media (max-width: $screen-xs-max) {
   .custom-form-logo img {
     height: 35px;
@@ -117,6 +136,12 @@
   .custom-check-boxes .check_boxes {
     .checkbox {
       max-width: 170px;
+    }
+  }
+  .objective-form {
+    .btn-objective {
+      flex: 0 0 40px;
+      height: 40px
     }
   }
 }

@@ -1,21 +1,6 @@
-<div class="form-separation padded-top-xs padded-bottom-s">
-  <div></div>
-  <p class="font-weight-normal">Session cancellation</p>
-  <div></div>
-</div>
-
-<% if @deal.advisor == current_user %>
-  <p>Cancel the session if you don't want to pursue. Note that you won't be able to cancel the session after a proposition is sent, unless <%= @deal.client.first_name %> declines it.</p>
-<% elsif @deal.client == current_user %>
-  <p>Cancel the session if you don't want to pursue. Note that you won't be able to cancel the session once you accept a proposition.</p>
-<% end %>
-
-<div class="text-center padded-top-xs">
-  <button type="button" class="btn btn-form btn-red" data-toggle="modal" data-target="#session-cancellation">
-    Cancel the session
-  </button>
-</div>
-
+<button type="button" class="btn btn-form btn-red" data-toggle="modal" data-target="#session-cancellation">
+  Cancel the session
+</button>
 
 <div class="modal fade" id="session-cancellation" tabindex="-1" role="dialog" aria-labelledby="sessionCancellationLabel">
   <div class="modal-dialog" role="document">

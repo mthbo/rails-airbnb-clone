@@ -26,7 +26,7 @@
   <div>
     <h6>Session <%= "target".pluralize(@deal.objectives.count) %></h6>
     <% @deal.objectives.each_with_index do |objective, i| %>
-      <p><strong><%= i + 1 %> &nbsp; | &nbsp; </strong><%= objective.description %></p>
+      <%= render 'objectives/show', objective: objective, number: (i + 1) %>
     <% end %>
   </div>
 </div>

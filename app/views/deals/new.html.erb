@@ -2,7 +2,7 @@
   <%= "Papoters | Request for #{@offer.title}" %>
 <% end %>
 
-<h2>Request for "<%= link_to "#{@offer.title}", offer_path(@offer) %>"</h2>
+<h2>Request to <%= link_to "#{@offer.advisor.first_name}", user_path(@offer.advisor) %> for "<%= link_to "#{@offer.title}", offer_path(@offer) %>"</h2>
 
 <%= simple_form_for [@offer, @deal]  do |f| %>
   <%= f.error_notification message: 'Please fill all the fields below' %>

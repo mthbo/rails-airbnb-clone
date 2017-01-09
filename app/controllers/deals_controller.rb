@@ -25,6 +25,7 @@ class DealsController < ApplicationController
   end
 
   def proposition
+    @objective = Objective.new
   end
 
   def update

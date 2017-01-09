@@ -7,11 +7,20 @@
 <p>It's time to unveil your action plan to meet the needs of <%= @deal.client.first_name %>.</p>
 <p>Start by setting some targets for the session (at least one). You will be rated on the achievement of these targets.</p>
 
+<%= render 'objectives/form', deal: @deal, objective: @objective %>
+
+<div id="proposition-objectives">
+  <% if @deal.objectives.present? %>
+    <% @deal.objectives.each_with_index do |objective, i| %>
+      <%= render 'objectives/show', objective: objective, number: (i + 1) %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= simple_form_for @deal do |f| %>
   <%= f.error_notification message: 'Please fill all the fields below' %>
 
-  <div class="padded-bottom-xs">
+  <div class="padded-top-s padded-bottom-xs">
     <p>Now describe the information you will provide and how you will do this. Also tell what you can't provide to avoid disappointed hopes.</p>
   </div>
 
@@ -48,7 +57,7 @@
       </div>
     <% elsif @deal.offer.deals_closed.count < 3 %>
       <div class="col-xs-12 padded-top-xs">
-        <p>This session will be <strong>for free</strong>. You need <strong><%= 3 - @deal.offer.deals_closed.count %> more session</strong> for this offer to start proposing priced services.</p>
+        <p>This session will be <strong>for free</strong>. You need <strong><%= pluralize(3 - @deal.offer.deals_closed.count, "more session") %></strong> for this offer to start proposing priced services.</p>
       </div>
     <% else %>
       <div class="col-xs-12 padded-top-xs">
