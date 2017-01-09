@@ -1,15 +1,14 @@
 class ObjectivePolicy < ApplicationPolicy
 
   def create?
-    record.deal.advisor == user && (record.deal.request? || record.deal.proposition_declined?)
+    true
   end
 
   def update?
-    create?
+    record.deal.advisor == user
   end
 
   def destroy?
-    create?
+    record.deal.advisor == user
   end
-
 end

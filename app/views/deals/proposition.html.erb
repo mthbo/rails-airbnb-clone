@@ -5,22 +5,25 @@
 <h2>New proposition for <%= link_to "#session-#{@deal.id}", deal_path(@deal) %></h2>
 
 <p>It's time to unveil your action plan to meet the needs of <%= @deal.client.first_name %>.</p>
-<p>Start by setting some targets for the session (at least one). You will be rated on the achievement of these targets.</p>
+<p>Start by setting some targets for the session. You will be rated on the achievement of these targets.</p>
 
 <%= render 'objectives/form', deal: @deal, objective: @objective %>
 
-<div id="proposition-objectives">
-  <% if @deal.objectives.present? %>
+<div id="proposition_objectives">
+  <% if @deal.objectives.blank? %>
+    <p><em>Set at least one target for this sessions.</em></p>
+  <% else %>
     <% @deal.objectives.each_with_index do |objective, i| %>
       <%= render 'objectives/show', objective: objective, number: (i + 1) %>
     <% end %>
   <% end %>
 </div>
 
+
 <%= simple_form_for @deal do |f| %>
   <%= f.error_notification message: 'Please fill all the fields below' %>
 
-  <div class="padded-top-s padded-bottom-xs">
+  <div class="padded-top-xs padded-bottom-xs">
     <p>Now describe the information you will provide and how you will do this. Also tell what you can't provide to avoid disappointed hopes.</p>
   </div>
 

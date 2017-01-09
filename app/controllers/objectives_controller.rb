@@ -1,14 +1,22 @@
 class ObjectivesController < ApplicationController
   before_action :find_objective, only: [:update, :destroy]
   before_action :find_deal, only: [:create]
+  layout 'devise', only: [:create, :update, :destroy]
 
   def create
-    @objective = @deal.objectives.new(objective_params)
+    @objective = Objective.new(objective_params)
+    @objective.deal = @deal
     authorize @objective
     if @objective.save
-      redirect_to proposition_deal_path(@deal)
+      respond_to do |format|
+        format.html { redirect_to proposition_deal_path(@deal) }
+        format.js
+      end
     else
-      render 'deals/proposition'
+      respond_to do |format|
+        format.html { render 'deals/proposition' }
+        format.js
+      end
     end
   end
 
@@ -37,7 +45,7 @@ class ObjectivesController < ApplicationController
   end
 
   def objective_params
-    params.require(:objective).permit(:description, :rating)
+    params.require(:objective).permit(:description, :rating, :deal)
   end
 
 end
