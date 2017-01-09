@@ -53,6 +53,12 @@
   background-color: rgba(255,255,255,0.8);
   padding: 25px;
   border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  button {
+    margin-left: 10px;
+  }
 }
 
 .session-proposition-figures {

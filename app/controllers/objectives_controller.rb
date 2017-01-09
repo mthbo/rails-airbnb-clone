@@ -20,7 +20,9 @@ class ObjectivesController < ApplicationController
     end
   end
 
+  # Update to do for rating
   def update
+    @deal = @objective.deal
     if @objective.update(objective_params)
       redirect_to proposition_deal_path(@deal)
     else
@@ -30,7 +32,11 @@ class ObjectivesController < ApplicationController
 
   def destroy
     @objective.destroy
-    redirect_to proposition_deal_path(@deal)
+    @deal = @objective.deal
+    respond_to do |format|
+      format.html { redirect_to proposition_deal_path(@deal) }
+      format.js
+    end
   end
 
   private

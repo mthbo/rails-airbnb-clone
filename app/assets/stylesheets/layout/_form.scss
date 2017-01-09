@@ -113,6 +113,18 @@
   margin-bottom: 1em;
 }
 
+.proposition-objective {
+  display: flex;
+  justify-content: space-between;
+}
+
+.proposition-destroy {
+  margin-left: 10px;
+  &:hover {
+    color: $dark-gray;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .custom-form-logo img {
     height: 35px;

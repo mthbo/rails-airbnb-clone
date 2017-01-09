@@ -10,8 +10,8 @@ class Offer < ApplicationRecord
   enum status: [ :active, :inactive, :archived ]
   enum pricing: [ :free, :priced ]
 
-  validates :title, presence: { message: "The offer must have a title" }
-  validates :description, presence: { message: "The offer must have a description" }
+  validates :description, presence: { message: "The offer must have a title" }, length: { minimum: 10, message: "The offer title is too short, please tell a little more!" }
+  validates :description, presence: { message: "The offer must have a description" }, length: { minimum: 50, message: "The offer description is too short, please tell a little more!" }
   validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 

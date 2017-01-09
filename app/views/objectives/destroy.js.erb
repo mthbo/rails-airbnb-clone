@@ -1,0 +1,8 @@
+$('#proposition_objectives').empty();
+<% if @deal.objectives.blank? %>
+  $('#proposition_objectives').html("<p><em>Set at least one target for this sessions.</em></p>");
+<% else %>
+  <% @deal.objectives.each_with_index do |objective, i| %>
+    $('#proposition_objectives').append("<%= j render 'objectives/show', objective: objective, number: (i + 1) %>");
+  <% end %>
+<% end %>

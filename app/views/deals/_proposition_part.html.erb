@@ -24,9 +24,9 @@
 
 <div class="session-proposition bg-white-transparent">
   <div>
-    <h6>Session <%= "target".pluralize(@deal.objectives.count) %></h6>
+    <h6><%= "Target".pluralize(@deal.objectives.count) %></h6>
     <% @deal.objectives.each_with_index do |objective, i| %>
-      <%= render 'objectives/show', objective: objective, number: (i + 1) %>
+      <p><span class="font-weight-normal"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></p>
     <% end %>
   </div>
 </div>
@@ -56,9 +56,10 @@
   <% end %>
 </div>
 
-<div class="session-proposition-bottom text-right">
+<div class="session-proposition-bottom">
   <% if policy(@deal).open_or_decline? %>
-    <%= render "acceptation_form" %>
+    <%= render "decline" %>
+    <%= render "acceptation" %>
   <% else %>
     <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
   <% end %>

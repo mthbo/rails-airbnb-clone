@@ -1,4 +1,0 @@
-<%= simple_form_for [@offer, @deal] do |f| %>
-  <%= f.input :accepted_at, as: :hidden, :input_html => { value: DateTime.now } %>
-  <%= f.button :submit, "Accept proposition", class: "btn-blue" %>
-<% end %>

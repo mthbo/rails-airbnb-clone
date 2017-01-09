@@ -33,6 +33,7 @@ class DealsController < ApplicationController
       redirect_to deal_path(@deal)
       flash[:notice] = "Session has been updated"
     else
+      @objective = Objective.new
       render :proposition
     end
   end

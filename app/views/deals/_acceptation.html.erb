@@ -1,0 +1,22 @@
+<button type="button" class="btn btn-blue" data-toggle="modal" data-target="#session-acceptation">
+  Accept
+</button>
+
+<div class="modal fade" id="session-acceptation" tabindex="-1" role="dialog" aria-labelledby="sessionAcceptationLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title font-weight-normal" id="sessionAcceptationLabel">Accept proposition</h4>
+      </div>
+      <div class="modal-body extra-dark-gray">
+        <p>Please review the proposition of <%= @deal.advisor.first_name %> before accepting it.</p>
+        <%= render 'proposition_summary' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
+        <%= link_to "Accept proposition", deal_path(@deal, deal:{status: :open}), method: :patch, class: "btn btn-form btn-blue" %>
+      </div>
+    </div>
+  </div>
+</div>
