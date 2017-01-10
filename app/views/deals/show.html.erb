@@ -2,7 +2,13 @@
   <%= "Papoters | #session-#{@deal.id}" %>
 <% end %>
 
-<div class="padded-top-xxl padded-bottom-xxl bg-gradient">
+<div class=
+  <% if @deal.advisor == current_user %>
+    "padded-top-xxl padded-bottom-xxl bg-gradient-green"
+  <% elsif @deal.client == current_user %>
+    "padded-top-xxl padded-bottom-xxl bg-gradient-yellow"
+  <% end %>
+>
   <div class="container">
 
     <div class="row">
@@ -22,13 +28,20 @@
             <%= render 'status' %>
           </div>
 
-          <div class="padded-bottom-s">
+          <div>
             <% if @deal.cancelled? %>
               <%= render 'cancelled_part' %>
             <% elsif @deal.request? %>
               <%= render 'request_part' %>
             <% else %>
               <%= render 'proposition_part' %>
+            <% end %>
+          </div>
+
+          <div class="padded-bottom-m session-btns">
+            <% if policy(@deal).cancel? %>
+              <%= render 'cancellation' %>
+              <%= link_to 'New proposition', proposition_deal_path(@deal), class: "btn btn-form btn-blue" if policy(@deal).proposition? %>
             <% end %>
           </div>
 

@@ -6,10 +6,12 @@
         <h4 class="modal-title" id="propositionConfirmationLabel">Proposition confirmation</h4>
       </div>
       <div class="modal-body">
-        <p>Please review your proposition before confirming sending.</p>
-        <div class="form-separation padded-top-s padded-bottom-s">
+        <p class="font-weight-normal blue">Please review your proposition before confirming sending.</p>
+        <div class="form-separation padded-top-s padded-bottom-xs">
           <div></div>
-          <p class="font-weight-normal">Proposition &nbsp;|&nbsp; expiry <%= @deal.proposition_deadline.strftime("%d %b %Y") %></p>
+          <p>
+            <strong>Proposition expiring on <%= @deal.proposition_deadline.strftime("%d %b %Y") %></strong>
+          </p>
           <div></div>
         </div>
         <%= render 'proposition_recap' %>

@@ -25,7 +25,7 @@ class DealPolicy < ApplicationPolicy
   end
 
   def cancel?
-    ((record.request? || record.proposition_declined?) && (record.advisor == user || record.client == user)) || (record.proposition? && record.client == user)
+    ((record.request? || record.proposition_declined?) && (record.advisor == user || record.client == user))
   end
 
 end

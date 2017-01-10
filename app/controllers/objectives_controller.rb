@@ -1,7 +1,7 @@
 class ObjectivesController < ApplicationController
   before_action :find_objective, only: [:update, :destroy]
   before_action :find_deal, only: [:create]
-  layout 'devise', only: [:create, :update, :destroy]
+  layout 'advisor_form', only: [:create, :update, :destroy]
 
   def create
     @objective = Objective.new(objective_params)

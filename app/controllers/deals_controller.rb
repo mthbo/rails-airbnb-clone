@@ -1,7 +1,6 @@
 class DealsController < ApplicationController
   before_action :find_deal, only: [:show, :update, :proposition]
   before_action :find_offer, only: [:new, :create]
-  layout 'devise', only: [:new, :create, :proposition, :update]
 
   def show
     @message = Message.new
@@ -10,6 +9,7 @@ class DealsController < ApplicationController
   def new
     @deal = @offer.deals.new
     authorize @deal
+    render layout: "client_form"
   end
 
   def create
@@ -20,12 +20,13 @@ class DealsController < ApplicationController
       flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
       redirect_to deal_path(@deal)
     else
-      render :new
+      render :new, layout: "client_form"
     end
   end
 
   def proposition
     @objective = Objective.new
+    render layout: "advisor_form"
   end
 
   def update
@@ -45,7 +46,7 @@ class DealsController < ApplicationController
     else
       if @deal.waiting_proposition? && @deal.advisor == current_user
         @objective = Objective.new
-        render :proposition
+        render :proposition, layout: "advisor_form"
       end
     end
   end

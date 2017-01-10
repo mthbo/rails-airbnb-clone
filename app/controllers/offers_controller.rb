@@ -1,7 +1,7 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :find_offer, only: [:show, :edit, :update]
-  layout 'devise', only: [:new, :create, :edit, :update]
+  layout 'advisor_form', only: [:new, :create, :edit, :update]
 
   def index
     @offers = policy_scope(Offer).search(params[:search])

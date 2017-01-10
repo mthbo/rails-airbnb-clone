@@ -86,10 +86,16 @@
   background: white;
 }
 .bg-white-transparent {
-  background: rgba(255,255,255,0.5)
+  background: rgba(255,255,255,0.6)
 }
 .bg-gradient {
   background: $gradient;
+}
+.bg-gradient-yellow {
+  background: $gradient-yellow;
+}
+.bg-gradient-green {
+  background: $gradient-green;
 }
 
 .bg-reverse-gradient {

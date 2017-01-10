@@ -9,6 +9,7 @@ class Mean < ApplicationRecord
     "Call" => 'phone',
     "Video call" => 'video-camera',
     "Meeting" => 'coffee',
+    "Documents" => 'file-text',
     "Sign language" => 'sign-language'
   }
 

@@ -5,3 +5,15 @@
 .modal-body {
   color: $extra-dark-gray;
 }
+
+.modal-header, .modal-body, .modal-footer {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+@media (max-width: $screen-xs-max) {
+  .modal-header, .modal-body, .modal-footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

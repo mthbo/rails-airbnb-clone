@@ -57,26 +57,53 @@
 </div>
 
 <div class="session-proposition-bottom">
-  <% if policy(@deal).open_or_decline? %>
-    <div class="proposition-action-btns">
-      <%= render "decline" %>
-      <%= render "acceptation" %>
+  <div class="row">
+    <div class="col-xs-4">
+      <% if @deal.proposition? %>
+        <div class="proposition-info">
+          <p><small>Expiry on </small></p>
+          <p><small><span class="font-weight-normal"><%= @deal.proposition_deadline.strftime("%d %b %Y") %></span></small></p>
+        </div>
+      <% end %>
     </div>
-    <div class="text-right proposition-info">
-      <p><small>Expiry on <span class="font-weight-normal"><%= @deal.proposition_deadline.strftime("%d %b %Y") %></span></small></p>
+    <div class="col-xs-8">
+      <% if policy(@deal).open_or_decline? %>
+        <div class="proposition-action-btns">
+          <%= render "decline" %>
+          <%= render "acceptation" %>
+        </div>
+      <% elsif @deal.proposition? && @deal.advisor == current_user %>
+        <div class="text-right proposition-info">
+          <p class="blue font-weight-normal">Proposition pending</p>
+        </div>
+      <% elsif @deal.proposition_declined? %>
+        <div class="text-right proposition-info">
+          <p class="red font-weight-normal">Proposition declined</p>
+        </div>
+      <% else %>
+        <div class="text-right proposition-info">
+          <p class="blue font-weight-normal">Proposition accepted</p>
+        </div>
+      <% end %>
     </div>
-  <% elsif @deal.proposition? && @deal.advisor == current_user %>
-    <div class="text-right proposition-info">
-      <p class="blue font-weight-normal">Proposition pending</p>
-      <p><small>Expiry on <span class="font-weight-normal"><%= @deal.proposition_deadline.strftime("%d %b %Y") %></span></small></p>
-    </div>
-  <% elsif @deal.proposition_declined? %>
-    <div class="text-right proposition-info">
-      <p class="red font-weight-normal">Proposition declined</p>
-    </div>
-  <% else %>
-    <div class="text-right proposition-info">
-      <p class="blue font-weight-normal">Proposition accepted</p>
-    </div>
-  <% end %>
+  </div>
+
 </div>
+
+<% if policy(@deal).cancel? %>
+  <div class="padded-top-s">
+    <% if policy(@deal).proposition? %>
+      <p class="font-weight-normal"><%= @deal.client.first_name %> declined your proposition. Make a new proposition or cancel the session if you don't want to pursue.</p>
+    <% else %>
+      <p class="font-weight-normal">Ask for a new proposition or cancel the session if you don't want to pursue.</p>
+    <% end %>
+  </div>
+<% elsif @deal.proposition? %>
+  <div class="padded-top-s">
+    <% if @deal.advisor == current_user %>
+      <p class="font-weight-normal">You sent a proposition, <%= @deal.client.first_name %> will decide to accept or decline it.</p>
+    <% elsif @deal.client == current_user %>
+      <p class="font-weight-normal">Accept or decline the proposition to pursue.</p>
+    <% end %>
+  </div>
+<% end %>

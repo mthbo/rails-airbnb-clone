@@ -27,6 +27,7 @@ means = [
   Mean.create(name: "Call"),
   Mean.create(name: "Video call"),
   Mean.create(name: "Meeting"),
+  Mean.create(name: "Documents"),
   Mean.create(name: "Sign language")
 ]
 

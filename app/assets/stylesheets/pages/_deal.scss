@@ -19,17 +19,17 @@
   margin: 0 5px;
 }
 
-.session-request-btns {
+.session-btns {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  .btn {
-    margin: 0 10px;
+  & > .btn {
+    margin: 10px;
   }
 }
 
 .session-proposition-top {
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.9);
   padding: 5px 25px;
   border-radius: 10px 10px 0 0;
 }
@@ -50,7 +50,7 @@
 }
 
 .session-proposition-bottom {
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(255,255,255,0.9);
   padding: 20px 25px;
   border-radius: 0 0 10px 10px;
 }
@@ -66,7 +66,7 @@
 
 .proposition-info {
   p {
-    margin: 5px 0 0 0;
+    margin: 0;
   }
 }
 
@@ -74,6 +74,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.proposition-recap-figures {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .session-conversation-box {
@@ -115,5 +122,5 @@
   };
   .session-proposition-bottom {
     padding: 20px 15px;
-  }
+  };
 }

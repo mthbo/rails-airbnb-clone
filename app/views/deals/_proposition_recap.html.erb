@@ -1,35 +1,36 @@
-<p class="font-weight-normal">Proposition for "<%= @deal.offer.title %>"</p>
-
-<div class="padded-top-xs">
-  <p class="font-weight-normal">
-    Amount: &nbsp;
-    <span class="blue"><%= money_without_cents_and_with_symbol(@deal.amount) %></span>
-  </p>
-  <p class="font-weight-normal">
-    Deadline: &nbsp;
-    <span class="blue"><%= @deal.deadline.strftime("%d %b %Y") %>
-  </p></span>
+<div class="padded-top-xs proposition-recap-figures">
+  <div>
+    <p class="font-weight-normal">
+      Amount: &nbsp;
+      <span class="blue"><%= money_without_cents_and_with_symbol(@deal.amount) %></span>&nbsp;&nbsp;
+    </p>
+  </div>
+  <div>
+    <p class="font-weight-normal">
+      Deadline: &nbsp;
+      <span class="blue"><%= @deal.deadline.strftime("%d %b %Y") %></span>
+    </p>
+  </div>
 </div>
 
-<div class="padded-top-xs">
-  <h6><%= pluralize(@deal.objectives.count, "target") %></h6>
+<div>
+  <h6 class="extra-dark-gray"><%= "Target".pluralize(@deal.objectives.count) %></h6>
   <% @deal.objectives.each_with_index do |objective, i| %>
     <p><span class="font-weight-normal"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></p>
   <% end %>
 </div>
 
 <div class="padded-top-xs">
-  <h6>Description</h6>
   <p><%= @deal.proposition %></p>
 </div>
 
-<div class="row padded-top-xs padded-bottom-xs">
+<div class="row padded-bottom-xs">
   <div class="col-xs-12 col-sm-6">
-    <h6>Languages</h6>
+    <h6 class="extra-dark-gray">Languages</h6>
     <%= render 'languages', deal: @deal %>
   </div>
   <div class="col-xs-12 col-sm-6">
-    <h6>Means of communication</h6>
+    <h6 class="extra-dark-gray">Means of communication</h6>
     <%= render 'means', deal: @deal %>
   </div>
 </div>
