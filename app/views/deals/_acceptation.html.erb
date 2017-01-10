@@ -20,7 +20,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-        <%= link_to "Accept proposition", deal_path(@deal, deal:{status: :open}), method: :patch, class: "btn btn-form btn-blue" %>
+        <%= link_to "Accept proposition", deal_path(@deal, deal:{status: :open, accepted_at: DateTime.now }), method: :patch, class: "btn btn-form btn-blue" %>
       </div>
     </div>
   </div>

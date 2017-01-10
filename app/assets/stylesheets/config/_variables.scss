@@ -42,7 +42,7 @@ $light-gray: rgb(215,215,215);
 $extra-light-gray: rgb(240,240,240);
 
 $dark-blue: #20303F;
-$dark-green: #33A988;
+$dark-green: #1BBC9B;
 $dark-yellow: #EAB62B;
 
 
@@ -53,5 +53,7 @@ $light-blue: #AACAE8;
 
 $gradient: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(66, 211, 170, 0.3) 100%);
 $reverse-gradient: linear-gradient(344deg, rgba(255, 201, 56, 0.3) 0%, rgba(66, 211, 170, 0.3) 100%);
-$gradient-yellow: linear-gradient(164deg, rgba(255, 201, 56, 0.1) 0%, rgba(255, 201, 56, 0.2) 100%);
-$gradient-green: linear-gradient(164deg, rgba(66, 211, 170, 0.1) 0%, rgba(66, 211, 170, 0.2) 100%);
+$gradient-yellow: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);
+$gradient-green: linear-gradient(164deg, rgba(66, 211, 170, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);
+$gradient-yellow-gray: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(200, 200, 200, 0.3) 100%);
+$gradient-green-gray: linear-gradient(164deg, rgba(66, 211, 170, 0.3) 0%, rgba(200, 200, 200, 0.3) 100%);

@@ -15,9 +15,9 @@ $(function(){
 function checkBoxAppearance(checkBox) {
   if (checkBox.checked) {
     $(checkBox).parent().css('background-color', 'white');
-    $(checkBox).parent().css('border-color', '#33A988');
+    $(checkBox).parent().css('border-color', 'rgb(74,74,74)');
   } else {
-    $(checkBox).parent().css('background-color', 'rgba(255,255,255,0.5)');
+    $(checkBox).parent().css('background-color', 'rgba(255,255,255,0.7)');
     $(checkBox).parent().css('border-color', 'rgb(215,215,215)');
   }
 }

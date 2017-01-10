@@ -1,15 +1,5 @@
 <h3>
-  <strong class=
-    <% if @deal.open? %>
-      "green"
-    <% elsif @deal.open_expired? %>
-      "orange"
-    <% elsif @deal.closed? || @deal.cancelled? %>
-      "red"
-    <% else %>
-      "blue"
-    <% end %>
-  >#session-<%= @deal.id %></strong>
+  <strong class="blue">#session-<%= @deal.id %></strong>
 
   &nbsp; with
   <% if @deal.client ==  current_user && @deal.advisor %>

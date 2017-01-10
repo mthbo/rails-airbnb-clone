@@ -42,6 +42,8 @@
             <% if policy(@deal).cancel? %>
               <%= render 'cancellation' %>
               <%= link_to 'New proposition', proposition_deal_path(@deal), class: "btn btn-form btn-blue" if policy(@deal).proposition? %>
+            <% elsif policy(@deal).close? %>
+              <%= render 'close' %>
             <% end %>
           </div>
 

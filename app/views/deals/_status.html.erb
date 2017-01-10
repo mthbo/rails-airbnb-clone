@@ -25,9 +25,9 @@
   <div class="text-center session-status">
     <p class=
       <% if @deal.open? %>
-        "font-weight-bolder green"
+        "font-weight-bolder dark-green"
       <% elsif @deal.open_expired? %>
-        "font-weight-bolder orange"
+        "font-weight-bolder dark-green"
       <% else %>
         "font-weight-normal medium-gray"
       <% end %>
@@ -35,9 +35,9 @@
     <% if @deal.accepted_at %>
       <p class=
         <% if @deal.open? %>
-          "green"
+          "dark-green"
         <% elsif @deal.open_expired? %>
-          "orange"
+          "dark-green"
         <% else %>
           "medium-gray"
         <% end %>

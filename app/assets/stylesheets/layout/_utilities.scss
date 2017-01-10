@@ -97,10 +97,16 @@
 .bg-gradient-green {
   background: $gradient-green;
 }
-
+.bg-gradient-yellow-gray {
+  background: $gradient-yellow-gray;
+}
+.bg-gradient-green-gray {
+  background: $gradient-green-gray;
+}
 .bg-reverse-gradient {
   background: $reverse-gradient;
 }
+
 
 // Borders
 
@@ -173,8 +179,14 @@ label {
 .yellow {
   color: $yellow;
 }
+.dark-yellow {
+  color: $dark-yellow;
+}
 .green {
   color: $green;
+}
+.dark-green {
+  color: $dark-green;
 }
 .blue {
   color: $blue;
