@@ -7,11 +7,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title font-weight-normal" id="sessionAcceptationLabel">Accept proposition</h4>
+        <h4 class="modal-title" id="sessionAcceptationLabel">Accept proposition</h4>
       </div>
-      <div class="modal-body extra-dark-gray">
+      <div class="modal-body">
         <p>Please review the proposition of <%= @deal.advisor.first_name %> before accepting it.</p>
-        <%= render 'proposition_summary' %>
+        <div class="form-separation padded-top-s padded-bottom-s">
+          <div></div>
+          <p class="font-weight-normal">Proposition recap</p>
+          <div></div>
+        </div>
+        <%= render 'proposition_recap' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>

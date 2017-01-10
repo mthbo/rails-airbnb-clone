@@ -172,6 +172,7 @@
   border: $medium-gray solid 1px;
   color: $dark-gray;
   background-color: $extra-light-gray;
+  border-radius: 50%;
   &:hover {
     background-color: $medium-gray;
   };

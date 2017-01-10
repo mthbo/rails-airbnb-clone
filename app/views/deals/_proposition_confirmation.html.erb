@@ -1,0 +1,25 @@
+<div class="modal fade" id="proposition-confirmation" tabindex="-1" role="dialog" aria-labelledby="propositionConfirmationLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="propositionConfirmationLabel">Proposition confirmation</h4>
+      </div>
+      <div class="modal-body">
+        <p>Please review your proposition before confirming sending.</p>
+        <div class="form-separation padded-top-s padded-bottom-s">
+          <div></div>
+          <p class="font-weight-normal">Proposition &nbsp;|&nbsp; expiry <%= @deal.proposition_deadline.strftime("%d %b %Y") %></p>
+          <div></div>
+        </div>
+        <%= render 'proposition_recap' %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
+        <%= link_to deal_path(@deal, deal:{status: :proposition, proposition_at: DateTime.now }), method: :patch, class: "btn btn-form btn-blue" do %>
+          <i class='fa fa-paper-plane' aria-hidden='true'></i>&nbsp;&nbsp; Send
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -61,7 +61,7 @@
       </div>
     <% elsif @deal.offer.deals_closed.count < 3 %>
       <div class="col-xs-12 padded-top-xs">
-        <p>This session will be <strong>for free</strong>. You need <strong><%= pluralize(3 - @deal.offer.deals_closed.count, "more session") %></strong> for this offer to start proposing priced services.</p>
+        <p>This session will be <strong>for free</strong>. You need <strong><%= pluralize(3 - @deal.offer.deals_closed.count, "more session") %></strong> for this offer to propose priced services.</p>
       </div>
     <% else %>
       <div class="col-xs-12 padded-top-xs">
@@ -81,12 +81,9 @@
     </div>
   </div>
 
-  <%= f.hidden_field :proposition_at, value: DateTime.now %>
-  <%= f.hidden_field :status, value: :proposition %>
-
   <div class="text-right padded-top-xs">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
-      <i class='fa fa-paper-plane' aria-hidden='true'></i>&nbsp;&nbsp; Send proposition
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue", data: { toggle: "modal", target: "#proposition-confirmation" } ) do %>
+      Send Proposition
     <% end %>
   </div>
 <% end %>
@@ -94,3 +91,5 @@
 <div class="text-right padded-top-xs">
   <p><%= link_to "Back to session", deal_path(@deal) %></p>
 </div>
+
+<%= render "proposition_confirmation" %>

@@ -30,11 +30,23 @@ class DealsController < ApplicationController
 
   def update
     if @deal.update(deal_params)
-      redirect_to deal_path(@deal)
-      flash[:notice] = "Session has been updated"
+      if @deal.proposition? && @deal.advisor == current_user
+        flash[:notice] = "Your proposition was sent to #{@deal.client.name_anonymous}"
+        redirect_to deal_path(@deal)
+      elsif @deal.proposition_declined? && @deal.client == current_user
+        redirect_to deal_path(@deal)
+      elsif @deal.open?
+        redirect_to deal_path(@deal)
+        flash[:notice] = "#session-#{@deal.id} with #{@deal.client.name_anonymous} is open!"
+      elsif @deal.closed?
+        redirect_to deal_path(@deal)
+        flash[:notice] = "#session-#{@deal.id} with #{@deal.client.name_anonymous} is closed!"
+      end
     else
-      @objective = Objective.new
-      render :proposition
+      if @deal.waiting_proposition? && @deal.advisor == current_user
+        @objective = Objective.new
+        render :proposition
+      end
     end
   end
 

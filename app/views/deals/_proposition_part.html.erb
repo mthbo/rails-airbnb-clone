@@ -34,11 +34,11 @@
 <div class="session-proposition bg-white-transparent" id="proposition-details">
   <p><%= @deal.proposition %></p>
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <h6>Languages</h6>
       <%= render 'languages', deal: @deal %>
     </div>
-    <div class="col-xs-6">
+    <div class="col-xs-12 col-sm-6">
       <h6>Means of communication</h6>
       <%= render 'means', deal: @deal %>
     </div>
@@ -58,9 +58,25 @@
 
 <div class="session-proposition-bottom">
   <% if policy(@deal).open_or_decline? %>
-    <%= render "decline" %>
-    <%= render "acceptation" %>
+    <div class="proposition-action-btns">
+      <%= render "decline" %>
+      <%= render "acceptation" %>
+    </div>
+    <div class="text-right proposition-info">
+      <p><small>Expiry on <span class="font-weight-normal"><%= @deal.proposition_deadline.strftime("%d %b %Y") %></span></small></p>
+    </div>
+  <% elsif @deal.proposition? && @deal.advisor == current_user %>
+    <div class="text-right proposition-info">
+      <p class="blue font-weight-normal">Proposition pending</p>
+      <p><small>Expiry on <span class="font-weight-normal"><%= @deal.proposition_deadline.strftime("%d %b %Y") %></span></small></p>
+    </div>
+  <% elsif @deal.proposition_declined? %>
+    <div class="text-right proposition-info">
+      <p class="red font-weight-normal">Proposition declined</p>
+    </div>
   <% else %>
-    <p><small>Waiting for <%= @deal.client.name_anonymous %> acceptation</small></p>
+    <div class="text-right proposition-info">
+      <p class="blue font-weight-normal">Proposition accepted</p>
+    </div>
   <% end %>
 </div>
