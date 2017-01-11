@@ -23,26 +23,9 @@
   </div>
 
   <div class="text-center session-status">
-    <p class=
-      <% if @deal.open? %>
-        "font-weight-bolder dark-green"
-      <% elsif @deal.open_expired? %>
-        "font-weight-bolder dark-green"
-      <% else %>
-        "font-weight-normal medium-gray"
-      <% end %>
-    >Open</p>
+    <p class="<%= @deal.open_or_expired? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Open</p>
     <% if @deal.accepted_at %>
-      <p class=
-        <% if @deal.open? %>
-          "dark-green"
-        <% elsif @deal.open_expired? %>
-          "dark-green"
-        <% else %>
-          "medium-gray"
-        <% end %>
-      ><small><%= @deal.accepted_at.strftime("%d %b %Y") %></small>
-      </p>
+      <p class="<%= @deal.open_or_expired? ? 'blue' : 'medium-gray' %>"><small><%= @deal.accepted_at.strftime("%d %b %Y") %></small></p>
     <% else %>
       <p class="medium-gray %>"><small> - </small></p>
     <% end %>

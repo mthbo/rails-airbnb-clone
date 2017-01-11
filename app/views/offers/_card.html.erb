@@ -69,7 +69,11 @@
 
       <div class="offer-card-bottom-right">
         <% if policy(offer).edit? %>
-          <p><%= link_to "Edit offer", edit_offer_path(offer) %></p>
+          <p>
+            <%= link_to edit_offer_path(offer) do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Edit
+            <% end %>
+          </p>
         <% elsif offer.active? %>
           <%= render 'deals/request_button', offer: offer %>
         <% end %>

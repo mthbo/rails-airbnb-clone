@@ -26,6 +26,12 @@
   </div>
 
   <div class="text-right padded-top-s">
-    <%= f.button :submit, class: "btn-form btn-gray" %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+      <% if @offer.id.blank? %>
+        <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Publish
+      <% else %>
+        <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Update
+      <% end %>
+    <% end %>
   </div>
 <% end %>

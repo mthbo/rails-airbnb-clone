@@ -42,7 +42,20 @@
 }
 
 .session-proposition {
-  padding: 10px 25px;
+  padding: 0 25px;
+}
+
+.session-left-box {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+#proposition-essential {
+  padding-top: 20px;
+  padding-bottom: 11px;
+  p:last-child {
+    margin-bottom: 0;
+  }
 }
 
 #proposition-details {
@@ -93,8 +106,9 @@
   .session-proposition-top {
     padding: 5px 15px;
   };
-  .session-proposition {
-    padding: 10px 15px;
+  .session-proposition, .session-left-box {
+    padding-left: 15px;
+    padding-right: 15px;
   };
   .session-proposition-bottom {
     padding: 20px 15px;
@@ -105,8 +119,9 @@
   .session-proposition-top {
     padding: 5px 25px;
   };
-  .session-proposition {
-    padding: 10px 25px;
+  .session-proposition, .session-left-box {
+    padding-left: 25px;
+    padding-right: 25px;
   };
   .session-proposition-bottom {
     padding: 20px 25px;
@@ -114,11 +129,17 @@
 }
 
 @media (max-width: $screen-xs-max) {
+  .session-status-box {
+    p {
+      font-size: 13px !important;
+    }
+  };
   .session-proposition-top {
     padding: 5px 15px;
   };
-  .session-proposition {
-    padding: 10px 15px;
+  .session-proposition, .session-left-box {
+    padding-left: 15px;
+    padding-right: 15px;
   };
   .session-proposition-bottom {
     padding: 20px 15px;

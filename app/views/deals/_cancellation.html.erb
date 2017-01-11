@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-form btn-red" data-toggle="modal" data-target="#session-cancellation">
-  Cancel the session
+  <i class='fa fa-trash-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Cancel the session
 </button>
 
 <div class="modal fade" id="session-cancellation" tabindex="-1" role="dialog" aria-labelledby="sessionCancellationLabel">
@@ -17,7 +17,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-        <%= link_to "Cancel the session", deal_path(@deal, deal:{status: :cancelled}), method: :patch, class: "btn btn-form btn-red" %>
+        <%= link_to deal_path(@deal, deal:{status: :cancelled}), method: :patch, class: "btn btn-form btn-red" do %>
+          <i class='fa fa-trash-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Cancel
+        <% end %>
       </div>
     </div>
   </div>

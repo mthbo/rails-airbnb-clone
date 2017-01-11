@@ -1,0 +1,9 @@
+<% if @deal.errors.any? %>
+  $('#edit_deal_<%= @deal.id %>').html("<%= j render 'proposition_form', deal: @deal %>");
+  datePicker();
+  checkBox();
+  window.scroll({ top: 0, left: 0 });
+<% else %>
+  $('#proposition_confirmation_box').html("<%= j render 'proposition_confirmation', deal: @deal %>");
+  $('#proposition-confirmation').modal('show');
+<% end %>

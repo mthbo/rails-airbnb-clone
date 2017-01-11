@@ -38,10 +38,14 @@
             <% end %>
           </div>
 
-          <div class="padded-bottom-m session-btns">
+          <div class="session-left-box padded-bottom-m session-btns">
             <% if policy(@deal).cancel? %>
+              <% if policy(@deal).proposition? %>
+                <%= link_to proposition_deal_path(@deal), class: "btn btn-form btn-blue" do %>
+                  <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; New proposition
+                <% end %>
+              <% end %>
               <%= render 'cancellation' %>
-              <%= link_to 'New proposition', proposition_deal_path(@deal), class: "btn btn-form btn-blue" if policy(@deal).proposition? %>
             <% elsif policy(@deal).close? %>
               <%= render 'close' %>
             <% end %>

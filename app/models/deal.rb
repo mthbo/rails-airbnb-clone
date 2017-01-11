@@ -33,6 +33,10 @@ class Deal < ApplicationRecord
     proposition? || proposition_declined?
   end
 
+  def open_or_expired?
+    open? || open_expired?
+  end
+
   def rating
     if rated_objectives.present?
       sum = 0

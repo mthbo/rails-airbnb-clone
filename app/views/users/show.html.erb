@@ -14,7 +14,7 @@
       <% if policy(@user).dashboard? %>
         <div class="col-xs-12 col-sm-3 col-lg-2 dashboard-link">
           <%= link_to dashboard_path, class: "dashboard-link-arrow" do %>
-            <p>Go to my dashboard</p>
+            <p>See my dashboard</p>
             <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
           <% end %>
         </div>
@@ -33,7 +33,11 @@
       </div>
       <% if policy(@user).edit? %>
         <div class="col-xs-6 col-lg-5 text-right padded-top-s">
-          <p><%= link_to "Edit my profile", edit_user_registration_path %></p>
+          <p>
+            <%= link_to edit_user_registration_path do %>
+              <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Edit my profile
+            <% end %>
+          </p>
         </div>
       <% end %>
 
@@ -61,7 +65,9 @@
       </div>
       <% if policy(@user.offers.new).new? %>
         <div class="col-xs-6 col-lg-5 text-right padded-top-xs">
-          <%= link_to "Create an offer", new_offer_path, class: "btn btn-green"  %>
+          <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
+            <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; New offer
+          <% end %>
         </div>
       <% end %>
 

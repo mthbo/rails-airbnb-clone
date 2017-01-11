@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-red" data-toggle="modal" data-target="#session-decline">
-  Decline
+  <i class="fa fa-ban" aria-hidden="true"></i>&nbsp; Decline
 </button>
 
 <div class="modal fade" id="session-decline" tabindex="-1" role="dialog" aria-labelledby="sessionDeclineLabel">
@@ -17,7 +17,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-        <%= link_to "Decline proposition", deal_path(@deal, deal:{status: :proposition_declined}), method: :patch, class: "btn btn-form btn-red" %>
+        <%= link_to deal_path(@deal, deal:{status: :proposition_declined}), method: :patch, class: "btn btn-form btn-red" do %>
+          <i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Decline
+        <% end %>
       </div>
     </div>
   </div>

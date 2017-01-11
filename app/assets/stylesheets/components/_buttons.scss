@@ -171,7 +171,7 @@
 .btn-objective {
   border: $medium-gray solid 1px;
   color: $dark-gray;
-  background-color: $extra-light-gray;
+  background-color: rgba(255,255,255,0.8);
   border-radius: 50%;
   &:hover {
     background-color: $medium-gray;

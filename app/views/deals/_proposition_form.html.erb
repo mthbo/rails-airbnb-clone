@@ -1,0 +1,66 @@
+<%= simple_form_for deal, remote: true do |f| %>
+  <%= f.error_notification message: 'Please fill all the fields below and set at least one target for this session' %>
+
+  <div class="padded-top-xs padded-bottom-xs">
+    <p>Now describe the information you will provide and how you will do this. Also tell what you can't provide to avoid disappointed hopes.</p>
+  </div>
+
+  <%= f.input :proposition, label: false, placeholder: "Detail your proposition", input_html: { class: 'custom-form-input', rows: "7" } %>
+
+  <div class="padded-top-xs">
+    <p>Propose one or more language(s) to communicate with <%= deal.client.first_name %> for this session.</p>
+  </div>
+
+  <div class="custom-check-boxes">
+    <%= f.association :languages, collection: deal.languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
+
+  <div class="padded-top-xs">
+    <p>Propose one or more mean(s) to communicate with <%= deal.client.first_name %> for this session.</p>
+  </div>
+
+  <div class="custom-check-boxes">
+    <%= f.association :means, collection: deal.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
+
+
+  <div class="row padded-top-xs">
+    <div class="col-xs-12 col-sm-6">
+      <p>Propose a deadline for this session.</p>
+      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>
+".html_safe ,label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, value: deal.deadline ? localize(deal.deadline, format: "%d %b %Y") : nil } %>
+    </div>
+
+    <% if deal.offer.priced? %>
+      <div class="col-xs-12 col-sm-6">
+        <p>Propose a price for this session.</p>
+        <%= f.input :amount, as: :custom, symbol: Money.default_currency.symbol, required: true, label: false, placeholder: "00,00", input_html: { class: 'custom-form-input', type: "Number" } %>
+      </div>
+    <% elsif deal.offer.deals_closed.count < 3 %>
+      <div class="col-xs-12 padded-top-xs">
+        <p>This session will be <strong>for free</strong>. You need <strong><%= pluralize(3 - deal.offer.deals_closed.count, "more session") %></strong> for this offer to propose priced services.</p>
+      </div>
+    <% else %>
+      <div class="col-xs-12 padded-top-xs">
+        <p>This session will be <strong>for free</strong>. <%= link_to "Edit your offer", edit_offer_path(deal.offer) %> if you want to propose priced services.</p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="padded-top-xs">
+    <p>At last, set an expiry date for you proposition. <%= deal.client.first_name %> can't accept the proposition after this date.</p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :proposition_deadline, as: :custom, symbol: "<i class='fa fa-fire fa-fw' aria-hidden='true'></i>
+".html_safe ,label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, value: deal.proposition_deadline ? localize(deal.proposition_deadline, format: "%d %b %Y") : nil } %>
+    </div>
+  </div>
+
+  <div class="text-right padded-top-xs">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+      <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Review and submit
+    <% end %>
+  </div>
+<% end %>

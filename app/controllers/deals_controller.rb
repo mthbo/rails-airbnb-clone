@@ -31,10 +31,15 @@ class DealsController < ApplicationController
 
   def update
     if @deal.update(deal_params)
-      if @deal.proposition? && @deal.advisor == current_user
-        flash[:notice] = "Your proposition was sent to #{@deal.client.name_anonymous}"
+      if @deal.waiting_proposition? && @deal.advisor == current_user
+        respond_to do |format|
+          format.js
+        end
+      elsif @deal.proposition? && @deal.advisor == current_user
+        flash[:notice] = "Your proposition was submitted to #{@deal.client.name_anonymous}"
         redirect_to deal_path(@deal)
       elsif @deal.proposition_declined? && @deal.client == current_user
+        flash[:alert] = "You declined the proposition of #{@deal.advisor.name_anonymous}"
         redirect_to deal_path(@deal)
       elsif @deal.open?
         redirect_to deal_path(@deal)
@@ -42,11 +47,15 @@ class DealsController < ApplicationController
       elsif @deal.closed?
         redirect_to deal_path(@deal)
         flash[:notice] = "#session-#{@deal.id} with #{@deal.client.name_anonymous} is closed!"
+      elsif @deal.cancelled?
+        redirect_to deal_path(@deal)
+        flash[:alert] = "#session-#{@deal.id} with #{@deal.client.name_anonymous} has been cancelled."
       end
     else
       if @deal.waiting_proposition? && @deal.advisor == current_user
-        @objective = Objective.new
-        render :proposition, layout: "advisor_form"
+        respond_to do |format|
+          format.js
+        end
       end
     end
   end

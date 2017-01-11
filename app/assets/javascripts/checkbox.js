@@ -1,4 +1,4 @@
-$(function(){
+function checkBox () {
 
   $checkBoxes = $(".custom-check-boxes input")
 
@@ -9,7 +9,8 @@ $(function(){
   $checkBoxes.on('change', function() {
     checkBoxAppearance(this);
   });
-});
+
+};
 
 
 function checkBoxAppearance(checkBox) {
@@ -21,3 +22,6 @@ function checkBoxAppearance(checkBox) {
     $(checkBox).parent().css('border-color', 'rgb(215,215,215)');
   }
 }
+
+
+$(document).ready(checkBox());

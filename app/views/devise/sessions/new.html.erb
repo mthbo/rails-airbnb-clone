@@ -15,7 +15,9 @@
   <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
   <div class="text-right">
-    <%= f.button :submit, "Sign in", class: "btn-form btn-gray" %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+      <i class='fa fa-sign-in' aria-hidden='true'></i>&nbsp;&nbsp; Sign in
+    <% end %>
   </div>
 
 <% end %>

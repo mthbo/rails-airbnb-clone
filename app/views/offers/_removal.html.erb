@@ -14,7 +14,7 @@
 
   <div class="text-center padded-top-xs">
     <button type="button" class="btn btn-form btn-red" data-toggle="modal" data-target="#offer-removal">
-      Remove this offer
+      <i class='fa fa-trash-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Remove this offer
     </button>
   </div>
 
@@ -34,7 +34,9 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-          <%= link_to "Remove this offer", offer_path(@offer, offer:{status: :archived}), method: :patch, class: "btn btn-form btn-red" %>
+          <%= link_to offer_path(@offer, offer:{status: :archived}), method: :patch, class: "btn btn-form btn-red" do %>
+            <i class='fa fa-trash-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Remove
+          <% end %>
         </div>
       </div>
     </div>

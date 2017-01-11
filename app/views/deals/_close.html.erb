@@ -1,5 +1,5 @@
-<button type="button" class="btn btn-form btn-blue" data-toggle="modal" data-target="#session-close">
-  Close the session
+<button type="button" class="btn btn-form btn-red" data-toggle="modal" data-target="#session-close">
+  <i class="fa fa-times fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Close the session
 </button>
 
 <div class="modal fade" id="session-close" tabindex="-1" role="dialog" aria-labelledby="sessionCloseLabel">
@@ -16,7 +16,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-        <%= link_to "Close session", deal_path(@deal, deal:{status: :closed, closed_at: DateTime.now }), method: :patch, class: "btn btn-form btn-blue" %>
+        <%= link_to deal_path(@deal, deal:{status: :closed, closed_at: DateTime.now }), method: :patch, class: "btn btn-form btn-red" do %>
+          <i class="fa fa-times fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Close
+        <% end %>
       </div>
     </div>
   </div>
