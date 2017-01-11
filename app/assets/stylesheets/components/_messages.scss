@@ -1,0 +1,52 @@
+.message-box {
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  .message {
+    flex: 0 1 auto;
+    max-width: 80%;
+    padding: 10px 25px;
+    border-radius: 21px;
+  };
+  p {
+    margin: 0;
+  }
+}
+
+.message-green-right {
+  justify-content: flex-end;
+  .message {
+    background-color: $light-green;
+  }
+}
+
+.message-yellow-left {
+  justify-content: flex-start;
+  .message {
+    background-color: $light-yellow;
+  }
+}
+
+.message-yellow-right {
+  justify-content: flex-end;
+  .message {
+    background-color: $light-yellow;
+  }
+}
+
+.message-green-left {
+  justify-content: flex-start;
+  .message {
+    background-color: $light-green;
+  }
+}
+
+
+@media (max-width: $screen-xs-max) {
+  .message-box {
+    .message {
+      padding: 8px 20px;
+      border-radius: 18px;
+    }
+  }
+}

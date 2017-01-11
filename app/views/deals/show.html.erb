@@ -38,13 +38,9 @@
             <% end %>
           </div>
 
-          <div class="session-left-box padded-bottom-m session-btns">
+          <div class="session-info-box padded-bottom-m session-btns">
             <% if policy(@deal).cancel? %>
-              <% if policy(@deal).proposition? %>
-                <%= link_to proposition_deal_path(@deal), class: "btn btn-form btn-blue" do %>
-                  <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; New proposition
-                <% end %>
-              <% end %>
+              <%= render 'proposition_button' if policy(@deal).proposition? %>
               <%= render 'cancellation' %>
             <% elsif policy(@deal).close? %>
               <%= render 'close' %>
@@ -54,11 +50,18 @@
         </div>
       </div>
 
+
       <div class="col-xs-12 col-md-6">
         <div class="session-conversation">
 
-          <div class="session-conversation-box">
+          <div class="session-conversation-panel">
+            <div id="session-conversation-messages">
+              <%= render 'conversation_messages' %>
+            </div>
+          </div>
 
+          <div class="session-conversation-form">
+            <%= render 'messages/form', message: @message, deal: @deal %>
           </div>
 
         </div>

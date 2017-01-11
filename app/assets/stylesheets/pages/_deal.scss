@@ -19,6 +19,11 @@
   margin: 0 5px;
 }
 
+.session-info-box {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
 .session-btns {
   display: flex;
   justify-content: center;
@@ -43,11 +48,6 @@
 
 .session-proposition {
   padding: 0 25px;
-}
-
-.session-left-box {
-  padding-left: 25px;
-  padding-right: 25px;
 }
 
 #proposition-essential {
@@ -96,17 +96,30 @@
   flex-wrap: wrap;
 }
 
-.session-conversation-box {
-  border: 1px solid $light-gray;
+.session-conversation {
   height: 70vh;
-  background-color: white;
+  display: flex;
+  flex-direction: column;
 }
+
+.session-conversation-panel {
+  flex: 1 1 auto;
+  border: 1px solid $light-gray;
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.session-conversation-form {
+  flex: 0 0 auto;
+}
+
 
 @media (max-width: $screen-md-max) {
   .session-proposition-top {
     padding: 5px 15px;
   };
-  .session-proposition, .session-left-box {
+  .session-proposition, .session-info-box {
     padding-left: 15px;
     padding-right: 15px;
   };
@@ -119,7 +132,7 @@
   .session-proposition-top {
     padding: 5px 25px;
   };
-  .session-proposition, .session-left-box {
+  .session-proposition, .session-info-box {
     padding-left: 25px;
     padding-right: 25px;
   };
@@ -137,7 +150,7 @@
   .session-proposition-top {
     padding: 5px 15px;
   };
-  .session-proposition, .session-left-box {
+  .session-proposition, .session-info-box {
     padding-left: 15px;
     padding-right: 15px;
   };

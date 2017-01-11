@@ -1,0 +1,21 @@
+<div class=
+  <% if message.deal.advisor == current_user %>
+    <% if message.user == message.deal.advisor %>
+      "message-box message-green-right"
+    <% elsif message.user == message.deal.client %>
+      "message-box message-yellow-left"
+    <% end %>
+  <% elsif message.deal.client == current_user %>
+    <% if message.user == message.deal.client %>
+      "message-box message-yellow-right"
+    <% elsif message.user == message.deal.advisor %>
+      "message-box message-green-left"
+    <% end %>
+  <% end %>
+>
+
+  <div class="message">
+    <%= "<p>#{message.content}</p>".html_safe %>
+  </div>
+
+</div>

@@ -18,6 +18,7 @@ class DealsController < ApplicationController
     @deal.client = current_user
     if @deal.save
       flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
+      send_first_message
       redirect_to deal_path(@deal)
     else
       render :new, layout: "client_form"
@@ -87,6 +88,12 @@ class DealsController < ApplicationController
       mean_ids: [],
       language_ids: []
     )
+  end
+
+  def send_first_message
+    message = Message.create(deal: @deal, user: @deal.client)
+    message_content = message.build_first_content
+    Message.update(content: message_content)
   end
 
 end
