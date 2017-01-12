@@ -8,7 +8,9 @@
   <p>It's time to unveil your action plan for this session. Start by setting some targets (min: 1 - max: 10).</p>
 </div>
 
-<%= render 'objectives/form', deal: @deal, objective: @objective %>
+<div class="padded-bottom-xs">
+  <%= render 'objectives/form', deal: @deal, objective: @objective %>
+</div>
 
 <div id="proposition_objectives">
   <% if @deal.objectives.blank? %>

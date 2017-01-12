@@ -93,16 +93,27 @@
   }
 }
 
-.objective-form {
+.custom-inline-form {
   display: flex;
-  .objective_description {
+  align-items: center;
+  .inline-form-input {
     flex: 1 1 auto;
+    margin-bottom: 0;
+    textarea {
+      height: 45px !important;
+    }
   };
-  .btn-objective {
+  .inline-form-btn {
     flex: 0 0 45px;
     margin-left: 15px;
     height: 45px
   }
+}
+
+.input-rounded {
+  border-radius: 23px;
+  padding-right: 20px;
+  padding-left: 20px;
 }
 
 #proposition_objectives {
@@ -138,23 +149,33 @@
   .custom-form-input {
     height: 40px;
     font-size: 14px;
-  }
+  };
   .custom-input-addon {
     font-size: 14px;
     min-width: 43px;
-  }
+  };
   .help-block {
     font-size: 14px;
-  }
+  };
   .custom-check-boxes .check_boxes {
     .checkbox {
       max-width: 170px;
     }
-  }
-  .objective-form {
-    .btn-objective {
+  };
+  .custom-inline-form {
+    .inline-form-input {
+      textarea {
+        height: 40px !important;
+      }
+    };
+    .inline-form-btn {
       flex: 0 0 40px;
       height: 40px
     }
+  };
+  .input-rounded {
+    border-radius: 20px;
+    padding-right: 15px;
+    padding-left: 15px;
   }
 }

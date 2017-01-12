@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         get 'proposition', to: 'deals#proposition'
       end
       resources :objectives, only: [:create, :update, :destroy]
+      resources :messages, only: [:create]
     end
   end
 

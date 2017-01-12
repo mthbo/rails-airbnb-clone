@@ -1,0 +1,9 @@
+<%= simple_form_for [deal, message], remote: true, html: { class: 'custom-inline-form' } do |f| %>
+
+  <%= f.input :content, label: false, placeholder: "Message for #{ deal.advisor == current_user ? deal.client.first_name : deal.advisor.first_name }", input_html: { class: 'custom-form-input input-rounded', rows: "1"}, wrapper_html: { class: 'inline-form-input'} %>
+
+  <%= button_tag(type: 'submit', class: "btn inline-form-btn btn-blue btn-round") do %>
+    <i class='fa fa-paper-plane' aria-hidden='true'></i>
+  <% end %>
+
+<% end %>

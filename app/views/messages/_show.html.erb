@@ -1,21 +1,21 @@
 <div class=
   <% if message.deal.advisor == current_user %>
     <% if message.user == message.deal.advisor %>
-      "message-box message-green-right"
+      "message-box message-right"
     <% elsif message.user == message.deal.client %>
-      "message-box message-yellow-left"
+      "message-box message-left"
     <% end %>
   <% elsif message.deal.client == current_user %>
     <% if message.user == message.deal.client %>
-      "message-box message-yellow-right"
+      "message-box message-right"
     <% elsif message.user == message.deal.advisor %>
-      "message-box message-green-left"
+      "message-box message-left"
     <% end %>
   <% end %>
 >
 
   <div class="message">
-    <%= "<p>#{message.content}</p>".html_safe %>
+    <%= "<p>#{message.content_formatted}</p>".html_safe %>
   </div>
 
 </div>

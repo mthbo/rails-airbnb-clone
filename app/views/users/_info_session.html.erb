@@ -1,0 +1,23 @@
+<% if deal.advisor == current_user && deal.client.present? %>
+  <%= link_to user_path(deal.client), class: "session-user-info" do %>
+    <%= render 'users/avatar', user: deal.client, size: 'avatar' %>
+    <h6>
+      <span class="blue"><%= deal.client.name_anonymous %></span>
+      <span class="font-weight-lighter">&nbsp; | &nbsp;<%= deal.client.grade %></span>
+
+    </h6>
+  <% end %>
+
+<% elsif @deal.client == current_user && deal.advisor.present? %>
+  <%= link_to user_path(deal.advisor), class: "session-user-info" do %>
+    <%= render 'users/avatar', user: deal.advisor, size: 'avatar' %>
+    <h6>
+      <span class="blue"><%= deal.advisor.name_anonymous %></span>
+      <span class="font-weight-lighter">&nbsp; | &nbsp;<%= deal.advisor.grade %></span>
+    </h6>
+  <% end %>
+
+<% else %>
+  <h6>User acccount cancelled</h6>
+
+<% end %>
