@@ -43,7 +43,7 @@
 
       <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
         <% if @user.bio.present? %>
-          <p><%= @user.bio %></p>
+          <%= "#{@user.bio_formatted}".html_safe %>
         <% elsif policy(@user).edit? %>
           <p>You haven't provide information about yourself.</p>
           <p><%= link_to "Edit your profile", edit_user_registration_path %> to let people know more about you.</p>

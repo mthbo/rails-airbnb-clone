@@ -51,9 +51,16 @@ class Deal < ApplicationRecord
     objectives.where.not(rating: nil)
   end
 
-  def self.user_deals(user_id)
-    user = User.find(user_id)
-    self.where(advisor: user).or(self.where(client: user))
+  def proposition_formatted
+    "<p>#{self.proposition.gsub(/\r\n/, '<br>')}</p>"
+  end
+
+  def review_formatted(user)
+    if user == self.advisor
+      "<p>#{self.advisor_review.gsub(/\r\n/, '<br>')}</p>"
+    elsif user == self.client
+      "<p>#{self.client_review.gsub(/\r\n/, '<br>')}</p>"
+    end
   end
 
 end

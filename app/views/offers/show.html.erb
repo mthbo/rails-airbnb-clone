@@ -37,7 +37,7 @@
 
                 <div class="row">
                   <div class="col-xs-12 padded-top-xs">
-                    <p><%= @offer.description %></p>
+                    <%= "#{@offer.description_formatted}".html_safe %>
                   </div>
                 </div>
 

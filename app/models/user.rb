@@ -67,6 +67,10 @@ class User < ApplicationRecord
     end
   end
 
+  def bio_formatted
+    "<p>#{self.bio.gsub(/\r\n/, '<br>')}</p>"
+  end
+
   # User stat
 
   def grade

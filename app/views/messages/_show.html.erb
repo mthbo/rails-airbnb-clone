@@ -15,7 +15,14 @@
 >
 
   <div class="message">
-    <%= "<p>#{message.content_formatted}</p>".html_safe %>
+    <div class="message-content">
+      <%= "#{message.content_formatted}".html_safe %>
+    </div>
+
+    <div class="message-date">
+      <p><small><%= message.date_formatted %></small></p>
+    </div>
+
   </div>
 
 </div>

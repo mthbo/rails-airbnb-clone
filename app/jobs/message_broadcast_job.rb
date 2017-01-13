@@ -6,7 +6,8 @@ class MessageBroadcastJob < ApplicationJob
       "deal_#{message.deal_id}:messages",
       content: message.content_formatted,
       user_id: message.user_id,
-      created_at: message.created_at
+      date: message.date_formatted,
+      state: "sending"
     )
   end
 

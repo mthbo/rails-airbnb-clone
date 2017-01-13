@@ -9,17 +9,39 @@ $(document).ready(function() {
 
     App['deal' + dealId] = App.cable.subscriptions.create({channel: 'MessagesChannel', deal_id: dealId}, {
       received: function(data) {
-        $("[data-deal-messages-id='" + dealId + "']").append(this.renderMessage(data, currentUserId));
+        if (data.state === "typing" && currentUserId !== data.user_id) {
+          $messages.append(this.renderMessageTyping());
+        } else if (data.state === "stop_typing" && currentUserId !== data.user_id) {
+          $('#message-typing').remove();
+        } else if (data.state === "sending" && $('#message-typing').length > 0) {
+          $('#message-typing').remove();
+          $messages.append(this.renderMessage(data, currentUserId));
+          $messages.append(this.renderMessageTyping());
+        } else if (data.state === "sending" && $('#message-typing').length === 0) {
+          $messages.append(this.renderMessage(data, currentUserId));
+        }
+
         scrollConversation ();
-        $("[data-user-form-id='" + data.user_id + "'] #message_content").val("");
+      },
+
+      renderMessageTyping: function() {
+        return "<div class='message-box message-left' id='message-typing'><div class='message'><div class='message-content'><p>• • •</p></div></div></div>";
       },
 
       renderMessage: function(data, currentUserId) {
         if (currentUserId !== data.user_id) {
-          return "<div class='message-box message-left'><div class='message'><p>" + data.content + "</p></div></div>";
+          var messageSide = "message-left";
         } else {
-          return "<div class='message-box message-right'><div class='message'><p>" + data.content + "</p></div></div>";
+          var messageSide = "message-right";
         }
+        return "<div class='message-box "
+          + messageSide
+          + "'><div class='message'><div class='message-content'><p>"
+          + data.content
+          + "</p></div><div class='message-date'><p><small>"
+          + data.date
+          + "</small></p></div></div></div>"
+        ;
       }
 
     });

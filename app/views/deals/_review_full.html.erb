@@ -17,7 +17,7 @@
       </div>
       <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
     </div>
-    <p><%= review %></p>
+    <%= "#{deal.review_formatted(user)}".html_safe %>
     <p>
       <% if user == deal.client %>
         <span class="green"><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;as advisor </span>
