@@ -4,9 +4,9 @@
 
 <div class=
   <% if @deal.advisor == current_user %>
-    "padded-top-xxl padded-bottom-xxl bg-gradient-green"
+    "padded-top-xxl padded-bottom-xxl bg-gradient-green-gray"
   <% elsif @deal.client == current_user %>
-    "padded-top-xxl padded-bottom-xxl bg-gradient-yellow"
+    "padded-top-xxl padded-bottom-xxl bg-gradient-yellow-gray"
   <% end %>
 >
   <div class="container">
@@ -38,13 +38,9 @@
             <% end %>
           </div>
 
-          <div class="session-left-box padded-bottom-m session-btns">
+          <div class="session-info-box padded-bottom-m session-btns">
             <% if policy(@deal).cancel? %>
-              <% if policy(@deal).proposition? %>
-                <%= link_to proposition_deal_path(@deal), class: "btn btn-form btn-blue" do %>
-                  <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; New proposition
-                <% end %>
-              <% end %>
+              <%= render 'proposition_button' if policy(@deal).proposition? %>
               <%= render 'cancellation' %>
             <% elsif policy(@deal).close? %>
               <%= render 'close' %>
@@ -54,11 +50,22 @@
         </div>
       </div>
 
+
       <div class="col-xs-12 col-md-6">
         <div class="session-conversation">
 
-          <div class="session-conversation-box">
+          <div class="session-conversation-top">
+            <%= render 'users/info_session', deal: @deal %>
+          </div>
 
+          <div id="session-conversation-panel">
+            <div id="session-conversation-messages" data-deal-messages-id="<%= @deal.id %>">
+              <%= render 'conversation_messages', deal: @deal %>
+            </div>
+          </div>
+
+          <div id="session-conversation-form">
+            <%= render 'messages/form', message: @message, deal: @deal %>
           </div>
 
         </div>
@@ -67,3 +74,23 @@
     </div>
   </div>
 </div>
+
+
+<%= content_for(:js) do %>
+  <%= javascript_tag do %>
+
+    $('#message_content').focusin(function() {
+      $.ajax({
+        type: "GET",
+        url: "<%= type_deal_messages_path(@deal) %>" + "?state=typing",
+      });
+    });
+    $('#message_content').focusout(function() {
+      $.ajax({
+        type: "GET",
+        url: "<%= type_deal_messages_path(@deal) %>" + "?state=stop_typing"
+      })
+    });
+
+  <% end %>
+<% end %>

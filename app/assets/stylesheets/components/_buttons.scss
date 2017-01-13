@@ -168,25 +168,13 @@
   };
 }
 
-.btn-objective {
-  border: $medium-gray solid 1px;
-  color: $dark-gray;
-  background-color: rgba(255,255,255,0.8);
+.btn-round {
   border-radius: 50%;
-  &:hover {
-    background-color: $medium-gray;
-  };
-  &:active {
-    background-color: $dark-gray;
-  };
-  &:focus {
-    color: $medium-gray;
-  };
 }
 
 
 @media (max-width: $screen-xs-max) {
-  .btn-blue, .btn-green, .btn-facebook, .btn-gray, .btn-yellow, .btn-red, .btn-objective {
+  .btn-blue, .btn-green, .btn-facebook, .btn-gray, .btn-yellow, .btn-red {
     font-size: 14px;
   };
   .btn-form {

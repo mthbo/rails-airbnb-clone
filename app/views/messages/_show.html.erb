@@ -1,0 +1,28 @@
+<div class=
+  <% if message.deal.advisor == current_user %>
+    <% if message.user == message.deal.advisor %>
+      "message-box message-right"
+    <% elsif message.user == message.deal.client %>
+      "message-box message-left"
+    <% end %>
+  <% elsif message.deal.client == current_user %>
+    <% if message.user == message.deal.client %>
+      "message-box message-right"
+    <% elsif message.user == message.deal.advisor %>
+      "message-box message-left"
+    <% end %>
+  <% end %>
+>
+
+  <div class="message">
+    <div class="message-content">
+      <%= "#{message.content_formatted}".html_safe %>
+    </div>
+
+    <div class="message-date">
+      <p><small><%= message.date_formatted %></small></p>
+    </div>
+
+  </div>
+
+</div>

@@ -15,6 +15,6 @@
       <% end %>
       <div><p class="medium-gray"><%= deal.client_review_at.strftime("%d %b %Y") %></p></div>
     </div>
-    <p><%= deal.client_review %></p>
+    <%= "#{deal.review_formatted(deal.client)}".html_safe %>
   </div>
 </div>

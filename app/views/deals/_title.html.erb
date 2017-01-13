@@ -1,15 +1,6 @@
 <h3>
   <strong class="blue">#session-<%= @deal.id %></strong>
 
-  &nbsp; with
-  <% if @deal.client ==  current_user && @deal.advisor %>
-    <%= link_to "#{@deal.advisor.name_anonymous}", user_path(@deal.advisor) %>
-  <% elsif @deal.advisor ==  current_user && @deal.client %>
-    <%= link_to "#{@deal.client.name_anonymous}", user_path(@deal.client) %>
-  <% else %>
-    (user account cancelled)
-  <% end %>
-
   <% if @deal.offer && @deal.offer.archived? %>
     &nbsp; for "<%= @deal.offer.title %>"
   <% elsif @deal.offer %>

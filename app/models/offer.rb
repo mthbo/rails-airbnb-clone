@@ -23,6 +23,9 @@ class Offer < ApplicationRecord
     end
   end
 
+  def description_formatted
+    "<p>#{self.description.gsub(/\r\n/, '<br>')}</p>"
+  end
 
   # Rating stat
 
