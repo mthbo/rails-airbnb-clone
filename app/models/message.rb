@@ -2,6 +2,8 @@ class Message < ApplicationRecord
   belongs_to :user
   belongs_to :deal
 
+  default_scope -> { order(created_at: :ASC) }
+
   def content_formatted
     "<span>#{self.content.gsub(/\r\n/, '<br>')}</span>"
   end

@@ -1,0 +1,20 @@
+<% Deal.all.each do |deal| %>
+
+  App['deal' + <%=deal.id%>] = App.cable.subscriptions.create({channel: 'MessagesChannel', deal_id: "<%=deal.id%>"}, {
+    received: function(data) {
+      var currentUserId = parseInt($("[data-deal-messages-id='<%=deal.id%>']").attr('data-user-message-id'));
+      $("[data-deal-messages-id='<%=deal.id%>']").append(this.renderMessage(data, currentUserId));
+      scrollConversation ();
+      $("[data-user-form-id='" + data.user_id + "'] #message_content").val("");
+    },
+
+    renderMessage: function(data, currentUserId) {
+      if (currentUserId !== data.user_id) {
+        return "<div class='message-box message-left'><div class='message'><p>" + data.content + "</p></div></div>";
+      } else {
+        return "<div class='message-box message-right'><div class='message'><p>" + data.content + "</p></div></div>";
+      }
+    }
+
+  });
+<% end %>

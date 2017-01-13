@@ -131,18 +131,16 @@
 .session-conversation-panel {
   flex: 1 1 auto;
   display: flex;
+  flex-direction: column;
   background-color: white;
   position: relative;
-  overflow: hidden;
+  overflow: auto;
 }
 
-#session-conversation-messages {
-  flex: 1 1 auto;
+.session-conversation-messages {
+  flex: 1 0 auto;
+  min-height: 100%;
   padding: 15px 20px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
 }
 
 .session-conversation-form {
@@ -210,7 +208,7 @@
   .session-conversation {
     height: 80vh;
   }
-  .session-conversation-top, #session-conversation-messages, .session-conversation-form {
+  .session-conversation-top, .session-conversation-messages, .session-conversation-form {
     padding-right: 10px;
     padding-left: 10px;
   }

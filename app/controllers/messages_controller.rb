@@ -6,9 +6,13 @@ class MessagesController < ApplicationController
     @message.user = current_user
     authorize @message
     if @message.save
-      # do some stuff
-    else
-      redirect_to deal_path(@deal)
+      ActionCable.server.broadcast(
+        "messages_#{@deal.id}",
+        content: @message.content_formatted,
+        user_id: @message.user.id,
+        created_at: @message.created_at
+      )
+      head :ok
     end
   end
 

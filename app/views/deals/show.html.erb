@@ -59,12 +59,12 @@
           </div>
 
           <div class="session-conversation-panel">
-            <div id="session-conversation-messages">
-              <%= render 'conversation_messages' %>
+            <div class="session-conversation-messages" data-deal-messages-id="<%= @deal.id %>" id="<%= current_user.id %>" data-user-message-id="<%= current_user.id %>">
+              <%= render 'conversation_messages', deal: @deal %>
             </div>
           </div>
 
-          <div class="session-conversation-form">
+          <div class="session-conversation-form" data-user-form-id="<%= current_user.id %>">
             <%= render 'messages/form', message: @message, deal: @deal %>
           </div>
 

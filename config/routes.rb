@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => "/attachinary"
 
+  mount ActionCable.server => '/cable'
+
   root to: 'pages#home'
   get '/be_advisor', to: 'pages#be_advisor'
 
