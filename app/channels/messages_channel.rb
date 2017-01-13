@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
 class MessagesChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "messages_#{params[:deal_id]}"
+    stream_from "deal_#{params[:deal_id]}:messages"
   end
 
   def unsubscribed

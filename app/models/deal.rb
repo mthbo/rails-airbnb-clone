@@ -51,4 +51,9 @@ class Deal < ApplicationRecord
     objectives.where.not(rating: nil)
   end
 
+  def self.user_deals(user_id)
+    user = User.find(user_id)
+    self.where(advisor: user).or(self.where(client: user))
+  end
+
 end

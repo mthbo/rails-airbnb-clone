@@ -1,6 +1,9 @@
 function scrollConversation () {
 
-  $(".session-conversation-panel").scrollTop($(".session-conversation-panel")[0].scrollHeight);
+  var $panel = $("#session-conversation-panel");
+  if ($panel.length > 0) {
+    $panel.scrollTop($panel[0].scrollHeight);
+  }
 
 };
 

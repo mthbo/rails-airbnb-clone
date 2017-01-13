@@ -110,7 +110,7 @@
   <% elsif @deal.proposition? %>
     <div class="padded-top-s">
       <% if @deal.advisor == current_user %>
-        <p class="font-weight-normal">You submitted a proposition, <%= @deal.client.first_name %> will decide to accept it or decline it.</p>
+        <p class="font-weight-normal">You submitted a proposition, <%= @deal.client.first_name %> will decide to accept or decline it.</p>
       <% elsif @deal.client == current_user %>
         <p class="font-weight-normal">Accept or decline the proposition to pursue.</p>
       <% end %>

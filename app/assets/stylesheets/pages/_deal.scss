@@ -128,7 +128,7 @@
   }
 }
 
-.session-conversation-panel {
+#session-conversation-panel {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -137,13 +137,13 @@
   overflow: auto;
 }
 
-.session-conversation-messages {
+#session-conversation-messages {
   flex: 1 0 auto;
   min-height: 100%;
   padding: 15px 20px;
 }
 
-.session-conversation-form {
+#session-conversation-form {
   flex: 0 0 auto;
   padding: 10px 20px;
   background-color: $light-gray;
@@ -208,7 +208,7 @@
   .session-conversation {
     height: 80vh;
   }
-  .session-conversation-top, .session-conversation-messages, .session-conversation-form {
+  .session-conversation-top, #session-conversation-messages, #session-conversation-form {
     padding-right: 10px;
     padding-left: 10px;
   }

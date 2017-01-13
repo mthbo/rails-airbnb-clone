@@ -91,7 +91,7 @@ class DealsController < ApplicationController
   end
 
   def send_first_message
-    message = Message.create(deal: @deal, user: deal.client)
+    message = Message.create(deal: @deal, user: @deal.client)
     message_content = message.build_first_content
     message.update(content: message_content)
   end

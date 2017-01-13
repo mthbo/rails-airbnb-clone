@@ -5,15 +5,7 @@ class MessagesController < ApplicationController
     @message = @deal.messages.new(message_params)
     @message.user = current_user
     authorize @message
-    if @message.save
-      ActionCable.server.broadcast(
-        "messages_#{@deal.id}",
-        content: @message.content_formatted,
-        user_id: @message.user.id,
-        created_at: @message.created_at
-      )
-      head :ok
-    end
+    @message.save
   end
 
   private

@@ -4,6 +4,8 @@ class Message < ApplicationRecord
 
   default_scope -> { order(created_at: :ASC) }
 
+  after_create_commit { MessageBroadcastJob.perform_now self }
+
   def content_formatted
     "<span>#{self.content.gsub(/\r\n/, '<br>')}</span>"
   end
