@@ -6,10 +6,6 @@ class Message < ApplicationRecord
 
   after_create_commit { MessageBroadcastJob.perform_now self }
 
-  def content_formatted
-    "<p>#{self.content.gsub(/\r\n/, '<br>')}</p>"
-  end
-
   def build_first_content
     language_names = self.deal.languages.map { |language| language.name }
     languages_list = "<span class='font-weight-bolder'>Languages accepted:</span> #{language_names.join(', ')}"

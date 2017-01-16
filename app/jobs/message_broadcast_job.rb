@@ -4,11 +4,15 @@ class MessageBroadcastJob < ApplicationJob
   def perform(message)
     ActionCable.server.broadcast(
       "deal_#{message.deal_id}:messages",
-      content: message.content_formatted,
-      user_id: message.user_id,
-      date: message.date_formatted,
-      state: "sending"
+      message: render_message(message),
+      state: "sending",
+      user_id: message.user.id
     )
   end
 
+  private
+
+  def render_message(message)
+    ApplicationController.render_with_signed_in_user(message.user, partial: 'messages/show', locals: { message: message })
+  end
 end

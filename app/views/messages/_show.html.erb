@@ -16,7 +16,7 @@
 
   <div class="message">
     <div class="message-content">
-      <%= "#{message.content_formatted}".html_safe %>
+      <%= sanitize markdown_to_html(message.content) %>
     </div>
 
     <div class="message-date">

@@ -1,3 +1,4 @@
+
 <% content_for :title do %>
   <%= "Papoters | #{@offer.title}" %>
 <% end %>
@@ -37,7 +38,7 @@
 
                 <div class="row">
                   <div class="col-xs-12 padded-top-xs">
-                    <%= "#{@offer.description_formatted}".html_safe %>
+                    <%= sanitize markdown_to_html(@offer.description) %>
                   </div>
                 </div>
 

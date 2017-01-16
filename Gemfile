@@ -30,6 +30,7 @@ gem 'pundit'
 gem 'money-rails'
 gem 'geocoder'
 gem 'kaminari'
+gem 'kramdown'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'

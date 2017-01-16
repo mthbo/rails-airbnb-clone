@@ -15,10 +15,9 @@ class MessagesController < ApplicationController
 
   def type
     deal_id = @deal.id
-    user_id = current_user.id
     state = params[:state]
     @message = Message.new
-    TypingBroadcastJob.perform_now(deal_id, user_id, state)
+    TypingBroadcastJob.perform_now(deal_id, current_user, state)
   end
 
   private

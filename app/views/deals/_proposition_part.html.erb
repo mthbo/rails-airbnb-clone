@@ -37,7 +37,7 @@
       <% end %>
     </div>
   <% end %>
-  <%= "#{@deal.proposition_formatted}".html_safe %>
+  <%= sanitize markdown_to_html(@deal.proposition) %>
   <div class="row">
     <div class="col-xs-12 col-sm-6">
       <h6>Languages</h6>
