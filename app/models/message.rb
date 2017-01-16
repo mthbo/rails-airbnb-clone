@@ -4,6 +4,8 @@ class Message < ApplicationRecord
 
   default_scope -> { order(created_at: :ASC) }
 
+  enum target: [ :message, :deal_status ]
+
   after_create_commit { MessageBroadcastJob.perform_now self }
 
   def build_first_content
@@ -13,6 +15,20 @@ class Message < ApplicationRecord
     means_list = "<span class='font-weight-bolder'>Means accepted:</span> #{mean_names.join(', ')}"
     deadline_format = "<span class='font-weight-bolder'>Deadline:</span> #{self.deal.deadline.strftime('%d %b %Y')}"
     self.content = "#{self.deal.request} <br> #{languages_list} <br> #{means_list} <br> #{deadline_format}"
+  end
+
+  def build_deal_status_content
+    if self.deal.proposition?
+      self.content = "<span class='font-weight-normal blue'>New proposition </span>"
+    elsif self.deal.proposition_declined?
+      self.content = "<span class='font-weight-normal blue'>Proposition declined</span>"
+    elsif self.deal.open?
+      self.content = "<span class='font-weight-normal blue'>Session open</span>"
+    elsif self.deal.closed?
+      self.content = "<span class='font-weight-normal red'>Session closed</span>"
+    elsif self.deal.cancelled?
+      self.content = "<span class='font-weight-normal red'>Session cancelled</span>"
+    end
   end
 
   def date_formatted

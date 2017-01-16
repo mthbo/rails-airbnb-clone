@@ -1,17 +1,16 @@
 $(document).ready(function() {
 
-  var $messages = $("#session-conversation-messages");
+  var $session = $("#session-page");
 
-  if ( $messages.length > 0 ) {
+  if ( $session.length > 0 ) {
 
     var currentUserId = parseInt($("#my-navbar-logged").attr('data-user-id'));
-    var dealId = parseInt($messages.attr('data-deal-messages-id'));
+    var dealId = parseInt($session.attr('data-deal-id'));
 
-    App['deal' + dealId] = App.cable.subscriptions.create({channel: 'MessagesChannel', deal_id: dealId}, {
+    App['deal' + dealId + ':messages'] = App.cable.subscriptions.create({channel: 'MessagesChannel', deal_id: dealId}, {
       received: function(data) {
         if (data.state === "typing" && currentUserId !== data.user_id) {
           $('#message-typing').removeClass("hide");
-          scrollConversation ();
         } else if (data.state === "stop_typing" && currentUserId !== data.user_id) {
           $('#message-typing').addClass("hide");
         } else if (data.state === "sending") {

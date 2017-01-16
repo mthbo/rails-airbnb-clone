@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'faker'
+gem 'turbolinks', '~> 5.0.0'
 
 
 gem 'sass-rails'

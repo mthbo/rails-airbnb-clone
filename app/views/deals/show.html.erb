@@ -2,75 +2,77 @@
   <%= "Papoters | #session-#{@deal.id}" %>
 <% end %>
 
-<div class=
-  <% if @deal.advisor == current_user %>
-    "padded-top-xxl padded-bottom-xxl bg-gradient-green-gray"
-  <% elsif @deal.client == current_user %>
-    "padded-top-xxl padded-bottom-xxl bg-gradient-yellow-gray"
-  <% end %>
->
-  <div class="container">
+<div id="session-page" data-deal-id="<%= @deal.id %>">
+  <div class=
+    <% if @deal.advisor == current_user %>
+      "padded-top-xxl padded-bottom-xxl bg-gradient-green-gray"
+    <% elsif @deal.client == current_user %>
+      "padded-top-xxl padded-bottom-xxl bg-gradient-yellow-gray"
+    <% end %>
+  >
+    <div class="container">
 
-    <div class="row">
-      <div class="col-xs-12 padded-bottom-s">
-        <div class="session-title">
-          <%= render 'title' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-
-      <div class="col-xs-12 col-md-6">
-        <div class="session-info">
-
-          <div class="padded-bottom-s">
-            <%= render 'status' %>
+      <div class="row">
+        <div class="col-xs-12 padded-bottom-s">
+          <div class="session-title">
+            <%= render 'title' %>
           </div>
-
-          <div>
-            <% if @deal.cancelled? %>
-              <%= render 'cancelled_part' %>
-            <% elsif @deal.request? %>
-              <%= render 'request_part' %>
-            <% else %>
-              <%= render 'proposition_part' %>
-            <% end %>
-          </div>
-
-          <div class="session-info-box padded-bottom-m session-btns">
-            <% if policy(@deal).cancel? %>
-              <%= render 'proposition_button' if policy(@deal).proposition? %>
-              <%= render 'cancellation' %>
-            <% elsif policy(@deal).close? %>
-              <%= render 'close' %>
-            <% end %>
-          </div>
-
         </div>
       </div>
 
+      <div class="row">
 
-      <div class="col-xs-12 col-md-6">
-        <div class="session-conversation">
+        <div class="col-xs-12 col-md-6">
+          <div class="session-info">
 
-          <div class="session-conversation-top">
-            <%= render 'users/info_session', deal: @deal %>
-          </div>
-
-          <div id="session-conversation-panel">
-            <div id="session-conversation-messages" data-deal-messages-id="<%= @deal.id %>">
-              <%= render 'conversation_messages', deal: @deal %>
+            <div class="padded-bottom-s" id="session-status-panel">
+              <%= render 'status', deal: @deal %>
             </div>
-          </div>
 
-          <div id="session-conversation-form">
-            <%= render 'messages/form', message: @message, deal: @deal %>
-          </div>
+            <div>
+              <% if @deal.cancelled? %>
+                <%= render 'cancelled_part' %>
+              <% elsif @deal.request? %>
+                <%= render 'request_part' %>
+              <% else %>
+                <%= render 'proposition_part' %>
+              <% end %>
+            </div>
 
+            <div class="session-info-box padded-bottom-m session-btns">
+              <% if policy(@deal).cancel? %>
+                <%= render 'proposition_button' if policy(@deal).proposition? %>
+                <%= render 'cancellation' %>
+              <% elsif policy(@deal).close? %>
+                <%= render 'close' %>
+              <% end %>
+            </div>
+
+          </div>
         </div>
-      </div>
 
+
+        <div class="col-xs-12 col-md-6">
+          <div class="session-conversation">
+
+            <div class="session-conversation-top">
+              <%= render 'users/info_session', deal: @deal %>
+            </div>
+
+            <div id="session-conversation-panel">
+              <div id="session-conversation-messages">
+                <%= render 'conversation_messages', deal: @deal %>
+              </div>
+            </div>
+
+            <div id="session-conversation-form">
+              <%= render 'messages/form', message: @message, deal: @deal %>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
