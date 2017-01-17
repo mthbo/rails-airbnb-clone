@@ -10,6 +10,8 @@ $(document).ready(function() {
     App['deal' + dealId + ':status'] = App.cable.subscriptions.create({channel: 'DealStatusChannel', deal_id: dealId}, {
       received: function(data) {
         $('#session-status-panel').html(data.status);
+        $('#session-info-panel').html(data.info);
+        $('#session-actions-panel').html(data.actions);
       },
 
     });

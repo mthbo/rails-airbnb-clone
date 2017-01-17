@@ -1,0 +1,42 @@
+<div class="session-info-box">
+
+  <% if policy(deal).cancel? %>
+    <div class="padded-top-s">
+      <% if policy(deal).proposition? %>
+        <p class="font-weight-normal"><%= deal.client.first_name %> declined your proposition. Submit a new proposition or cancel the session if you don't want to pursue.</p>
+      <% else %>
+        <p class="font-weight-normal">Ask for a new proposition or cancel the session if you don't want to pursue.</p>
+      <% end %>
+    </div>
+
+  <% elsif deal.proposition? %>
+    <div class="padded-top-s">
+      <% if deal.advisor == current_user %>
+        <p class="font-weight-normal">You submitted a proposition, <%= deal.client.first_name %> will decide to accept or decline it.</p>
+      <% elsif deal.client == current_user %>
+        <p class="font-weight-normal">Accept or decline the proposition to pursue.</p>
+      <% end %>
+    </div>
+
+  <% elsif deal.open? && deal.advisor == current_user %>
+    <div class="padded-top-s">
+      <p class="font-weight-normal">The session is open until <%= deal.deadline.strftime("%d %b %Y") %>, unless <%= deal.client.first_name %> closes it before.</p>
+    </div>
+
+  <% elsif policy(deal).close? %>
+    <div class="padded-top-s">
+      <% if deal.advisor == current_user %>
+        <p class="font-weight-normal">The session is open, close it if your job is done.</p>
+      <% elsif deal.client == current_user %>
+        <p class="font-weight-normal">The session is open, close it if you got what you need.</p>
+      <% end %>
+    </div>
+
+  <% elsif deal.closed? %>
+    <div class="padded-top-s">
+      <p class="font-weight-normal">This session is closed.</p>
+    </div>
+
+  <% end %>
+
+</div>

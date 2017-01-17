@@ -37,30 +37,36 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.proposition? && @deal.advisor == current_user
-        DealStatusBroadcastJob.perform_now(@deal, current_user)
+        DealStatusBroadcastJob.perform_now(@deal, @deal.client)
         send_status_message
         flash[:notice] = "Your proposition was submitted to #{@deal.client.name_anonymous}"
         redirect_to deal_path(@deal)
       elsif @deal.proposition_declined? && @deal.client == current_user
-        DealStatusBroadcastJob.perform_now(@deal, current_user)
+        DealStatusBroadcastJob.perform_now(@deal, @deal.advisor)
         send_status_message
-        flash[:alert] = "You declined the proposition of #{@deal.advisor.name_anonymous}"
-        redirect_to deal_path(@deal)
+        # flash[:alert] = "You declined the proposition of #{@deal.advisor.name_anonymous}"
+        # redirect_to deal_path(@deal)
       elsif @deal.open?
-        DealStatusBroadcastJob.perform_now(@deal, current_user)
-        send_status_message
-        redirect_to deal_path(@deal)
-        flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is open!"
-      elsif @deal.closed?
-        DealStatusBroadcastJob.perform_now(@deal, current_user)
+        DealStatusBroadcastJob.perform_now(@deal, @deal.advisor)
         send_status_message
         # redirect_to deal_path(@deal)
-        flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor == current_user ? @deal.client.name_anonymous : @deal.advisor.name_anonymous} is closed!"
-      elsif @deal.cancelled?
-        DealStatusBroadcastJob.perform_now(@deal, current_user)
+        # flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is open!"
+      elsif @deal.closed? && @deal.client == current_user
+        DealStatusBroadcastJob.perform_now(@deal, @deal.advisor)
         send_status_message
-        redirect_to deal_path(@deal)
-        flash[:alert] = "#session-#{@deal.id} with #{@deal.advisor == current_user ? @deal.client.name_anonymous : @deal.advisor.name_anonymous} has been cancelled."
+        # redirect_to deal_path(@deal)
+        # flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor == current_user ? @deal.client.name_anonymous : @deal.advisor.name_anonymous} is closed!"
+      elsif @deal.closed? && @deal.advisor == current_user
+        DealStatusBroadcastJob.perform_now(@deal, @deal.client)
+        send_status_message
+      elsif @deal.cancelled? && @deal.client == current_user
+        DealStatusBroadcastJob.perform_now(@deal, @deal.advisor)
+        send_status_message
+        # redirect_to deal_path(@deal)
+        # flash[:alert] = "#session-#{@deal.id} with #{@deal.advisor == current_user ? @deal.client.name_anonymous : @deal.advisor.name_anonymous} has been cancelled."
+      elsif @deal.cancelled? && @deal.advisor == current_user
+        DealStatusBroadcastJob.perform_now(@deal, @deal.client)
+        send_status_message
       end
     else
       if @deal.waiting_proposition? && @deal.advisor == current_user

@@ -21,16 +21,16 @@
 </div>
 
 <div class="padded-top-xs">
-  <%= sanitize markdown_to_html(@deal.proposition) %>
+  <%= sanitize markdown_to_html(deal.proposition) %>
 </div>
 
 <div class="row padded-bottom-xs">
   <div class="col-xs-12 col-sm-6">
     <h6 class="extra-dark-gray">Languages</h6>
-    <%= render 'languages', deal: deal %>
+    <%= render 'deals/languages', deal: deal %>
   </div>
   <div class="col-xs-12 col-sm-6">
     <h6 class="extra-dark-gray">Means of communication</h6>
-    <%= render 'means', deal: deal %>
+    <%= render 'deals/means', deal: deal %>
   </div>
 </div>
