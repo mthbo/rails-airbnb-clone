@@ -7,6 +7,4 @@ function scrollConversation () {
 
 };
 
-$(document).on('turbolinks:load', function() {
-  scrollConversation();
-});
+$(document).ready(scrollConversation());

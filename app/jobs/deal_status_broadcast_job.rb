@@ -1,26 +1,33 @@
 class DealStatusBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(deal, user)
+  def perform(deal, sender, receiver)
+    send_status_message(deal, sender)
     ActionCable.server.broadcast(
-      "deal_#{deal.id}_user_#{user.id}:status",
-      status: render_status(deal, user),
-      info: render_info(deal, user),
-      actions: render_actions(deal, user)
+      "deal_#{deal.id}_user_#{receiver.id}:status",
+      status: render_status(deal, receiver),
+      info: render_info(deal, receiver),
+      actions: render_actions(deal, receiver)
     )
   end
 
   private
 
-  def render_status(deal, user)
-    ApplicationController.render_with_signed_in_user(user, partial: 'deals/status', locals: { deal: deal })
+  def send_status_message(deal, sender)
+    message = Message.new(deal: deal, user: sender, target: "deal_status")
+    message.build_deal_status_content
+    message.save
   end
 
-  def render_info(deal, user)
-    ApplicationController.render_with_signed_in_user(user, partial: 'deals/info', locals: { deal: deal })
+  def render_status(deal, receiver)
+    ApplicationController.render_with_signed_in_user(receiver, partial: 'deals/status', locals: { deal: deal })
   end
 
-  def render_actions(deal, user)
-    ApplicationController.render_with_signed_in_user(user, partial: 'deals/actions', locals: { deal: deal })
+  def render_info(deal, receiver)
+    ApplicationController.render_with_signed_in_user(receiver, partial: 'deals/info', locals: { deal: deal })
+  end
+
+  def render_actions(deal, receiver)
+    ApplicationController.render_with_signed_in_user(receiver, partial: 'deals/actions', locals: { deal: deal })
   end
 end

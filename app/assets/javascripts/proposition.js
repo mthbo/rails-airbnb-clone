@@ -1,4 +1,4 @@
-$(function(){
+function propositionToggle () {
 
   $('#proposition-toggle').on('click', function(event) {
     event.preventDefault();
@@ -6,4 +6,6 @@ $(function(){
     $('#proposition-toggle p').toggleClass('hidden');
   });
 
-});
+};
+
+$(document).ready(propositionToggle());

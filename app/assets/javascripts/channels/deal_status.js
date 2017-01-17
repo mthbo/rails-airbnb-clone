@@ -12,6 +12,7 @@ $(document).ready(function() {
         $('#session-status-panel').html(data.status);
         $('#session-info-panel').html(data.info);
         $('#session-actions-panel').html(data.actions);
+        propositionToggle();
       },
 
     });
