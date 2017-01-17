@@ -37,8 +37,8 @@ class User < ApplicationRecord
 
   def age
     if birth_date.present?
-      today = Date.today
-      d = Date.new(today.year, birth_date.month, birth_date.day)
+      today = DateTime.current.in_time_zone
+      d = DateTime.new(today.year, birth_date.month, birth_date.day).in_time_zone
       age = d.year - birth_date.year - (d > today ? 1 : 0)
       "#{age} yr"
     end

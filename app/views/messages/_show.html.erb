@@ -1,28 +1,40 @@
-<div class=
-  <% if message.deal.advisor == current_user %>
-    <% if message.user == message.deal.advisor %>
-      "message-box message-right"
-    <% elsif message.user == message.deal.client %>
-      "message-box message-left"
-    <% end %>
-  <% elsif message.deal.client == current_user %>
-    <% if message.user == message.deal.client %>
-      "message-box message-right"
-    <% elsif message.user == message.deal.advisor %>
-      "message-box message-left"
-    <% end %>
-  <% end %>
->
+<% if message.deal_status? %>
 
-  <div class="message">
-    <div class="message-content">
-      <%= "#{message.content_formatted}".html_safe %>
-    </div>
+  <div class="form-separation padded-top-xs padded-bottom-xs">
+    <div></div>
+    <%= sanitize markdown_to_html(message.content) %>|<p><small><%= message.date_formatted %></small></p>
+    <div></div>
+  </div>
 
-    <div class="message-date">
-      <p><small><%= message.date_formatted %></small></p>
+<% else %>
+
+  <div class=
+    <% if message.deal.advisor == current_user %>
+      <% if message.user == message.deal.advisor %>
+        "message-box message-right"
+      <% elsif message.user == message.deal.client %>
+        "message-box message-left"
+      <% end %>
+    <% elsif message.deal.client == current_user %>
+      <% if message.user == message.deal.client %>
+        "message-box message-right"
+      <% elsif message.user == message.deal.advisor %>
+        "message-box message-left"
+      <% end %>
+    <% end %>
+  >
+
+    <div class="message">
+      <div class="message-content">
+        <%= sanitize markdown_to_html(message.content) %>
+      </div>
+
+      <div class="message-date">
+        <p><small><%= message.date_formatted %></small></p>
+      </div>
+
     </div>
 
   </div>
 
-</div>
+<% end %>

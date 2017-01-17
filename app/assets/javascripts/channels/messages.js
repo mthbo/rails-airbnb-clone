@@ -1,48 +1,29 @@
 $(document).ready(function() {
 
-  var $messages = $("#session-conversation-messages");
+  var $session = $("#session-page");
 
-  if ( $messages.length > 0 ) {
+  if ( $session.length > 0 ) {
 
     var currentUserId = parseInt($("#my-navbar-logged").attr('data-user-id'));
-    var dealId = parseInt($messages.attr('data-deal-messages-id'));
+    var dealId = parseInt($session.attr('data-deal-id'));
 
-    App['deal' + dealId] = App.cable.subscriptions.create({channel: 'MessagesChannel', deal_id: dealId}, {
+    App['deal' + dealId + ':messages'] = App.cable.subscriptions.create({channel: 'MessagesChannel', deal_id: dealId}, {
       received: function(data) {
         if (data.state === "typing" && currentUserId !== data.user_id) {
-          $messages.append(this.renderMessageTyping());
+          $('#message-typing').removeClass("hide");
         } else if (data.state === "stop_typing" && currentUserId !== data.user_id) {
-          $('#message-typing').remove();
-        } else if (data.state === "sending" && $('#message-typing').length > 0) {
-          $('#message-typing').remove();
-          $messages.append(this.renderMessage(data, currentUserId));
-          $messages.append(this.renderMessageTyping());
-        } else if (data.state === "sending" && $('#message-typing').length === 0) {
-          $messages.append(this.renderMessage(data, currentUserId));
+          $('#message-typing').addClass("hide");
+        } else if (data.state === "sending") {
+          var $new_message = $(data.message).hide();
+          if (currentUserId !== data.user_id) {
+            $new_message.removeClass("message-right");
+            $new_message.addClass("message-left");
+          }
+          $('#message-typing').before($new_message);
+          $new_message.show();
+          scrollConversation();
         }
-
-        scrollConversation ();
       },
-
-      renderMessageTyping: function() {
-        return "<div class='message-box message-left' id='message-typing'><div class='message'><div class='message-content'><p>• • •</p></div></div></div>";
-      },
-
-      renderMessage: function(data, currentUserId) {
-        if (currentUserId !== data.user_id) {
-          var messageSide = "message-left";
-        } else {
-          var messageSide = "message-right";
-        }
-        return "<div class='message-box "
-          + messageSide
-          + "'><div class='message'><div class='message-content'><p>"
-          + data.content
-          + "</p></div><div class='message-date'><p><small>"
-          + data.date
-          + "</small></p></div></div></div>"
-        ;
-      }
 
     });
 

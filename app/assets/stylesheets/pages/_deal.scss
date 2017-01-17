@@ -24,8 +24,8 @@
 }
 
 .session-info-box {
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .session-btns {
@@ -123,7 +123,7 @@
   }
   &:hover {
     img {
-      border: $extra-light-gray solid 1px;
+      border: $light-gray solid 1px;
     }
   }
 }
@@ -198,9 +198,13 @@
   .session-proposition-top {
     padding: 5px 15px;
   };
-  .session-proposition, .session-info-box {
+  .session-proposition {
     padding-left: 15px;
     padding-right: 15px;
+  };
+  .session-info-box {
+    padding-left: 0;
+    padding-right: 0;
   };
   .session-proposition-bottom {
     padding: 20px 15px;

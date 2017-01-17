@@ -9,8 +9,20 @@
     flex: 0 1 auto;
     max-width: 80%;
     .message-content {
-      padding: 10px 25px;
+      padding: 5px 25px;
       overflow-wrap: break-word;
+      pre {
+        border-radius: 10px;
+        margin: 5px 0;
+        background-color: rgba(255,255,255,0.5);
+        border: none;
+        code {
+          font-family: monospace;
+          white-space: pre-wrap;
+          display: inline-block;
+          font-size: 13px;
+        }
+      }
     }
   };
 }
@@ -39,18 +51,25 @@
 
 @media (max-width: $screen-xs-max) {
   .message-box {
-    .message-content {
-      padding: 8px 20px;
+    .message {
+      .message-content {
+        padding: 10px 20px;
+        pre {
+          code {
+            font-size: 12px;
+          }
+        }
+      }
     }
   };
   .message-right {
     .message-content {
-      border-radius: 18px 18px 0 18px;
+      border-radius: 20px 20px 0 20px;
     }
   };
   .message-left {
     .message-content {
-      border-radius: 18px 18px 18px 0;
+      border-radius: 20px 20px 20px 0;
     }
   }
 }

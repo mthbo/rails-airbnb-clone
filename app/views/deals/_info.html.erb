@@ -1,0 +1,8 @@
+<% if deal.cancelled? %>
+  <%= render 'deals/info_cancelled' %>
+<% elsif deal.request? %>
+  <%= render 'deals/info_request', deal: deal %>
+<% else %>
+  <%= render 'deals/info_proposition', deal: deal %>
+  <%= render 'deals/info_session', deal: deal %>
+<% end %>

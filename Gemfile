@@ -8,6 +8,7 @@ gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
 gem 'faker'
+gem 'turbolinks', '~> 5.0.0'
 
 
 gem 'sass-rails'
@@ -30,6 +31,7 @@ gem 'pundit'
 gem 'money-rails'
 gem 'geocoder'
 gem 'kaminari'
+gem 'kramdown'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'

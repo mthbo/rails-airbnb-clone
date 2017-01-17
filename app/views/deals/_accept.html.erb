@@ -10,17 +10,17 @@
         <h4 class="modal-title" id="sessionAcceptationLabel">Accept proposition</h4>
       </div>
       <div class="modal-body">
-        <p class="font-weight-normal blue">Please review the proposition of <%= @deal.advisor.first_name %> for "<%= @deal.offer.title %>" before accepting it.</p>
+        <p class="font-weight-normal blue">Review the proposition of <%= deal.advisor.first_name %> for "<%= deal.offer.title %>" before accepting it.</p>
         <div class="form-separation padded-top-s padded-bottom-xs">
           <div></div>
           <p><strong>Proposition recap</strong></p>
           <div></div>
         </div>
-        <%= render 'proposition_recap', deal: @deal %>
+        <%= render 'deals/proposition_recap', deal: deal %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-        <%= link_to deal_path(@deal, deal:{status: :open, accepted_at: DateTime.now }), method: :patch, class: "btn btn-form btn-blue" do %>
+        <%= link_to deal_path(deal, deal:{status: :open, accepted_at: DateTime.current.in_time_zone }), method: :patch, remote: true, data: {dismiss: "modal"}, class: "btn btn-form btn-blue" do %>
           <i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Accept
         <% end %>
       </div>

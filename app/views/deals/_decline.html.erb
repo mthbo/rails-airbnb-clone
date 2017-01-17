@@ -11,13 +11,13 @@
       </div>
       <div class="modal-body">
         <div class="padded-top-xs padded-bottom-xs">
-          <p>If you decline the proposition, <%= @deal.advisor.first_name %> will have the possibility to cancel the session.</p>
+          <p>If you decline the proposition, <%= deal.advisor.first_name %> will be no longer commited to deliver the service proposed.</p>
           <p>Are you sure you want to do this?</p>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-        <%= link_to deal_path(@deal, deal:{status: :proposition_declined}), method: :patch, class: "btn btn-form btn-red" do %>
+        <%= link_to deal_path(deal, deal:{status: :proposition_declined}), method: :patch, remote: true, data: {dismiss: "modal"}, class: "btn btn-form btn-red" do %>
           <i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Decline
         <% end %>
       </div>

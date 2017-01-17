@@ -125,6 +125,7 @@ GEM
     kaminari (0.17.0)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    kramdown (1.12.0)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -253,6 +254,9 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.5)
+    turbolinks (5.0.1)
+      turbolinks-source (~> 5)
+    turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (3.0.3)
@@ -288,6 +292,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   kaminari
+  kramdown
   listen (~> 3.0.5)
   money-rails
   omniauth-facebook
@@ -304,6 +309,7 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
+  turbolinks (~> 5.0.0)
   uglifier
 
 RUBY VERSION

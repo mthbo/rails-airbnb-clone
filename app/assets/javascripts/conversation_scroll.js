@@ -7,5 +7,4 @@ function scrollConversation () {
 
 };
 
-
 $(document).ready(scrollConversation());

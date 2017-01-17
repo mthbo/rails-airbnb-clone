@@ -1,8 +1,8 @@
 <div class="session-status-box">
 
   <div class="text-center session-status">
-    <p class="<%= @deal.request? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Request</p>
-    <p class="<%= @deal.request? ? 'blue' : 'medium-gray' %>"><small><%= @deal.created_at.strftime("%d %b %Y") %></small></p>
+    <p class="<%= deal.request? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Request</p>
+    <p class="<%= deal.request? ? 'blue' : 'medium-gray' %>"><small><%= deal.created_at.strftime("%d %b %Y") %></small></p>
   </div>
 
   <div class="medium-gray session-status-arrow">
@@ -10,9 +10,9 @@
   </div>
 
   <div class="text-center session-status">
-    <p class="<%= @deal.proposition_any? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Proposition</p>
-    <% if @deal.proposition_at %>
-      <p class="<%= @deal.proposition_any? ? 'blue' : 'medium-gray' %>"><small><%= @deal.proposition_at.strftime("%d %b %Y") %></small></p>
+    <p class="<%= deal.proposition_any? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Proposition</p>
+    <% if deal.proposition_at %>
+      <p class="<%= deal.proposition_any? ? 'blue' : 'medium-gray' %>"><small><%= deal.proposition_at.strftime("%d %b %Y") %></small></p>
     <% else %>
       <p class="medium-gray %>"><small> - </small></p>
     <% end %>
@@ -23,9 +23,9 @@
   </div>
 
   <div class="text-center session-status">
-    <p class="<%= @deal.open_or_expired? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Open</p>
-    <% if @deal.accepted_at %>
-      <p class="<%= @deal.open_or_expired? ? 'blue' : 'medium-gray' %>"><small><%= @deal.accepted_at.strftime("%d %b %Y") %></small></p>
+    <p class="<%= deal.open_or_expired? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Open</p>
+    <% if deal.accepted_at %>
+      <p class="<%= deal.open_or_expired? ? 'blue' : 'medium-gray' %>"><small><%= deal.accepted_at.strftime("%d %b %Y") %></small></p>
     <% else %>
       <p class="medium-gray %>"><small> - </small></p>
     <% end %>
@@ -36,9 +36,9 @@
   </div>
 
   <div class="text-center session-status">
-    <p class="<%= @deal.closed? ? 'font-weight-bolder red' : 'font-weight-normal medium-gray' %>" >Closed</p>
-    <% if @deal.closed_at %>
-      <p class="<%= @deal.closed? ? 'red' : 'medium-gray' %>"><small><%= @deal.closed_at.strftime("%d %b %Y") %></small></p>
+    <p class="<%= deal.closed? ? 'font-weight-bolder red' : 'font-weight-normal medium-gray' %>" >Closed</p>
+    <% if deal.closed_at %>
+      <p class="<%= deal.closed? ? 'red' : 'medium-gray' %>"><small><%= deal.closed_at.strftime("%d %b %Y") %></small></p>
     <% else %>
       <p class="medium-gray %>"><small> - </small></p>
     <% end %>
