@@ -14,7 +14,7 @@
   </div>
 
   <div class="padded-bottom-xs">
-    <p>Take time to provide information about yourself. People need to know who you are and where you come from before conversing with you.</p>
+    <p>Take time to provide information about yourself. People need to know who you are and where you come from before conversing with you!</p>
   </div>
 
   <div class="row">
@@ -32,7 +32,7 @@
     </div>
     <div class="col-xs-12 col-sm-5">
       <%= f.input :birth_date, as: :custom, symbol: "<i class='fa fa-birthday-cake fa-fw' aria-hidden='true'></i>
-".html_safe, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, value: resource.birth_date ? localize(resource.birth_date, format: "%d %b %Y") : nil } %>
+".html_safe, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "0d", date_start_date: "-150y", date_start_view: "decade" }, value: resource.birth_date ? localize(resource.birth_date, format: "%d %b %Y") : nil } %>
     </div>
   </div>
 
@@ -44,7 +44,7 @@
 
   <div class="padded-bottom-xs">
     <p>Your contact details won't be disclosed publicly, apart from your city and country of residence.</p>
-    <p>For each open session, your contact details may be communicated to the other party upon your approval.</p>
+    <p>You can decide to communicate your contact details to somebody each time you open a session on Papoters.</p>
   </div>
 
   <div class="row">

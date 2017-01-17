@@ -34,9 +34,9 @@ class Message < ApplicationRecord
   def date_formatted
     if created_at.year < DateTime.current.in_time_zone.year
       created_at.strftime('%d %b %Y')
-    elsif created_at < 6.days.ago.midnight
+    elsif created_at < 6.days.ago.beginning_of_day
       created_at.strftime('%d %b')
-    elsif created_at < DateTime.current.in_time_zone.midnight
+    elsif created_at < DateTime.current.in_time_zone.beginning_of_day
       created_at.strftime('%A')
     else
       created_at.strftime('%H:%M')

@@ -12,14 +12,19 @@ class Deal < ApplicationRecord
 
   enum status: [ :request, :proposition, :proposition_declined, :open, :open_expired, :closed, :cancelled ]
 
-  validates :request, presence: true
-  validates :deadline, presence: true
+  validates :request, presence: { message: "Detail your request" }
   validates :languages, presence: { message: "Select one language at least" }
   validates :means, presence: { message: "Select one mean of communication at least" }
 
   validates :proposition, presence: { message: "The proposition must be described" }, length: { minimum: 50, message: "The description is too short, please tell a little more!" }, if: :waiting_proposition?
-  validates :proposition_deadline, presence: true, if: :waiting_proposition?
   validates :objectives, presence: true, length: { in: 1..10 }, if: :waiting_proposition?
+
+  validates :deadline, presence: { message: "Specify a deadline for your request" }
+  validate :deadline_must_be_valid
+
+  validates :proposition_deadline, presence: { message: "Specify an expiry date for your proposition" }, if: :waiting_proposition?
+  validate :proposition_deadline_must_be_valid
+  validate :proposition_deadline_must_be_before_deadline
 
   def advisor
     offer.advisor unless offer.nil?
@@ -61,6 +66,23 @@ class Deal < ApplicationRecord
     elsif user == self.client
       "<p>#{self.client_review.gsub(/\r\n/, '<br>')}</p>"
     end
+  end
+
+  # Validations
+
+  def deadline_must_be_valid
+    errors.add(:deadline, "The deadline can't be in the past or later than a year from now") if
+      deadline.present? && (deadline < DateTime.current.in_time_zone.end_of_day || deadline > 1.year.from_now)
+  end
+
+  def proposition_deadline_must_be_valid
+    errors.add(:proposition_deadline, "The expiry date can't be ine the past") if
+      proposition_deadline.present? && (proposition_deadline < DateTime.current.in_time_zone.end_of_day)
+  end
+
+  def proposition_deadline_must_be_before_deadline
+    errors.add(:proposition_deadline, "The expiry date can't be later than the proposition deadline") if
+      proposition_deadline.present? && proposition_deadline > deadline
   end
 
 end
