@@ -37,11 +37,14 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.proposition?
-        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.client)
+        DealStatusBroadcastJob.perform_later(@deal, @deal.client)
+        send_status_message
+        PropositionExpiryJob.set(wait_until: @deal.proposition_deadline.end_of_day - 30.minutes).perform_later(@deal)
         flash[:notice] = "Your proposition was submitted to #{@deal.client.name_anonymous}"
         redirect_to deal_path(@deal)
       elsif @deal.proposition_declined? && @deal.client == current_user
-        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.advisor)
+        DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
+        send_status_message
         respond_to do |format|
           format.html {
             flash[:alert] = "You declined the proposition of #{@deal.advisor.name_anonymous}"
@@ -50,7 +53,9 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.open?
-        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.advisor)
+        DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
+        send_status_message
+        DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
         respond_to do |format|
           format.html {
             flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is open!"
@@ -59,7 +64,8 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.closed? && @deal.client == current_user
-        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.advisor)
+        DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
+        send_status_message
         respond_to do |format|
           format.html {
             flash[:alert] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is closed!"
@@ -68,7 +74,8 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.closed? && @deal.advisor == current_user
-        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.client)
+        DealStatusBroadcastJob.perform_later(@deal, @deal.client)
+        send_status_message
         respond_to do |format|
           format.html {
             flash[:alert] = "#session-#{@deal.id} with #{@deal.client.name_anonymous} is closed!"
@@ -77,7 +84,8 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.cancelled? && @deal.client == current_user
-        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.advisor)
+        DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
+        send_status_message
         respond_to do |format|
           format.html {
             flash[:alert] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} has been cancelled."
@@ -86,7 +94,8 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.cancelled? && @deal.advisor == current_user
-        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.client)
+        DealStatusBroadcastJob.perform_later(@deal, @deal.client)
+        send_status_message
         respond_to do |format|
           format.html {
             flash[:alert] = "#session-#{@deal.id} with #{@deal.client.name_anonymous} has been cancelled."
@@ -141,6 +150,12 @@ class DealsController < ApplicationController
   def send_first_message
     message = Message.new(deal: @deal, user: @deal.client)
     message.build_first_content
+    message.save
+  end
+
+  def send_status_message
+    message = Message.new(deal: @deal, user: current_user, target: "deal_status")
+    message.build_deal_status_content
     message.save
   end
 

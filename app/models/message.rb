@@ -24,6 +24,8 @@ class Message < ApplicationRecord
       self.content = "<span class='font-weight-normal blue'>Proposition declined</span>"
     elsif self.deal.open?
       self.content = "<span class='font-weight-normal blue'>Session open</span>"
+    elsif self.deal.open_expired?
+      self.content = "<span class='font-weight-normal blue'>Session deadline passed</span>"
     elsif self.deal.closed?
       self.content = "<span class='font-weight-normal red'>Session closed</span>"
     elsif self.deal.cancelled?
