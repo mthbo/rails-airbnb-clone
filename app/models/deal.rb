@@ -24,8 +24,8 @@ class Deal < ApplicationRecord
   validate :deadline_must_be_before_a_year, if: :pending?
 
   validates :proposition_deadline, presence: { message: "Specify an expiry date for your proposition" }, if: :waiting_proposition?
-  validate :proposition_deadline_must_be_future
-  validate :proposition_deadline_must_be_before_deadline
+  validate :proposition_deadline_must_be_future, if: :pending?
+  validate :proposition_deadline_must_be_before_deadline, if: :pending?
 
   def advisor
     offer.advisor unless offer.nil?
