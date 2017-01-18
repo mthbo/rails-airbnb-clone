@@ -7,8 +7,9 @@ gem 'pg'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'redis'
-gem 'faker'
 
+gem 'sidekiq'
+gem 'sidekiq-failures'
 
 gem 'sass-rails'
 gem 'jquery-rails'
@@ -24,6 +25,7 @@ gem "attachinary", github: "assembler/attachinary"
 gem "jquery-fileupload-rails"
 gem "coffee-rails"
 
+gem 'faker'
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'pundit'

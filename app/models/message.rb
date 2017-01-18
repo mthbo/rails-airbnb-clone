@@ -6,7 +6,7 @@ class Message < ApplicationRecord
 
   enum target: [ :message, :deal_status ]
 
-  after_create_commit { MessageBroadcastJob.perform_now self }
+  after_create_commit :async_message_broadcast
 
   def build_first_content
     language_names = self.deal.languages.map { |language| language.name }
@@ -41,6 +41,12 @@ class Message < ApplicationRecord
     else
       created_at.strftime('%H:%M')
     end
+  end
+
+  private
+
+  def async_message_broadcast
+    MessageBroadcastJob.perform_later(self)
   end
 
 end

@@ -37,11 +37,11 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.proposition?
-        DealStatusBroadcastJob.perform_now(@deal, current_user, @deal.client)
+        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.client)
         flash[:notice] = "Your proposition was submitted to #{@deal.client.name_anonymous}"
         redirect_to deal_path(@deal)
       elsif @deal.proposition_declined? && @deal.client == current_user
-        DealStatusBroadcastJob.perform_now(@deal, current_user, @deal.advisor)
+        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.advisor)
         respond_to do |format|
           format.html {
             flash[:alert] = "You declined the proposition of #{@deal.advisor.name_anonymous}"
@@ -50,7 +50,7 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.open?
-        DealStatusBroadcastJob.perform_now(@deal, current_user, @deal.advisor)
+        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.advisor)
         respond_to do |format|
           format.html {
             flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is open!"
@@ -59,7 +59,7 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.closed? && @deal.client == current_user
-        DealStatusBroadcastJob.perform_now(@deal, current_user, @deal.advisor)
+        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.advisor)
         respond_to do |format|
           format.html {
             flash[:alert] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is closed!"
@@ -68,7 +68,7 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.closed? && @deal.advisor == current_user
-        DealStatusBroadcastJob.perform_now(@deal, current_user, @deal.client)
+        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.client)
         respond_to do |format|
           format.html {
             flash[:alert] = "#session-#{@deal.id} with #{@deal.client.name_anonymous} is closed!"
@@ -77,7 +77,7 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.cancelled? && @deal.client == current_user
-        DealStatusBroadcastJob.perform_now(@deal, current_user, @deal.advisor)
+        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.advisor)
         respond_to do |format|
           format.html {
             flash[:alert] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} has been cancelled."
@@ -86,7 +86,7 @@ class DealsController < ApplicationController
           format.js
         end
       elsif @deal.cancelled? && @deal.advisor == current_user
-        DealStatusBroadcastJob.perform_now(@deal, current_user, @deal.client)
+        DealStatusBroadcastJob.perform_later(@deal, current_user, @deal.client)
         respond_to do |format|
           format.html {
             flash[:alert] = "#session-#{@deal.id} with #{@deal.client.name_anonymous} has been cancelled."
