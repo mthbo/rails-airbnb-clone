@@ -20,10 +20,11 @@ class Deal < ApplicationRecord
   validates :objectives, presence: true, length: { in: 1..10 }, if: :waiting_proposition?
 
   validates :deadline, presence: { message: "Specify a deadline for your request" }
-  validate :deadline_must_be_valid
+  validate :deadline_must_be_future, if: :pending?
+  validate :deadline_must_be_before_a_year, if: :pending?
 
   validates :proposition_deadline, presence: { message: "Specify an expiry date for your proposition" }, if: :waiting_proposition?
-  validate :proposition_deadline_must_be_valid
+  validate :proposition_deadline_must_be_future
   validate :proposition_deadline_must_be_before_deadline
 
   def advisor
@@ -36,6 +37,10 @@ class Deal < ApplicationRecord
 
   def proposition_any?
     proposition? || proposition_declined?
+  end
+
+  def pending?
+    request? || proposition_any?
   end
 
   def open_or_expired?
@@ -70,14 +75,19 @@ class Deal < ApplicationRecord
 
   # Validations
 
-  def deadline_must_be_valid
-    errors.add(:deadline, "The deadline can't be in the past or later than a year from now") if
-      deadline.present? && (deadline < DateTime.current.in_time_zone.end_of_day || deadline > 1.year.from_now)
+  def deadline_must_be_future
+    errors.add(:deadline, "The deadline can't be in the past ") if
+      deadline.present? && deadline <= 1.day.ago
   end
 
-  def proposition_deadline_must_be_valid
-    errors.add(:proposition_deadline, "The expiry date can't be ine the past") if
-      proposition_deadline.present? && (proposition_deadline < DateTime.current.in_time_zone.end_of_day)
+  def deadline_must_be_before_a_year
+    errors.add(:deadline, "The deadline can't be later than a year from now") if
+      deadline.present? && deadline > 1.year.from_now
+  end
+
+  def proposition_deadline_must_be_future
+    errors.add(:proposition_deadline, "The expiry date can't be in the past") if
+      proposition_deadline.present? && proposition_deadline <= 1.day.ago
   end
 
   def proposition_deadline_must_be_before_deadline
