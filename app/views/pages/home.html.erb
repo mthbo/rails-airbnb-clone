@@ -88,15 +88,3 @@
 
 </div>
 
-<% content_for(:js) do %>
-  <%= javascript_tag do %>
-
-    if($('.my-navbar').length > 0){
-      $(window).on("scroll load resize", function(){
-        checkScroll();
-      });
-    }
-
-  <% end %>
-<% end %>
-

@@ -224,6 +224,16 @@ a {
   }
 }
 
+// h2, h3, h4, h5 {
+//   a {
+//     color: $blue;
+//     &:hover {
+//       font-weight: 600;
+//       color: $dark-gray;
+//     }
+//   }
+// }
+
 .link {
   position: absolute;
   top: 0;

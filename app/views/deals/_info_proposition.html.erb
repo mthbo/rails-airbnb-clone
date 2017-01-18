@@ -51,14 +51,16 @@
 </div>
 
 <div class="session-proposition-toggle bg-white-transparent text-center">
-  <%= link_to '#', id: "proposition-toggle" do  %>
-    <p>See details &nbsp;
-      <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-    </p>
-    <p class="hidden">Hide details &nbsp;
-      <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
-    </p>
-  <% end %>
+  <p>
+    <%= link_to '#', id: "proposition-toggle" do  %>
+      <span class="toggle-link">See details &nbsp;
+        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+      </span>
+      <span class="toggle-link hidden">Hide details &nbsp;
+        <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+      </span>
+    <% end %>
+  </p>
 </div>
 
 <div class="session-proposition-bottom">

@@ -1,3 +1,9 @@
+if (($('.my-navbar').length > 0) && ($('.home').length > 0)) {
+  $(window).on("scroll load resize", function(){
+    checkScroll();
+  });
+}
+
 function checkScroll(){
   var startY = $('.my-navbar').height() * 2;
 

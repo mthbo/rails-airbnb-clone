@@ -25,7 +25,7 @@
       <%= f.input :last_name, required: true, label: false, placeholder: "Last name", input_html: { class: 'custom-form-input' } %>
     </div>
     <div class="col-xs-12">
-      <%= f.input :bio, label: false, placeholder: "Describe yourself (history, experiences, studies, hobbies, ...)", input_html: { class: 'custom-form-input', rows: "10" } %>
+      <%= f.input :bio, label: false, autofocus: true, placeholder: "Describe yourself (history, experiences, studies, hobbies, ...)", input_html: { class: 'custom-form-input', rows: "10" } %>
     </div>
     <div class="col-xs-12 col-sm-7">
       <%= f.input :photo, as: :attachinary, label: "Profile picture", placeholder: false,  input_html: { class: 'custom-form-input' } %>
