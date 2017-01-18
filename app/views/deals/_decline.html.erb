@@ -17,7 +17,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-        <%= link_to deal_path(deal, deal:{status: :proposition_declined}), method: :patch, remote: true, data: {dismiss: "modal"}, class: "btn btn-form btn-red" do %>
+        <%= link_to deal_path(deal, deal:{status: :proposition_declined}), method: :patch, remote: true, class: "btn btn-form btn-red" do %>
           <i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Decline
         <% end %>
       </div>

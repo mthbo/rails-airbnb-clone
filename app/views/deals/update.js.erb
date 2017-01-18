@@ -10,9 +10,12 @@
   <% end %>
 
 <% elsif (@deal.proposition_declined? && @deal.client == current_user) || @deal.open? || @deal.closed? || @deal.cancelled? %>
-    $('#session-status-panel').html("<%= j render 'deals/status', deal: @deal %>");
-    $('#session-info-panel').html("<%= j render 'deals/info', deal: @deal %>");
-    $('#session-actions-panel').html("<%= j render 'deals/actions', deal: @deal %>");
-    propositionToggle();
+    $('.modal').modal('hide');
+    $('.modal').on('hidden.bs.modal', function () {
+      $('#session-status-panel').html("<%= j render 'deals/status', deal: @deal %>");
+      $('#session-info-panel').html("<%= j render 'deals/info', deal: @deal %>");
+      $('#session-actions-panel').html("<%= j render 'deals/actions', deal: @deal %>");
+      propositionToggle();
+    })
 
 <% end %>
