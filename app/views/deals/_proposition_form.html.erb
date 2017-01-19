@@ -1,4 +1,4 @@
-<%= simple_form_for deal, remote: true do |f| %>
+<%= simple_form_for deal, url: save_proposition_deal_path, method: :patch, remote: true do |f| %>
   <%= f.error_notification message: 'Please fill all the fields below and set at least one target for this session' %>
 
   <div class="padded-top-xs padded-bottom-xs">

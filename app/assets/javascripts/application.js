@@ -6,7 +6,18 @@
 //= require attachinary
 //= require smoothscroll
 //= require bootstrap-datepicker
-//= require_tree .
+
+//= require arrow-scroll
+//= require cable
+//= require checkbox
+//= require conversation_scroll
+//= require dashboard_tab
+//= require datepicker
+//= require flashes
+//= require google_maps_autocomplete
+//= require init_attachinary
+//= require navbar
+//= require proposition
 
 
 
