@@ -57,15 +57,28 @@ class Deal < ApplicationRecord
     pending_not_new? || open_or_expired? || closed?
   end
 
+  def reviewed_by_client?
+    client_review_at.present?
+  end
+
+  def reviewed_by_advisor?
+    advisor_review_at.present?
+  end
+
   # Info
 
-  def rating
-    if rated_objectives.present?
+  def client_global_rating
+    if reviewed_by_client?
       sum = 0
       rated_objectives.each { |objective| sum += objective.rating }
-      sum.fdiv(rated_objectives.count)
-    else
-      nil
+      objectives_rating = sum.fdiv(rated_objectives.count)
+      0.75 * objectives_rating + 0.25 * client_rating
+    end
+  end
+
+  def advisor_global_rating
+    if reviewed_by_advisor?
+      advisor_rating
     end
   end
 
@@ -73,19 +86,10 @@ class Deal < ApplicationRecord
     objectives.where.not(rating: nil)
   end
 
-  def proposition_formatted
-    "<p>#{self.proposition.gsub(/\r\n/, '<br>')}</p>"
-  end
-
-  def review_formatted(user)
-    if user == self.advisor
-      "<p>#{self.advisor_review.gsub(/\r\n/, '<br>')}</p>"
-    elsif user == self.client
-      "<p>#{self.client_review.gsub(/\r\n/, '<br>')}</p>"
-    end
-  end
 
   private
+
+  # Validations
 
   def deadline_must_be_future
     errors.add(:deadline, "The deadline can't be in the past ") if

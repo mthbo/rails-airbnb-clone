@@ -32,8 +32,8 @@ class Offer < ApplicationRecord
   def global_rating
     if deals_reviewed.present?
       sum = 0
-      deals_reviewed.each { |deal| sum += deal.rating }
-      return sum.fdiv(deals_reviewed.count)
+      deals_reviewed.each { |deal| sum += deal.client_global_rating }
+      sum.fdiv(deals_reviewed.count)
     end
   end
 
@@ -87,7 +87,29 @@ class Offer < ApplicationRecord
   end
 
   def deals_reviewed
-    deals.where.not(client_review: nil).order(client_review_at: :desc)
+    deals.where.not(client_review_at: nil).order(client_review_at: :desc)
+  end
+
+  # Deal stats
+
+  def pin_count
+    pinned_offers.count
+  end
+
+  def deals_pending_count
+    deals_pending.count
+  end
+
+  def deals_open_count
+    deals_open.count
+  end
+
+  def deals_ongoing_count
+    deals_ongoing.count
+  end
+
+  def deals_closed_count
+    deals_closed.count
   end
 
 

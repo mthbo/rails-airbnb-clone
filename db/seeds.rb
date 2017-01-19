@@ -96,6 +96,8 @@ deals1 = []
     advisor_review: Faker::Lorem.paragraph(10),
     client_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
     advisor_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
+    client_rating: (0..5).to_a.sample,
+    advisor_rating: (0..5).to_a.sample,
     languages: offer.languages,
     means: offer.means
   )
@@ -150,6 +152,8 @@ deals1_free = []
     advisor_review: Faker::Lorem.paragraph(10),
     client_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
     advisor_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
+    client_rating: (0..5).to_a.sample,
+    advisor_rating: (0..5).to_a.sample,
     languages: offer.languages,
     means: offer.means
   )

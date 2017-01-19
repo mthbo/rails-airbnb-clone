@@ -11,10 +11,10 @@
   <div class="review-content">
     <div class="review-content-top">
       <% unless deal.rating.nil? %>
-        <%= render 'deals/satisfaction', rating: deal.rating %>
+        <%= render 'deals/satisfaction', rating: deal.client_global_rating %>
       <% end %>
       <div><p class="medium-gray"><%= deal.client_review_at.strftime("%d %b %Y") %></p></div>
     </div>
-    <%= "#{deal.review_formatted(deal.client)}".html_safe %>
+    <%= sanitize markdown_to_html(deal.client_review) %>
   </div>
 </div>

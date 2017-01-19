@@ -30,4 +30,12 @@ class Language < ApplicationRecord
   def name_illustrated
     "<span class='flag-icons flags-long'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name}</span>".html_safe
   end
+
+  def offers_count
+    offers.count
+  end
+
+  def deals_count
+    deals.count
+  end
 end

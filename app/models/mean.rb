@@ -20,4 +20,13 @@ class Mean < ApplicationRecord
   def name_illustrated
     "<span class='mean-icons means-long'><i class='fa fa-#{self.picto} fa-fw fa-lg' aria-hidden='true'></i> #{self.name}</span>".html_safe
   end
+
+  def offers_count
+    offers.count
+  end
+
+  def deals_count
+    deals.count
+  end
+
 end

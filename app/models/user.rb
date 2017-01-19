@@ -41,7 +41,6 @@ class User < ApplicationRecord
       today = DateTime.current.in_time_zone
       d = DateTime.new(today.year, birth_date.month, birth_date.day).in_time_zone
       age = d.year - birth_date.year - (d > today ? 1 : 0)
-      "#{age} yr"
     end
   end
 
@@ -72,20 +71,6 @@ class User < ApplicationRecord
     "<p>#{self.bio.gsub(/\r\n/, '<br>')}</p>"
   end
 
-  # User stat
-
-  def grade
-    if advisor_deals_closed.count > 20
-      "Guide"
-    elsif advisor_deals_closed.count > 10
-      "Champion"
-    elsif advisor_deals_closed.count > 3
-      "Advisor"
-    else
-      "Papoter"
-    end
-  end
-
 
   # User offers
 
@@ -99,6 +84,10 @@ class User < ApplicationRecord
 
   def offers_published
     offers.where.not(status: :archived).order(updated_at: :desc)
+  end
+
+  def offers_priced
+    offers_published.where(pricing: :priced)
   end
 
 
@@ -129,7 +118,7 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_reviewed
-    advisor_deals.where.not(client_review: nil).order(client_review_at: :desc)
+    advisor_deals.where.not(client_review_at: nil).order(client_review_at: :desc)
   end
 
 
@@ -160,7 +149,7 @@ class User < ApplicationRecord
   end
 
   def client_deals_reviewed
-    client_deals.where.not(advisor_review: nil).order(advisor_review_at: :desc)
+    client_deals.where.not(advisor_review_at: nil).order(advisor_review_at: :desc)
   end
 
 
@@ -197,12 +186,70 @@ class User < ApplicationRecord
   end
 
   def deals_reviewed
-    deals_as_advisor = Deal.where(offer: self.offers).where.not(client_review: nil)
-    deals_as_client = Deal.where(client: self).where.not(advisor_review: nil)
+    deals_as_advisor = Deal.where(offer: self.offers).where.not(client_review_at: nil)
+    deals_as_client = Deal.where(client: self).where.not(advisor_review_at: nil)
     # TODO: Try to write a join query to order by dates
     deals_as_advisor.or(deals_as_client).order(client_review_at: :desc)
   end
 
+
+  # User stat
+
+  def grade
+    if advisor_deals_closed_count > 20
+      "Guide"
+    elsif advisor_deals_closed_count > 10
+      "Champion"
+    elsif advisor_deals_closed_count > 3
+      "Advisor"
+    else
+      "Papoter"
+    end
+  end
+
+  def offers_active_count
+    offers_active.count
+  end
+
+  def offers_inactive_count
+    offers_inactive.count
+  end
+
+  def offers_priced_count
+    offers_priced.count
+  end
+
+  def client_deals_pending_count
+    client_deals_pending.count
+  end
+
+  def advisor_deals_pending_count
+    advisor_deals_pending.count
+  end
+
+  def client_deals_open_count
+    client_deals_open.count
+  end
+
+  def advisor_deals_open_count
+    advisor_deals_open.count
+  end
+
+  def client_deals_ongoing_count
+    client_deals_ongoing.count
+  end
+
+  def advisor_deals_ongoing_count
+    advisor_deals_ongoing.count
+  end
+
+  def client_deals_closed_count
+    client_deals_closed.count
+  end
+
+  def advisor_deals_closed_count
+    advisor_deals_closed.count
+  end
 
   # Facebook oauth
 
@@ -225,6 +272,8 @@ class User < ApplicationRecord
 
     return user
   end
+
+  private
 
   # Validations
 
