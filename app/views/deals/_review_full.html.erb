@@ -11,19 +11,11 @@
   <div class="review-content">
     <div class="review-content-top">
       <div>
-        <% if user == deal.client %>
-          <%= render 'deals/satisfaction', rating: client_global_rating %>
-        <% else %>
-          <%= render 'deals/satisfaction', rating: advisor_global_rating %>
-        <% end %>
+        <%= render 'deals/satisfaction', rating: rating %>
       </div>
       <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
     </div>
-    <% if user == deal.client %>
-      <%= sanitize markdown_to_html(deal.client_review) %>
-    <% else %>
-      <%= sanitize markdown_to_html(deal.advisor_review) %>
-    <% end %>
+    <%= sanitize markdown_to_html(review) %>
     <p>
       <% if user == deal.client %>
         <span class="green"><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;as advisor </span>

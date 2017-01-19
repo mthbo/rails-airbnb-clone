@@ -54,7 +54,7 @@ offers = []
     advisor: users.sample,
     languages: languages.sample(rand(1..4)),
     means: means.sample(rand(1..5)),
-    pricing: 1
+    pricing: "priced"
   )
 end
 
@@ -66,7 +66,7 @@ offers_free = []
     advisor: users.sample,
     languages: languages.sample(rand(1..4)),
     means: means.sample(rand(1..5)),
-    pricing: 0
+    pricing: "free"
   )
 end
 
@@ -76,19 +76,20 @@ offer_new_priced = Offer.create(
   advisor: users.sample,
   languages: languages.sample(rand(1..4)),
   means: means.sample(rand(1..5)),
-  pricing: 1
+  pricing: "priced"
 )
 
 deals1 = []
 10.times do
   offer = offers.sample
-  deals1 << Deal.create(
-    status: 5,
+  deals1 << Deal.new(
+    status: "closed",
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(0.days.ago, 1.day.ago),
     proposition: Faker::Lorem.paragraph(10),
+    proposition_deadline: Faker::Date.between(2.days.ago, 3.day.ago),
     proposition_at: Faker::Time.between(5.days.ago, 6.days.ago),
     accepted_at: Faker::Time.between(3.days.ago, 4.days.ago),
     closed_at: Faker::Time.between(1.day.ago, 2.days.ago),
@@ -105,14 +106,15 @@ end
 
 10.times do
   offer = offers.sample
-  deals1 << Deal.create(
-    status: 5,
+  deals1 << Deal.new(
+    status: "closed",
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(0.days.ago, 1.day.ago),
     proposition: Faker::Lorem.paragraph(10),
     amount:  Faker::Commerce.price,
+    proposition_deadline: Faker::Date.between(2.days.ago, 3.day.ago),
     proposition_at: Faker::Time.between(5.days.ago, 6.days.ago),
     accepted_at: Faker::Time.between(3.days.ago, 4.days.ago),
     closed_at: Faker::Time.between(1.day.ago, 2.days.ago),
@@ -120,6 +122,8 @@ end
     advisor_review: Faker::Lorem.paragraph(10),
     client_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
     advisor_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
+    client_rating: (0..5).to_a.sample,
+    advisor_rating: (0..5).to_a.sample,
     languages: offer.languages,
     means: offer.means
   )
@@ -127,24 +131,22 @@ end
 
 deals1.each do |deal|
   3.times do
-    Objective.create(
-      description: Faker::Lorem.sentence,
-      rating: (0..5).to_a.sample,
-      deal: deal
-    )
+    deal.objectives.new(description: Faker::Lorem.sentence, rating: (0..5).to_a.sample)
   end
+  deal.save
 end
 
 deals1_free = []
 10.times do
   offer = offers_free.sample
-  deals1_free << Deal.create(
-    status: 5,
+  deals1_free << Deal.new(
+    status: "closed",
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(0.days.ago, 1.day.ago),
     proposition: Faker::Lorem.paragraph(10),
+    proposition_deadline: Faker::Date.between(2.days.ago, 3.day.ago),
     proposition_at: Faker::Time.between(5.days.ago, 6.days.ago),
     accepted_at: Faker::Time.between(3.days.ago, 4.days.ago),
     closed_at: Faker::Time.between(1.day.ago, 2.days.ago),
@@ -161,13 +163,14 @@ end
 
 3.times do
   offer = offer_new_priced
-  deals1_free << Deal.create(
-    status: 5,
+  deals1_free << Deal.new(
+    status: "closed",
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(0.days.ago, 1.day.ago),
     proposition: Faker::Lorem.paragraph(10),
+    proposition_deadline: Faker::Date.between(2.days.ago, 3.day.ago),
     proposition_at: Faker::Time.between(5.days.ago, 6.days.ago),
     accepted_at: Faker::Time.between(3.days.ago, 4.days.ago),
     closed_at: Faker::Time.between(1.day.ago, 2.days.ago),
@@ -175,6 +178,8 @@ end
     advisor_review: Faker::Lorem.paragraph(10),
     client_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
     advisor_review_at: Faker::Time.between(0.days.ago, 1.day.ago),
+    client_rating: (0..5).to_a.sample,
+    advisor_rating: (0..5).to_a.sample,
     languages: offer.languages,
     means: offer.means
   )
@@ -182,25 +187,23 @@ end
 
 deals1_free.each do |deal|
   3.times do
-    Objective.create(
-      description: Faker::Lorem.sentence,
-      rating: (0..5).to_a.sample,
-      deal: deal
-    )
+    deal.objectives.new(description: Faker::Lorem.sentence, rating: (0..5).to_a.sample)
   end
+  deal.save
 end
 
 deals2 = []
 5.times do
   offer = offers.sample
-  deals2 << Deal.create(
-    status: 3,
+  deals2 << Deal.new(
+    status: "proposition_declined",
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Date.forward(14),
     amount:  Faker::Commerce.price,
     proposition: Faker::Lorem.paragraph(10),
+    proposition_deadline: Faker::Date.forward(2),
     proposition_at: Faker::Time.between(3.days.ago, 4.days.ago),
     accepted_at: Faker::Time.between(1.day.ago, 2.days.ago),
     languages: offer.languages,
@@ -210,24 +213,23 @@ end
 
 deals2.each do |deal|
   3.times do
-    Objective.create(
-      description: Faker::Lorem.sentence,
-      deal: deal
-    )
+    deal.objectives.new(description: Faker::Lorem.sentence)
   end
+  deal.save
 end
 
 deals3 = []
 5.times do
   offer = offers.sample
-  deals3 << Deal.create(
-    status: 1,
+  deals3 << Deal.new(
+    status: "proposition",
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Date.forward(24),
     amount:  Faker::Commerce.price,
     proposition: Faker::Lorem.paragraph(10),
+    proposition_deadline: Faker::Date.forward(3),
     proposition_at: Faker::Time.between(1.day.ago, 2.days.ago),
     languages: offer.languages,
     means: offer.means
@@ -236,22 +238,20 @@ end
 
 deals3.each do |deal|
   3.times do
-    Objective.create(
-      description: Faker::Lorem.sentence,
-      deal: deal
-    )
+    deal.objectives.new(description: Faker::Lorem.sentence)
   end
+  deal.save
 end
 
 deals4 = []
 5.times do
   offer = offers.sample
   deals4 << Deal.create(
-    status: 0,
+    status: "request",
     offer: offer,
     client: users.sample,
     request: Faker::Lorem.paragraph(10),
-    deadline: Faker::Date.forward(34),
+    deadline: Faker::Date.forward(24),
     languages: offer.languages,
     means: offer.means
   )

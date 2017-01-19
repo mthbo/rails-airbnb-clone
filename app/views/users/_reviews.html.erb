@@ -1,7 +1,7 @@
 <% @deals_reviewed.each do |deal| %>
   <% if deal.advisor == @user %>
-    <%= render 'deals/review_full', deal: deal, user: deal.client, rating: deal.rating, review: deal.client_review, date: deal.client_review_at %>
+    <%= render 'deals/review_full', deal: deal, user: deal.client, rating: deal.client_global_rating, review: deal.client_review, date: deal.client_review_at %>
   <% else %>
-    <%= render 'deals/review_full', deal: deal, user: deal.advisor, rating: nil, review: deal.advisor_review, date: deal.advisor_review_at %>
+    <%= render 'deals/review_full', deal: deal, user: deal.advisor, rating: deal.advisor_global_rating, review: deal.advisor_review, date: deal.advisor_review_at %>
   <% end %>
 <% end %>
