@@ -26,7 +26,7 @@ ActiveAdmin.register Offer do
     column :deals_ongoing_count
     column :deals_closed_count
     column :global_rating do |offer|
-      "#{(offer.global_rating / 5 * 100).to_i} %" unless offer.global_rating.nil?
+      "#{(offer.global_rating.fdiv(5) * 100).to_i} %" unless offer.global_rating.nil?
     end
     column :median_amount
     actions
@@ -53,7 +53,7 @@ ActiveAdmin.register Offer do
       row :deals_open_count
       row :deals_closed_count
       row :global_rating do |offer|
-        "#{(offer.global_rating / 5 * 100).to_i} %" unless offer.global_rating.nil?
+        "#{(offer.global_rating.fdiv(5) * 100).to_i} %" unless offer.global_rating.nil?
       end
       row :min_amount
       row :median_amount
@@ -68,6 +68,7 @@ ActiveAdmin.register Offer do
 
   form do |f|
     f.inputs "Offer details" do
+      f.input :advisor_id
       f.input :title
       f.input :description
       f.input :status
@@ -78,6 +79,6 @@ ActiveAdmin.register Offer do
     f.actions
   end
 
-  permit_params :title, :description, :status, :pricing, mean_ids: [], language_ids: []
+  permit_params :advisor_id, :title, :description, :status, :pricing, mean_ids: [], language_ids: []
 
 end

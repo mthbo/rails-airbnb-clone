@@ -82,6 +82,10 @@ class Deal < ApplicationRecord
     end
   end
 
+  def objectives_count
+    objectives.count
+  end
+
   def rated_objectives
     objectives.where.not(rating: nil)
   end

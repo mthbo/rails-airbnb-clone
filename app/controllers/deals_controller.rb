@@ -131,11 +131,16 @@ class DealsController < ApplicationController
       :deadline,
       :amount,
       :proposition,
-      :request_at,
       :proposition_at,
       :accepted_at,
       :closed_at,
       :proposition_deadline,
+      :client_review,
+      :client_review_at,
+      :client_rating,
+      :advisor_review,
+      :advisor_review_at,
+      :advisor_rating,
       mean_ids: [],
       language_ids: []
     )
