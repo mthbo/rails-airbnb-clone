@@ -38,6 +38,7 @@ ActiveAdmin.register Deal do
   show do
     attributes_table do
       row :id
+      row :offer
       row :advisor
       row :client
       row :status
@@ -52,7 +53,7 @@ ActiveAdmin.register Deal do
       row :proposition_deadline
       row :proposition
       row :objectives do |deal|
-        deal.objectives.map { |o| o.description }.join("\n")
+        deal.objectives.each_with_index.map { |o, i| link_to "#{i + 1} | #{o.description}", admin_objective_path(o) }.join("<br>").html_safe
       end
       row :languages do |deal|
         deal.languages.map { |l| l.name }.join(", ")
@@ -62,24 +63,24 @@ ActiveAdmin.register Deal do
       end
       row :accepted_at
       row :closed_at
+      row :updated_at
     end
     attributes_table do
-      row :client_review
-      row :client_rating
       row :client_review_at
-      row :advisor_review
-      row :advisor_review_at
-      row :advisor_rating
       row :client_global_rating do |deal|
         "#{(deal.client_global_rating.fdiv(5) * 100).to_i} %" unless deal.client_global_rating.nil?
       end
+      row :client_rating
+      row :objectives_rating do |deal|
+        deal.objectives.map { |o| "#{o.description} : #{o.rating}" }.join("<br>").html_safe
+      end
+      row :client_review
+      row :advisor_review_at
       row :advisor_global_rating do |deal|
         "#{(deal.advisor_global_rating.fdiv(5) * 100).to_i} %" unless deal.advisor_global_rating.nil?
       end
-    end
-    attributes_table do
-      row :created_at
-      row :updated_at
+      row :advisor_rating
+      row :advisor_review
     end
     active_admin_comments
   end
@@ -97,17 +98,16 @@ ActiveAdmin.register Deal do
       f.input :proposition_at
       f.input :proposition_deadline
       f.input :proposition
-      f.input :objectives
-      f.input :languages, as: :check_boxes
-      f.input :means, as: :check_boxes
+      f.input :languages, as: :check_boxes, collection: deal.offer.languages
+      f.input :means, as: :check_boxes, collection: deal.offer.means
       f.input :accepted_at
       f.input :closed_at
-      f.input :client_review
-      f.input :client_rating
       f.input :client_review_at
-      f.input :advisor_review
+      f.input :client_rating
+      f.input :client_review
       f.input :advisor_review_at
       f.input :advisor_rating
+      f.input :advisor_review
     end
     f.actions
   end

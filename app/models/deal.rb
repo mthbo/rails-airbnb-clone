@@ -31,7 +31,8 @@ class Deal < ApplicationRecord
     offer.advisor unless offer.nil?
   end
 
-  # Steps
+
+  # Status
 
   def proposition_any?
     proposition? || proposition_declined?
@@ -65,7 +66,12 @@ class Deal < ApplicationRecord
     advisor_review_at.present?
   end
 
-  # Info
+
+  # Stats
+
+  def objectives_count
+    objectives.count
+  end
 
   def client_global_rating
     if reviewed_by_client?
@@ -76,18 +82,14 @@ class Deal < ApplicationRecord
     end
   end
 
+  def rated_objectives
+    objectives.where.not(rating: nil)
+  end
+
   def advisor_global_rating
     if reviewed_by_advisor?
       advisor_rating
     end
-  end
-
-  def objectives_count
-    objectives.count
-  end
-
-  def rated_objectives
-    objectives.where.not(rating: nil)
   end
 
 

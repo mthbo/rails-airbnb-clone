@@ -1,9 +1,9 @@
 <p>
   <% unless offer.global_rating.nil? %>
-    <% (offer.global_rating.to_i).times do %>
+    <% (offer.global_rating.round).times do %>
       <i class="fa fa-star yellow" aria-hidden="true"></i>
     <% end %>
-    <% (5 - offer.global_rating.to_i).times do %>
+    <% (5 - offer.global_rating.round).times do %>
       <i class="fa fa-star-o medium-gray" aria-hidden="true"></i>
     <% end %>
     <span>&nbsp;&nbsp;<strong><%= (offer.global_rating.fdiv(5) * 100).to_i %> %</strong>  happy</span>

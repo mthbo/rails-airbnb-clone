@@ -46,22 +46,23 @@ ActiveAdmin.register Offer do
       row :means do |offer|
         offer.means.map { |l| l.name }.join(", ")
       end
+      row :created_at
+      row :updated_at
     end
     attributes_table do
       row :pin_count
       row :deals_pending_count
       row :deals_open_count
       row :deals_closed_count
+      row :deals do |offer|
+        offer.deals.map { |d| link_to d.id, admin_deal_path(d) }.join(" | ").html_safe
+      end
       row :global_rating do |offer|
         "#{(offer.global_rating.fdiv(5) * 100).to_i} %" unless offer.global_rating.nil?
       end
       row :min_amount
       row :median_amount
       row :max_amount
-    end
-    attributes_table do
-      row :created_at
-      row :updated_at
     end
     active_admin_comments
   end

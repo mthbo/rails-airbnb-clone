@@ -23,9 +23,80 @@ class Offer < ApplicationRecord
     end
   end
 
-  def description_formatted
-    "<p>#{self.description.gsub(/\r\n/, '<br>')}</p>"
+
+  # Deals for an offer
+
+  def deals_request
+    deals.where(status: :request)
   end
+
+  def deals_proposition
+    deals.where(status: :proposition).or(deals.where(status: :proposition_declined))
+  end
+
+  def deals_pending
+    deals_request.or(deals_proposition)
+  end
+
+  def deals_open
+    deals.where(status: :open).or(deals.where(status: :open_expired))
+  end
+
+  def deals_ongoing
+    deals_pending.or(deals_open)
+  end
+
+  def deals_closed
+    deals.where(status: :closed)
+  end
+
+  def deals_reviewed
+    deals.where.not(client_review_at: nil).order(client_review_at: :desc)
+  end
+
+
+  # Deal for an offer with a specific client
+
+  def pending_deal(client)
+    deals_pending.find_by(client: client)
+  end
+
+  def open_deal(client)
+    deals_open.find_by(client: client)
+  end
+
+  def ongoing_deal(client)
+    deals_ongoing.find_by(client: client)
+  end
+
+  def pinned(client)
+    pinned_offers.find_by(client: client)
+  end
+
+
+
+  # Deal stats
+
+  def pin_count
+    pinned_offers.count
+  end
+
+  def deals_pending_count
+    deals_pending.count
+  end
+
+  def deals_open_count
+    deals_open.count
+  end
+
+  def deals_ongoing_count
+    deals_ongoing.count
+  end
+
+  def deals_closed_count
+    deals_closed.count
+  end
+
 
   # Rating stat
 
@@ -59,76 +130,5 @@ class Offer < ApplicationRecord
     Money.new(median_cents) unless median_cents.nil?
   end
 
-
-  # Deals for an offer
-
-  def deals_request
-    deals.where(status: :request)
-  end
-
-  def deals_proposition
-    deals.where(status: :proposition).or(deals.where(status: :proposition_declined))
-  end
-
-  def deals_pending
-    deals_request.or(deals_proposition)
-  end
-
-  def deals_open
-    deals.where(status: :open).or(deals.where(status: :open_expired))
-  end
-
-  def deals_ongoing
-    deals_pending.or(deals_open)
-  end
-
-  def deals_closed
-    deals.where(status: :closed)
-  end
-
-  def deals_reviewed
-    deals.where.not(client_review_at: nil).order(client_review_at: :desc)
-  end
-
-  # Deal stats
-
-  def pin_count
-    pinned_offers.count
-  end
-
-  def deals_pending_count
-    deals_pending.count
-  end
-
-  def deals_open_count
-    deals_open.count
-  end
-
-  def deals_ongoing_count
-    deals_ongoing.count
-  end
-
-  def deals_closed_count
-    deals_closed.count
-  end
-
-
-  # Deal for an offer with a specific client
-
-  def pending_deal(client)
-    deals_pending.find_by(client: client)
-  end
-
-  def open_deal(client)
-    deals_open.find_by(client: client)
-  end
-
-  def ongoing_deal(client)
-    deals_ongoing.find_by(client: client)
-  end
-
-  def pinned(client)
-    pinned_offers.find_by(client: client)
-  end
 
 end

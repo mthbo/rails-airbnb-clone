@@ -14,7 +14,7 @@
 </div>
 
 <div>
-  <h6 class="extra-dark-gray"><%= "Target".pluralize(deal.objectives.count) %></h6>
+  <h6 class="extra-dark-gray"><%= "Target".pluralize(deal.objectives_count) %></h6>
   <% deal.objectives.each_with_index do |objective, i| %>
     <p><span class="font-weight-normal"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></p>
   <% end %>
