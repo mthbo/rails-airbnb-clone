@@ -11,6 +11,9 @@ gem 'redis'
 gem 'sidekiq'
 gem 'sidekiq-failures'
 
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
+
 gem 'sass-rails'
 gem 'jquery-rails'
 gem 'uglifier'
