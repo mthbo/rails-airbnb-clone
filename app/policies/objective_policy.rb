@@ -1,7 +1,7 @@
 class ObjectivePolicy < ApplicationPolicy
 
   def create?
-    true
+    record.deal.advisor == user && (record.deal.request? || record.deal.proposition_declined?)
   end
 
   def update?

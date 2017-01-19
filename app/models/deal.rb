@@ -16,24 +16,22 @@ class Deal < ApplicationRecord
   validates :languages, presence: { message: "Select one language at least" }
   validates :means, presence: { message: "Select one mean of communication at least" }
 
-  validates :proposition, presence: { message: "The proposition must be described" }, length: { minimum: 50, message: "The description is too short, please tell a little more!" }, if: :waiting_proposition?
-  validates :objectives, presence: true, length: { in: 1..10 }, if: :waiting_proposition?
-
   validates :deadline, presence: { message: "Specify a deadline for your request" }
-  validate :deadline_must_be_future, if: :pending?
-  validate :deadline_must_be_before_a_year, if: :pending?
+  validate :deadline_must_be_future, if: :pending_or_open?
+  validate :deadline_must_be_before_a_year, if: :pending_or_open?
 
-  validates :proposition_deadline, presence: { message: "Specify an expiry date for your proposition" }, if: :waiting_proposition?
-  validate :proposition_deadline_must_be_future, if: :pending?
-  validate :proposition_deadline_must_be_before_deadline, if: :pending?
+  validates :proposition, presence: { message: "The proposition must be described" }, length: { minimum: 50, message: "The description is too short, please tell a little more!" }, if: :not_new_nor_cancelled?
+  validates :objectives, presence: true, length: { in: 1..10 }, if: :not_new_nor_cancelled?
+
+  validates :proposition_deadline, presence: { message: "Specify an expiry date for your proposition" }, if: :pending_not_new?
+  validate :proposition_deadline_must_be_future, if: :pending_not_new?
+  validate :proposition_deadline_must_be_before_deadline, if: :pending_not_new?
 
   def advisor
     offer.advisor unless offer.nil?
   end
 
-  def waiting_proposition?
-    (request? || proposition_declined?) && id.present?
-  end
+  # Steps
 
   def proposition_any?
     proposition? || proposition_declined?
@@ -43,9 +41,23 @@ class Deal < ApplicationRecord
     request? || proposition_any?
   end
 
+  def pending_or_open?
+    pending? || open?
+  end
+
   def open_or_expired?
     open? || open_expired?
   end
+
+  def pending_not_new?
+    (request? && id.present?) || proposition_any?
+  end
+
+  def not_new_nor_cancelled?
+    pending_not_new? || open_or_expired? || closed?
+  end
+
+  # Info
 
   def rating
     if rated_objectives.present?
@@ -73,7 +85,7 @@ class Deal < ApplicationRecord
     end
   end
 
-  # Validations
+  private
 
   def deadline_must_be_future
     errors.add(:deadline, "The deadline can't be in the past ") if

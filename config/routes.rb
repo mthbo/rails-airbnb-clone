@@ -27,9 +27,15 @@ Rails.application.routes.draw do
 
   resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
     resources :pinned_offers, only: [:create, :destroy]
-    resources :deals, only: [:show, :new, :create, :update], path: 'sessions' do
+    resources :deals, only: [:show, :new, :create], path: 'sessions' do
       member do
         get 'proposition', to: 'deals#proposition'
+        patch 'save_proposition', to: 'deals#save_proposition'
+        patch 'submit_proposition', to: 'deals#submit_proposition'
+        patch 'accept_proposition', to: 'deals#accept_proposition'
+        patch 'decline_proposition', to: 'deals#decline_proposition'
+        patch 'close', to: 'deals#close'
+        patch 'cancel', to: 'deals#cancel'
       end
       resources :objectives, only: [:create, :update, :destroy]
       resources :messages, only: [:create] do
