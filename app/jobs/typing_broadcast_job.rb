@@ -1,5 +1,5 @@
 class TypingBroadcastJob < ApplicationJob
-  queue_as :default
+  queue_as :critical
 
   def perform(deal_id, user_id, state)
     ActionCable.server.broadcast(

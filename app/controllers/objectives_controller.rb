@@ -1,7 +1,8 @@
 class ObjectivesController < ApplicationController
   before_action :find_objective, only: [:update, :destroy]
   before_action :find_deal, only: [:create]
-  layout 'advisor_form', only: [:create, :update, :destroy]
+  layout 'advisor_form', only: [:create, :destroy]
+  layout 'client_form', only: [:update]
 
   def create
     @objective = Objective.new(objective_params)
@@ -9,12 +10,12 @@ class ObjectivesController < ApplicationController
     authorize @objective
     if @objective.save
       respond_to do |format|
-        format.html { redirect_to proposition_deal_path(@deal) }
+        format.html { redirect_to new_proposition_deal_path(@deal) }
         format.js
       end
     else
       respond_to do |format|
-        format.html { render 'deals/proposition' }
+        format.html { render 'deals/new_proposition' }
         format.js
       end
     end
@@ -24,9 +25,15 @@ class ObjectivesController < ApplicationController
   def update
     @deal = @objective.deal
     if @objective.update(objective_params)
-      redirect_to proposition_deal_path(@deal)
+      respond_to do |format|
+        format.html { redirect_to new_review_deal_path(@deal) }
+        format.js
+      end
     else
-      render 'deals/proposition'
+      respond_to do |format|
+        format.html { render 'deals/new_review' }
+        format.js
+      end
     end
   end
 
@@ -34,7 +41,7 @@ class ObjectivesController < ApplicationController
     @objective.destroy
     @deal = @objective.deal
     respond_to do |format|
-      format.html { redirect_to proposition_deal_path(@deal) }
+      format.html { redirect_to new_proposition_deal_path(@deal) }
       format.js
     end
   end

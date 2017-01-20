@@ -42,6 +42,7 @@ ActiveAdmin.register Deal do
       row :advisor
       row :client
       row :status
+      row :messages_disabled
       row :deadline
       row :amount
       row :payment
@@ -90,6 +91,7 @@ ActiveAdmin.register Deal do
       f.input :offer_id
       f.input :client_id
       f.input :status
+      f.input :messages_disabled
       f.input :deadline
       f.input :amount
     end
@@ -117,6 +119,7 @@ ActiveAdmin.register Deal do
     :client_id,
     :request,
     :status,
+    :messages_disabled,
     :deadline,
     :amount,
     :proposition,

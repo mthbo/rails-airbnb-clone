@@ -11,6 +11,7 @@ class Deal < ApplicationRecord
   monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000 }
 
   enum status: [ :request, :proposition, :proposition_declined, :open, :open_expired, :closed, :cancelled ]
+  enum who_reviews: [ :no_review, :client_is_reviewing, :advisor_is_reviewing]
 
   validates :request, presence: { message: "Detail your request" }
   validates :languages, presence: { message: "Select one language at least" }
@@ -26,6 +27,15 @@ class Deal < ApplicationRecord
   validates :proposition_deadline, presence: { message: "Specify an expiry date for your proposition" }, if: :pending_not_new?
   validate :proposition_deadline_must_be_future, if: :pending_not_new?
   validate :proposition_deadline_must_be_before_deadline, if: :pending_not_new?
+
+  validates :client_review, presence: { message: "Please write a short review" }, if: :client_is_reviewing?
+  validates :client_rating, presence: { message: "Please rate the session" }, if: :client_is_reviewing?
+  validates :client_rating, numericality: { only_integer: true }, inclusion: { in: [0,1,2,3,3,4,5], message: "Rate from 0 to 5 stars"}, if: :client_is_reviewing?
+  validate :objectives_must_be_rated, if: :client_is_reviewing?
+
+  validates :advisor_review, presence: { message: "Please write a short review" }, if: :advisor_is_reviewing?
+  validates :advisor_rating, presence: { message: "Please rate the session" }, if: :advisor_is_reviewing?
+  validates :advisor_rating, numericality: { only_integer: true }, inclusion: { in: [0,1,2,3,3,4,5], message: "Rate from 0 to 5 stars"}, if: :advisor_is_reviewing?
 
   def advisor
     offer.advisor unless offer.nil?
@@ -58,14 +68,6 @@ class Deal < ApplicationRecord
     pending_not_new? || open_or_expired? || closed?
   end
 
-  def reviewed_by_client?
-    client_review_at.present?
-  end
-
-  def reviewed_by_advisor?
-    advisor_review_at.present?
-  end
-
 
   # Stats
 
@@ -74,7 +76,7 @@ class Deal < ApplicationRecord
   end
 
   def client_global_rating
-    if reviewed_by_client?
+    if rated_objectives.present? && client_rating.present?
       sum = 0
       rated_objectives.each { |objective| sum += objective.rating }
       objectives_rating = sum.fdiv(rated_objectives.count)
@@ -87,7 +89,7 @@ class Deal < ApplicationRecord
   end
 
   def advisor_global_rating
-    if reviewed_by_advisor?
+    if advisor_rating.present?
       advisor_rating
     end
   end
@@ -115,6 +117,11 @@ class Deal < ApplicationRecord
   def proposition_deadline_must_be_before_deadline
     errors.add(:proposition_deadline, "The expiry date can't be later than the proposition deadline") if
       proposition_deadline.present? && proposition_deadline > deadline
+  end
+
+  def objectives_must_be_rated
+    errors.add(:objectives, "All objectives must be rated") if
+      !(objectives.all? { |objective| objective.rating.present? })
   end
 
 end

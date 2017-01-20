@@ -12,6 +12,11 @@ $(document).ready(function() {
         $('#session-status-panel').html(data.status);
         $('#session-info-panel').html(data.info);
         $('#session-actions-panel').html(data.actions);
+        console.log(data.messages_disabled);
+        if (data.messages_disabled === true) {
+          $('#message_content').prop('disabled', true);
+          $('#new_message button').prop('disabled', true);
+        }
         propositionToggle();
       },
 

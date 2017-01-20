@@ -1,5 +1,5 @@
 class MessageBroadcastJob < ApplicationJob
-  queue_as :default
+  queue_as :critical
 
   def perform(message)
     ActionCable.server.broadcast(

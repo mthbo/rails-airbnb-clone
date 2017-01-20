@@ -2,7 +2,7 @@
 
   <% if policy(deal).cancel? %>
     <div class="padded-top-s">
-      <% if policy(deal).proposition? %>
+      <% if policy(deal).new_proposition? %>
         <p class="font-weight-normal"><%= deal.client.first_name %> declined your proposition. Submit a new proposition or cancel the session if you don't want to continue.</p>
       <% else %>
         <p class="font-weight-normal">You declined the proposition. Ask for a new proposition or cancel the session if you don't want to continue.</p>
@@ -36,9 +36,23 @@
       <% end %>
     </div>
 
+  <% elsif policy(deal).new_review? %>
+    <div class="padded-top-s">
+      <% if deal.advisor == current_user %>
+        <p class="font-weight-normal">This session is closed. <%= deal.client.first_name %> is looking forward to get your feedback for this session!</p>
+      <% elsif deal.client == current_user %>
+        <p class="font-weight-normal">This session is closed. <%= deal.advisor.first_name %> is looking forward to get your feedback for this session!</p>
+      <% end %>
+    </div>
+
+  <% elsif policy(deal).disable_messages? %>
+    <div class="padded-top-s">
+      <p class="font-weight-normal">This session is closed. Disable messages if you don't want to be contacted on this session anymore.</p>
+    </div>
+
   <% elsif deal.closed? %>
     <div class="padded-top-s">
-      <p class="font-weight-normal">This session is closed.</p>
+      <p class="font-weight-normal">This session is closed, nothing more can be done here.</p>
     </div>
 
   <% end %>

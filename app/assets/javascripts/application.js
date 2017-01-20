@@ -6,6 +6,7 @@
 //= require attachinary
 //= require smoothscroll
 //= require bootstrap-datepicker
+//= require jquery-bar-rating
 
 //= require arrow-scroll
 //= require cable
@@ -18,6 +19,4 @@
 //= require init_attachinary
 //= require navbar
 //= require proposition
-
-
-
+//= require star-rating

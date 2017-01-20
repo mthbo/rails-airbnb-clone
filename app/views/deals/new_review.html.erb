@@ -1,0 +1,22 @@
+<% content_for :title do %>
+  <%= "Papoters | New review for #session-#{@deal.id}" %>
+<% end %>
+
+<h2>Review the <%= link_to "#session-#{@deal.id}", deal_path(@deal) %></h2>
+
+<% if current_user == @deal.client %>
+
+  <% @deal.objectives.each_with_index do |objective, i| %>
+    <div>
+      <p><span class="font-weight-normal"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></p>
+      <%= render 'objectives/rating', objective: objective %>
+    </div>
+  <% end %>
+
+  <%= render 'deals/client_rating_form', deal: @deal %>
+
+<% elsif current_user == @deal.advisor %>
+
+    <%= render 'deals/advisor_rating_form, deal: @deal' %>
+
+<% end %>

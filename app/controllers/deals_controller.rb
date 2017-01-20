@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  before_action :find_deal, only: [:show, :proposition, :save_proposition, :submit_proposition, :decline_proposition, :accept_proposition, :close, :cancel]
+  before_action :find_deal, only: [:show, :new_proposition, :save_proposition, :submit_proposition, :decline_proposition, :accept_proposition, :close, :new_review, :save_review, :disable_messages, :cancel]
   before_action :find_offer, only: [:new, :create]
 
   def show
@@ -25,7 +25,7 @@ class DealsController < ApplicationController
     end
   end
 
-  def proposition
+  def new_proposition
     @objective = Objective.new
     render layout: "advisor_form"
   end
@@ -98,8 +98,34 @@ class DealsController < ApplicationController
     end
   end
 
+  def new_review
+    render layout: current_user == @deal.advisor ? "advisor_form" : "client_form"
+  end
+
+  def save_review
+    if @deal.update(deal_params)
+      flash[:notice] = "Your review has been posted"
+      @deal.no_review!
+      redirect_to deal_path(@deal)
+    else
+      if current_user == @deal.advisor
+        render :new_review, layout: "advisor_form"
+      elsif current_user == @deal.client
+        render :new_review, layout: "client_form"
+      end
+    end
+  end
+
+  def disable_messages
+    @deal.messages_disabled = true
+    @deal.save
+    # Create new job to disable messages
+  end
+
   def cancel
     @deal.cancelled!
+    @deal.messages_disabled = true
+    @deal.save
     receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     send_status_message
@@ -128,6 +154,7 @@ class DealsController < ApplicationController
       :offer_id,
       :request,
       :status,
+      :messages_disabled,
       :deadline,
       :amount,
       :proposition,
@@ -135,6 +162,7 @@ class DealsController < ApplicationController
       :accepted_at,
       :closed_at,
       :proposition_deadline,
+      :who_reviews,
       :client_review,
       :client_review_at,
       :client_rating,

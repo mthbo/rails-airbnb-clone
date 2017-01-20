@@ -8,16 +8,16 @@ class DealPolicy < ApplicationPolicy
     record.advisor != user && record.offer.active? && record.offer.ongoing_deal(user).blank?
   end
 
-  def proposition?
+  def new_proposition?
     record.advisor == user && (record.request? || record.proposition_declined?)
   end
 
   def save_proposition?
-    proposition?
+    new_proposition?
   end
 
   def submit_proposition?
-    proposition?
+    new_proposition?
   end
 
   def decline_proposition?
@@ -30,6 +30,18 @@ class DealPolicy < ApplicationPolicy
 
   def close?
     (record.client == user && (record.open? || record.open_expired?)) || (record.advisor == user && record.open_expired?)
+  end
+
+  def new_review?
+    record.closed? && ((user == record.advisor && record.advisor_review_at.blank?) || (user == record.client && record.client_review_at.blank?))
+  end
+
+  def save_review?
+    new_review?
+  end
+
+  def disable_messages?
+    record.closed? && ((user == record.advisor && record.advisor_review_at.present?) || (user == record.client && record.client_review_at.present?))
   end
 
   def cancel?

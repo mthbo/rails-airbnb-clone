@@ -2,7 +2,7 @@ class PropositionExpiryJob < ApplicationJob
   queue_as :default
 
   def perform(deal)
-    if deal.proposition? && (deal.proposition_deadline.end_of_day <= DateTime.current.in_time_zone)
+    if deal.present? && deal.proposition? && (deal.proposition_deadline.end_of_day <= DateTime.current.in_time_zone)
       deal.status = "proposition_declined"
       deal.save(validate: false)
       DealStatusBroadcastJob.perform_later(deal, deal.client)

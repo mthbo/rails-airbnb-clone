@@ -1,10 +1,16 @@
 <% if policy(deal).cancel? %>
-  <% if policy(deal).proposition? %>
-    <%= link_to proposition_deal_path(deal), class: "btn btn-form btn-blue" do %>
+  <% if policy(deal).new_proposition? %>
+    <%= link_to new_proposition_deal_path(deal), class: "btn btn-form btn-blue" do %>
       <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; New proposition
     <% end %>
   <% end %>
   <%= render 'deals/cancel', deal: deal %>
 <% elsif policy(deal).close? %>
   <%= render 'deals/close', deal: deal %>
+<% elsif policy(deal).new_review? %>
+  <%= link_to new_review_deal_path(deal), class: "btn btn-form btn-blue" do %>
+    <i class='fa fa-star-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Give your feedback
+  <% end %>
+<% elsif policy(deal).disable_messages? %>
+  <%= render 'deals/disable_messages', deal: deal %>
 <% end %>

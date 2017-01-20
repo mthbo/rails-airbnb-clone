@@ -1,0 +1,3 @@
+<%= simple_form_for objective, remote: true do |f| %>
+  <%= f.input :rating, collection: 1..5, label: false, input_html: {onchange: "$(this.form).submit()"}   %>
+<% end %>

@@ -249,6 +249,8 @@ GEM
     rails-assets-bootstrap-datepicker (1.6.4)
       rails-assets-jquery (>= 1.7.1)
     rails-assets-jquery (3.1.1)
+    rails-assets-jquery-bar-rating (1.2.1)
+      rails-assets-jquery (>= 1.7.2)
     rails-assets-smoothscroll (0.3.4)
     rails-dom-testing (2.0.1)
       activesupport (>= 4.2.0, < 6.0)
@@ -362,6 +364,7 @@ DEPENDENCIES
   pundit
   rails (= 5.0.0.1)
   rails-assets-bootstrap-datepicker!
+  rails-assets-jquery-bar-rating!
   rails-assets-smoothscroll!
   redis
   sass-rails

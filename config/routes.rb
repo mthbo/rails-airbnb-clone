@@ -29,12 +29,15 @@ Rails.application.routes.draw do
     resources :pinned_offers, only: [:create, :destroy]
     resources :deals, only: [:show, :new, :create], path: 'sessions' do
       member do
-        get 'proposition', to: 'deals#proposition'
+        get 'new_proposition', to: 'deals#proposition'
+        get 'new_review', to: 'deals#new_review'
         patch 'save_proposition', to: 'deals#save_proposition'
         patch 'submit_proposition', to: 'deals#submit_proposition'
         patch 'accept_proposition', to: 'deals#accept_proposition'
         patch 'decline_proposition', to: 'deals#decline_proposition'
         patch 'close', to: 'deals#close'
+        patch 'save_review', to: 'deals#save_review'
+        patch 'disable_messages', to: 'deals#disable_messages'
         patch 'cancel', to: 'deals#cancel'
       end
       resources :objectives, only: [:create, :update, :destroy]

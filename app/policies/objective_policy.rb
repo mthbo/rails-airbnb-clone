@@ -5,10 +5,10 @@ class ObjectivePolicy < ApplicationPolicy
   end
 
   def update?
-    record.deal.advisor == user
+    record.deal.client == user && record.deal.closed?
   end
 
   def destroy?
-    record.deal.advisor == user
+    record.create?
   end
 end

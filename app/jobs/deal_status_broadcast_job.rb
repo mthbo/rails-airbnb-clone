@@ -6,7 +6,8 @@ class DealStatusBroadcastJob < ApplicationJob
       "deal_#{deal.id}_user_#{receiver.id}:status",
       status: render_status(deal, receiver),
       info: render_info(deal, receiver),
-      actions: render_actions(deal, receiver)
+      actions: render_actions(deal, receiver),
+      messages_disabled: deal.messages_disabled
     )
   end
 

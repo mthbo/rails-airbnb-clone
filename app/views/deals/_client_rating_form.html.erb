@@ -1,0 +1,22 @@
+<%= simple_form_for deal, url: save_review_deal_path, method: :patch do |f| %>
+  <%= f.error_notification message: 'Please complete all the fields' %>
+
+  <div class="padded-top-xs">
+    <p>Give a global rating to <%= deal.advisor.first_name %> for this session</p>
+  </div>
+  <%= f.input :client_rating, collection: 1..5, label: false %>
+
+  <div class="padded-top-xs">
+    <p>Leave a review to <%= deal.advisor.first_name %> for this session</p>
+  </div>
+  <%= f.input :client_review, label: false, placeholder: "Give your feedback", input_html: { class: 'custom-form-input', rows: "5" } %>
+
+  <%= f.hidden_field :client_review_at, value: DateTime.current.in_time_zone %>
+  <%= f.hidden_field :who_reviews, value: "client_is_reviewing" %>
+
+  <div class="text-right padded-top-xs">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+      <i class='fa fa-star-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Post review
+    <% end %>
+  </div>
+<% end %>
