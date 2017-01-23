@@ -41,7 +41,7 @@ class DealPolicy < ApplicationPolicy
   end
 
   def disable_messages?
-    record.closed? && ((user == record.advisor && record.advisor_review_at.present?) || (user == record.client && record.client_review_at.present?))
+    (record.messages_disabled == false) && record.closed? && ((user == record.advisor && record.advisor_review_at.present?) || (user == record.client && record.client_review_at.present?))
   end
 
   def cancel?

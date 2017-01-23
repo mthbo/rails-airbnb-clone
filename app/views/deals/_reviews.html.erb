@@ -1,0 +1,20 @@
+<% if deal.client_review_at.present? || deal.advisor_review_at.present? %>
+
+  <div class="padded-top-s padded-bottom-s">
+    <div class="container">
+      <div class="row">
+        <div class ="col-xs-12 col-lg-10 col-lg-offset-1">
+          <h3>Reviews</h3>
+
+          <% if deal.client_review_at.present? %>
+            <%= render 'deals/review', deal: deal, user: deal.client, rating: deal.client_global_rating, review: deal.client_review, date: deal.client_review_at %>
+          <% end %>
+          <% if deal.advisor_review_at.present? %>
+            <%= render 'deals/review', deal: deal, user: deal.advisor, rating: deal.advisor_global_rating, review: deal.advisor_review, date: deal.advisor_review_at %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>

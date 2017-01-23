@@ -1,6 +1,6 @@
 <p>
   <% (rating.round).times do %>
-    <i class="fa fa-star yellow" aria-hidden="true"></i>
+    <i class="fa fa-star <%= user == deal.advisor ? 'green' : 'yellow' %>" aria-hidden="true"></i>
   <% end %>
   <% (5 - rating.round).times do %>
     <i class="fa fa-star-o medium-gray" aria-hidden="true"></i>

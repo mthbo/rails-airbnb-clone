@@ -1,9 +1,11 @@
 .br-theme-fontawesome-stars-o-yellow .br-widget {
   height: 30px;
   white-space: nowrap;
+  display: flex;
+  align-items: center;
 }
 .br-theme-fontawesome-stars-o-yellow .br-widget a {
-  font: normal normal normal 30px/1 FontAwesome;
+  font: normal normal normal 26px/1 FontAwesome;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
@@ -26,7 +28,8 @@
   color: $yellow;
 }
 .br-theme-fontawesome-stars-o-yellow .br-widget .br-current-rating {
-  display: none;
+  margin-left: 20px;
+  color: $yellow;
 }
 .br-theme-fontawesome-stars-o-yellow .br-readonly a {
   cursor: default;
@@ -39,6 +42,19 @@
   filter: FlipH;
   -ms-filter: "FlipH";
 }
+
+
+@media (max-width: $screen-xs-max) {
+  .br-theme-fontawesome-stars-o-yellow .br-widget a {
+    font-size: 22px;
+    margin-right: 4px;
+  }
+  .br-theme-fontawesome-stars-o-yellow .br-widget .br-current-rating {
+    margin-left: 10px;
+    font-size: 14px;
+  }
+}
+
 
 @media print {
   .br-theme-fontawesome-stars-o-yellow .br-widget a:after {

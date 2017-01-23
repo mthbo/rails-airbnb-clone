@@ -1,0 +1,8 @@
+$('.modal').modal('hide');
+$('.modal').on('hidden.bs.modal', function () {
+  $('#message_content').prop('disabled', true);
+  $('#new_message button').prop('disabled', true);
+  $('#session-info-panel').html("<%= j render 'deals/info', deal: @deal %>");
+  $('#session-actions-panel').html("<%= j render 'deals/actions', deal: @deal %>");
+  propositionToggle();
+});

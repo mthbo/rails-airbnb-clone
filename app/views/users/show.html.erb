@@ -105,12 +105,12 @@
           <%= pluralize(@deals_reviewed.total_count, "review") %>
         </h3>
         <h5>
-          <span class="green">
-            <i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;<%= @user.advisor_deals_reviewed.count %>
+          <span class="yellow">
+            <%= @user.advisor_deals_reviewed.count %> for advice given
           </span>
           &nbsp; | &nbsp;
-          <span class="yellow">
-            <i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;<%= @user.client_deals_reviewed.count %>
+          <span class="green">
+            <%= @user.client_deals_reviewed.count %> for advice received
           </span>
         </h5>
 

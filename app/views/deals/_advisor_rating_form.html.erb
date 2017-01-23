@@ -1,0 +1,23 @@
+<%= simple_form_for deal, url: save_review_deal_path, method: :patch do |f| %>
+  <%= f.error_notification message: 'Please complete all the fields' %>
+
+  <p>What is your general feedback about this session <%= "with #{@deal.client.first_name}" if @deal.client.present? %>.</p>
+
+  <% options = (1..5).to_a.map { |rating| [rating, {'data-html' => Deal::EVALUATIONS[rating]}] } %>
+  <%= f.input :advisor_rating, label: false do %>
+    <%= f.select :advisor_rating, options, {include_blank: true}, {class: "form-control star-rating-green"} %>
+  <% end %>
+
+  <div class="padded-top-xs padded-bottom-xs">
+    <%= f.input :advisor_review, label: false, placeholder: "Leave your comments about this session", input_html: { class: 'custom-form-input', rows: "5" } %>
+  </div>
+
+  <%= f.hidden_field :advisor_review_at, value: DateTime.current.in_time_zone %>
+  <%= f.hidden_field :who_reviews, value: "advisor_is_reviewing" %>
+
+  <div class="text-right padded-top-xs">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+      <i class='fa fa-star fa-lg green' aria-hidden='true'></i>&nbsp;&nbsp; Post review
+    <% end %>
+  </div>
+<% end %>

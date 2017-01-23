@@ -11,18 +11,12 @@
   <div class="review-content">
     <div class="review-content-top">
       <div>
-        <%= render 'deals/satisfaction', rating: rating %>
+        <%= render 'deals/satisfaction', rating: rating, user: user, deal: deal %>
       </div>
       <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
     </div>
     <%= sanitize markdown_to_html(review) %>
     <p>
-      <% if user == deal.client %>
-        <span class="green"><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;as advisor </span>
-      <% else %>
-        <span class="yellow"><i class="fa fa-user-o" aria-hidden="true"></i> &nbsp;as client </span>
-      <% end %>
-      &nbsp; | &nbsp;
       <% if policy(deal.offer).show? %>
         <%= link_to "#{deal.offer.title}", offer_path(deal.offer)%>
       <% elsif deal.offer %>

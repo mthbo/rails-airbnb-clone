@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :pinned_offers, only: [:create, :destroy]
     resources :deals, only: [:show, :new, :create], path: 'sessions' do
       member do
-        get 'new_proposition', to: 'deals#proposition'
+        get 'new_proposition', to: 'deals#new_proposition'
         get 'new_review', to: 'deals#new_review'
         patch 'save_proposition', to: 'deals#save_proposition'
         patch 'submit_proposition', to: 'deals#submit_proposition'

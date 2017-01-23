@@ -1,18 +1,18 @@
 <hr class="bd-gray">
 <div class="review">
   <div class="review-user">
-    <%= link_to user_path(deal.client) do %>
+    <%= link_to user_path(user) do %>
       <div class="hidden-xs">
-        <%= render 'users/avatar', user: deal.client, size: 'avatar-standard' %>
+        <%= render 'users/avatar', user: user, size: 'avatar-standard' %>
       </div>
-      <h1><%= deal.client.name_anonymous %></h1>
+      <h1><%= user.name_anonymous %></h1>
     <% end %>
   </div>
   <div class="review-content">
     <div class="review-content-top">
-      <%= render 'deals/satisfaction', rating: deal.client_global_rating %>
-      <div><p class="medium-gray"><%= deal.client_review_at.strftime("%d %b %Y") %></p></div>
+      <%= render 'deals/satisfaction', rating: rating, user: user, deal: deal %>
+      <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
     </div>
-    <%= sanitize markdown_to_html(deal.client_review) %>
+    <%= sanitize markdown_to_html(review) %>
   </div>
 </div>

@@ -104,8 +104,10 @@ class DealsController < ApplicationController
 
   def save_review
     if @deal.update(deal_params)
-      flash[:notice] = "Your review has been posted"
       @deal.no_review!
+      receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
+      ReviewBroadcastJob.perform_later(@deal, receiver)
+      flash[:notice] = "Your review has been posted"
       redirect_to deal_path(@deal)
     else
       if current_user == @deal.advisor
@@ -119,7 +121,15 @@ class DealsController < ApplicationController
   def disable_messages
     @deal.messages_disabled = true
     @deal.save
-    # Create new job to disable messages
+    receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
+    DisableMessagesBroadcastJob.perform_later(@deal, receiver)
+    respond_to do |format|
+      format.html {
+        flash[:notice] = "Messages have been disabl for #session-#{@deal.id}."
+        redirect_to deal_path(@deal)
+      }
+      format.js
+    end
   end
 
   def cancel

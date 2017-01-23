@@ -1,11 +1,13 @@
 $(function() {
 
-  $('#objective_rating').barrating({
-    theme: 'fontawesome-stars-o-yellow'
+  $('.star-rating-green').barrating({
+    theme: 'fontawesome-stars-o-green',
+    showSelectedRating: true
   });
 
-  $('#deal_client_rating').barrating({
-    theme: 'fontawesome-stars-o-yellow'
+  $('.star-rating-yellow').barrating({
+    theme: 'fontawesome-stars-o-yellow',
+    showSelectedRating: true
   });
 
 });

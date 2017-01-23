@@ -21,7 +21,6 @@ class ObjectivesController < ApplicationController
     end
   end
 
-  # Update to do for rating
   def update
     @deal = @objective.deal
     if @objective.update(objective_params)

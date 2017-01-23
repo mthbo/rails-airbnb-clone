@@ -1,3 +1,8 @@
-<%= simple_form_for objective, remote: true do |f| %>
-  <%= f.input :rating, collection: 1..5, label: false, input_html: {onchange: "$(this.form).submit()"}   %>
-<% end %>
+<p>
+  <% (objective.rating.round).times do %>
+    <i class="fa fa-star yellow" aria-hidden="true"></i>
+  <% end %>
+  <% (5 - objective.rating.round).times do %>
+    <i class="fa fa-star-o medium-gray" aria-hidden="true"></i>
+  <% end %>
+</p>

@@ -30,12 +30,21 @@ class Deal < ApplicationRecord
 
   validates :client_review, presence: { message: "Please write a short review" }, if: :client_is_reviewing?
   validates :client_rating, presence: { message: "Please rate the session" }, if: :client_is_reviewing?
-  validates :client_rating, numericality: { only_integer: true }, inclusion: { in: [0,1,2,3,3,4,5], message: "Rate from 0 to 5 stars"}, if: :client_is_reviewing?
+  validates :client_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5], message: "Rate from 1 to 5 stars"}, if: :client_is_reviewing?
   validate :objectives_must_be_rated, if: :client_is_reviewing?
 
   validates :advisor_review, presence: { message: "Please write a short review" }, if: :advisor_is_reviewing?
   validates :advisor_rating, presence: { message: "Please rate the session" }, if: :advisor_is_reviewing?
-  validates :advisor_rating, numericality: { only_integer: true }, inclusion: { in: [0,1,2,3,3,4,5], message: "Rate from 0 to 5 stars"}, if: :advisor_is_reviewing?
+  validates :advisor_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5], message: "Rate from 1 to 5 stars"}, if: :advisor_is_reviewing?
+
+
+  EVALUATIONS = {
+    1 => "disapointing",
+    2 => "ordinary",
+    3 => "all right",
+    4 => "great",
+    5 => "amazing"
+  }
 
   def advisor
     offer.advisor unless offer.nil?

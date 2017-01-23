@@ -57,13 +57,22 @@
 #proposition-essential {
   padding-top: 20px;
   padding-bottom: 11px;
-  p:last-child {
+  .proposition-objective:last-child p {
     margin-bottom: 0;
   }
 }
 
 #proposition-details {
   display: none;
+}
+
+.proposition-objective {
+  display: flex;
+  justify-content: space-between;
+}
+
+.proposition-objective-rating {
+  flex: 0 0 100px;
 }
 
 .session-proposition-bottom {
@@ -205,6 +214,9 @@
   .session-info-box {
     padding-left: 0;
     padding-right: 0;
+  };
+  .proposition-objective-rating {
+    flex: 0 0 85px;
   };
   .session-proposition-bottom {
     padding: 20px 15px;

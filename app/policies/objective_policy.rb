@@ -9,6 +9,6 @@ class ObjectivePolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.create?
+    create?
   end
 end
