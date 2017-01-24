@@ -160,6 +160,11 @@
   border-top: 1px solid $light-gray;
 }
 
+.session-reviews-box {
+  border-radius: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
 
 @media (max-width: $screen-md-max) {
   .session-info {
@@ -178,7 +183,7 @@
 }
 
 @media (max-width: $screen-sm-max) {
-  .session-title, .session-info, .session-conversation {
+  .session-title, .session-info, .session-conversation, .session-reviews {
     padding-right: 20px;
     padding-left: 20px;
   }
@@ -195,7 +200,7 @@
 }
 
 @media (max-width: $screen-xs-max) {
-  .session-title, .session-info, .session-conversation {
+  .session-title, .session-info, .session-conversation, .session-reviews {
     padding-right: 0;
     padding-left: 0;
   }
@@ -207,7 +212,7 @@
   .session-proposition-top {
     padding: 5px 15px;
   };
-  .session-proposition {
+  .session-proposition, .session-reviews-box {
     padding-left: 15px;
     padding-right: 15px;
   };
