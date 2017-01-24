@@ -89,6 +89,7 @@ class DealsController < ApplicationController
     receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     send_status_message
+    @deal.offer.priced! if @deal.offer.deals_closed_count == 3
     respond_to do |format|
       format.html {
         flash[:alert] = "#session-#{@deal.id} with #{@deal.client == current_user ? @deal.advisor.name_anonymous : @deal.client.name_anonymous} is closed!"

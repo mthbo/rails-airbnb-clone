@@ -67,6 +67,7 @@ ActiveAdmin.register Deal do
       row :updated_at
     end
     attributes_table do
+      row :who_reviews
       row :client_review_at
       row :client_global_rating do |deal|
         "#{(deal.client_global_rating.fdiv(5) * 100).to_i} %" unless deal.client_global_rating.nil?
@@ -104,6 +105,7 @@ ActiveAdmin.register Deal do
       f.input :means, as: :check_boxes, collection: deal.offer.means
       f.input :accepted_at
       f.input :closed_at
+      f.input :who_reviews
       f.input :client_review_at
       f.input :client_rating
       f.input :client_review
@@ -127,6 +129,7 @@ ActiveAdmin.register Deal do
     :accepted_at,
     :closed_at,
     :proposition_deadline,
+    :who_reviews,
     :client_review,
     :client_review_at,
     :client_rating,

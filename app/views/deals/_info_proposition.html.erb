@@ -12,7 +12,7 @@
       <span class="amount-icon">
         <%= image_tag 'amount.svg' %>
       </span>
-      <strong><%= money_without_cents_and_with_symbol(deal.amount) %></strong>
+      <strong><%= deal.amount.blank? ? "FREE" : money_without_cents_and_with_symbol(deal.amount) %></strong>
     </p>
     <p>
       <span class="amount-icon">

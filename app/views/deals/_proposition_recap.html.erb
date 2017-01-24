@@ -1,8 +1,8 @@
 <div class="padded-top-xs proposition-recap-figures">
   <div>
     <p class="font-weight-normal">
-      Amount: &nbsp;
-      <span class="blue"><%= money_without_cents_and_with_symbol(deal.amount) %></span>&nbsp;&nbsp;
+      Price: &nbsp;
+      <span class="blue"><%= deal.amount.blank? ? "FREE" : money_without_cents_and_with_symbol(deal.amount) %></span>&nbsp;&nbsp;
     </p>
   </div>
   <div>

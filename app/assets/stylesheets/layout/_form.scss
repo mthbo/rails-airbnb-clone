@@ -96,6 +96,44 @@
   }
 }
 
+.custom-radio-buttons .radio_buttons {
+  display: flex;
+  .radio {
+    margin: 0;
+    label {
+      min-width: 100px;
+      padding: 10px 15px;
+      border: solid 1px $light-gray;
+      background-color: rgba(255,255,255,0.7);
+      color: $dark-gray;
+      text-align: center;
+      &:hover {
+        background-color: white !important;
+      };
+      input {
+        display: none;
+      };
+    };
+    &:nth-child(2) {
+      label {
+        border-radius: 5px 0 0 5px;
+      }
+    };
+    &:last-child {
+      label {
+        border-radius: 0 5px 5px 0;
+      }
+    };
+    .label-checked {
+      background-color: white;
+      border-color: $dark-gray;
+    }
+  };
+  .help-block {
+    flex: 0 0 100%;
+  }
+}
+
 .custom-inline-form {
   display: flex;
   align-items: center;
