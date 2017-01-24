@@ -11,6 +11,7 @@ class Deal < ApplicationRecord
   monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000 }
 
   enum status: [ :request, :proposition, :proposition_declined, :open, :open_expired, :closed, :cancelled ]
+  enum payment_state: [ :no_payment, :payment_pending, :paid ]
   enum who_reviews: [ :no_review, :client_is_reviewing, :advisor_is_reviewing]
 
   validates :request, presence: { message: "Detail your request" }

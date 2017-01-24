@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  before_action :find_deal, only: [:show, :new_proposition, :save_proposition, :submit_proposition, :decline_proposition, :accept_proposition, :close, :new_review, :save_review, :disable_messages, :cancel]
+  before_action :find_deal, only: [:show, :new_proposition, :save_proposition, :submit_proposition, :decline_proposition, :accept_proposition, :open, :close, :new_review, :save_review, :disable_messages, :cancel]
   before_action :find_offer, only: [:new, :create]
 
   def show
@@ -67,8 +67,13 @@ class DealsController < ApplicationController
   end
 
   def accept_proposition
+    @deal.payment_pending!
+    redirect_to new_deal_payment_path(@deal)
+  end
+
+  def open
     @deal.open!
-    @deal.accepted_at = DateTime.current.in_time_zone
+    @deal.open_at = DateTime.current.in_time_zone
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     send_status_message
@@ -170,7 +175,7 @@ class DealsController < ApplicationController
       :amount,
       :proposition,
       :proposition_at,
-      :accepted_at,
+      :open_at,
       :closed_at,
       :proposition_deadline,
       :who_reviews,

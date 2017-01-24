@@ -20,8 +20,14 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-        <%= link_to accept_proposition_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
-          <i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Accept
+        <% if deal.amount.blank? %>
+          <%= link_to open_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
+            <i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Accept
+          <% end %>
+        <% else %>
+          <%= link_to accept_proposition_deal_path(deal), method: :patch, class: "btn btn-form btn-blue" do %>
+            <i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Accept and pay
+          <% end %>
         <% end %>
       </div>
     </div>

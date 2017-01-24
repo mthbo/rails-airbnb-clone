@@ -28,6 +28,10 @@ class DealPolicy < ApplicationPolicy
     record.client == user && record.proposition?
   end
 
+  def open?
+    accept_proposition? && (record.no_payment? || record.payment_pending?)
+  end
+
   def close?
     (record.client == user && (record.open? || record.open_expired?)) || (record.advisor == user && record.open_expired?)
   end
