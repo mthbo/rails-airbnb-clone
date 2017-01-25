@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  before_action :find_deal, only: [:show, :new_proposition, :save_proposition, :submit_proposition, :decline_proposition, :accept_proposition, :close, :new_review, :save_review, :disable_messages, :cancel]
+  before_action :find_deal, only: [:show, :new_proposition, :save_proposition, :submit_proposition, :decline_proposition, :open, :close, :new_review, :save_review, :disable_messages, :cancel]
   before_action :find_offer, only: [:new, :create]
 
   def show
@@ -44,6 +44,7 @@ class DealsController < ApplicationController
 
   def submit_proposition
     @deal.proposition!
+    @deal.payment_pending! unless @deal.amount.blank?
     @deal.proposition_at = DateTime.current.in_time_zone
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.client)
@@ -55,6 +56,7 @@ class DealsController < ApplicationController
 
   def decline_proposition
     @deal.proposition_declined!
+    @deal.no_payment!
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     send_status_message
     respond_to do |format|
@@ -66,9 +68,9 @@ class DealsController < ApplicationController
     end
   end
 
-  def accept_proposition
+  def open
     @deal.open!
-    @deal.accepted_at = DateTime.current.in_time_zone
+    @deal.open_at = DateTime.current.in_time_zone
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     send_status_message
@@ -89,6 +91,7 @@ class DealsController < ApplicationController
     receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     send_status_message
+    @deal.offer.priced! if @deal.offer.deals_closed_count == 3
     respond_to do |format|
       format.html {
         flash[:alert] = "#session-#{@deal.id} with #{@deal.client == current_user ? @deal.advisor.name_anonymous : @deal.client.name_anonymous} is closed!"
@@ -169,7 +172,7 @@ class DealsController < ApplicationController
       :amount,
       :proposition,
       :proposition_at,
-      :accepted_at,
+      :open_at,
       :closed_at,
       :proposition_deadline,
       :who_reviews,

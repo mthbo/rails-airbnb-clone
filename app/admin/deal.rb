@@ -45,6 +45,7 @@ ActiveAdmin.register Deal do
       row :messages_disabled
       row :deadline
       row :amount
+      row :payment_state
       row :payment
     end
     attributes_table do
@@ -62,11 +63,12 @@ ActiveAdmin.register Deal do
       row :means do |deal|
         deal.means.map { |m| m.name }.join(", ")
       end
-      row :accepted_at
+      row :open_at
       row :closed_at
       row :updated_at
     end
     attributes_table do
+      row :who_reviews
       row :client_review_at
       row :client_global_rating do |deal|
         "#{(deal.client_global_rating.fdiv(5) * 100).to_i} %" unless deal.client_global_rating.nil?
@@ -91,6 +93,7 @@ ActiveAdmin.register Deal do
       f.input :offer_id
       f.input :client_id
       f.input :status
+      f.input :payment_state
       f.input :messages_disabled
       f.input :deadline
       f.input :amount
@@ -102,8 +105,9 @@ ActiveAdmin.register Deal do
       f.input :proposition
       f.input :languages, as: :check_boxes, collection: deal.offer.languages
       f.input :means, as: :check_boxes, collection: deal.offer.means
-      f.input :accepted_at
+      f.input :open_at
       f.input :closed_at
+      f.input :who_reviews
       f.input :client_review_at
       f.input :client_rating
       f.input :client_review
@@ -119,14 +123,16 @@ ActiveAdmin.register Deal do
     :client_id,
     :request,
     :status,
+    :payment_state,
     :messages_disabled,
     :deadline,
     :amount,
     :proposition,
     :proposition_at,
-    :accepted_at,
+    :open_at,
     :closed_at,
     :proposition_deadline,
+    :who_reviews,
     :client_review,
     :client_review_at,
     :client_rating,

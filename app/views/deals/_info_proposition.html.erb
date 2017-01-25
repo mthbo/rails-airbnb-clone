@@ -12,7 +12,7 @@
       <span class="amount-icon">
         <%= image_tag 'amount.svg' %>
       </span>
-      <strong><%= money_without_cents_and_with_symbol(deal.amount) %></strong>
+      <strong><%= deal.amount.blank? ? "FREE" : money_without_cents_and_with_symbol(deal.amount) %></strong>
     </p>
     <p>
       <span class="amount-icon">
@@ -84,7 +84,7 @@
       <% end %>
     </div>
     <div class="col-xs-8">
-      <% if policy(deal).accept_proposition? %>
+      <% if policy(deal).open? %>
         <div class="proposition-action-btns">
           <%= render "deals/decline", deal: deal %>
           <%= render "deals/accept", deal: deal %>

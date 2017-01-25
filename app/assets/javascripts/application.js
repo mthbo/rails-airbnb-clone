@@ -11,6 +11,7 @@
 //= require arrow-scroll
 //= require cable
 //= require checkbox
+//= require radio_button
 //= require conversation_scroll
 //= require dashboard_tab
 //= require datepicker

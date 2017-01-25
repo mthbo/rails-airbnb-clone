@@ -24,7 +24,7 @@ class DealPolicy < ApplicationPolicy
     record.client == user && record.proposition?
   end
 
-  def accept_proposition?
+  def open?
     record.client == user && record.proposition?
   end
 
