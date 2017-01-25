@@ -1,9 +1,7 @@
 class PaymentsController < ApplicationController
-  before_action :find_deal, only: [:new, :create]
-  skip_after_action :verify_authorized, only: [:new, :create]
-
-  def new
-  end
+  before_action :find_deal, only: [:create]
+  skip_before_action :verify_authenticity_token
+  skip_after_action :verify_authorized, only: [:create]
 
   def create
     customer = Stripe::Customer.create(
@@ -14,7 +12,7 @@ class PaymentsController < ApplicationController
     charge = Stripe::Charge.create(
       customer:     customer.id,   # You should store this customer id and re-use it.
       amount:       @deal.amount_cents,
-      description:  "Payment for #session-#{@deal.id}",
+      description:  "Payment of user #{@deal.client.id} for #session-#{@deal.id}",
       currency:     @deal.amount.currency
     )
 
@@ -22,11 +20,12 @@ class PaymentsController < ApplicationController
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     send_status_message
     DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
+    flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is open!"
     redirect_to deal_path(@deal)
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_deal_payment_path(@deal)
+    redirect_to deal_path(@deal)
   end
 
 private

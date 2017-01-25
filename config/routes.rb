@@ -33,7 +33,6 @@ Rails.application.routes.draw do
         get 'new_review', to: 'deals#new_review'
         patch 'save_proposition', to: 'deals#save_proposition'
         patch 'submit_proposition', to: 'deals#submit_proposition'
-        patch 'accept_proposition', to: 'deals#accept_proposition'
         patch 'decline_proposition', to: 'deals#decline_proposition'
         patch 'open', to: 'deals#open'
         patch 'close', to: 'deals#close'
@@ -47,7 +46,7 @@ Rails.application.routes.draw do
           get 'type'
         end
       end
-      resources :payments, only: [:new, :create]
+      resources :payments, only: [:create]
     end
   end
 
