@@ -5,9 +5,9 @@
 <div id="session-page" data-deal-id="<%= @deal.id %>">
   <div class=
     <% if @deal.advisor == current_user %>
-      "padded-top-xxl padded-bottom-l bg-gradient-green-gray"
+      "padded-top-xxl padded-bottom-l bg-gradient-green"
     <% elsif @deal.client == current_user %>
-      "padded-top-xxl padded-bottom-l bg-gradient-yellow-gray"
+      "padded-top-xxl padded-bottom-l bg-gradient-yellow"
     <% end %>
   >
     <div class="container">

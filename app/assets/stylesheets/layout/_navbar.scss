@@ -74,17 +74,17 @@
   padding: 0 20px;
   line-height: 40px;
   font-size: 16px;
-  border: $green solid 1px;
-  color: $green;
-  background-color: transparent;
+  border: none;
+  background: $gradient-green-dark;
+  color: white;
   &:hover {
-    background-color: $green;
+    background: $reverse-gradient-green-dark;
   };
   &:active {
-    background-color: $green;
+    background: $gradient-green-dark;
   };
   &:focus {
-    color: $green;
+    color: whites;
   };
 }
 

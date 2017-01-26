@@ -73,15 +73,6 @@
 .bg-gray {
   background: $extra-light-gray;
 }
-.bg-blue {
-  background: $light-blue;
-}
-.bg-green {
-  background: $light-green;
-}
-.bg-yellow {
-  background: $light-yellow;
-}
 .bg-white {
   background: white;
 }
@@ -96,12 +87,6 @@
 }
 .bg-gradient-green {
   background: $gradient-green;
-}
-.bg-gradient-yellow-gray {
-  background: $gradient-yellow-gray;
-}
-.bg-gradient-green-gray {
-  background: $gradient-green-gray;
 }
 .bg-reverse-gradient {
   background: $reverse-gradient;
@@ -172,7 +157,6 @@ label {
 .font-weight-lighter {
   font-weight: lighter;
 }
-
 .special-font {
   font-family: $special-font;
 }
@@ -182,14 +166,8 @@ label {
 .yellow {
   color: $yellow;
 }
-.dark-yellow {
-  color: $dark-yellow;
-}
 .green {
   color: $green;
-}
-.dark-green {
-  color: $dark-green;
 }
 .blue {
   color: $blue;
@@ -217,22 +195,12 @@ a {
   font-weight: bolder;
   &:hover {
     text-decoration: none;
-    color: $yellow;
+    color: $flash-blue;
   }
   &:focus {
     text-decoration: none;
   }
 }
-
-// h2, h3, h4, h5 {
-//   a {
-//     color: $blue;
-//     &:hover {
-//       font-weight: 600;
-//       color: $dark-gray;
-//     }
-//   }
-// }
 
 .link {
   position: absolute;

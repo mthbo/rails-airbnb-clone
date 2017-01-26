@@ -17,6 +17,8 @@ $(document).ready(function() {
           var $new_message = $(data.message).hide();
           if (currentUserId !== data.user_id) {
             $new_message.removeClass("message-right");
+            $new_message.removeClass("message-yellow");
+            $new_message.removeClass("message-green");
             $new_message.addClass("message-left");
           }
           $('#message-typing').before($new_message);

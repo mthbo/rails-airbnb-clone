@@ -72,9 +72,13 @@
                   </div>
                   <div class="col-xs-12 col-sm-4 text-right padded-bottom-xs">
                     <% if policy(@offer).edit? %>
-                      <p><%= link_to "Edit offer", edit_offer_path(@offer) %></p>
+                      <p>
+                        <%= link_to edit_offer_path(@offer) do %>
+                          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Edit
+                        <% end %>
+                      </p>
                     <% elsif @offer.active? %>
-                      <%= render 'deals/request_button', offer: @offer %>
+                      <%= render 'deals/request_button_large', offer: @offer %>
                     <% end %>
                   </div>
                 </div>
@@ -86,14 +90,15 @@
           </div>
 
           <div class="hidden-md hidden-lg">
-            <div class="offer-profile bg-gradient">
-              <div class="offer-profile-avatar">
-                <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-medium' %>
-              </div>
-              <div>
-                <%= render 'users/info', user: @offer.advisor %>
-              </div>
-              <%= link_to "", user_path(@offer.advisor), class: "link offer-profile-link" %>
+            <div class="offer-profile">
+              <%= link_to user_path(@offer.advisor), class: "offer-profile-link" do %>
+                <div class="offer-profile-avatar">
+                  <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-medium' %>
+                </div>
+                <div>
+                  <%= render 'users/info', user: @offer.advisor %>
+                </div>
+              <% end %>
             </div>
           </div>
 
@@ -143,14 +148,15 @@
       </div>
 
       <div class="hidden-xs hidden-sm col-md-3">
-        <div class="offer-profile text-center bg-gradient">
-          <div class="offer-profile-avatar">
-            <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-large' %>
-          </div>
-          <div>
-            <%= render 'users/info', user: @offer.advisor %>
-          </div>
-          <%= link_to "", user_path(@offer.advisor), class: "link offer-profile-link" %>
+        <div class="offer-profile text-center">
+          <%= link_to user_path(@offer.advisor), class: "offer-profile-link" do %>
+            <div class="offer-profile-avatar">
+              <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-large' %>
+            </div>
+            <div>
+              <%= render 'users/info', user: @offer.advisor %>
+            </div>
+          <% end %>
         </div>
       </div>
 

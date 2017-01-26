@@ -23,23 +23,34 @@
 
 .offer-profile {
   min-height: 350px;
-  padding: 50px 10px;
   border-radius: 0 15px 0 0;
   position: relative;
+}
+
+.offer-profile-link {
+  position: absolute;
+  border-radius: 0 15px 0 0;
+  background: $gradient;
+  padding: 50px 10px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   h1 {
     font-size: 22px;
   };
   h3 {
     font-size: 18px;
+    font-weight: 300;
   };
   h4 {
     font-size: 16px;
     margin-top: 20px;
+    font-weight: 300;
   };
-}
-
-.offer-profile-link {
-  border-radius: 0 15px 0 0;
+  &:hover {
+    background: $reverse-gradient;
+  }
 }
 
 .offer-top-right {
@@ -68,6 +79,10 @@
   .offer-profile {
     min-height: auto;
     height: auto;
+    border-radius: 0;
+  };
+  .offer-profile-link {
+    position: relative;
     display: flex;
     align-items: center;
     border-radius: 0;
@@ -83,9 +98,6 @@
   .offer-profile-avatar {
     margin: 10px 20px 10px 0;
   };
-  .offer-profile-link {
-    border-radius: 0;
-  }
 }
 
 @media (max-width: $screen-xs-max) {
@@ -95,7 +107,7 @@
   .offer-details {
     padding-top: 1em;
   };
-  .offer-profile {
+  .offer-profile-link {
     padding: 10px 15px;
     h1 {
       font-size: 18px;

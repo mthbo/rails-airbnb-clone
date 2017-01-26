@@ -73,26 +73,26 @@
   flex: 0 0 70px;
   text-align: center;
   vertical-align: middle;
-  background-color: rgba(255,255,255,0.5);
-  color: $yellow;
-  border: $yellow 2px solid;
+  background: $gradient-yellow-dark;
+  color: white;
+  border: none;
   border-radius: 50%;
   font-size: 30px;
   &:hover {
-    background-color: $yellow;
+    background: $reverse-gradient-yellow-dark;
   };
   &:active {
-    background-color: $yellow;
+    background: $gradient-yellow-dark;
   };
   &:focus {
-    color: $yellow;
+    color: white;
   };
 }
 
 .btn-switch {
   height: 50px;
   flex: 0 0 50px;
-  font-size: 25px;
+  font-size: 22px;
 }
 
 .offer-services {
@@ -138,17 +138,17 @@
   padding: 15px 20px;
   font-size: 20px;
   width: 150px;
-  border: $green solid 1px;
-  color: $green;
-  background-color: rgba(255,255,255, 0.4);
+  border: none;
+  background: $gradient-green-dark;
+  color: white;
   &:hover {
-    background-color: $green;
+    background: $reverse-gradient-green-dark;
   };
   &:active {
-    background-color: $green;
+    background: $gradient-green-dark;
   };
   &:focus {
-    color: $green;
+    color: white;
   };
 }
 
@@ -176,7 +176,6 @@
     height: 40px;
     flex: 0 0 40px;
     font-size: 16px;
-    border: $yellow 1px solid;
   }
   .offer-services {
     font-size: 20px;

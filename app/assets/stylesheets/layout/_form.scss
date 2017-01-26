@@ -157,9 +157,15 @@
   padding-left: 20px;
 }
 
-.input-focus-blue {
+.input-focus-green {
   &:focus {
-    border: 2px $light-blue solid;
+    border: 2px solid $green;
+  }
+}
+
+.input-focus-yellow {
+  &:focus {
+    border: 2px solid $yellow;
   }
 }
 

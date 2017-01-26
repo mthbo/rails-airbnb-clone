@@ -26,7 +26,6 @@
   height: 24px;
   width: 48px;
   border-radius: 13px;
-  background-color: $green;
   position: relative;
 }
 
@@ -35,7 +34,7 @@
 }
 
 .inactivate-offer-slider {
-  background-color: $green;
+  background: $gradient-green-dark;
 }
 
 .offer-trigger-btn {
@@ -93,78 +92,93 @@
   };
 }
 
-.btn-blue {
-  border: $blue solid 1px;
-  color: $blue;
-  background-color: rgba(255,255,255,0.8);
+.btn-gradient {
+  border: none;
+  color: white;
+  background: $gradient-dark;
   &:hover {
-    background-color: $blue;
+    background: $reverse-gradient-dark;
   };
   &:active {
-    background-color: $dark-blue;
+    background: $gradient-dark;
   };
   &:focus {
-    color: $blue;
+    color: white;
+  };
+}
+
+.btn-blue {
+  border: none;
+  color: white;
+  background: $gradient-blue-dark;
+  &:hover {
+    background: $reverse-gradient-blue-dark;
+  };
+  &:active {
+    background: $gradient-blue-dark;
+  };
+  &:focus {
+    color: white;
   };
 }
 
 .btn-green {
-  border: $green solid 1px;
-  color: $green;
-  background-color: rgba(255,255,255,0.8);
+  border: none;
+  color: white;
+  background: $gradient-green-dark;
   &:hover {
-    background-color: $green;
+    background: $reverse-gradient-green-dark;
   };
   &:active {
-    background-color: $green;
+    background: $gradient-green-dark;
   };
   &:focus {
-    color: $green;
+    color: white;
   };
 }
 
 .btn-yellow {
-  border: $yellow solid 1px;
-  color: $yellow;
-  background-color: rgba(255,255,255,0.8);
+  border: none;
+  color: white;
+  background: $gradient-yellow-dark;
   &:hover {
-    background-color: $yellow;
+    background: $reverse-gradient-yellow-dark;
   };
   &:active {
-    background-color: $yellow;
+    background: $gradient-yellow-dark;
   };
   &:focus {
-    color: $yellow;
+    color: white;
   };
 }
 
 .btn-red {
-  border: $red solid 1px;
-  color: $red;
-  background-color: rgba(255,255,255,0.8);
+  border: none;
+  color: white;
+  background: $gradient-red-dark;
   &:hover {
-    background-color: $red;
+    background: $reverse-gradient-red-dark;
   };
   &:active {
-    background-color: $red;
+    background: $gradient-red-dark;
   };
   &:focus {
-    color: $red;
+    color: white;
   };
 }
 
 .btn-facebook {
-  border: #3b5998 solid 1px;
-  color: #3b5998;
-  background-color: rgba(255,255,255,0.8);
+  border: none;
+  color: white;
+  background: $gradient-facebook;
   &:hover {
-    background-color: #3b5998;
+    background: $reverse-gradient-facebook;
   };
   &:active {
-    background-color: #2E4678;
+    background: $gradient-facebook;
   };
   &:focus {
-    color: #3b5998;
+    color: white;
   };
 }
 

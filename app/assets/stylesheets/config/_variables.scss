@@ -41,19 +41,44 @@ $medium-gray: rgb(157,157,157);
 $light-gray: rgb(215,215,215);
 $extra-light-gray: rgb(240,240,240);
 
-$dark-blue: #20303F;
-$dark-green: #1BBC9B;
-$dark-yellow: #EAB62B;
+$dark-red: #DF3D38;
+$dark-blue: #0E2943;
+$dark-green: #18A689;
+$dark-yellow: #E3A604;
 
 
 $light-red: #F6C4C3;
 $light-yellow: #FFEAB2;
-$light-green: #8FD3C0;
+$light-green: #A7F5DF;
 $light-blue: #ABCCED;
+
+$flash-blue: #095AA7;
+
+$facebook-blue: #3b5998;
+$dark-facebook-blue: #18387B;
+
+
 
 $gradient: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(66, 211, 170, 0.3) 100%);
 $reverse-gradient: linear-gradient(344deg, rgba(255, 201, 56, 0.3) 0%, rgba(66, 211, 170, 0.3) 100%);
-$gradient-yellow: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);
-$gradient-green: linear-gradient(164deg, rgba(66, 211, 170, 0.3) 0%, rgba(255, 255, 255, 0.3) 100%);
-$gradient-yellow-gray: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(200, 200, 200, 0.3) 100%);
-$gradient-green-gray: linear-gradient(164deg, rgba(66, 211, 170, 0.3) 0%, rgba(200, 200, 200, 0.3) 100%);
+$gradient-yellow: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(255, 234, 178, 0.3) 100%);
+$gradient-green: linear-gradient(164deg, rgba(66, 211, 170, 0.3) 0%, rgba(167, 245, 223, 0.3) 100%);
+
+$gradient-dark: linear-gradient(164deg, $yellow 0%, $green 100%);
+$reverse-gradient-dark: linear-gradient(344deg, $yellow 0%, $green 100%);
+
+$gradient-green-dark: linear-gradient(164deg, $green 0%, $dark-green 100%);
+$reverse-gradient-green-dark: linear-gradient(344deg, $green 0%, $dark-green 100%);
+
+$gradient-yellow-dark: linear-gradient(164deg, $yellow 0%, $dark-yellow 100%);
+$reverse-gradient-yellow-dark: linear-gradient(344deg, $yellow 0%, $dark-yellow 100%);
+
+$gradient-blue-dark: linear-gradient(164deg, $blue 0%, $dark-blue 100%);
+$reverse-gradient-blue-dark: linear-gradient(344deg, $blue 0%, $dark-blue 100%);
+
+$gradient-red-dark: linear-gradient(164deg, $red 0%, $dark-red 100%);
+$reverse-gradient-red-dark: linear-gradient(344deg, $red 0%, $dark-red 100%);
+
+$gradient-facebook: linear-gradient(164deg, $facebook-blue 0%, $dark-facebook-blue 100%);
+$reverse-gradient-facebook: linear-gradient(344deg, $facebook-blue 0%, $dark-facebook-blue 100%);
+

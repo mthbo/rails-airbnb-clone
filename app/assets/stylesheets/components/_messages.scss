@@ -30,7 +30,6 @@
 .message-right {
   justify-content: flex-end;
   .message-content {
-    background-color: $light-blue;
     border-radius: 21px 21px 0 21px;
   };
   .message-date {
@@ -46,6 +45,18 @@
   };
   .message-date {
     text-align: left;
+  }
+}
+
+.message-yellow {
+  .message-content {
+    background: $light-yellow;
+  }
+}
+
+.message-green {
+  .message-content {
+    background: $light-green;
   }
 }
 
