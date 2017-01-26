@@ -29,7 +29,7 @@
         <p class="font-weight-normal">Session deadline has passed. Close the session if you delivered your service.</p>
       <% elsif deal.client == current_user %>
         <% if deal.open? %>
-          <p class="font-weight-normal">The session is open until the <%= deal.deadline.strftime("%d %b %Y") %>. You can close it before that date if you got what you need.</p>
+          <p class="font-weight-normal">The session is open until the <%= deal.deadline.strftime("%d %b %Y") %>. You can close it now if you already got what you need.</p>
         <% elsif deal.open_expired? %>
           <p class="font-weight-normal">Session deadline has passed. Close the session if you got what you need.</p>
         <% end %>

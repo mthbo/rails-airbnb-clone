@@ -2,8 +2,8 @@
   <strong class="blue">#session-<%= @deal.id %></strong>
 
   <% if @deal.offer && @deal.offer.archived? %>
-    &nbsp; for "<%= @deal.offer.title %>"
+    &nbsp; | &nbsp;<%= @deal.offer.title %>
   <% elsif @deal.offer %>
-    &nbsp; for "<%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %>"
+    &nbsp; | &nbsp;<%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %>
   <% end %>
 </h3>

@@ -191,11 +191,11 @@ label {
 // Links
 
 a {
-  color: $blue;
+  color: $medium-gray;
   font-weight: bolder;
   &:hover {
     text-decoration: none;
-    color: $flash-blue;
+    color: $blue;
   }
   &:focus {
     text-decoration: none;
