@@ -16,6 +16,9 @@ class User < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  phony_normalize :phone_number, default_country_code: 'FR'
+  validates :phone_number, phony_plausible: true
+
   validates :first_name, presence: { message: "You must have a first name" }, length: { minimum: 2 }
   validates :last_name, presence: { message: "You must have a last name" }, length: { minimum: 2 }
   validates :bio, length: { minimum: 50, message: "Your bio is too short, please tell a little more!" }, allow_blank: true
@@ -48,20 +51,20 @@ class User < ApplicationRecord
     write_attribute(:city, s.to_s.capitalize)
   end
 
-  def country_name
-    if country.present?
-      country_data = ISO3166::Country[country]
+  def country
+    if country_code.present?
+      country_data = ISO3166::Country[country_code]
       country_data.translations[I18n.locale.to_s] || country_data.name
     end
   end
 
   def address_short
-    if city.present? && country.present?
-      "#{city}, #{country_name}"
-    elsif city.present? && country.blank?
+    if city.present? && country_code.present?
+      "#{city}, #{country}"
+    elsif city.present? && country_code.blank?
       "#{city}"
-    elsif city.blank? && country.present?
-      "#{country_name}"
+    elsif city.blank? && country_code.present?
+      "#{country}"
     else
       " - "
     end

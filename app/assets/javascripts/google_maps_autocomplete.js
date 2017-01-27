@@ -20,7 +20,7 @@ function onPlaceChanged() {
   $('#user_zip_code').val(components.zip_code);
   $('#user_city').val(components.city);
   if (components.country_code) {
-    $('#user_country').val(components.country_code);
+    $('#user_country_code').val(components.country_code);
   }
 }
 

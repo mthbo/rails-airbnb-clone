@@ -38,6 +38,7 @@ gem 'stripe'
 gem 'geocoder'
 gem 'kaminari'
 gem 'kramdown'
+gem 'phony_rails'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'
