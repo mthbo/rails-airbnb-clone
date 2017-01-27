@@ -48,7 +48,7 @@ class Message < ApplicationRecord
   private
 
   def async_message_broadcast
-    MessageBroadcastJob.perform_later(self)
+    MessageBroadcastJob.perform_later(self) unless self.deal.messages.count <= 1
   end
 
 end
