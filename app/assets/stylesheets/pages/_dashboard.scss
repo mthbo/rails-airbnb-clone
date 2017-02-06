@@ -1,39 +1,45 @@
-.tabs {
-  display: flex;
-  padding: 10px 10px 0 10px;
-  justify-content: center;
-  margin-top: 20px;
+.dashboard-top {
+  h1 {
+    color: white;
+  }
+  a {
+    color: $extra-light-gray;
+    &:hover {
+      color: $blue;
+    }
+  }
 }
 
-.tabs a {
-  color: white;
-}
-.tabs a:hover {
-  cursor: pointer;
-  text-decoration: none;
-  opacity: 0.8;
-}
-.tabs h3 {
-  font-size: 20px;
-  font-weight: 400;
-  margin-top: 0;
-  color: $blue;
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  a {
+    &:hover {
+      cursor: pointer;
+      text-decoration: none;
+      opacity: 0.8;
+    }
+  };
 }
 
 .tab {
-  background: white;
+  background: $extra-light-gray;
   opacity: 0.6;
-  flex: 0 0 25%;
+  flex: 0 0 auto;
+  min-width: 25%;
   text-align: center;
   padding: 20px 0;
-}
-.tab:first-child {
-  border-radius: 10px 0 0 0;
-}
-.tab:last-child {
-  border-radius: 0 10px 0 0;
-}
-.tab.active {
-  background: white;
-  opacity: 1;
+  h5 {
+    margin: 0;
+  };
+  &:first-child {
+    border-radius: 10px 0 0 0;
+  };
+  &:last-child {
+    border-radius: 0 10px 0 0;
+  };
+  &.active {
+    opacity: 1;
+  }
 }

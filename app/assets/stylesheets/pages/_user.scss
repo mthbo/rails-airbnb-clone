@@ -1,22 +1,6 @@
 .user-top {
-  h4 {
-    margin-top: 20px;
-  }
-}
-
-.dashboard-link {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.dashboard-link-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 30px;
-  p {
-    width: 80px;
-    margin-bottom: 0;
+  h1, h3, h4 {
+    margin-top: 15px;
   }
 }
 

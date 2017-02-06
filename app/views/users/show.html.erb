@@ -4,22 +4,14 @@
 
 <div class="padded-top-xxl padded-bottom-xs bg-gradient text-center user-top">
   <div class="container">
-    <div class="row row-eq-height">
-
-      <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+    <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
         <%= render 'users/avatar', user: @user, size: 'avatar-xlarge' %>
         <%= render 'users/info', user: @user %>
+        <% if policy(@user).dashboard? %>
+          <p><%= link_to "See my dashboard", dashboard_path %></p>
+        <% end %>
       </div>
-
-      <% if policy(@user).dashboard? %>
-        <div class="col-xs-12 col-sm-3 col-lg-2 dashboard-link">
-          <%= link_to dashboard_path, class: "dashboard-link-arrow" do %>
-            <p>See my dashboard</p>
-            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-          <% end %>
-        </div>
-      <% end %>
-
     </div>
   </div>
 </div>
