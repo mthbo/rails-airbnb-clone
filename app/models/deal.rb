@@ -78,6 +78,14 @@ class Deal < ApplicationRecord
     pending_not_new? || open_or_expired? || closed?
   end
 
+  def reviewed_by_advisor?
+    advisor_review_at.present?
+  end
+
+  def reviewed_by_client?
+    client_review_at.present?
+  end
+
 
   # Stats
 

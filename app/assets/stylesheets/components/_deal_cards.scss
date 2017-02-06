@@ -1,37 +1,90 @@
-.process-step {
-  padding: 20px 0;
-}
-
 .deal-card {
   background: white;
-  display: flex;
-  align-items: center;
   box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
-  padding: 10px 5px;
+  padding: 10px 20px 10px 15px;
   margin: 20px 0;
   border-radius: 5px;
   position: relative;
 }
 
-.deal-card-top-right {
+.deal-card-top {
+  padding-bottom: 15px;
+  h1 {
+    font-size: 16px;
+    font-weight: bolder;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  };
+  h3 {
+    font-size: 16px;
+    margin: 0;
+    color: $medium-dark-gray;
+  }
+}
+
+.deal-card-body {
+  display: flex;
+  align-items: center;
+}
+
+.deal-card-avatar {
+  flex: 0 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+  h1 {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 0;
+  }
+}
+
+.deal-card-info {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  p {
+    flex: 0 1 150px;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: flex;
+  };
+  .session-icon {
+    flex: 0 0 36px;
+  }
+  .session-text {
+    flex: 1 1 auto;
+  }
+}
+
+.deal-card-bottom {
+  margin-top: 5px;
+  p {
+    font-size: 14px;
+    margin: 0;
+  }
+}
+
+.deal-card-right {
   position: absolute;
-  border-radius: 0 5px 0 0;
+  border-radius: 0 5px 5px 0;
   right: 0;
   top: 0;
-  width: 15px;
-  height: 15px;
+  bottom: 0;
+  width: 10px;
 }
 
 .deal-card-client {
-  // background: rgba(255, 201, 56, 0.2);
-  .deal-card-top-right {
+  .deal-card-right {
     background: $yellow;
   }
 }
 
 .deal-card-advisor {
-  // background: rgba(66, 211, 170, 0.2);
-  .deal-card-top-right {
+  .deal-card-right {
     background: $green;
   }
 }
@@ -43,25 +96,14 @@
   }
 }
 
-.deal-avatar {
-  width: 80px;
-  padding: 0 10px;
-  h3 {
-    font-size: 14px;
-    margin-top: 5px;
+@media (max-width: $screen-sm-max) {
+  .deal-card {
+    padding: 10px 30px 10px 25px;
   }
 }
 
-.deal-abstract {
-  h2 {
-    font-size: 16px;
-    font-weight: 400;
-    margin-top: 0;
-  }
-  p {
-    font-weight: lighter;
-    color: $dark-gray;
-    font-size: 14px;
-    margin-bottom: 0;
+@media (max-width: $screen-xs-max) {
+  .deal-card {
+    padding: 10px 20px 10px 15px;
   }
 }

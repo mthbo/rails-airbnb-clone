@@ -70,20 +70,20 @@
 
 // Backgrounds
 
-.bg-gray {
+.bg-light-gray {
   background: $extra-light-gray;
 }
 .bg-medium-gray {
   background: $medium-gray;
 }
-.bg-white {
-  background: white;
+.bg-blue {
+  background: $blue;
 }
 .bg-yellow {
-  background: $light-yellow;
+  background: $yellow;
 }
-.bg-green {
-  background: $light-green;
+.bg-white {
+  background: white;
 }
 .bg-white-transparent {
   background: rgba(255,255,255,0.6)
@@ -91,14 +91,20 @@
 .bg-gradient {
   background: $gradient;
 }
+.bg-reverse-gradient {
+  background: $reverse-gradient;
+}
+.bg-gradient-light {
+  background: $gradient-light;
+}
+.bg-reverse-gradient-light {
+  background: $reverse-gradient-light;
+}
 .bg-gradient-yellow {
   background: $gradient-yellow;
 }
 .bg-gradient-green {
   background: $gradient-green;
-}
-.bg-reverse-gradient {
-  background: $reverse-gradient;
 }
 
 
@@ -190,6 +196,9 @@ label {
 .medium-gray {
   color: $medium-gray
 }
+.medium-dark-gray {
+  color: $medium-dark-gray
+}
 .dark-gray {
   color: $dark-gray
 }
@@ -200,7 +209,7 @@ label {
 // Links
 
 a {
-  color: $medium-gray;
+  color: $medium-dark-gray;
   font-weight: bolder;
   &:hover {
     text-decoration: none;

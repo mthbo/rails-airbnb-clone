@@ -26,7 +26,7 @@
   };
 }
 
-.amount-icon {
+.session-icon {
   margin-right: 10px;
   img {
     height: 20px;
@@ -35,7 +35,7 @@
 }
 
 @media (max-width: $screen-xs-max) {
-  .amount-icon img {
+  .session-icon img {
     height: 18px;
   }
   .flag-icons img {

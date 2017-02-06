@@ -124,6 +124,14 @@ class User < ApplicationRecord
     advisor_deals.where.not(client_review_at: nil).order(client_review_at: :desc)
   end
 
+  def advisor_deals_closed_recent
+    advisor_deals_closed.where(advisor_review_at: nil)
+  end
+
+  def advisor_deals_closed_old
+    advisor_deals_closed.where.not(advisor_review_at: nil)
+  end
+
 
   # User sessions as client
 
@@ -153,6 +161,14 @@ class User < ApplicationRecord
 
   def client_deals_reviewed
     client_deals.where.not(advisor_review_at: nil).order(advisor_review_at: :desc)
+  end
+
+  def client_deals_closed_recent
+    client_deals_closed.where(client_review_at: nil)
+  end
+
+  def client_deals_closed_old
+    client_deals_closed.where.not(client_review_at: nil)
   end
 
 
