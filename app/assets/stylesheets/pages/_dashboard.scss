@@ -46,6 +46,10 @@
   }
 }
 
+.dashboard-tab-content {
+  min-height: 35vh;
+}
+
 .session-step-header {
   display: flex;
   align-items: center;
@@ -75,5 +79,6 @@
   .dashboard-tab {
     padding: 10px 15px;
     min-width: 20%;
+    min-height: 54px;
   }
 }

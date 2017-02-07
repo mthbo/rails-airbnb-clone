@@ -1,11 +1,12 @@
 <div class="my-navbar my-navbar-fixed" id="my-navbar-logged" data-user-id="<%= current_user.id %>">
-  <!-- Logo -->
-  <%= link_to root_path, { class: "my-navbar-brand" } do %>
-    <%= image_tag "papoters_logo.svg" %>
-  <% end %>
 
-  <div class="my-navbar-middle hidden-xs hidden-sm">
-    <!-- Search form -->
+  <div class="my-navbar-left">
+    <%= link_to root_path, { class: "my-navbar-brand" } do %>
+      <%= image_tag "papoters_logo.svg" %>
+    <% end %>
+  </div>
+
+  <div class="my-navbar-middle hidden-xs">
     <%= form_tag(search_path, method: "get", id: "my-navbar-search") do %>
       <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "my-navbar-search-input" %>
       <%= button_tag(type: 'submit', class: "my-navbar-search-btn") do %>
@@ -14,17 +15,15 @@
     <% end %>
   </div>
 
-  <!-- Right Navigation -->
-  <div class="my-navbar-right hidden-xs">
 
-    <!-- Give tips button -->
-    <%= link_to "Give advice", be_advisor_path, { class: "my-navbar-button my-navbar-item btn" } %>
+  <div class="my-navbar-right hidden-xs">
+    <%= link_to "Give advice", be_advisor_path, { class: "my-navbar-item my-navbar-button btn btn-green" } %>
 
     <!-- Notification link-->
     <%= link_to dashboard_path, { class: "my-navbar-item" } do %>
       <div class="badge-container">
-        <i class="fa fa-envelope-o"></i>
-        <div class="custom-badge-message badge-blue">3</div>
+        <i class="fa fa-hashtag"></i>
+        <div class="custom-badge-message badge-red">3</div>
       </div>
     <% end %>
 
@@ -33,10 +32,10 @@
       <div class="dropdown">
 
         <div class="dropdown-toggle" id="my-navbar-menu", data-toggle="dropdown">
-          <%= render 'users/avatar', user: current_user, size: 'avatar' %>
+          <%= render 'users/avatar', user: current_user, size: 'avatar-small' %>
         </div>
 
-        <ul class="dropdown-menu dropdown-menu-right my-navbar-dropdown-menu">
+        <ul class="dropdown-menu dropdown-menu-right my-navbar-dropdown-menu laptop-dropdown-menu">
           <li><%= link_to "Profile", user_path(current_user) %></li>
           <li><%= link_to "Dashboard", dashboard_path %></li>
           <li><%= link_to 'Logout', destroy_user_session_path, method: :delete %></li>
@@ -47,10 +46,18 @@
   </div>
 
   <!-- Dropdown appearing on mobile only -->
-  <div class="my-navbar-item hidden-sm hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-      <ul class="dropdown-menu dropdown-menu-right my-navbar-dropdown-menu">
+  <div class="hidden-sm hidden-md hidden-lg">
+    <div class="dropdown" id="mobile-dropdown">
+      <i class="fa fa-lg fa-bars dropdown-toggle mobile-dropdown-toggle" data-toggle="dropdown"></i>
+      <ul class="dropdown-menu my-navbar-dropdown-menu mobile-dropdown-menu">
+        <li>
+          <%= form_tag(search_path, method: "get", id: "dropdown-search") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "my-navbar-search-input" %>
+            <%= button_tag(type: 'submit', class: "my-navbar-search-btn") do %>
+              <i class='fa fa-search'></i>
+            <% end %>
+          <% end %>
+        </li>
         <li><%= link_to "Give advice", be_advisor_path %></li>
         <li><%= link_to "Profile", user_path(current_user) %></li>
         <li><%= link_to "Dashboard", dashboard_path %></li>
