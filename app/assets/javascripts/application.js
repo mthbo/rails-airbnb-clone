@@ -21,3 +21,4 @@
 //= require navbar
 //= require proposition
 //= require star-rating
+//= require dropdown
