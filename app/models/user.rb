@@ -125,11 +125,15 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_closed_recent
-    advisor_deals_closed.where(advisor_review_at: nil)
+    advisor_deals_closed.where("closed_at > ?", 1.month.ago)
   end
 
   def advisor_deals_closed_old
-    advisor_deals_closed.where.not(advisor_review_at: nil)
+    advisor_deals_closed.where("closed_at <= ?", 1.month.ago)
+  end
+
+  def advisor_deals_cancelled
+    advisor_deals.where(status: :cancelled)
   end
 
 
@@ -164,11 +168,15 @@ class User < ApplicationRecord
   end
 
   def client_deals_closed_recent
-    client_deals_closed.where(client_review_at: nil)
+    client_deals_closed.where("closed_at > ?", 1.month.ago)
   end
 
   def client_deals_closed_old
-    client_deals_closed.where.not(client_review_at: nil)
+    client_deals_closed.where("closed_at <= ?", 1.month.ago)
+  end
+
+  def client_deals_cancelled
+    client_deals.where(status: :cancelled)
   end
 
 
@@ -181,11 +189,11 @@ class User < ApplicationRecord
   end
 
   def deals_request
-    deals.where(status: :request)
+    deals.where(status: :request).order(updated_at: :desc)
   end
 
   def deals_proposition
-    deals.where(status: :proposition).or(deals.where(status: :proposition_declined))
+    deals.where(status: :proposition).or(deals.where(status: :proposition_declined)).order(updated_at: :desc)
   end
 
   def deals_pending
@@ -193,7 +201,7 @@ class User < ApplicationRecord
   end
 
   def deals_open
-    deals.where(status: :open).or(deals.where(status: :open_expired))
+    deals.where(status: :open).or(deals.where(status: :open_expired)).order(updated_at: :desc)
   end
 
   def deals_ongoing
@@ -201,7 +209,7 @@ class User < ApplicationRecord
   end
 
   def deals_closed
-    deals.where(status: :closed).order(closed_at: :desc)
+    deals.where(status: :closed).order(updated_at: :desc)
   end
 
   def deals_reviewed
@@ -209,6 +217,18 @@ class User < ApplicationRecord
     deals_as_client = Deal.where(client: self).where.not(advisor_review_at: nil)
     # TODO: Try to write a join query to order by dates
     deals_as_advisor.or(deals_as_client).order(client_review_at: :desc)
+  end
+
+  def deals_closed_recent
+    deals_closed.where("closed_at > ?", 1.month.ago)
+  end
+
+  def deals_closed_old
+    deals_closed.where("closed_at <= ?", 1.month.ago)
+  end
+
+  def deals_cancelled
+    deals.where(status: :cancelled).order(updated_at: :desc)
   end
 
 

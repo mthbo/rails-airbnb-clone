@@ -4,6 +4,8 @@ class PropositionExpiryJob < ApplicationJob
   def perform(deal)
     if deal.present? && deal.proposition? && (deal.proposition_deadline.end_of_day <= DateTime.current.in_time_zone)
       deal.status = "proposition_declined"
+      deal.client_notifications += 1
+      deal.advisor_notifications += 1
       deal.save(validate: false)
       DealStatusBroadcastJob.perform_later(deal, deal.client)
       DealStatusBroadcastJob.perform_later(deal, deal.advisor)

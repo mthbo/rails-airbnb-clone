@@ -4,7 +4,6 @@ $(document).ready(function() {
 
   if ( $session.length > 0 ) {
 
-    var currentUserId = parseInt($("#my-navbar-logged").attr('data-user-id'));
     var dealId = parseInt($session.attr('data-deal-id'));
 
     App['deal' + dealId + ':status'] = App.cable.subscriptions.create({channel: 'DealStatusChannel', deal_id: dealId}, {

@@ -86,6 +86,22 @@ class Deal < ApplicationRecord
     client_review_at.present?
   end
 
+  def general_status
+    if request?
+      "request"
+    elsif proposition_any?
+      "proposition"
+    elsif open_or_expired?
+      "open"
+    elsif closed? && closed_at > 1.month.ago
+      "closed_recent"
+    elsif closed? && closed_at <= 1.month.ago
+      "closed_old"
+    elsif cancelled?
+      "cancelled"
+    end
+  end
+
 
   # Stats
 

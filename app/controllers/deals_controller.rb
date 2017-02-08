@@ -4,6 +4,12 @@ class DealsController < ApplicationController
 
   def show
     @message = Message.new
+    if current_user == @deal.client
+      @deal.client_notifications = 0
+    elsif current_user == @deal.advisor
+      @deal.advisor_notifications = 0
+    end
+    @deal.save
   end
 
   def new
@@ -16,9 +22,11 @@ class DealsController < ApplicationController
     @deal = @offer.deals.new(deal_params)
     authorize @deal
     @deal.client = current_user
+    @deal.advisor_notifications += 1
     if @deal.save
-      flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
       send_first_message
+      NewDealBroadcastJob.perform_later(@deal, @deal.advisor)
+      flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
       redirect_to deal_path(@deal)
     else
       render :new, layout: "client_form"
@@ -46,6 +54,7 @@ class DealsController < ApplicationController
     @deal.proposition!
     @deal.payment_pending! unless @deal.amount.blank?
     @deal.proposition_at = DateTime.current.in_time_zone
+    @deal.client_notifications += 1
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.client)
     send_status_message
@@ -57,6 +66,8 @@ class DealsController < ApplicationController
   def decline_proposition
     @deal.proposition_declined!
     @deal.no_payment!
+    @deal.advisor_notifications += 1
+    @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     send_status_message
     respond_to do |format|
@@ -71,6 +82,7 @@ class DealsController < ApplicationController
   def open
     @deal.open!
     @deal.open_at = DateTime.current.in_time_zone
+    @deal.advisor_notifications += 1
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     send_status_message
@@ -87,8 +99,14 @@ class DealsController < ApplicationController
   def close
     @deal.closed!
     @deal.closed_at = DateTime.current.in_time_zone
+    if @deal.client == current_user
+      receiver = @deal.advisor
+      @deal.advisor_notifications += 1
+    elsif @deal.advisor == current_user
+      receiver = @deal.client
+      @deal.client_notifications += 1
+    end
     @deal.save
-    receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     send_status_message
     @deal.offer.priced! if @deal.offer.deals_closed_count == 3
@@ -108,7 +126,14 @@ class DealsController < ApplicationController
   def save_review
     if @deal.update(deal_params)
       @deal.no_review!
-      receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
+      if @deal.client == current_user
+        receiver = @deal.advisor
+        @deal.advisor_notifications += 1
+      elsif @deal.advisor == current_user
+        receiver = @deal.client
+        @deal.client_notifications += 1
+      end
+      @deal.save
       ReviewBroadcastJob.perform_later(@deal, receiver)
       flash[:notice] = "Your review has been posted"
       redirect_to deal_path(@deal)
@@ -138,8 +163,14 @@ class DealsController < ApplicationController
   def cancel
     @deal.cancelled!
     @deal.messages_disabled = true
+    if @deal.client == current_user
+      receiver = @deal.advisor
+      @deal.advisor_notifications += 1
+    elsif @deal.advisor == current_user
+      receiver = @deal.client
+      @deal.client_notifications += 1
+    end
     @deal.save
-    receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     send_status_message
     respond_to do |format|

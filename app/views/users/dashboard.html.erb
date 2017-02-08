@@ -2,7 +2,7 @@
   <%= "Papoters | My dashboard" %>
 <% end %>
 
-<div class="padded-top-xxl bg-blue text-center dashboard-top">
+<div class="padded-top-xxl bg-blue text-center dashboard-top" id="dashboard-page">
   <div class="container">
 
     <h1>My dashboard</h1>
@@ -12,11 +12,14 @@
       <a class="dashboard-tab" data-target="#pinned-offers">
         <h4><i class="fa fa-thumb-tack" aria-hidden="true"></i></h4>
       </a>
-      <a class="dashboard-tab active" data-target="#client-activity">
-        <h5>Sessions as client</h5>
+      <a class="dashboard-tab active" data-target="#current-sessions">
+        <h5>Current sessions</h5>
       </a>
-      <a class="dashboard-tab" data-target="#advisor-activity">
-        <h5>Sessions as advisor</h5>
+      <a class="dashboard-tab" data-target="#past-sessions">
+        <h5>Past sessions</h5>
+      </a>
+      <a class="dashboard-tab" data-target="#cancelled-sessions">
+        <h5>Cancelled sessions</h5>
       </a>
     </div>
 
@@ -42,98 +45,72 @@
     </div>
 
 
-    <div id="client-activity" class="dashboard-tab-content">
+    <div id="current-sessions" class="dashboard-tab-content">
       <div class="row text-center">
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
           <div class="session-step-header padded-top-s padded-bottom-xs">
             <div></div><h3>Request</h3><div></div>
           </div>
-          <% @user.client_deals_request.each do |deal| %>
-            <%= render "deals/card", deal: deal, user: deal.advisor %>
-          <% end %>
+          <div id="request-sessions">
+            <% @user.deals_request.each do |deal| %>
+              <%= render "deals/card", deal: deal %>
+            <% end %>
+          </div>
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
           <div class="session-step-header padded-top-s padded-bottom-xs">
             <div></div><h3>Proposition</h3><div></div>
           </div>
-          <% @user.client_deals_proposition.each do |deal| %>
-            <%= render "deals/card", deal: deal, user: deal.advisor %>
-          <% end %>
+          <div id="proposition-sessions">
+            <% @user.deals_proposition.each do |deal| %>
+              <%= render "deals/card", deal: deal %>
+            <% end %>
+          </div>
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
           <div class="session-step-header padded-top-s padded-bottom-xs">
             <div></div><h3>Open</h3><div></div>
           </div>
-          <% @user.client_deals_open.each do |deal| %>
-            <%= render "deals/card", deal: deal, user: deal.advisor %>
-          <% end %>
+          <div id="open-sessions">
+            <% @user.deals_open.each do |deal| %>
+              <%= render "deals/card", deal: deal %>
+            <% end %>
+          </div>
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
           <div class="session-step-header padded-top-s padded-bottom-xs">
             <div></div><h3>Closed</h3><div></div>
           </div>
-          <% @user.client_deals_closed_recent.each do |deal| %>
-            <%= render "deals/card", deal: deal, user: deal.advisor %>
-          <% end %>
-        </div>
-        <% if @user.client_deals_closed_old.present? %>
-          <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <div class="session-step-header padded-top-s padded-bottom-xs">
-              <div></div><h3>Past sessions</h3><div></div>
-            </div>
-            <% @user.client_deals_closed_old.each do |deal| %>
-              <%= render "deals/card", deal: deal, user: deal.advisor %>
+          <div id="closed-sessions-recent">
+            <% @user.deals_closed_recent.each do |deal| %>
+              <%= render "deals/card", deal: deal %>
             <% end %>
           </div>
-        <% end %>
+        </div>
       </div>
     </div>
 
-
-    <div id="advisor-activity" class="dashboard-tab-content hidden">
+    <div id="past-sessions" class="dashboard-tab-content hidden">
       <div class="row text-center">
-        <div class="col-xs-12 col-md-3 padded-bottom-xs">
-          <div class="session-step-header padded-top-s padded-bottom-xs">
-            <div></div><h3>Request</h3><div></div>
-          </div>
-          <% @user.advisor_deals_request.each do |deal| %>
-            <%= render "deals/card", deal: deal, user: deal.client %>
-          <% end %>
-        </div>
-        <div class="col-xs-12 col-md-3 padded-bottom-xs">
-          <div class="session-step-header padded-top-s padded-bottom-xs">
-            <div></div><h3>Proposition</h3><div></div>
-          </div>
-          <% @user.advisor_deals_proposition.each do |deal| %>
-            <%= render "deals/card", deal: deal, user: deal.client %>
-          <% end %>
-        </div>
-        <div class="col-xs-12 col-md-3 padded-bottom-xs">
-          <div class="session-step-header padded-top-s padded-bottom-xs">
-            <div></div><h3>Open</h3><div></div>
-          </div>
-          <% @user.advisor_deals_open.each do |deal| %>
-            <%= render "deals/card", deal: deal, user: deal.client %>
-          <% end %>
-        </div>
-        <div class="col-xs-12 col-md-3 padded-bottom-xs">
-          <div class="session-step-header padded-top-s padded-bottom-xs">
-            <div></div><h3>Closed</h3><div></div>
-          </div>
-          <% @user.advisor_deals_closed_recent.each do |deal| %>
-            <%= render "deals/card", deal: deal, user: deal.client %>
-          <% end %>
-        </div>
-        <% if @user.advisor_deals_closed_old.present? %>
-          <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <div class="session-step-header padded-top-s padded-bottom-xs">
-              <div></div><h3>Past sessions</h3><div></div>
-            </div>
-            <% @user.advisor_deals_closed_old.each do |deal| %>
-              <%= render "deals/card", deal: deal, user: deal.client %>
+        <div class="col-xs-12 col-md-8 col-md-offset-2 padded-top-s">
+          <div id="closed-sessions-old">
+            <% @user.deals_closed_old.each do |deal| %>
+              <%= render "deals/card", deal: deal %>
             <% end %>
           </div>
-        <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div id="cancelled-sessions" class="dashboard-tab-content hidden">
+      <div class="row text-center">
+        <div class="col-xs-12 col-md-8 col-md-offset-2 padded-top-s">
+          <div id="cancelled-sessions-all">
+            <% @user.deals_cancelled.each do |deal| %>
+              <%= render "deals/card", deal: deal %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
 

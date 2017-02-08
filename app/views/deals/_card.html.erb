@@ -1,4 +1,12 @@
-<div class="<%= deal.advisor == current_user ? 'deal-card deal-card-advisor' : 'deal-card deal-card-client' %>">
+<div class="<%= deal.advisor == current_user ? 'deal-card deal-card-advisor' : 'deal-card deal-card-client' %>" data-deal-id="<%= deal.id %>">
+
+  <div class="deal-card-notification">
+    <% if (current_user == deal.advisor && deal.advisor_notifications > 0) || (current_user == deal.client && deal.client_notifications > 0) %>
+      <div class="badge-notification badge-red">
+      <%= deal.advisor == current_user ? deal.advisor_notifications : deal.client_notifications %>
+      </div>
+    <% end %>
+  </div>
 
   <div class="deal-card-top text-left">
     <h1>#session-<%= deal.id %></h1>
@@ -9,8 +17,8 @@
 
   <div class="deal-card-body">
     <div class="deal-card-avatar">
-      <%= render 'users/avatar', user: user, size: 'avatar' %>
-      <h1><%= user.name_anonymous %></h1>
+      <%= render 'users/avatar', user: current_user == deal.advisor ? deal.client : deal.advisor , size: 'avatar' %>
+      <h1><%= current_user == deal.advisor ? deal.client.name_anonymous : deal.advisor.name_anonymous %></h1>
     </div>
     <div class="deal-card-info text-left">
       <p>

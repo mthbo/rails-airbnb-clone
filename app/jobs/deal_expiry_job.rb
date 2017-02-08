@@ -4,6 +4,8 @@ class DealExpiryJob < ApplicationJob
   def perform(deal)
     if deal.present? && deal.open? && (deal.deadline.end_of_day <= DateTime.current.in_time_zone)
       deal.status = "open_expired"
+      deal.client_notifications += 1
+      deal.advisor_notifications += 1
       deal.save(validate: false)
       DealStatusBroadcastJob.perform_later(deal, deal.client)
       DealStatusBroadcastJob.perform_later(deal, deal.advisor)
