@@ -1,7 +1,7 @@
-class NewDealBroadcastJob < ApplicationJob
+class NewDealCardsBroadcastJob < ApplicationJob
   queue_as :default
 
-  def perform(deal, receiver)
+  def perform(deal)
     ActionCable.server.broadcast(
       "new_deal_user_#{deal.advisor.id}:cards",
       card: render_deal_card(deal, deal.advisor),

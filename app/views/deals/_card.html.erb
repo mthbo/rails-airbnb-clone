@@ -1,11 +1,7 @@
 <div class="<%= deal.advisor == current_user ? 'deal-card deal-card-advisor' : 'deal-card deal-card-client' %>" data-deal-id="<%= deal.id %>">
 
-  <div class="deal-card-notification">
-    <% if (current_user == deal.advisor && deal.advisor_notifications > 0) || (current_user == deal.client && deal.client_notifications > 0) %>
-      <div class="badge-notification badge-red">
-      <%= deal.advisor == current_user ? deal.advisor_notifications : deal.client_notifications %>
-      </div>
-    <% end %>
+  <div class="deal-card-notifications">
+    <%= render 'deals/notifications', deal: deal %>
   </div>
 
   <div class="deal-card-top text-left">

@@ -9,7 +9,7 @@ class DealsController < ApplicationController
     elsif current_user == @deal.advisor
       @deal.advisor_notifications = 0
     end
-    @deal.save
+    @deal.save(validate: false)
   end
 
   def new
@@ -25,7 +25,7 @@ class DealsController < ApplicationController
     @deal.advisor_notifications += 1
     if @deal.save
       send_first_message
-      NewDealBroadcastJob.perform_later(@deal, @deal.advisor)
+      NewDealCardsBroadcastJob.perform_later(@deal)
       flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
       redirect_to deal_path(@deal)
     else
@@ -57,6 +57,7 @@ class DealsController < ApplicationController
     @deal.client_notifications += 1
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.client)
+    DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     PropositionExpiryJob.set(wait_until: @deal.proposition_deadline.end_of_day).perform_later(@deal)
     flash[:notice] = "Your proposition was submitted to #{@deal.client.name_anonymous}"
@@ -69,6 +70,7 @@ class DealsController < ApplicationController
     @deal.advisor_notifications += 1
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
+    DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     respond_to do |format|
       format.html {
@@ -85,6 +87,7 @@ class DealsController < ApplicationController
     @deal.advisor_notifications += 1
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
+    DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
     respond_to do |format|
@@ -108,6 +111,7 @@ class DealsController < ApplicationController
     end
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, receiver)
+    DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     @deal.offer.priced! if @deal.offer.deals_closed_count == 3
     respond_to do |format|
@@ -135,6 +139,7 @@ class DealsController < ApplicationController
       end
       @deal.save
       ReviewBroadcastJob.perform_later(@deal, receiver)
+      DealCardsBroadcastJob.perform_later(@deal)
       flash[:notice] = "Your review has been posted"
       redirect_to deal_path(@deal)
     else
@@ -172,6 +177,7 @@ class DealsController < ApplicationController
     end
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, receiver)
+    DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     respond_to do |format|
       format.html {

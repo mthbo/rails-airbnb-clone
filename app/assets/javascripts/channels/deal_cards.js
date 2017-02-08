@@ -7,14 +7,16 @@ $(document).ready(function() {
     if ( $deals.length > 0 ) {
       $deals.each(function() {
         var dealId = parseInt($(this).attr('data-deal-id'));
-        subscribeToCardsChannel(dealId);
+        subscribeToDealCardsChannel(dealId);
+        subscribeToMessageNotificationsChannel(dealId);
       })
     };
 
     App['newDeal:cards'] = App.cable.subscriptions.create({channel: 'NewDealCardsChannel'}, {
       received: function(data) {
         $(data.card).hide().prependTo($('#request-sessions')).slideDown();
-        subscribeToCardsChannel(data.deal_id);
+        subscribeToDealCardsChannel(data.deal_id);
+        subscribeToMessageNotificationsChannel(data.deal_id);
       },
     });
 
@@ -23,7 +25,7 @@ $(document).ready(function() {
 });
 
 
-function subscribeToCardsChannel(dealId) {
+function subscribeToDealCardsChannel(dealId) {
   App['deal' + dealId + ':cards'] = App.cable.subscriptions.create({channel: 'DealCardsChannel', deal_id: dealId}, {
     received: function(data) {
       $('[data-deal-id=' + dealId + ']').slideUp();
@@ -47,7 +49,17 @@ function subscribeToCardsChannel(dealId) {
           $(data.card).hide().prependTo($('#cancelled-sessions-all')).slideDown();
           break;
       }
-    },
+    }
+
+  });
+};
+
+function subscribeToMessageNotificationsChannel(dealId) {
+  App['deal' + dealId + ':notifications'] = App.cable.subscriptions.create({channel: 'MessageNotificationsChannel', deal_id: dealId}, {
+    received: function(data) {
+      console.log(data.notifications);
+      $('[data-deal-id=' + dealId + '] .deal-card-notifications').html(data.notifications);
+    }
 
   });
 };

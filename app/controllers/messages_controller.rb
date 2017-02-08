@@ -6,12 +6,16 @@ class MessagesController < ApplicationController
     @message = @deal.messages.new(message_params)
     @message.user = current_user
     authorize @message
-    if @message.user == @deal.advisor
-      @deal.client_notifications += 1
-    elsif @message.user == @deal.client
-      @deal.advisor_notifications += 1
-    end
     if @message.save
+      if @message.user == @deal.advisor
+        @deal.client_notifications += 1
+        receiver = @deal.client
+      elsif @message.user == @deal.client
+        @deal.advisor_notifications += 1
+        receiver = @deal.advisor
+      end
+      @deal.save(validate: false)
+      MessageNotificationsBroadcastJob.perform_later(@deal, receiver)
       respond_to do |format|
         format.js
       end

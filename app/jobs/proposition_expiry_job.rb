@@ -9,6 +9,7 @@ class PropositionExpiryJob < ApplicationJob
       deal.save(validate: false)
       DealStatusBroadcastJob.perform_later(deal, deal.client)
       DealStatusBroadcastJob.perform_later(deal, deal.advisor)
+      DealCardsBroadcastJob.perform_later(deal)
       send_status_message(deal)
     end
   end
