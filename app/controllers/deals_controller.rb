@@ -10,6 +10,7 @@ class DealsController < ApplicationController
       @deal.advisor_notifications = 0
     end
     @deal.save(validate: false)
+    DealNotificationsBroadcastJob.perform_later(@deal)
   end
 
   def new
@@ -55,6 +56,7 @@ class DealsController < ApplicationController
     @deal.payment_pending! unless @deal.amount.blank?
     @deal.proposition_at = DateTime.current.in_time_zone
     @deal.client_notifications += 1
+    @deal.advisor_notifications = 0
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.client)
     DealCardsBroadcastJob.perform_later(@deal)
@@ -68,6 +70,7 @@ class DealsController < ApplicationController
     @deal.proposition_declined!
     @deal.no_payment!
     @deal.advisor_notifications += 1
+    @deal.client_notifications = 0
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     DealCardsBroadcastJob.perform_later(@deal)
@@ -85,6 +88,7 @@ class DealsController < ApplicationController
     @deal.open!
     @deal.open_at = DateTime.current.in_time_zone
     @deal.advisor_notifications += 1
+    @deal.client_notifications = 0
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     DealCardsBroadcastJob.perform_later(@deal)
@@ -105,9 +109,11 @@ class DealsController < ApplicationController
     if @deal.client == current_user
       receiver = @deal.advisor
       @deal.advisor_notifications += 1
+      @deal.client_notifications = 0
     elsif @deal.advisor == current_user
       receiver = @deal.client
       @deal.client_notifications += 1
+      @deal.advisor_notifications = 0
     end
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, receiver)
@@ -133,9 +139,11 @@ class DealsController < ApplicationController
       if @deal.client == current_user
         receiver = @deal.advisor
         @deal.advisor_notifications += 1
+        @deal.client_notifications = 0
       elsif @deal.advisor == current_user
         receiver = @deal.client
         @deal.client_notifications += 1
+        @deal.advisor_notifications = 0
       end
       @deal.save
       ReviewBroadcastJob.perform_later(@deal, receiver)
@@ -153,9 +161,18 @@ class DealsController < ApplicationController
 
   def disable_messages
     @deal.messages_disabled = true
+    if @deal.client == current_user
+      receiver = @deal.advisor
+      @deal.advisor_notifications += 1
+      @deal.client_notifications = 0
+    elsif @deal.advisor == current_user
+      receiver = @deal.client
+      @deal.client_notifications += 1
+      @deal.advisor_notifications = 0
+    end
     @deal.save
-    receiver = (@deal.client == current_user ? @deal.advisor : @deal.client)
     DisableMessagesBroadcastJob.perform_later(@deal, receiver)
+    DealCardsBroadcastJob.perform_later(@deal)
     respond_to do |format|
       format.html {
         flash[:notice] = "Messages have been disabl for #session-#{@deal.id}."
@@ -171,9 +188,11 @@ class DealsController < ApplicationController
     if @deal.client == current_user
       receiver = @deal.advisor
       @deal.advisor_notifications += 1
+      @deal.client_notifications = 0
     elsif @deal.advisor == current_user
       receiver = @deal.client
       @deal.client_notifications += 1
+      @deal.advisor_notifications = 0
     end
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, receiver)

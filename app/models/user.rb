@@ -97,11 +97,11 @@ class User < ApplicationRecord
   # User sessions as advisor
 
   def advisor_deals_request
-    advisor_deals.where(status: :request)
+    advisor_deals.where(status: :request).order(updated_at: :desc)
   end
 
   def advisor_deals_proposition
-    advisor_deals.where(status: :proposition).or(advisor_deals.where(status: :proposition_declined))
+    advisor_deals.where(status: :proposition).or(advisor_deals.where(status: :proposition_declined)).order(updated_at: :desc)
   end
 
   def advisor_deals_pending
@@ -109,7 +109,7 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_open
-    advisor_deals.where(status: :open).or(advisor_deals.where(status: :open_expired))
+    advisor_deals.where(status: :open).or(advisor_deals.where(status: :open_expired)).order(updated_at: :desc)
   end
 
   def advisor_deals_ongoing
@@ -117,15 +117,15 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_closed
-    advisor_deals.where(status: :closed).order(closed_at: :desc)
-  end
-
-  def advisor_deals_reviewed
-    advisor_deals.where.not(client_review_at: nil).order(client_review_at: :desc)
+    advisor_deals.where(status: :closed).order(updated_at: :desc)
   end
 
   def advisor_deals_closed_recent
     advisor_deals_closed.where("closed_at > ?", 1.month.ago)
+  end
+
+  def advisor_deals_current
+    advisor_deals_ongoing.or(advisor_deals_closed_recent)
   end
 
   def advisor_deals_closed_old
@@ -133,18 +133,22 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_cancelled
-    advisor_deals.where(status: :cancelled)
+    advisor_deals.where(status: :cancelled).order(updated_at: :desc)
+  end
+
+  def advisor_deals_reviewed
+    advisor_deals.where.not(client_review_at: nil).order(client_review_at: :desc)
   end
 
 
   # User sessions as client
 
   def client_deals_request
-    client_deals.where(status: :request)
+    client_deals.where(status: :request).order(updated_at: :desc)
   end
 
   def client_deals_proposition
-    client_deals.where(status: :proposition).or(client_deals.where(status: :proposition_declined))
+    client_deals.where(status: :proposition).or(client_deals.where(status: :proposition_declined)).order(updated_at: :desc)
   end
 
   def client_deals_pending
@@ -152,7 +156,7 @@ class User < ApplicationRecord
   end
 
   def client_deals_open
-    client_deals.where(status: :open).or(client_deals.where(status: :open_expired))
+    client_deals.where(status: :open).or(client_deals.where(status: :open_expired)).order(updated_at: :desc)
   end
 
   def client_deals_ongoing
@@ -160,15 +164,15 @@ class User < ApplicationRecord
   end
 
   def client_deals_closed
-    client_deals.where(status: :closed).order(closed_at: :desc)
-  end
-
-  def client_deals_reviewed
-    client_deals.where.not(advisor_review_at: nil).order(advisor_review_at: :desc)
+    client_deals.where(status: :closed).order(updated_at: :desc)
   end
 
   def client_deals_closed_recent
     client_deals_closed.where("closed_at > ?", 1.month.ago)
+  end
+
+  def client_deals_current
+    client_deals_ongoing.or(client_deals_closed_recent)
   end
 
   def client_deals_closed_old
@@ -176,7 +180,11 @@ class User < ApplicationRecord
   end
 
   def client_deals_cancelled
-    client_deals.where(status: :cancelled)
+    client_deals.where(status: :cancelled).order(updated_at: :desc)
+  end
+
+  def client_deals_reviewed
+    client_deals.where.not(advisor_review_at: nil).order(advisor_review_at: :desc)
   end
 
 
@@ -212,15 +220,12 @@ class User < ApplicationRecord
     deals.where(status: :closed).order(updated_at: :desc)
   end
 
-  def deals_reviewed
-    deals_as_advisor = Deal.where(offer: self.offers).where.not(client_review_at: nil)
-    deals_as_client = Deal.where(client: self).where.not(advisor_review_at: nil)
-    # TODO: Try to write a join query to order by dates
-    deals_as_advisor.or(deals_as_client).order(client_review_at: :desc)
-  end
-
   def deals_closed_recent
     deals_closed.where("closed_at > ?", 1.month.ago)
+  end
+
+  def deals_current
+    deals_ongoing.or(deals_closed_recent)
   end
 
   def deals_closed_old
@@ -229,6 +234,41 @@ class User < ApplicationRecord
 
   def deals_cancelled
     deals.where(status: :cancelled).order(updated_at: :desc)
+  end
+
+  def deals_reviewed
+    deals_as_advisor = Deal.where(offer: self.offers).where.not(client_review_at: nil)
+    deals_as_client = Deal.where(client: self).where.not(advisor_review_at: nil)
+    # TODO: Try to write a join query to order by dates
+    deals_as_advisor.or(deals_as_client).order(client_review_at: :desc)
+  end
+
+
+  # Notifications
+
+  def deals_current_notifications
+    notifications = 0
+    client_deals_current.each { |deal| notifications += deal.client_notifications }
+    advisor_deals_current.each { |deal| notifications += deal.advisor_notifications }
+    notifications
+  end
+
+  def deals_past_notifications
+    notifications = 0
+    client_deals_closed_old.each { |deal| notifications += deal.client_notifications }
+    advisor_deals_closed_old.each { |deal| notifications += deal.advisor_notifications }
+    notifications
+  end
+
+  def deals_cancelled_notifications
+    notifications = 0
+    client_deals_cancelled.each { |deal| notifications += deal.client_notifications }
+    advisor_deals_cancelled.each { |deal| notifications += deal.advisor_notifications }
+    notifications
+  end
+
+  def deals_all_notifications
+    deals_current_notifications + deals_past_notifications + deals_cancelled_notifications
   end
 
 
@@ -289,6 +329,7 @@ class User < ApplicationRecord
   def advisor_deals_closed_count
     advisor_deals_closed.count
   end
+
 
   # Facebook oauth
 

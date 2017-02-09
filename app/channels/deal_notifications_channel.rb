@@ -1,4 +1,4 @@
-class MessageNotificationsChannel < ApplicationCable::Channel
+class DealNotificationsChannel < ApplicationCable::Channel
   def subscribed
     deal = Deal.find(params[:deal_id])
     if current_user == deal.advisor || current_user == deal.client

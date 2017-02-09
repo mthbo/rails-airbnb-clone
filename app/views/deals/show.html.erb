@@ -2,77 +2,74 @@
   <%= "Papoters | #session-#{@deal.id}" %>
 <% end %>
 
-<div id="session-page" data-deal-id="<%= @deal.id %>">
-  <div class=
-    <% if @deal.advisor == current_user %>
-      "padded-top-xxl padded-bottom-l bg-gradient-green"
-    <% elsif @deal.client == current_user %>
-      "padded-top-xxl padded-bottom-l bg-gradient-yellow"
-    <% end %>
-  >
-    <div class="container">
+<div id="session-page" class= "padded-top-xxl padded-bottom-l bg-light-gray" data-deal-id="<%= @deal.id %>">
 
-      <div class="row">
-        <div class="col-xs-12 padded-bottom-s">
-          <div class="session-title">
-            <%= render 'title', deal: @deal %>
+  <div class="session-banner-top <%= current_user == @deal.advisor ? 'banner-green' : 'banner-yellow' %>"></div>
+  <div class="session-banner-bottom <%= current_user == @deal.advisor ? 'banner-green' : 'banner-yellow' %>"></div>
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-xs-12 padded-bottom-s">
+        <div class="session-title">
+          <%= render 'title', deal: @deal %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-xs-12 col-md-6">
+        <div class="session-info">
+
+          <div class="padded-bottom-s" id="session-status-panel">
+            <%= render 'status', deal: @deal %>
           </div>
+
+          <div id="session-info-panel">
+            <%= render 'info', deal: @deal %>
+          </div>
+
+          <div class="session-info-box padded-bottom-m session-btns" id="session-actions-panel">
+            <%= render 'actions', deal: @deal %>
+          </div>
+
         </div>
       </div>
 
-      <div class="row">
 
-        <div class="col-xs-12 col-md-6">
-          <div class="session-info">
+      <div class="col-xs-12 col-md-6">
+        <div class="session-conversation">
 
-            <div class="padded-bottom-s" id="session-status-panel">
-              <%= render 'status', deal: @deal %>
-            </div>
-
-            <div id="session-info-panel">
-              <%= render 'info', deal: @deal %>
-            </div>
-
-            <div class="session-info-box padded-bottom-m session-btns" id="session-actions-panel">
-              <%= render 'actions', deal: @deal %>
-            </div>
-
+          <div class="session-conversation-top">
+            <%= render 'users/info_session', deal: @deal %>
           </div>
-        </div>
 
-
-        <div class="col-xs-12 col-md-6">
-          <div class="session-conversation">
-
-            <div class="session-conversation-top">
-              <%= render 'users/info_session', deal: @deal %>
+          <div id="session-conversation-panel">
+            <div id="session-conversation-messages">
+              <%= render 'conversation_messages', deal: @deal %>
             </div>
-
-            <div id="session-conversation-panel">
-              <div id="session-conversation-messages">
-                <%= render 'conversation_messages', deal: @deal %>
-              </div>
-            </div>
-
-            <div id="session-conversation-form">
-              <%= render 'messages/form', message: @message, deal: @deal %>
-            </div>
-
           </div>
-        </div>
 
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <div id="session-reviews-panel">
-            <%= render 'reviews', deal: @deal %>
+          <div id="session-conversation-form">
+            <%= render 'messages/form', message: @message, deal: @deal %>
           </div>
+
         </div>
       </div>
 
     </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div id="session-reviews-panel">
+          <%= render 'reviews', deal: @deal %>
+        </div>
+      </div>
+    </div>
+
   </div>
+
 </div>
 
 
