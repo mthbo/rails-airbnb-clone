@@ -74,13 +74,16 @@
   background: $extra-light-gray;
 }
 .bg-medium-gray {
-  background: $medium-gray;
+  background: $medium-dark-gray;
 }
 .bg-blue {
   background: $blue;
 }
 .bg-yellow {
   background: $yellow;
+}
+.bg-green {
+  background: $green;
 }
 .bg-white {
   background: white;
@@ -178,6 +181,9 @@ label {
 
 // Colors
 
+.white {
+  color: white;
+}
 .yellow {
   color: $yellow;
 }
@@ -192,6 +198,9 @@ label {
 }
 .orange {
   color: $orange;
+}
+.light-gray {
+  color: $light-gray
 }
 .medium-gray {
   color: $medium-gray

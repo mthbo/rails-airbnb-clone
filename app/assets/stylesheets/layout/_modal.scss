@@ -1,5 +1,26 @@
+.modal-header {
+  background-color: $blue;
+  border-radius: 4px 4px 0 0;
+  .close {
+    color: white;
+    opacity: 0.5;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.modal-footer {
+  background-color: $extra-light-gray;
+  border-radius: 0 0 4px 4px;
+  button {
+    margin-top: 0 !important;
+  }
+}
+
 .modal-title {
   font-weight: normal;
+  color: $extra-light-gray;
 }
 
 .modal-body {

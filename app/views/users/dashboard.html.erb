@@ -14,12 +14,21 @@
       </a>
       <a class="dashboard-tab active" data-target="#current-sessions">
         <h5>Current sessions</h5>
+          <div id="deals-current-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_current_notifications == 0 %>">
+            <%= @user.deals_current_notifications %>
+          </div>
       </a>
       <a class="dashboard-tab" data-target="#past-sessions">
         <h5>Past sessions</h5>
+          <div id="deals-past-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_past_notifications == 0 %>">
+            <%= @user.deals_past_notifications %>
+          </div>
       </a>
       <a class="dashboard-tab" data-target="#cancelled-sessions">
         <h5>Cancelled sessions</h5>
+          <div id="deals-cancelled-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_cancelled_notifications == 0 %>">
+            <%= @user.deals_cancelled_notifications %>
+          </div>
       </a>
     </div>
 

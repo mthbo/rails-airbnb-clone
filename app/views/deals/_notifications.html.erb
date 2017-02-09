@@ -1,5 +1,10 @@
-<% if (current_user == deal.advisor && deal.advisor_notifications > 0) || (current_user == deal.client && deal.client_notifications > 0) %>
-  <div class="badge-notification badge-red">
-  <%= deal.advisor == current_user ? deal.advisor_notifications : deal.client_notifications %>
+
+<% if current_user == deal.advisor %>
+  <div class="badge-notification badge-red <%= 'hidden' if deal.advisor_notifications == 0 %>">
+    <%= deal.advisor_notifications %>
+  </div>
+<% elsif current_user == deal.client %>
+  <div class="badge-notification badge-red <%= 'hidden' if deal.client_notifications == 0 %>">
+    <%= deal.client_notifications %>
   </div>
 <% end %>

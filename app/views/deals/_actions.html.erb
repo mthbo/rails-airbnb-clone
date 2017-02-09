@@ -1,6 +1,6 @@
 <% if policy(deal).cancel? %>
   <% if policy(deal).new_proposition? %>
-    <%= link_to new_proposition_deal_path(deal), class: "btn btn-form btn-blue" do %>
+    <%= link_to new_proposition_deal_path(deal), class: "btn btn-form btn-green" do %>
       <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; New proposition
     <% end %>
   <% end %>

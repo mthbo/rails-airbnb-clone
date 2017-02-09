@@ -55,6 +55,8 @@
       <% elsif deal.messages_disabled %>
         <p class="red">Messages disabled</p>
       <% end %>
+    <% elsif deal.cancelled? %>
+      <p class="red">Messages disabled</p>
     <% end %>
   </div>
 
