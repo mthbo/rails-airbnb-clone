@@ -3,19 +3,19 @@
   <h4 class="font-weight-normal">Proposition</h4>
   <div class="session-proposition-figures">
     <p>
-      <span class="session-icon">
+      <span class="info-icon">
         <%= image_tag 'objective.svg' %>
       </span>
       <strong><%= deal.objectives_count %></strong>
     </p>
     <p>
-      <span class="session-icon">
+      <span class="info-icon">
         <%= image_tag 'amount.svg' %>
       </span>
       <strong><%= deal.amount.blank? ? "FREE" : money_without_cents_and_with_symbol(deal.amount) %></strong>
     </p>
     <p>
-      <span class="session-icon">
+      <span class="info-icon">
         <%= image_tag 'date.svg' %>
       </span>
       <strong><%= deal.deadline.strftime("%d %b %Y") %></strong>

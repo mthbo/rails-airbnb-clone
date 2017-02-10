@@ -21,10 +21,10 @@
 
     <!-- Notification link-->
     <%= link_to dashboard_path, { class: "my-navbar-item" } do %>
-      <div class="badge-container">
+      <div class="my-navbar-badge-container">
         <i class="fa fa-hashtag"></i>
-        <div class="badge-notification badge-navbar badge-red <%= 'hidden' if current_user.deals_all_notifications == 0 %>">
-          <%= current_user.deals_all_notifications %>
+        <div class="my-navbar-badge">
+          <%= render 'users/notifications' %>
         </div>
       </div>
     <% end %>

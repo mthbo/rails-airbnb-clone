@@ -55,7 +55,7 @@
   min-height: 35vh;
 }
 
-.session-step-header {
+.deal-step-header {
   display: flex;
   align-items: center;
   div {
@@ -73,7 +73,7 @@
 
 
 @media (max-width: $screen-sm-max) {
-  .session-step-header {
+  .deal-step-header {
     div {
       height: 1px;
     }

@@ -12,19 +12,19 @@
       <a class="dashboard-tab" data-target="#pinned-offers">
         <h4><i class="fa fa-thumb-tack" aria-hidden="true"></i></h4>
       </a>
-      <a class="dashboard-tab active" data-target="#current-sessions">
+      <a class="dashboard-tab active" data-target="#current-deals">
         <h5>Current sessions</h5>
           <div id="deals-current-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_current_notifications == 0 %>">
             <%= @user.deals_current_notifications %>
           </div>
       </a>
-      <a class="dashboard-tab" data-target="#past-sessions">
+      <a class="dashboard-tab" data-target="#past-deals">
         <h5>Past sessions</h5>
           <div id="deals-past-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_past_notifications == 0 %>">
             <%= @user.deals_past_notifications %>
           </div>
       </a>
-      <a class="dashboard-tab" data-target="#cancelled-sessions">
+      <a class="dashboard-tab" data-target="#cancelled-deals">
         <h5>Cancelled sessions</h5>
           <div id="deals-cancelled-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_cancelled_notifications == 0 %>">
             <%= @user.deals_cancelled_notifications %>
@@ -54,43 +54,43 @@
     </div>
 
 
-    <div id="current-sessions" class="dashboard-tab-content">
+    <div id="current-deals" class="dashboard-tab-content">
       <div class="row text-center">
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
-          <div class="session-step-header padded-top-s padded-bottom-xs">
+          <div class="deal-step-header padded-top-s padded-bottom-xs">
             <div></div><h3>Request</h3><div></div>
           </div>
-          <div id="request-sessions">
+          <div id="request-deals">
             <% @user.deals_request.each do |deal| %>
               <%= render "deals/card", deal: deal %>
             <% end %>
           </div>
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
-          <div class="session-step-header padded-top-s padded-bottom-xs">
+          <div class="deal-step-header padded-top-s padded-bottom-xs">
             <div></div><h3>Proposition</h3><div></div>
           </div>
-          <div id="proposition-sessions">
+          <div id="proposition-deals">
             <% @user.deals_proposition.each do |deal| %>
               <%= render "deals/card", deal: deal %>
             <% end %>
           </div>
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
-          <div class="session-step-header padded-top-s padded-bottom-xs">
+          <div class="deal-step-header padded-top-s padded-bottom-xs">
             <div></div><h3>Open</h3><div></div>
           </div>
-          <div id="open-sessions">
+          <div id="open-deals">
             <% @user.deals_open.each do |deal| %>
               <%= render "deals/card", deal: deal %>
             <% end %>
           </div>
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
-          <div class="session-step-header padded-top-s padded-bottom-xs">
+          <div class="deal-step-header padded-top-s padded-bottom-xs">
             <div></div><h3>Closed</h3><div></div>
           </div>
-          <div id="closed-sessions-recent">
+          <div id="closed-deals-recent">
             <% @user.deals_closed_recent.each do |deal| %>
               <%= render "deals/card", deal: deal %>
             <% end %>
@@ -99,10 +99,10 @@
       </div>
     </div>
 
-    <div id="past-sessions" class="dashboard-tab-content hidden">
+    <div id="past-deals" class="dashboard-tab-content hidden">
       <div class="row text-center">
         <div class="col-xs-12 col-md-8 col-md-offset-2 padded-top-s">
-          <div id="closed-sessions-old">
+          <div id="closed-deals-old">
             <% @user.deals_closed_old.each do |deal| %>
               <%= render "deals/card", deal: deal %>
             <% end %>
@@ -111,10 +111,10 @@
       </div>
     </div>
 
-    <div id="cancelled-sessions" class="dashboard-tab-content hidden">
+    <div id="cancelled-deals" class="dashboard-tab-content hidden">
       <div class="row text-center">
         <div class="col-xs-12 col-md-8 col-md-offset-2 padded-top-s">
-          <div id="cancelled-sessions-all">
+          <div id="cancelled-deals-all">
             <% @user.deals_cancelled.each do |deal| %>
               <%= render "deals/card", deal: deal %>
             <% end %>

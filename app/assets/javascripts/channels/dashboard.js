@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     App['newDeal:cards'] = App.cable.subscriptions.create({channel: 'NewDealCardsChannel'}, {
       received: function(data) {
-        $(data.card).hide().prependTo($('#request-sessions')).slideDown();
+        $(data.card).hide().prependTo($('#request-deals')).slideDown();
         subscribeToDealCardsChannel(data.deal_id);
         subscribeToMessageNotificationsChannel(data.deal_id);
         updateDealsCurrentNotifications();
@@ -32,23 +32,23 @@ function subscribeToDealCardsChannel(dealId) {
       $('[data-deal-id=' + dealId + ']').slideUp().remove();
       switch (data.status) {
         case 'request':
-          $(data.card).hide().prependTo($('#request-sessions')).slideDown();
+          $(data.card).hide().prependTo($('#request-deals')).slideDown();
           break;
         case 'proposition':
-          $(data.card).hide().prependTo($('#proposition-sessions')).slideDown();
+          $(data.card).hide().prependTo($('#proposition-deals')).slideDown();
           break;
         case 'open':
-          $(data.card).hide().prependTo($('#open-sessions')).slideDown();
+          $(data.card).hide().prependTo($('#open-deals')).slideDown();
           break;
         case 'closed_recent':
-          $(data.card).hide().prependTo($('#closed-sessions-recent')).slideDown();
+          $(data.card).hide().prependTo($('#closed-deals-recent')).slideDown();
           break;
         case 'closed_old':
-          $(data.card).hide().prependTo($('#closed-sessions-old')).slideDown();
+          $(data.card).hide().prependTo($('#closed-deals-old')).slideDown();
           break;
         case 'cancelled':
-          $(data.card).hide().prependTo($('#cancelled-sessions-all')).slideDown();
-          break;
+          $(data.card).hide().prependTo($('#cancelled-deals-all')).slideDown();
+        deals
       }
       updateDealsCurrentNotifications();
       updateDealsPastNotifications();
@@ -72,7 +72,7 @@ function subscribeToMessageNotificationsChannel(dealId) {
 
 
 function updateDealsCurrentNotifications() {
-  var $dealsCurrentNotifications = $('#current-sessions .badge-notification');
+  var $dealsCurrentNotifications = $('#current-deals .badge-notification');
   var notificationsCount = 0;
   $dealsCurrentNotifications.each(function() {
     notificationsCount += parseInt($(this).text());
@@ -85,7 +85,7 @@ function updateDealsCurrentNotifications() {
 };
 
 function updateDealsPastNotifications() {
-  var $dealsPastNotifications = $('#past-sessions .badge-notification');
+  var $dealsPastNotifications = $('#past-deals .badge-notification');
   var notificationsCount = 0;
   $dealsPastNotifications.each(function() {
     notificationsCount += parseInt($(this).text());
@@ -98,7 +98,7 @@ function updateDealsPastNotifications() {
 };
 
 function updateDealsCancelledNotifications() {
-  var $dealsCancelledNotifications = $('#cancelled-sessions .badge-notification');
+  var $dealsCancelledNotifications = $('#cancelled-deals .badge-notification');
   var notificationsCount = 0;
   $dealsCancelledNotifications.each(function() {
     notificationsCount += parseInt($(this).text());

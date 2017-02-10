@@ -3,7 +3,7 @@
   margin-left: 10px;
 }
 
-.flag-icons {
+.flag-icon {
   display: flex;
   align-items: center;
   img {
@@ -11,22 +11,22 @@
   }
 }
 
-.flags-long {
+.flag-icon-long {
   img {
     margin-right: 12px;
   }
 }
 
-.mean-icons {
+.mean-icon {
 }
 
-.means-long {
+.mean-icon-long {
   i {
     margin-right: 10px;
   };
 }
 
-.session-icon {
+.info-icon {
   margin-right: 10px;
   img {
     height: 20px;
@@ -35,10 +35,10 @@
 }
 
 @media (max-width: $screen-xs-max) {
-  .session-icon img {
+  .info-icon img {
     height: 18px;
   }
-  .flag-icons img {
+  .flag-icon img {
     height: 20px;
   }
 }
