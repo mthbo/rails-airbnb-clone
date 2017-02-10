@@ -1,20 +1,18 @@
-<div class="footer-wrapper">
-  <div class="container padded-top-m padded-bottom-s">
-    <div class="footer-box">
+<div class="my-footer">
 
-        <div class="padded-bottom-xs footer-box-left">
-          <p>
-            <%= link_to "Find advice", root_path %>
-            <%= link_to "Give advice", be_advisor_path %>
-            <%= link_to "About", root_path %>
-            <%= link_to "Q&A", root_path %>
-            <%= link_to "Careers", root_path %>
-            <%= link_to "Terms & Privacy", root_path %>
-            <%= link_to "Contact", root_path %>
-          </p>
+        <div class="my-footer-left">
+          <ul class="list-inline">
+            <li><%= link_to "Home", root_path %></li>
+            <li><%= link_to "Give advice", be_advisor_path %></li>
+            <li><%= link_to "About", root_path %></li>
+            <li><%= link_to "Q&A", root_path %></li>
+            <li><%= link_to "Careers", root_path %></li>
+            <li><%= link_to "Terms & Privacy", root_path %></li>
+            <li><%= link_to "Contact", root_path %></li>
+          </ul>
         </div>
 
-        <div class="padded-bottom-xs footer-box-right">
+        <div class="my-footer-right">
           <ul class="list-inline">
             <li>
               <%= link_to "https://www.facebook.com/Papoters-354685034893271/" do %>
@@ -30,6 +28,4 @@
           </ul>
         </div>
 
-    </div>
-  </div>
 </div>

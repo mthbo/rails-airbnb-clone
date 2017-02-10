@@ -6,7 +6,7 @@
   transition: all 0.3s ease;
   display: flex;
   height: 60px;
-  padding: 0px 25px;
+  padding: 0 25px 0 35px;
   align-items: center;
   justify-content: space-between;
 }
@@ -60,7 +60,7 @@
   font-size: 16px;
   outline: none;
   &:focus {
-    border-bottom: 1px solid $yellow;
+    border-bottom: 2px solid $yellow;
     .my-navbar-search-btn {
       color: $yellow;
     }
@@ -73,7 +73,7 @@
   border: none;
   background: transparent;
   position: absolute;
-  right: 14px;
+  right: 20px;
   top: -2px;
   z-index: 1;
   &:hover {
@@ -123,6 +123,15 @@
   color: white;
   background: $medium-gray;
   border-radius: 50%;
+  &:hover {
+    border: 1px solid white;
+  }
+}
+
+#my-navbar-menu img {
+  &:hover {
+    border: 1px solid white;
+  }
 }
 
 .my-navbar-badge {
@@ -170,15 +179,29 @@
   cursor: pointer;
 }
 
+#mobile-dropdown {
+  position: relative;
+}
+
+.my-navbar-mobile-dropdown-badge {
+  position: absolute;
+  top: 2px;
+  right: -10px;
+}
+
 .mobile-dropdown-menu {
   position: fixed;
   top: 55px;
   left: 0;
   right: 0;
   border: none;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(240, 240, 240, 0.9);
   border-radius: 0;
   margin: 0;
+  li {
+    display: flex;
+    align-items: center;
+  }
 }
 
 #dropdown-search {
@@ -204,6 +227,7 @@
 @media (max-width: $screen-xs-max) {
   .my-navbar {
     height: 55px;
+    padding: 0px 20px;
   };
   .my-navbar-brand img {
     height: 35px;

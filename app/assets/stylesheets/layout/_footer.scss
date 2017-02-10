@@ -1,22 +1,28 @@
-.footer-wrapper{
-  background: white;
-  border-top: solid 1px $light-gray;
+.my-footer {
+  background: $medium-dark-gray;
+  // border-top: solid 1px $light-gray;
   width: 100%;
-}
-
-.footer-box {
+  padding: 35px 25px 25px 25px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   a {
-    padding-right: 15px;
-    font-weight: lighter;
+    color: $extra-light-gray;
+    padding: 0 10px;
+    &:hover {
+      color: $blue;
+    }
   }
 }
 
-.footer-box-right {
-  a {
-    padding-right: 25px;
+.my-footer-left, .my-footer-right {
+  padding-bottom: 10px;
+}
+
+
+@media (max-width: $screen-xs-max) {
+  .my-footer {
+    padding: 35px 10px 25px 10px;
   }
 }

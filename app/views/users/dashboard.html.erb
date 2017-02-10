@@ -47,7 +47,9 @@
               <%= render "offers/card", offer: pinned_offer.offer %>
             <% end %>
           <% else %>
-            <p>You have no offers pinned.</p>
+            <div class="text-center padded-top-xl">
+              <h5><i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;&nbsp; Pin some offers to keep them on your dashboard!</h5>
+            </div>
           <% end %>
         </div>
       </div>

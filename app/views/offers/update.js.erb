@@ -4,14 +4,14 @@
   var $status_info_box = $('[data-offer-info-id=<%= @offer.id %>]');
 
   if ($trigger_button.hasClass('activate-offer-btn')) {
-    $trigger_button.animate({left:"+=20px"}, 'fast', 'swing', function() {
+    $trigger_button.animate({left:"+=18px"}, 'fast', 'swing', function() {
       $trigger_box.empty();
       var $trigger = $("<%= j render 'offers/status_trigger', offer: @offer %>").hide();
       $trigger_box.append($trigger);
       $trigger.show();
     });
   } else if ($trigger_button.hasClass('inactivate-offer-btn')) {
-    $trigger_button.animate({right:"+=20px"}, 'fast', 'swing', function() {
+    $trigger_button.animate({right:"+=18px"}, 'fast', 'swing', function() {
       $trigger_box.empty();
       var $trigger = $("<%= j render 'offers/status_trigger', offer: @offer %>").hide();
       $trigger_box.append($trigger);
