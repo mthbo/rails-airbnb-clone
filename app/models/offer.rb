@@ -1,4 +1,6 @@
 class Offer < ApplicationRecord
+  include AlgoliaSearch
+
   belongs_to :advisor, class_name: 'User'
   has_many :deals, dependent: :nullify
   has_many :pinned_offers, dependent: :destroy
@@ -15,13 +17,19 @@ class Offer < ApplicationRecord
   validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
-  def self.search(search)
-    if search.present?
-      where(status: :active).where("title ILIKE ?", "%#{search}%") + where(status: :active).where("description ILIKE ?", "%#{search}%")
-    else
-      where(status: :active)
-    end
+  algoliasearch do
+    attribute :title, :description, :languages, :means, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
+    searchableAttributes ['title', 'description']
+    customRanking ['desc(deals_closed_count)']
   end
+
+  # def self.search(search)
+  #   if search.present?
+  #     where(status: :active).where("title ILIKE ?", "%#{search}%") + where(status: :active).where("description ILIKE ?", "%#{search}%")
+  #   else
+  #     where(status: :active)
+  #   end
+  # end
 
 
   # Deals for an offer

@@ -40,6 +40,8 @@ gem 'kaminari'
 gem 'kramdown'
 gem 'phony_rails'
 
+gem "algoliasearch-rails"
+
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'
   gem 'rails-assets-bootstrap-datepicker'
