@@ -33,21 +33,21 @@
   justify-content: center;
 }
 
-#search-form {
+#home-search-form {
   flex: 0 1 700px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#switch-search-form {
+#home-switch-search-form {
   flex: 0 1 500px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.search-form-input {
+.home-search-form-input {
   height: 70px;
   flex: 0 1 700px;
   border: none;
@@ -62,40 +62,36 @@
   }
 }
 
-.switch-search-input  {
+.home-switch-search-form-input  {
   height: 50px;
   flex: 0 1 500px;
   font-size: 25px;
+  border: none;
+  border-bottom: 2px $yellow solid;
+  margin-right: 30px;
+  background-color: transparent;
+  border-radius: 0;
+  &:focus {
+    outline: none;
+    border-bottom: 3px $yellow solid;
+  }
 }
 
-.btn-search {
-  height: 70px;
+.home-btn-search {
   flex: 0 0 70px;
-  text-align: center;
-  vertical-align: middle;
-  background: $gradient-yellow-dark;
-  color: white;
-  border: none;
+  height: 70px;
   border-radius: 50%;
   font-size: 30px;
-  &:hover {
-    background: $reverse-gradient-yellow-dark;
-  };
-  &:active {
-    background: $gradient-yellow-dark;
-  };
-  &:focus {
-    color: white;
-  };
 }
 
-.btn-switch {
-  height: 50px;
+.home-btn-switch {
   flex: 0 0 50px;
+  height: 50px;
+  border-radius: 50%;
   font-size: 22px;
 }
 
-.offer-services {
+.home-offer-services {
   color: $medium-dark-gray;
   font-size: 35px;
   font-weight: normal;
@@ -114,7 +110,7 @@
   }
 }
 
-#arrow-down {
+#home-arrow-down {
   font-size: 50px;
   color: $medium-dark-gray;
   &:hover {
@@ -134,22 +130,10 @@
   }
 }
 
-.btn-homepage-give {
+.home-btn-give {
   padding: 15px 20px;
   font-size: 20px;
   width: 150px;
-  border: none;
-  background: $gradient-green-dark;
-  color: white;
-  &:hover {
-    background: $reverse-gradient-green-dark;
-  };
-  &:active {
-    background: $gradient-green-dark;
-  };
-  &:focus {
-    color: white;
-  };
 }
 
 @media (max-width: $screen-xs-max) {
@@ -163,7 +147,7 @@
       font-size: 35px;
     }
   }
-  .search-form-input {
+  .home-search-form-input, .home-switch-search-form-input {
     height: 40px;
     margin-right: 10px;
     font-size: 20px;
@@ -172,12 +156,12 @@
       border-bottom: 2px $yellow solid;
     }
   }
-  .btn-search {
+  .home-btn-search, .home-btn-switch {
     height: 40px;
     flex: 0 0 40px;
     font-size: 16px;
   }
-  .offer-services {
+  .home-offer-services {
     font-size: 20px;
     padding: 5px;
     border-bottom: 1px $green solid;
@@ -185,13 +169,13 @@
       border-bottom: 2px $green solid;
     }
   }
-  .btn-homepage-give {
+  .home-btn-give {
     font-size: 18px;
   }
-  #search-form {
+  #home-search-form {
     flex: 0 1 500px;
   }
-  #arrow-down {
+  #home-arrow-down {
     font-size: 30px;
   }
 }

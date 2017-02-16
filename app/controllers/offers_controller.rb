@@ -5,6 +5,10 @@ class OffersController < ApplicationController
 
   def index
     @offers = policy_scope(Offer).where.not(status: :inactive).algolia_search(params[:search], page: params[:page])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def show

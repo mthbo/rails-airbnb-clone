@@ -1,0 +1,11 @@
+<h3><%= pluralize(@offers.total_count, "offer") %> found</h3>
+<% if @offers.present? %>
+  <% @offers.each do |offer| %>
+    <%= render "offers/card", offer: offer %>
+  <% end %>
+  <div class="text-center padded-top-xs custom-paginator" id="search-paginator">
+    <%= paginate @offers, remote: true %>
+  </div>
+<% else %>
+  <p>Try a different search</p>
+<% end %>

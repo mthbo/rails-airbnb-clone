@@ -12,16 +12,16 @@
       </div>
 
       <div class="home-banner-content padded-top-s">
-        <%= form_tag(search_path, method: "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "search-form-input" %>
-          <%= button_tag(type: 'submit', class: "btn btn-search") do %>
+        <%= form_tag(search_path, method: "get", id: "home-search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "home-search-form-input" %>
+          <%= button_tag(type: 'submit', class: "btn btn-yellow home-btn-search") do %>
             <i class='fa fa-search'></i>
           <% end %>
         <% end %>
       </div>
 
       <div class="home-banner-arrow">
-        <%= link_to root_path, id: "arrow-down" do %>
+        <%= link_to root_path, id: "home-arrow-down" do %>
           <p>Tell me more</p>
           <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
         <% end %>
@@ -81,7 +81,7 @@
           <h2>Interested in being advisor?</h2>
           <h3>Don't be shy, your knowledge and your experience have value!</h3>
         </div>
-        <%= link_to "Give advice", be_advisor_path, { class: "btn btn-homepage-give" } %>
+        <%= link_to "Give advice", be_advisor_path, { class: "btn btn-green home-btn-give" } %>
       </div>
     </div>
   </div>

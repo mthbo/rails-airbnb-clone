@@ -17,21 +17,21 @@ class Offer < ApplicationRecord
   validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
-  algoliasearch do
-    attribute :title, :description, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
-    attribute :languages do
+  algoliasearch per_environment: true do
+    attribute :title, :description, :deals_closed_count, :global_rating
+    attribute :language_ids do
       languages.map do |language|
-        { id: language.id, name: language.name }
+        { id: language.id }
       end
     end
-    attribute :means do
+    attribute :mean_ids do
       means.map do |mean|
-        { id: mean.id, name: mean.name }
+        { id: mean.id }
       end
     end
-    searchableAttributes ['title', 'description']
-    customRanking ['desc(deals_closed_count)']
-    attributesForFaceting [:deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount]
+    searchableAttributes ['unordered(title)', 'unordored(description)']
+    customRanking ['desc(deals_closed_count)', 'desc(global_rating)']
+    attributesForFaceting [:deals_closed_count, :global_rating]
     hitsPerPage 10
   end
 

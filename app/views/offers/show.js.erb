@@ -1,3 +1,3 @@
 $('#offer_reviews_page').html("<%= j render 'reviews' %>");
 $('#offer-reviews-paginator').html("<%= j paginate @deals_reviewed, remote: true %>");
-window.scroll({ top: eval($("#offer_reviews_page").offset().top - 130), left: 0, behavior: 'smooth' });
+window.scroll({ top: eval($("#index-wrapper").offset().top - 300), left: 0, behavior: 'smooth' });
