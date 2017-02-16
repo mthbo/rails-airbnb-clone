@@ -18,9 +18,21 @@ class Offer < ApplicationRecord
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   algoliasearch do
-    attribute :title, :description, :languages, :means, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
+    attribute :title, :description, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
+    attribute :languages do
+      languages.map do |language|
+        { id: language.id, name: language.name }
+      end
+    end
+    attribute :means do
+      means.map do |mean|
+        { id: mean.id, name: mean.name }
+      end
+    end
     searchableAttributes ['title', 'description']
     customRanking ['desc(deals_closed_count)']
+    attributesForFaceting [:deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount]
+    hitsPerPage 10
   end
 
   # def self.search(search)

@@ -4,7 +4,7 @@ class OffersController < ApplicationController
   layout 'advisor_form', only: [:new, :create, :edit, :update]
 
   def index
-    @offers = policy_scope(Offer).search(params[:search])
+    @offers = policy_scope(Offer).where.not(status: :inactive).algolia_search(params[:search], page: params[:page])
   end
 
   def show

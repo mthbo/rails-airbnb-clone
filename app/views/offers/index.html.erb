@@ -13,6 +13,9 @@
             <% @offers.each do |offer| %>
               <%= render "offers/card", offer: offer %>
             <% end %>
+            <div class="text-center padded-top-xs custom-paginator" id="search-paginator">
+              <%= paginate @offers %>
+            </div>
           <% else %>
             <p>No corresponding offers found</p>
           <% end %>

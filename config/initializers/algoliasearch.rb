@@ -1,6 +1,7 @@
 AlgoliaSearch.configuration = {
   application_id: ENV['ALGOLIA_APPLICATION_ID'],
   api_key: ENV['ALGOLIA_API_KEY'],
+  pagination_backend: :kaminari,
   # connect_timeout: 2,
   # receive_timeout: 30,
   # send_timeout: 30,
