@@ -169,26 +169,6 @@
   }
 }
 
-#proposition_objectives {
-  background-color: rgba(255,255,255,0.8);
-  border-top: 1px solid $light-gray;
-  border-bottom: 1px solid $light-gray;
-  padding: 15px 15px 5px 15px;
-  margin-bottom: 1em;
-}
-
-.proposition-objective {
-  display: flex;
-  justify-content: space-between;
-}
-
-.proposition-destroy {
-  margin-left: 10px;
-  &:hover {
-    color: $dark-gray;
-  }
-}
-
 @media (max-width: $screen-xs-max) {
   .custom-form-logo img {
     height: 35px;

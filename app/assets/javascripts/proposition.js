@@ -1,9 +1,9 @@
 function propositionToggle () {
 
-  $('#proposition-toggle').on('click', function(event) {
+  $('#deal-proposition-toggle').on('click', function(event) {
     event.preventDefault();
-    $('#proposition-details').slideToggle('fast');
-    $('#proposition-toggle .toggle-link').toggleClass('hidden');
+    $('#deal-proposition-details').slideToggle('fast');
+    $('#deal-proposition-toggle .toggle-link').toggleClass('hidden');
   });
 
 };

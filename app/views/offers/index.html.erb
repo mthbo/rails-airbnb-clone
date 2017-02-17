@@ -2,21 +2,21 @@
   <%= "Papoters | Search results" %>
 <% end %>
 
-<div class="padded-top-xxl padded-bottom-xxl bg-light-gray" id="index-wrapper">
+<div class="padded-top-xxl padded-bottom-xxl bg-light-gray" id="offer-index-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
         <div class="padded-bottom-s">
-          <%= form_tag(search_path, method: "get", id: "index-search-form", remote: true) do %>
-            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "index-search-form-input" %>
-            <%= button_tag(type: 'submit', class: "btn btn-yellow index-btn-search") do %>
+          <%= form_tag(search_path, method: "get", class: "custom-search-form", id: "offer-index-search-form", remote: true) do %>
+            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "custom-search-input offer-index-search-input" %>
+            <%= button_tag(type: 'submit', class: "btn btn-yellow btn-round offer-index-search-btn") do %>
               <i class='fa fa-search'></i>
             <% end %>
           <% end %>
         </div>
 
-        <div id="search-results">
+        <div id="offer-index-search-results">
           <%= render 'search_results' %>
         </div>
 

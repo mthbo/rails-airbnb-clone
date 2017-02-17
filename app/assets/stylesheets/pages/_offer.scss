@@ -21,13 +21,13 @@
   padding-bottom: 15px;
 }
 
-.offer-profile {
+.offer-user {
   min-height: 350px;
   border-radius: 0 15px 0 0;
   position: relative;
 }
 
-.offer-profile-link {
+.offer-user-link {
   position: absolute;
   border-radius: 0 15px 0 0;
   background: $gradient;
@@ -69,12 +69,12 @@
   .offer-container {
     border-radius: 15px;
   };
-  .offer-profile {
+  .offer-user {
     min-height: auto;
     height: auto;
     border-radius: 0;
   };
-  .offer-profile-link {
+  .offer-user-link {
     position: relative;
     display: flex;
     align-items: center;
@@ -88,7 +88,7 @@
       margin-top: 10px;
     };
   };
-  .offer-profile-avatar {
+  .offer-user-avatar {
     margin: 10px 20px 10px 0;
   };
 }
@@ -100,7 +100,7 @@
   .offer-details {
     padding-top: 1em;
   };
-  .offer-profile-link {
+  .offer-user-link {
     padding: 10px 15px;
     h1 {
       font-size: 18px;

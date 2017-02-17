@@ -67,7 +67,7 @@
         <% if @user == current_user %>
           <% if @user.offers_published.present? %>
             <% @user.offers_published.each do |offer| %>
-              <%= render "offers/card_profile", offer: offer %>
+              <%= render "offers/card_without_user", offer: offer %>
             <% end %>
           <% else %>
             <p>You have no offer published.</p>
@@ -76,7 +76,7 @@
         <% else %>
           <% if @user.offers_active.present? %>
             <% @user.offers_active.each do |offer| %>
-              <%= render "offers/card_profile", offer: offer %>
+              <%= render "offers/card_without_user", offer: offer %>
             <% end %>
           <% else %>
             <p><%= @user.first_name %> has no offer published.</p>

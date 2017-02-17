@@ -27,71 +27,23 @@
   justify-content: center;
 }
 
-.home-switch-content {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-}
-
 #home-search-form {
   flex: 0 1 700px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-#home-switch-search-form {
-  flex: 0 1 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.home-search-form-input {
+.home-search-input {
   height: 70px;
   flex: 0 1 700px;
-  border: none;
-  border-bottom: 2px $yellow solid;
-  margin-right: 30px;
   font-size: 35px;
-  background-color: transparent;
-  border-radius: 0;
-  &:focus {
-    outline: none;
-    border-bottom: 3px $yellow solid;
-  }
 }
 
-.home-switch-search-form-input  {
-  height: 50px;
-  flex: 0 1 500px;
-  font-size: 25px;
-  border: none;
-  border-bottom: 2px $yellow solid;
-  margin-right: 30px;
-  background-color: transparent;
-  border-radius: 0;
-  &:focus {
-    outline: none;
-    border-bottom: 3px $yellow solid;
-  }
-}
-
-.home-btn-search {
+.home-search-btn {
   flex: 0 0 70px;
   height: 70px;
-  border-radius: 50%;
   font-size: 30px;
 }
 
-.home-btn-switch {
-  flex: 0 0 50px;
-  height: 50px;
-  border-radius: 50%;
-  font-size: 22px;
-}
-
-.home-offer-services {
+.home-be-advisor-link {
   color: $medium-dark-gray;
   font-size: 35px;
   font-weight: normal;
@@ -124,17 +76,39 @@
   }
 }
 
-.home-process {
+.home-guidelines {
   h3 {
     font-size: 20px;
   }
 }
 
-.home-btn-give {
-  padding: 15px 20px;
+.home-be-advisor-btn {
+  padding: 15px 25px;
   font-size: 20px;
-  width: 150px;
 }
+
+.home-bottom-search-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#home-bottom-search-form {
+  flex: 0 1 500px;
+}
+
+.home-bottom-search-input {
+  height: 50px;
+  flex: 0 1 500px;
+  font-size: 25px;
+}
+
+.home-bottom-search-btn {
+  flex: 0 0 50px;
+  height: 50px;
+  font-size: 22px;
+}
+
 
 @media (max-width: $screen-xs-max) {
   .home {
@@ -147,21 +121,20 @@
       font-size: 35px;
     }
   }
-  .home-search-form-input, .home-switch-search-form-input {
+  #home-search-form {
+    flex: 0 1 500px;
+  }
+  .home-search-input, .home-bottom-search-input {
     height: 40px;
     margin-right: 10px;
     font-size: 20px;
-    border-bottom: 1px $yellow solid;
-    &:focus {
-      border-bottom: 2px $yellow solid;
-    }
   }
-  .home-btn-search, .home-btn-switch {
+  .home-search-btn, .home-bottom-search-btn {
     height: 40px;
     flex: 0 0 40px;
     font-size: 16px;
   }
-  .home-offer-services {
+  .home-be-advisor-link {
     font-size: 20px;
     padding: 5px;
     border-bottom: 1px $green solid;
@@ -169,13 +142,10 @@
       border-bottom: 2px $green solid;
     }
   }
-  .home-btn-give {
-    font-size: 18px;
-  }
-  #home-search-form {
-    flex: 0 1 500px;
-  }
   #home-arrow-down {
     font-size: 30px;
+  }
+  .home-be-advisor-btn {
+    font-size: 18px;
   }
 }

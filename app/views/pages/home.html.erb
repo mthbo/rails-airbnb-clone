@@ -12,9 +12,9 @@
       </div>
 
       <div class="home-banner-content padded-top-s">
-        <%= form_tag(search_path, method: "get", id: "home-search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "home-search-form-input" %>
-          <%= button_tag(type: 'submit', class: "btn btn-yellow home-btn-search") do %>
+        <%= form_tag(search_path, method: "get", class: "custom-search-form", id: "home-search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "custom-search-input home-search-input" %>
+          <%= button_tag(type: 'submit', class: "btn btn-yellow btn-round home-search-btn") do %>
             <i class='fa fa-search'></i>
           <% end %>
         <% end %>
@@ -43,7 +43,7 @@
   </div>
 
   <div class="padded-top-m padded-bottom-m bg-white-transparent text-center">
-    <div class="home-process">
+    <div class="home-guidelines">
       <div class="container">
 
         <div class="padded-bottom-m">
@@ -52,19 +52,19 @@
 
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/find-advisor.svg' %>
+            <%= image_tag 'guidelines/find-advisor.svg' %>
             <h3><strong>1</strong> | Find an advisor</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/get-proposal.svg' %>
+            <%= image_tag 'guidelines/get-proposal.svg' %>
             <h3><strong>2</strong> | Reach an agreement</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/get-advice.svg' %>
+            <%= image_tag 'guidelines/get-advice.svg' %>
             <h3><strong>3</strong> | Get advice</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/evaluate.svg' %>
+            <%= image_tag 'guidelines/evaluate.svg' %>
             <h3><strong>4</strong> | Tell how happy you are!</h3>
           </div>
         </div>
@@ -74,14 +74,14 @@
   </div>
 
   <div class="padded-top-l padded-bottom-xxl text-center">
-    <div class="home-switch">
+    <div class="home-be-advisor">
       <div class="container">
 
         <div class="padded-bottom-l">
           <h2>Interested in being advisor?</h2>
           <h3>Don't be shy, your knowledge and your experience have value!</h3>
         </div>
-        <%= link_to "Give advice", be_advisor_path, { class: "btn btn-green home-btn-give" } %>
+        <%= link_to "Give advice", be_advisor_path, { class: "btn btn-green home-be-advisor-btn" } %>
       </div>
     </div>
   </div>

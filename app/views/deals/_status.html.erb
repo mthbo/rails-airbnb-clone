@@ -1,15 +1,15 @@
-<div class="session-status-box">
+<div class="deal-status-box">
 
-  <div class="text-center session-status">
+  <div class="text-center deal-status">
     <p class="<%= deal.request? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Request</p>
     <p class="<%= deal.request? ? 'blue' : 'medium-gray' %>"><small><%= deal.created_at.strftime("%d %b %Y") %></small></p>
   </div>
 
-  <div class="medium-gray session-status-arrow">
+  <div class="medium-gray deal-status-arrow">
     <i class="fa fa-chevron-right" aria-hidden="true"></i>
   </div>
 
-  <div class="text-center session-status">
+  <div class="text-center deal-status">
     <p class="<%= deal.proposition_any? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Proposition</p>
     <% if deal.proposition_at %>
       <p class="<%= deal.proposition_any? ? 'blue' : 'medium-gray' %>"><small><%= deal.proposition_at.strftime("%d %b %Y") %></small></p>
@@ -18,11 +18,11 @@
     <% end %>
   </div>
 
-  <div class="medium-gray session-status-arrow">
+  <div class="medium-gray deal-status-arrow">
     <i class="fa fa-chevron-right" aria-hidden="true"></i>
   </div>
 
-  <div class="text-center session-status">
+  <div class="text-center deal-status">
     <p class="<%= deal.open_or_expired? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" >Open</p>
     <% if deal.open_at %>
       <p class="<%= deal.open_or_expired? ? 'blue' : 'medium-gray' %>"><small><%= deal.open_at.strftime("%d %b %Y") %></small></p>
@@ -31,11 +31,11 @@
     <% end %>
   </div>
 
-  <div class="medium-gray session-status-arrow">
+  <div class="medium-gray deal-status-arrow">
     <i class="fa fa-chevron-right" aria-hidden="true"></i>
   </div>
 
-  <div class="text-center session-status">
+  <div class="text-center deal-status">
     <p class="<%= deal.closed? ? 'font-weight-bolder red' : 'font-weight-normal medium-gray' %>" >Closed</p>
     <% if deal.closed_at %>
       <p class="<%= deal.closed? ? 'red' : 'medium-gray' %>"><small><%= deal.closed_at.strftime("%d %b %Y") %></small></p>

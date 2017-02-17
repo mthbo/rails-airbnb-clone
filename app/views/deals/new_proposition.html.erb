@@ -12,7 +12,7 @@
   <%= render 'objectives/form', deal: @deal, objective: @objective %>
 </div>
 
-<div id="proposition_objectives">
+<div id="deal-objectives-in-form">
   <% if @deal.objectives.blank? %>
     <p><em>Set at least one target for this sessions.</em></p>
   <% else %>
@@ -28,4 +28,4 @@
   <p><%= link_to "Back to session", deal_path(@deal) %></p>
 </div>
 
-<div id="proposition_confirmation_box"></div>
+<div id="deal-proposition-confirmation-box"></div>
