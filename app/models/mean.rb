@@ -6,7 +6,7 @@ class Mean < ApplicationRecord
 
   PICTOS = {
     "Messaging" => 'comments',
-    "Call" => 'phone',
+    "Phone call" => 'phone',
     "Video call" => 'video-camera',
     "Meeting" => 'coffee',
     "Documents" => 'file-text',

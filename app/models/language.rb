@@ -12,7 +12,7 @@ class Language < ApplicationRecord
     "Spanish" => "spain.svg",
     "Italian" => "italy.svg",
     "German" => "germany.svg",
-    "Chinese" => "china.svg",
+    "Mandarin" => "china.svg",
     "Danish" => "denmark.svg",
     "Dutch" => "netherlands.svg",
     "Hindi" => "india.svg",

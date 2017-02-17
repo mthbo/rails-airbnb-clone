@@ -33,6 +33,7 @@ class Offer < ApplicationRecord
     customRanking ['desc(deals_closed_count)', 'desc(global_rating)']
     attributesForFaceting [:deals_closed_count, :global_rating]
     hitsPerPage 10
+    removeWordsIfNoResults 'allOptional'
   end
 
   # def self.search(search)
