@@ -13,7 +13,7 @@
   right: 20px;
 }
 
-#past-deals, #cancelled-deals {
+#dashboard-past-deals, #dashboard-cancelled-deals {
   .deal-card {
     padding: 10px 30px 10px 25px;
   }
@@ -112,7 +112,7 @@
 }
 
 @media (max-width: $screen-sm-max) {
-  #current-deals, #past-deals, #cancelled-deals {
+  #dashboard-current-deals, #dashboard-past-deals, #dashboard-cancelled-deals {
     .deal-card {
       padding: 10px 30px 10px 25px;
     }
@@ -123,7 +123,7 @@
 }
 
 @media (max-width: $screen-xs-max) {
-  #current-deals, #past-deals, #cancelled-deals {
+  #dashboard-current-deals, #dashboard-past-deals, #dashboard-cancelled-deals {
     .deal-card {
       padding: 10px 20px 10px 15px;
     }

@@ -1,3 +1,3 @@
 $('#user_reviews_page').html("<%= j render 'reviews' %>");
-$('#user-reviews-paginator').html("<%= j link_to_previous_page @deals_reviewed, '< Previous', remote: true %>" + "<%= j link_to_next_page @deals_reviewed, 'Next >', remote: true %>");
+$('#user-reviews-paginator').html("<%= j paginate @deals_reviewed, remote: true %>");
 window.scroll({ top: eval($("#user_reviews_page").offset().top - 180), left: 0, behavior: 'smooth' });

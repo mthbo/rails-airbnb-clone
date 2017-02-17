@@ -15,7 +15,7 @@
   position: relative;
 }
 
-.offer-card-profile {
+.offer-card-user {
   flex: 0 0 200px;
   padding: 20px 10px;
   display: flex;
@@ -62,7 +62,7 @@
   .offer-card-content {
     width: 100%;
   }
-  .offer-card-profile {
+  .offer-card-user {
     flex: 1 1 auto;
     flex-direction: row;
     text-align: left;
@@ -74,7 +74,7 @@
       margin-top: 10px;
     };
   }
-  .offer-card-profile-avatar {
+  .offer-card-user-avatar {
     margin-right: 20px;
   }
 }
@@ -83,7 +83,7 @@
   .offer-card-content {
     padding: 0 0 10px 0;
   };
-  .offer-card-profile {
+  .offer-card-user {
     padding: 10px 15px;
     h1 {
       font-size: 18px;

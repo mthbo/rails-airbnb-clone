@@ -1,8 +1,8 @@
-#session-page {
+#deal-page {
   position: relative;
 }
 
-.session-banner-top {
+.deal-banner-top {
   position: absolute;
   top: 0;
   width: 100%;
@@ -10,7 +10,7 @@
   border-bottom: 10px solid;
 }
 
-.session-banner-bottom {
+.deal-banner-bottom {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -18,21 +18,21 @@
   border-top: 10px solid;
 }
 
-.banner-green {
+.deal-banner-green {
   background-color: $green;
   border-color: $light-green;
 }
 
-.banner-yellow {
+.deal-banner-yellow {
   background-color: $yellow;
   border-color: $light-yellow;
 }
 
-.session-info {
+.deal-info {
   padding-right: 30px;
 }
 
-.session-status-box {
+.deal-status-box {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,21 +44,21 @@
   }
 }
 
-.session-status {
+.deal-status {
   flex: 1 0 auto;
 }
 
-.session-status-arrow {
+.deal-status-arrow {
   flex: 0 1 auto;
   margin: 0 5px;
 }
 
-.session-info-box {
+.deal-info-box {
   padding-left: 15px;
   padding-right: 15px;
 }
 
-.session-btns {
+.deal-btns {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -67,13 +67,13 @@
   }
 }
 
-.session-proposition-top {
+.deal-proposition-top {
   background-color: rgba(255,255,255,1);
   padding: 5px 25px;
   border-radius: 10px 10px 0 0;
 }
 
-.session-proposition-toggle {
+.deal-proposition-disclose {
   background-color: rgba(255,255,255,0.7);
   padding: 10px 15px;
   p {
@@ -81,39 +81,54 @@
   }
 }
 
-.session-proposition {
+.deal-proposition {
   background-color: rgba(255,255,255,0.7);
   padding: 0 25px;
 }
 
-#proposition-essential {
+#deal-proposition-essential {
   padding-top: 20px;
   padding-bottom: 11px;
-  .proposition-objective:last-child p {
+  .deal-objective:last-child p {
     margin-bottom: 0;
   }
 }
 
-#proposition-details {
+#deal-proposition-details {
   display: none;
 }
 
-.proposition-objective {
+.deal-objective {
   display: flex;
   justify-content: space-between;
 }
 
-.proposition-objective-rating {
+.deal-objective-rating {
   flex: 0 0 100px;
 }
 
-.session-proposition-bottom {
+#deal-objectives-in-form {
+  background-color: rgba(255,255,255,0.8);
+  border-top: 1px solid $light-gray;
+  border-bottom: 1px solid $light-gray;
+  padding: 15px 15px 5px 15px;
+  margin-bottom: 1em;
+}
+
+.deal-objective-destroy {
+  margin-left: 10px;
+  &:hover {
+    color: $dark-gray;
+  }
+}
+
+.deal-proposition-bottom {
   background-color: rgba(255,255,255,1);
   padding: 20px 25px;
   border-radius: 0 0 10px 10px;
 }
 
-.proposition-action-btns {
+.deal-proposition-action-btns {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -123,32 +138,32 @@
   }
 }
 
-.proposition-info {
+.deal-proposition-status {
   p {
     margin: 0;
   }
 }
 
-.session-proposition-figures {
+.deal-proposition-figures {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.proposition-recap-figures {
+.deal-proposition-recap-figures {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.session-conversation {
+.deal-conversation {
   height: 72vh;
   display: flex;
   flex-direction: column;
 }
 
-.session-conversation-top {
+.deal-conversation-top {
   flex: 0 0 auto;
   background-color: $light-gray;
   border-radius: 5px 5px 0 0;
@@ -156,7 +171,7 @@
   border-bottom: 1px solid $medium-gray;
 }
 
-.session-user-info {
+.deal-user-info {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,7 +185,7 @@
   }
 }
 
-#session-conversation-panel {
+#deal-conversation-panel {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
@@ -179,13 +194,13 @@
   overflow: auto;
 }
 
-#session-conversation-messages {
+#deal-conversation-messages {
   flex: 1 0 auto;
   min-height: 100%;
   padding: 15px 20px;
 }
 
-#session-conversation-form {
+#deal-conversation-form {
   flex: 0 0 auto;
   padding: 10px 20px;
   background-color: $light-gray;
@@ -193,7 +208,7 @@
   border-top: 1px solid $light-gray;
 }
 
-.session-reviews-box {
+.deal-reviews-box {
   border-radius: 5px;
   padding-left: 25px;
   padding-right: 25px;
@@ -201,72 +216,72 @@
 }
 
 @media (max-width: $screen-md-max) {
-  .session-info {
+  .deal-info {
     padding-right: 15px;
   }
-  .session-proposition-top {
+  .deal-proposition-top {
     padding: 5px 15px;
   };
-  .session-proposition, .session-info-box {
+  .deal-proposition, .deal-info-box {
     padding-left: 15px;
     padding-right: 15px;
   };
-  .session-proposition-bottom {
+  .deal-proposition-bottom {
     padding: 20px 15px;
   }
 }
 
 @media (max-width: $screen-sm-max) {
-  .session-title, .session-info, .session-conversation, .session-reviews {
+  .deal-title, .deal-info, .deal-conversation, .deal-reviews {
     padding-right: 20px;
     padding-left: 20px;
   }
-  .session-proposition-top {
+  .deal-proposition-top {
     padding: 5px 25px;
   };
-  .session-proposition, .session-info-box {
+  .deal-proposition, .deal-info-box {
     padding-left: 25px;
     padding-right: 25px;
   };
-  .session-proposition-bottom {
+  .deal-proposition-bottom {
     padding: 20px 25px;
   }
 }
 
 @media (max-width: $screen-xs-max) {
-  .session-banner-top {
+  .deal-banner-top {
     height: 75px;
   };
-  .session-title, .session-info, .session-conversation, .session-reviews {
+  .deal-title, .deal-info, .deal-conversation, .deal-reviews {
     padding-right: 0;
     padding-left: 0;
   }
-  .session-status-box {
+  .deal-status-box {
     p {
       font-size: 13px !important;
     }
   };
-  .session-proposition-top {
+  .deal-proposition-top {
     padding: 5px 15px;
   };
-  .session-proposition, .session-reviews-box {
+  .deal-proposition, .deal-reviews-box {
     padding-left: 15px;
     padding-right: 15px;
   };
-  .session-info-box {
+  .deal-info-box {
     padding-left: 0;
     padding-right: 0;
   };
-  .proposition-objective-rating {
+  .deal-objective-rating {
     flex: 0 0 85px;
   };
-  .session-proposition-bottom {
+  .deal-proposition-bottom {
     padding: 20px 15px;
   };
-  .session-conversation {
+  .deal-conversation {
     height: 80vh;
   }
-  .session-conversation-top, #session-conversation-messages, #session-conversation-form {
+  .deal-conversation-top, #deal-conversation-messages, #deal-conversation-form {
     padding-right: 10px;
     padding-left: 10px;
   }

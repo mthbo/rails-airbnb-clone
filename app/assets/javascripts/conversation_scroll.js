@@ -3,7 +3,7 @@ $(window).on("load", function() {
 });
 
 function scrollConversation () {
-  var $panel = $("#session-conversation-panel");
+  var $panel = $("#deal-conversation-panel");
   if ($panel.length > 0) {
     $panel.scrollTop($panel[0].scrollHeight);
   }

@@ -259,16 +259,16 @@ end
 
 
 # urls = [
-#   'http://lorempixel.com/100/100/people/1/',
-#   'http://lorempixel.com/100/100/people/2/',
-#   'http://lorempixel.com/100/100/people/3/',
-#   'http://lorempixel.com/100/100/people/4/',
-#   'http://lorempixel.com/100/100/people/5/',
-#   'http://lorempixel.com/100/100/people/6/',
-#   'http://lorempixel.com/100/100/people/7/',
-#   'http://lorempixel.com/100/100/people/8/',
-#   'http://lorempixel.com/100/100/people/9/',
-#   'http://lorempixel.com/100/100/people/10/'
+#   'https://randomuser.me/api/portraits/lego/0.jpg',
+#   'https://randomuser.me/api/portraits/lego/1.jpg',
+#   'https://randomuser.me/api/portraits/lego/2.jpg',
+#   'https://randomuser.me/api/portraits/lego/3.jpg',
+#   'https://randomuser.me/api/portraits/lego/4.jpg',
+#   'https://randomuser.me/api/portraits/lego/5.jpg',
+#   'https://randomuser.me/api/portraits/lego/6.jpg',
+#   'https://randomuser.me/api/portraits/lego/7.jpg',
+#   'https://randomuser.me/api/portraits/lego/8.jpg',
+#   'https://randomuser.me/api/portraits/lego/9.jpg'
 # ]
 
 # users.each_with_index do |user, index|

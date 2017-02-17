@@ -12,11 +12,11 @@
       </div>
 
       <div class="home-banner-content padded-top-s">
-        <%= link_to "Offer your services as advisor", user_signed_in? ? user_path(current_user) : new_user_session_path, class: "offer-services" %>
+        <%= link_to "Offer your services as advisor", user_signed_in? ? user_path(current_user) : new_user_session_path, class: "home-be-advisor-link" %>
       </div>
 
       <div class="home-banner-arrow">
-        <%= link_to be_advisor_path, id: "arrow-down" do %>
+        <%= link_to be_advisor_path, id: "home-arrow-down" do %>
           <p>Tell me more</p>
           <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
         <% end %>
@@ -39,7 +39,7 @@
   </div>
 
   <div class="padded-top-m padded-bottom-m bg-white-transparent text-center">
-    <div class="home-process">
+    <div class="home-guidelines">
       <div class="container">
 
         <div class="padded-bottom-m">
@@ -48,19 +48,19 @@
 
         <div class="row">
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/offers.svg' %>
+            <%= image_tag 'guidelines/offers.svg' %>
             <h3><strong>1</strong> | Publish offers</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/answer-requests.svg' %>
+            <%= image_tag 'guidelines/answer-requests.svg' %>
             <h3><strong>2</strong> | Respond to requests</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/give-advice.svg' %>
+            <%= image_tag 'guidelines/give-advice.svg' %>
             <h3><strong>3</strong> | Deliver advice</h3>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'process/get-rewards.svg' %>
+            <%= image_tag 'guidelines/get-rewards.svg' %>
             <h3><strong>4</strong> | Get your rewards!</h3>
           </div>
         </div>
@@ -70,7 +70,7 @@
   </div>
 
   <div class="padded-top-l padded-bottom-xxl text-center">
-    <div class="home-switch">
+    <div class="home-bottom-search">
       <div class="container">
 
         <div class="padded-bottom-l">
@@ -78,10 +78,10 @@
           <h3>Have a look on what people offer on Papoters.</h3>
         </div>
 
-        <div class="home-switch-content">
-          <%= form_tag(search_path, method: "get", id: "switch-search-form") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "switch-search-input search-form-input" %>
-            <%= button_tag(type: 'submit', class: "btn btn-switch btn-search") do %>
+        <div class="home-bottom-search-content">
+          <%= form_tag(search_path, method: "get", class: "custom-search-form", id: "home-bottom-search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "custom-search-input home-bottom-search-input" %>
+            <%= button_tag(type: 'submit', class: "btn btn-yellow btn-round home-bottom-search-btn") do %>
               <i class='fa fa-search'></i>
             <% end %>
           <% end %>

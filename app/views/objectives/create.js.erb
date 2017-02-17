@@ -2,13 +2,13 @@
   $('#new_objective').html("<%= j render 'objectives/form', deal: @deal, objective: @objective %>");
 <% elsif @deal.objectives_count <= 1 %>
   var new_objective = $("<%= j render 'objectives/show_in_form', objective: @objective, number: @deal.objectives_count %>").hide();
-  $('#proposition_objectives').empty();
-  $('#proposition_objectives').append(new_objective);
+  $('#deal-objectives-in-form').empty();
+  $('#deal-objectives-in-form').append(new_objective);
   new_objective.slideDown();
   $('#new_objective').html("<%= j render 'objectives/form', deal: @deal, objective: Objective.new %>");
 <% else %>
   var new_objective = $("<%= j render 'objectives/show_in_form', objective: @objective, number: @deal.objectives_count %>").hide();
-  $('#proposition_objectives').append(new_objective);
+  $('#deal-objectives-in-form').append(new_objective);
   new_objective.slideDown();
   $('#new_objective').html("<%= j render 'objectives/form', deal: @deal, objective: Objective.new %>");
 <% end %>

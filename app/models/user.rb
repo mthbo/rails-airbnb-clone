@@ -94,7 +94,7 @@ class User < ApplicationRecord
   end
 
 
-  # User sessions as advisor
+  # User deals as advisor
 
   def advisor_deals_request
     advisor_deals.where(status: :request).order(updated_at: :desc)
@@ -141,7 +141,7 @@ class User < ApplicationRecord
   end
 
 
-  # User sessions as client
+  # User deals as client
 
   def client_deals_request
     client_deals.where(status: :request).order(updated_at: :desc)
@@ -188,7 +188,7 @@ class User < ApplicationRecord
   end
 
 
-  # All user sessions
+  # All user deals
 
   def deals
     deals_as_advisor = Deal.where(offer: self.offers)

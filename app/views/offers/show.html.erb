@@ -90,9 +90,9 @@
           </div>
 
           <div class="hidden-md hidden-lg">
-            <div class="offer-profile">
-              <%= link_to user_path(@offer.advisor), class: "offer-profile-link" do %>
-                <div class="offer-profile-avatar">
+            <div class="offer-user">
+              <%= link_to user_path(@offer.advisor), class: "offer-user-link" do %>
+                <div class="offer-user-avatar">
                   <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-medium' %>
                 </div>
                 <div>
@@ -111,7 +111,7 @@
                 <div class="offer-stat-content">
                   <div class="row">
                     <div class="col-xs-4 col-sm-2">
-                      <%= render 'offers/advice_sessions', offer: @offer %>
+                      <%= render 'offers/deals_count', offer: @offer %>
                     </div>
                     <div class="col-xs-8 col-sm-5 text-right">
                       <%= render 'offers/satisfaction', offer: @offer %>
@@ -129,9 +129,8 @@
                   <div id="offer_reviews_page">
                     <%= render 'reviews' %>
                   </div>
-                  <div class="text-center padded-top-s" id="offer-reviews-paginator" >
-                    <%= link_to_previous_page @deals_reviewed, '< Previous', remote: true %>
-                    <%= link_to_next_page @deals_reviewed, 'Next >', remote: true %>
+                  <div class="text-center padded-top-s custom-paginator" id="offer-reviews-paginator" >
+                    <%= paginate @deals_reviewed, remote: true  %>
                   </div>
                 <% elsif @offer.advisor == current_user %>
                   <hr class="bd-gray">
@@ -148,9 +147,9 @@
       </div>
 
       <div class="hidden-xs hidden-sm col-md-3">
-        <div class="offer-profile text-center">
-          <%= link_to user_path(@offer.advisor), class: "offer-profile-link" do %>
-            <div class="offer-profile-avatar">
+        <div class="offer-user text-center">
+          <%= link_to user_path(@offer.advisor), class: "offer-user-link" do %>
+            <div class="offer-user-avatar">
               <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-large' %>
             </div>
             <div>

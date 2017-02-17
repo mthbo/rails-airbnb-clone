@@ -55,7 +55,7 @@
   min-height: 40vh;
 }
 
-.deal-step-header {
+.dashboard-deal-status {
   display: flex;
   align-items: center;
   div {
@@ -73,7 +73,7 @@
 
 
 @media (max-width: $screen-sm-max) {
-  .deal-step-header {
+  .dashboard-deal-status {
     div {
       height: 1px;
     }
