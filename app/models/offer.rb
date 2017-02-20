@@ -28,7 +28,7 @@ class Offer < ApplicationRecord
     attribute :advisor do
       { name: advisor.name_anonymous, grade: advisor.grade, age: advisor.age, address: advisor.address_short, facebook_picture_url: advisor.facebook_picture_url, photo_path: advisor.photo.path }
     end
-    searchableAttributes ['unordered(title)', 'unordored(description)']
+    searchableAttributes ['unordered(title)', 'unordered(description)']
     customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)']
     attributesForFaceting [:languages, :means, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount]
     hitsPerPage 10
