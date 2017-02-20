@@ -26,7 +26,7 @@ class Offer < ApplicationRecord
       means.map { |mean| { name: mean.name, picto: mean.picto } }
     end
     attribute :advisor do
-      { name: advisor.name_anonymous, grade: advisor.grade, age: advisor.age, address: advisor.address_short, facebook_picture_url: advisor.facebook_picture_url, photo_path: advisor.photo.path }
+      { name: advisor.name_anonymous, grade: advisor.grade, age: advisor.age, address: advisor.address_short, facebook_picture_url: advisor.facebook_picture_url, photo_path: (advisor.photo.path if advisor.photo) }
     end
     searchableAttributes ['unordered(title)', 'unordered(description)']
     customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)']
