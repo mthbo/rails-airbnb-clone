@@ -60,9 +60,9 @@ ActiveAdmin.register Offer do
       row :global_rating do |offer|
         "#{(offer.global_rating.fdiv(5) * 100).to_i} %" unless offer.global_rating.nil?
       end
-      row :min_amount
-      row :median_amount
-      row :max_amount
+      row :min_amount_money
+      row :median_amount_money
+      row :max_amount_money
     end
     active_admin_comments
   end
