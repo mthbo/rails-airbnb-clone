@@ -18,20 +18,19 @@ class Offer < ApplicationRecord
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
   algoliasearch per_environment: true do
-    attribute :title, :description, :deals_closed_count, :global_rating
-    attribute :language_ids do
-      languages.map do |language|
-        { id: language.id }
-      end
+    attribute :title, :description, :status, :pricing, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
+    attribute :languages do
+      languages.map { |language| { name: language.name, flag: language.flag } }
     end
-    attribute :mean_ids do
-      means.map do |mean|
-        { id: mean.id }
-      end
+    attribute :means do
+      means.map { |mean| { name: mean.name, picto: mean.picto } }
+    end
+    attribute :advisor do
+      { name: advisor.name_anonymous, grade: advisor.grade, age: advisor.age, address: advisor.address_short, facebook_picture_url: advisor.facebook_picture_url, photo_path: advisor.photo.path }
     end
     searchableAttributes ['unordered(title)', 'unordored(description)']
-    customRanking ['desc(deals_closed_count)', 'desc(global_rating)']
-    attributesForFaceting [:deals_closed_count, :global_rating]
+    customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)']
+    attributesForFaceting [:languages, :means, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount]
     hitsPerPage 10
     removeWordsIfNoResults 'allOptional'
   end
@@ -133,11 +132,11 @@ class Offer < ApplicationRecord
   # Pricing stat
 
   def min_amount
-    Money.new(deals_closed.minimum(:amount_cents)) unless deals_closed.minimum(:amount_cents).nil?
+    deals_closed.minimum(:amount_cents)
   end
 
   def max_amount
-    Money.new(deals_closed.maximum(:amount_cents)) unless deals_closed.maximum(:amount_cents).nil?
+    deals_closed.maximum(:amount_cents)
   end
 
   def median_amount
@@ -146,9 +145,20 @@ class Offer < ApplicationRecord
       deals_closed.each { |deal| amounts << deal.amount_cents unless deal.amount_cents.nil? }
       amounts.sort!
       len = amounts.length
-      median_cents = (amounts[(len - 1) / 2] + amounts[len / 2]) / 2 unless len.zero?
+      (amounts[(len - 1) / 2] + amounts[len / 2]) / 2 unless len.zero?
     end
-    Money.new(median_cents) unless median_cents.nil?
+  end
+
+  def min_amount_money
+    Money.new(min_amount) unless min_amount.nil?
+  end
+
+  def max_amount_money
+    Money.new(max_amount) unless max_amount.nil?
+  end
+
+  def median_amount_money
+    Money.new(median_amount) unless median_amount.nil?
   end
 
 
