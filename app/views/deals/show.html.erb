@@ -71,23 +71,3 @@
   </div>
 
 </div>
-
-
-<%= content_for(:js) do %>
-  <%= javascript_tag do %>
-
-    $('#message_content').focusin(function() {
-      $.ajax({
-        type: "GET",
-        url: "<%= type_deal_messages_path(@deal) %>" + "?state=typing",
-      });
-    });
-    $('#message_content').focusout(function() {
-      $.ajax({
-        type: "GET",
-        url: "<%= type_deal_messages_path(@deal) %>" + "?state=stop_typing"
-      })
-    });
-
-  <% end %>
-<% end %>

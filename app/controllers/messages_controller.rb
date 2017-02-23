@@ -1,6 +1,5 @@
 class MessagesController < ApplicationController
-  before_action :find_deal, only: [:create, :type]
-  skip_after_action :verify_authorized, only: [:type]
+  before_action :find_deal, only: [:create]
 
   def create
     @message = @deal.messages.new(message_params)
@@ -22,14 +21,6 @@ class MessagesController < ApplicationController
         format.js
       end
     end
-  end
-
-  def type
-    deal_id = @deal.id
-    state = params[:state]
-    user_id = current_user.id
-    TypingBroadcastJob.perform_later(deal_id, user_id, state)
-    @message = Message.new
   end
 
   private

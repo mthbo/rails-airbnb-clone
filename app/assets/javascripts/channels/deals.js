@@ -10,6 +10,8 @@ $(document).ready(function() {
     subcsribeToMessagesChannel(dealId, currentUserId);
     subcsribeToDealStatusChannel(dealId);
 
+    typingMessage(dealId);
+
   }
 
 });
@@ -35,7 +37,17 @@ function subcsribeToMessagesChannel(dealId, currentUserId) {
         $new_message.show();
         scrollConversation();
       }
+    },
+
+    type: function(dealId, state) {
+      console.log(dealId);
+      console.log(state);
+      this.perform('type', {
+        deal_id: dealId,
+        state: state
+      })
     }
+
   });
 
 };
@@ -58,4 +70,14 @@ function subcsribeToDealStatusChannel(dealId) {
 
   });
 
+}
+
+
+function typingMessage(dealId) {
+  $('#message_content').focusin(function() {
+    App['deal' + dealId + ':messages'].type(dealId, "typing");
+  });
+  $('#message_content').focusout(function() {
+    App['deal' + dealId + ':messages'].type(dealId, "stop_typing");
+  });
 }

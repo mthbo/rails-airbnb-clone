@@ -41,11 +41,7 @@ Rails.application.routes.draw do
         patch 'cancel', to: 'deals#cancel'
       end
       resources :objectives, only: [:create, :update, :destroy]
-      resources :messages, only: [:create] do
-        collection do
-          get 'type'
-        end
-      end
+      resources :messages, only: [:create]
       resources :payments, only: [:create]
     end
   end

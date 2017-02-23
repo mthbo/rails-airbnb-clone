@@ -9,4 +9,9 @@ class MessagesChannel < ApplicationCable::Channel
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
+
+  def type(data)
+    TypingBroadcastJob.perform_later(data['deal_id'], current_user.id, data['state'])
+  end
+
 end
