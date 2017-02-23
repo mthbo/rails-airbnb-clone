@@ -10,7 +10,8 @@ $(document).ready(function() {
     subcsribeToMessagesChannel(dealId, currentUserId);
     subcsribeToDealStatusChannel(dealId);
 
-    typingMessage(dealId);
+    typeMessage(dealId);
+    submitMessage();
 
   }
 
@@ -40,12 +41,7 @@ function subcsribeToMessagesChannel(dealId, currentUserId) {
     },
 
     type: function(dealId, state) {
-      console.log(dealId);
-      console.log(state);
-      this.perform('type', {
-        deal_id: dealId,
-        state: state
-      })
+      this.perform('type', { deal_id: dealId, state: state });
     }
 
   });
@@ -73,11 +69,19 @@ function subcsribeToDealStatusChannel(dealId) {
 }
 
 
-function typingMessage(dealId) {
+function typeMessage(dealId) {
   $('#message_content').focusin(function() {
     App['deal' + dealId + ':messages'].type(dealId, "typing");
   });
   $('#message_content').focusout(function() {
     App['deal' + dealId + ':messages'].type(dealId, "stop_typing");
+  });
+}
+
+function submitMessage() {
+  $('#message_content').on('keydown', function(event) {
+    if (event.keyCode === 13 && !event.shiftKey) {
+      $('#submit_message').click();
+    }
   });
 }
