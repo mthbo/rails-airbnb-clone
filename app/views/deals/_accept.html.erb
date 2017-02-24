@@ -27,49 +27,7 @@
           <% end %>
 
         <% else %>
-
-          <script src="https://checkout.stripe.com/checkout.js"></script>
-
-          <button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Accept and pay <%= money_without_cents_and_with_symbol(deal.amount) %></button>
-
-          <%= form_tag deal_payments_path(deal), id: "paymentForm" do %>
-
-            <%= hidden_field_tag 'stripeToken' %>
-            <%= hidden_field_tag 'stripeEmail' %>
-
-            <script>
-              var handler = StripeCheckout.configure({
-                key: "<%= Rails.configuration.stripe[:publishable_key] %>",
-                image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-                locale: 'auto',
-                email: "<%= current_user.email %>",
-                token: function(token) {
-                  document.getElementById("stripeToken").value = token.id;
-                  document.getElementById("stripeEmail").value = token.email;
-                  document.getElementById("paymentForm").submit();
-                }
-              });
-
-              document.getElementById('payButton').addEventListener('click', function(e) {
-                  // Open Checkout with further options:
-                  $('.modal').modal('hide');
-                  handler.open({
-                    name: 'Papoters',
-                    description: "#session-<%= deal.id %>",
-                    zipCode: true,
-                    currency: "<%= deal.amount.currency %>",
-                    amount: <%= deal.amount_cents %>
-                  });
-                  e.preventDefault();
-              });
-
-              // Close Checkout on page navigation:
-              window.addEventListener('popstate', function() {
-                handler.close();
-              });
-            </script>
-
-          <% end %>
+          <%= render 'deals/stripe_payment', deal: deal %>
 
         <% end %>
       </div>
