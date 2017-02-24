@@ -17,8 +17,11 @@ class Offer < ApplicationRecord
   validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
-  algoliasearch per_environment: true do
+  algoliasearch per_environment: true, if: :active? do
     attribute :title, :description, :status, :pricing, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
+    attribute :created_at_i do
+      created_at.to_i
+    end
     attribute :languages do
       languages.map { |language| { name: language.name, flag: language.flag } }
     end
@@ -29,8 +32,9 @@ class Offer < ApplicationRecord
       { name: advisor.name_anonymous, grade: advisor.grade, age: advisor.age, address: advisor.address_short, facebook_picture_url: advisor.facebook_picture_url, photo_path: (advisor.photo.path if advisor.photo) }
     end
     searchableAttributes ['unordered(title)', 'unordered(description)']
-    customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)']
+    customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)', 'desc(created_at_i)']
     attributesForFaceting [:languages, :means, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount]
+    separatorsToIndex '+#$€'
     hitsPerPage 10
     removeWordsIfNoResults 'allOptional'
   end
