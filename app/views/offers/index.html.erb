@@ -1,24 +1,82 @@
 <% content_for :title do %>
-  <%= "Papoters | Search results" %>
+  <%= "Papoters | Search" %>
 <% end %>
 
-<div class="padded-top-xxl padded-bottom-xxl bg-light-gray" id="offer-index-wrapper">
+<div class="padded-top-xxl padded-bottom-xxl bg-light-gray" id="search-page-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-        <div class="padded-bottom-s">
-          <%= form_tag(search_path, method: "get", class: "custom-search-form", id: "offer-index-search-form", remote: true) do %>
-            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "custom-search-input offer-index-search-input" %>
-            <%= button_tag(type: 'submit', class: "btn btn-yellow btn-round offer-index-search-btn") do %>
-              <i class='fa fa-search'></i>
-            <% end %>
-          <% end %>
+        <div class="padded-bottom-s text-center" id="search-page-input-wrapper">
+          <input type="text" id="search-page-input" class="custom-search-input">
         </div>
 
-        <div id="offer-index-search-results">
-          <%= render 'search_results' %>
+        <div class="padded-bottom-s">
+          <div id="search-page-languages" class="facet"></div>
+          <div id="search-page-means" class="facet"></div>
+          <div id="search-page-means" class="facet"></div>
+          <div id="search-page-rating" class="facet"></div>
+          <div id="search-page-amount" class="facet"></div>
         </div>
+
+        <div class="padded-bottom-s">
+          <div id="search-page-sort-by-wrapper"><span id="search-page-sort-by"></span></div>
+          <div id="search-page-stats"></div>
+          <div id="search-page-hits"></div>
+          <div id="search-page-pagination"></div>
+        </div>
+
+        <script type="text/html" id="search-page-hit-template">
+          <div class="search-page-hit">
+            <%= render "offers/card_instant" %>
+          </div>
+        </script>
+
+        <script type="text/html" id="search-page-no-results-template">
+          <div id="search-page-no-results-message">
+            <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
+            <a href="." class="clear-all">Clear search</a>
+          </div>
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
+        <script>
+          var search = instantsearch({
+            appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
+            apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
+            indexName: 'Offer_development',
+            urlSync: true
+          });
+
+          search.addWidget(
+            instantsearch.widgets.searchBox({
+              container: '#search-page-input',
+              placeholder: 'I need some advice for ...'
+            })
+          );
+
+          search.addWidget(
+            instantsearch.widgets.hits({
+              container: '#search-page-hits',
+              templates: {
+                item: getTemplate('search-page-hit'),
+                empty: getTemplate('search-page-no-results')
+              }
+            })
+          );
+
+          search.addWidget(
+            instantsearch.widgets.stats({
+              container: '#search-page-stats'
+            })
+          );
+
+          function getTemplate(templateName) {
+            return document.getElementById(templateName + '-template').innerHTML;
+          }
+
+          search.start();
+        </script>
 
       </div>
     </div>

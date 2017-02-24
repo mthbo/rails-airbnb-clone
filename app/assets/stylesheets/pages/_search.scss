@@ -1,0 +1,38 @@
+#search-page-wrapper {
+  min-height: 90vh;
+}
+
+#search-page-input-wrapper {
+  .ais-search-box {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+#search-page-input {
+  height: 50px;
+  flex: 0 1 500px;
+  font-size: 25px;
+}
+
+// .offer-index-search-btn {
+//   flex: 0 0 50px;
+//   height: 50px;
+//   border-radius: 50%;
+//   font-size: 22px;
+// }
+
+@media (max-width: $screen-xs-max) {
+  #search-page-wrapper {
+    min-height: 75vh;
+  }
+  #search-page-input {
+    height: 40px;
+    font-size: 20px;
+  }
+  // .offer-index-search-btn {
+  //   height: 40px;
+  //   flex: 0 0 40px;
+  //   font-size: 16px;
+  // }
+}

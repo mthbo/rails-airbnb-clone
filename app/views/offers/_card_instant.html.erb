@@ -1,0 +1,25 @@
+<div class="offer-card">
+
+  <div class="offer-card-content">
+    <div class="container-fluid">
+
+      <div class="row padded-bottom-xs">
+        <div class=col-xs-12 %>
+          <h2>{{{_highlightResult.title.value}}}</h2>
+        </div>
+      </div>
+
+      <div class="padded-bottom-xs">
+        <p>{{{_highlightResult.description.value}}}</p>
+      </div>
+
+
+      <% if user_signed_in? %>
+        <p>User is signed in</p>
+        <p><%= current_user.id %></p>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>
