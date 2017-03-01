@@ -27,13 +27,13 @@ class Offer < ApplicationRecord
       created_at.to_i
     end
     attribute :languages do
-      languages.map { |language| { name: language.name, flag: language.flag } }
+      languages.map { |language| { name: language.name, flag: ActionController::Base.helpers.image_tag("flags/" + language.flag) } }
     end
     attribute :means do
       means.map { |mean| { name: mean.name, picto: mean.picto } }
     end
     attribute :advisor do
-      { name: advisor.name_anonymous, grade: advisor.grade, age: advisor.age, address: advisor.address_short, facebook_picture_url: advisor.facebook_picture_url, photo_path: (advisor.photo.path if advisor.photo) }
+      { name: advisor.name_anonymous, grade_and_age: advisor.grade_and_age, address: advisor.address_short, avatar_url: advisor.avatar_url }
     end
     add_attribute :deals_closed_view
     add_attribute :global_rating_view
@@ -201,6 +201,5 @@ class Offer < ApplicationRecord
     end
     html
   end
-
 
 end
