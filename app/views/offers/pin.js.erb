@@ -1,0 +1,7 @@
+var $pin_button = $('[data-pin-offer-id=<%= @offer.id %>]');
+$pin_button.animate({top:"-=15px"}, 200, function() {
+  $pin_button.animate({top:"+=15px"}, 100, 'swing', function() {
+    $pin_button.toggleClass('unpin-offer-button');
+    $pin_button.toggleClass('pin-offer-button');
+  });
+});

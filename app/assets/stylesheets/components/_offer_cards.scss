@@ -55,6 +55,13 @@
   z-index:2;
 }
 
+.offer-card-summary {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (max-width: $screen-sm-max) {
   .offer-card {
     flex-wrap: wrap;

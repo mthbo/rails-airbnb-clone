@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  acts_as_voter
+
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
   has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal', dependent: :nullify
-  has_many :pinned_offers, foreign_key: 'client_id', dependent: :destroy
   has_many :advisor_deals, through: :offers, source: :deals
   has_many :messages, dependent: :nullify
 

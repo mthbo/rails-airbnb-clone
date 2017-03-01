@@ -1,13 +1,12 @@
 class Offer < ApplicationRecord
-  include AlgoliaSearch
-
   belongs_to :advisor, class_name: 'User'
   has_many :deals, dependent: :nullify
-  has_many :pinned_offers, dependent: :destroy
   has_many :offer_means, dependent: :destroy
   has_many :means, through: :offer_means
   has_many :offer_languages, dependent: :destroy
   has_many :languages, through: :offer_languages
+
+  acts_as_votable
 
   enum status: [ :active, :inactive, :archived ]
   enum pricing: [ :free, :priced ]
@@ -17,9 +16,13 @@ class Offer < ApplicationRecord
   validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
 
+  include AlgoliaSearch
 
   algoliasearch per_environment: true, if: :active? do
     attribute :title, :description, :status, :pricing, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
+    attribute :summary do
+      description[0..250]
+    end
     attribute :created_at_i do
       created_at.to_i
     end
@@ -32,7 +35,10 @@ class Offer < ApplicationRecord
     attribute :advisor do
       { name: advisor.name_anonymous, grade: advisor.grade, age: advisor.age, address: advisor.address_short, facebook_picture_url: advisor.facebook_picture_url, photo_path: (advisor.photo.path if advisor.photo) }
     end
-    searchableAttributes ['unordered(title)', 'unordered(description)']
+    add_attribute :deals_closed_view
+    add_attribute :global_rating_view
+    add_attribute :amounts_view
+    searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
     customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)', 'desc(created_at_i)']
     attributesForFaceting [:languages, :means, :pricing, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount]
     separatorsToIndex '+#$€'
@@ -95,16 +101,11 @@ class Offer < ApplicationRecord
     deals_ongoing.find_by(client: client)
   end
 
-  def pinned(client)
-    pinned_offers.find_by(client: client)
-  end
-
-
 
   # Deal stats
 
   def pin_count
-    pinned_offers.count
+    get_likes.count
   end
 
   def deals_pending_count
@@ -165,6 +166,40 @@ class Offer < ApplicationRecord
 
   def median_amount_money
     Money.new(median_amount) unless median_amount.nil?
+  end
+
+
+  # For Algolia
+
+  def deals_closed_view
+    "<strong>#{deals_closed_count}</strong> #{'session'.pluralize(deals_closed_count)}"
+  end
+
+  def global_rating_view
+    html = ""
+    unless global_rating.nil?
+      html << "<i class='fa fa-star yellow' aria-hidden='true'></i>" * global_rating.round
+      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>" * (5 - global_rating.round)
+      html << "<span>&nbsp;&nbsp;<strong>#{(global_rating.fdiv(5) * 100).to_i} %</strong>  happy</span>"
+    else
+      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>" * 5
+      html << "<span class='medium-gray'>&nbsp;&nbsp; not rated yet</span>"
+    end
+    html
+  end
+
+  def amounts_view
+    html = ""
+    if free?
+      html << "<strong>FREE</strong>"
+    elsif median_amount.nil?
+      html << "<span class='medium-gray'>No price yet</span>"
+    else
+      html << "<span class='medium-gray'>#{ActionController::Base.helpers.money_without_cents_and_with_symbol(min_amount_money)} &mdash; </span>"
+      html << "<strong>#{ActionController::Base.helpers.money_without_cents_and_with_symbol(median_amount_money)}</strong>"
+      html << "<span class='medium-gray'> &mdash; #{ActionController::Base.helpers.money_without_cents_and_with_symbol(max_amount_money)}</span>"
+    end
+    html
   end
 
 

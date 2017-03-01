@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     authorize @user
+    @pinned_offers = @user.find_liked_items
   end
 
   def destroy

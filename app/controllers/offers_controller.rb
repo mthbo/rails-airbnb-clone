@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :find_offer, only: [:show, :edit, :update]
+  before_action :find_offer, only: [:show, :edit, :update, :pin]
   layout 'advisor_form', only: [:new, :create, :edit, :update]
 
   def index
@@ -39,7 +39,6 @@ class OffersController < ApplicationController
       respond_to do |format|
         format.html {
           if @offer.archived?
-            @offer.pinned_offers.destroy_all
             flash[:notice] = "'#{@offer.title}' has been removed"
             redirect_to user_path(current_user)
           else
@@ -51,6 +50,14 @@ class OffersController < ApplicationController
       end
     else
       render :edit
+    end
+  end
+
+  def pin
+    if current_user.liked?(@offer)
+      current_user.unlike(@offer)
+    else
+      current_user.likes(@offer)
     end
   end
 
