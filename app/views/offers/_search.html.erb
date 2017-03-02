@@ -1,39 +1,37 @@
-<% content_for :title do %>
-  <%= "Papoters | Search" %>
-<% end %>
+<div id="searchbar" class="hidden">
+  <input type="text" id="searchbar-input" autofocus="true">
+  <div id="searchbar-input-icon"><i class='fa fa-search'></i></div>
+</div>
 
-<div class="padded-top-xxl padded-bottom-xxl bg-light-gray" id="search-page-wrapper">
+
+<div id="search-page-wrapper" class="padded-top-xxl padded-bottom-xxl bg-light-gray hidden">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-        <div class="padded-bottom-s text-center" id="search-page-input-wrapper">
-          <input type="text" id="search-page-input" class="custom-search-input">
+        <div class="padded-bottom-s">
+          <div id="search-languages" class="facet"></div>
+          <div id="search-means" class="facet"></div>
+          <div id="search-means" class="facet"></div>
+          <div id="search-rating" class="facet"></div>
+          <div id="search-amount" class="facet"></div>
         </div>
 
         <div class="padded-bottom-s">
-          <div id="search-page-languages" class="facet"></div>
-          <div id="search-page-means" class="facet"></div>
-          <div id="search-page-means" class="facet"></div>
-          <div id="search-page-rating" class="facet"></div>
-          <div id="search-page-amount" class="facet"></div>
+          <div id="search-sort-by-wrapper"><span id="search-sort-by"></span></div>
+          <div id="search-stats"></div>
+          <div id="search-hits"></div>
+          <div id="search-pagination"></div>
         </div>
 
-        <div class="padded-bottom-s">
-          <div id="search-page-sort-by-wrapper"><span id="search-page-sort-by"></span></div>
-          <div id="search-page-stats"></div>
-          <div id="search-page-hits"></div>
-          <div id="search-page-pagination"></div>
-        </div>
-
-        <script type="text/html" id="search-page-hit-template">
-          <div class="search-page-hit">
+        <script type="text/html" id="search-hit-template">
+          <div class="search-hit">
             <%= render "offers/card_instant" %>
           </div>
         </script>
 
-        <script type="text/html" id="search-page-no-results-template">
-          <div id="search-page-no-results-message">
+        <script type="text/html" id="search-no-results-template">
+          <div id="search-no-results-message">
             <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
             <a href="." class="clear-all">Clear search</a>
           </div>
@@ -45,29 +43,29 @@
             appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
             apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
             indexName: 'Offer_development',
-            urlSync: true
+            urlSync: false
           });
 
           search.addWidget(
             instantsearch.widgets.searchBox({
-              container: '#search-page-input',
+              container: '#searchbar-input',
               placeholder: 'I need some advice for ...'
             })
           );
 
           search.addWidget(
             instantsearch.widgets.hits({
-              container: '#search-page-hits',
+              container: '#search-hits',
               templates: {
-                item: getTemplate('search-page-hit'),
-                empty: getTemplate('search-page-no-results')
+                item: getTemplate('search-hit'),
+                empty: getTemplate('search-no-results')
               }
             })
           );
 
           search.addWidget(
             instantsearch.widgets.stats({
-              container: '#search-page-stats'
+              container: '#search-stats'
             })
           );
 
@@ -82,5 +80,3 @@
     </div>
   </div>
 </div>
-
-

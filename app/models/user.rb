@@ -5,9 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  acts_as_voter
+
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
   has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal', dependent: :nullify
-  has_many :pinned_offers, foreign_key: 'client_id', dependent: :destroy
   has_many :advisor_deals, through: :offers, source: :deals
   has_many :messages, dependent: :nullify
 
@@ -70,8 +71,21 @@ class User < ApplicationRecord
     end
   end
 
-  def bio_formatted
-    "<p>#{self.bio.gsub(/\r\n/, '<br>')}</p>"
+  def avatar_url
+    if photo.present?
+      html = ActionController::Base.helpers.cl_image_tag(photo.path, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar-medium bg-light-gray").to_s
+    else
+      url = facebook_picture_url || "avatar.png"
+      html = ActionController::Base.helpers.image_tag(url, class: "avatar-medium bg-light-gray").to_s
+    end
+  end
+
+  def grade_and_age
+    html = grade
+    if age.present?
+      html << "&nbsp; | &nbsp;#{age} yr"
+    end
+    html
   end
 
 

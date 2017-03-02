@@ -38,6 +38,7 @@ gem 'geocoder'
 gem 'kaminari'
 gem 'kramdown'
 gem 'phony_rails'
+gem 'acts_as_votable'
 
 gem "algoliasearch-rails"
 

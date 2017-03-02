@@ -20,6 +20,8 @@
 //= require google_maps_autocomplete
 //= require init_attachinary
 //= require navbar
+//= require pin_button
 //= require proposition
 //= require radio_button
+//= require search
 //= require star-rating

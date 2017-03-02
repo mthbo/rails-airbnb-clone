@@ -42,9 +42,9 @@
     <div id="dashboard-pinned-offers" class="dashboard-tab-content hidden">
       <div class="row">
         <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-          <% if @user.pinned_offers.present? %>
-            <% @user.pinned_offers.each do |pinned_offer| %>
-              <%= render "offers/card", offer: pinned_offer.offer %>
+          <% if @pinned_offers.present? %>
+            <% @pinned_offers.each do |offer| %>
+              <%= render "offers/card", offer: offer %>
             <% end %>
           <% else %>
             <div class="text-center padded-top-xl">

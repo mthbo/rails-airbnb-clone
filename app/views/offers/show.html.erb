@@ -51,8 +51,8 @@
                         </div>
                       </div>
                     <% else %>
-                      <h2 data-pin-offer-id="<%= @offer.id %>">
-                        <%= render 'pinned_offers/pin_button', offer: @offer %>
+                      <h2>
+                        <%= render 'offers/pin_button', offer: @offer %>
                       </h2>
                     <% end %>
                   </div>

@@ -8,6 +8,10 @@ class OfferPolicy < ApplicationPolicy
     record.advisor == user
   end
 
+  def pin?
+    record.advisor != user
+  end
+
   def remove?
     record.advisor == user && record.deals_ongoing.blank?
   end

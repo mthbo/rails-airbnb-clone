@@ -1,7 +1,7 @@
 .pin-offer-button {
   color: $medium-gray;
   position: relative;
-  &:hover {
+  &:hover, &:focus:hover {
     color: $dark-gray;
   };
   &:focus {
@@ -13,7 +13,7 @@
 .unpin-offer-button {
   color: $yellow;
   position: relative;
-  &:hover {
+  &:hover, &:focus:hover {
     color: $dark-yellow;
   };
   &:focus {

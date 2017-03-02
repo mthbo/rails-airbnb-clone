@@ -23,10 +23,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :destroy]
   get '/dashboard', to: 'users#dashboard'
 
-  get '/search', to: 'offers#index'
-
   resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
-    resources :pinned_offers, only: [:create, :destroy]
     resources :deals, only: [:show, :new, :create], path: 'sessions' do
       member do
         get 'new_proposition', to: 'deals#new_proposition'
@@ -43,6 +40,9 @@ Rails.application.routes.draw do
       resources :objectives, only: [:create, :update, :destroy]
       resources :messages, only: [:create]
       resources :payments, only: [:create]
+    end
+    member do
+      post 'pin', to: 'offers#pin'
     end
   end
 
