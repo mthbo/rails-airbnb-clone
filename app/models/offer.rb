@@ -19,7 +19,7 @@ class Offer < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch per_environment: true, if: :active? do
-    attribute :title, :description, :status, :pricing, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
+    attribute :title, :description, :status, :pricing, :deals_closed_count, :global_rating
     attribute :summary do
       description[0..250]
     end
@@ -35,6 +35,15 @@ class Offer < ApplicationRecord
     attribute :advisor do
       { name: advisor.name_anonymous, grade_and_age: advisor.grade_and_age, address: advisor.address_short, avatar_url: advisor.avatar_url }
     end
+    attribute :min_amount do
+      min_amount.nil? ? 0 : min_amount
+    end
+    attribute :median_amount do
+      min_amount.nil? ? 0 : median_amount
+    end
+    attribute :max_amount do
+      min_amount.nil? ? 0 : max_amount
+    end
     add_attribute :deals_closed_view
     add_attribute :global_rating_view
     add_attribute :amounts_view
@@ -45,12 +54,12 @@ class Offer < ApplicationRecord
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
     hitsPerPage 10
-    add_replica 'Offer_median_amount_asc', inherit: true, per_environment: true do
-      customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
+    add_replica 'Offer_price_asc', inherit: true, per_environment: true do
+      customRanking ['asc(median_amount)', 'asc(min_amount)', 'asc(max_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
       typoTolerance 'min'
     end
-    add_replica 'Offer_median_amount_desc', inherit: true, per_environment: true do
-      customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
+    add_replica 'Offer_price_desc', inherit: true, per_environment: true do
+      customRanking ['desc(median_amount)', 'desc(max_amount)', 'desc(min_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
       typoTolerance 'min'
     end
   end

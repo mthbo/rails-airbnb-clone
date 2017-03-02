@@ -4,7 +4,7 @@
 </div>
 
 
-<div id="search-page-wrapper" class="padded-top-xxl padded-bottom-xxl bg-light-gray hidden">
+<div id="search-page-wrapper" class="padded-top-xxxl padded-bottom-xxl bg-light-gray hidden">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
@@ -17,24 +17,21 @@
           <div id="search-amount" class="facet"></div>
         </div>
 
-        <div class="padded-bottom-s">
-          <div id="search-sort-by-wrapper"><span id="search-sort-by"></span></div>
+        <div class="search-infos">
           <div id="search-stats"></div>
-          <div id="search-hits"></div>
-          <div id="search-pagination"></div>
+          <div id="search-sort-by-wrapper"><span id="search-sort-by"></span></div>
         </div>
 
+        <div id="search-hits"></div>
+
+        <div id="search-pagination"></div>
+
         <script type="text/html" id="search-hit-template">
-          <div class="search-hit">
-            <%= render "offers/card_instant" %>
-          </div>
+          <%= render "offers/card_instant" %>
         </script>
 
         <script type="text/html" id="search-no-results-template">
-          <div id="search-no-results-message">
-            <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
-            <a href="." class="clear-all">Clear search</a>
-          </div>
+          <p>Sorry, we didn't find any offers matching the search <em>"{{query}}"</em>...</p>
         </script>
 
         <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
@@ -42,7 +39,7 @@
           var search = instantsearch({
             appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
             apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
-            indexName: 'Offer_development',
+            indexName: "Offer_" + "<%= ENV['RAILS_ENV'] %>",
             urlSync: false
           });
 
@@ -56,6 +53,7 @@
           search.addWidget(
             instantsearch.widgets.hits({
               container: '#search-hits',
+              hitsPerPage: 10,
               templates: {
                 item: getTemplate('search-hit'),
                 empty: getTemplate('search-no-results')
@@ -65,7 +63,39 @@
 
           search.addWidget(
             instantsearch.widgets.stats({
-              container: '#search-stats'
+              container: '#search-stats',
+            })
+          );
+
+          search.addWidget(
+            instantsearch.widgets.sortBySelector({
+              container: '#search-sort-by',
+              autoHideContainer: true,
+              indices: [{
+                name: search.indexName, label: 'Most relevant'
+              }, {
+                name: "Offer_price_asc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Lowest price'
+              }, {
+                name: "Offer_price_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest price'
+              }]
+            })
+          );
+
+          search.addWidget(
+            instantsearch.widgets.pagination({
+              container: '#search-pagination'
+            })
+          );
+
+          search.addWidget(
+            instantsearch.widgets.refinementList({
+              container: '#search-languages',
+              attributeName: 'languages',
+              sortBy: ['isRefined', 'count:desc', 'name:asc'],
+              operator: 'or',
+              templates: {
+                header: '<h5>Languages</h5>'
+              }
             })
           );
 
