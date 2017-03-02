@@ -4,13 +4,21 @@ $(document).ready(function() {
 
     $('#btn-search-trigger').on('click', function() {
       $('#searchbar').toggleClass('hidden');
-      $('#searchbar-input').focus();
-      if
-      $('#search-page-wrapper').addClass('hidden');
-      $('#main').removeClass('hidden');
+      if ($('#searchbar').hasClass('hidden')) {
+        $('#searchbar-input').focusout();
+        $('#search-page-wrapper').addClass('hidden');
+        $('#main').removeClass('hidden');
+      } else {
+        $('#searchbar-input').focus();
+      }
     });
 
-    $('#searchbar-input').on('input', function() {
+    $('#main').on('click', function() {
+      $('#searchbar').addClass('hidden');
+      $('#searchbar-input').focusout();
+    });
+
+    $('#searchbar-input').on('input focusin', function() {
       if ($(this).val() === "") {
         $('#search-page-wrapper').addClass('hidden');
         $('#main').removeClass('hidden');

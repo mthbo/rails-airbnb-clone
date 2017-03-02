@@ -1,15 +1,7 @@
 class OffersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :find_offer, only: [:show, :edit, :update, :pin]
   layout 'advisor_form', only: [:new, :create, :edit, :update]
-
-  def index
-    @offers = policy_scope(Offer).algolia_search(params[:search], page: params[:page])
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
 
   def show
     @deals_reviewed = @offer.deals_reviewed.page(params[:page])

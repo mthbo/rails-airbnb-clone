@@ -23,8 +23,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :destroy]
   get '/dashboard', to: 'users#dashboard'
 
-  get '/search', to: 'offers#index'
-
   resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
     resources :deals, only: [:show, :new, :create], path: 'sessions' do
       member do

@@ -6,13 +6,10 @@
     <% end %>
   </div>
 
-  <div class="my-navbar-middle hidden-xs">
-    <%= form_tag(search_path, method: "get", id: "my-navbar-search") do %>
-      <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "my-navbar-search-input" %>
-      <%= button_tag(type: 'submit', class: "my-navbar-search-btn") do %>
-        <i class='fa fa-search'></i>
-      <% end %>
-    <% end %>
+  <div class="my-navbar-middle">
+    <button class="btn my-navbar-button-round btn-yellow" id="btn-search-trigger">
+      <i class='fa fa-search'></i>
+    </button>
   </div>
 
   <div class="my-navbar-right hidden-xs">
@@ -26,14 +23,6 @@
     <div class="dropdown" id="mobile-dropdown">
       <i class="fa fa-lg fa-bars dropdown-toggle mobile-dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu my-navbar-dropdown-menu mobile-dropdown-menu">
-        <li>
-          <%= form_tag(search_path, method: "get", id: "dropdown-search") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "my-navbar-search-input" %>
-            <%= button_tag(type: 'submit', class: "my-navbar-search-btn") do %>
-              <i class='fa fa-search'></i>
-            <% end %>
-          <% end %>
-        </li>
         <li><%= link_to "Give advice", be_advisor_path %></li>
         <li><%= link_to "Join", new_user_registration_path %></li>
         <li><%= link_to "Sign In", new_user_session_path %></li>
@@ -42,3 +31,5 @@
   </div>
 
 </div>
+
+<%= render 'offers/search' %>

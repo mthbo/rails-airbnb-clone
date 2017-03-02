@@ -6,20 +6,21 @@
     <% end %>
   </div>
 
-  <div class="my-navbar-right hidden-xs">
-    <button class="my-navbar-item my-navbar-button-search btn btn-round btn-yellow" id="btn-search-trigger">
+  <div class="my-navbar-middle">
+    <button class="btn my-navbar-button-round btn-yellow" id="btn-search-trigger">
       <i class='fa fa-search'></i>
     </button>
-    <%= link_to "Give advice", be_advisor_path, { class: "my-navbar-item my-navbar-button btn btn-green" } %>
+  </div>
+
+  <div class="my-navbar-right hidden-xs">
+    <%= link_to "Give advice", be_advisor_path, { class: "my-navbar-button btn btn-green" } %>
 
     <!-- Notification link-->
-    <%= link_to dashboard_path, { class: "my-navbar-item" } do %>
-      <div class="my-navbar-badge-container">
+    <%= link_to dashboard_path, { class: "btn my-navbar-button-round btn-blue" } do %>
         <i class="fa fa-hashtag"></i>
         <div class="my-navbar-badge">
           <%= render 'users/notifications' %>
         </div>
-      </div>
     <% end %>
 
     <!-- Profile picture and dropdown -->
@@ -48,14 +49,6 @@
         <%= render 'users/notifications' %>
       </div>
       <ul class="dropdown-menu my-navbar-dropdown-menu mobile-dropdown-menu">
-        <li>
-          <%= form_tag(search_path, method: "get", id: "dropdown-search") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "my-navbar-search-input" %>
-            <%= button_tag(type: 'submit', class: "my-navbar-search-btn") do %>
-              <i class='fa fa-search'></i>
-            <% end %>
-          <% end %>
-        </li>
         <li><%= link_to "Give advice", be_advisor_path %></li>
         <li><%= link_to "Profile", user_path(current_user) %></li>
         <li>

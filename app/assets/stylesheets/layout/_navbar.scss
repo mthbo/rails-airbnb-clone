@@ -40,51 +40,6 @@
   justify-content: flex-end;
 }
 
-#my-navbar-search {
-  flex: 0 1 300px;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 20px;
-  position: relative;
-}
-
-.my-navbar-search-input {
-  flex: 1 1 auto;
-  transition: all 0.15s ease;
-  line-height: 40px;
-  border: none;
-  border-bottom: 1px solid $medium-gray;
-  border-radius: 0;
-  background: transparent;
-  padding-right: 30px;
-  font-size: 16px;
-  outline: none;
-  &:focus {
-    border-bottom: 2px solid $yellow;
-    .my-navbar-search-btn {
-      color: $yellow;
-    }
-  }
-}
-
-.my-navbar-search-btn {
-  line-height: 40px;
-  color: $medium-gray;
-  border: none;
-  background: transparent;
-  position: absolute;
-  right: 20px;
-  top: -2px;
-  z-index: 1;
-  &:hover {
-    color: $yellow;
-  };
-  &:focus {
-    outline: none;
-    color: $yellow;
-  }
-}
-
 /* Navbar right section (with form, links, button) */
 
 .my-navbar-right {
@@ -100,7 +55,6 @@
 }
 
 .my-navbar-link {
-  font-size: 16px;
   font-weight: normal;
   line-height: 40px;
 }
@@ -109,31 +63,17 @@
   margin: 0 20px;
   padding: 0 20px;
   line-height: 40px;
-  font-size: 16px;
 }
 
-.my-navbar-button-search {
+.my-navbar-button-round {
   margin: 0 20px;
-  padding: 0;
-  line-height: 40px;
-  font-size: 16px;
+  height: 40px;
   width: 40px;
-}
-
-.my-navbar-badge-container {
-  position: relative;
+  border-radius: 50% !important;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
-  width: 35px;
-  height: 35px;
-  color: white;
-  background: $medium-gray;
-  border-radius: 50%;
-  &:hover {
-    border: 1px solid white;
-  }
+  position: relative;
 }
 
 #my-navbar-menu img {
@@ -182,8 +122,8 @@
 }
 
 .mobile-dropdown-toggle {
-  line-height: 45px;
-  padding-left: 50px;
+  line-height: 35px;
+  padding-left: 20px;
   cursor: pointer;
 }
 
@@ -212,16 +152,6 @@
   }
 }
 
-#dropdown-search {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 25px;
-  position: relative;
-  margin-bottom: 10px;
-  font-weight: normal;
-}
-
 
 @media (max-width: $screen-sm-max) {
   #my-navbar-search {
@@ -239,5 +169,10 @@
   };
   .my-navbar-brand img {
     height: 35px;
+  }
+  .my-navbar-button-round {
+    margin: 0 10px;
+    height: 35px;
+    width: 35px;
   }
 }
