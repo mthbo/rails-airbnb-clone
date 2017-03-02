@@ -1,16 +1,13 @@
-<% content_for :title do %>
-  <%= "Papoters | Search" %>
-<% end %>
+<div id="searchbar" class="hidden">
+  <input type="text" id="searchbar-input" autofocus="true">
+  <div id="searchbar-input-icon"><i class='fa fa-search'></i></div>
+</div>
 
-<div class="padded-top-xxl padded-bottom-xxl bg-light-gray" id="search-page-wrapper">
+
+<div class="padded-top-xxl padded-bottom-xxl bg-light-gray hidden" id="search-page-wrapper">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-
-        <div class="padded-bottom-s text-center" id="search-input-wrapper">
-          <input type="text" id="search-input" class="custom-search-input">
-          <div id="search-input-icon"><i class='fa fa-search'></i></div>
-        </div>
 
         <div class="padded-bottom-s">
           <div id="search-languages" class="facet"></div>
@@ -46,12 +43,12 @@
             appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
             apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
             indexName: 'Offer_development',
-            urlSync: true
+            urlSync: false
           });
 
           search.addWidget(
             instantsearch.widgets.searchBox({
-              container: '#search-input',
+              container: '#searchbar-input',
               placeholder: 'I need some advice for ...'
             })
           );
@@ -83,5 +80,3 @@
     </div>
   </div>
 </div>
-
-

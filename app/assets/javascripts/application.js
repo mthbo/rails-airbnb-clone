@@ -23,4 +23,5 @@
 //= require pin_button
 //= require proposition
 //= require radio_button
+//= require search
 //= require star-rating
