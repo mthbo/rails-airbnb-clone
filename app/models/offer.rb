@@ -19,47 +19,35 @@ class Offer < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch per_environment: true, if: :active? do
-    attribute :title, :description, :status, :pricing, :deals_closed_count, :global_rating
-    attribute :summary do
-      description[0..250]
+    attribute :title, :description, :summary, :deals_closed_view, :deals_closed_count, :global_rating_view, :global_rating, :amounts_view
+    attribute :median_amount do
+      min_amount.nil? ? 0 : median_amount / 100
     end
     attribute :created_at_i do
       created_at.to_i
     end
     attribute :languages do
-      languages.map { |language| { name: language.name, flag: ActionController::Base.helpers.image_tag("flags/" + language.flag) } }
+      languages.map { |language| { label: language.name_illustrated, flag: language.flag_img } }
     end
     attribute :means do
-      means.map { |mean| { name: mean.name, picto: mean.picto } }
+      means.map { |mean| { label: mean.name_illustrated, picto: mean.picto } }
     end
     attribute :advisor do
-      { name: advisor.name_anonymous, grade_and_age: advisor.grade_and_age, address: advisor.address_short, avatar_url: advisor.avatar_url }
+      { name: advisor.name_anonymous, grade_and_age: advisor.grade_and_age, address: advisor.address_short, avatar_img: advisor.avatar_img }
     end
-    attribute :min_amount do
-      min_amount.nil? ? 0 : min_amount
-    end
-    attribute :median_amount do
-      min_amount.nil? ? 0 : median_amount
-    end
-    attribute :max_amount do
-      min_amount.nil? ? 0 : max_amount
-    end
-    add_attribute :deals_closed_view
-    add_attribute :global_rating_view
-    add_attribute :amounts_view
     searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
     customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)', 'desc(created_at_i)']
-    attributesForFaceting [:languages, :means, :pricing, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount]
+    attributesForFaceting [:languages, :means, :global_rating, :median_amount]
     separatorsToIndex '+#$€'
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
     hitsPerPage 10
     add_replica 'Offer_price_asc', inherit: true, per_environment: true do
-      customRanking ['asc(median_amount)', 'asc(min_amount)', 'asc(max_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
+      customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
       typoTolerance 'min'
     end
     add_replica 'Offer_price_desc', inherit: true, per_environment: true do
-      customRanking ['desc(median_amount)', 'desc(max_amount)', 'desc(min_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
+      customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
       typoTolerance 'min'
     end
   end
@@ -179,6 +167,10 @@ class Offer < ApplicationRecord
 
 
   # For Algolia
+
+  def summary
+    description[0..250]
+  end
 
   def deals_closed_view
     "<strong>#{deals_closed_count}</strong> #{'session'.pluralize(deals_closed_count)}"

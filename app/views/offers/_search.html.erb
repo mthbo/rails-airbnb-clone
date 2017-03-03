@@ -9,15 +9,14 @@
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-        <div class="padded-bottom-s">
-          <div id="search-languages" class="facet"></div>
-          <div id="search-means" class="facet"></div>
-          <div id="search-means" class="facet"></div>
-          <div id="search-rating" class="facet"></div>
-          <div id="search-amount" class="facet"></div>
+        <div class="search-filters bg-white-transparent">
+          <div id="search-amounts" class="padded-bottom-xs"></div>
+          <div id="search-languages" class="padded-bottom-xs"></div>
+          <div id="search-means" class="padded-bottom-xs"></div>
+          <div id="search-rating"></div>
         </div>
 
-        <div class="search-infos">
+        <div class="search-infos padded-top-xs">
           <div id="search-stats"></div>
           <div id="search-sort-by-wrapper"><span id="search-sort-by"></span></div>
         </div>
@@ -53,7 +52,6 @@
           search.addWidget(
             instantsearch.widgets.hits({
               container: '#search-hits',
-              hitsPerPage: 10,
               templates: {
                 item: getTemplate('search-hit'),
                 empty: getTemplate('search-no-results')
@@ -90,12 +88,43 @@
           search.addWidget(
             instantsearch.widgets.refinementList({
               container: '#search-languages',
-              attributeName: 'languages',
+              attributeName: 'languages.label',
               sortBy: ['isRefined', 'count:desc', 'name:asc'],
               operator: 'or',
+              limit: 5,
+              showMore: true,
               templates: {
-                header: '<h5>Languages</h5>'
+                header: '<h6>Languages</h6>'
               }
+            })
+          );
+
+          search.addWidget(
+            instantsearch.widgets.refinementList({
+              container: '#search-means',
+              attributeName: 'means.label',
+              sortBy: ['isRefined', 'count:desc', 'name:asc'],
+              operator: 'or',
+              limit: 5,
+              showMore: true,
+              templates: {
+                header: '<h6>Means of communication</h6>'
+              }
+            })
+          );
+
+          search.addWidget(
+            instantsearch.widgets.rangeSlider({
+              container: '#search-amounts',
+              attributeName: 'median_amount',
+              templates: {
+                header: '<h6>Median price of sessions</h6>'
+              },
+              tooltips: {
+                format: function(rawValue) {
+                  return Math.round(rawValue).toLocaleString() + ' €';
+                }
+              },
             })
           );
 
