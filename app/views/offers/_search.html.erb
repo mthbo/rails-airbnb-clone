@@ -9,16 +9,30 @@
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-        <div class="search-filters bg-white-transparent">
-          <div id="search-amounts" class="padded-bottom-xs"></div>
+        <div id="search-filters-top" class="bg-white-transparent">
+        </div>
+        <div id="search-filters" class="bg-white-transparent">
+          <div id="search-amounts"></div>
           <div id="search-languages" class="padded-bottom-xs"></div>
           <div id="search-means" class="padded-bottom-xs"></div>
-          <div id="search-rating"></div>
+        </div>
+        <div id="search-filters-disclose" class="text-center bg-white-transparent">
+          <p>
+            <%= link_to '#', id: "search-filters-toggle" do  %>
+              <span class="toggle-link">See filters &nbsp;
+                <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+              </span>
+              <span class="toggle-link hidden">Hide filters &nbsp;
+                <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+              </span>
+            <% end %>
+            <%= link_to "Clear search", '#', id: "search-filters-clear", class: "hidden" %>
+          </p>
         </div>
 
-        <div class="search-infos padded-top-xs">
+        <div class="search-infos padded-top-s">
           <div id="search-stats"></div>
-          <div id="search-sort-by-wrapper"><span id="search-sort-by"></span></div>
+          <div id="search-sort-by"></div>
         </div>
 
         <div id="search-hits"></div>
@@ -55,7 +69,8 @@
               templates: {
                 item: getTemplate('search-hit'),
                 empty: getTemplate('search-no-results')
-              }
+              },
+              hitsPerPage: 10
             })
           );
 
@@ -75,6 +90,10 @@
                 name: "Offer_price_asc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Lowest price'
               }, {
                 name: "Offer_price_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest price'
+              }, {
+                name: "Offer_rating_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest rating'
+              }, {
+                name: "Offer_created_at_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Most recent'
               }]
             })
           );
@@ -91,7 +110,7 @@
               attributeName: 'languages.label',
               sortBy: ['isRefined', 'count:desc', 'name:asc'],
               operator: 'or',
-              limit: 5,
+              limit: 4,
               showMore: true,
               templates: {
                 header: '<h6>Languages</h6>'
@@ -105,7 +124,7 @@
               attributeName: 'means.label',
               sortBy: ['isRefined', 'count:desc', 'name:asc'],
               operator: 'or',
-              limit: 5,
+              limit: 4,
               showMore: true,
               templates: {
                 header: '<h6>Means of communication</h6>'
@@ -125,6 +144,7 @@
                   return Math.round(rawValue).toLocaleString() + ' €';
                 }
               },
+              pips: false
             })
           );
 

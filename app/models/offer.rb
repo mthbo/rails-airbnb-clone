@@ -37,17 +37,24 @@ class Offer < ApplicationRecord
     end
     searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
     customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)', 'desc(created_at_i)']
-    attributesForFaceting [:languages, :means, :global_rating, :median_amount]
+    attributesForFaceting [:languages, :means, :median_amount]
     separatorsToIndex '+#$€'
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
-    hitsPerPage 10
     add_replica 'Offer_price_asc', inherit: true, per_environment: true do
       customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
       typoTolerance 'min'
     end
     add_replica 'Offer_price_desc', inherit: true, per_environment: true do
       customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
+      typoTolerance 'min'
+    end
+    add_replica 'Offer_rating_desc', inherit: true, per_environment: true do
+      customRanking ['desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
+      typoTolerance 'min'
+    end
+    add_replica 'Offer_created_at_desc', inherit: true, per_environment: true do
+      customRanking ['desc(created_at_i)', 'desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)']
       typoTolerance 'min'
     end
   end
