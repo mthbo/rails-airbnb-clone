@@ -71,7 +71,7 @@ class User < ApplicationRecord
     end
   end
 
-  def avatar_url
+  def avatar_img
     if photo.present?
       html = ActionController::Base.helpers.cl_image_tag(photo.path, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar-medium bg-light-gray").to_s
     else

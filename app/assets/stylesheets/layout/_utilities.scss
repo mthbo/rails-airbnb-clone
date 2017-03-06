@@ -37,6 +37,9 @@
 .padded-top-xxl {
   padding-top: 6em;
 }
+.padded-top-xxxl {
+  padding-top: 9em;
+}
 
 .padded-bottom-xs {
   padding-bottom: 1em;
@@ -216,12 +219,14 @@ label {
 a {
   color: $medium-dark-gray;
   font-weight: bolder;
-  &:hover {
+  &:hover, &:focus:hover {
     text-decoration: none;
     color: $blue;
   }
   &:focus {
     text-decoration: none;
+    outline: none;
+    color: $medium-dark-gray;
   }
 }
 
@@ -257,7 +262,7 @@ a {
   h6 {
     font-size: 14px;
   }
-  p, ul, ol, label {
+  p, ul, ol, label, select {
     font-size: 14px !important;
   }
 }

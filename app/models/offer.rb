@@ -19,39 +19,39 @@ class Offer < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch per_environment: true, if: :active? do
-    attribute :title, :description, :status, :pricing, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount
-    attribute :summary do
-      description[0..250]
+    attribute :title, :description, :summary, :deals_closed_view, :deals_closed_count, :global_rating_view, :global_rating, :amounts_view
+    attribute :median_amount do
+      min_amount.nil? ? 0 : median_amount / 100
     end
     attribute :created_at_i do
       created_at.to_i
     end
     attribute :languages do
-      languages.map { |language| { name: language.name, flag: ActionController::Base.helpers.image_tag("flags/" + language.flag) } }
+      languages.map { |language| { label: language.name_illustrated, flag: language.flag_img } }
     end
     attribute :means do
-      means.map { |mean| { name: mean.name, picto: mean.picto } }
+      means.map { |mean| { label: mean.name_illustrated, picto: mean.picto } }
     end
     attribute :advisor do
-      { name: advisor.name_anonymous, grade_and_age: advisor.grade_and_age, address: advisor.address_short, avatar_url: advisor.avatar_url }
+      { name: advisor.name_anonymous, grade_and_age: advisor.grade_and_age, address: advisor.address_short, avatar_img: advisor.avatar_img }
     end
-    add_attribute :deals_closed_view
-    add_attribute :global_rating_view
-    add_attribute :amounts_view
     searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
     customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)', 'desc(created_at_i)']
-    attributesForFaceting [:languages, :means, :pricing, :deals_closed_count, :global_rating, :min_amount, :median_amount, :max_amount]
+    attributesForFaceting [:languages, :means, :median_amount]
     separatorsToIndex '+#$€'
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
-    hitsPerPage 10
-    add_replica 'Offer_median_amount_asc', inherit: true, per_environment: true do
+    add_replica 'Offer_price_asc', inherit: true, per_environment: true do
       customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
-      typoTolerance 'min'
     end
-    add_replica 'Offer_median_amount_desc', inherit: true, per_environment: true do
+    add_replica 'Offer_price_desc', inherit: true, per_environment: true do
       customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
-      typoTolerance 'min'
+    end
+    add_replica 'Offer_rating_desc', inherit: true, per_environment: true do
+      customRanking ['desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
+    end
+    add_replica 'Offer_created_at_desc', inherit: true, per_environment: true do
+      customRanking ['desc(created_at_i)', 'desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)']
     end
   end
 
@@ -171,6 +171,10 @@ class Offer < ApplicationRecord
 
   # For Algolia
 
+  def summary
+    description[0..250]
+  end
+
   def deals_closed_view
     "<strong>#{deals_closed_count}</strong> #{'session'.pluralize(deals_closed_count)}"
   end
@@ -178,11 +182,11 @@ class Offer < ApplicationRecord
   def global_rating_view
     html = ""
     unless global_rating.nil?
-      html << "<i class='fa fa-star yellow' aria-hidden='true'></i>" * global_rating.round
-      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>" * (5 - global_rating.round)
+      html << "<i class='fa fa-star yellow' aria-hidden='true'></i>&nbsp;" * global_rating.round
+      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * (5 - global_rating.round)
       html << "<span>&nbsp;&nbsp;<strong>#{(global_rating.fdiv(5) * 100).to_i} %</strong>  happy</span>"
     else
-      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>" * 5
+      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * 5
       html << "<span class='medium-gray'>&nbsp;&nbsp; not rated yet</span>"
     end
     html

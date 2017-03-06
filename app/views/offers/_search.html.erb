@@ -1,79 +1,61 @@
-<div id="searchbar" class="hidden">
-  <input type="text" id="searchbar-input" autofocus="true">
-  <div id="searchbar-input-icon"><i class='fa fa-search'></i></div>
+<div id="searchbar">
+  <div id="searchbar-input-wrapper">
+    <input type="text" id="searchbar-input" autofocus="true">
+    <div id="searchbar-input-icon"><i class='fa fa-search'></i></div>
+    <div id="searchbar-algolia-logo">
+      <%= link_to "https://www.algolia.com/?utm_source=instantsearch.js&utm_medium=website&utm_content=localhost&utm_campaign=poweredby" do %>
+        <%= image_tag "powered_by_algolia.svg"  %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
-<div id="search-page-wrapper" class="padded-top-xxl padded-bottom-xxl bg-light-gray hidden">
+<div id="search-page-wrapper" class="padded-top-xxxl padded-bottom-xxl bg-light-gray hidden">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-        <div class="padded-bottom-s">
-          <div id="search-languages" class="facet"></div>
-          <div id="search-means" class="facet"></div>
-          <div id="search-means" class="facet"></div>
-          <div id="search-rating" class="facet"></div>
-          <div id="search-amount" class="facet"></div>
+        <div id="search-filters-top" class="bg-white-transparent">
+        </div>
+        <div id="search-filters" class="bg-white-transparent">
+          <div id="search-amounts"></div>
+          <div id="search-languages" class="padded-bottom-xs"></div>
+          <div id="search-means" class="padded-bottom-xs"></div>
+        </div>
+        <div id="search-filters-disclose" class="text-center bg-white-transparent">
+          <p>
+            <%= link_to '#', id: "search-filters-toggle" do  %>
+              <span class="toggle-link">Show filters &nbsp;
+                <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+              </span>
+              <span class="toggle-link hidden">Hide filters &nbsp;
+                <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+              </span>
+            <% end %>
+            <%= link_to "Clear search", '#', id: "search-clear", class: "hidden" %>
+          </p>
         </div>
 
-        <div class="padded-bottom-s">
-          <div id="search-sort-by-wrapper"><span id="search-sort-by"></span></div>
+        <div class="search-infos padded-top-s">
           <div id="search-stats"></div>
-          <div id="search-hits"></div>
-          <div id="search-pagination"></div>
+          <div id="search-sort-by"></div>
         </div>
+
+        <div id="search-hits"></div>
+
+        <div id="search-pagination"></div>
 
         <script type="text/html" id="search-hit-template">
-          <div class="search-hit">
-            <%= render "offers/card_instant" %>
-          </div>
+          <%= render "offers/card_instant" %>
         </script>
 
         <script type="text/html" id="search-no-results-template">
-          <div id="search-no-results-message">
-            <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
-            <a href="." class="clear-all">Clear search</a>
-          </div>
+          <p>Sorry, we didn't find any offers matching the search <em>"{{query}}"</em>...</p>
         </script>
 
-        <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
-        <script>
-          var search = instantsearch({
-            appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
-            apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
-            indexName: 'Offer_development',
-            urlSync: false
-          });
-
-          search.addWidget(
-            instantsearch.widgets.searchBox({
-              container: '#searchbar-input',
-              placeholder: 'I need some advice for ...'
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.hits({
-              container: '#search-hits',
-              templates: {
-                item: getTemplate('search-hit'),
-                empty: getTemplate('search-no-results')
-              }
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.stats({
-              container: '#search-stats'
-            })
-          );
-
-          function getTemplate(templateName) {
-            return document.getElementById(templateName + '-template').innerHTML;
-          }
-
-          search.start();
+        <script type="text/html" id="search-stats-template">
+          <h4>{{nbHits}} offer{{#hasManyResults}}s{{/hasManyResults}} found</h4>
         </script>
 
       </div>
