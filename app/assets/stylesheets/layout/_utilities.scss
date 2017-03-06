@@ -219,12 +219,14 @@ label {
 a {
   color: $medium-dark-gray;
   font-weight: bolder;
-  &:hover {
+  &:hover, &:focus:hover {
     text-decoration: none;
     color: $blue;
   }
   &:focus {
     text-decoration: none;
+    outline: none;
+    color: $medium-dark-gray;
   }
 }
 

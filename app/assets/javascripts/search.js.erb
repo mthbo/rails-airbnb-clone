@@ -1,0 +1,178 @@
+$(document).ready(function() {
+
+  if ($('.my-navbar').length > 0) {
+
+    var search = instantsearch({
+      appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
+      apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
+      indexName: "Offer_" + "<%= ENV['RAILS_ENV'] %>",
+      urlSync: false
+    });
+
+    search.addWidget(
+      instantsearch.widgets.searchBox({
+        container: '#searchbar-input',
+        placeholder: 'I need some advice for ...'
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.hits({
+        container: '#search-hits',
+        templates: {
+          item: getTemplate('search-hit'),
+          empty: getTemplate('search-no-results')
+        },
+        hitsPerPage: 10
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.stats({
+        container: '#search-stats',
+        templates: {
+          body: getTemplate('search-stats'),
+        }
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.sortBySelector({
+        container: '#search-sort-by',
+        autoHideContainer: true,
+        indices: [{
+          name: search.indexName, label: 'Most relevant'
+        }, {
+          name: "Offer_price_asc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Lowest price'
+        }, {
+          name: "Offer_price_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest price'
+        }, {
+          name: "Offer_rating_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest rating'
+        }, {
+          name: "Offer_created_at_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Most recent'
+        }]
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.pagination({
+        container: '#search-pagination'
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.refinementList({
+        container: '#search-languages',
+        attributeName: 'languages.label',
+        sortBy: ['isRefined', 'count:desc', 'name:asc'],
+        operator: 'or',
+        limit: 4,
+        showMore: true,
+        templates: {
+          header: '<h6>Languages</h6>'
+        }
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.refinementList({
+        container: '#search-means',
+        attributeName: 'means.label',
+        sortBy: ['isRefined', 'count:desc', 'name:asc'],
+        operator: 'or',
+        limit: 4,
+        showMore: true,
+        templates: {
+          header: '<h6>Means of communication</h6>'
+        }
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.rangeSlider({
+        container: '#search-amounts',
+        attributeName: 'median_amount',
+        templates: {
+          header: '<h6>Median price of sessions</h6>'
+        },
+        tooltips: {
+          format: function(rawValue) {
+            return Math.round(rawValue).toLocaleString() + ' €';
+          }
+        },
+        pips: false
+      })
+    );
+
+    search.start();
+
+    $('#btn-search-trigger').on('click', function() {
+      $('#searchbar').slideToggle(150, function() {
+        if ($('#searchbar').is(':hidden')) {
+          $('#searchbar-input').focusout();
+          showMainHideSearch();
+        } else {
+          $('#searchbar-input').focus();
+        }
+      });
+    });
+
+    $('#main').on('click', function() {
+      if ($('#searchbar').is(':visible')) {
+        $('#searchbar').slideUp(150);
+        $('#searchbar-input').focusout();
+      }
+    });
+
+    $('#searchbar-input').on('input focusin', function() {
+      if ($(this).val() === "") {
+        showMainHideSearch();
+      } else {
+        showSearchHideMain();
+      }
+    });
+
+    search.on('render', function() {
+      filtersDiscloseContent();
+    });
+
+    $('#search-filters-toggle').on('click', function(event) {
+      event.preventDefault();
+      $('#search-filters').slideToggle('fast');
+      $('#search-filters-toggle .toggle-link').toggleClass('hidden');
+    });
+
+    $('#search-clear').on('click', function(event) {
+      event.preventDefault();
+      $('#searchbar-input').val("");
+      showMainHideSearch();
+      $('#searchbar-input').focus();
+    });
+
+  }
+
+});
+
+function getTemplate(templateName) {
+  return document.getElementById(templateName + '-template').innerHTML;
+}
+
+function showMainHideSearch() {
+  $('#main').removeClass('hidden');
+  $('#search-page-wrapper').addClass('hidden');
+}
+
+function showSearchHideMain() {
+  $('#search-page-wrapper').removeClass('hidden');
+  $('#main').addClass('hidden');
+}
+
+function filtersDiscloseContent() {
+  if ($('.ais-hits__empty').length === 0) {
+    $('#search-filters-toggle').removeClass('hidden');
+    $('#search-clear').addClass('hidden');
+  } else {
+    $('#search-filters-toggle').addClass('hidden');
+    $('#search-clear').removeClass('hidden');
+  }
+}

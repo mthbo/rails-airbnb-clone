@@ -43,19 +43,15 @@ class Offer < ApplicationRecord
     ignorePlurals true
     add_replica 'Offer_price_asc', inherit: true, per_environment: true do
       customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
-      typoTolerance 'min'
     end
     add_replica 'Offer_price_desc', inherit: true, per_environment: true do
       customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
-      typoTolerance 'min'
     end
     add_replica 'Offer_rating_desc', inherit: true, per_environment: true do
       customRanking ['desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
-      typoTolerance 'min'
     end
     add_replica 'Offer_created_at_desc', inherit: true, per_environment: true do
       customRanking ['desc(created_at_i)', 'desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)']
-      typoTolerance 'min'
     end
   end
 
@@ -186,11 +182,11 @@ class Offer < ApplicationRecord
   def global_rating_view
     html = ""
     unless global_rating.nil?
-      html << "<i class='fa fa-star yellow' aria-hidden='true'></i>" * global_rating.round
-      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>" * (5 - global_rating.round)
+      html << "<i class='fa fa-star yellow' aria-hidden='true'></i>&nbsp;" * global_rating.round
+      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * (5 - global_rating.round)
       html << "<span>&nbsp;&nbsp;<strong>#{(global_rating.fdiv(5) * 100).to_i} %</strong>  happy</span>"
     else
-      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>" * 5
+      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * 5
       html << "<span class='medium-gray'>&nbsp;&nbsp; not rated yet</span>"
     end
     html

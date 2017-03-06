@@ -1,6 +1,13 @@
-<div id="searchbar" class="hidden">
-  <input type="text" id="searchbar-input" autofocus="true">
-  <div id="searchbar-input-icon"><i class='fa fa-search'></i></div>
+<div id="searchbar">
+  <div id="searchbar-input-wrapper">
+    <input type="text" id="searchbar-input" autofocus="true">
+    <div id="searchbar-input-icon"><i class='fa fa-search'></i></div>
+    <div id="searchbar-algolia-logo">
+      <%= link_to "https://www.algolia.com/?utm_source=instantsearch.js&utm_medium=website&utm_content=localhost&utm_campaign=poweredby" do %>
+        <%= image_tag "powered_by_algolia.svg"  %>
+      <% end %>
+    </div>
+  </div>
 </div>
 
 
@@ -19,14 +26,14 @@
         <div id="search-filters-disclose" class="text-center bg-white-transparent">
           <p>
             <%= link_to '#', id: "search-filters-toggle" do  %>
-              <span class="toggle-link">See filters &nbsp;
+              <span class="toggle-link">Show filters &nbsp;
                 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
               </span>
               <span class="toggle-link hidden">Hide filters &nbsp;
                 <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
               </span>
             <% end %>
-            <%= link_to "Clear search", '#', id: "search-filters-clear", class: "hidden" %>
+            <%= link_to "Clear search", '#', id: "search-clear", class: "hidden" %>
           </p>
         </div>
 
@@ -47,112 +54,8 @@
           <p>Sorry, we didn't find any offers matching the search <em>"{{query}}"</em>...</p>
         </script>
 
-        <script src="https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js"></script>
-        <script>
-          var search = instantsearch({
-            appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
-            apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
-            indexName: "Offer_" + "<%= ENV['RAILS_ENV'] %>",
-            urlSync: false
-          });
-
-          search.addWidget(
-            instantsearch.widgets.searchBox({
-              container: '#searchbar-input',
-              placeholder: 'I need some advice for ...'
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.hits({
-              container: '#search-hits',
-              templates: {
-                item: getTemplate('search-hit'),
-                empty: getTemplate('search-no-results')
-              },
-              hitsPerPage: 10
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.stats({
-              container: '#search-stats',
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.sortBySelector({
-              container: '#search-sort-by',
-              autoHideContainer: true,
-              indices: [{
-                name: search.indexName, label: 'Most relevant'
-              }, {
-                name: "Offer_price_asc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Lowest price'
-              }, {
-                name: "Offer_price_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest price'
-              }, {
-                name: "Offer_rating_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest rating'
-              }, {
-                name: "Offer_created_at_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Most recent'
-              }]
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.pagination({
-              container: '#search-pagination'
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.refinementList({
-              container: '#search-languages',
-              attributeName: 'languages.label',
-              sortBy: ['isRefined', 'count:desc', 'name:asc'],
-              operator: 'or',
-              limit: 4,
-              showMore: true,
-              templates: {
-                header: '<h6>Languages</h6>'
-              }
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.refinementList({
-              container: '#search-means',
-              attributeName: 'means.label',
-              sortBy: ['isRefined', 'count:desc', 'name:asc'],
-              operator: 'or',
-              limit: 4,
-              showMore: true,
-              templates: {
-                header: '<h6>Means of communication</h6>'
-              }
-            })
-          );
-
-          search.addWidget(
-            instantsearch.widgets.rangeSlider({
-              container: '#search-amounts',
-              attributeName: 'median_amount',
-              templates: {
-                header: '<h6>Median price of sessions</h6>'
-              },
-              tooltips: {
-                format: function(rawValue) {
-                  return Math.round(rawValue).toLocaleString() + ' €';
-                }
-              },
-              pips: false
-            })
-          );
-
-          function getTemplate(templateName) {
-            return document.getElementById(templateName + '-template').innerHTML;
-          }
-
-          search.start();
+        <script type="text/html" id="search-stats-template">
+          <h4>{{nbHits}} offer{{#hasManyResults}}s{{/hasManyResults}} found</h4>
         </script>
 
       </div>

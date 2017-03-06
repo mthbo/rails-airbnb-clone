@@ -52,8 +52,7 @@ $dark-yellow: #E3A604;
 $light-red: #F6C4C3;
 $light-yellow: #FFEAB2;
 $light-green: #A7F5DF;
-$light-blue: #ABCCED;
-
+$light-blue: #30689D;
 $flash-blue: #54A3EF;
 
 $facebook-blue: #3b5998;
@@ -78,8 +77,8 @@ $reverse-gradient-green-dark: linear-gradient(344deg, $green 0%, $dark-green 100
 $gradient-yellow-dark: linear-gradient(164deg, $yellow 0%, $dark-yellow 100%);
 $reverse-gradient-yellow-dark: linear-gradient(344deg, $yellow 0%, $dark-yellow 100%);
 
-$gradient-blue-dark: linear-gradient(164deg, $blue 0%, $dark-blue 100%);
-$reverse-gradient-blue-dark: linear-gradient(344deg, $blue 0%, $dark-blue 100%);
+$gradient-blue-light: linear-gradient(164deg, $light-blue 0%, $blue 100%);
+$reverse-gradient-blue-light: linear-gradient(344deg, $light-blue 0%, $blue 100%);
 
 $gradient-red-dark: linear-gradient(164deg, $red 0%, $dark-red 100%);
 $reverse-gradient-red-dark: linear-gradient(344deg, $red 0%, $dark-red 100%);

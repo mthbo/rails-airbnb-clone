@@ -112,12 +112,12 @@
 .btn-blue {
   border: none;
   color: white;
-  background: $gradient-blue-dark;
+  background: $gradient-blue-light;
   &:hover {
-    background: $reverse-gradient-blue-dark;
+    background: $reverse-gradient-blue-light;
   };
   &:active {
-    background: $gradient-blue-dark;
+    background: $gradient-blue-light;
   };
   &:focus {
     color: white;
