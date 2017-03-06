@@ -158,13 +158,19 @@ function getTemplate(templateName) {
 }
 
 function showMainHideSearch() {
-  $('#main').removeClass('hidden');
-  $('#search-page-wrapper').addClass('hidden');
+  if ($('#main').hasClass('hidden')) {
+    $('#main').removeClass('hidden');
+    $('#search-page-wrapper').addClass('hidden');
+    window.scroll({ top: 0, left: 0 });
+  }
 }
 
 function showSearchHideMain() {
-  $('#search-page-wrapper').removeClass('hidden');
-  $('#main').addClass('hidden');
+  if ($('#search-page-wrapper').hasClass('hidden')) {
+    $('#search-page-wrapper').removeClass('hidden');
+    $('#main').addClass('hidden');
+    window.scroll({ top: 0, left: 0 });
+  }
 }
 
 function filtersDiscloseContent() {
