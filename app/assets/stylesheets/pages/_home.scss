@@ -1,14 +1,18 @@
-.home {
+#home {
+  background-attachment: fixed;
   h2 {
-    font-size: 35px;
+    font-size: 40px;
   }
 }
 
-// .home-banner {
-//   background: linear-gradient(180deg, rgba(255, 201, 56, 0.5) 0%, rgba(66, 211, 170, 0.5) 70%, rgba(255, 201, 56, 0.5) 100%);
-// }
 
-.home-banner-top {
+// Banner
+
+#home-banner {
+  background-color: rgba(240, 240, 240, 0.8);
+}
+
+#home-banner-top {
   height: 60vh;
   display: flex;
   align-items: center;
@@ -17,19 +21,17 @@
   padding-right: 15px;
   h1 {
     flex: 0 1 800px;
-    font-size: 60px;
-    font-weight: lighter;
+    font-size: 55px;
   }
 }
 
-#home-input-wrapper {
+#home-banner-middle {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: flex;
   width: 100%;
   padding: 15px;
-  background: rgba(255, 201, 56, 0.8);
+  background: rgba(255, 201, 56, 0.9);
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
 }
 
@@ -59,20 +61,7 @@
   width: 0;
 }
 
-
-.home-be-advisor-link {
-  color: $medium-dark-gray;
-  font-size: 35px;
-  font-weight: normal;
-  border-bottom: solid 2px $green;
-  padding: 10px;
-  &:hover {
-    color: $dark-gray;
-    border-bottom: solid 3px $green;
-  }
-}
-
-.home-banner-bottom{
+#home-banner-bottom {
   height: calc(40vh - 81px);
   display: flex;
   align-items: flex-end;
@@ -85,22 +74,54 @@
     margin: 0;
   };
   font-size: 50px;
-  color: $medium-dark-gray;
-  &:hover {
-    color: $blue;
+}
+
+
+// .home-be-advisor-link {
+//   color: $medium-dark-gray;
+//   font-size: 35px;
+//   font-weight: normal;
+//   border-bottom: solid 2px $green;
+//   padding: 10px;
+//   &:hover {
+//     color: $dark-gray;
+//     border-bottom: solid 3px $green;
+//   }
+// }
+
+
+
+// Inspirations
+
+
+#home-inspirations {
+  height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+  h2 {
+    color: white;
+    flex: 0 1 700px;
   }
 }
 
-.home-inspiration-picture {
-  img {
-    max-width: 100%;
-  }
-}
 
-.home-guidelines {
+// Guidelines
+
+#home-guidelines {
+  background: white;
   h3 {
     font-size: 20px;
   }
+}
+
+
+// Be advisor
+
+#home-be-advisor {
+  background-color: rgba(240, 240, 240, 0.8);
 }
 
 .home-be-advisor-btn {
@@ -132,40 +153,40 @@
 
 
 @media (max-width: $screen-xs-max) {
-  .home {
+  #home {
     h2 {
       font-size: 26px;
     }
   }
-  .home-banner-title {
+  #home-banner-top {
     h1 {
-      font-size: 35px;
+      font-size: 30px;
     }
   }
-  #home-search-form {
-    flex: 0 1 500px;
-  }
-  .home-search-input, .home-bottom-search-input {
-    height: 40px;
-    margin-right: 10px;
+  #home-input {
+    flex: 1 1 auto;
     font-size: 20px;
+    padding-right: 20px;
   }
-  .home-search-btn, .home-bottom-search-btn {
-    height: 40px;
-    flex: 0 0 40px;
-    font-size: 16px;
+
+  #home-input-icon {
+    font-size: 18px;
+    right: 20px;
   }
-  .home-be-advisor-link {
-    font-size: 20px;
-    padding: 5px;
-    border-bottom: 1px $green solid;
-    &:hover {
-      border-bottom: 2px $green solid;
-    }
+  #home-banner-bottom{
+    height: calc(40vh - 62px);
   }
   #home-arrow-down {
     font-size: 30px;
   }
+  // .home-be-advisor-link {
+  //   font-size: 20px;
+  //   padding: 5px;
+  //   border-bottom: 1px $green solid;
+  //   &:hover {
+  //     border-bottom: 2px $green solid;
+  //   }
+  // }
   .home-be-advisor-btn {
     font-size: 18px;
   }

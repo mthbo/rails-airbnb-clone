@@ -150,9 +150,8 @@ $(document).ready(function() {
 
     $('#search-clear').on('click', function(event) {
       event.preventDefault();
-      $('#searchbar-input').val("");
-      showMainHideSearch();
       $('#searchbar-input').focus();
+      $('#searchbar-input').val("");
     });
 
   }
