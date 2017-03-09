@@ -2,7 +2,26 @@
   <%= "Papoters | Be advisor" %>
 <% end %>
 
-<div class="home bg-reverse-gradient-light">
+<div class="home" style='background-image: url("<%= image_path('background.png') %>");'>
+
+  <div class="home-banner text-center bg-gray-transparent">
+    <div class="home-banner-top home-content-wrapper">
+      <div class="home-flex-800">
+        <h1>Your knowledge and your experience have value!</h1>
+      </div>
+    </div>
+    <div class="home-banner-middle home-content-wrapper bg-green-transparent">
+      <div class="home-flex-600">
+        <%= link_to "Publish your first offer as advisor", user_signed_in? ? user_path(current_user) : new_user_session_path, id: "home-give-advice-link" %>
+      </div>
+    </div>
+    <div class="home-banner-bottom home-content-wrapper">
+      <%= link_to root_path, id: "home-arrow-down" do %>
+        <p class="no-margin-bottom">Tell me more</p>
+        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+      <% end %>
+    </div>
+  </div>
 
   <div class="home-banner text-center">
     <div class="container">

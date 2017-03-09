@@ -1,4 +1,4 @@
-#home {
+.home {
   background-attachment: fixed;
   h1 {
     font-size: 55px;
@@ -11,9 +11,9 @@
     font-weight: normal
   };
   h4 {
-    font-size: 20px;
-    font-weight: normal;
+    font-size: 26px;
     padding-top: 10px;
+    font-family: $special-font;
   }
 }
 
@@ -43,16 +43,25 @@
   min-width: 190px;
 }
 
-#home-banner-top {
+.home-banner {
+  height: 100vh;
+}
+
+.home-banner-top {
   height: 60vh;
   align-items: center;
 }
 
-#home-banner-middle {
+.home-banner-middle {
+  height: 80px;
   align-items: center;
   padding: 15px;
-  background: rgba(255, 201, 56, 0.9);
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+}
+
+.home-banner-bottom {
+  height: calc(40vh - 80px);
+  align-items: flex-end;
 }
 
 #home-input {
@@ -80,9 +89,16 @@
   width: 0;
 }
 
-#home-banner-bottom {
-  height: calc(40vh - 81px);
-  align-items: flex-end;
+#home-give-advice-link {
+  color: $medium-dark-gray;
+  padding-bottom: 3px;
+  font-size: 34px;
+  font-weight: normal;
+  border-bottom: solid 2px white;
+  &:hover {
+    color: $dark-gray;
+    border-bottom: solid 3px white;
+  }
 }
 
 #home-arrow-down {
@@ -91,26 +107,13 @@
   }
 }
 
-#home-inspirations-top {
+.home-inspirations-top {
   height: 54px;
 }
 
-#home-inspirations-middle {
+.home-inspirations-middle {
   height: calc(100vh - 54px);
 }
-
-
-// .home-be-advisor-link {
-//   color: $medium-dark-gray;
-//   font-size: 35px;
-//   font-weight: normal;
-//   border-bottom: solid 2px $green;
-//   padding: 10px;
-//   &:hover {
-//     color: $dark-gray;
-//     border-bottom: solid 3px $green;
-//   }
-// }
 
 // .home-bottom-search-content {
 //   display: flex;
@@ -136,7 +139,7 @@
 
 
 @media (max-width: $screen-xs-max) {
-  #home {
+  .home {
     h1 {
       font-size: 30px;
     };
@@ -146,6 +149,9 @@
     h3 {
       font-size: 20px;
     };
+    h4 {
+      font-size: 24px;
+    }
   }
   .home-btn {
     font-size: 16px;
@@ -159,8 +165,11 @@
     font-size: 18px;
     right: 20px;
   }
-  #home-banner-bottom{
-    height: calc(40vh - 62px);
+  .home-banner-middle {
+    height: 60px;
+  }
+  .home-banner-bottom{
+    height: calc(40vh - 60px);
   }
   #home-arrow-down {
     .glyphicon {

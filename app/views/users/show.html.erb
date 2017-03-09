@@ -37,7 +37,7 @@
         <% if @user.bio.present? %>
           <%= sanitize markdown_to_html(@user.bio) %>
         <% elsif policy(@user).edit? %>
-          <p>You haven't provide information about yourself.</p>
+          <p class="red font-weight-normal">You haven't provide information about yourself.</p>
           <p><%= link_to "Edit your profile", edit_user_registration_path %> to let people know more about you.</p>
         <% else %>
           <p><%= @user.first_name %> hasn't provide personnal information yet.</p>
@@ -70,7 +70,7 @@
               <%= render "offers/card_without_user", offer: offer %>
             <% end %>
           <% else %>
-            <p>You have no offer published.</p>
+            <p class="red font-weight-normal">You have no offer published.</p>
             <p>You can <%= link_to "create an offer", new_offer_path %> or <%= link_to "check this out", be_advisor_path %> if you need to know more about being an advisor on Papoters.</p>
           <% end %>
         <% else %>

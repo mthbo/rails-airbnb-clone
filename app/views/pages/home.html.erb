@@ -2,19 +2,19 @@
   <%= "Papoters | Home" %>
 <% end %>
 
-<div id="home" style='background-image: url("<%= image_path('background.png') %>");'>
+<div class="home" style='background-image: url("<%= image_path('background.png') %>");'>
 
-  <div id="home-banner" class="text-center bg-gray-transparent">
-    <div id="home-banner-top" class="home-content-wrapper">
+  <div class="home-banner text-center bg-gray-transparent">
+    <div class="home-banner-top home-content-wrapper">
       <div class="home-flex-800">
         <h1>Get personal advice for whatever you need, anytime, anywhere.</h1>
       </div>
     </div>
-    <div id="home-banner-middle" class="home-content-wrapper">
+    <div class="home-banner-middle home-content-wrapper bg-yellow-transparent">
       <input type="text" id="home-input" class="home-flex-600" autofocus="true" placeholder="I need some advice for ...">
       <div id="home-input-icon"><i class='fa fa-search'></i></div>
     </div>
-    <div id="home-banner-bottom" class="home-content-wrapper">
+    <div class="home-banner-bottom home-content-wrapper">
       <%= link_to root_path, id: "home-arrow-down" do %>
         <p class="no-margin-bottom">Tell me more</p>
         <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
@@ -22,58 +22,57 @@
     </div>
   </div>
 
-  <div id="home-inspirations">
-    <div id="home-inspirations-top" class="bg-gray-transparent"></div>
-    <div id="home-inspirations-middle" class="text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('background_disclose.png') %>");'>
+  <div>
+    <div class="home-inspirations-top bg-gray-transparent"></div>
+    <div class="home-inspirations-middle text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('background_disclose.png') %>");'>
       <div class="home-flex-700">
         <h2 class="white">Give yourself some support for special moments, or just everyday life.</h2>
       </div>
     </div>
   </div>
 
-  <div id="home-guidelines" style='background-image: url("<%= image_path('grid.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white">
-    <div id="home-guidelines-top" class="home-content-wrapper padded-bottom-l">
+  <div style='background-image: url("<%= image_path('grid.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white">
+    <div class="home-content-wrapper padded-bottom-l">
       <div class="home-flex-700">
-        <h2>Discover a comforting and flexible advising experience.</h2>
+        <h2>Discover a simple and powerful way to get the advice you need.</h2>
       </div>
     </div>
-    <div id="home-guidelines-middle">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'guidelines/find-advisor.svg' %>
-            <h4><span class="blue font-weight-bolder">1</span> &nbsp;|&nbsp; Find an advisor</h4>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'guidelines/get-proposal.svg' %>
-            <h4><span class="blue font-weight-bolder">2</span> &nbsp;|&nbsp; Reach an agreement</h4>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'guidelines/get-advice.svg' %>
-            <h4><span class="blue font-weight-bolder">3</span> &nbsp;|&nbsp; Get advice</h4>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'guidelines/evaluate.svg' %>
-            <h4><span class="blue font-weight-bolder">4</span> &nbsp;|&nbsp; Tell how happy you are!</h4>
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <%= image_tag 'guidelines/find-advisor.svg' %>
+          <h4>1 &nbsp;-&nbsp; Find an advisor</h4>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <%= image_tag 'guidelines/get-proposal.svg' %>
+          <h4>2 &nbsp;-&nbsp; Reach an agreement</h4>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <%= image_tag 'guidelines/get-advice.svg' %>
+          <h4>3 &nbsp;-&nbsp; Get advice</h4>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <%= image_tag 'guidelines/evaluate.svg' %>
+          <h4>4 &nbsp;-&nbsp; Express your satisfaction !</h4>
         </div>
       </div>
     </div>
-    <div id="home-guidelines-bottom" class="padded-top-xs">
+
+    <div class="padded-top-xs">
       <button id="home-btn-search-trigger" class="btn btn btn-yellow home-btn">
         Find an advisor &nbsp;&nbsp;<i class='fa fa-search'></i>
       </button>
     </div>
   </div>
 
-  <div id="home-be-advisor" class="padded-top-l padded-bottom-xl text-center bg-gray-transparent">
-    <div id="home-be-advisor-top" class="padded-bottom-l home-content-wrapper">
+  <div class="padded-top-l padded-bottom-xl text-center bg-gray-transparent">
+    <div class="padded-bottom-m home-content-wrapper">
       <div class="home-flex-700">
         <h2 class="font-weight-normal">Your knowledge and your experience have value!</h2>
         <h3>Start giving advice to people who need you.</h3>
       </div>
     </div>
-    <div id="home-be-advisor-bottom">
+    <div class="padded-top-xs">
       <%= link_to "Become advisor", be_advisor_path, { class: "btn btn-green home-btn" } %>
     </div>
   </div>

@@ -69,6 +69,9 @@ $reverse-gradient-light: linear-gradient(344deg, rgba(255, 201, 56, 0.3) 0%, rgb
 $gradient-dark: linear-gradient(164deg, rgba(255, 201, 56, 0.8) 0%, rgba(66, 211, 170, 0.8) 100%);
 $reverse-gradient-dark: linear-gradient(344deg, rgba(255, 201, 56, 0.8) 0%, rgba(66, 211, 170, 0.8) 100%);
 
+$gradient-opaque: linear-gradient(164deg, $yellow 0%, $green 100%);
+$reverse-gradient-opaque: linear-gradient(344deg, $yellow 0%, $green 100%);
+
 $gradient-yellow: linear-gradient(164deg, rgba(255, 201, 56, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
 $reverse-gradient-yellow: linear-gradient(344deg, rgba(255, 201, 56, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
 
