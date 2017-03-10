@@ -1,5 +1,6 @@
 .home {
   background-attachment: fixed;
+  background-position: 50% 0;
   h1 {
     font-size: 55px;
   };
@@ -111,8 +112,18 @@
   height: 54px;
 }
 
-.home-inspirations-middle {
+.home-inspirations-background {
+  background-position: 50% 35%;
+}
+
+.home-inspirations-body-1 {
   height: calc(100vh - 54px);
+  background-position: 50% 0;
+}
+
+.home-inspirations-body-2 {
+  height: calc(100vh - 54px);
+  background-position: 50% 35%;
 }
 
 // .home-bottom-search-content {

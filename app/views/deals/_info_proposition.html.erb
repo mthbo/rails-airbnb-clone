@@ -1,107 +1,109 @@
+<div class="deal-proposition">
 
-<div class="deal-proposition-top">
-  <h4 class="font-weight-normal">Proposition</h4>
-  <div class="deal-proposition-figures">
-    <p>
-      <span class="info-icon">
-        <%= image_tag 'objective.svg' %>
-      </span>
-      <strong><%= deal.objectives_count %></strong>
-    </p>
-    <p>
-      <span class="info-icon">
-        <%= image_tag 'amount.svg' %>
-      </span>
-      <strong><%= deal.amount.blank? ? "FREE" : money_without_cents_and_with_symbol(deal.amount) %></strong>
-    </p>
-    <p>
-      <span class="info-icon">
-        <%= image_tag 'date.svg' %>
-      </span>
-      <strong><%= deal.deadline.strftime("%d %b %Y") %></strong>
-    </p>
-  </div>
-</div>
-
-<div class="deal-proposition" id="deal-proposition-essential">
-  <% deal.objectives[0..2].each_with_index do |objective, i| %>
-    <div class="deal-objective">
-      <%= render 'objectives/show', objective: objective, number: i + 1 %>
-      <% if objective.rating.present? %>
-        <div class="deal-objective-rating text-right"><%= render 'objectives/rating', objective: objective %></div>
-      <% end %>
-    </div>
-  <% end %>
-</div>
-
-<div class="deal-proposition" id="deal-proposition-details">
-  <% unless  deal.objectives_count <= 3 %>
-    <div class="padded-bottom-xs">
-      <% deal.objectives[3..-1].each_with_index do |objective, i| %>
-        <div class="deal-objective">
-          <%= render 'objectives/show', objective: objective, number: i + 4 %>
-          <% if objective.rating.present? %>
-            <div class="deal-objective-rating text-right"><%= render 'objectives/rating', objective: objective %></div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
-  <% end %>
-  <%= sanitize markdown_to_html(deal.proposition) %>
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <h6>Languages</h6>
-      <%= render 'deals/languages', deal: deal %>
-    </div>
-    <div class="col-xs-12 col-sm-6">
-      <h6>Means of communication</h6>
-      <%= render 'deals/means', deal: deal %>
+  <div class="deal-proposition-top">
+    <h4 class="font-weight-normal">Proposition</h4>
+    <div class="deal-proposition-figures">
+      <p>
+        <span class="info-icon">
+          <%= image_tag 'objective.svg' %>
+        </span>
+        <strong><%= deal.objectives_count %></strong>
+      </p>
+      <p>
+        <span class="info-icon">
+          <%= image_tag 'amount.svg' %>
+        </span>
+        <strong><%= deal.amount.blank? ? "FREE" : money_without_cents_and_with_symbol(deal.amount) %></strong>
+      </p>
+      <p>
+        <span class="info-icon">
+          <%= image_tag 'date.svg' %>
+        </span>
+        <strong><%= deal.deadline.strftime("%d %b %Y") %></strong>
+      </p>
     </div>
   </div>
-</div>
 
-<div class="deal-proposition-disclose text-center">
-  <p>
-    <%= link_to '#', id: "deal-proposition-toggle" do  %>
-      <span class="toggle-link">Show details &nbsp;
-        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-      </span>
-      <span class="toggle-link hidden">Hide details &nbsp;
-        <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
-      </span>
+  <div class="deal-proposition-middle" id="deal-proposition-essential">
+    <% deal.objectives[0..2].each_with_index do |objective, i| %>
+      <div class="deal-objective">
+        <%= render 'objectives/show', objective: objective, number: i + 1 %>
+        <% if objective.rating.present? %>
+          <div class="deal-objective-rating text-right"><%= render 'objectives/rating', objective: objective %></div>
+        <% end %>
+      </div>
     <% end %>
-  </p>
-</div>
+  </div>
 
-<div class="deal-proposition-bottom">
-  <div class="row">
-    <div class="col-xs-4">
-      <% if deal.proposition? %>
-        <div class="deal-proposition-status">
-          <p><small>Expiry on </small></p>
-          <p><small><span class="font-weight-normal"><%= deal.proposition_deadline.strftime("%d %b %Y") %></span></small></p>
-        </div>
-      <% end %>
+  <div class="deal-proposition-middle" id="deal-proposition-details">
+    <% unless  deal.objectives_count <= 3 %>
+      <div class="padded-bottom-xs">
+        <% deal.objectives[3..-1].each_with_index do |objective, i| %>
+          <div class="deal-objective">
+            <%= render 'objectives/show', objective: objective, number: i + 4 %>
+            <% if objective.rating.present? %>
+              <div class="deal-objective-rating text-right"><%= render 'objectives/rating', objective: objective %></div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <%= sanitize markdown_to_html(deal.proposition) %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <h6>Languages</h6>
+        <%= render 'deals/languages', deal: deal %>
+      </div>
+      <div class="col-xs-12 col-sm-6">
+        <h6>Means of communication</h6>
+        <%= render 'deals/means', deal: deal %>
+      </div>
     </div>
-    <div class="col-xs-8">
-      <% if policy(deal).open? %>
-        <div class="deal-proposition-action-btns">
-          <%= render "deals/decline", deal: deal %>
-          <%= render "deals/accept", deal: deal %>
-        </div>
-      <% elsif deal.proposition? && deal.advisor == current_user %>
-        <div class="text-right deal-proposition-status">
-          <p class="dark-gray font-weight-normal padded-top-xs"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>&nbsp; Pending</p>
-        </div>
-      <% elsif deal.proposition_declined? %>
-        <div class="text-right deal-proposition-status">
-          <p class="red font-weight-normal"><i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp; Declined</p>
-        </div>
-      <% else %>
-        <div class="text-right deal-proposition-status">
-          <p class="blue font-weight-normal"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp; Accepted</p>
-        </div>
+  </div>
+
+  <div class="deal-proposition-disclose text-center">
+    <p>
+      <%= link_to '#', id: "deal-proposition-toggle" do  %>
+        <span class="toggle-link">Show details &nbsp;
+          <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+        </span>
+        <span class="toggle-link hidden">Hide details &nbsp;
+          <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
+        </span>
       <% end %>
+    </p>
+  </div>
+
+  <div class="deal-proposition-bottom">
+    <div class="row">
+      <div class="col-xs-4">
+        <% if deal.proposition? %>
+          <div class="deal-proposition-status">
+            <p><small>Expiry on </small></p>
+            <p><small><span class="font-weight-normal"><%= deal.proposition_deadline.strftime("%d %b %Y") %></span></small></p>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-xs-8">
+        <% if policy(deal).open? %>
+          <div class="deal-proposition-action-btns">
+            <%= render "deals/decline", deal: deal %>
+            <%= render "deals/accept", deal: deal %>
+          </div>
+        <% elsif deal.proposition? && deal.advisor == current_user %>
+          <div class="text-right deal-proposition-status">
+            <p class="dark-gray font-weight-normal padded-top-xs"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>&nbsp; Pending</p>
+          </div>
+        <% elsif deal.proposition_declined? %>
+          <div class="text-right deal-proposition-status">
+            <p class="red font-weight-normal"><i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp; Declined</p>
+          </div>
+        <% else %>
+          <div class="text-right deal-proposition-status">
+            <p class="blue font-weight-normal"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp; Accepted</p>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 
