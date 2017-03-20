@@ -2,11 +2,11 @@
   <%= "Papoters | Be advisor" %>
 <% end %>
 
-<div class="home" style='background-image: url("<%= image_path('background_be_advisor.png') %>");'>
+<div class="home" style='background-image: url("<%= image_path('backgrounds/background_advisor.png') %>");'>
 
   <div class="home-banner text-center bg-gray-transparent">
     <div class="home-banner-top home-content-wrapper">
-      <div class="home-flex-800 bg-gray-transparent">
+      <div class="home-flex-800">
         <h1>Your knowledge and your experience have value!</h1>
       </div>
     </div>
@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="home-banner-bottom home-content-wrapper">
-      <%= link_to root_path, id: "home-arrow-down", class: "bg-gray-transparent" do %>
+      <%= link_to root_path, id: "home-arrow-down" do %>
         <p class="no-margin-bottom">Tell me more</p>
         <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
       <% end %>
@@ -25,16 +25,16 @@
 
   <div>
     <div class="home-inspirations-top bg-gray-transparent"></div>
-    <div id="home-inspirations-animated-background" class="bg-white" style='background-image: url("<%= image_path('background_big.png') %>");'>
-      <div class="home-inspirations-body-2 text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('background_disclose_one.png') %>");'>
+    <div id="home-inspirations-animated-background" class="bg-white" style='background-image: url("<%= image_path('backgrounds/background_line.png') %>");'>
+      <div class="home-inspirations-body-2 text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('backgrounds/background_disclose_line.png') %>");'>
         <div class="home-flex-700">
-          <h2 class="white">There are probably some stuff you know better than anybody else.</h2>
+          <h2 class="white">Everybody's got some special knowledge.<br>What is yours?</h2>
         </div>
       </div>
     </div>
   </div>
 
-  <div style='background-image: url("<%= image_path('grid.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white">
+  <div style='background-image: url("<%= image_path('backgrounds/background_grid_gray.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white">
     <div class="home-content-wrapper padded-bottom-l">
       <div class="home-flex-700">
         <h2>Advise people, build your reputation and make yourself valuable.</h2>
@@ -43,19 +43,19 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-          <%= image_tag 'guidelines/offers.svg' %>
+          <%= image_tag 'guidelines/publish_offer.svg' %>
           <h4>1 &nbsp;-&nbsp; Publish an offer</h4>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-          <%= image_tag 'guidelines/answer-requests.svg' %>
+          <%= image_tag 'guidelines/answer_requests.svg' %>
           <h4>2 &nbsp;-&nbsp; Answer to requests</h4>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-          <%= image_tag 'guidelines/give-advice.svg' %>
+          <%= image_tag 'guidelines/deliver_advice.svg' %>
           <h4>3 &nbsp;-&nbsp; Deliver advice</h4>
         </div>
         <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-          <%= image_tag 'guidelines/get-rewards.svg' %>
+          <%= image_tag 'guidelines/get_rewards.svg' %>
           <h4>4 &nbsp;-&nbsp; Get your rewards !</h4>
         </div>
       </div>
@@ -66,12 +66,12 @@
     </div>
   </div>
 
-  <div style='background-image: url("<%= image_path('background.png') %>");' class="bg-white">
+  <div style='background-image: url("<%= image_path('backgrounds/background.png') %>");' class="bg-white">
     <div class="padded-top-l padded-bottom-xl text-center bg-gray-transparent">
       <div class="padded-bottom-m home-content-wrapper">
-        <div class="home-flex-700 bg-gray-transparent">
-          <h2>Need some insight about what to do?</h2>
-          <h3>Have a look on what people offer on Papoters.</h3>
+        <div class="home-flex-700">
+          <h2 class="font-weight-normal">Papoter's community is growing!</h2>
+          <h3 class="font-weight-normal">Get inspired by what people already offer.</h3>
         </div>
       </div>
       <div class="padded-top-xs">
