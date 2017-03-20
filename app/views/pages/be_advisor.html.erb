@@ -2,21 +2,21 @@
   <%= "Papoters | Be advisor" %>
 <% end %>
 
-<div class="home" style='background-image: url("<%= image_path('background.png') %>");'>
+<div class="home" style='background-image: url("<%= image_path('background_be_advisor.png') %>");'>
 
   <div class="home-banner text-center bg-gray-transparent">
     <div class="home-banner-top home-content-wrapper">
-      <div class="home-flex-800">
+      <div class="home-flex-800 bg-gray-transparent">
         <h1>Your knowledge and your experience have value!</h1>
       </div>
     </div>
     <div class="home-banner-middle home-content-wrapper bg-green-transparent">
       <div class="home-flex-600">
-        <%= link_to "Publish your first offer as advisor", user_signed_in? ? user_path(current_user) : new_user_session_path, id: "home-give-advice-link" %>
+        <%= link_to "Publish your first offer as advisor",new_offer_path, id: "home-give-advice-link" %>
       </div>
     </div>
     <div class="home-banner-bottom home-content-wrapper">
-      <%= link_to root_path, id: "home-arrow-down" do %>
+      <%= link_to root_path, id: "home-arrow-down", class: "bg-gray-transparent" do %>
         <p class="no-margin-bottom">Tell me more</p>
         <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
       <% end %>
@@ -25,7 +25,7 @@
 
   <div>
     <div class="home-inspirations-top bg-gray-transparent"></div>
-    <div class="home-inspirations-background  bg-white" style='background-image: url("<%= image_path('background_big.png') %>");'>
+    <div id="home-inspirations-animated-background" class="bg-white" style='background-image: url("<%= image_path('background_big.png') %>");'>
       <div class="home-inspirations-body-2 text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('background_disclose_one.png') %>");'>
         <div class="home-flex-700">
           <h2 class="white">There are probably some stuff you know better than anybody else.</h2>
@@ -62,21 +62,23 @@
     </div>
 
     <div class="padded-top-xs">
-      <%= link_to "Publish an offer", be_advisor_path, { class: "btn btn-green home-btn" } %>
+      <%= link_to "Publish an offer", new_offer_path, class: "btn btn-green home-btn" %>
     </div>
   </div>
 
-  <div class="padded-top-l padded-bottom-xl text-center bg-gray-transparent">
-    <div class="padded-bottom-m home-content-wrapper">
-      <div class="home-flex-700">
-        <h2 class="font-weight-normal">Need some insight about what to do?</h2>
-        <h3>Have a look on what people offer on Papoters.</h3>
+  <div style='background-image: url("<%= image_path('background.png') %>");' class="bg-white">
+    <div class="padded-top-l padded-bottom-xl text-center bg-gray-transparent">
+      <div class="padded-bottom-m home-content-wrapper">
+        <div class="home-flex-700 bg-gray-transparent">
+          <h2>Need some insight about what to do?</h2>
+          <h3>Have a look on what people offer on Papoters.</h3>
+        </div>
       </div>
-    </div>
-    <div class="padded-top-xs">
-      <button id="home-btn-search-trigger" class="btn btn btn-yellow home-btn">
-        Find an advisor &nbsp;&nbsp;<i class='fa fa-search'></i>
-      </button>
+      <div class="padded-top-xs">
+        <button id="home-btn-search-trigger" class="btn btn btn-yellow home-btn">
+          Find an advisor &nbsp;&nbsp;<i class='fa fa-search'></i>
+        </button>
+      </div>
     </div>
   </div>
 

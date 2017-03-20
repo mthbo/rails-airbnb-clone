@@ -6,7 +6,7 @@
 
   <div class="home-banner text-center bg-gray-transparent">
     <div class="home-banner-top home-content-wrapper">
-      <div class="home-flex-800">
+      <div class="home-flex-800 bg-gray-transparent">
         <h1>Get personal advice for whatever you need, anytime, anywhere.</h1>
       </div>
     </div>
@@ -15,7 +15,7 @@
       <div id="home-input-icon"><i class='fa fa-search'></i></div>
     </div>
     <div class="home-banner-bottom home-content-wrapper">
-      <%= link_to root_path, id: "home-arrow-down" do %>
+      <%= link_to root_path, id: "home-arrow-down", class: "bg-gray-transparent" do %>
         <p class="no-margin-bottom">Tell me more</p>
         <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
       <% end %>
@@ -34,7 +34,7 @@
   <div style='background-image: url("<%= image_path('grid.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white">
     <div class="home-content-wrapper padded-bottom-l">
       <div class="home-flex-700">
-        <h2>Discover a simple and comforting way to get quality advice.</h2>
+        <h2>Find a personal advisor dedicated to answering your needs.</h2>
       </div>
     </div>
     <div class="container">
@@ -65,15 +65,17 @@
     </div>
   </div>
 
-  <div class="padded-top-l padded-bottom-xl text-center bg-gray-transparent">
-    <div class="padded-bottom-m home-content-wrapper">
-      <div class="home-flex-700">
-        <h2 class="font-weight-normal">Your knowledge and your experience have value!</h2>
-        <h3>Start giving advice to people who need you.</h3>
+  <div style='background-image: url("<%= image_path('background_be_advisor.png') %>");' class="bg-white">
+    <div class="bg-gray-transparent padded-top-l padded-bottom-xl text-center ">
+      <div class="padded-bottom-m home-content-wrapper">
+        <div class="home-flex-700 bg-gray-transparent">
+          <h2>Your knowledge and your experience have value!</h2>
+          <h3>Start giving advice to people who need you.</h3>
+        </div>
       </div>
-    </div>
-    <div class="padded-top-xs">
-      <%= link_to "Become advisor", be_advisor_path, { class: "btn btn-green home-btn" } %>
+      <div class="padded-top-xs">
+        <%= link_to "Become advisor", be_advisor_path, { class: "btn btn-green home-btn" } %>
+      </div>
     </div>
   </div>
 
