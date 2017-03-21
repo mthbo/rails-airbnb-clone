@@ -43,7 +43,7 @@
           <div class="home-guideline-container text-center">
             <%= image_tag 'guidelines/find_advisor.svg' %>
             <div class="home-guideline-text text-left">
-              <p>Finding the information you need can be an ordeal sometimes. Hopefully, there is probably someone to advise you and save you time and pain!</p>
+              <p>Finding the information you need can be an ordeal. Hopefully, there is probably someone to advise you and save you time and pain!</p>
               <p>Type your search on Papoters and find out which advisor offers a service that matches your needs.</p>
               <i class="fa fa-info-circle" aria-hidden="true"></i>
             </div>
@@ -54,8 +54,8 @@
           <div class="home-guideline-container">
             <%= image_tag 'guidelines/reach_agreement.svg' %>
             <div class="home-guideline-text text-left">
-              <p>Get in touch with your advisor and detail your needs. This starts a private session between you and your advisor.</p>
-              <p>You will get a proposition setting the session's targets and conditions. Accept it to open the session, or keep chatting to make adjustments.</p>
+              <p>Get in touch with your advisor within a private session to explain your needs.</p>
+              <p>Based on your request, you will get a proposition setting the session's targets and conditions. Accept it to open the session or keep chatting to make adjustments.</p>
               <i class="fa fa-info-circle" aria-hidden="true"></i>
             </div>
           </div>
@@ -93,17 +93,16 @@
     </div>
   </div>
 
-  <div style='background-image: url("<%= image_path('backgrounds/background_advisor.png') %>");' class="bg-white">
-    <div class="bg-gray-transparent padded-top-l padded-bottom-xl text-center ">
-      <div class="padded-bottom-m home-content-wrapper">
-        <div class="home-flex-700">
-          <h2 class="font-weight-normal">Your knowledge and your experience have value!</h2>
-          <h3 class="font-weight-normal">Start giving advice to people who need you.</h3>
-        </div>
+
+  <div class="bg-gray-transparent padded-top-l padded-bottom-xl text-center ">
+    <div class="padded-bottom-m home-content-wrapper">
+      <div class="home-flex-700">
+        <h2 class="font-weight-normal">Your knowledge and your experience have value!</h2>
+        <h3 class="font-weight-normal">Start giving advice to people who need you.</h3>
       </div>
-      <div class="padded-top-xs">
-        <%= link_to "Become advisor", be_advisor_path, { class: "btn btn-green home-btn" } %>
-      </div>
+    </div>
+    <div class="padded-top-xs">
+      <%= link_to "Become advisor", be_advisor_path, { class: "btn btn-green home-btn" } %>
     </div>
   </div>
 
