@@ -97,12 +97,12 @@
 .btn-gradient {
   border: none;
   color: white;
-  background: $gradient-dark;
+  background: $gradient-opaque;
   &:hover {
-    background: $reverse-gradient-dark;
+    background: $reverse-gradient-opaque;
   };
   &:active {
-    background: $gradient-dark;
+    background: $gradient-opaque;
   };
   &:focus {
     color: white;

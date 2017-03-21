@@ -252,24 +252,6 @@
   background: none;
 }
 
-// .custom-search-form {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// .custom-search-input {
-//   border: none;
-//   border-bottom: 2px $yellow solid;
-//   background-color: transparent;
-//   border-radius: 0;
-//   &:focus {
-//     outline: none;
-//     border-bottom: 3px $yellow solid;
-//   }
-// }
-
-
 @media (max-width: $screen-xs-max) {
   #searchbar {
     top: 55px;
@@ -307,10 +289,4 @@
       margin-right: 20px;
     }
   };
-  // .custom-search-input {
-  //   border-bottom: 1px $yellow solid;
-  //   &:focus {
-  //     border-bottom: 2px $yellow solid;
-  //   }
-  // }
 }

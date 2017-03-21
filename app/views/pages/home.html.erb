@@ -2,88 +2,107 @@
   <%= "Papoters | Home" %>
 <% end %>
 
-<div class="home bg-gradient-light">
+<div class="home" style='background-image: url("<%= image_path('backgrounds/background.png') %>");'>
 
-  <div class="home-banner text-center">
-    <div class="container">
-
-      <div class="home-banner-title padded-top-xxl">
+  <div class="home-banner text-center bg-gray-transparent">
+    <div class="home-banner-top home-content-wrapper">
+      <div class="home-flex-800">
         <h1>Get personal advice for whatever you need, anytime, anywhere.</h1>
       </div>
+    </div>
+    <div class="home-banner-middle home-content-wrapper bg-yellow-transparent">
+      <input type="text" id="home-input" class="home-flex-600" autofocus="true" placeholder="I need some advice for ...">
+      <div id="home-input-icon"><i class='fa fa-search'></i></div>
+    </div>
+    <div class="home-banner-bottom home-content-wrapper">
+      <%= link_to root_path, id: "home-arrow-down" do %>
+        <p class="no-margin-bottom">Find out more</p>
+        <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+      <% end %>
+    </div>
+  </div>
 
-      <div class="home-banner-content padded-top-s">
-        <%# form_tag(search_path, method: "get", class: "custom-search-form", id: "home-search-form") do %>
-          <%# text_field_tag :search, params[:search], placeholder: "I need some advice for ...", class: "custom-search-input home-search-input" %>
-          <%# button_tag(type: 'submit', class: "btn btn-yellow btn-round home-search-btn") do %>
-<!--             <i class='fa fa-search'></i> -->
-          <%# end %>
-        <%# end %>
-
-      </div>
-
-      <div class="home-banner-arrow">
-        <%= link_to root_path, id: "home-arrow-down" do %>
-          <p>Tell me more</p>
-          <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-        <% end %>
+  <div>
+    <div class="home-inspirations-top bg-gray-transparent"></div>
+    <div class="home-inspirations-body-1 text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('backgrounds/background_disclose.png') %>");'>
+      <div class="home-flex-700">
+        <h2 class="white">Give yourself some support for special moments, or just everyday life.</h2>
       </div>
     </div>
   </div>
 
-  <div class="padded-top-xl padded-bottom-xxl text-center">
-    <div class="home-inspirations">
-
-      <div class="container padded-bottom-m">
-        <h2>When your life looks like this...</h2>
+  <div style='background-image: url("<%= image_path('backgrounds/background_grid_gray.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white">
+    <div class="home-content-wrapper padded-bottom-l">
+      <div class="home-flex-700">
+        <h2>Find a personal advisor committed to answering your needs.</h2>
       </div>
-      <div class="home-inspiration-picture">
-        <%= image_tag "inspirations.png" %>
-      </div>
-
     </div>
-  </div>
-
-  <div class="padded-top-m padded-bottom-m bg-white-transparent text-center">
-    <div class="home-guidelines">
-      <div class="container">
-
-        <div class="padded-bottom-m">
-          <h2>...you would better find someone to help!</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <div class="home-guideline-container text-center">
+            <%= image_tag 'guidelines/find_advisor.svg' %>
+            <div class="home-guideline-text text-left">
+              <p>Finding the information you need can be an ordeal. Hopefully, there is probably someone to advise you and save you time and pain!</p>
+              <p>Type your search on Papoters and find out which advisor offers a service that matches your needs.</p>
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </div>
+          </div>
+          <h4>1 &nbsp;-&nbsp; Find an advisor</h4>
         </div>
-
-        <div class="row">
-          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'guidelines/find-advisor.svg' %>
-            <h3><strong>1</strong> | Find an advisor</h3>
+        <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <div class="home-guideline-container">
+            <%= image_tag 'guidelines/reach_agreement.svg' %>
+            <div class="home-guideline-text text-left">
+              <p>Get in touch with your advisor within a private session to explain your needs.</p>
+              <p>Based on your request, you will get a proposition setting the session's targets and conditions. Accept it to open the session or keep chatting to make adjustments.</p>
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </div>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'guidelines/get-proposal.svg' %>
-            <h3><strong>2</strong> | Reach an agreement</h3>
+          <h4>2 &nbsp;-&nbsp; Reach an agreement</h4>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <div class="home-guideline-container text-center">
+            <%= image_tag 'guidelines/get_advice.svg' %>
+            <div class="home-guideline-text text-left">
+              <p>Once the session is open, your advisor is committed to answering your needs as part of your agreement.</p>
+              <p>The means of communication depend on what you agreed: messaging, phone call, video call, meeting, documents, etc.</p>
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </div>
           </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
-            <%= image_tag 'guidelines/get-advice.svg' %>
-            <h3><strong>3</strong> | Get advice</h3>
-          </div>
-          <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <h4>3 &nbsp;-&nbsp; Get advice</h4>
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-3 padded-bottom-m">
+          <div class="home-guideline-container text-center">
             <%= image_tag 'guidelines/evaluate.svg' %>
-            <h3><strong>4</strong> | Tell how happy you are!</h3>
+            <div class="home-guideline-text text-left">
+              <p>The session can be closed after the deadline set in your agreement has passed.</p>
+              <p>Evaluate your session and leave a review to your advisor, based on whether or not the sesssion's targets were achieved.</p>
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </div>
           </div>
+          <h4>4 &nbsp;-&nbsp; Express your satisfaction !</h4>
         </div>
-
       </div>
+    </div>
+
+    <div class="padded-top-xs">
+      <button id="home-btn-search-trigger" class="btn btn btn-yellow home-btn">
+        Find an advisor &nbsp;&nbsp;<i class='fa fa-search'></i>
+      </button>
     </div>
   </div>
 
-  <div class="padded-top-l padded-bottom-xxl text-center">
-    <div class="home-be-advisor">
-      <div class="container">
 
-        <div class="padded-bottom-l">
-          <h2>Interested in being advisor?</h2>
-          <h3>Don't be shy, your knowledge and your experience have value!</h3>
-        </div>
-        <%= link_to "Give advice", be_advisor_path, { class: "btn btn-green home-be-advisor-btn" } %>
+  <div class="bg-gray-transparent padded-top-l padded-bottom-xl text-center ">
+    <div class="padded-bottom-m home-content-wrapper">
+      <div class="home-flex-700">
+        <h2 class="font-weight-normal">Your knowledge and your experience have value!</h2>
+        <h3 class="font-weight-normal">Start giving advice to people who need you.</h3>
       </div>
+    </div>
+    <div class="padded-top-xs">
+      <%= link_to "Become advisor", be_advisor_path, { class: "btn btn-green home-btn" } %>
     </div>
   </div>
 

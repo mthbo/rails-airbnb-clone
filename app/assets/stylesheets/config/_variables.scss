@@ -37,6 +37,7 @@ $gray: rgb(74,74,74);
 
 $extra-dark-gray: rgb(32,32,32);
 $dark-gray: rgb(74,74,74);
+$dark-light-gray: rgb(100,100,100);
 $medium-dark-gray: rgb(130,130,130);
 $medium-gray: rgb(157,157,157);
 $medium-light-gray: rgb(200,200,200);
@@ -62,13 +63,19 @@ $dark-facebook-blue: #18387B;
 
 $gradient: linear-gradient(164deg, rgba(255, 201, 56, 0.5) 0%, rgba(66, 211, 170, 0.5) 100%);
 $reverse-gradient: linear-gradient(344deg, rgba(255, 201, 56, 0.5) 0%, rgba(66, 211, 170, 0.5) 100%);
+
 $gradient-light: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(66, 211, 170, 0.3) 100%);
 $reverse-gradient-light: linear-gradient(344deg, rgba(255, 201, 56, 0.3) 0%, rgba(66, 211, 170, 0.3) 100%);
 
-$gradient-dark: linear-gradient(164deg, $yellow 0%, $green 100%);
-$reverse-gradient-dark: linear-gradient(344deg, $yellow 0%, $green 100%);
+$gradient-dark: linear-gradient(164deg, rgba(255, 201, 56, 0.8) 0%, rgba(66, 211, 170, 0.8) 100%);
+$reverse-gradient-dark: linear-gradient(344deg, rgba(255, 201, 56, 0.8) 0%, rgba(66, 211, 170, 0.8) 100%);
 
-$gradient-yellow: linear-gradient(164deg, rgba(255, 201, 56, 0.3) 0%, rgba(255, 234, 178, 0.3) 100%);
+$gradient-opaque: linear-gradient(164deg, $yellow 0%, $green 100%);
+$reverse-gradient-opaque: linear-gradient(344deg, $yellow 0%, $green 100%);
+
+$gradient-yellow: linear-gradient(164deg, rgba(255, 201, 56, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+$reverse-gradient-yellow: linear-gradient(344deg, rgba(255, 201, 56, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+
 $gradient-green: linear-gradient(164deg, rgba(66, 211, 170, 0.3) 0%, rgba(167, 245, 223, 0.3) 100%);
 
 $gradient-green-dark: linear-gradient(164deg, $green 0%, $dark-green 100%);
