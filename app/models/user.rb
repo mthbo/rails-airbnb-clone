@@ -292,7 +292,7 @@ class User < ApplicationRecord
     if advisor_deals_closed_count > 20
       "Guide"
     elsif advisor_deals_closed_count > 10
-      "Champion"
+      "Expert"
     elsif advisor_deals_closed_count > 3
       "Advisor"
     else

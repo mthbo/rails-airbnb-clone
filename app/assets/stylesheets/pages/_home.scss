@@ -147,18 +147,19 @@
   .home-guideline-text {
     position: absolute;
     left: 50%;
-    bottom: 20px;
+    bottom: 0;
     width: 100%;
-    max-width: 240px;
+    max-width: 250px;
     p {
       position: relative;
       left: -50%;
+      bottom: 0;
       opacity: 0;
       transition: all 0.3s ease;
     }
     i {
-      position: relative;
-      bottom: -20px;
+      position: absolute;
+      bottom: 0;
       left: 45%;
       color: $medium-gray;
       opacity: 1;
