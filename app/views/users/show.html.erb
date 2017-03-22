@@ -111,7 +111,7 @@
             <div id="user_reviews_page">
               <%= render 'reviews' %>
             </div>
-            <div class="text-center padded-top-s custom-paginator" id="user-reviews-paginator" >
+            <div class="text-center padded-top-xs" id="user-reviews-paginator" >
               <%= paginate @deals_reviewed, remote: true  %>
             </div>
           <% elsif @user == current_user %>

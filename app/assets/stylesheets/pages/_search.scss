@@ -226,6 +226,7 @@
   background: rgba(255, 255, 255, 0.5);
 }
 #search-pagination a:hover {
+  color: $blue;
   background: white;
   border: 1px solid $medium-gray;
 }
@@ -289,4 +290,10 @@
       margin-right: 20px;
     }
   };
+  #search-pagination li {
+    font-size: 14px;
+  }
+  #search-pagination a {
+    padding: 6px 11px;
+  }
 }

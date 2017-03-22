@@ -129,7 +129,7 @@
                   <div id="offer_reviews_page">
                     <%= render 'reviews' %>
                   </div>
-                  <div class="text-center padded-top-s custom-paginator" id="offer-reviews-paginator" >
+                  <div class="text-center padded-top-xs" id="offer-reviews-paginator" >
                     <%= paginate @deals_reviewed, remote: true  %>
                   </div>
                 <% elsif @offer.advisor == current_user %>
