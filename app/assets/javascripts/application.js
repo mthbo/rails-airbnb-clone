@@ -9,7 +9,7 @@
 //= require jquery-bar-rating
 //= require algolia/v3/algoliasearch.min
 
-//= require arrow-scroll
+//= require arrow_scroll
 //= require cable
 //= require checkbox
 //= require conversation_scroll

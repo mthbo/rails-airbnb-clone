@@ -55,12 +55,32 @@
   }
 }
 
-.form-group.user_photo {
-  ul {
-    list-style: none;
-  }
-  input > input {
-    margin: 50px;
+.user-photo-wrapper {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end;
+  .attachinary-input {
+    display: none;
+    &:disabled ~ label {
+      color: $medium-dark-gray !important;
+      background-color: $extra-light-gray !important;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+  };
+  .attachinary_container {
+    padding: 15px 0;
+    text-align: center;
+    ul {
+      background-color: rgba(255,255,255,0.8);
+      border-top: 1px solid $light-gray;
+      border-bottom: 1px solid $light-gray;
+      padding: 15px;
+      list-style: none;
+      a {
+        padding-left: 5px;
+      }
+    }
   }
 }
 
