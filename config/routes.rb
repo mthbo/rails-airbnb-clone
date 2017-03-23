@@ -11,39 +11,49 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  root to: 'pages#home'
-  get '/be_advisor', to: 'pages#be_advisor'
-
   devise_for :users,
+    only: :omniauth_callbacks,
     controllers: {
-      omniauth_callbacks: 'users/omniauth_callbacks',
-      registrations: 'users/registrations'
+      omniauth_callbacks: 'users/omniauth_callbacks'
     }
 
-  resources :users, only: [:show, :destroy]
-  get '/dashboard', to: 'users#dashboard'
+  scope '(:locale)', locale: /fr/ do
 
-  resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
-    resources :deals, only: [:show, :new, :create], path: 'sessions' do
-      member do
-        get 'new_proposition', to: 'deals#new_proposition'
-        get 'new_review', to: 'deals#new_review'
-        patch 'save_proposition', to: 'deals#save_proposition'
-        patch 'submit_proposition', to: 'deals#submit_proposition'
-        patch 'decline_proposition', to: 'deals#decline_proposition'
-        patch 'open', to: 'deals#open'
-        patch 'close', to: 'deals#close'
-        patch 'save_review', to: 'deals#save_review'
-        patch 'disable_messages', to: 'deals#disable_messages'
-        patch 'cancel', to: 'deals#cancel'
+    devise_for :users,
+      skip: :omniauth_callbacks,
+      controllers: {
+        registrations: 'users/registrations'
+      }
+
+    root to: 'pages#home'
+    get '/be_advisor', to: 'pages#be_advisor'
+
+    resources :users, only: [:show, :destroy]
+    get '/dashboard', to: 'users#dashboard'
+
+    resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
+      resources :deals, only: [:show, :new, :create], path: 'sessions' do
+        member do
+          get 'new_proposition', to: 'deals#new_proposition'
+          get 'new_review', to: 'deals#new_review'
+          patch 'save_proposition', to: 'deals#save_proposition'
+          patch 'submit_proposition', to: 'deals#submit_proposition'
+          patch 'decline_proposition', to: 'deals#decline_proposition'
+          patch 'open', to: 'deals#open'
+          patch 'close', to: 'deals#close'
+          patch 'save_review', to: 'deals#save_review'
+          patch 'disable_messages', to: 'deals#disable_messages'
+          patch 'cancel', to: 'deals#cancel'
+        end
+        resources :objectives, only: [:create, :update, :destroy]
+        resources :messages, only: [:create]
+        resources :payments, only: [:create]
       end
-      resources :objectives, only: [:create, :update, :destroy]
-      resources :messages, only: [:create]
-      resources :payments, only: [:create]
+      member do
+        post 'pin', to: 'offers#pin'
+      end
     end
-    member do
-      post 'pin', to: 'offers#pin'
-    end
+
   end
 
 end

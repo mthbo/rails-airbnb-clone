@@ -364,6 +364,8 @@ class User < ApplicationRecord
       user.save
     end
 
+    facebook_locale = auth.extra.raw_info.locale.split('_').first.to_sym if auth.extra.raw_info.locale
+    I18n.locale = [:fr].include?(facebook_locale) ? facebook_locale : I18n.default_locale
     return user
   end
 
