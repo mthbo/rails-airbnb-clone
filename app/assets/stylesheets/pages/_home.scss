@@ -2,7 +2,7 @@
   background-attachment: fixed;
   background-position: 50% 0;
   h1 {
-    font-size: 55px;
+    font-size: 54px;
   };
   h2 {
     font-size: 40px;
@@ -11,7 +11,7 @@
     font-size: 26px;
   };
   h4 {
-    font-size: 26px;
+    font-size: 25px;
     padding-top: 10px;
     font-family: $special-font;
     color: $dark-light-gray;
@@ -140,33 +140,39 @@
 .home-guideline-container {
   position: relative;
   img {
-    position: relative;
     opacity: 1;
     transition: all 0.3s ease;
   };
   .home-guideline-text {
     position: absolute;
-    left: 50%;
+    left: 0;
+    right: 0;
     bottom: 0;
     width: 100%;
-    max-width: 250px;
-    p {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    div {
+      flex: 0 1 250px;
       position: relative;
-      left: -50%;
-      bottom: 0;
-      opacity: 0;
-      transition: all 0.3s ease;
-    }
-    i {
-      position: absolute;
-      bottom: 0;
-      left: 45%;
-      color: $medium-gray;
-      opacity: 1;
-      transition: all 0.3s ease;
-    }
+      p {
+        opacity: 0;
+        transition: all 0.3s ease;
+      };
+      i {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        color: $medium-gray;
+        opacity: 1;
+        transition: all 0.3s ease;
+      }
+    };
   };
   &:hover, &:focus {
+    img {
+      opacity: 0;
+    };
     .home-guideline-text {
       p {
         opacity: 1;
@@ -174,9 +180,6 @@
       i {
         opacity: 0;
       }
-    };
-    img {
-      opacity: 0;
     }
   }
 }
