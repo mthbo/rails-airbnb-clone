@@ -15,19 +15,13 @@
 
   <body>
 
-    <% if current_user %>
-      <%= render 'shared/navbar_logged' %>
-    <% else %>
-      <%= render 'shared/navbar' %>
-    <% end %>
-
+    <%= render 'shared/navbar' %>
     <%= render 'shared/flash' %>
+    <%= render 'offers/search' %>
 
     <div id="main">
       <%= yield %>
     </div>
-
-    <%= render 'offers/search' %>
 
     <%= render "shared/footer" %>
 

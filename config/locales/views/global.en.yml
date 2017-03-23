@@ -1,0 +1,8 @@
+en:
+  navbar:
+    be_advisor: "Become advisor"
+    profile: "Profile"
+    dashboard: "Dashboard"
+    logout: "Logout"
+    join: "Join"
+    sign_in: "Sign in"
