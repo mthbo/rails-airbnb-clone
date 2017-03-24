@@ -1,0 +1,8 @@
+fr:
+  mean:
+    messaging: "Messages"
+    phone_call: "Appel voix"
+    video_call: "Appel vidéo"
+    meeting: "Rencontre"
+    documents: "Echange de documents"
+    sign_language: "Language des signes"

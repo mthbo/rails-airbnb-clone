@@ -23,6 +23,10 @@ class Language < ApplicationRecord
     "Arabic" => "saudi-arabia.svg",
   }
 
+  def name_translated
+    I18n.translate("language.#{name.downcase.split.join("_")}")
+  end
+
   def flag
     FLAGS[self.name]
   end
@@ -32,7 +36,7 @@ class Language < ApplicationRecord
   end
 
   def name_illustrated
-    "<span class='flag-icon flag-icon-long'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name}</span>".html_safe
+    "<span class='flag-icon flag-icon-long'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name_translated}</span>".html_safe
   end
 
   def offers_count

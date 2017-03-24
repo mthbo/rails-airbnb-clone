@@ -13,12 +13,16 @@ class Mean < ApplicationRecord
     "Sign language" => 'sign-language'
   }
 
+  def name_translated
+    I18n.translate("mean.#{name.downcase.split.join("_")}")
+  end
+
   def picto
     PICTOS[self.name]
   end
 
   def name_illustrated
-    "<span class='mean-icon mean-icon-long'><i class='fa fa-#{self.picto} fa-fw fa-lg' aria-hidden='true'></i> #{self.name}</span>".html_safe
+    "<span class='mean-icon mean-icon-long'><i class='fa fa-#{self.picto} fa-fw fa-lg' aria-hidden='true'></i> #{self.name_translated}</span>".html_safe
   end
 
   def offers_count

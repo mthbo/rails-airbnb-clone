@@ -141,7 +141,7 @@
   position: relative;
   img {
     opacity: 1;
-    transition: all 0.3s ease;
+    transition: all 0.5s ease;
   };
   .home-guideline-text {
     position: absolute;
@@ -157,7 +157,7 @@
       position: relative;
       p {
         opacity: 0;
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
       };
       i {
         position: absolute;
@@ -165,7 +165,7 @@
         right: 0;
         color: $medium-gray;
         opacity: 1;
-        transition: all 0.3s ease;
+        transition: all 0.5s ease;
       }
     };
   };

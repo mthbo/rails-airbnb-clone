@@ -41,6 +41,7 @@ gem 'phony_rails'
 gem 'acts_as_votable'
 
 gem "algoliasearch-rails"
+gem "i18n-js", ">= 3.0.0.rc11"
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'

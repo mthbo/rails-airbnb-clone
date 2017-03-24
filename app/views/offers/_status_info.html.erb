@@ -1,9 +1,9 @@
 <% if offer.advisor == current_user %>
   <% if offer.active? %>
-    <h6 class="green">This offer is active. Switch to status 'inactive' if you don't want to receive requests.</h6>
+    <h6 class="green"><%= t '.offer_active_advisor' %></h6>
   <% elsif offer.inactive? %>
-    <h6 class="medium-gray">This offer is inactive. Switch to status 'active' if you want to receive requests.</h6>
+    <h6 class="medium-gray"><%= t '.offer_inactive_advisor' %></h6>
   <% end %>
 <% elsif offer.inactive? %>
-  <h6 class="medium-gray">This offer is inactive. <%= offer.advisor.first_name %> doesn't accept any requests for this offer at this time.</h6>
+  <h6 class="medium-gray"><%= t '.offer_inactive_advisor', advisor_name: offer.advisor.first_name %></h6>
 <% end %>

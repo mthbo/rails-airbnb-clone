@@ -63,22 +63,22 @@
               <div class="offer-details">
                 <div class="row">
                   <div class="col-xs-12 col-sm-4 padded-bottom-xs">
-                    <h6>Languages spoken</h6>
+                    <h6><%= t '.languages' %></h6>
                     <%= render 'offers/languages_long', offer: @offer %>
                   </div>
                   <div class="col-xs-12 col-sm-4 padded-bottom-xs">
-                    <h6>Means of communication</h6>
+                    <h6><%= t '.means' %></h6>
                     <%= render 'offers/means_long', offer: @offer %>
                   </div>
                   <div class="col-xs-12 col-sm-4 text-right padded-bottom-xs">
                     <% if policy(@offer).edit? %>
                       <p>
                         <%= link_to edit_offer_path(@offer) do %>
-                          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Edit
+                          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; <%= t '.edit' %>
                         <% end %>
                       </p>
                     <% elsif @offer.active? %>
-                      <%= render 'deals/request_button_large', offer: @offer %>
+                      <%= render 'deals/request_button', size: 'big', offer: @offer %>
                     <% end %>
                   </div>
                 </div>
@@ -106,7 +106,7 @@
             <div class="offer-sub-container">
 
               <div class="offer-stat">
-                <h3>Session history</h3>
+                <h3><%= t '.session_history' %></h3>
                 <hr class="bd-gray">
                 <div class="offer-stat-content">
                   <div class="row">
@@ -124,7 +124,7 @@
               </div>
 
               <div class="offer-reviews">
-                <h3><%= pluralize(@deals_reviewed.total_count, "review") %></h3>
+                <h3><%= t('.reviews', count: @deals_reviewed.total_count) %></h3>
                 <% if @deals_reviewed.present? %>
                   <div id="offer_reviews_page">
                     <%= render 'reviews' %>
@@ -134,10 +134,10 @@
                   </div>
                 <% elsif @offer.advisor == current_user %>
                   <hr class="bd-gray">
-                  <p>You didn't get any review for this offer yet.</p>
+                  <p><%= t('.first_review_advisor') %></p>
                 <% else %>
                   <hr class="bd-gray">
-                  <p><%= @offer.advisor.first_name %> didn't get any review for this offer yet.</p>
+                  <p><%= t('.first_review_client', advisor_name: @offer.advisor.first_name) %></p>
                 <% end %>
               </div>
 

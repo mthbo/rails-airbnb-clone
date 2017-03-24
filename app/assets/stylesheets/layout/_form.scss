@@ -89,10 +89,9 @@
   flex-wrap: wrap;
   .checkbox {
     display: flex;
-    flex: 1 1 auto;
+    flex: 1 0 auto;
     justify-content: space-between;
     margin: 0;
-    max-width: 180px;
     label {
       flex: 1 1 auto;
       margin: 3px;
@@ -107,7 +106,14 @@
       input {
         display: none;
       }
-    }
+    };
+    &:last-child {
+      max-width: 250px;
+    };
+  };
+  &:after {
+    content: " ";
+    flex: 1 1 auto;
   };
   .help-block {
     flex: 0 0 100%;
@@ -207,11 +213,6 @@
   };
   .help-block {
     font-size: 14px;
-  };
-  .custom-check-boxes .check_boxes {
-    .checkbox {
-      max-width: 170px;
-    }
   };
   .custom-inline-form {
     .inline-form-input {

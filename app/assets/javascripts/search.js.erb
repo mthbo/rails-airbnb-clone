@@ -2,6 +2,9 @@ $(document).ready(function() {
 
   if ($('.my-navbar').length > 0) {
 
+    I18n.defaultLocale = "<%= I18n.default_locale %>";
+    I18n.locale = $("#my-navbar-locale").attr('data-locale');
+
     var search = instantsearch({
       appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
       apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
@@ -12,7 +15,7 @@ $(document).ready(function() {
     search.addWidget(
       instantsearch.widgets.searchBox({
         container: '#searchbar-input',
-        placeholder: 'I need some advice for ...'
+        placeholder: I18n.t('offers.search.input_placeholder')
       })
     );
 
@@ -41,15 +44,15 @@ $(document).ready(function() {
         container: '#search-sort-by',
         autoHideContainer: true,
         indices: [{
-          name: search.indexName, label: 'Most relevant'
+          name: search.indexName, label: I18n.t('offers.search.most_relevant')
         }, {
-          name: "Offer_price_asc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Lowest price'
+          name: "Offer_price_asc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.lowest_price')
         }, {
-          name: "Offer_price_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest price'
+          name: "Offer_price_desc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.highest_price')
         }, {
-          name: "Offer_rating_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Highest rating'
+          name: "Offer_rating_desc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.highest_rating')
         }, {
-          name: "Offer_created_at_desc_" + "<%= ENV['RAILS_ENV'] %>", label: 'Most recent'
+          name: "Offer_created_at_desc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.most_recent')
         }]
       })
     );
@@ -61,15 +64,36 @@ $(document).ready(function() {
     );
 
     search.addWidget(
+      instantsearch.widgets.rangeSlider({
+        container: '#search-amounts',
+        attributeName: 'median_amount',
+        templates: {
+          header: '<h6>' + I18n.t('offers.search.median_price') + '</h6>'
+        },
+        tooltips: {
+          format: function(rawValue) {
+            return Math.round(rawValue).toLocaleString() + ' €';
+          }
+        },
+        pips: false
+      })
+    );
+
+    search.addWidget(
       instantsearch.widgets.refinementList({
         container: '#search-languages',
         attributeName: 'languages.label',
         sortBy: ['isRefined', 'count:desc', 'name:asc'],
         operator: 'or',
         limit: 4,
-        showMore: true,
+        showMore: {
+          templates: {
+            active: "<a class='ais-show-more ais-show-more__active'>" + I18n.t('offers.search.show_less') + "</a>",
+            inactive: "<a class='ais-show-more ais-show-more__inactive'>" + I18n.t('offers.search.show_more') + "</a>"
+          }
+        },
         templates: {
-          header: '<h6>Languages</h6>'
+          header: '<h6>' + I18n.t('offers.search.languages') + '</h6>'
         }
       })
     );
@@ -81,26 +105,15 @@ $(document).ready(function() {
         sortBy: ['isRefined', 'count:desc', 'name:asc'],
         operator: 'or',
         limit: 4,
-        showMore: true,
-        templates: {
-          header: '<h6>Means of communication</h6>'
-        }
-      })
-    );
-
-    search.addWidget(
-      instantsearch.widgets.rangeSlider({
-        container: '#search-amounts',
-        attributeName: 'median_amount',
-        templates: {
-          header: '<h6>Median price of sessions</h6>'
-        },
-        tooltips: {
-          format: function(rawValue) {
-            return Math.round(rawValue).toLocaleString() + ' €';
+        showMore: {
+          templates: {
+            active: "<a class='ais-show-more ais-show-more__active'>" + I18n.t('offers.search.show_less') + "</a>",
+            inactive: "<a class='ais-show-more ais-show-more__inactive'>" + I18n.t('offers.search.show_more') + "</a>"
           }
         },
-        pips: false
+        templates: {
+          header: '<h6>' + I18n.t('offers.search.means') + '</h6>'
+        }
       })
     );
 

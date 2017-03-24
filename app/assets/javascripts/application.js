@@ -8,6 +8,7 @@
 //= require bootstrap-datepicker
 //= require jquery-bar-rating
 //= require algolia/v3/algoliasearch.min
+//= require i18n/translations
 
 //= require arrow_scroll
 //= require cable

@@ -1,0 +1,9 @@
+en:
+  deals:
+    request_button:
+      get_in_touch: "Get in touch"
+      pending_session: "Pending #session"
+      open_session: "Open #session"
+
+
+

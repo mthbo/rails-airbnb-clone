@@ -1,0 +1,48 @@
+fr:
+  offers:
+    search:
+      input_placeholder: "J'ai besoin de conseils pour ..."
+      clear_search: "Effacer la recherche"
+      show_filters: "Afficher les filtres"
+      hide_filters: "Cacher les filtres"
+      median_price: "Prix médian"
+      languages: "Langues"
+      means: "Moyens de communication"
+      show_more: "En voir plus"
+      show_less: "En voir moins"
+      most_relevant: "Meilleures offres"
+      lowest_price: "Prix croissant"
+      highest_price: "Prix décroissant"
+      highest_rating: "Mieux notées"
+      most_recent: "Plus récentes"
+      offers_found: "offres trouvées"
+      offer_found: "offre trouvée"
+      no_offers_found: "Désolé, nous n'avons pas trouvé d'offres correspondant à la recherche"
+    show:
+      languages: "Langues acceptées"
+      means: "Moyens de communication"
+      edit: "Editer"
+      session_history: "Historique des sessions"
+      reviews:
+        zero:  "Avis"
+        one:   "%{count} avis"
+        other: "%{count} avis"
+      first_review_advisor: "Donnez des sessions de conseil pour obtenir vos premiers avis!"
+      first_review_client: "Prenez conseil auprès de %{advisor_name} et laissez un premier avis pour cette offre!"
+    status_info:
+      offer_active_advisor: "Cette offre est active. Passez son status à 'inactif' si vous ne voulez pas recevoir de demandes."
+      offer_inactive_advisor: "Cette offre est inactive. Passez son status à 'actif' si vous voulez recevoir des demandes."
+      offer_inactive_client: "Cette offre est inactive. %{advisor_name} n'accepte pas les demandes pour cette offre pour le moment."
+    deals_count:
+      sessions_html:
+        zero:  "Aucune session"
+        one:   "<strong>%{count}</strong> session"
+        other: "<strong>%{count}</strong> sessions"
+    satisfaction:
+      not_rated: "Non noté"
+      happy: "satisfaits"
+    amounts:
+      free: "GRATUIT"
+      no_price: "pas d'historique de prix"
+
+
