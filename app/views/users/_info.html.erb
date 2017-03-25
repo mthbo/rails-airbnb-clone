@@ -2,9 +2,6 @@
   <%= user.name_anonymous %>
 </h1>
 <h3>
-  <%= user.grade %>
-  <% if user.age %>
-    &nbsp; | &nbsp;<%= user.age %> yr
-  <% end %>
+  <%= user.grade_and_age.html_safe %>
 </h3>
 <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; <%= user.address_short %></h4>

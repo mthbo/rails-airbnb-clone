@@ -1,0 +1,9 @@
+fr:
+  users:
+    info:
+      age: "yrs"
+      grade_1: "Papoter"
+      grade_2: "Conseiller"
+      grade_3: "Expert"
+      grade_4: "Guide"
+

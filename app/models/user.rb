@@ -52,20 +52,20 @@ class User < ApplicationRecord
     write_attribute(:city, s.to_s.capitalize)
   end
 
-  def country
+  def country(locale=I18n.locale)
     if country_code.present?
       country_data = ISO3166::Country[country_code]
-      country_data.translations[I18n.locale.to_s] || country_data.name
+      country_data.translations[locale.to_s] || country_data.name
     end
   end
 
-  def address_short
+  def address_short(locale=I18n.locale)
     if city.present? && country_code.present?
-      "#{city}, #{country}"
+      "#{city}, #{country(locale)}"
     elsif city.present? && country_code.blank?
       "#{city}"
     elsif city.blank? && country_code.present?
-      "#{country}"
+      "#{country(locale)}"
     else
       " - "
     end
@@ -73,17 +73,29 @@ class User < ApplicationRecord
 
   def avatar_img
     if photo.present?
-      html = ActionController::Base.helpers.cl_image_tag(photo.path, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar-medium bg-light-gray").to_s
+      ActionController::Base.helpers.cl_image_tag(photo.path, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar-medium bg-light-gray").to_s
     else
       url = facebook_picture_url || "avatar.png"
-      html = ActionController::Base.helpers.image_tag(url, class: "avatar-medium bg-light-gray").to_s
+      ActionController::Base.helpers.image_tag(url, class: "avatar-medium bg-light-gray").to_s
     end
   end
 
-  def grade_and_age
-    html = grade
+  def grade(locale=I18n.locale)
+    if advisor_deals_closed_count > 20
+      I18n.t('users.info.grade_4', locale: locale)
+    elsif advisor_deals_closed_count > 10
+      I18n.t('users.info.grade_3', locale: locale)
+    elsif advisor_deals_closed_count > 3
+      I18n.t('users.info.grade_2', locale: locale)
+    else
+      I18n.t('users.info.grade_1', locale: locale)
+    end
+  end
+
+  def grade_and_age(locale=I18n.locale)
+    html = grade(locale)
     if age.present?
-      html << "&nbsp; | &nbsp;#{age} yr"
+      html << "&nbsp; | &nbsp;#{age} #{I18n.t('users.info.age', locale: locale)}"
     end
     html
   end
@@ -287,18 +299,6 @@ class User < ApplicationRecord
 
 
   # User stat
-
-  def grade
-    if advisor_deals_closed_count > 20
-      "Guide"
-    elsif advisor_deals_closed_count > 10
-      "Expert"
-    elsif advisor_deals_closed_count > 3
-      "Advisor"
-    else
-      "Papoter"
-    end
-  end
 
   def offers_active_count
     offers_active.count

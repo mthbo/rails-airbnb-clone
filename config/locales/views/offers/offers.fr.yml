@@ -30,8 +30,8 @@ fr:
       first_review_advisor: "Donnez des sessions de conseil pour obtenir vos premiers avis!"
       first_review_client: "Prenez conseil auprès de %{advisor_name} et laissez un premier avis pour cette offre!"
     status_info:
-      offer_active_advisor: "Cette offre est active. Passez son status à 'inactif' si vous ne voulez pas recevoir de demandes."
-      offer_inactive_advisor: "Cette offre est inactive. Passez son status à 'actif' si vous voulez recevoir des demandes."
+      offer_active_advisor: "Cette offre est active. Passez son status à 'inactif' si vous ne souhaitez pas recevoir de demandes."
+      offer_inactive_advisor: "Cette offre est inactive. Passez son status à 'actif' si vous souhaitez recevoir des demandes."
       offer_inactive_client: "Cette offre est inactive. %{advisor_name} n'accepte pas les demandes pour cette offre pour le moment."
     deals_count:
       sessions_html:

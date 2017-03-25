@@ -2,5 +2,4 @@ fr:
   deals:
     request_button:
       get_in_touch: "Contacter"
-      pending_session: "#session en attente"
-      open_session: "#session ouverte"
+      session: "Session"

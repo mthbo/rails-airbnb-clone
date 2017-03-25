@@ -2,8 +2,8 @@
   <%= link_to new_offer_deal_path(offer), class: "btn btn-yellow #{'btn-form' if size == 'big'}" do %>
     <i class="fa fa-paper-plane" aria-hidden="true"></i>  &nbsp;&nbsp;<%= t '.get_in_touch' %>
   <% end %>
-<% elsif  offer.pending_deal(current_user).present? %>
-  <p><%= link_to t('.pending_session'), deal_path(offer.pending_deal(current_user)) %></p>
-<% elsif  offer.open_deal(current_user).present? %>
-  <p><%= link_to t('.open_session'), deal_path(offer.open_deal(current_user)) %></p>
+<% elsif  offer.ongoing_deal(current_user).present? %>
+  <%= link_to deal_path(offer.ongoing_deal(current_user)), class: "btn btn-blue #{'btn-form' if size == 'big'}" do %>
+    <i class="fa fa-hashtag" aria-hidden="true"></i> &nbsp;&nbsp;<%= t '.session' %>
+  <% end %>
 <% end %>

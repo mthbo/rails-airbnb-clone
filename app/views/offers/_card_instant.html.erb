@@ -10,14 +10,37 @@
       </div>
 
       <div class="row padded-bottom-xs">
-        <div class="col-xs-4 col-sm-2">
-          <p>{{{deals_closed_view}}}</p>
+        <div class="col-xs-3">
+          <p>
+            <% if I18n.locale == :fr %>
+              {{{deals_closed_view_fr}}}
+            <% else %>
+              {{{deals_closed_view_en}}}
+            <% end %>
+          </p>
         </div>
-        <div class="col-xs-8 col-sm-5 text-right">
-          <p>{{{global_rating_view}}}</p>
-        </div>
-        <div class="col-xs-12 col-sm-5 text-right">
-          <p><span class='info-icon'><%= image_tag 'amount.svg' %></span> {{{amounts_view}}}</p>
+        <div class="col-xs-9">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 text-right">
+              <p>
+                <% if I18n.locale == :fr %>
+                  {{{satisfaction_view_fr}}}
+                <% else %>
+                  {{{satisfaction_view_en}}}
+                <% end %>
+              </p>
+            </div>
+            <div class="col-xs-12 col-sm-6 text-right">
+              <p>
+                <span class='info-icon'><%= image_tag 'amount.svg' %></span>
+                <% if I18n.locale == :fr %>
+                  {{{amounts_view_fr}}}
+                <% else %>
+                  {{{amounts_view_en}}}
+                <% end %>
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -26,19 +49,15 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-7">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <ul class = "list-inline">
-                {{#languages}}<li class="flag-icon">{{{flag}}}</li>{{/languages}}
-              </ul>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <ul class="list-inline">
-                {{#means}}<li class="mean-icon"><i class="fa fa-{{picto}} fa-lg" aria-hidden="true"></i></li>{{/means}}
-              </ul>
-            </div>
-          </div>
+        <div class="col-xs-12 col-sm-4">
+          <ul class = "list-inline">
+            {{#languages}}<li class="flag-icon">{{{flag}}}</li>{{/languages}}
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+          <ul class="list-inline">
+            {{#means}}<li class="mean-icon"><i class="fa fa-{{picto}} fa-lg" aria-hidden="true"></i></li>{{/means}}
+          </ul>
         </div>
       </div>
 
@@ -51,8 +70,13 @@
     </div>
     <div>
       <h1>{{advisor.name}}</h1>
-      <h3>{{{advisor.grade_and_age}}}</h3>
-      <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; {{advisor.address}}</h4>
+      <% if I18n.locale == :fr %>
+        <h3>{{{advisor.grade_and_age_fr}}}</h3>
+        <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; {{advisor.address_fr}}</h4>
+      <% else %>
+        <h3>{{{advisor.grade_and_age_en}}}</h3>
+        <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; {{advisor.address_en}}</h4>
+      <% end %>
     </div>
   </div>
 

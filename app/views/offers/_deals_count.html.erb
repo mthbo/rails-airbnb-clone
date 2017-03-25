@@ -1,1 +1,1 @@
-<p><%= t '.sessions_html', count: offer.deals_closed_count %></p>
+<p class="<%= offer.deals_closed_count > 0 ? 'blank-nowrap' : 'medium-gray' %>"><%= t '.sessions_html', count: offer.deals_closed_count %></p>
