@@ -17,12 +17,28 @@ class Mean < ApplicationRecord
     I18n.translate("mean.#{name.downcase.split.join("_")}")
   end
 
+  def name_translated_en
+    I18n.translate("mean.#{name.downcase.split.join("_")}", locale: :en)
+  end
+
+  def name_translated_fr
+    I18n.translate("mean.#{name.downcase.split.join("_")}", locale: :fr)
+  end
+
   def picto
     PICTOS[self.name]
   end
 
   def name_illustrated
     "<span class='mean-icon mean-icon-long'><i class='fa fa-#{self.picto} fa-fw fa-lg' aria-hidden='true'></i> #{self.name_translated}</span>".html_safe
+  end
+
+  def name_illustrated_en
+    "<span class='mean-icon mean-icon-long'><i class='fa fa-#{self.picto} fa-fw fa-lg' aria-hidden='true'></i> #{self.name_translated_en}</span>".html_safe
+  end
+
+  def name_illustrated_fr
+    "<span class='mean-icon mean-icon-long'><i class='fa fa-#{self.picto} fa-fw fa-lg' aria-hidden='true'></i> #{self.name_translated_fr}</span>".html_safe
   end
 
   def offers_count

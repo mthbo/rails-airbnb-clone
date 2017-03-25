@@ -59,6 +59,18 @@
           <p><%= t '.no_offers_found' %> <em>"{{query}}"</em>...</p>
         </script>
 
+        <script type="text/html" id="language-facet-item-template">
+          <div class="ais-refinement-list--item">
+            <div>
+              <label class="ais-refinement-list--label">
+                <input type="checkbox" class="ais-refinement-list--checkbox" value="{{name}}">
+                <span class='flag-icon flag-icon-long'>{{flag}}{{name}}</span>
+                <span class="ais-refinement-list--count">{{count}}</span>
+              </label>
+            </div>
+          </div>
+        </script>
+
       </div>
     </div>
   </div>

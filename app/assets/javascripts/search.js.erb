@@ -82,7 +82,7 @@ $(document).ready(function() {
     search.addWidget(
       instantsearch.widgets.refinementList({
         container: '#search-languages',
-        attributeName: 'languages.label',
+        attributeName: 'languages.label_' + I18n.locale,
         sortBy: ['isRefined', 'count:desc', 'name:asc'],
         operator: 'or',
         limit: 4,
@@ -93,7 +93,7 @@ $(document).ready(function() {
           }
         },
         templates: {
-          header: '<h6>' + I18n.t('offers.search.languages') + '</h6>'
+          header: '<h6>' + I18n.t('offers.search.languages') + '</h6>',
         }
       })
     );
@@ -101,7 +101,7 @@ $(document).ready(function() {
     search.addWidget(
       instantsearch.widgets.refinementList({
         container: '#search-means',
-        attributeName: 'means.label',
+        attributeName: 'means.label_' + I18n.locale,
         sortBy: ['isRefined', 'count:desc', 'name:asc'],
         operator: 'or',
         limit: 4,

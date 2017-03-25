@@ -27,10 +27,10 @@ class Offer < ApplicationRecord
       created_at.to_i
     end
     attribute :languages do
-      languages.map { |language| { label: language.name_illustrated, flag: language.flag_img } }
+      languages.map { |language| { label_en: language.name_illustrated_en, label_fr: language.name_illustrated_fr, flag: language.flag_img } }
     end
     attribute :means do
-      means.map { |mean| { label: mean.name_illustrated, picto: mean.picto } }
+      means.map { |mean| { label_en: mean.name_illustrated_en, label_fr: mean.name_illustrated_fr, picto: mean.picto } }
     end
     attribute :advisor do
       { name: advisor.name_anonymous, grade_and_age: advisor.grade_and_age, address: advisor.address_short, avatar_img: advisor.avatar_img }
@@ -54,7 +54,6 @@ class Offer < ApplicationRecord
       customRanking ['desc(created_at_i)', 'desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)']
     end
   end
-
 
   # Deals for an offer
 

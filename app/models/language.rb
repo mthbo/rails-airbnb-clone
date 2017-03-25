@@ -27,6 +27,14 @@ class Language < ApplicationRecord
     I18n.translate("language.#{name.downcase.split.join("_")}")
   end
 
+  def name_translated_en
+    I18n.translate("language.#{name.downcase.split.join("_")}", locale: :en)
+  end
+
+  def name_translated_fr
+    I18n.translate("language.#{name.downcase.split.join("_")}", locale: :fr)
+  end
+
   def flag
     FLAGS[self.name]
   end
@@ -37,6 +45,14 @@ class Language < ApplicationRecord
 
   def name_illustrated
     "<span class='flag-icon flag-icon-long'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name_translated}</span>".html_safe
+  end
+
+  def name_illustrated_en
+    "<span class='flag-icon flag-icon-long'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name_translated_en}</span>".html_safe
+  end
+
+  def name_illustrated_fr
+    "<span class='flag-icon flag-icon-long'>".html_safe + ActionController::Base.helpers.image_tag("flags/#{self.flag}") + " #{self.name_translated_fr}</span>".html_safe
   end
 
   def offers_count
