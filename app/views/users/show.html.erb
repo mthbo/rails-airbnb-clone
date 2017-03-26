@@ -82,8 +82,10 @@
               <%= render "offers/card_without_user", offer: offer %>
             <% end %>
           <% else %>
-            <p class="font-weight-normal"><%= t '.no_offers_you' %></p>
-            <p><%= link_to t('.publish_offer'), new_offer_path %> <%= t '.or' %> <%= link_to t('.find_out_more'), be_advisor_path %> <%= t '.know_more' %></p>
+            <div class="padded-top-xs">
+              <p class="font-weight-normal"><%= t '.no_offers_you' %></p>
+              <p><%= link_to t('.publish_offer'), new_offer_path %> <%= t '.or' %> <%= link_to t('.find_out_more'), be_advisor_path %> <%= t '.know_more' %></p>
+            </div>
           <% end %>
         <% else %>
           <% if @user.offers_active.present? %>
@@ -106,17 +108,19 @@
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
         <h3>
-          <%= pluralize(@deals_reviewed.total_count, "review") %>
+          <%= t('.reviews', count: @deals_reviewed.total_count) %>
         </h3>
-        <h5>
-          <span class="yellow">
-            <%= @user.advisor_deals_reviewed.count %> for advice given
+        <h6>
+          <span class="yellow font-weight-normal">
+            <%= @user.advisor_deals_reviewed.count %>
+            <%= t '.advice_given' %>
           </span>
           &nbsp; | &nbsp;
-          <span class="green">
-            <%= @user.client_deals_reviewed.count %> for advice received
+          <span class="green font-weight-normal">
+            <%= @user.client_deals_reviewed.count %>
+            <%= t '.advice_received' %>
           </span>
-        </h5>
+        </h6>
 
         <div>
           <% if  @deals_reviewed.present? %>
@@ -128,10 +132,10 @@
             </div>
           <% elsif @user == current_user %>
             <hr class="bd-gray">
-            <p>You didn't get any reviews yet.</p>
+            <p><%= t '.no_reviews_you' %></p>
           <% else %>
             <hr class="bd-gray">
-            <p><%= @user.first_name %> didn't get any reviews yet.</p>
+            <p><p><%= t '.no_reviews', user: @user.first_name %></p>
           <% end %>
         </div>
 

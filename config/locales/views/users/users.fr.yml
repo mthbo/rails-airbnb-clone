@@ -18,6 +18,14 @@ fr:
       find_out_more: "en savoir plus"
       know_more: "sur le rôle de conseiller sur Papoters."
       no_offers: "%{user} n'a aucune offre publiée."
+      reviews:
+        zero:  "Avis"
+        one:   "%{count} avis"
+        other: "%{count} avis"
+      advice_given: "pour conseils donnés"
+      advice_received: "pour conseils reçus"
+      no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
+      no_reviews: "%{user} n'a reçu aucun avis pour le moment."
     info:
       age: "ans"
       grade_1: "Papoter"

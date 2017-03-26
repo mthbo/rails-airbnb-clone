@@ -8,6 +8,10 @@ class DealPolicy < ApplicationPolicy
     record.advisor != user && record.offer.active? && record.offer.ongoing_deal(user).blank?
   end
 
+  def new?
+    create? || (user == nil && record.offer.active?)
+  end
+
   def new_proposition?
     record.advisor == user && (record.request? || record.proposition_declined?)
   end

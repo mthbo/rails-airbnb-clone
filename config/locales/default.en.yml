@@ -21,3 +21,10 @@ en:
     meeting: "Meeting"
     documents: "Document sharing"
     sign_language: "Sign language"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"

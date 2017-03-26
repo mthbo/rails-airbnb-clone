@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get '/be_advisor', to: 'pages#be_advisor'
 
-    resources :users, only: [:show, :destroy]
+    resources :users, only: [:show]
     get '/dashboard', to: 'users#dashboard'
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do

@@ -21,3 +21,10 @@ fr:
     meeting: "Rencontre"
     documents: "Echange de documents"
     sign_language: "Language des signes"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"

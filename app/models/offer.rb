@@ -112,14 +112,6 @@ class Offer < ApplicationRecord
 
   # Deal for an offer with a specific client
 
-  def pending_deal(client)
-    deals_pending.find_by(client: client)
-  end
-
-  def open_deal(client)
-    deals_open.find_by(client: client)
-  end
-
   def ongoing_deal(client)
     deals_ongoing.find_by(client: client)
   end

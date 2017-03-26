@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :find_user, only: [:show, :destroy]
+  before_action :find_user, only: [:show]
 
   def show
     @deals_reviewed = @user.deals_reviewed.page(params[:page])
@@ -10,12 +10,6 @@ class UsersController < ApplicationController
     @user = current_user
     authorize @user
     @pinned_offers = @user.find_liked_items
-  end
-
-  def destroy
-    @user.destroy
-    flash[:alert] = "Your account has been cancelled"
-    redirect_to root_path
   end
 
   private
