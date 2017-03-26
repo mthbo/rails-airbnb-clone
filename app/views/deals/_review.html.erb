@@ -1,11 +1,18 @@
 <hr class="bd-gray">
 <div class="review">
   <div class="review-user">
-    <%= link_to user_path(user) do %>
+    <% if user %>
+      <%= link_to user_path(user) do %>
+        <div class="hidden-xs">
+          <%= render 'users/avatar', user: user, size: 'avatar-standard' %>
+        </div>
+        <h1><%= user.name_anonymous %></h1>
+      <% end %>
+    <% else %>
       <div class="hidden-xs">
         <%= render 'users/avatar', user: user, size: 'avatar-standard' %>
       </div>
-      <h1><%= user.name_anonymous %></h1>
+      <h1><span class="medium-gray"><em>Account deleted</em></span></h1>
     <% end %>
   </div>
   <div class="review-content">

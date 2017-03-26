@@ -39,9 +39,10 @@
   <% elsif policy(deal).new_review? %>
     <div class="padded-top-s">
       <% if deal.advisor == current_user %>
-        <p class="font-weight-normal">This session is closed. <%= deal.client.first_name %> is looking forward to receiving your feedback for this session!</p>
+        <p class="font-weight-normal">This session is closed.
+        <%= "#{deal.client.first_name} is looking forward to receiving your feedback for this session!" if deal.client %></p>
       <% elsif deal.client == current_user %>
-        <p class="font-weight-normal">This session is closed. <%= deal.advisor.first_name %> is looking forward to receiving your feedback for this session!</p>
+        <p><%= "#{deal.advisor.first_name} is looking forward to receiving your feedback for this session!" if deal.advisor %></p>
       <% end %>
     </div>
 

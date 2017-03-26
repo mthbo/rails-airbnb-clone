@@ -14,7 +14,15 @@
   <div class="deal-card-body">
     <div class="deal-card-avatar">
       <%= render 'users/avatar', user: current_user == deal.advisor ? deal.client : deal.advisor , size: 'avatar' %>
-      <h1><%= current_user == deal.advisor ? deal.client.name_anonymous : deal.advisor.name_anonymous %></h1>
+      <h1>
+        <% if current_user == deal.advisor && deal.client %>
+          <%= deal.client.name_anonymous %>
+        <% elsif current_user == deal.client && deal.advisor %>
+          <%= deal.advisor.name_anonymous %>
+        <% else %>
+          <span class="medium-gray"><em>Account deleted</em></span>
+        <% end %>
+      </h1>
     </div>
     <div class="deal-card-info text-left">
       <p>
