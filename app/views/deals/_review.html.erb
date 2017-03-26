@@ -12,14 +12,25 @@
       <div class="hidden-xs">
         <%= render 'users/avatar', user: user, size: 'avatar-standard' %>
       </div>
-      <h1><span class="medium-gray"><em>Account deleted</em></span></h1>
+      <h2 class="medium-gray"><em><%= t('.account_cancelled') %></em></h2>
     <% end %>
   </div>
   <div class="review-content">
     <div class="review-content-top">
       <%= render 'deals/satisfaction', rating: rating, user: user, deal: deal %>
-      <div><p class="medium-gray"><%= date.strftime("%d %b %Y") %></p></div>
+      <div><p class="medium-gray"><%= l(date.to_date, format: :long) %></p></div>
     </div>
     <%= sanitize markdown_to_html(review) %>
+    <% if show_offer %>
+      <p>
+        <% if policy(deal.offer).show? %>
+          <%= link_to "#{deal.offer.title}", offer_path(deal.offer)%>
+        <% elsif deal.offer %>
+          <%= deal.offer.title %>
+        <% else %>
+          -
+        <% end %>
+      </p>
+    <% end %>
   </div>
 </div>

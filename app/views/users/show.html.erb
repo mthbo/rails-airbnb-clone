@@ -9,7 +9,7 @@
         <%= render 'users/avatar', user: @user, size: 'avatar-xlarge' %>
         <%= render 'users/info', user: @user %>
         <% if policy(@user).dashboard? %>
-          <p><%= link_to "See my dashboard", dashboard_path %></p>
+          <p><%= link_to t('.see_dashboard'), dashboard_path %></p>
         <% end %>
       </div>
     </div>
@@ -20,14 +20,20 @@
   <div class="container">
     <div class="row">
 
-      <div class="<%= @user == current_user ? 'col-xs-6 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
-        <h2>About <%= @user == current_user ? "me" : @user.first_name %></h2>
+      <div class="<%= @user == current_user ? 'col-xs-8 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
+        <h2>
+          <% if @user == current_user %>
+            <%= t('.about_me') %>
+          <% else %>
+            <%= t('.about', user: @user.first_name) %>
+          <% end %>
+        </h2>
       </div>
       <% if policy(@user).edit? %>
-        <div class="col-xs-6 col-lg-5 text-right padded-top-s">
+        <div class="col-xs-4 col-lg-5 text-right user-edit-profile">
           <p>
             <%= link_to edit_user_registration_path do %>
-              <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; Edit my profile
+              <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; <%= t('.edit_my_profile') %>
             <% end %>
           </p>
         </div>
@@ -37,10 +43,10 @@
         <% if @user.bio.present? %>
           <%= sanitize markdown_to_html(@user.bio) %>
         <% elsif policy(@user).edit? %>
-          <p class="red font-weight-normal">You haven't provide information about yourself.</p>
-          <p><%= link_to "Edit your profile", edit_user_registration_path %> to let people know more about you.</p>
+          <p class="font-weight-normal"><%= t('.no_information_you') %></p>
+          <p><%= link_to t('.edit_your_profile'), edit_user_registration_path %> <%= t('.be_known') %></p>
         <% else %>
-          <p><%= @user.first_name %> hasn't provide personnal information yet.</p>
+          <p><%= t('.no_information', user: @user.first_name) %></p>
         <% end %>
       </div>
 
@@ -53,12 +59,18 @@
     <div class="row">
 
       <div class="<%= @user == current_user ? 'col-xs-6 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
-        <h2><%= @user == current_user ? "My offers" : "Offers of #{@user.first_name}" %></h2>
+        <h2>
+          <% if @user == current_user %>
+            <%= t('.my_offers') %>
+          <% else %>
+            <%= t('.offers', user: @user.first_name) %>
+          <% end %>
+        </h2>
       </div>
       <% if policy(@user.offers.new).new? %>
         <div class="col-xs-6 col-lg-5 text-right padded-top-xs">
           <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
-            <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; New offer
+            <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
           <% end %>
         </div>
       <% end %>
@@ -70,8 +82,8 @@
               <%= render "offers/card_without_user", offer: offer %>
             <% end %>
           <% else %>
-            <p class="red font-weight-normal">You have no offer published.</p>
-            <p>You can <%= link_to "create an offer", new_offer_path %> or <%= link_to "check this out", be_advisor_path %> if you need to know more about being an advisor on Papoters.</p>
+            <p class="font-weight-normal"><%= t '.no_offers_you' %></p>
+            <p><%= link_to t('.publish_offer'), new_offer_path %> <%= t '.or' %> <%= link_to t('.find_out_more'), be_advisor_path %> <%= t '.know_more' %></p>
           <% end %>
         <% else %>
           <% if @user.offers_active.present? %>
@@ -79,7 +91,7 @@
               <%= render "offers/card_without_user", offer: offer %>
             <% end %>
           <% else %>
-            <p><%= @user.first_name %> has no offer published.</p>
+            <p><%= t '.no_offers', user: @user.first_name %></p>
           <% end %>
         <% end %>
       </div>

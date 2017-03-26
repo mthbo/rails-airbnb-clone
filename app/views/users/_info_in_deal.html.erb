@@ -18,6 +18,9 @@
   <% end %>
 
 <% else %>
-  <h6>User acccount cancelled</h6>
+  <div class="deal-user-info">
+    <%= render 'users/avatar', user: nil, size: 'avatar' %>
+    <h6 class="medium-dark-gray">User acccount cancelled</h6>
+  </div>
 
 <% end %>

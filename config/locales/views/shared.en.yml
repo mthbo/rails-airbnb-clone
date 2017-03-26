@@ -6,3 +6,10 @@ en:
     logout: "Logout"
     join: "Join"
     sign_in: "Sign in"
+  footer:
+    home: "Home"
+    be_advisor: "Become advisor"
+    t&p: "Terms & Privacy"
+    contact: "Contact"
+
+

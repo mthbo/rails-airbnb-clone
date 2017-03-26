@@ -3,6 +3,12 @@ en:
     request_button:
       get_in_touch: "Get in touch"
       session: "Session"
+    satisfaction:
+      happy: "happy"
+    review:
+      account_cancelled: "Account cancelled"
+
+
 
 
 

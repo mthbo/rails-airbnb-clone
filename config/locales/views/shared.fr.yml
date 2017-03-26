@@ -6,3 +6,9 @@ fr:
     logout: "Se déconnecter"
     join: "S'inscrire"
     sign_in: "Se connecter"
+  footer:
+    home: "Accueil"
+    be_advisor: "Devenir conseiller"
+    t&p: "Conditions & Confidentialité"
+    contact: "Contact"
+
