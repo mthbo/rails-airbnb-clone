@@ -2,7 +2,7 @@
   <%= "Papoters | Edit profile" %>
 <% end %>
 
-<h2>Edit my profile</h2>
+<h2><%= t '.title' %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
