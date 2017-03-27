@@ -24,6 +24,7 @@
 .custom-form-input {
   height: 45px;
   box-shadow: none;
+  font-weight: lighter;
   &:focus {
     box-shadow: none;
     border: 2px $medium-gray solid;
@@ -205,7 +206,7 @@
   };
   .custom-form-input {
     height: 40px;
-    font-size: 14px;
+    font-size: 16px;
   };
   .custom-input-addon {
     font-size: 14px;
