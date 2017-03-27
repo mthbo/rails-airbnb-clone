@@ -214,6 +214,9 @@ a.deal-user-info {
   background-color: $light-gray;
   border-radius: 0 0 5px 5px;
   border-top: 1px solid $light-gray;
+  textarea {
+    font-weight: lighter;
+  }
 }
 
 .deal-reviews-box {
@@ -292,5 +295,10 @@ a.deal-user-info {
   .deal-conversation-top, #deal-conversation-messages, #deal-conversation-form {
     padding-right: 10px;
     padding-left: 10px;
+  }
+  #deal-conversation-form {
+    textarea {
+      font-size: 16px;
+    }
   }
 }

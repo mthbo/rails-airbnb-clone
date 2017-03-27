@@ -23,9 +23,20 @@
   </div>
 
   <div class="home-inspirations-top bg-gray-transparent"></div>
-  <div class="home-inspirations-body-1 text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('backgrounds/background_disclose.png') %>");'>
+
+  <div class="home-inspirations-body-1 text-center padded-top-l home-content-wrapper hidden-xs" style='background-image: url("<%= image_path('backgrounds/background_disclose.png') %>");'>
     <div class="home-flex-700">
       <h2 class="white"><%= t '.inspirations_title' %></h2>
+    </div>
+  </div>
+
+  <!-- Background fixed for Mobile -->
+
+  <div class="home-inspirations-body-3 hidden-sm hidden-md hidden-lg bg-white" style='background-image: url("<%= image_path('backgrounds/background.png') %>");'>
+    <div class="home-inspirations-body-1 text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('backgrounds/background_disclose.png') %>");'>
+      <div class="home-flex-700">
+        <h2 class="white"><%= t '.inspirations_title' %></h2>
+      </div>
     </div>
   </div>
 
