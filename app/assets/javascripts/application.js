@@ -20,6 +20,7 @@
 //= require flashes
 //= require google_maps_autocomplete
 //= require init_attachinary
+//= require mobile_detection
 //= require navbar
 //= require proposition
 //= require radio_button

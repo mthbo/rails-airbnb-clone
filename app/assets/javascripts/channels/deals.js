@@ -80,7 +80,7 @@ function typeMessage(dealId) {
 
 function submitMessage() {
   $('#message_content').on('keydown', function(event) {
-    if (event.keyCode === 13 && !event.shiftKey) {
+    if (event.keyCode === 13 && !event.shiftKey && !isMobile()) {
       $('#submit_message').click();
     }
   });
