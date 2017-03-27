@@ -2,8 +2,7 @@ $(document).ready(function() {
 
   if ($('.my-navbar').length > 0) {
 
-    I18n.defaultLocale = "<%= I18n.default_locale %>";
-    I18n.locale = $("#my-navbar-locale").attr('data-locale');
+    setLocale();
 
     var search = instantsearch({
       appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",

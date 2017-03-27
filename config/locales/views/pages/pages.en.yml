@@ -1,7 +1,7 @@
 en:
   pages:
     home:
-      page_title: "Papoters | Home"
+      home: "Home"
       banner_title: "Get personal advice for whatever you need."
       input_placeholder: "I need some advice for ..."
       arrow_down: "Find out more"
@@ -24,7 +24,7 @@ en:
       be_advisor_subtitle: "Start giving advice to people who need you."
       be_advisor_button: "Become advisor"
     be_advisor:
-      page_title: "Papoters | Become advisor"
+      be_advisor: "Become advisor"
       banner_title: "Your knowledge and your experience have value!"
       publish_offer_link: "Publish an offer as advisor"
       arrow_down: "Find out more"

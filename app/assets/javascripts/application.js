@@ -5,7 +5,8 @@
 //= require cloudinary/jquery.cloudinary
 //= require attachinary
 //= require smoothscroll
-//= require bootstrap-datepicker
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js
 //= require jquery-bar-rating
 //= require algolia/v3/algoliasearch.min
 //= require i18n/translations
@@ -20,9 +21,12 @@
 //= require flashes
 //= require google_maps_autocomplete
 //= require init_attachinary
+//= require locale
 //= require mobile_detection
 //= require navbar
 //= require proposition
 //= require radio_button
 //= require search
 //= require star-rating
+
+
