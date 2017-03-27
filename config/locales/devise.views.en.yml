@@ -77,14 +77,22 @@ en:
       updated_not_active: Your password has been changed successfully.
     registrations:
       destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
-      edit:
+      cancellation:
+        account_cancellation: Account cancellation
+        account_cancellation_for: Cancel your account only if your want to quit Papoters definitely. All your information and your history will be destroyed.
+        cant_cancel_account: You can't cancel your account right now.
+        close_or_cancel: Close or cancel
+        ongoing_sessions: all ongoing sessions
+        before_cancelling_account: before cancelling your account.
         are_you_sure: Are you sure?
         cancel_my_account: Cancel my account
+      edit:
         currently_waiting_confirmation_for_email: 'Currently waiting confirmation for: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want to change it
         title: Edit %{resource}
         unhappy: Unhappy?
         update: Update
+        back: Back to profile
         we_need_your_current_password_to_confirm_your_changes: we need your current password to confirm your changes
         edit_profile: Edit my profile
         about_me: About me
@@ -95,7 +103,7 @@ en:
         pick_date: "Pick a date"
         profile_picture: "Profile picture"
         choose_picture: "Choisir une photo"
-        contact_details: "Contact details"
+        contact_details: "My contact details"
         contact_details_not_disclosed: Your contact details won't be disclosed publicly, apart from your city and country of residence.
         email: "Email address"
         phone_number: "42 42 42 42 42"

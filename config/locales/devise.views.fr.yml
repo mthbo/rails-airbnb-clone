@@ -77,14 +77,22 @@ fr:
       updated_not_active: Votre mot de passe a été modifié avec succès.
     registrations:
       destroyed: Au revoir ! Votre compte a été annulé avec succès. Nous espérons vous revoir bientôt.
-      edit:
+      cancellation:
+        account_cancellation: Suppression du compte
+        account_cancellation_for: Supprimez votre compte seulement si vous souhaitez quitter Papoters définitivement. Toutes vos informations et votre historique seront éffacés.
+        cant_cancel_account: Vous ne pouvez pas supprimer votre compte pour le moment.
+        close_or_cancel: Fermez ou annulez
+        ongoing_sessions: toutes les sessions en cours
+        before_cancelling_account: avant de supprimer votre compte.
         are_you_sure: "Êtes-vous sûr ?"
         cancel_my_account: Supprimer mon compte
+      edit:
         currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le laisser inchangé
         title: "Éditer %{resource}"
         unhappy: 'Insatisfait '
-        update: Modifier
+        update: Mettre à jour
+        back: Retour au profil
         we_need_your_current_password_to_confirm_your_changes: nous avons besoin de votre mot de passe actuel pour valider ces modifications
         edit_profile: Editer mon profil
         about_me: A propos de moi
@@ -95,7 +103,7 @@ fr:
         pick_date: "Sélectionnez une date"
         profile_picture: "Photo de profil"
         choose_picture: "Choisir une photo"
-        contact_details: "Coordonnées"
+        contact_details: "Mes coordonnées"
         contact_details_not_disclosed: Vos coordonnées ne seront pas révélées publiquement, hormis votre ville et votre pays de résidence.
         email: "Adresse e-mail"
         phone_number: "42 42 42 42 42"

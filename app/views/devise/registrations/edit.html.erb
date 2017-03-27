@@ -78,13 +78,13 @@
 
   <div class="text-right padded-top-s">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
-      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Update
+      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
     <% end %>
   </div>
 <% end %>
 
 <div class="text-right padded-top-xs">
-  <p><%= link_to "Back to profile", user_path(current_user) %></p>
+  <p><%= link_to t('.back'), user_path(current_user) %></p>
 </div>
 
 <%= render 'cancellation' %>
