@@ -1,17 +1,17 @@
 <p>
-  <% unless offer.global_rating.nil? %>
-    <% (offer.global_rating.round).times do %>
+  <% unless offer.satisfaction.nil? %>
+    <% (offer.satisfaction.round).times do %>
       <i class="fa fa-star yellow" aria-hidden="true"></i>
     <% end %>
-    <% (5 - offer.global_rating.round).times do %>
+    <% (5 - offer.satisfaction.round).times do %>
       <i class="fa fa-star-o medium-gray" aria-hidden="true"></i>
     <% end %>
-    <span>&nbsp;&nbsp;<strong><%= (offer.global_rating.fdiv(5) * 100).to_i %> %</strong>  happy</span>
+    <span>&nbsp;&nbsp;<strong><%= (offer.satisfaction.fdiv(5) * 100).to_i %> %</strong>  <%= t '.happy' %></span>
 
   <% else %>
     <% 5.times do %>
       <i class="fa fa-star-o medium-gray" aria-hidden="true"></i>
     <% end %>
-    <span class="medium-gray">&nbsp;&nbsp; not rated yet</span>
+    <span class="medium-gray">&nbsp;&nbsp; <%= t '.not_rated' %></span>
   <% end %>
 </p>

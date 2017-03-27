@@ -25,8 +25,8 @@ ActiveAdmin.register Offer do
     column :pin_count
     column :deals_ongoing_count
     column :deals_closed_count
-    column :global_rating do |offer|
-      "#{(offer.global_rating.fdiv(5) * 100).to_i} %" unless offer.global_rating.nil?
+    column :satisfaction do |offer|
+      "#{(offer.satisfaction.fdiv(5) * 100).to_i} %" unless offer.satisfaction.nil?
     end
     column :median_amount
     actions
@@ -57,8 +57,8 @@ ActiveAdmin.register Offer do
       row :deals do |offer|
         offer.deals.map { |d| link_to d.id, admin_deal_path(d) }.join(" | ").html_safe
       end
-      row :global_rating do |offer|
-        "#{(offer.global_rating.fdiv(5) * 100).to_i} %" unless offer.global_rating.nil?
+      row :satisfaction do |offer|
+        "#{(offer.satisfaction.fdiv(5) * 100).to_i} %" unless offer.satisfaction.nil?
       end
       row :min_amount_money
       row :median_amount_money

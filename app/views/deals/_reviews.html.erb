@@ -5,10 +5,10 @@
       <h4 class="font-weight-normal">Reviews</h4>
 
       <% if deal.client_review_at.present? %>
-        <%= render 'deals/review', deal: deal, user: deal.client, rating: deal.client_global_rating, review: deal.client_review, date: deal.client_review_at %>
+        <%= render 'deals/review', deal: deal, user: deal.client, rating: deal.client_global_rating, review: deal.client_review, date: deal.client_review_at, show_offer: false %>
       <% end %>
       <% if deal.advisor_review_at.present? %>
-        <%= render 'deals/review', deal: deal, user: deal.advisor, rating: deal.advisor_global_rating, review: deal.advisor_review, date: deal.advisor_review_at %>
+        <%= render 'deals/review', deal: deal, user: deal.advisor, rating: deal.advisor_global_rating, review: deal.advisor_review, date: deal.advisor_review_at, show_offer: false %>
       <% end %>
     </div>
   </div>

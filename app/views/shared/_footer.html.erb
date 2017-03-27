@@ -2,13 +2,10 @@
 
         <div class="my-footer-left">
           <ul class="list-inline">
-            <li><%= link_to "Home", root_path %></li>
-            <li><%= link_to "Give advice", be_advisor_path %></li>
-            <li><%= link_to "About", root_path %></li>
-            <li><%= link_to "Q&A", root_path %></li>
-            <li><%= link_to "Careers", root_path %></li>
-            <li><%= link_to "Terms & Privacy", root_path %></li>
-            <li><%= link_to "Contact", root_path %></li>
+            <li><%= link_to t('footer.home'), root_path %></li>
+            <li><%= link_to t('footer.be_advisor'), be_advisor_path %></li>
+            <li><%= link_to t('footer.t&p'), root_path %></li>
+            <li><%= link_to t('footer.contact'), root_path %></li>
           </ul>
         </div>
 

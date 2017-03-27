@@ -31,7 +31,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
-          <%= link_to user_path(current_user), method: :delete, class: "btn btn-form btn-red" do %>
+          <%= link_to user_registration_path, method: :delete, class: "btn btn-form btn-red" do %>
             <i class='fa fa-suitcase' aria-hidden='true'></i>&nbsp;&nbsp; Forget me
           <% end %>
         </div>

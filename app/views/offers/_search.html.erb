@@ -26,14 +26,14 @@
         <div id="search-filters-disclose" class="text-center bg-white-transparent">
           <p>
             <%= link_to '#', id: "search-filters-toggle" do  %>
-              <span class="toggle-link">Show filters &nbsp;
+              <span class="toggle-link"><%= t '.show_filters' %> &nbsp;
                 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
               </span>
-              <span class="toggle-link hidden">Hide filters &nbsp;
+              <span class="toggle-link hidden"><%= t '.hide_filters' %> &nbsp;
                 <span class="glyphicon glyphicon-menu-up" aria-hidden="true"></span>
               </span>
             <% end %>
-            <%= link_to "Clear search", '#', id: "search-clear", class: "hidden" %>
+            <%= link_to t('.clear_search'), '#', id: "search-clear", class: "hidden" %>
           </p>
         </div>
 
@@ -50,12 +50,13 @@
           <%= render "offers/card_instant" %>
         </script>
 
-        <script type="text/html" id="search-no-results-template">
-          <p>Sorry, we didn't find any offers matching the search <em>"{{query}}"</em>...</p>
+        <script type="text/html" id="search-stats-template">
+          <h4>{{nbHits}}
+          {{#hasManyResults}}<%= t '.offers_found' %>{{/hasManyResults}} {{^hasManyResults}}<%= t '.offer_found' %>{{/hasManyResults}}</h4>
         </script>
 
-        <script type="text/html" id="search-stats-template">
-          <h4>{{nbHits}} offer{{#hasManyResults}}s{{/hasManyResults}} found</h4>
+        <script type="text/html" id="search-no-results-template">
+          <p><%= t '.no_offers_found' %> <em>"{{query}}"</em>...</p>
         </script>
 
       </div>

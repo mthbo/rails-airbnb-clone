@@ -1,0 +1,9 @@
+fr:
+  deals:
+    request_button:
+      get_in_touch: "Contacter"
+      session: "Session"
+    satisfaction:
+      happy: "satisfait"
+    review:
+      account_cancelled: "Compte résilié"

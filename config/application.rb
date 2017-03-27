@@ -27,6 +27,11 @@ module Papoters
 
     config.time_zone = 'Europe/Paris'
 
+    config.i18n.available_locales = [:en, :fr]
+    config.i18n.default_locale = :en
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+    config.middleware.use I18n::JS::Middleware
+
     config.active_job.queue_adapter = :sidekiq
 
     # Settings in config/environments/* take precedence over those specified here.

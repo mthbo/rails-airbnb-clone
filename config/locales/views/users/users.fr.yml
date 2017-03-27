@@ -1,0 +1,35 @@
+fr:
+  users:
+    show:
+      see_dashboard: "Voir mon tableau de bord"
+      about_me: "A propos de moi"
+      about: "A propos de %{user}"
+      edit_my_profile: "Editer mon profil"
+      no_information_you: "Vous n'avez pas encore fourni d'informations vous concernant."
+      edit_your_profile: "Editez votre profil"
+      be_known: "pour permettre à vos interlocuteurs de mieux vous connaître."
+      no_information:  "%{user} n'a pas encore fourni d'information à son propos."
+      my_offers: "Mes offres"
+      offers: "Offres de %{user}"
+      new_offer: "Nouvelle offre"
+      no_offers_you: "Vous n'avez aucune offre publiée."
+      publish_offer: "Publiez une offre"
+      or: "ou"
+      find_out_more: "en savoir plus"
+      know_more: "sur le rôle de conseiller sur Papoters."
+      no_offers: "%{user} n'a aucune offre publiée."
+      reviews:
+        zero:  "Avis"
+        one:   "%{count} avis"
+        other: "%{count} avis"
+      advice_given: "pour conseils donnés"
+      advice_received: "pour conseils reçus"
+      no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
+      no_reviews: "%{user} n'a reçu aucun avis pour le moment."
+    info:
+      age: "ans"
+      grade_1: "Papoter"
+      grade_2: "Conseiller"
+      grade_3: "Expert"
+      grade_4: "Guide"
+

@@ -5,5 +5,5 @@
   <% (5 - rating.round).times do %>
     <i class="fa fa-star-o medium-gray" aria-hidden="true"></i>
   <% end %>
-  <span>&nbsp;&nbsp;<strong><%= (rating.fdiv(5) * 100).to_i %> %</strong>  happy</span>
+  <span>&nbsp;&nbsp;<strong><%= (rating.fdiv(5) * 100).to_i %> %</strong>  <%= t('.happy') %></span>
 </p>

@@ -8,6 +8,7 @@
 //= require bootstrap-datepicker
 //= require jquery-bar-rating
 //= require algolia/v3/algoliasearch.min
+//= require i18n/translations
 
 //= require arrow_scroll
 //= require cable
@@ -20,7 +21,6 @@
 //= require google_maps_autocomplete
 //= require init_attachinary
 //= require navbar
-//= require pin_button
 //= require proposition
 //= require radio_button
 //= require search

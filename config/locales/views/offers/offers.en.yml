@@ -1,0 +1,49 @@
+en:
+  offers:
+    search:
+      input_placeholder: "I need some advice for ..."
+      clear_search: "Clear search"
+      show_filters: "Show filters"
+      hide_filters: "Hide filters"
+      median_price: "Median price"
+      languages: "Languages"
+      means: "Means of communication"
+      show_more: "Show more"
+      show_less: "Show less"
+      most_relevant: "Most relevant"
+      lowest_price: "Lowest price"
+      highest_price: "Highest price"
+      highest_rating: "Highest rating"
+      most_recent: "Most recent"
+      offers_found: "offers found"
+      offer_found: "offer found"
+      no_offers_found: "Sorry, we didn't find any offers matching the search"
+    show:
+      languages: "Languages accepted"
+      means: "Means of communication"
+      edit: "Edit"
+      session_history: "Session history"
+      reviews:
+        zero:  "Reviews"
+        one:   "%{count} review"
+        other: "%{count} reviews"
+      first_review_advisor: "Give advice sessions to get your first reviews!"
+      first_review_client: "Be advised by %{advisor_name} and leave a first review for this offer!"
+    status_info:
+      offer_active_advisor: "This offer is active. Switch to status 'inactive' if you don't want to receive requests."
+      offer_inactive_advisor: "This offer is inactive. Switch to status 'active' if you want to receive requests."
+      offer_inactive_client: "This offer is inactive. %{advisor_name} doesn't accept any requests for this offer at this time."
+    deals_count:
+      sessions_html:
+        zero:  "No session"
+        one:   "<strong>%{count}</strong> session"
+        other: "<strong>%{count}</strong> sessions"
+    satisfaction:
+      not_rated: "Not rated"
+      happy: "happy"
+    amounts:
+      free: "FREE"
+      no_price: "no price history"
+
+
+

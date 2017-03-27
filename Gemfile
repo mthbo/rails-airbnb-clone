@@ -40,6 +40,9 @@ gem 'kramdown'
 gem 'phony_rails'
 gem 'acts_as_votable'
 
+gem 'rails-i18n', '~> 5.0.0'
+gem "i18n-js", ">= 3.0.0.rc11"
+
 gem "algoliasearch-rails"
 
 source "https://rails-assets.org" do

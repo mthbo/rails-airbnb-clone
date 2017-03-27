@@ -1,4 +1,14 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  before_action :remove_offers_from_index, only: [:destroy]
+  after_action :index_offers, only: [:update]
+
+  def index_offers
+    resource.offers.each { |offer| offer.index! }
+  end
+
+  def remove_offers_from_index
+    resource.offers.each { |offer| offer.remove_from_index! }
+  end
 
   protected
 

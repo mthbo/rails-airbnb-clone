@@ -1,0 +1,30 @@
+fr:
+  language:
+    french: "Français"
+    english: "Anglais"
+    spanish: "Espagnol"
+    italian: "Italien"
+    german: "Allemand"
+    mandarin: "Mandarin"
+    danish: "Danois"
+    dutch: "Néerlandais"
+    hindi: "Hindi"
+    japanese: "Japonais"
+    portuguese: "Portuguais"
+    russian: "Russe"
+    swahili: "Swahili"
+    arabic: "Arabe"
+  mean:
+    messaging: "Messages"
+    phone_call: "Appel voix"
+    video_call: "Appel vidéo"
+    meeting: "Rencontre"
+    documents: "Echange de documents"
+    sign_language: "Language des signes"
+  views:
+    pagination:
+      first: "&laquo;"
+      last: "&raquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      truncate: "&hellip;"

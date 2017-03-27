@@ -27,7 +27,7 @@
 
   <div class="padded-top-xs">
     <% if @offer.id.blank? %>
-      <p>Before proposing priced services, remind that you need to build your reputation with at least <strong>3 free advice sessions</strong> for this offer.
+      <p>Before proposing priced services, remind that you need to build your reputation with at least <strong>3 free advice sessions</strong> for this offer.</p>
     <% elsif @offer.free? && @offer.deals_closed_count < 3 %>
       <p>Advice sessions for this offer are <strong>for free</strong>. You need <strong><%= pluralize(3 - @offer.deals_closed_count, "more session") %></strong> to propose priced services.</p>
     <% else %>

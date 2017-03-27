@@ -127,6 +127,7 @@ class DealsController < ApplicationController
       }
       format.js
     end
+    @deal.offer.index!
   end
 
   def new_review
@@ -157,6 +158,7 @@ class DealsController < ApplicationController
         render :new_review, layout: "client_form"
       end
     end
+    @deal.offer.index!
   end
 
   def disable_messages

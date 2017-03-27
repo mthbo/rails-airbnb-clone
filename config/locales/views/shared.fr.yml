@@ -1,0 +1,14 @@
+fr:
+  navbar:
+    be_advisor: "Devenir conseiller"
+    profile: "Mon profil"
+    dashboard: "Mon tableau de bord"
+    logout: "Se déconnecter"
+    join: "S'inscrire"
+    sign_in: "Se connecter"
+  footer:
+    home: "Accueil"
+    be_advisor: "Devenir conseiller"
+    t&p: "Conditions & Confidentialité"
+    contact: "Contact"
+

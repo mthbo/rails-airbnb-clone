@@ -19,42 +19,65 @@ class Offer < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch per_environment: true, if: :active? do
-    attribute :title, :description, :summary, :deals_closed_view, :deals_closed_count, :global_rating_view, :global_rating, :amounts_view
+    attribute :title, :description, :summary, :deals_closed_count, :satisfaction
     attribute :median_amount do
       min_amount.nil? ? 0 : median_amount / 100
     end
     attribute :created_at_i do
       created_at.to_i
     end
+    I18n.available_locales.each do |locale|
+      attribute "deals_closed_view_#{locale}".to_sym do
+        deals_closed_view(locale)
+      end
+      attribute "satisfaction_view_#{locale}".to_sym do
+        satisfaction_view(locale)
+      end
+      attribute "amounts_view_#{locale}".to_sym do
+        amounts_view(locale)
+      end
+    end
     attribute :languages do
-      languages.map { |language| { label: language.name_illustrated, flag: language.flag_img } }
+      languages.map do |language|
+        language_attributes = {flag: language.flag_img}
+        I18n.available_locales.each { |locale| language_attributes["label_#{locale}".to_sym] = language.name_illustrated(locale) }
+        language_attributes
+      end
     end
     attribute :means do
-      means.map { |mean| { label: mean.name_illustrated, picto: mean.picto } }
+      means.map do |mean|
+        mean_attributes = {picto: mean.picto}
+        I18n.available_locales.each { |locale| mean_attributes["label_#{locale}".to_sym] = mean.name_illustrated(locale) }
+        mean_attributes
+      end
     end
     attribute :advisor do
-      { name: advisor.name_anonymous, grade_and_age: advisor.grade_and_age, address: advisor.address_short, avatar_img: advisor.avatar_img }
+      advisor_attributes = { name: advisor.name_anonymous, avatar_img: advisor.avatar_img }
+      I18n.available_locales.each do |locale|
+        advisor_attributes["grade_and_age_#{locale}".to_sym] = advisor.grade_and_age(locale)
+        advisor_attributes["address_#{locale}".to_sym] = advisor.address_short(locale)
+      end
+      advisor_attributes
     end
     searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-    customRanking ['desc(deals_closed_count)', 'desc(global_rating)', 'asc(median_amount)', 'desc(created_at_i)']
+    customRanking ['desc(deals_closed_count)', 'desc(satisfaction)', 'asc(median_amount)', 'desc(created_at_i)']
     attributesForFaceting [:languages, :means, :median_amount]
     separatorsToIndex '+#$€'
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
     add_replica 'Offer_price_asc', inherit: true, per_environment: true do
-      customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
+      customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
     end
     add_replica 'Offer_price_desc', inherit: true, per_environment: true do
-      customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(global_rating)', 'desc(created_at_i)']
+      customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
     end
-    add_replica 'Offer_rating_desc', inherit: true, per_environment: true do
-      customRanking ['desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
+    add_replica 'Offer_satisfaction_desc', inherit: true, per_environment: true do
+      customRanking ['desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
     end
     add_replica 'Offer_created_at_desc', inherit: true, per_environment: true do
-      customRanking ['desc(created_at_i)', 'desc(global_rating)', 'desc(deals_closed_count)', 'asc(median_amount)']
+      customRanking ['desc(created_at_i)', 'desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)']
     end
   end
-
 
   # Deals for an offer
 
@@ -89,14 +112,6 @@ class Offer < ApplicationRecord
 
   # Deal for an offer with a specific client
 
-  def pending_deal(client)
-    deals_pending.find_by(client: client)
-  end
-
-  def open_deal(client)
-    deals_open.find_by(client: client)
-  end
-
   def ongoing_deal(client)
     deals_ongoing.find_by(client: client)
   end
@@ -127,7 +142,7 @@ class Offer < ApplicationRecord
 
   # Rating stat
 
-  def global_rating
+  def satisfaction
     if deals_reviewed.present?
       sum = 0
       deals_reviewed.each { |deal| sum += deal.client_global_rating }
@@ -175,29 +190,29 @@ class Offer < ApplicationRecord
     description[0..250]
   end
 
-  def deals_closed_view
-    "<strong>#{deals_closed_count}</strong> #{'session'.pluralize(deals_closed_count)}"
+  def deals_closed_view(locale)
+    "<span class='#{deals_closed_count > 0 ? "blank-nowrap" : "medium-gray"}'>#{I18n.t('offers.deals_count.sessions_html', count: deals_closed_count, locale: locale)}</span>"
   end
 
-  def global_rating_view
+  def satisfaction_view(locale)
     html = ""
-    unless global_rating.nil?
-      html << "<i class='fa fa-star yellow' aria-hidden='true'></i>&nbsp;" * global_rating.round
-      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * (5 - global_rating.round)
-      html << "<span>&nbsp;&nbsp;<strong>#{(global_rating.fdiv(5) * 100).to_i} %</strong>  happy</span>"
+    unless satisfaction.nil?
+      html << "<i class='fa fa-star yellow' aria-hidden='true'></i>&nbsp;" * satisfaction.round
+      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * (5 - satisfaction.round)
+      html << "<span>&nbsp;&nbsp;<strong>#{(satisfaction.fdiv(5) * 100).to_i} %</strong> #{I18n.t('offers.satisfaction.happy', locale: locale)}</span>"
     else
       html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * 5
-      html << "<span class='medium-gray'>&nbsp;&nbsp; not rated yet</span>"
+      html << "<span class='medium-gray'>&nbsp;&nbsp; #{I18n.t('offers.satisfaction.not_rated', locale: locale)}</span>"
     end
     html
   end
 
-  def amounts_view
+  def amounts_view(locale)
     html = ""
     if free?
-      html << "<strong>FREE</strong>"
+      html << "<strong>#{I18n.t('offers.amounts.free', locale: locale)}</strong>"
     elsif median_amount.nil?
-      html << "<span class='medium-gray'>No price yet</span>"
+      html << "<span class='medium-gray'>#{I18n.t('offers.amounts.no_price', locale: locale)}</span>"
     else
       html << "<span class='medium-gray'>#{ActionController::Base.helpers.money_without_cents_and_with_symbol(min_amount_money)} &mdash; </span>"
       html << "<strong>#{ActionController::Base.helpers.money_without_cents_and_with_symbol(median_amount_money)}</strong>"

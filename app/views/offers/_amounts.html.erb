@@ -1,9 +1,9 @@
 <p>
   <span class="info-icon"><%= image_tag 'amount.svg' %></span>
   <% if offer.free? %>
-    <strong>FREE</strong>
+    <strong><%= t '.free' %></strong>
   <% elsif offer.median_amount_money.nil? %>
-    <span class="medium-gray">No price yet</span>
+    <span class="medium-gray"><%= t '.no_price' %></span>
   <% else %>
     <span class="medium-gray"><%= money_without_cents_and_with_symbol(offer.min_amount_money) %> &mdash; </span>
     <strong><%= money_without_cents_and_with_symbol(offer.median_amount_money) %></strong>
