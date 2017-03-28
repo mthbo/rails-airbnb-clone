@@ -1,21 +1,27 @@
 <% content_for :title do %>
-  <%= "Papoters | Forgot password" %>
+  <%= "Papoters | #{t('.forgot_your_password')}" %>
 <% end %>
 
-<h2>Forgot your password?</h2>
+<h2><%= t(".forgot_your_password") %></h2>
 
-<div class="padded-bottom-xs">
-  <p>Enter your email to receive your password.</p>
-</div>
+<p><%= t(".send_me_reset_password_instructions") %></p>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :email, required: true, autofocus: true, label: false, placeholder: "Email", input_html: { class: 'custom-form-input' } %>
+  <div class="form-inputs padded-top-xs padded-bottom-xs">
+    <%= f.input :email, as: :custom, autofocus: true, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, autofocus: true, placeholder: t('.email'), input_html: { class: 'custom-form-input', type: 'email' } %>
+  </div>
 
-  <div class="text-right">
-    <%= f.button :submit, "Send", class: "btn-form btn-gray" %>
+  <div class="form-actions text-right">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-gradient") do %>
+      <i class='fa fa-send' aria-hidden='true'></i>&nbsp;&nbsp; <%= t(".send") %>
+    <% end %>
   </div>
 <% end %>
+
+<div class="form-separation padded-top-s">
+  <div></div>
+</div>
 
 <%= render "devise/shared/links" %>

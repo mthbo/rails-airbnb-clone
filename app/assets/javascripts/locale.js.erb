@@ -1,0 +1,17 @@
+function setLocale() {
+
+  I18n.defaultLocale = "<%= I18n.default_locale %>";
+
+  var availableLocales = [];
+  <% I18n.available_locales.each do |locale| %>
+    availableLocales.push("<%= locale %>");
+  <% end %>
+
+  var urlLocale = window.location.pathname.split('/')[1];
+  if (availableLocales.indexOf(urlLocale) >= 0) {
+    I18n.locale = urlLocale;
+  } else {
+    I18n.locale = I18n.defaultLocale
+  }
+
+};

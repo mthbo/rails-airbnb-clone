@@ -1,7 +1,7 @@
 fr:
   pages:
     home:
-      page_title: "Papoters | Accueil"
+      home: "Accueil"
       banner_title: "Obtenez des conseils personnalisés pour tout ce que vous voulez."
       input_placeholder: "J'ai besoin de conseils pour ..."
       arrow_down: "En savoir plus"
@@ -24,7 +24,7 @@ fr:
       be_advisor_subtitle: "Commencez à donner des conseils à des gens qui ont besoin de vous."
       be_advisor_button: "Devenir conseiller"
     be_advisor:
-      page_title: "Papoters | Devenir conseiller"
+      be_advisor: "Devenir conseiller"
       banner_title: "Vos connaissances et vos expériences ont de la valeur!"
       publish_offer_link: "Publier une offre de conseil"
       arrow_down: "En savoir plus"

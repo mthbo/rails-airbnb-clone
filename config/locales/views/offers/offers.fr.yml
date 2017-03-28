@@ -1,5 +1,13 @@
 fr:
   offers:
+    new:
+      publish_new_offer: Publier une nouvelle offre
+      back_to_profile: Retourner au profil
+    edit:
+      edit_offer: Editer votre offre
+      back_to_offer: Retourner à l'offre
+    form:
+
     search:
       input_placeholder: "J'ai besoin de conseils pour ..."
       clear_search: "Effacer la recherche"

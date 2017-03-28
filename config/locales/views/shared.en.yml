@@ -3,9 +3,9 @@ en:
     be_advisor: "Become advisor"
     profile: "My profile"
     dashboard: "My dashboard"
-    logout: "Logout"
-    join: "Join"
-    sign_in: "Sign in"
+    sign_up: "Sign up"
+    sign_in: "Log in"
+    sign_out: "Logout"
   footer:
     home: "Home"
     be_advisor: "Become advisor"

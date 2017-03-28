@@ -1,93 +1,90 @@
 <% content_for :title do %>
-  <%= "Papoters | Edit profile" %>
+  <%= "Papoters | #{t '.edit_profile'}" %>
 <% end %>
 
-<h2><%= t '.title' %></h2>
+<h2><%= t '.edit_profile' %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-separation padded-top-xs padded-bottom-s">
     <div></div>
-    <p><strong>About me</strong></p>
+    <p><strong><%= t '.about_me' %></strong></p>
     <div></div>
   </div>
 
   <div class="padded-bottom-xs">
-    <p>Take time to provide information about yourself. People need to know who you are and where you come from before conversing with you!</p>
+    <p><%= t '.fill_about_me' %></p>
   </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <%= f.input :first_name, required: true, label: false, placeholder: "First name", input_html: { class: 'custom-form-input' } %>
+      <%= f.input :first_name, label: false, placeholder: t('.first_name'), input_html: { class: 'custom-form-input' } %>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <%= f.input :last_name, required: true, label: false, placeholder: "Last name", input_html: { class: 'custom-form-input' } %>
+      <%= f.input :last_name, label: false, placeholder: t('.last_name'), input_html: { class: 'custom-form-input' } %>
     </div>
     <div class="col-xs-12">
-      <%= f.input :bio, label: false, autofocus: true, placeholder: "Describe yourself (history, experiences, studies, hobbies, ...)", input_html: { class: 'custom-form-input', rows: "10" } %>
+      <%= f.input :bio, label: false, autofocus: true, placeholder: t('.bio'), input_html: { class: 'custom-form-input', rows: "10" } %>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <%= f.input :birth_date, as: :custom, symbol: "<i class='fa fa-birthday-cake fa-fw' aria-hidden='true'></i>".html_safe, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "0d", date_start_date: "-150y", date_start_view: "decade" }, value: resource.birth_date ? localize(resource.birth_date, format: "%d %b %Y") : nil } %>
+      <%= f.input :birth_date, as: :custom, symbol: "<i class='fa fa-birthday-cake fa-fw' aria-hidden='true'></i>".html_safe, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "0d", date_start_date: "-150y", date_start_view: "decade" }, value: resource.birth_date ? l(resource.birth_date) : nil } %>
     </div>
     <div class="col-xs-12 col-sm-6">
-      <label>Profile picture</label>
+      <label><%= t '.profile_picture' %></label>
       <div class="user-photo-wrapper">
         <%= f.input_field :photo, as: :attachinary, placeholder: false %>
-        <%= f.label :photo, label: "<i class='fa fa-download' aria-hidden='true'></i>&nbsp;&nbsp; Choose a picture".html_safe, class: 'btn btn-form btn-white' %>
+        <%= f.label :photo, label: "<i class='fa fa-download' aria-hidden='true'></i>&nbsp;&nbsp; #{t '.choose_picture'}".html_safe, class: 'btn btn-form btn-white' %>
       </div>
     </div>
   </div>
 
   <div class="form-separation padded-top-s padded-bottom-s">
     <div></div>
-    <p><strong>Contact details</strong></p>
+    <p><strong><%= t '.contact_details' %></strong></p>
     <div></div>
   </div>
 
   <div class="padded-bottom-xs">
-    <p>Your contact details won't be disclosed publicly, apart from your city and country of residence.</p>
-    <p>You can decide to communicate your contact details to somebody each time you open a session on Papoters.</p>
+    <p><%= t '.contact_details_not_disclosed' %></p>
   </div>
 
   <div class="row">
 
     <div class="col-xs-12 col-sm-7">
-      <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>
-".html_safe, label: false, required: true, placeholder: "me@myhost.com", input_html: { class: 'custom-form-input', type: 'email'} %>
+      <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, required: true, placeholder: t('.email'), input_html: { class: 'custom-form-input', type: 'email'} %>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
       <% end %>
     </div>
     <div class="col-xs-12 col-sm-5">
-      <%= f.input :phone_number, as: :custom, symbol: "<i class='fa fa-phone fa-fw' aria-hidden='true'></i>
-".html_safe, label: false, placeholder: "42 42 42 42 42", input_html: { class: 'custom-form-input', type: 'tel', value: resource.phone_number ? resource.phone_number.phony_formatted(format: :international, spaces: ' ') : nil } %>
+      <%= f.input :phone_number, as: :custom, symbol: "<i class='fa fa-phone fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.phone_number'), input_html: { class: 'custom-form-input', type: 'tel', value: resource.phone_number ? resource.phone_number.phony_formatted(format: :international, spaces: ' ') : nil } %>
     </div>
     <div class="col-xs-12">
-      <%= f.input :address, placeholder: "Street number and name", input_html: { class: 'custom-form-input' } %>
+      <%= f.input :address, placeholder: t('.street'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-4 col-sm-3">
-      <%= f.input :zip_code, label: false, placeholder: "Zip code", input_html: { class: 'custom-form-input' } %>
+    <div class="col-xs-5 col-sm-3">
+      <%= f.input :zip_code, label: false, placeholder: t('.zip_code'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-8 col-sm-4">
-      <%= f.input :city, label: false, placeholder: "City", input_html: { class: 'custom-form-input' } %>
+    <div class="col-xs-7 col-sm-4">
+      <%= f.input :city, label: false, placeholder: t('.city'), input_html: { class: 'custom-form-input' } %>
     </div>
     <div class="col-xs-12 col-sm-5">
-      <%= f.input :country_code, label: false, prompt: "-- Country --", input_html: { class: 'custom-form-input' } %>
+      <%= f.input :country_code, label: false, prompt: t('.country'), input_html: { class: 'custom-form-input' } %>
     </div>
 
   </div>
 
   <div class="text-right padded-top-s">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
-      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Update
+      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
     <% end %>
   </div>
 <% end %>
 
 <div class="text-right padded-top-xs">
-  <p><%= link_to "Back to profile", user_path(current_user) %></p>
+  <p><%= link_to t('.back_to_profile'), user_path(current_user) %></p>
 </div>
 
 <%= render 'cancellation' %>

@@ -1,10 +1,13 @@
 function datePicker () {
 
+  setLocale();
+  $.fn.datepicker.dates['en']['format'] = 'yyyy-mm-dd';
+
   $('.datepicker').datepicker({
       weekStart: 1,
-      format: 'dd M yyyy',
       todayHighlight: true,
       autoclose: true,
+      language: I18n.locale
   })
 };
 

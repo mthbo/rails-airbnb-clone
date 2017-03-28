@@ -1,11 +1,11 @@
 <% content_for :title do %>
-  <%= "Papoters | Create offer" %>
+  <%= "Papoters | #{t '.publish_new_offer'}" %>
 <% end %>
 
-<h2>Publish a new offer</h2>
+<h2><%= t '.publish_new_offer' %></h2>
 
 <%= render 'form' %>
 
 <div class="text-right padded-top-xs">
-  <p><%= link_to "Back to profile", :back %></p>
+  <p><%= link_to t('.back_to_profile'), :back %></p>
 </div>

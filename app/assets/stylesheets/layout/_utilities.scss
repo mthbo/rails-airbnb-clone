@@ -180,14 +180,14 @@ label {
 }
 
 .font-weight-normal {
-  font-weight: normal;
+  font-weight: normal !important;
 }
 
 .font-weight-bolder {
-  font-weight: bolder;
+  font-weight: bolder !important;
 }
 .font-weight-lighter {
-  font-weight: lighter;
+  font-weight: lighter !important;
 }
 .special-font {
   font-family: $special-font;

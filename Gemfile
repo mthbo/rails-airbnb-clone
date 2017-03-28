@@ -39,15 +39,16 @@ gem 'kaminari'
 gem 'kramdown'
 gem 'phony_rails'
 gem 'acts_as_votable'
+gem 'bootstrap-datepicker-rails'
 
 gem 'rails-i18n', '~> 5.0.0'
+gem 'devise-i18n'
 gem "i18n-js", ">= 3.0.0.rc11"
 
 gem "algoliasearch-rails"
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'
-  gem 'rails-assets-bootstrap-datepicker'
   gem 'rails-assets-jquery-bar-rating'
 end
 
