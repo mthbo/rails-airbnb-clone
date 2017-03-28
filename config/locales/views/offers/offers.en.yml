@@ -1,5 +1,13 @@
 en:
   offers:
+    new:
+      publish_new_offer: Publish a new offer
+      back_to_profile: Back to profile
+    edit:
+      edit_offer: Edit your offer
+      back_to_offer: Back to offer
+    form:
+
     search:
       input_placeholder: "I need some advice for ..."
       clear_search: "Clear search"

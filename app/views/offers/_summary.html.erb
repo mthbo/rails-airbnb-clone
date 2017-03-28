@@ -1,4 +1,6 @@
 <p>
   <%= offer.description[0..250] %>
-  <span class="font-weight-normal"> &nbsp;[...]</span>
+  <% if offer.description.length > 250 %>
+    <span class="font-weight-normal"> &nbsp;[...]</span>
+  <% end %>
 </p>

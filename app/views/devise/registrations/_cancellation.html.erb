@@ -25,14 +25,14 @@
         </div>
         <div class="modal-body">
           <div class="padded-top-xs padded-bottom-xs">
-            <p>Cancelling your account is irreversible. It will destroy all your information on Papoters.</p>
-            <p>Are you sure you want to do this?</p>
+            <p class="font-weight-normal"><%= t '.cancel_account_irreversible' %></p>
+            <p class="font-weight-normal"><%= t '.are_you_sure' %></p>
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
+          <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
           <%= link_to user_registration_path, method: :delete, class: "btn btn-form btn-red" do %>
-            <i class='fa fa-suitcase' aria-hidden='true'></i>&nbsp;&nbsp; Forget me
+            <i class='fa fa-suitcase' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.cancel_permanently' %>
           <% end %>
         </div>
       </div>
