@@ -1,4 +1,10 @@
 fr:
+  activerecord:
+    attributes:
+      offer:
+        pricings:
+          free: Gratuit
+          priced: Payant
   language:
     french: "Français"
     english: "Anglais"

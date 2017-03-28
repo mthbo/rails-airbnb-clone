@@ -7,7 +7,20 @@ en:
       edit_offer: Edit your offer
       back_to_offer: Back to offer
     form:
-
+      describe_offer_and_give_title: Describe your offer and give it a catchy title.
+      convince: "Be clear, be specific and be original : your mission is to convince people you are the advisor they need!"
+      give_title: Give your offer a title
+      describe_offer: "Describe your offer (what you know better than anyone else, what is your method, which experiences enrich your knowledge, etc.)"
+      select_languages: "Select the language(s) you accept to communicate with people on this offer (min: 1 - max: 5)."
+      select_means: "Select the mean(s) you accept to communicate with people on this offer (min: 1)."
+      prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <strong>three free sessions</strong> for this offer."
+      sessions_for_free: "Sessions for this offer are for free."
+      sessions_before_pricing_html:
+        one: "You still need to achieve <strong>%{count} free session</strong> for this offer before pricing your service."
+        other: "You still need to achieve <strong>%{count} free sessions</strong> for this offer before pricing your service."
+      select_pricing: Select the pricing option for this offer.
+      publish: Publish
+      update: Update
     search:
       input_placeholder: "I need some advice for ..."
       clear_search: "Clear search"

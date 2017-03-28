@@ -119,7 +119,8 @@ class DealsController < ApplicationController
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
-    @deal.offer.priced! if @deal.offer.deals_closed_count == 3
+    # @deal.offer.priced! if @deal.offer.deals_closed_count == 3
+    @deal.offer.index!
     respond_to do |format|
       format.html {
         flash[:alert] = "#session-#{@deal.id} with #{@deal.client == current_user ? @deal.advisor.name_anonymous : @deal.client.name_anonymous} is closed!"
@@ -127,7 +128,6 @@ class DealsController < ApplicationController
       }
       format.js
     end
-    @deal.offer.index!
   end
 
   def new_review

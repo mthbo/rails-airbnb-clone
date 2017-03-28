@@ -212,6 +212,19 @@
   cursor: pointer;
 }
 
+.custom-form-warning {
+  padding: 15px 20px 10px 20px;
+  border: $medium-light-gray solid 1px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+
+  i {
+    font-size: 25px;
+    margin-right: 15px;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .custom-form-logo img {
     height: 35px;
@@ -248,5 +261,13 @@
     border-radius: 20px;
     padding-right: 15px;
     padding-left: 15px;
+  };
+  .custom-form-warning {
+    padding: 15px 15px 10px 15px;
+    border: $medium-light-gray solid 1px;
+    i {
+      font-size: 23px;
+      margin-right: 15px;
+    }
   }
 }

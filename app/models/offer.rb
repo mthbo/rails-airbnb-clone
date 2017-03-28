@@ -11,7 +11,7 @@ class Offer < ApplicationRecord
   enum status: [ :active, :inactive, :archived ]
   enum pricing: [ :free, :priced ]
 
-  validates :description, presence: { message: "The offer must have a title" }, length: { minimum: 10, message: "The offer title is too short, please tell a little more!" }
+  validates :title, presence: { message: "The offer must have a title" }, length: { minimum: 10, message: "The offer title is too short, please tell a little more!" }
   validates :description, presence: { message: "The offer must have a description" }, length: { minimum: 50, message: "The offer description is too short, please tell a little more!" }
   validates :languages, presence: { message: "At least one language must me selected" } , length: { in: 1..5 }
   validates :means, presence: { message: "At least one mean of communication must me selected" }
@@ -181,6 +181,15 @@ class Offer < ApplicationRecord
 
   def median_amount_money
     Money.new(median_amount) unless median_amount.nil?
+  end
+
+
+  # Pricing option I18n names
+
+  def self.translated_pricings
+    pricings.map do |pricing, i|
+      [I18n.t("activerecord.attributes.offer.pricings.#{pricing}"), pricing]
+    end
   end
 
 

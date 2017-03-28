@@ -2,15 +2,15 @@
   <%= f.error_notification %>
 
   <div class="padded-bottom-xs">
-    <p>Describe your offer and give it a catchy title.</p>
-    <p>Be clear, be specific and be original : your mission is to convince people you are the expert they need!</p>
+    <p><%= t '.describe_offer_and_give_title' %></p>
+    <p><%= t '.convince' %></p>
   </div>
 
-  <%= f.input :title, required: true, autofocus: true, label: false, placeholder: "Give your offer a title", input_html: { class: 'custom-form-input' } %>
-  <%= f.input :description, label: false, placeholder: "Describe your offer (what you know better than anyone else, what is your method, which experiences make you an expert, etc.)", input_html: { class: 'custom-form-input', rows: "10" } %>
+  <%= f.input :title, autofocus: true, label: false, placeholder: t('.give_title'), input_html: { class: 'custom-form-input' } %>
+  <%= f.input :description, label: false, placeholder: t('.describe_offer'), input_html: { class: 'custom-form-input', rows: "10" } %>
 
   <div class="padded-top-xs padded-bottom-xs">
-    <p>Select the languages you accept to communicate with people on this offer.</p>
+    <p><%= t '.select_languages' %></p>
   </div>
 
   <div class="custom-check-boxes">
@@ -18,24 +18,34 @@
   </div>
 
   <div class="padded-top-xs padded-bottom-xs">
-    <p>Select the means you accept to communicate with people on this offer.</p>
+    <p><%= t '.select_means' %></p>
   </div>
 
   <div class="custom-check-boxes">
     <%= f.association :means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
   </div>
 
-  <div class="padded-top-xs">
+  <div class="padded-top-s">
     <% if @offer.id.blank? %>
-      <p>Before proposing priced services, remind that you need to build your reputation with at least <strong>3 free advice sessions</strong> for this offer.</p>
+      <div class="custom-form-warning bg-white-transparent">
+        <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
+        <p><%= t '.prove_worth_before_pricing_html' %></p>
+      </div>
+
     <% elsif @offer.free? && @offer.deals_closed_count < 3 %>
-      <p>Advice sessions for this offer are <strong>for free</strong>. You need <strong><%= pluralize(3 - @offer.deals_closed_count, "more session") %></strong> to propose priced services.</p>
+      <div class="custom-form-warning bg-white-transparent">
+        <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
+        <p><%= t '.sessions_for_free' %> <%= t '.sessions_before_pricing_html', count: (3 - @offer.deals_closed_count) %></p>
+      </div>
+
     <% else %>
       <div class="padded-bottom-xs">
-        <p>Select the pricing option for this offer.</p>
+        <p><%= t '.select_pricing' %></p>
       </div>
       <div class="custom-radio-buttons">
-        <%= f.input :pricing, label: false, as: :radio_buttons, collection: [[Offer.pricings.keys.first, Offer.pricings.keys.first.capitalize], [Offer.pricings.keys.last, Offer.pricings.keys.last.capitalize]], label_method: :last, value_method: :first %>
+
+        <%= f.input :pricing, label: false, as: :radio_buttons, collection: Offer.translated_pricings %>
+
       </div>
     <% end %>
   </div>
@@ -43,9 +53,9 @@
   <div class="text-right padded-top-s">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-green") do %>
       <% if @offer.id.blank? %>
-        <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Publish
+        <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.publish' %>
       <% else %>
-        <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Update
+        <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
       <% end %>
     <% end %>
   </div>
