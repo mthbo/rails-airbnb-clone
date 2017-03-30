@@ -1,31 +1,31 @@
 <% content_for :title do %>
-  <%= "Papoters | My dashboard" %>
+  <%= "Papoters | #{t '.my_dashboard'}" %>
 <% end %>
 
 <div class="padded-top-xxl bg-blue text-center dashboard-top" id="dashboard-page">
   <div class="container">
 
-    <h1>My dashboard</h1>
-    <p><%= link_to "See my profile", user_path(@user) %></p>
+    <h1><%=  t '.my_dashboard' %></h1>
+    <p><%= link_to t('.see_profile'), user_path(@user) %></p>
 
     <div class="dashboard-tabs">
       <a class="dashboard-tab" data-target="#dashboard-pinned-offers">
         <h4><i class="fa fa-thumb-tack" aria-hidden="true"></i></h4>
       </a>
       <a class="dashboard-tab active" data-target="#dashboard-current-deals">
-        <h5>Current sessions</h5>
+        <h5><%= t '.current_sessions' %></h5>
           <div id="deals-current-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_current_notifications == 0 %>">
             <%= @user.deals_current_notifications %>
           </div>
       </a>
       <a class="dashboard-tab" data-target="#dashboard-past-deals">
-        <h5>Past sessions</h5>
+        <h5><%= t '.past_sessions' %></h5>
           <div id="deals-past-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_past_notifications == 0 %>">
             <%= @user.deals_past_notifications %>
           </div>
       </a>
       <a class="dashboard-tab" data-target="#dashboard-cancelled-deals">
-        <h5>Cancelled sessions</h5>
+        <h5><%= t '.cancelled_sessions' %></h5>
           <div id="deals-cancelled-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_cancelled_notifications == 0 %>">
             <%= @user.deals_cancelled_notifications %>
           </div>
@@ -48,7 +48,7 @@
             <% end %>
           <% else %>
             <div class="text-center padded-top-xl">
-              <h5><i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;&nbsp; Pin some offers to keep them on your dashboard!</h5>
+              <h5><i class="fa fa-thumb-tack" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.pin_offers' %></h5>
             </div>
           <% end %>
         </div>
@@ -57,10 +57,15 @@
 
 
     <div id="dashboard-current-deals" class="dashboard-tab-content">
+      <% if @user.deals_current.blank? %>
+        <div class="hidden-md hidden-lg text-center no-current-deal">
+          <h5><%= t '.no_current_sessions' %></h5>
+        </div>
+      <% end %>
       <div class="row text-center">
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
           <div class="dashboard-deal-status padded-top-s padded-bottom-xs">
-            <div></div><h3>Request</h3><div></div>
+            <div></div><h3><%= t '.request' %></h3><div></div>
           </div>
           <div id="dashboard-request-deals">
             <% @user.deals_request.each do |deal| %>
@@ -70,7 +75,7 @@
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
           <div class="dashboard-deal-status padded-top-s padded-bottom-xs">
-            <div></div><h3>Proposition</h3><div></div>
+            <div></div><h3><%= t '.proposition' %></h3><div></div>
           </div>
           <div id="dashboard-proposition-deals">
             <% @user.deals_proposition.each do |deal| %>
@@ -80,7 +85,7 @@
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
           <div class="dashboard-deal-status padded-top-s padded-bottom-xs">
-            <div></div><h3>Open</h3><div></div>
+            <div></div><h3><%= t '.open' %></h3><div></div>
           </div>
           <div id="dashboard-open-deals">
             <% @user.deals_open.each do |deal| %>
@@ -90,7 +95,7 @@
         </div>
         <div class="col-xs-12 col-md-3 padded-bottom-xs">
           <div class="dashboard-deal-status padded-top-s padded-bottom-xs">
-            <div></div><h3>Closed</h3><div></div>
+            <div></div><h3><%= t '.closed' %></h3><div></div>
           </div>
           <div id="dashboard-closed-deals-recent">
             <% @user.deals_closed_recent.each do |deal| %>
@@ -99,9 +104,19 @@
           </div>
         </div>
       </div>
+      <% if @user.deals_current.blank? %>
+        <div class="hidden-xs hidden-sm text-center padded-top-l no-current-deal">
+          <h5><%= t '.no_current_sessions' %></h5>
+        </div>
+      <% end %>
     </div>
 
     <div id="dashboard-past-deals" class="dashboard-tab-content hidden">
+      <% if @user.deals_closed_old.blank? %>
+        <div class="text-center padded-top-xl">
+          <h5><%= t '.no_past_sessions' %></h5>
+        </div>
+      <% end %>
       <div class="row text-center">
         <div class="col-xs-12 col-md-8 col-md-offset-2 padded-top-s">
           <div id="dashboard-closed-deals-old">
@@ -114,6 +129,11 @@
     </div>
 
     <div id="dashboard-cancelled-deals" class="dashboard-tab-content hidden">
+      <% if @user.deals_cancelled.blank? %>
+        <div class="text-center padded-top-xl">
+          <h5><%= t '.no_cancelled_sessions' %></h5>
+        </div>
+      <% end %>
       <div class="row text-center">
         <div class="col-xs-12 col-md-8 col-md-offset-2 padded-top-s">
           <div id="dashboard-cancelled-deals-all">

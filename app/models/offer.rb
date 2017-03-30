@@ -187,8 +187,12 @@ class Offer < ApplicationRecord
   # Pricing option I18n names
 
   def self.translated_pricings
+    icons = [
+      "<span class='info-icon'>#{ ActionController::Base.helpers.image_tag('no_amount.svg') }</span>".html_safe,
+      "<span class='info-icon'>#{ ActionController::Base.helpers.image_tag('amount.svg') }</span>".html_safe
+    ]
     pricings.map do |pricing, i|
-      [I18n.t("activerecord.attributes.offer.pricings.#{pricing}"), pricing]
+      [icons[i] + I18n.t("activerecord.attributes.offer.pricings.#{pricing}"), pricing]
     end
   end
 

@@ -32,4 +32,19 @@ fr:
       grade_2: "Conseiller"
       grade_3: "Expert"
       grade_4: "Guide"
+    dashboard:
+      my_dashboard: Mon tableau de bord
+      see_profile: Voir mon profil
+      current_sessions: Sessions actives
+      past_sessions: Sessions archivées
+      cancelled_sessions: Sessions annulées
+      pin_offers: Epinglez des offres pour les conserver sur votre tableau de bord!
+      request: Demande
+      proposition: Proposition
+      open: Ouvert
+      closed: Clôturé
+      no_current_sessions: Vous n'avez aucune session en cours ou récemment clôturée.
+      no_past_sessions: Vous n'avez aucune session archivée.
+      no_cancelled_sessions: Vous n'avez aucune session annulée.
+
 

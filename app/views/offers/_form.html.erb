@@ -25,7 +25,7 @@
     <%= f.association :means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
   </div>
 
-  <div class="padded-top-s">
+  <div class="padded-top-xs">
     <% if @offer.id.blank? %>
       <div class="custom-form-warning bg-white-transparent">
         <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
@@ -39,13 +39,9 @@
       </div>
 
     <% else %>
-      <div class="padded-bottom-xs">
-        <p><%= t '.select_pricing' %></p>
-      </div>
-      <div class="custom-radio-buttons">
-
+      <p><%= t '.select_pricing' %></p>
+      <div class="custom-radio-buttons custom-form-pricing padded-top-xs">
         <%= f.input :pricing, label: false, as: :radio_buttons, collection: Offer.translated_pricings %>
-
       </div>
     <% end %>
   </div>

@@ -32,6 +32,22 @@ en:
       grade_2: "Advisor"
       grade_3: "Expert"
       grade_4: "Guide"
+    dashboard:
+      my_dashboard: My dashboard
+      see_profile: See my profile
+      current_sessions: Current sessions
+      past_sessions: Archived sessions
+      cancelled_sessions: Cancelled sessions
+      pin_offers: Pin some offers to keep them on your dashboard!
+      request: Request
+      proposition: Proposition
+      open: Open
+      closed: Closed
+      no_current_sessions: You have no session ongoing or closed recently.
+      no_past_sessions: You have no archived session.
+      no_cancelled_sessions: You have no cancelled session.
+
+
 
 
 

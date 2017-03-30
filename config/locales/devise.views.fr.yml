@@ -84,14 +84,14 @@ fr:
         account_cancellation: Suppression du compte
         account_cancellation_for: Supprimez votre compte seulement si vous souhaitez quitter Papoters définitivement. Toutes vos informations et votre historique seront éffacés.
         cant_cancel_account: Vous ne pouvez pas supprimer votre compte pour le moment.
-        close_or_cancel: Fermez ou annulez
+        close_or_cancel: Clôturez ou annulez
         ongoing_sessions: toutes les sessions en cours
         before_cancelling_account: avant de supprimer votre compte.
         cancel_my_account: Supprimer mon compte
         cancel_account_irreversible: La suppression de votre compte est irréversible. Ceci effacera toutes vos informations sur Papoters.
         are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
         go_back: Annuler
-        cancel_permanently: Supprimer définitivement
+        cancel: Supprimer
       edit:
         currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: laissez ce champ vide pour le laisser inchangé

@@ -12,6 +12,7 @@ $(document).ready(function() {
 
     App['newDeal:cards'] = App.cable.subscriptions.create({channel: 'NewDealCardsChannel'}, {
       received: function(data) {
+        $('.no-current-deal').hide();
         $(data.card).hide().prependTo($('#dashboard-request-deals')).slideDown();
         subscribeToDealCardsChannel(data.deal_id);
         subscribeToMessageNotificationsChannel(data.deal_id);

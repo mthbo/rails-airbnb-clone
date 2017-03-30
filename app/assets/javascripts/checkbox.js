@@ -18,7 +18,7 @@ function checkBoxAppearance(checkBox) {
     $(checkBox).parent().css('background-color', 'white');
     $(checkBox).parent().css('border-color', 'rgb(74,74,74)');
   } else {
-    $(checkBox).parent().css('background-color', 'rgba(255,255,255,0.7)');
+    $(checkBox).parent().css('background-color', 'rgba(250,250,250,0.7)');
     $(checkBox).parent().css('border-color', 'rgb(215,215,215)');
   }
 }

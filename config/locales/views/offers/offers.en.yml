@@ -21,6 +21,20 @@ en:
       select_pricing: Select the pricing option for this offer.
       publish: Publish
       update: Update
+    removal:
+      offer_removal: Offer removal
+      offer_removal_for: Remove this offer if you don't want to give advice on this topic anymore.
+      offer_removal_irreversible: Removing an offer is irreversible.
+      offer_removal_alternative: "Alternatively, you can switch offer status to 'inactive' and reactivate it later."
+      remove_offer: Remove this offer
+      offer_removal_fresh_start: If you want to give advice on the same topic, you will need to publish a new offer (i.e. a fresh start for your history and your reputation).
+      are_you_sure: Are you sure you want to do this?
+      go_back: Go back
+      remove: Remove
+      cant_remove_offer: You can't remove this offer right now.
+      close_or_cancel: Close or cancel
+      ongoing_sessions: all ongoing sessions
+      before_removing_offer: before removing this offer.
     search:
       input_placeholder: "I need some advice for ..."
       clear_search: "Clear search"
