@@ -14,22 +14,14 @@
   <div class="deal-card-body">
     <div class="deal-card-avatar">
       <%= render 'users/avatar', user: current_user == deal.advisor ? deal.client : deal.advisor , size: 'avatar' %>
-      <h1>
-        <% if current_user == deal.advisor && deal.client %>
-          <%= deal.client.name_anonymous %>
-        <% elsif current_user == deal.client && deal.advisor %>
-          <%= deal.advisor.name_anonymous %>
-        <% else %>
-          <span class="medium-gray"><em>Account deleted</em></span>
-        <% end %>
-      </h1>
+      <%= render 'users/info_small', user: current_user == deal.advisor ? deal.client : deal.advisor %>
     </div>
     <div class="deal-card-info text-left">
       <p>
         <span class="info-icon text-center">
           <%= image_tag 'date.svg' %>
         </span>
-        <strong class="deal-card-info-text"><%= deal.deadline.strftime("%d %b %Y") %></strong>
+        <strong class="deal-card-info-text"><%= l(deal.deadline.to_date, format: :default) %></strong>
       </p>
       <p>
         <span class="info-icon text-center">
@@ -37,9 +29,9 @@
         </span>
         <strong class="deal-card-info-text">
           <% if deal.request? || deal.proposition_declined? %>
-            <%= deal.offer.free? ? "FREE" : "&mdash;".html_safe %>
+            <%= deal.offer.free? ? t('.free') : "&mdash;".html_safe %>
           <% else %>
-            <%= deal.amount.blank? ? "FREE" : money_without_cents_and_with_symbol(deal.amount) %>
+            <%= deal.amount.blank? ? t('.free') : money_without_cents_and_with_symbol(deal.amount) %>
           <% end %>
         </strong>
       </p>
@@ -48,23 +40,21 @@
 
   <div class="deal-card-bottom text-right">
     <% if deal.proposition? %>
-      <p class="blue">Proposition pending</p>
+      <p class="blue"><%= t '.proposition_pending' %></p>
     <% elsif deal.proposition_declined? %>
-      <p class="red">Proposition declined</p>
+      <p class="red"><%= t '.proposition_declined' %></p>
     <% elsif deal.open_expired? %>
-      <p class="red">Deadline expired</p>
-    <% elsif deal.open_expired? %>
-      <p class="red">Deadline expired</p>
+      <p class="red"><%= t '.deadline_expired' %></p>
     <% elsif deal.closed? %>
       <% if current_user == deal.client && !deal.reviewed_by_client? %>
-        <p class="blue">Review expected</p>
+        <p class="blue"><%= t '.review_expected' %></p>
       <% elsif current_user == deal.advisor && !deal.reviewed_by_advisor? %>
-        <p class="blue">Review expected</p>
+        <p class="blue"><%= t '.review_expected' %></p>
       <% elsif deal.messages_disabled %>
-        <p class="red">Messages disabled</p>
+        <p class="red"><%= t '.messages_disabled' %></p>
       <% end %>
     <% elsif deal.cancelled? %>
-      <p class="red">Messages disabled</p>
+      <p class="red"><%= t '.messages_disabled' %></p>
     <% end %>
   </div>
 

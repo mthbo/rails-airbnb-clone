@@ -32,6 +32,10 @@ en:
       grade_2: "Advisor"
       grade_3: "Expert"
       grade_4: "Guide"
+    info_small:
+      account_canceled: Account canceled
+    info_in_deal:
+      account_cancelled: User acccount cancelled
     dashboard:
       my_dashboard: My dashboard
       see_profile: See my profile

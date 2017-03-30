@@ -7,3 +7,10 @@ fr:
       happy: "satisfait"
     review:
       account_cancelled: "Compte résilié"
+    card:
+      free: GRATUIT
+      proposition_pending: Proposition en attente
+      proposition_declined: Proposition refusée
+      deadline_expired: Date limite expirée
+      review_expected: Avis attendu
+      messages_disabled: Messages désactivés

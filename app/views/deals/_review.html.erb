@@ -10,7 +10,7 @@
       <% end %>
     <% else %>
       <div class="hidden-xs">
-        <%= render 'users/avatar', user: user, size: 'avatar-standard' %>
+        <%= render 'users/avatar', user: nil, size: 'avatar-standard' %>
       </div>
       <h2 class="medium-gray"><em><%= t('.account_cancelled') %></em></h2>
     <% end %>

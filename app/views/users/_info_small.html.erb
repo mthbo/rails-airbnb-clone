@@ -1,0 +1,7 @@
+<% if user %>
+  <h1><%= user.name_anonymous %></h1>
+
+<% else %>
+  <h1 class="medium-gray"><em><%= t '.account_canceled' %></em></h1>
+
+<% end %>

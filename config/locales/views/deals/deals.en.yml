@@ -7,6 +7,14 @@ en:
       happy: "happy"
     review:
       account_cancelled: "Account cancelled"
+    card:
+      free: FREE
+      proposition_pending: Proposition pending
+      proposition_declined: Proposition declined
+      deadline_expired: Deadline expired
+      review_expected: Review expected
+      messages_disabled: Messages disabled
+
 
 
 

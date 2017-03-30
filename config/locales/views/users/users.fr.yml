@@ -32,6 +32,10 @@ fr:
       grade_2: "Conseiller"
       grade_3: "Expert"
       grade_4: "Guide"
+    info_small:
+      account_canceled: Compte supprimé
+    info_in_deal:
+      account_cancelled: Compte utilisateur supprimé
     dashboard:
       my_dashboard: Mon tableau de bord
       see_profile: Voir mon profil
