@@ -20,10 +20,10 @@
 //= require dropdown
 //= require flashes
 //= require google_maps_autocomplete
+//= require home_background
 //= require init_attachinary
 //= require locale
 //= require mobile_detection
-//= require navbar
 //= require proposition
 //= require radio_button
 //= require search
