@@ -17,17 +17,17 @@ class Message < ApplicationRecord
 
   def build_deal_status_content
     if self.deal.proposition?
-      self.content = "<span class='font-weight-normal blue'>#{I18n.t(message.new_proposition)}</span>"
+      self.content = "<span class='font-weight-normal blue'>#{I18n.t('message.new_proposition')}</span>"
     elsif self.deal.proposition_declined?
-      self.content = "<span class='font-weight-normal blue'>#{I18n.t(message.proposition_declined)}</span>"
+      self.content = "<span class='font-weight-normal blue'>#{I18n.t('message.proposition_declined')}</span>"
     elsif self.deal.open?
-      self.content = "<span class='font-weight-normal blue'>#{I18n.t(message.session_open)}</span>"
+      self.content = "<span class='font-weight-normal blue'>#{I18n.t('message.session_open')}</span>"
     elsif self.deal.open_expired?
-      self.content = "<span class='font-weight-normal blue'>#{I18n.t(message.session_deadline_passed)}</span>"
+      self.content = "<span class='font-weight-normal blue'>#{I18n.t('message.session_deadline_passed')}</span>"
     elsif self.deal.closed?
-      self.content = "<span class='font-weight-normal red'>#{I18n.t(message.session_closed)}</span>"
+      self.content = "<span class='font-weight-normal red'>#{I18n.t('message.session_closed')}</span>"
     elsif self.deal.cancelled?
-      self.content = "<span class='font-weight-normal red'>#{I18n.t(message.session_cancelled)}</span>"
+      self.content = "<span class='font-weight-normal red'>#{I18n.t('message.session_cancelled')}</span>"
     end
   end
 
