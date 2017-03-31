@@ -71,6 +71,13 @@
   }
 }
 
+.dashboard-deal-status-arrow {
+  position: absolute;
+  left: -6px;
+  top: 27px;
+  font-size: 20px;
+}
+
 
 @media (max-width: $screen-sm-max) {
   .dashboard-deal-status {

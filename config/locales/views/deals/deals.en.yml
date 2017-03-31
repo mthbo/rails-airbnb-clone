@@ -8,12 +8,17 @@ en:
     review:
       account_cancelled: "Account cancelled"
     card:
+      offer_no_longer_exists: The offer no longer exists
+      session: session
       free: FREE
       proposition_pending: Proposition pending
       proposition_declined: Proposition declined
       deadline_expired: Deadline expired
       review_expected: Review expected
       messages_disabled: Messages disabled
+    title:
+      session: session
+      offer_no_longer_exists: The offer no longer exists
     status:
       request: Request
       proposition: Proposition

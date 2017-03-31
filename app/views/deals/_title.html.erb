@@ -1,9 +1,12 @@
 <h3>
-  <strong class="blue">#session-<%= deal.id %></strong>
-
+  <strong class="blue">#<%= t '.session' %>-<%= deal.id %></strong>
+  <span class="hidden-xs hidden-sm">&nbsp; | &nbsp;</span>
+  <br class="hidden-md hidden-lg">
   <% if deal.offer && deal.offer.archived? %>
-    &nbsp; | &nbsp;<%= deal.offer.title %>
+    <%= deal.offer.title %>
   <% elsif deal.offer %>
-    &nbsp; | &nbsp;<%= link_to "#{deal.offer.title}", offer_path(deal.offer) %>
+    <%= link_to "#{deal.offer.title}", offer_path(deal.offer) %>
+  <% else %>
+    <em>(<%= t '.offer_no_longer_exists' %>)</em>
   <% end %>
 </h3>

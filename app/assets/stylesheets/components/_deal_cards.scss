@@ -43,7 +43,7 @@
 }
 
 .deal-card-avatar {
-  flex: 0 0 80px;
+  flex: 0 1 100px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,6 +72,7 @@
   }
   .deal-card-info-text {
     flex: 1 1 auto;
+    white-space: nowrap;
   }
 }
 
