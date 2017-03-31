@@ -65,6 +65,8 @@
 }
 
 .deal-btns {
+  padding-left: 0;
+  padding-right: 0;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -233,33 +235,13 @@ a.deal-user-info {
   .deal-info {
     padding-right: 15px;
   }
-  .deal-proposition-top {
-    padding: 5px 15px;
-  };
-  .deal-proposition, .deal-info-box {
-    padding-left: 15px;
-    padding-right: 15px;
-  };
-  .deal-proposition-bottom {
-    padding: 20px 15px;
-  }
 }
 
 @media (max-width: $screen-sm-max) {
   .deal-title, .deal-info, .deal-conversation, .deal-reviews {
     padding-right: 20px;
     padding-left: 20px;
-  }
-  .deal-proposition-top {
-    padding: 5px 25px;
   };
-  .deal-proposition, .deal-info-box {
-    padding-left: 25px;
-    padding-right: 25px;
-  };
-  .deal-proposition-bottom {
-    padding: 20px 25px;
-  }
 }
 
 @media (max-width: $screen-xs-max) {
@@ -283,8 +265,8 @@ a.deal-user-info {
     padding-right: 15px;
   };
   .deal-info-box {
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 5px;
+    padding-right: 5px;
   };
   .deal-objective-rating {
     flex: 0 0 85px;

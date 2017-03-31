@@ -2,7 +2,7 @@ fr:
   pages:
     home:
       home: "Accueil"
-      banner_title: "Obtenez des conseils personnalisés pour tout ce que vous voulez."
+      banner_title: "Obtenez des conseils personnalisés pour quoi que ce soit."
       input_placeholder: "J'ai besoin de conseils pour ..."
       arrow_down: "En savoir plus"
       inspirations_title: "Offrez-vous du soutien pour des moments spéciaux, où juste au quotidien."
@@ -21,14 +21,14 @@ fr:
       guideline_text_4_2: "Il est temps pour vous de faire un retour d'experience pour la communauté Papoters. Notez votre session, évaluez la réalisation des objectifs et laissez un avis à votre conseiller."
       find_advisor_button: "Trouver un conseiller"
       be_advisor_title: "Vos connaissances et vos expériences ont de la valeur!"
-      be_advisor_subtitle: "Commencez à donner des conseils à des gens qui ont besoin de vous."
+      be_advisor_subtitle: "Commencez à donner des conseils sur ce qui n'a aucun secret pour vous."
       be_advisor_button: "Devenir conseiller"
     be_advisor:
       be_advisor: "Devenir conseiller"
       banner_title: "Vos connaissances et vos expériences ont de la valeur!"
       publish_offer_link: "Publier une offre de conseil"
       arrow_down: "En savoir plus"
-      inspirations_title: "Tout le monde possède des savoirs particuliers. Quels sont les vôtres?"
+      inspirations_title: "Il y a assurément des sujets qui n'ont aucun secret pour vous. Quels sont-ils?"
       guidelines_title: "Donnez des conseils, construisez votre réputation et faîtes fructifier vos talents!"
       guideline_title_1: "Publiez une offre"
       guideline_title_2: "Répondez aux demandes"
