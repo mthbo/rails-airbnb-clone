@@ -27,6 +27,13 @@ fr:
     meeting: "Rencontre"
     documents: "Echange de documents"
     sign_language: "Language des signes"
+  message:
+    new_proposition: Nouvelle proposition
+    proposition_declined: Proposition refusée
+    session_open: Session ouverte
+    session_deadline_passed: Date limite passée
+    session_closed: Session clôturée
+    session_cancelled: Session annulée
   views:
     pagination:
       first: "&laquo;"

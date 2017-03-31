@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-red" data-toggle="modal" data-target="#deal-proposition-decline">
-  <i class="fa fa-ban" aria-hidden="true"></i>&nbsp; Decline
+  <i class="fa fa-ban" aria-hidden="true"></i>&nbsp; <%= t '.decline' %>
 </button>
 
 <div class="modal fade" id="deal-proposition-decline" tabindex="-1" role="dialog" aria-labelledby="dealPropositionDeclineLabel">
@@ -7,18 +7,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="dealPropositionDeclineLabel">Decline proposition</h4>
+        <h4 class="modal-title" id="dealPropositionDeclineLabel"><%= t '.decline_proposition' %></h4>
       </div>
       <div class="modal-body">
         <div class="padded-top-xs padded-bottom-xs">
-          <p>If you decline the proposition, <%= deal.advisor.first_name %> will be no longer commited to deliver the service proposed.</p>
-          <p>Are you sure you want to do this?</p>
+          <p><%= t '.decline_proposition_consequencies', name: deal.advisor.first_name %></p>
+          <p><%= t '.are_you_sure' %></p>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
+        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
         <%= link_to decline_proposition_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-red" do %>
-          <i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Decline
+          <i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.decline' %>
         <% end %>
       </div>
     </div>

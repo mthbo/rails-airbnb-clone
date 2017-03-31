@@ -14,7 +14,7 @@
       <% if deal.advisor == current_user %>
         <p class="font-weight-normal">You submitted a proposition, <%= deal.client.first_name %> may accept or decline it.</p>
       <% elsif deal.client == current_user %>
-        <p class="font-weight-normal">Accept or decline the proposition to continue.</p>
+        <p class="font-weight-normal"><%= t '.accept_or_decline' %></p>
       <% end %>
     </div>
 

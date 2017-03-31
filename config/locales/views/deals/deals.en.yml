@@ -14,6 +14,36 @@ en:
       deadline_expired: Deadline expired
       review_expected: Review expected
       messages_disabled: Messages disabled
+    status:
+      request: Request
+      proposition: Proposition
+      open: Open
+      closed: Closed
+    info_proposition:
+      proposition: Proposition
+      free: FREE
+      languages: Languages
+      means: Means of communication
+      show_details: Show details
+      hide_details: Hide details
+      expiry_on: Expiry on
+      pending: Pending
+      declined: Declined
+      accepted: Accepted
+    decline:
+      decline: Decline
+      decline_proposition: Decline proposition
+      decline_consequencies: "If you decline the proposition, %{name} will be no longer commited to deliver the service proposed."
+      are_you_sure: Are you sure you want to do this?
+      go_back: Go back
+    accept:
+      accept: Accept
+      accept_proposition: Accept proposition
+      review_proposition: "Review the proposition of %{name} for %{title} before accepting it."
+      proposition_recap: Proposition recap
+      go_back: Go back
+    info_deal:
+      accept_or_decline: Accept or decline the proposition to continue.
 
 
 

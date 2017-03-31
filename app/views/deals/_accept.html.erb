@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#deal-proposition-acceptation">
-  <i class="fa fa-check" aria-hidden="true"></i>&nbsp; Accept
+  <i class="fa fa-check" aria-hidden="true"></i>&nbsp; <%= t '.accept' %>
 </button>
 
 <div class="modal fade" id="deal-proposition-acceptation" tabindex="-1" role="dialog" aria-labelledby="dealPropositionAcceptationLabel">
@@ -7,23 +7,23 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="dealPropositionAcceptationLabel">Accept proposition</h4>
+        <h4 class="modal-title" id="dealPropositionAcceptationLabel"><%= t '.accept_proposition' %></h4>
       </div>
       <div class="modal-body">
-        <p class="font-weight-normal blue">Review the proposition of <%= deal.advisor.first_name %> for "<%= deal.offer.title %>" before accepting it.</p>
+        <p class="font-weight-normal blue"><%= t '.review_proposition', name: deal.advisor.first_name, title: deal.offer.title  %></p>
         <div class="form-separation padded-top-s padded-bottom-xs">
           <div></div>
-          <p><strong>Proposition recap</strong></p>
+          <p><strong><%= t '.proposition_recap' %></strong></p>
           <div></div>
         </div>
         <%= render 'deals/proposition_recap', deal: deal %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
+        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
 
         <% if deal.amount.blank? %>
           <%= link_to open_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
-            <i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Accept
+            <i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept' %>
           <% end %>
 
         <% else %>

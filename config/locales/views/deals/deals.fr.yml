@@ -14,3 +14,35 @@ fr:
       deadline_expired: Date limite expirée
       review_expected: Avis attendu
       messages_disabled: Messages désactivés
+    status:
+      request: Demande
+      proposition: Proposition
+      open: Ouvert
+      closed: Clôturé
+    info_proposition:
+      proposition: Proposition
+      free: GRATUIT
+      languages: Langues
+      means: Moyens de communication
+      show_details: Voir les détails
+      hide_details: Cacher les détails
+      expiry_on: Expire le
+      pending: En attente
+      declined: Refusée
+      accepted: Acceptée
+    decline:
+      decline: Refuser
+      decline_proposition: Refuser la proposition
+      decline_proposition_consequencies: Si vous refusez la proposition, %{name} ne sera plus engagé à fournir le service proposé.
+      are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
+      go_back: Annuler
+    accept:
+      accept: Accepter
+      accept_proposition: Accepter la proposition
+      review_proposition: "Vérifiez la proposition de %{name} pour %{title} avant de l'accepter."
+      proposition_recap: Récapitulatif
+      go_back: Annuler
+    info_deal:
+      accept_or_decline: Acceptez ou refusez la proposition pour continuer.
+
+
