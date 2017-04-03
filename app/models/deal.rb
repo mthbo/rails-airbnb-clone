@@ -110,14 +110,14 @@ class Deal < ApplicationRecord
     elsif open_expired?
       'deadline_expired'
     elsif messages_disabled?
-      'messages_disbled'
+      'messages_disabled'
     elsif closed? && (!reviewed_by_client? || !reviewed_by_advisor?)
       'review_expected'
     end
   end
 
   def free?
-    (offer.free? if offer) || (!request? && amount.blank?)
+    (offer.free? if offer) || (!request? && (amount_cents.blank? || amount_cents.zero?))
   end
 
   # Stats

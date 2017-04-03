@@ -25,7 +25,7 @@ fr:
       offer_removal: Suppression de l'offre
       offer_removal_for: Supprimez cette offre si vous ne voulez plus donner de conseils sur ce sujet.
       offer_removal_irreversible: La suppression de l'offre est irréversible.
-      offer_removal_alternative: "Alternativement, vous pouvez passer le status de l'offre à 'inactif' et la réactiver ultérieurement."
+      offer_removal_alternative: "Vous pouvez également passer le status de l'offre à 'inactif' et la réactiver ultérieurement."
       remove_offer: Supprimer cette offre
       offer_removal_fresh_start: Si vous voulez donner des conseils sur le même sujet, vous devrez publier une nouvelle offre (c'est à dire une page blanche pour votre historique et votre réputation).
       are_you_sure: "Êtes-vous sûr de vouloir faire ça?"

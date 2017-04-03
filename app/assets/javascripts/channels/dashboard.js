@@ -16,30 +16,29 @@ $(document).ready(function() {
 
 
 function subscribeToDealCardsChannel(dealId) {
-  App['deal' + dealId + ':cards'] = App.cable.subscriptions.create({channel: 'DealCardsChannel', deal_id: dealId}, {
+  App['deal' + dealId + ':cards_' + I18n.locale] = App.cable.subscriptions.create({channel: 'DealCardsChannel', deal_id: dealId, locale: I18n.locale}, {
     received: function(data) {
       $('[data-deal-id=' + dealId + ']').slideUp().remove();
       switch (data.general_status) {
         case 'request':
-          $(data.card).hide().prependTo($('#dashboard-request-deals'));
+          $(data.card).hide().prependTo($('#dashboard-request-deals')).slideDown();
           break;
         case 'proposition':
-          $(data.card).hide().prependTo($('#dashboard-proposition-deals'));
+          $(data.card).hide().prependTo($('#dashboard-proposition-deals')).slideDown();
           break;
         case 'open':
-          $(data.card).hide().prependTo($('#dashboard-open-deals'));
+          $(data.card).hide().prependTo($('#dashboard-open-deals')).slideDown();
           break;
         case 'closed_recent':
-          $(data.card).hide().prependTo($('#dashboard-closed-deals-recent'));
+          $(data.card).hide().prependTo($('#dashboard-closed-deals-recent')).slideDown();
           break;
         case 'closed_old':
-          $(data.card).hide().prependTo($('#dashboard-closed-deals-old'));
+          $(data.card).hide().prependTo($('#dashboard-closed-deals-old')).slideDown();
           break;
         case 'cancelled':
-          $(data.card).hide().prependTo($('#dashboard-cancelled-deals-all'));
+          $(data.card).hide().prependTo($('#dashboard-cancelled-deals-all')).slideDown();
           break;
       }
-      localizeAndShowDealCard(dealId, data.card_status, data.free);
       updateDealsCurrentNotifications();
       updateDealsPastNotifications();
       updateDealsCancelledNotifications();
@@ -48,11 +47,10 @@ function subscribeToDealCardsChannel(dealId) {
 };
 
 function subscribeToNewDealCardsChannel() {
-  App['newDeal:cards'] = App.cable.subscriptions.create({channel: 'NewDealCardsChannel'}, {
+  App['newDeal:cards_' + I18n.locale] = App.cable.subscriptions.create({channel: 'NewDealCardsChannel', locale: I18n.locale}, {
     received: function(data) {
       $('.no-current-deal').hide();
-      $(data.card).hide().prependTo($('#dashboard-request-deals'));
-      localizeAndShowDealCard(data.deal_id, 'request', data.free);
+      $(data.card).hide().prependTo($('#dashboard-request-deals')).slideDown();
       subscribeToDealCardsChannel(data.deal_id);
       subscribeToMessageNotificationsChannel(data.deal_id);
       updateDealsCurrentNotifications();
@@ -74,22 +72,6 @@ function subscribeToMessageNotificationsChannel(dealId) {
 
   });
 };
-
-function localizeAndShowDealCard(dealId, card_status, free) {
-  var $dealCard = $('[data-deal-id=' + dealId + ']');
-  $dealCard.find('#deal-card-id').html('#' + I18n.t('deals.card.session') + '-' + dealId);
-  var cardDeadline = $dealCard.find('#deal-card-deadline').html();
-  $dealCard.find('#deal-card-deadline').html(I18n.l('date.formats.default', cardDeadline));
-  if (free) {
-    $dealCard.find('#deal-card-price').html(I18n.t('deals.card.free'));
-  }
-  var cardStatus = $dealCard.find('#deal-card-status p').html();
-  if (cardStatus) {
-    $dealCard.find('#deal-card-status p').html(I18n.t('deals.card.' + card_status));
-  }
-  $dealCard.slideDown();
-}
-
 
 function updateDealsCurrentNotifications() {
   var $dealsCurrentNotifications = $('#dashboard-current-deals .badge-notification');
