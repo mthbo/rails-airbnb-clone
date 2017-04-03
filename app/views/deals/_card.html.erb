@@ -5,7 +5,7 @@
   </div>
 
   <div class="deal-card-top text-left">
-    <h1>#<%= t '.session' %>-<%= deal.id %></h1>
+    <h1 id="deal-card-id">#<%= t '.session' %>-<%= deal.id %></h1>
     <% if deal.offer.present? %>
       <h3><%= deal.offer.title %></h3>
     <% else %>
@@ -23,24 +23,26 @@
         <span class="info-icon text-center">
           <%= image_tag 'date.svg' %>
         </span>
-        <strong class="deal-card-info-text"><%= l(deal.deadline.to_date, format: :default) %></strong>
+        <strong class="deal-card-info-text" id="deal-card-deadline"><%= l(deal.deadline.to_date, format: :default) %></strong>
       </p>
       <p>
         <span class="info-icon text-center">
           <%= image_tag 'amount.svg' %>
         </span>
-        <strong class="deal-card-info-text">
-          <% if deal.request? || deal.proposition_declined? %>
-            <%= deal.offer.free? ? t('.free') : "&mdash;".html_safe %>
+        <strong class="deal-card-info-text" id="deal-card-price">
+          <% if deal.free? %>
+            <%= t('.free') %>
+          <% elsif deal.request? %>
+            &mdash;
           <% else %>
-            <%= deal.amount.blank? ? t('.free') : money_without_cents_and_with_symbol(deal.amount) %>
+            <%= money_without_cents_and_with_symbol(deal.amount) %>
           <% end %>
         </strong>
       </p>
     </div>
   </div>
 
-  <div class="deal-card-bottom text-right">
+  <div class="deal-card-bottom text-right" id="deal-card-status">
     <% if deal.proposition? %>
       <p class="blue"><%= t '.proposition_pending' %></p>
     <% elsif deal.proposition_declined? %>

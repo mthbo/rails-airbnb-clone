@@ -102,6 +102,23 @@ class Deal < ApplicationRecord
     end
   end
 
+  def card_status
+    if proposition?
+      'proposition_pending'
+    elsif proposition_declined?
+      'proposition_declined'
+    elsif open_expired?
+      'deadline_expired'
+    elsif messages_disabled?
+      'messages_disbled'
+    elsif closed? && (!reviewed_by_client? || !reviewed_by_advisor?)
+      'review_expected'
+    end
+  end
+
+  def free?
+    (offer.free? if offer) || (!request? && amount.blank?)
+  end
 
   # Stats
 

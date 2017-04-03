@@ -5,12 +5,16 @@ class DealCardsBroadcastJob < ApplicationJob
     ActionCable.server.broadcast(
       "deal_#{deal.id}_user_#{deal.advisor.id}:cards",
       card: render_deal_card(deal, deal.advisor),
-      status: deal.general_status
+      card_status: deal.card_status,
+      general_status: deal.general_status,
+      free: deal.free?
     )
     ActionCable.server.broadcast(
       "deal_#{deal.id}_user_#{deal.client.id}:cards",
       card: render_deal_card(deal, deal.client),
-      status: deal.general_status
+      card_status: deal.card_status,
+      general_status: deal.general_status,
+      free: deal.free?
     )
     ActionCable.server.broadcast(
       "user_#{deal.advisor.id}:notifications",
