@@ -4,30 +4,36 @@ class Message < ApplicationRecord
 
   default_scope -> { order(created_at: :ASC) }
 
-  enum target: [ :message, :deal_status ]
+  enum target: [ :message, :first_message, :deal_status, :deal_status_alert ]
 
   after_create_commit :async_message_broadcast
 
-  def build_first_content
-    deadline_format = "<span class='message-deadline'><span class='info-icon'>#{ActionController::Base.helpers.image_tag('date.svg')}</span><span class='font-weight-normal'>#{I18n.l(self.deal.deadline.to_date, format: :default)}</span></span>"
+  def build_first_message
     language_flags = self.deal.languages.map{ |language| "<span class='flag-icon-message'>#{language.flag_img}</span>" }.join
     mean_pictos = self.deal.means.map { |mean| "<span class='mean-icon-message'>#{mean.picto_i}</span>" }.join
-    self.content = "#{deadline_format} #{self.deal.request} <br> #{language_flags} <br> #{mean_pictos}"
+    self.content = "#{self.deal.request} <br> #{language_flags} <br> #{mean_pictos}"
+    self.target = 'first_message'
   end
 
-  def build_deal_status_content
+  def build_deal_status_message
     if self.deal.proposition?
-      self.content = "<span class='font-weight-normal blue'>#{I18n.t('message.new_proposition')}</span>"
+      self.content = '.new_proposition'
+      self.target = 'deal_status'
     elsif self.deal.proposition_declined?
-      self.content = "<span class='font-weight-normal blue'>#{I18n.t('message.proposition_declined')}</span>"
+      self.content = '.proposition_declined'
+      self.target = 'deal_status_alert'
     elsif self.deal.open?
-      self.content = "<span class='font-weight-normal blue'>#{I18n.t('message.session_open')}</span>"
+      self.content = '.session_open'
+      self.target = 'deal_status'
     elsif self.deal.open_expired?
-      self.content = "<span class='font-weight-normal blue'>#{I18n.t('message.session_deadline_passed')}</span>"
+      self.content = '.session_deadline_passed'
+      self.target = 'deal_status_alert'
     elsif self.deal.closed?
-      self.content = "<span class='font-weight-normal red'>#{I18n.t('message.session_closed')}</span>"
+      self.content = '.session_closed'
+      self.target = 'deal_status_alert'
     elsif self.deal.cancelled?
-      self.content = "<span class='font-weight-normal red'>#{I18n.t('message.session_cancelled')}</span>"
+      self.content = '.session_cancelled'
+      self.target = 'deal_status_alert'
     end
   end
 

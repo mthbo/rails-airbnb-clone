@@ -90,18 +90,21 @@
   right: 0;
   top: 0;
   bottom: 0;
-  width: 10px;
+  width: 5px;
+  border: 5px dotted;
 }
 
 .deal-card-client {
   .deal-card-right {
     background: $yellow;
+    border-color: $light-yellow;
   }
 }
 
 .deal-card-advisor {
   .deal-card-right {
     background: $green;
+    border-color: $light-green;
   }
 }
 

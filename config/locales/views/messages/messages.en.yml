@@ -1,0 +1,9 @@
+en:
+  messages:
+    show:
+      new_proposition: New proposition
+      proposition_declined: Proposition declined
+      session_open: Session open
+      session_deadline_passed: Session deadline passed
+      session_closed: Session closed
+      session_cancelled: Session cancelled

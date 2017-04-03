@@ -1,8 +1,8 @@
-<% if message.deal_status? %>
+<% if message.deal_status? || message.deal_status_alert? %>
 
   <div class="form-separation padded-top-xs padded-bottom-xs">
     <div></div>
-    <%= sanitize markdown_to_html(message.content) %>|<p><small><%= message.date_formatted %></small></p>
+    <p><span class="font-weight-normal <%= message.deal_status? ? 'blue' : 'red' %>"><%= t message.content %></span> &nbsp; | &nbsp; <small><%= message.date_formatted %></small></p>
     <div></div>
   </div>
 
@@ -26,6 +26,12 @@
 
     <div class="message">
       <div class="message-content">
+        <% if message.first_message? %>
+          <p class='message-deadline'>
+            <span class='info-icon'><%= image_tag('date.svg') %></span>
+            <span class='font-weight-normal'><%= l(message.deal.deadline.to_date, format: :default) %></span>
+          </p>
+        <% end %>
         <%= sanitize markdown_to_html(message.content) %>
       </div>
 

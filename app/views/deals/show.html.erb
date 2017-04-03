@@ -2,7 +2,7 @@
   <%= "Papoters | #session-#{@deal.id}" %>
 <% end %>
 
-<div id="deal-page" class= "padded-top-xxl padded-bottom-l bg-light-gray" data-deal-id="<%= @deal.id %>" style='background-image: url("<%= image_path('backgrounds/background_grid_white.png') %>");'>
+<div id="deal-page" class= "padded-top-xxl padded-bottom-l bg-light-gray" data-deal-id="<%= @deal.id %>" >
 
   <div class="deal-banner-top <%= current_user == @deal.advisor ? 'deal-banner-green' : 'deal-banner-yellow' %>"></div>
   <div class="deal-banner-bottom <%= current_user == @deal.advisor ? 'deal-banner-green' : 'deal-banner-yellow' %>"></div>

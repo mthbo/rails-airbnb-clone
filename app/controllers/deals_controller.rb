@@ -247,13 +247,13 @@ class DealsController < ApplicationController
 
   def send_first_message
     message = Message.new(deal: @deal, user: @deal.client)
-    message.build_first_content
+    message.build_first_message
     message.save
   end
 
   def send_status_message
-    message = Message.new(deal: @deal, user: current_user, target: "deal_status")
-    message.build_deal_status_content
+    message = Message.new(deal: @deal, user: current_user)
+    message.build_deal_status_message
     message.save
   end
 
