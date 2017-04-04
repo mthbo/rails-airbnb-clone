@@ -1,7 +1,7 @@
 <% if policy(deal).cancel? %>
   <% if policy(deal).new_proposition? %>
     <%= link_to new_proposition_deal_path(deal), class: "btn btn-form btn-green" do %>
-      <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; New proposition
+      <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_proposition' %>
     <% end %>
   <% end %>
   <%= render 'deals/cancel', deal: deal %>
@@ -9,7 +9,7 @@
   <%= render 'deals/close', deal: deal %>
 <% elsif policy(deal).new_review? %>
   <%= link_to new_review_deal_path(deal), class: "btn btn-form btn-blue" do %>
-    <i class="fa fa-star fa-lg <%= current_user == deal.advisor ? 'green' : 'yellow' %>" aria-hidden='true'></i>&nbsp;&nbsp; Review the session
+    <i class="fa fa-star fa-lg <%= current_user == deal.advisor ? 'green' : 'yellow' %>" aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.review_session' %>
   <% end %>
 <% elsif policy(deal).disable_messages? %>
   <%= render 'deals/disable_messages', deal: deal %>

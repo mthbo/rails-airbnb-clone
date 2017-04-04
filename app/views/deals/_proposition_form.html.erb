@@ -1,14 +1,14 @@
 <%= simple_form_for deal, url: save_proposition_deal_path, method: :patch, remote: true do |f| %>
-  <%= f.error_notification message: 'Please fill all the fields below and set at least one target for this session' %>
+  <%= f.error_notification %>
 
   <div class="padded-top-xs padded-bottom-xs">
-    <p>Now describe the information you will provide and how you will do this. Also tell what you can't provide to avoid disappointed hopes.</p>
+    <p><%= t '.describe_service_and_not_included', name: deal.client.first_name %></p>
   </div>
 
-  <%= f.input :proposition, label: false, placeholder: "Detail your proposition", input_html: { class: 'custom-form-input', rows: "7" } %>
+  <%= f.input :proposition, label: false, placeholder: t('.describe_service'), input_html: { class: 'custom-form-input', rows: "7" } %>
 
   <div class="padded-top-xs">
-    <p>Propose one or more language(s) to communicate with <%= deal.client.first_name %> for this session.</p>
+    <p><%= t '.set_languages', name: deal.client.first_name %></p>
   </div>
 
   <div class="custom-check-boxes">
@@ -16,7 +16,7 @@
   </div>
 
   <div class="padded-top-xs">
-    <p>Propose one or more mean(s) to communicate with <%= deal.client.first_name %> for this session.</p>
+    <p><%= t '.set_means', name: deal.client.first_name %></p>
   </div>
 
   <div class="custom-check-boxes">
@@ -26,41 +26,49 @@
 
   <div class="row padded-top-xs">
     <div class="col-xs-12 col-sm-6">
-      <p>Propose a deadline for this session.</p>
-      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>
-".html_safe ,label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: deal.deadline ? localize(deal.deadline, format: "%d %b %Y") : nil } %>
+      <p><%= t '.set_deadline' %></p>
+      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: deal.deadline ? l(deal.deadline.to_date) : nil } %>
     </div>
 
     <% if deal.offer.priced? %>
       <div class="col-xs-12 col-sm-6">
-        <p>Propose a price for this session.</p>
-        <%= f.input :amount, as: :custom, symbol: Money.default_currency.symbol, required: true, label: false, placeholder: "00,00", input_html: { class: 'custom-form-input', type: "Number" } %>
-      </div>
-    <% elsif deal.offer.deals_closed.count < 3 %>
-      <div class="col-xs-12 padded-top-xs">
-        <p>This session will be <strong>for free</strong>. You need <strong><%= pluralize(3 - deal.offer.deals_closed.count, "more session") %></strong> for this offer to propose priced services.</p>
-      </div>
-    <% else %>
-      <div class="col-xs-12 padded-top-xs">
-        <p>This session will be <strong>for free</strong>. <%= link_to "Edit your offer", edit_offer_path(deal.offer) %> if you want to propose priced services.</p>
+        <p><%= t '.set_price' %></p>
+        <%= f.input :amount, as: :custom, symbol: Money.default_currency.symbol, required: true, label: false, placeholder: "00,00", input_html: { class: 'custom-form-input', type: "Number" }, value: 4 %>
       </div>
     <% end %>
   </div>
 
   <div class="padded-top-xs">
-    <p>At last, set an expiry date for you proposition. <%= deal.client.first_name %> can't accept the proposition after this date.</p>
+    <p><%= t '.set_expiry_date', name: deal.client.first_name %></p>
   </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <%= f.input :proposition_deadline, as: :custom, symbol: "<i class='fa fa-fire fa-fw' aria-hidden='true'></i>
-".html_safe ,label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: deal.proposition_deadline ? localize(deal.proposition_deadline, format: "%d %b %Y") : nil } %>
+      <%= f.input :proposition_deadline, as: :custom, symbol: "<i class='fa fa-fire fa-fw' aria-hidden='true'></i>".html_safe ,label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: deal.proposition_deadline ? l(deal.proposition_deadline.to_date) : nil } %>
     </div>
   </div>
 
+  <% if deal.offer.deals_closed.count < 3 %>
+    <div class="padded-top-xs padded-bottom-xs">
+      <div class="custom-form-warning bg-white-transparent">
+        <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
+        <p><%= t '.session_for_free' %> <%= t '.sessions_before_pricing_html', count: (3 - @deal.offer.deals_closed_count) %></p>
+      </div>
+    </div>
+
+  <% elsif deal.offer.free? %>
+    <div class="padded-top-xs padded-bottom-xs">
+      <div class="custom-form-warning bg-white-transparent">
+        <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
+        <p><%= t '.session_for_free' %> <%= link_to t('.edit_offer'), edit_offer_path(deal.offer) %> <%= t '.to_propose_priced_services' %></p>
+      </div>
+    </div>
+
+  <% end %>
+
   <div class="text-right padded-top-xs">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-green") do %>
-      <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Review and submit
+      <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.review_and_submit' %>
     <% end %>
   </div>
 <% end %>

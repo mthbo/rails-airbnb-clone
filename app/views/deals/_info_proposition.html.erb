@@ -94,7 +94,7 @@
           <div class="text-right deal-proposition-status">
             <p class="dark-gray font-weight-normal padded-top-xs"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.pending' %></p>
           </div>
-        <% elsif deal.proposition_declined? %>
+        <% elsif deal.proposition_declined? || deal.cancelled? %>
           <div class="text-right deal-proposition-status">
             <p class="red font-weight-normal"><i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.declined' %></p>
           </div>

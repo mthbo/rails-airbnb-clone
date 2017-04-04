@@ -1,11 +1,13 @@
 <% content_for :title do %>
-  <%= "Papoters | New proposition for #session-#{@deal.id}" %>
+  <%= "Papoters | ##{t '.session'}-#{@deal.id} - #{t '.new_proposition'}" %>
 <% end %>
 
-<h2>New proposition for <%= link_to "#session-#{@deal.id}", deal_path(@deal) %></h2>
+<h2 class="no-margin-bottom"><%= link_to "#session-#{@deal.id}", deal_path(@deal) %> -  <%= t '.new_proposition' %></h2>
+<h3 class="no-margin-top"><%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %></h3>
 
-<div class="padded-bottom-xs">
-  <p>It's time to unveil your action plan for this session. Start by setting some targets (min: 1 - max: 10).</p>
+<div class="padded-top-xs padded-bottom-xs">
+  <p><%= t '.unveil_action_plan', name: @deal.client.first_name %></p>
+  <p><%= t '.set_targets' %></p>
 </div>
 
 <div class="padded-bottom-xs">
@@ -14,7 +16,7 @@
 
 <div id="deal-objectives-in-form">
   <% if @deal.objectives.blank? %>
-    <p><em>Set at least one target for this sessions.</em></p>
+    <p class="red"><em><%= t '.set_one_target' %></em></p>
   <% else %>
     <% @deal.objectives.each_with_index do |objective, i| %>
       <%= render 'objectives/show_in_form', objective: objective, number: (i + 1) %>
@@ -25,7 +27,7 @@
 <%= render 'proposition_form', deal: @deal %>
 
 <div class="text-right padded-top-xs">
-  <p><%= link_to "Back to session", deal_path(@deal) %></p>
+  <p><%= link_to t('.back_to_session'), deal_path(@deal) %></p>
 </div>
 
 <div id="deal-proposition-confirmation-box"></div>

@@ -3,6 +3,19 @@ fr:
     request_button:
       get_in_touch: "Contacter"
       session: "Session"
+    new:
+      request: Demande
+      request_to: Demande à
+      explain_your_need: "Expliquez pourquoi vous avez besoin de conseils. Donnez tous les détails nécessaires afin d'aider %{name} à faire une proposition qui répond à votre besoin."
+      detail_your_need: Précisez votre besoin
+      what_is_your_deadline: Quelle est votre date limite?
+      pick_date: Sélectionnez une date
+      select_languages: "Selectionnez la ou les langue(s) que vous acceptez pour communiquer avec %{name}."
+      select_means: "Selectionnez le ou les moyen(s) que vous acceptez pour communiquer avec %{name}."
+      send: Envoyer
+      back_to_offer: Retourner à l'offre
+    show:
+      session: session
     satisfaction:
       happy: "satisfait"
     review:
@@ -24,6 +37,36 @@ fr:
       proposition: Proposition
       open: Ouvert
       closed: Clôturé
+    info_request:
+      request_sent: "Vous avez envoyé une demande à %{name}. Vous devriez recevoir une proposition en retour si %{name} peut répondre à votre besoin."
+      request_received: "Vous avez reçu une demande de %{name}. Soumettez une proposition si vous pensez pouvoir répondre à son besoin, ou engagez la conversation pour demander des précisions."
+      cancel_session: "Annulez la session si vous ne voulez pas poursuivre."
+    info_cancelled:
+      session_is_cancelled: Cette session est annulée, il n'y a plus rien à faire ici.
+      back_to_dashboard: Revenir au tableau de bord
+    new_proposition:
+      session: session
+      new_proposition: Nouvelle proposition
+      unveil_action_plan: "Porposez un plan d'action pour cette session afin de répondre au besoin de %{name}."
+      set_targets: "Commencez par définir des objectifs que vous vous engagez à atteindre (min: 1 - max: 10)."
+      set_one_target: Définissez au moins un objectif
+      back_to_session: Revenir à la session
+    proposition_form:
+      describe_service_and_not_included: "Décrivez le service que vous proposez à %{name} pour cette session. Si nécessaire, indiquez également ce qui n'est pas inclu dans votre service."
+      describe_service: Décrivez le service proposé
+      set_languages: "Déterminez une ou plusieurs langue(s) pour communiquer avec %{name} pour cette session."
+      set_means: "Déterminez un ou plusieurs moyen(s) pour communiquer avec %{name} pour cette session."
+      set_deadline: Déterminez la date limite de la session
+      pick_date: Sélectionnez une date
+      set_price: Déterminez le prix de la session
+      session_for_free: "Cette session sera gratuite."
+      sessions_before_pricing_html:
+        one: "Vous devez encore réaliser <strong>%{count} session gratuite</strong> pour cette offre avant de pouvoir proposer des prestations payantes."
+        other: "Vous devez encore réaliser <strong>%{count} sessions gratuites</strong> pour cette offre avant de pouvoir proposer des prestations payantes."
+      edit_offer: Editez votre offre
+      to_propose_priced_services: si vous voulez proposer des prestations payantes.
+      set_expiry_date: Déterminez la date d'echéance de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée.
+      review_and_submit: Vérifier et soumettre
     info_proposition:
       proposition: Proposition
       free: GRATUIT
@@ -35,6 +78,16 @@ fr:
       pending: En attente
       declined: Refusée
       accepted: Acceptée
+    cancel:
+      cancel_session: Annuler la session
+      session_cancellation: Annulation de la session
+      session_cancellation_effect: Vous ne pourrez plus rien faire dans cette session après son annulation.
+      are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
+      go_back: Revenir
+      cancel: Annuler
+    actions:
+      new_proposition: Nouvelle proposition
+      review_session: Evaluer la session
     decline:
       decline: Refuser
       decline_proposition: Refuser la proposition
@@ -49,5 +102,3 @@ fr:
       go_back: Annuler
     info_deal:
       accept_or_decline: Acceptez ou refusez la proposition pour continuer.
-
-

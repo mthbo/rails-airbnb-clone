@@ -2,7 +2,7 @@
 
   <div class="text-center deal-status">
     <p class="<%= deal.request? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" ><%= t '.request' %></p>
-    <p class="<%= deal.request? ? 'blue' : 'medium-gray' %>"><small><%= l(deal.created_at.to_date, format: :default) %></small></p>
+    <p class="<%= deal.request? ? 'blue' : 'medium-gray' %>"><small><%= l(deal.created_at.to_date) %></small></p>
   </div>
 
   <div class="medium-gray deal-status-arrow">
@@ -12,7 +12,7 @@
   <div class="text-center deal-status">
     <p class="<%= deal.proposition_any? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" ><%= t '.proposition' %></p>
     <% if deal.proposition_at %>
-      <p class="<%= deal.proposition_any? ? 'blue' : 'medium-gray' %>"><small><%= l(deal.proposition_at.to_date, format: :default) %></small></p>
+      <p class="<%= deal.proposition_any? ? 'blue' : 'medium-gray' %>"><small><%= l(deal.proposition_at.to_date) %></small></p>
     <% else %>
       <p class="medium-gray %>"><small> - </small></p>
     <% end %>
@@ -25,7 +25,7 @@
   <div class="text-center deal-status">
     <p class="<%= deal.open_or_expired? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" ><%= t '.open' %></p>
     <% if deal.open_at %>
-      <p class="<%= deal.open_or_expired? ? 'blue' : 'medium-gray' %>"><small><%= l(deal.open_at.to_date, format: :default) %></small></p>
+      <p class="<%= deal.open_or_expired? ? 'blue' : 'medium-gray' %>"><small><%= l(deal.open_at.to_date) %></small></p>
     <% else %>
       <p class="medium-gray %>"><small> - </small></p>
     <% end %>
@@ -38,7 +38,7 @@
   <div class="text-center deal-status">
     <p class="<%= deal.closed? ? 'font-weight-bolder red' : 'font-weight-normal medium-gray' %>" ><%= t '.closed' %></p>
     <% if deal.closed_at %>
-      <p class="<%= deal.closed? ? 'red' : 'medium-gray' %>"><small><%= l(deal.closed_at.to_date, format: :default) %></small></p>
+      <p class="<%= deal.closed? ? 'red' : 'medium-gray' %>"><small><%= l(deal.closed_at.to_date) %></small></p>
     <% else %>
       <p class="medium-gray %>"><small> - </small></p>
     <% end %>

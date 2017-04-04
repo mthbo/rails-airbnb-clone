@@ -1,11 +1,12 @@
 <div class="deal-info-box padded-bottom-xs">
+
   <% if deal.client == current_user && deal.advisor %>
-    <p class="font-weight-normal blue">You sent a request to <%= deal.advisor.first_name %>. You should get a proposition back if <%= deal.advisor.first_name %> can help you.</p>
-    <p>Cancel the session if you don't want to continue.</p>
+    <p class="font-weight-normal blue"><%= t '.request_sent', name: deal.advisor.first_name %></p>
+    <p><%= t '.cancel_session' %></p>
 
   <% elsif deal.advisor == current_user && deal.client %>
-    <p class="font-weight-normal blue">You received a request from <%= deal.client.first_name %>. Submit a proposition if you think you can help (you may chat with <%= deal.client.first_name %> to detail the request).</p>
-    <p>Cancel the session if you don't want to continue.</p>
+    <p class="font-weight-normal blue"><%= t '.request_received', name: deal.client.first_name %></p>
+    <p><%= t '.cancel_session' %></p>
 
   <% end %>
 </div>

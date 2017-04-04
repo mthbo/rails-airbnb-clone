@@ -3,6 +3,19 @@ en:
     request_button:
       get_in_touch: "Get in touch"
       session: "Session"
+    new:
+      request: Request
+      request_to: Request to
+      explain_your_need: "Explain what you need advice for. Provide all the essential details to help %{name} makes a proposition that meets your need."
+      detail_your_need: Detail your need
+      what_is_your_deadline: What is your deadline?
+      pick_date: Pick a date
+      select_languages: "Select the language(s) you accept to communicate with %{name}."
+      select_means: "Select the mean(s) you accept to communicate with %{name}."
+      send: Send
+      back_to_offer: Go back to offer
+    show:
+      session: session
     satisfaction:
       happy: "happy"
     review:
@@ -24,6 +37,36 @@ en:
       proposition: Proposition
       open: Open
       closed: Closed
+    info_request:
+      request_sent: "You sent a request to %{name}. You should get a proposition back if %{name} can meet your need."
+      request_received: "You received a request from %{name}. Submit a proposition if you think you can meet the needs of %{name}, or start chatting to ask for more details."
+      cancel_session: "Cancel the session if you don't want to continue."
+    info_cancelled:
+      session_is_cancelled: This session is cancelled, nothing more can be done here.
+      back_to_dashboard: Go back to dashboard
+    new_proposition:
+      session: session
+      new_proposition: New proposition
+      unveil_action_plan: "Propose an action plan for this session to meet the need of %{name}."
+      set_targets: "Start by setting some targets you will be committed to achieve (min: 1 - max: 10)."
+      set_one_target: Set at least one target
+      back_to_session: Back to session
+    proposition_form:
+      describe_service_and_not_included: "Describe the service you propose to %{name} for this session. If necessary, indicate also what is not included in your service."
+      describe_service: Describe the service proposed
+      set_languages: "Set one or more language(s) to communicate with %{name} for this session."
+      set_means: "Set one or more mean(s) to communicate with %{name} for this session."
+      set_deadline: Set the session deadline
+      pick_date: Pick a date
+      set_price: Set the session price
+      session_for_free: This session will be for free.
+      sessions_before_pricing_html:
+        one: "You still need to achieve <strong>%{count} free session</strong> for this offer before pricing your service."
+        other: "You still need to achieve <strong>%{count} free sessions</strong> for this offer before pricing your service."
+      edit_offer: Edit your offer
+      to_propose_priced_services: if you want to price your service.
+      set_expiry_date: Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it.
+      review_and_submit: Review and submit
     info_proposition:
       proposition: Proposition
       free: FREE
@@ -35,6 +78,16 @@ en:
       pending: Pending
       declined: Declined
       accepted: Accepted
+    cancel:
+      cancel_session: Cancel the session
+      session_cancellation: Session cancellation
+      session_cancellation_effect: You won't be able to do anything else in this session after cancellation.
+      are_you_sure: Are you sure you want to do this?
+      go_back: Go back
+      cancel: Cancel
+    actions:
+      new_proposition: New proposition
+      review_session: Review the session
     decline:
       decline: Decline
       decline_proposition: Decline proposition
@@ -49,9 +102,4 @@ en:
       go_back: Go back
     info_deal:
       accept_or_decline: Accept or decline the proposition to continue.
-
-
-
-
-
 

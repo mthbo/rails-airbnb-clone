@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-form btn-red" data-toggle="modal" data-target="#deal-cancellation">
-  <i class='fa fa-trash-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Cancel the session
+  <i class='fa fa-trash-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.cancel_session' %>
 </button>
 
 <div class="modal fade" id="deal-cancellation" tabindex="-1" role="dialog" aria-labelledby="dealCancellationLabel">
@@ -7,18 +7,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="dealCancellationLabel">Session cancellation</h4>
+        <h4 class="modal-title" id="dealCancellationLabel"><%= t '.session_cancellation' %></h4>
       </div>
       <div class="modal-body">
         <div class="padded-top-xs padded-bottom-xs">
-          <p>You won't be able to do anything else on this session after cancellation.</p>
-          <p>Are you sure you want to do this?</p>
+          <p><%= t '.session_cancellation_effect' %></p>
+          <p><%= t '.are_you_sure' %></p>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
+        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
         <%= link_to cancel_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-red" do %>
-          <i class='fa fa-trash-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; Cancel
+          <i class='fa fa-trash-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.cancel' %>
         <% end %>
       </div>
     </div>

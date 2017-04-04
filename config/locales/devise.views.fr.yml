@@ -90,7 +90,7 @@ fr:
         cancel_my_account: Supprimer mon compte
         cancel_account_irreversible: La suppression de votre compte est irréversible. Ceci effacera toutes vos informations sur Papoters.
         are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
-        go_back: Annuler
+        go_back: Revenir
         cancel: Supprimer
       edit:
         currently_waiting_confirmation_for_email: 'Confirmation en attente pour: %{email}'

@@ -1,6 +1,6 @@
 $('#deal-objectives-in-form').empty();
 <% if @deal.objectives.blank? %>
-  $('#deal-objectives-in-form').html("<p><em>Set at least one target for this sessions.</em></p>");
+  $('#deal-objectives-in-form').html("<p class='red'><em><%= t 'deals.new_proposition.set_one_target' %></em></p>");
 <% else %>
   <% @deal.objectives.each_with_index do |objective, i| %>
     $('#deal-objectives-in-form').append("<%= j render 'objectives/show_in_form', objective: objective, number: (i + 1) %>");

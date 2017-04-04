@@ -1,31 +1,31 @@
 <% content_for :title do %>
-  <%= "Papoters | Request for #{@offer.title}" %>
+  <%= "Papoters | #{@offer.title} - #{t '.request'}" %>
 <% end %>
 
-<h2>Request to <%= link_to "#{@offer.advisor.first_name}", user_path(@offer.advisor) %> for "<%= link_to "#{@offer.title}", offer_path(@offer) %>"</h2>
+<h2 class="no-margin-bottom"><%= t '.request_to' %> <%= link_to "#{@offer.advisor.first_name}", user_path(@offer.advisor) %></h2>
+<h3 class="no-margin-top"><%= link_to "#{@offer.title}", offer_path(@offer) %></h3>
 
 <%= simple_form_for [@offer, @deal]  do |f| %>
-  <%= f.error_notification message: 'Please fill all the fields below' %>
+  <%= f.error_notification %>
 
-  <div class="padded-bottom-xs">
-    <p>It's time to explain what you need advice for. Try to be specific to help <%= @offer.advisor.first_name %> makes a proposition that fits your needs.</p>
+  <div class="padded-top-xs padded-bottom-xs">
+    <p><%= t '.explain_your_need', name: @offer.advisor.first_name %></p>
   </div>
 
-  <%= f.input :request, label: false, placeholder: "Detail your needs", input_html: { class: 'custom-form-input', rows: "5" } %>
+  <%= f.input :request, label: false, placeholder: t('.detail_your_need'), input_html: { class: 'custom-form-input', rows: "5" } %>
 
   <div class="padded-top-xs">
-    <p>What is your deadline?</p>
+    <p><%= t '.what_is_your_deadline' %></p>
   </div>
 
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>
-".html_safe, label: false, placeholder: "dd M yyyy", input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: @deal.deadline ? localize(@deal.deadline, format: "%d %b %Y") : nil } %>
+      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: @deal.deadline ? l(@deal.deadline.to_date) : nil } %>
     </div>
   </div>
 
   <div class="padded-top-xs">
-    <p>Select the language(s) you accept to communicate with <%= @offer.advisor.first_name %>.</p>
+    <p><%= t '.select_languages', name: @offer.advisor.first_name %></p>
   </div>
 
   <div class="custom-check-boxes">
@@ -33,7 +33,7 @@
   </div>
 
   <div class="padded-top-xs">
-    <p>Select the mean(s) you accept to communicate with <%= @offer.advisor.first_name %>.</p>
+    <p><%= t '.select_means', name: @offer.advisor.first_name %></p>
   </div>
 
   <div class="custom-check-boxes">
@@ -42,11 +42,11 @@
 
   <div class="text-right padded-top-s">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-yellow") do %>
-      <i class='fa fa-paper-plane' aria-hidden='true'></i>&nbsp;&nbsp; Send
+      <i class='fa fa-paper-plane' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.send' %>
     <% end %>
   </div>
 <% end %>
 
 <div class="text-right padded-top-xs">
-  <p><%= link_to "Go back", :back %></p>
+  <p><%= link_to t('.back_to_offer'), offer_path(@offer) %></p>
 </div>

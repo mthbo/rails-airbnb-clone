@@ -1,6 +1,6 @@
 <%= simple_form_for [deal, objective], remote: true, html: { class: 'custom-inline-form' } do |f| %>
 
-  <%= f.input :description, as: :string, label: false, autofocus: true, placeholder: "New target for this session", input_html: { class: 'custom-form-input'}, wrapper_html: { class: 'inline-form-input'}  %>
+  <%= f.input :description, as: :string, label: false, autofocus: true, placeholder: t('.new_target'), input_html: { class: 'custom-form-input'}, wrapper_html: { class: 'inline-form-input'}  %>
 
   <%= button_tag(type: 'submit', class: "btn inline-form-btn btn-green btn-round") do %>
     <i class='fa fa-plus' aria-hidden='true'></i>
