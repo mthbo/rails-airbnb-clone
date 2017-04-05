@@ -3,16 +3,16 @@
   <% if policy(deal).cancel? %>
     <div class="padded-top-s">
       <% if policy(deal).new_proposition? %>
-        <p class="font-weight-normal"><%= deal.client.first_name %> declined your proposition. Submit a new proposition or cancel the session if you don't want to continue.</p>
+        <p class="font-weight-normal"><%= t '.client_declined', name: deal.client.first_name %></p>
       <% else %>
-        <p class="font-weight-normal">You declined the proposition. Ask for a new proposition or cancel the session if you don't want to continue.</p>
+        <p class="font-weight-normal"><%= t '.you_declined' %></p>
       <% end %>
     </div>
 
   <% elsif deal.proposition? %>
     <div class="padded-top-s">
       <% if deal.advisor == current_user %>
-        <p class="font-weight-normal">You submitted a proposition, <%= deal.client.first_name %> may accept or decline it.</p>
+        <p class="font-weight-normal"><%= t '.proposition_submitted', name: deal.client.first_name %></p>
       <% elsif deal.client == current_user %>
         <p class="font-weight-normal"><%= t '.accept_or_decline' %></p>
       <% end %>

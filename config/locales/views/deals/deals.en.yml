@@ -61,20 +61,45 @@ en:
       set_price: Set the session price
       session_for_free: This session will be for free.
       sessions_before_pricing_html:
-        one: "You still need to achieve <strong>%{count} free session</strong> for this offer before pricing your service."
-        other: "You still need to achieve <strong>%{count} free sessions</strong> for this offer before pricing your service."
+        one: "You still need to achieve <span class='font-weight-normal red'>%{count} free session</span> for this offer before pricing your service."
+        other: "You still need to achieve <span class='font-weight-normal red'>%{count} free sessions</span> for this offer before pricing your service."
       edit_offer: Edit your offer
       to_propose_priced_services: if you want to price your service.
       set_expiry_date: Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it.
       review_and_submit: Review and submit
+    proposition_confirmation:
+      proposition_submission: Proposition submission
+      review_before_submitting: Review your proposition before confirming submission.
+      commited_after_submission: "You will be committed to deliver the service described after submission of the proposition, which is still subject to acceptation by %{name}."
+      proposition_expiring_on: Proposition expiring on
+      go_back: Go back
+      submit: Submit
+    proposition_recap:
+      session: session
+      price: Price
+      free: FREE
+      deadline: Deadline
+      targets:
+        one: Target
+        other: Targets
+      languages:
+        one: Language
+        other: Languages
+      means:
+        one: Mean of communication
+        other: Means of communication
     info_proposition:
       proposition: Proposition
       free: FREE
-      languages: Languages
-      means: Means of communication
+      languages:
+        one: Language
+        other: Languages
+      means:
+        one: Mean of communication
+        other: Means of communication
       show_details: Show details
       hide_details: Hide details
-      expiry_on: Expiry on
+      expires_on: Expires on
       pending: Pending
       declined: Declined
       accepted: Accepted
@@ -91,15 +116,21 @@ en:
     decline:
       decline: Decline
       decline_proposition: Decline proposition
-      decline_consequencies: "If you decline the proposition, %{name} will be no longer commited to deliver the service proposed."
+      decline_proposition_consequencies: "If you decline the proposition, %{name} will be no longer commited to deliver the service proposed."
       are_you_sure: Are you sure you want to do this?
       go_back: Go back
     accept:
       accept: Accept
       accept_proposition: Accept proposition
-      review_proposition: "Review the proposition of %{name} for %{title} before accepting it."
-      proposition_recap: Proposition recap
+      review_proposition: "Review the proposition of %{name} before accepting it."
+      proposition: Proposition
       go_back: Go back
+    stripe_payment:
+      accept_and_pay: Accept and pay
     info_deal:
+      client_declined: "%{name} declined your proposition. Submit a new proposition or cancel the session if you don't want to continue."
+      you_declined: "You declined the proposition. Ask for a new proposition or cancel the session if you don't want to continue."
       accept_or_decline: Accept or decline the proposition to continue.
+      proposition_submitted: "You submitted a proposition, %{name} may accept or decline it."
+
 

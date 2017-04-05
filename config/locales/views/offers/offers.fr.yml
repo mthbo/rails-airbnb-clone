@@ -16,8 +16,8 @@ fr:
       prove_worth_before_pricing_html: "Proposer des prestations payantes n'est possible qu'après avoir fait vos preuves, avec au moins <strong>trois sessions gratuites</strong> pour cette offre."
       sessions_for_free: "Les sessions pour cette offre sont gratuites."
       sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <strong>%{count} session gratuite</strong> pour cette offre avant de pouvoir proposer des prestations payantes."
-        other: "Vous devez encore réaliser <strong>%{count} sessions gratuites</strong> pour cette offre avant de pouvoir proposer des prestations payantes."
+        one: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
+        other: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
       select_pricing: Sélectionnez le mode de tarification pour cette offre.
       publish: Publier
       update: Mettre à jour
@@ -54,8 +54,12 @@ fr:
       offer_found: "offre trouvée"
       no_offers_found: "Désolé, nous n'avons pas trouvé d'offres correspondant à la recherche"
     show:
-      languages: "Langues acceptées"
-      means: "Moyens de communication"
+      languages:
+        one: Langue
+        other: Langues
+      means:
+        one: Moyen de communication
+        other: Moyens de communication
       edit: "Editer"
       session_history: "Historique des sessions"
       reviews:

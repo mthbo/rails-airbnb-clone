@@ -63,11 +63,11 @@
               <div class="offer-details">
                 <div class="row">
                   <div class="col-xs-12 col-sm-4 padded-bottom-xs">
-                    <h6><%= t '.languages' %></h6>
+                    <h6><%= t '.languages', count: @offer.languages.count %></h6>
                     <%= render 'offers/languages_long', offer: @offer %>
                   </div>
                   <div class="col-xs-12 col-sm-4 padded-bottom-xs">
-                    <h6><%= t '.means' %></h6>
+                    <h6><%= t '.means', count: @offer.means.count %></h6>
                     <%= render 'offers/means_long', offer: @offer %>
                   </div>
                   <div class="col-xs-12 col-sm-4 text-right padded-bottom-xs">

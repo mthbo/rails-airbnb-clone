@@ -13,13 +13,13 @@
         <span class="info-icon">
           <%= image_tag 'amount.svg' %>
         </span>
-        <strong><%= deal.amount.blank? ? t('.free') : money_without_cents_and_with_symbol(deal.amount) %></strong>
+        <strong><%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : money_without_cents_and_with_symbol(deal.amount) %></strong>
       </p>
       <p>
         <span class="info-icon">
           <%= image_tag 'date.svg' %>
         </span>
-        <strong><%= l(deal.deadline.to_date, format: :default) %></strong>
+        <strong><%= l(deal.deadline.to_date) %></strong>
       </p>
     </div>
   </div>
@@ -51,11 +51,11 @@
     <%= sanitize markdown_to_html(deal.proposition) %>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
-        <h6><%= t '.languages' %></h6>
+        <h6><%= t '.languages', count: deal.languages.count %></h6>
         <%= render 'deals/languages', deal: deal %>
       </div>
       <div class="col-xs-12 col-sm-6">
-        <h6><%= t '.means' %></h6>
+        <h6><%= t '.means', count: deal.means.count %></h6>
         <%= render 'deals/means', deal: deal %>
       </div>
     </div>
@@ -79,8 +79,8 @@
       <div class="col-xs-4">
         <% if deal.proposition? %>
           <div class="deal-proposition-status">
-            <p><small><%= t '.expiry_on' %></small></p>
-            <p><small><span class="font-weight-normal"><%= l(deal.proposition_deadline.to_date, format: :default) %></span></small></p>
+            <p><small><%= t '.expires_on' %></small></p>
+            <p><small><span class="font-weight-normal"><%= l(deal.proposition_deadline.to_date) %></span></small></p>
           </div>
         <% end %>
       </div>

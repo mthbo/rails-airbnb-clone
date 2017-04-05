@@ -16,7 +16,7 @@
 
 <div id="deal-objectives-in-form">
   <% if @deal.objectives.blank? %>
-    <p class="red"><em><%= t '.set_one_target' %></em></p>
+    <p><em><%= t '.set_one_target' %></em></p>
   <% else %>
     <% @deal.objectives.each_with_index do |objective, i| %>
       <%= render 'objectives/show_in_form', objective: objective, number: (i + 1) %>

@@ -61,20 +61,45 @@ fr:
       set_price: Déterminez le prix de la session
       session_for_free: "Cette session sera gratuite."
       sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <strong>%{count} session gratuite</strong> pour cette offre avant de pouvoir proposer des prestations payantes."
-        other: "Vous devez encore réaliser <strong>%{count} sessions gratuites</strong> pour cette offre avant de pouvoir proposer des prestations payantes."
+        one: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
+        other: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
       edit_offer: Editez votre offre
       to_propose_priced_services: si vous voulez proposer des prestations payantes.
-      set_expiry_date: Déterminez la date d'echéance de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée.
+      set_expiry_date: Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée.
       review_and_submit: Vérifier et soumettre
+    proposition_confirmation:
+      proposition_submission: Soumission de la proposition
+      review_before_submitting: Vérifiez votre proposition avant de la soumettre.
+      commited_after_submission: "Soumettre une proposition vous engage à fournir le service décrit, sous réserve d'acceptation par %{name}."
+      proposition_expiring_on: Proposition expirant le
+      go_back: Revenir
+      submit: Soumettre
+    proposition_recap:
+      session: session
+      price: Prix
+      free: GRATUIT
+      deadline: Date limite
+      targets:
+        one: Objectif
+        other: Objectifs
+      languages:
+        one: Langue
+        other: Langues
+      means:
+        one: Moyen de communication
+        other: Moyens de communication
     info_proposition:
       proposition: Proposition
       free: GRATUIT
-      languages: Langues
-      means: Moyens de communication
+      languages:
+        one: Langue
+        other: Langues
+      means:
+        one: Moyen de communication
+        other: Moyens de communication
       show_details: Voir les détails
       hide_details: Cacher les détails
-      expiry_on: Expire le
+      expires_on: Expire le
       pending: En attente
       declined: Refusée
       accepted: Acceptée
@@ -91,14 +116,19 @@ fr:
     decline:
       decline: Refuser
       decline_proposition: Refuser la proposition
-      decline_proposition_consequencies: Si vous refusez la proposition, %{name} ne sera plus engagé à fournir le service proposé.
+      decline_proposition_consequencies: Si vous refusez la proposition, %{name} ne sera plus engagé(e) à fournir le service proposé.
       are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
-      go_back: Annuler
+      go_back: Revenir
     accept:
       accept: Accepter
       accept_proposition: Accepter la proposition
-      review_proposition: "Vérifiez la proposition de %{name} pour %{title} avant de l'accepter."
-      proposition_recap: Récapitulatif
-      go_back: Annuler
+      review_proposition: "Vérifiez la proposition de %{name} avant de l'accepter."
+      proposition: Proposition
+      go_back: Revenir
+    stripe_payment:
+      accept_and_pay: Accepter et payer
     info_deal:
+      client_declined: "%{name} a refusé votre proposition. Soumettez une nouvelle proposition ou annulez la session si vous ne voulez pas poursuivre."
+      you_declined: "Vous avez refusé la proposition. Demandez une nouvelle proposition ou annulez la session si vous ne voulez pas poursuivre."
       accept_or_decline: Acceptez ou refusez la proposition pour continuer.
+      proposition_submitted: "Vous avez soumis une proposition, %{name} peut l'accepter ou la refuser."

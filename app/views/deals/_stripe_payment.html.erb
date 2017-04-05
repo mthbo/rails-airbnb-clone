@@ -1,6 +1,6 @@
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
-<button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Accept and pay <%= money_without_cents_and_with_symbol(deal.amount) %></button>
+<button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept_and_pay' %> <%= money_without_cents_and_with_symbol(deal.amount) %></button>
 
 <%= form_tag deal_payments_path(deal), id: "paymentForm" do %>
 

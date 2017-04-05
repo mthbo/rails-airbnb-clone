@@ -1,20 +1,22 @@
+<h6><strong class="blue">#<%= t '.session' %>-<%= deal.id %></strong> &nbsp;|&nbsp; <%= deal.offer.title %></h6>
+
 <div class="padded-top-xs deal-proposition-recap-figures">
   <div>
     <p class="font-weight-normal">
-      Price: &nbsp;
-      <span class="blue"><%= deal.amount.blank? ? "FREE" : money_without_cents_and_with_symbol(deal.amount) %></span>&nbsp;&nbsp;
+      <%= t '.price' %>: &nbsp;
+      <span class="blue"><%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : money_without_cents_and_with_symbol(deal.amount) %></span>&nbsp;&nbsp;
     </p>
   </div>
   <div>
     <p class="font-weight-normal">
-      Deadline: &nbsp;
-      <span class="blue"><%= deal.deadline.strftime("%d %b %Y") %></span>
+      <%= t '.deadline' %>: &nbsp;
+      <span class="blue"><%= l(deal.deadline.to_date, format: :long) if deal.deadline %></span>
     </p>
   </div>
 </div>
 
 <div>
-  <h6 class="extra-dark-gray"><%= "Target".pluralize(deal.objectives_count) %></h6>
+  <h6 class="extra-dark-gray"><%= t '.targets', count: deal.objectives.count %></h6>
   <% deal.objectives.each_with_index do |objective, i| %>
     <p><span class="font-weight-normal"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></p>
   <% end %>
@@ -26,11 +28,11 @@
 
 <div class="row padded-bottom-xs">
   <div class="col-xs-12 col-sm-6">
-    <h6 class="extra-dark-gray">Languages</h6>
+    <h6 class="extra-dark-gray"><%= t '.languages', count: deal.languages.count %></h6>
     <%= render 'deals/languages', deal: deal %>
   </div>
   <div class="col-xs-12 col-sm-6">
-    <h6 class="extra-dark-gray">Means of communication</h6>
+    <h6 class="extra-dark-gray"><%= t '.means', count: deal.means.count %></h6>
     <%= render 'deals/means', deal: deal %>
   </div>
 </div>

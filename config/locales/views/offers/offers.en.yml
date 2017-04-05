@@ -16,8 +16,8 @@ en:
       prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <strong>three free sessions</strong> for this offer."
       sessions_for_free: "Sessions for this offer are for free."
       sessions_before_pricing_html:
-        one: "You still need to achieve <strong>%{count} free session</strong> for this offer before pricing your service."
-        other: "You still need to achieve <strong>%{count} free sessions</strong> for this offer before pricing your service."
+        one: "You still need to achieve <span class='font-weight-normal red'>%{count} free session</span> for this offer before pricing your service."
+        other: "You still need to achieve <span class='font-weight-normal red'>%{count} free sessions</span> for this offer before pricing your service."
       select_pricing: Select the pricing option for this offer.
       publish: Publish
       update: Update
@@ -54,8 +54,12 @@ en:
       offer_found: "offer found"
       no_offers_found: "Sorry, we didn't find any offers matching the search"
     show:
-      languages: "Languages accepted"
-      means: "Means of communication"
+      languages:
+        one: Language
+        other: Languages
+      means:
+        one: Mean of communication
+        other: Means of communication
       edit: "Edit"
       session_history: "Session history"
       reviews:

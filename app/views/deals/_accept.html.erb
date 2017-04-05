@@ -10,10 +10,10 @@
         <h4 class="modal-title" id="dealPropositionAcceptationLabel"><%= t '.accept_proposition' %></h4>
       </div>
       <div class="modal-body">
-        <p class="font-weight-normal blue"><%= t '.review_proposition', name: deal.advisor.first_name, title: deal.offer.title  %></p>
+        <p class="font-weight-normal blue"><%= t '.review_proposition', name: deal.advisor.first_name  %></p>
         <div class="form-separation padded-top-s padded-bottom-xs">
           <div></div>
-          <p><strong><%= t '.proposition_recap' %></strong></p>
+          <p><strong><%= t '.proposition' %></strong></p>
           <div></div>
         </div>
         <%= render 'deals/proposition_recap', deal: deal %>
@@ -21,7 +21,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
 
-        <% if deal.amount.blank? %>
+        <% if deal.amount_cents.blank? || deal.amount_cents.zero? %>
           <%= link_to open_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
             <i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept' %>
           <% end %>
