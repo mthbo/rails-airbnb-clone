@@ -40,11 +40,11 @@ class Deal < ApplicationRecord
 
 
   EVALUATIONS = {
-    1 => "disapointing",
-    2 => "ordinary",
-    3 => "all right",
-    4 => "great",
-    5 => "amazing"
+    1 => I18n.t('deal.disapointing'),
+    2 => I18n.t('deal.ordinary'),
+    3 => I18n.t('deal.all_right'),
+    4 => I18n.t('deal.great'),
+    5 => I18n.t('deal.amazing')
   }
 
   def advisor

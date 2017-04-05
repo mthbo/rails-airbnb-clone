@@ -7,4 +7,7 @@ fr:
       session_deadline_passed: Date limite passée
       session_closed: Session clôturée
       session_cancelled: Session annulée
+    form:
+      messages_disabled: Messages désactivés
+      message_for: "Message pour %{name}"
 

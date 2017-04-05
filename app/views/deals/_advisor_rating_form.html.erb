@@ -1,7 +1,7 @@
 <%= simple_form_for deal, url: save_review_deal_path, method: :patch do |f| %>
-  <%= f.error_notification message: 'Please complete all the fields' %>
+  <%= f.error_notification %>
 
-  <p>What is your general feedback about this session <%= "with #{@deal.client.first_name}" if @deal.client.present? %>.</p>
+  <p class="padded-top-xs"><%= t '.evaluate_your_experience', name: @deal.client.first_name %></p>
 
   <% options = (1..5).to_a.map { |rating| [rating, {'data-html' => Deal::EVALUATIONS[rating]}] } %>
   <%= f.input :advisor_rating, label: false do %>
@@ -9,7 +9,7 @@
   <% end %>
 
   <div class="padded-top-xs padded-bottom-xs">
-    <%= f.input :advisor_review, label: false, placeholder: "Leave your comments about this session", input_html: { class: 'custom-form-input', rows: "5" } %>
+    <%= f.input :advisor_review, label: false, placeholder: t('.leave_a_review', name: @deal.client.first_name), input_html: { class: 'custom-form-input', rows: "5" } %>
   </div>
 
   <%= f.hidden_field :advisor_review_at, value: DateTime.current.in_time_zone %>
@@ -17,7 +17,7 @@
 
   <div class="text-right padded-top-xs">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
-      <i class='fa fa-star fa-lg green' aria-hidden='true'></i>&nbsp;&nbsp; Post review
+      <i class='fa fa-star fa-lg green' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.publish_evaluation' %>
     <% end %>
   </div>
 <% end %>

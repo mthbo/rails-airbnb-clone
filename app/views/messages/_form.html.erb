@@ -1,9 +1,21 @@
 <%= simple_form_for [deal, message], remote: true, html: { class: 'custom-inline-form' } do |f| %>
 
-  <%= f.input :content, label: false, placeholder: "Message #{ deal.advisor == current_user ? ('for ' +deal.client.first_name if deal.client) : ('for ' + deal.advisor.first_name if deal.advisor) }", input_html: { class: "#{current_user == deal.advisor ? 'custom-form-input input-rounded input-focus-green' : 'custom-form-input input-rounded input-focus-yellow'}", rows: "1"}, wrapper_html: { class: 'inline-form-input'}, disabled: deal.messages_disabled? %>
+  <% if current_user == deal.advisor %>
 
-  <%= button_tag(type: 'submit', id: "submit_message", class: "#{current_user == deal.advisor ? 'btn inline-form-btn btn-round btn-green' : 'btn inline-form-btn btn-round btn-yellow'}", disabled: deal.messages_disabled?) do %>
-    <i class='fa fa-paper-plane' aria-hidden='true'></i>
+    <%= f.input :content, label: false, placeholder: deal.messages_disabled? ? t('.messages_disabled') : t('.message_for', name: deal.client.first_name), input_html: { class: 'custom-form-input input-rounded input-focus-green', rows: "1"}, wrapper_html: { class: 'inline-form-input'}, disabled: deal.messages_disabled? %>
+
+    <%= button_tag(type: 'submit', id: "submit_message", class: 'btn inline-form-btn btn-round btn-green', disabled: deal.messages_disabled?) do %>
+      <i class='fa fa-paper-plane' aria-hidden='true'></i>
+    <% end %>
+
+  <% elsif current_user == deal.client %>
+
+    <%= f.input :content, label: false, placeholder: deal.messages_disabled? ? t('.messages_disabled') : t('.message_for', name: deal.advisor.first_name), input_html: { class: 'custom-form-input input-rounded input-focus-yellow', rows: "1"}, wrapper_html: { class: 'inline-form-input'}, disabled: deal.messages_disabled? %>
+
+    <%= button_tag(type: 'submit', id: "submit_message", class: 'btn inline-form-btn btn-round btn-yellow', disabled: deal.messages_disabled?) do %>
+      <i class='fa fa-paper-plane' aria-hidden='true'></i>
+    <% end %>
+
   <% end %>
 
 <% end %>

@@ -1,22 +1,19 @@
 <% content_for :title do %>
-  <%= "Papoters | New review for #session-#{@deal.id}" %>
+  <%= "Papoters | ##{t '.session'}-#{@deal.id} - #{t '.evaluation'}" %>
 <% end %>
+
+<h2 class="no-margin-bottom"><%= link_to "#session-#{@deal.id}", deal_path(@deal) %> -  <%= t '.evaluation' %></h2>
+<h3 class="no-margin-top"><%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %></h3>
 
 <% if current_user == @deal.client %>
 
-  <h2>Review the <%= link_to "#session-#{@deal.id}", deal_path(@deal) %>
-    <% if @deal.advisor.present? %>
-      with <%= link_to @deal.advisor.first_name, user_path(@deal.advisor) %>
-    <% end %>
-  </h2>
-
   <div class="form-separation padded-top-s padded-bottom-s">
     <div></div>
-    <p><strong>Target achievment</strong></p>
+    <p><strong><%= t '.target_achievement' %></strong></p>
     <div></div>
   </div>
 
-  <p>For each session target, to which extent the service provided meet your expectations?</p>
+  <p><%= t '.evaluate_target_achievement', name: @deal.advisor.first_name %></p>
 
   <% @deal.objectives.each_with_index do |objective, i| %>
     <div class="padded-top-xs">
@@ -29,16 +26,10 @@
 
 <% elsif current_user == @deal.advisor %>
 
-  <h2>Review the <%= link_to "#session-#{@deal.id}", deal_path(@deal) %>
-    <% if @deal.client.present? %>
-      with <%= link_to @deal.client.first_name, user_path(@deal.client) %>
-    <% end %>
-  </h2>
-
   <%= render 'deals/advisor_rating_form', deal: @deal %>
 
 <% end %>
 
 <div class="text-right padded-top-xs">
-  <p><%= link_to "Back to session", deal_path(@deal) %></p>
+  <p><%= link_to t('.back_to_session'), deal_path(@deal) %></p>
 </div>

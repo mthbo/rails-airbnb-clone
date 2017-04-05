@@ -2,7 +2,7 @@
 
   <div class="deal-reviews padded-top-l padded-bottom-s">
     <div class="deal-reviews-box padded-top-xs padded-bottom-s">
-      <h4 class="font-weight-normal">Reviews</h4>
+      <h4 class="font-weight-normal"><%= t '.reviews' %></h4>
 
       <% if deal.client_review_at.present? %>
         <%= render 'deals/review', deal: deal, user: deal.client, rating: deal.client_global_rating, review: deal.client_review, date: deal.client_review_at, show_offer: false %>

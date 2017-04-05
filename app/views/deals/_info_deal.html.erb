@@ -20,40 +20,38 @@
 
   <% elsif deal.open? && deal.advisor == current_user %>
     <div class="padded-top-s">
-      <p class="font-weight-normal">The session is open until the <%= deal.deadline.strftime("%d %b %Y") %>, unless <%= deal.client.first_name %> closes it before that date.</p>
+      <p class="font-weight-normal"><%= t '.session_is_open_advisor', date: l(deal.deadline.to_date, format: :long), name: deal.client.first_name %></p>
     </div>
 
   <% elsif policy(deal).close? %>
     <div class="padded-top-s">
-      <% if deal.advisor == current_user %>
-        <p class="font-weight-normal">Session deadline has passed. Close the session if you delivered your service.</p>
-      <% elsif deal.client == current_user %>
-        <% if deal.open? %>
-          <p class="font-weight-normal">The session is open until the <%= deal.deadline.strftime("%d %b %Y") %>. You can close it now if you already got what you need.</p>
-        <% elsif deal.open_expired? %>
-          <p class="font-weight-normal">Session deadline has passed. Close the session if you got what you need.</p>
-        <% end %>
+      <% if deal.open_expired? %>
+        <p class="font-weight-normal"><%= t '.deadline_has_passed' %></p>
+      <% elsif deal.open? && deal.client == current_user %>
+        <p class="font-weight-normal"><%= t '.session_is_open_client', date: l(deal.deadline.to_date, format: :long) %></p>
       <% end %>
     </div>
 
   <% elsif policy(deal).new_review? %>
     <div class="padded-top-s">
-      <% if deal.advisor == current_user %>
-        <p class="font-weight-normal">This session is closed.
-        <%= "#{deal.client.first_name} is looking forward to receiving your feedback for this session!" if deal.client %></p>
-      <% elsif deal.client == current_user %>
-        <p><%= "#{deal.advisor.first_name} is looking forward to receiving your feedback for this session!" if deal.advisor %></p>
-      <% end %>
+      <p class="font-weight-normal">
+        <%= t '.session_is_closed' %>
+        <% if deal.advisor == current_user && deal.client %>
+          <%= t '.advisor_review_expected', name: deal.client.first_name %>
+        <% elsif deal.client == current_user && deal.advisor %>
+          <%= t '.client_review_expected', name: deal.advisor.first_name %>
+        <% end %>
+      </p>
     </div>
 
   <% elsif policy(deal).disable_messages? %>
     <div class="padded-top-s">
-      <p class="font-weight-normal">This session is closed. Disable messages if you don't want to be contacted on this session anymore.</p>
+      <p class="font-weight-normal"><%= t '.session_is_closed' %> <%= t '.disable_messages' %></p>
     </div>
 
   <% elsif deal.closed? %>
     <div class="padded-top-s">
-      <p class="font-weight-normal">This session is closed and messages have been disabled. Nothing more can be done here.</p>
+      <p class="font-weight-normal red"><%= t '.session_is_closed_and_messages_disabled' %></p>
     </div>
 
   <% end %>

@@ -92,15 +92,15 @@
           </div>
         <% elsif deal.proposition? && deal.advisor == current_user %>
           <div class="text-right deal-proposition-status">
-            <p class="dark-gray font-weight-normal padded-top-xs"><i class="fa fa-clock-o fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.pending' %></p>
+            <p class="dark-gray font-weight-normal padded-top-xs"><i class="fa fa-hourglass-o fa-fw" aria-hidden="true"></i>&nbsp; <%= t '.pending' %></p>
           </div>
         <% elsif deal.proposition_declined? || deal.cancelled? %>
           <div class="text-right deal-proposition-status">
-            <p class="red font-weight-normal"><i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.declined' %></p>
+            <p class="red font-weight-normal"><i class="fa fa-ban fa-fw" aria-hidden="true"></i>&nbsp; <%= t '.declined' %></p>
           </div>
         <% else %>
           <div class="text-right deal-proposition-status">
-            <p class="blue font-weight-normal"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.accepted' %></p>
+            <p class="blue font-weight-normal"><i class="fa fa-check fa-fw" aria-hidden="true"></i>&nbsp; <%= t '.accepted' %></p>
           </div>
         <% end %>
       </div>

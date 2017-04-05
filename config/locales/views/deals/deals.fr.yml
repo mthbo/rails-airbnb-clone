@@ -42,7 +42,7 @@ fr:
       request_received: "Vous avez reçu une demande de %{name}. Soumettez une proposition si vous pensez pouvoir répondre à son besoin, ou engagez la conversation pour demander des précisions."
       cancel_session: "Annulez la session si vous ne voulez pas poursuivre."
     info_cancelled:
-      session_is_cancelled: Cette session est annulée, il n'y a plus rien à faire ici.
+      session_is_cancelled: Cette session a été annulée, il n'y a plus rien à faire ici.
       back_to_dashboard: Revenir au tableau de bord
     new_proposition:
       session: session
@@ -112,7 +112,7 @@ fr:
       cancel: Annuler
     actions:
       new_proposition: Nouvelle proposition
-      review_session: Evaluer la session
+      evaluate_session: Evaluer la session
     decline:
       decline: Refuser
       decline_proposition: Refuser la proposition
@@ -132,3 +132,44 @@ fr:
       you_declined: "Vous avez refusé la proposition. Demandez une nouvelle proposition ou annulez la session si vous ne voulez pas poursuivre."
       accept_or_decline: Acceptez ou refusez la proposition pour continuer.
       proposition_submitted: "Vous avez soumis une proposition, %{name} peut l'accepter ou la refuser."
+      session_is_open_advisor: "La session est ouverte jusqu'au %{date}, à moins qu'elle ne soit clôturée par %{name} avant cette date."
+      session_is_open_client: "La session est ouverte jusqu'au %{date}. Vous pouvez la clôturer avant cette date si vous jugez que le service a été fourni."
+      deadline_has_passed: La date limite de la session a été atteinte. Clôturez la session si vous jugez que le service a été fourni.
+      session_is_closed: La session est clôturée.
+      client_review_expected: "Evaluez le service fourni et laissez un avis à %{name}."
+      advisor_review_expected: "Evaluez votre expérience et laissez un avis à %{name}."
+      disable_messages: Désactivez les messages si vous ne souhaitez plus être sollicité(e) dans cette session.
+      session_is_closed_and_messages_disabled: La session est clôturée et les messages ont été désactivés. Il n'y a plus rien à faire ici.
+    close:
+      close_session: Clôturer la session
+      session_closing: Clôture de la session
+      close_if_service_delivered: Clôturez la session seulement si vous jugez que le service a été fourni.
+      are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
+      go_back: Revenir
+      close: Clôturer
+    disable_messages:
+      disable_messages: Désactiver les messages
+      messages_disabling: Désactivation des messages
+      messages_disabling_consequencies: Après désactivation, vous ne pourrez plus ni envoyer ni recevoir de messages dans cette session.
+      are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
+      go_back: Revenir
+      disable: Désactiver
+    new_review:
+      session: session
+      evaluation: Evaluation
+      target_achievement: Réalisation des objectifs
+      evaluate_target_achievement: "Pour chacun des objectifs de la session, comment évaluez-vous le service fourni par %{name}?"
+      back_to_session: Revenir à la session
+    client_rating_form:
+      overall_evaluation: Evaluation globale
+      evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
+      leave_a_review: "Laissez un avis à %{name} pour cette session."
+      publish_evaluation: Publier l'évaluation
+    advisor_rating_form:
+      evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
+      leave_a_review: "Laissez un avis à %{name} pour cette session."
+      publish_evaluation: Publier l'évaluation
+    reviews:
+      reviews: Avis
+
+

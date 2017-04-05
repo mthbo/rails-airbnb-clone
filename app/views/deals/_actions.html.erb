@@ -9,7 +9,7 @@
   <%= render 'deals/close', deal: deal %>
 <% elsif policy(deal).new_review? %>
   <%= link_to new_review_deal_path(deal), class: "btn btn-form btn-blue" do %>
-    <i class="fa fa-star fa-lg <%= current_user == deal.advisor ? 'green' : 'yellow' %>" aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.review_session' %>
+    <i class="fa fa-star fa-lg <%= current_user == deal.advisor ? 'green' : 'yellow' %>" aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.evaluate_session' %>
   <% end %>
 <% elsif policy(deal).disable_messages? %>
   <%= render 'deals/disable_messages', deal: deal %>

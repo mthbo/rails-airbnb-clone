@@ -42,7 +42,7 @@ en:
       request_received: "You received a request from %{name}. Submit a proposition if you think you can meet the needs of %{name}, or start chatting to ask for more details."
       cancel_session: "Cancel the session if you don't want to continue."
     info_cancelled:
-      session_is_cancelled: This session is cancelled, nothing more can be done here.
+      session_is_cancelled: This session has been cancelled, nothing more can be done here.
       back_to_dashboard: Go back to dashboard
     new_proposition:
       session: session
@@ -112,7 +112,7 @@ en:
       cancel: Cancel
     actions:
       new_proposition: New proposition
-      review_session: Review the session
+      evaluate_session: Evaluate the session
     decline:
       decline: Decline
       decline_proposition: Decline proposition
@@ -132,5 +132,44 @@ en:
       you_declined: "You declined the proposition. Ask for a new proposition or cancel the session if you don't want to continue."
       accept_or_decline: Accept or decline the proposition to continue.
       proposition_submitted: "You submitted a proposition, %{name} may accept or decline it."
+      session_is_open_advisor: "The session is open until %{date}, unless %{name} closes it before that date."
+      session_is_open_client: "The session is open until %{date}. You can close it before that date if you deem the service delivered."
+      deadline_has_passed: The session deadline has passed. Close the session if you deem the service delivered.
+      session_is_closed: The session is closed.
+      client_review_expected: "Evaluate the service delivered and leave a review to %{name}."
+      advisor_review_expected: "Evaluate your experience and leave a review to %{name}."
+      disable_messages: Disable messages if you don't want to be contacted on this session anymore.
+      session_is_closed_and_messages_disabled: The session is closed and messages have been disabled. Nothing more can be done here.
+    close:
+      close_session: Close the session
+      session_closing: Session closing
+      close_if_service_delivered: Close the session only if you deem the service delivered.
+      are_you_sure: Are you sure you want to do this?
+      go_back: Go back
+      close: Close
+    disable_messages:
+      disable_messages: Disable messages
+      messages_disabling: Messages disabling
+      messages_disabling_consequencies: After disabling, you won't be able to send or receive any message on this session.
+      are_you_sure: Are you sure you want to do this?
+      go_back: Go back
+      disable: Disable
+    new_review:
+      session: session
+      evaluation: Evaluation
+      target_achievement: Target achievement
+      evaluate_target_achievement: "For each target of the session, how do you evaluate the service delivered by %{name}?"
+      back_to_session: Back to session
+    client_rating_form:
+      overall_evaluation: Overall evaluation
+      evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
+      leave_a_review: "Leave a review to %{name} for this session."
+      publish_evaluation: Publish the evaluation
+    advisor_rating_form:
+      evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
+      leave_a_review: "Leave a review to %{name} for this session."
+      publish_evaluation: Publish the evaluation
+    reviews:
+      reviews: Reviews
 
 

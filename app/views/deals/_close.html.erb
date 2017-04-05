@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-form btn-red" data-toggle="modal" data-target="#deal-close">
-  <i class="fa fa-times fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Close the session
+  <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.close_session' %>
 </button>
 
 <div class="modal fade" id="deal-close" tabindex="-1" role="dialog" aria-labelledby="dealCloseLabel">
@@ -7,17 +7,18 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="dealCloseLabel">Session closing</h4>
+        <h4 class="modal-title" id="dealCloseLabel"><%= t '.session_closing' %></h4>
       </div>
       <div class="modal-body">
         <div class="padded-top-xs padded-bottom-xs">
-          <p>Are you sure you want to close this session?</p>
+          <p><%= t '.close_if_service_delivered' %></p>
+          <p><%= t '.are_you_sure' %></p>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal">Go back</button>
+        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
         <%= link_to close_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-red" do %>
-          <i class="fa fa-times fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; Close
+          <i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.close' %>
         <% end %>
       </div>
     </div>

@@ -27,6 +27,18 @@ en:
     meeting: "Meeting"
     documents: "Document sharing"
     sign_language: "Sign language"
+  objective:
+    irrelevant: irrelevant
+    incomplete: incomplete
+    fair: fair
+    satisfactory: satisfactory
+    outstanding: outstanding
+  deal:
+    disapointing: disapointing
+    ordinary: ordinary
+    all_right: all right
+    great: great
+    amazing: amazing
   views:
     pagination:
       first: "&laquo;"

@@ -27,6 +27,18 @@ fr:
     meeting: "Rencontre"
     documents: "Echange de documents"
     sign_language: "Language des signes"
+  objective:
+    irrelevant: non pertinent
+    incomplete: incomplet
+    fair: passable
+    satisfactory: satisfaisant
+    outstanding: excellent
+  deal:
+    disapointing: décevante
+    ordinary: quelconque
+    all_right: bien
+    great: super
+    amazing: formidable
   views:
     pagination:
       first: "&laquo;"
