@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 function subcsribeToMessagesChannel(dealId, currentUserId) {
 
-  App['deal' + dealId + ':messages'] = App.cable.subscriptions.create({channel: 'MessagesChannel', deal_id: dealId}, {
+  App['deal' + dealId + ':messages_' + I18n.locale] = App.cable.subscriptions.create({channel: 'MessagesChannel', deal_id: dealId, locale: I18n.locale}, {
     received: function(data) {
       if (data.state === "typing" && currentUserId !== data.user_id) {
         $('#message-typing').removeClass("hide");
@@ -51,13 +51,14 @@ function subcsribeToMessagesChannel(dealId, currentUserId) {
 
 function subcsribeToDealStatusChannel(dealId) {
 
-  App['deal' + dealId + ':status'] = App.cable.subscriptions.create({channel: 'DealStatusChannel', deal_id: dealId}, {
+  App['deal' + dealId + ':status_' + I18n.locale] = App.cable.subscriptions.create({channel: 'DealStatusChannel', deal_id: dealId, locale: I18n.locale}, {
     received: function(data) {
       if (data.status !== undefined) { $('#deal-status-panel').html(data.status); }
       if (data.info !== undefined) { $('#deal-info-panel').html(data.info); }
       if (data.actions !== undefined) { $('#deal-actions-panel').html(data.actions); }
       if (data.reviews !== undefined) { $('#deal-reviews-panel').html(data.reviews); }
       if (data.messages_disabled === true) {
+        $('#message_content').attr('placeholder', I18n.t('messages.form.messages_disabled'));
         $('#message_content').prop('disabled', true);
         $('#new_message button').prop('disabled', true);
       }
@@ -71,10 +72,10 @@ function subcsribeToDealStatusChannel(dealId) {
 
 function typeMessage(dealId) {
   $('#message_content').focusin(function() {
-    App['deal' + dealId + ':messages'].type(dealId, "typing");
+    App['deal' + dealId + ':messages_' + I18n.locale].type(dealId, "typing");
   });
   $('#message_content').focusout(function() {
-    App['deal' + dealId + ':messages'].type(dealId, "stop_typing");
+    App['deal' + dealId + ':messages_' + I18n.locale].type(dealId, "stop_typing");
   });
 }
 

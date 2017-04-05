@@ -127,7 +127,7 @@
         </div>
       <% end %>
       <div class="row text-center">
-        <div class="col-xs-12 col-md-8 col-md-offset-2 padded-top-s">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 padded-top-s">
           <div id="dashboard-closed-deals-old">
             <% @user.deals_closed_old.each do |deal| %>
               <%= render "deals/card", deal: deal %>
@@ -144,7 +144,7 @@
         </div>
       <% end %>
       <div class="row text-center">
-        <div class="col-xs-12 col-md-8 col-md-offset-2 padded-top-s">
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 padded-top-s">
           <div id="dashboard-cancelled-deals-all">
             <% @user.deals_cancelled.each do |deal| %>
               <%= render "deals/card", deal: deal %>
