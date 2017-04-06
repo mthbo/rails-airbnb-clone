@@ -26,6 +26,12 @@
   border: none;
 }
 
+.alert-danger {
+  background: $light-red;
+  color: $dark-red;
+  margin: 1em 0;
+}
+
 .close {
   color: white;
   font-weight: lighter;

@@ -3,9 +3,8 @@
 
   <p class="padded-top-xs"><%= t '.evaluate_your_experience', name: @deal.client.first_name %></p>
 
-  <% options = (1..5).to_a.map { |rating| [rating, {'data-html' => Deal::EVALUATIONS[rating]}] } %>
   <%= f.input :advisor_rating, label: false do %>
-    <%= f.select :advisor_rating, options, {include_blank: true}, {class: "form-control star-rating-green"} %>
+    <%= f.select :advisor_rating, Deal.evaluations, {include_blank: true}, {class: "form-control star-rating-green"} %>
   <% end %>
 
   <div class="padded-top-xs padded-bottom-xs">

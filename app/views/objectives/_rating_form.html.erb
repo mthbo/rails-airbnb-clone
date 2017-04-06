@@ -1,8 +1,7 @@
 <%= simple_form_for objective, remote: true do |f| %>
 
-  <% options = (1..5).to_a.map { |rating| [rating, {'data-html' => Objective::EVALUATIONS[rating]}] } %>
   <%= f.input :rating, label: false do %>
-    <%= f.select :rating, options, {include_blank: true}, {class: "form-control star-rating-yellow", onchange: "$(this.form).submit()"} %>
+    <%= f.select :rating, Objective.evaluations, {include_blank: true}, {class: "form-control star-rating-yellow", onchange: "$(this.form).submit()"} %>
   <% end %>
 
 <% end %>

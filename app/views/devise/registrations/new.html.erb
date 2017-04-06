@@ -5,7 +5,7 @@
 <h2><%= t(".create_account") %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <%= f.error_notification %>
 
   <div class="row">
     <div class="col-xs-12 col-sm-6">
@@ -18,7 +18,7 @@
       <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.email'), input_html: { class: 'custom-form-input', type: 'email' } %>
     </div>
     <div class="col-xs-12">
-      <%= f.input :password, hint: t('.min_chars', length: @minimum_password_length ), as: :custom, symbol: "<i class='fa fa-lock fa-fw' aria-hidden='true'></i>".html_safe, label: false, required: true, placeholder: t('.password'), input_html: { class: 'custom-form-input', type: 'password' } %>
+      <%= f.input :password, as: :custom, symbol: "<i class='fa fa-lock fa-fw' aria-hidden='true'></i>".html_safe, label: false, required: true, placeholder: t('.password', length: @minimum_password_length), input_html: { class: 'custom-form-input', type: 'password' } %>
     </div>
   </div>
 

@@ -38,15 +38,6 @@ class Deal < ApplicationRecord
   validates :advisor_rating, presence: { message: "Please rate the session" }, if: :advisor_is_reviewing?
   validates :advisor_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5], message: "Rate from 1 to 5 stars"}, if: :advisor_is_reviewing?
 
-
-  EVALUATIONS = {
-    1 => I18n.t('deal.disapointing'),
-    2 => I18n.t('deal.ordinary'),
-    3 => I18n.t('deal.all_right'),
-    4 => I18n.t('deal.great'),
-    5 => I18n.t('deal.amazing')
-  }
-
   def advisor
     offer.advisor unless offer.nil?
   end
@@ -143,6 +134,20 @@ class Deal < ApplicationRecord
     if advisor_rating.present?
       advisor_rating
     end
+  end
+
+  # Evaluations
+
+  EVALUATIONS = {
+    1 => 'disapointing',
+    2 => 'ordinary',
+    3 => 'all_right',
+    4 => 'great',
+    5 => 'amazing'
+  }
+
+  def self.evaluations
+    (1..5).to_a.map { |rating| [rating, {'data-html' => I18n.t("deal.#{EVALUATIONS[rating]}") }] }
   end
 
 

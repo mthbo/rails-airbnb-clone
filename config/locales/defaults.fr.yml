@@ -5,6 +5,8 @@ fr:
         pricings:
           free: Gratuit
           priced: Payant
+  pundit:
+    default: "Vous n'êtes pas autorisé(e) à effectuer cette action."
   language:
     french: "Français"
     english: "Anglais"

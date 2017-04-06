@@ -18,6 +18,23 @@ en:
         city: City
     models:
       user: User
+    errors:
+      models:
+        user:
+          attributes:
+            first_name:
+              blank: Please provide your first name
+              too_short: First name is too short
+            last_name:
+              blank: Please provide your last name
+              too_short: Last name is too short
+            email:
+              blank: Please provide your email
+              invalid: Invalid email
+              taken: This email is already taken
+            password:
+              blank: Please provide a password
+              too_short: Password is too short (min. 8 characters)
   devise:
     confirmations:
       confirmed: Your email address has been successfully confirmed.
@@ -124,8 +141,7 @@ en:
         first_name: First name
         last_name: Last name
         email: Email address
-        password: Password
-        min_chars: "%{length} or more characters"
+        password: Password (min. %{length} characters)
       signed_up: Welcome! You have signed up successfully.
       signed_up_but_inactive: You have signed up successfully. However, we could not sign you in because your account is not yet activated.
       signed_up_but_locked: You have signed up successfully. However, we could not sign you in because your account is locked.

@@ -5,6 +5,8 @@ en:
         pricings:
           free: Free
           priced: Priced
+  pundit:
+    default: 'You are not authorized to perform this action.'
   language:
     french: "French"
     english: "English"

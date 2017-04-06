@@ -232,6 +232,24 @@
   justify-content: center;
 }
 
+.has-error {
+  .form-control {
+    border-color: $dark-red;
+    &:focus {
+      border-color: $dark-red;
+    }
+  };
+  .input-group-addon {
+    color: $dark-red;
+    border-color: $dark-red;
+    background-color: $light-red;
+  };
+  .help-block, .control-label, .radio, .checkbox, .radio-inline, .checkbox-inline, &.radio label, &.checkbox label, &.radio-inline label, &.checkbox-inline label {
+    color: $dark-red;
+    font-weight: lighter;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .custom-form-logo img {
     height: 35px;

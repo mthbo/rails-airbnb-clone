@@ -20,8 +20,8 @@ class User < ApplicationRecord
   phony_normalize :phone_number, default_country_code: 'FR'
   validates :phone_number, phony_plausible: true
 
-  validates :first_name, presence: { message: "You must have a first name" }, length: { minimum: 2 }
-  validates :last_name, presence: { message: "You must have a last name" }, length: { minimum: 2 }
+  validates :first_name, presence: true, length: { minimum: 2 }
+  validates :last_name, presence: true, length: { minimum: 2 }
   validates :bio, length: { minimum: 50, message: "Your bio is too short, please tell a little more!" }, allow_blank: true
 
   validate :birth_date_must_be_valid
