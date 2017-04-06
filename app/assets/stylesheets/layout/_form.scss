@@ -117,7 +117,7 @@
         display: none;
       }
     };
-    &:last-child {
+    &:last-child, &:nth-last-child(2) {
       max-width: 250px;
     };
   };

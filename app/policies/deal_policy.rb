@@ -28,11 +28,11 @@ class DealPolicy < ApplicationPolicy
     record.client == user && record.proposition?
   end
 
-  def open?
+  def open_session?
     record.client == user && record.proposition?
   end
 
-  def close?
+  def close_session?
     (record.client == user && (record.open? || record.open_expired?)) || (record.advisor == user && record.open_expired?)
   end
 
@@ -48,7 +48,7 @@ class DealPolicy < ApplicationPolicy
     (record.messages_disabled == false) && record.closed? && ((user == record.advisor && record.advisor_review_at.present?) || (user == record.client && record.client_review_at.present?))
   end
 
-  def cancel?
+  def cancel_session?
     ((record.request? || record.proposition_declined?) && (record.advisor == user || record.client == user))
   end
 

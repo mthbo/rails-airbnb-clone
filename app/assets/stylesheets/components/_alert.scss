@@ -6,6 +6,11 @@
   width: 100%;
 }
 
+.flash-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 .alert {
   margin: 0;
   text-align: center;
@@ -27,8 +32,9 @@
 }
 
 .alert-danger {
-  background: $light-red;
-  color: $dark-red;
+  background: rgba(238, 95, 91, 0.9);
+  border: none;
+  color: white;
   margin: 1em 0;
 }
 

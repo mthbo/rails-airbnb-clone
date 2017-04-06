@@ -22,7 +22,7 @@
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
 
         <% if deal.amount_cents.blank? || deal.amount_cents.zero? %>
-          <%= link_to open_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
+          <%= link_to open_session_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
             <i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept' %>
           <% end %>
 

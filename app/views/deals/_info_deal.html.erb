@@ -1,6 +1,6 @@
 <div class="deal-info-box">
 
-  <% if policy(deal).cancel? %>
+  <% if policy(deal).cancel_session? %>
     <div class="padded-top-s">
       <% if policy(deal).new_proposition? %>
         <p class="font-weight-normal"><%= t '.client_declined', name: deal.client.first_name %></p>
@@ -23,7 +23,7 @@
       <p class="font-weight-normal"><%= t '.session_is_open_advisor', date: l(deal.deadline.to_date, format: :long), name: deal.client.first_name %></p>
     </div>
 
-  <% elsif policy(deal).close? %>
+  <% elsif policy(deal).close_session? %>
     <div class="padded-top-s">
       <% if deal.open_expired? %>
         <p class="font-weight-normal"><%= t '.deadline_has_passed' %></p>

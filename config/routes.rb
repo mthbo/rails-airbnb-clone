@@ -39,11 +39,11 @@ Rails.application.routes.draw do
           patch 'save_proposition', to: 'deals#save_proposition'
           patch 'submit_proposition', to: 'deals#submit_proposition'
           patch 'decline_proposition', to: 'deals#decline_proposition'
-          patch 'open', to: 'deals#open'
-          patch 'close', to: 'deals#close'
+          patch 'open_session', to: 'deals#open_session'
+          patch 'close_session', to: 'deals#close_session'
           patch 'save_review', to: 'deals#save_review'
           patch 'disable_messages', to: 'deals#disable_messages'
-          patch 'cancel', to: 'deals#cancel'
+          patch 'cancel_session', to: 'deals#cancel_session'
         end
         resources :objectives, only: [:create, :update, :destroy]
         resources :messages, only: [:create]

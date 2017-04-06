@@ -1,5 +1,21 @@
 fr:
   deals:
+    create:
+      notice: "Une demande a été envoyée a %{name} concernant l'offre '%{title}'"
+    submit_proposition:
+      notice: "Votre proposition a été soumise à %{name}"
+    decline_proposition:
+      notice: "Vous avez refusé la proposition de %{name}"
+    open_session:
+      notice: "#session-%{id} avec %{name} est ouverte!"
+    close_session:
+      notice: "#session-%{id} avec %{name} est clôturée!"
+    save_review:
+      notice: "Votre évaluation a été postée"
+    disable_messages:
+      notice: "Les messages ont été désactivés pour #session-%{id}."
+    cncel_session:
+      notice: "#session-%{id} avec %{name} est annulée!"
     request_button:
       get_in_touch: "Contacter"
       session: "Session"
@@ -13,7 +29,7 @@ fr:
       select_languages: "Selectionnez la ou les langue(s) que vous acceptez pour communiquer avec %{name}."
       select_means: "Selectionnez le ou les moyen(s) que vous acceptez pour communiquer avec %{name}."
       send: Envoyer
-      back_to_offer: Retourner à l'offre
+      back_to_offer: Revenir à l'offre
     show:
       session: session
     satisfaction:
@@ -163,11 +179,11 @@ fr:
     client_rating_form:
       overall_evaluation: Evaluation globale
       evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
-      leave_a_review: "Laissez un avis à %{name} pour cette session."
+      leave_a_review: "Laissez un avis à %{name} pour cette session (max: 500 caractères)."
       publish_evaluation: Publier l'évaluation
     advisor_rating_form:
       evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
-      leave_a_review: "Laissez un avis à %{name} pour cette session."
+      leave_a_review: "Laissez un avis à %{name} pour cette session (max: 500 caractères)."
       publish_evaluation: Publier l'évaluation
     reviews:
       reviews: Avis

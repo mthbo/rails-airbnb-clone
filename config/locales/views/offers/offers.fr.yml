@@ -2,10 +2,15 @@ fr:
   offers:
     new:
       publish_new_offer: Publier une nouvelle offre
-      back_to_profile: Retourner au profil
+      back_to_profile: Revenir au profil
+    create:
+      notice: "L'offre '%{title}' a été créée."
     edit:
       edit_offer: Editer votre offre
-      back_to_offer: Retourner à l'offre
+      back_to_offer: Revenir à l'offre
+    update:
+      notice_updated: "L'offre '%{title}' a été mise à jour."
+      notice_removed: "L'offre '%{title}' a été supprimée."
     form:
       describe_offer_and_give_title: Décrivez votre offre et donnez-lui un titre accrocheur.
       convince: "Soyez clair(e), soyez spécifique et soyez original(e): votre mission est de convaincre que vos conseils sont précieux!"

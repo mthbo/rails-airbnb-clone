@@ -53,10 +53,6 @@
 
     <div class="col-xs-12 col-sm-7">
       <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, required: true, placeholder: t('.email'), input_html: { class: 'custom-form-input', type: 'email'} %>
-
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-      <% end %>
     </div>
     <div class="col-xs-12 col-sm-5">
       <%= f.input :phone_number, as: :custom, symbol: "<i class='fa fa-phone fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.phone_number'), input_html: { class: 'custom-form-input', type: 'tel', value: resource.phone_number ? resource.phone_number.phony_formatted(format: :international, spaces: ' ') : nil } %>

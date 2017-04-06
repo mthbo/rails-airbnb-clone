@@ -7,5 +7,5 @@
 <%= render 'form' %>
 
 <div class="text-right padded-top-xs">
-  <p><%= link_to t('.back_to_profile'), :back %></p>
+  <p><%= link_to t('.back_to_profile'), user_path(current_user) %></p>
 </div>

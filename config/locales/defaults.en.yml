@@ -5,6 +5,55 @@ en:
         pricings:
           free: Free
           priced: Priced
+    errors:
+      models:
+        offer:
+          attributes:
+            title:
+              blank: Please provide a title for your offer
+              too_short: This title is too short
+            description:
+              blank: Please provide a description for your offer
+              too_short: This description is too short, please elaborate a little bit!
+            languages:
+              blank: "Please select at least one language"
+              too_long: "Too many languages are selected (max: 5)"
+            means:
+              blank: "Please select at least one mean of communication"
+        deal:
+          attributes:
+            request:
+              blank: "Please provide some details regarding your request"
+            languages:
+              blank: "Please select at least one language"
+            means:
+              blank: "Please select at least one mean of communication"
+            deadline:
+              blank: "Please specify a deadline"
+              past: "The deadline must be future"
+              more_than_a_year_from_now: "The deadline must be before a year from now"
+            proposition:
+              blank: "Please provide some details regarding your the service proposed"
+              too_short: "The description of the service is too short, please elaborate a little bit!"
+            proposition_deadline:
+              blank: "Please specify an expiry date"
+              past: "The expiry date must be future"
+              after_deadline: "The expiry date must be before the session deadline"
+            client_review:
+              blank: "Please leave a review for this session"
+              too_long: "Your review is too long (max: 500 characters)"
+            client_rating:
+              blank: "Please evaluate this session"
+            advisor_review:
+              blank: "Please leave a review for this session"
+              too_long: "Your review is too long (max: 500 characters)"
+            advisor_rating:
+              blank: "Please evaluate this session"
+        objective:
+          attributes:
+            description:
+              blank: Please specify this objective
+              too_long: "This objective is too long (max: 150 characters)"
   pundit:
     default: 'You are not authorized to perform this action.'
   language:

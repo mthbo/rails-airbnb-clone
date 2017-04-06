@@ -24,17 +24,21 @@ fr:
           attributes:
             first_name:
               blank: Veuillez renseigner votre prénom
-              too_short: Prénom trop court
+              too_short: Ce prénom est trop court
             last_name:
               blank: Veuillez renseigner votre nom
-              too_short: Nom trop court
+              too_short: Ce nom est trop court
             email:
               blank: Veuillez renseigner votre e-mail
-              invalid: E-mail invalide
+              invalid: Cet e-mail est invalide
               taken: Cet e-mail est déja utilisé
             password:
-              blank: Veuillez renseigner un mot de passe
-              too_short: Mot de passe trop court (min. 8 caractères)
+              blank: Veuillez choisir un mot de passe
+              too_short: Ce mot de passe trop court (min. 8 caractères)
+            birth_date:
+              invalid: Cette date est invalide
+            phone_number:
+              improbable_phone: Ce numéro est invalide
   devise:
     confirmations:
       confirmed: Votre compte a été confirmé avec succès.
@@ -96,7 +100,7 @@ fr:
       updated: Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté(e).
       updated_not_active: Votre mot de passe a été modifié avec succès.
     registrations:
-      destroyed: Au revoir ! Votre compte a été annulé avec succès. Nous espérons vous revoir bientôt.
+      destroyed: Votre compte a été supprimé avec succès et toutes vos informations ont été effacées. Bonne route!
       cancellation:
         account_cancellation: Suppression du compte
         account_cancellation_for: Supprimez votre compte seulement si vous souhaitez quitter Papoters définitivement. Toutes vos informations et votre historique seront éffacés.
@@ -115,7 +119,7 @@ fr:
         title: "Éditer %{resource}"
         unhappy: 'Insatisfait '
         update: Mettre à jour
-        back_to_profile: Retourner au profil
+        back_to_profile: Revenir au profil
         we_need_your_current_password_to_confirm_your_changes: nous avons besoin de votre mot de passe actuel pour valider ces modifications
         edit_profile: Editer mon profil
         about_me: A propos de moi

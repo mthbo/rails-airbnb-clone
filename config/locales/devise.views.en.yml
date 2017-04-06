@@ -24,17 +24,21 @@ en:
           attributes:
             first_name:
               blank: Please provide your first name
-              too_short: First name is too short
+              too_short: This name is too short
             last_name:
               blank: Please provide your last name
-              too_short: Last name is too short
+              too_short: This name is too short
             email:
               blank: Please provide your email
-              invalid: Invalid email
+              invalid: This email is invalid
               taken: This email is already taken
             password:
-              blank: Please provide a password
-              too_short: Password is too short (min. 8 characters)
+              blank: Please choose a password
+              too_short: This password is too short (min. 8 characters)
+            birth_date:
+              invalid: This date is invalid
+            phone_number:
+              improbable_phone: This number is invalid
   devise:
     confirmations:
       confirmed: Your email address has been successfully confirmed.
@@ -96,7 +100,7 @@ en:
       updated: Your password has been changed successfully. You are now logged in.
       updated_not_active: Your password has been changed successfully.
     registrations:
-      destroyed: Bye! Your account has been successfully cancelled. We hope to see you again soon.
+      destroyed: Your account has been successfully cancelled and all your information has been destroyed. Bye!
       cancellation:
         account_cancellation: Account cancellation
         account_cancellation_for: Cancel your account only if your want to quit Papoters permanently. All your information and your history will be destroyed.

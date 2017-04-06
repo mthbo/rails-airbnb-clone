@@ -5,6 +5,55 @@ fr:
         pricings:
           free: Gratuit
           priced: Payant
+    errors:
+      models:
+        offer:
+          attributes:
+            title:
+              blank: Veuillez renseigner un titre pour votre offre
+              too_short: Ce titre est trop court
+            description:
+              blank: Veuillez renseigner une description pour votre offre
+              too_short: "Cette description est trop courte, veuillez en dire un peu plus!"
+            languages:
+              blank: "Veuillez sélectionner au moins une langue"
+              too_long: "Trop de langues sont sélectionnées (max: 5)"
+            means:
+              blank: "Veuillez sélectionner au moins un moyen de communication"
+        deal:
+          attributes:
+            request:
+              blank: "Veuillez apporter quelques précisions concernant votre demande"
+            languages:
+              blank: "Veuillez sélectionner au moins une langue"
+            means:
+              blank: "Veuillez sélectionner au moins un moyen de communication"
+            deadline:
+              blank: "Veuillez spécifier une date limite"
+              past: "La date limite doit être future"
+              more_than_a_year_from_now: "La date limite doit être dans moins d'un an"
+            proposition:
+              blank: "Veuillez apporter quelques précisions concernant le service proposé"
+              too_short: "La description du service est trop courte, veuillez en dire un peu plus!"
+            proposition_deadline:
+              blank: "Veuillez spécifier une date d'expiration"
+              past: "La date d'expiration doit être future"
+              after_deadline: "La date d'expiration doit être avant la date limite de la session"
+            client_review:
+              blank: "Veuillez laisser un avis pour cette session"
+              too_long: "Votre avis est trop long (max: 500 caractères)"
+            client_rating:
+              blank: "Veuillez évaluer cette session"
+            advisor_review:
+              blank: "Veuillez laisser un avis pour cette session"
+              too_long: "Votre avis est trop long (max: 500 caractères)"
+            advisor_rating:
+              blank: "Veuillez évaluer cette session"
+        objective:
+          attributes:
+            description:
+              blank: Veuillez spécifier cet objectif
+              too_long: "Cet objectif est trop long (max: 150 caractères)"
   pundit:
     default: "Vous n'êtes pas autorisé(e) à effectuer cette action."
   language:

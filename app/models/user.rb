@@ -22,8 +22,6 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
-  validates :bio, length: { minimum: 50, message: "Your bio is too short, please tell a little more!" }, allow_blank: true
-
   validate :birth_date_must_be_valid
 
   # User information
@@ -374,7 +372,7 @@ class User < ApplicationRecord
   # Validations
 
   def birth_date_must_be_valid
-    errors.add(:birth_date, "Enter a valid birthdate") if
+    errors.add(:birth_date) if
       birth_date.present? && (birth_date > DateTime.current.in_time_zone || birth_date < 130.years.ago)
   end
 

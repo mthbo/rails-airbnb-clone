@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  before_action :find_deal, only: [:show, :new_proposition, :save_proposition, :submit_proposition, :decline_proposition, :open, :close, :new_review, :save_review, :disable_messages, :cancel]
+  before_action :find_deal, only: [:show, :new_proposition, :save_proposition, :submit_proposition, :decline_proposition, :open_session, :close_session, :new_review, :save_review, :disable_messages, :cancel_session]
   before_action :find_offer, only: [:new, :create]
 
   def show
@@ -27,7 +27,7 @@ class DealsController < ApplicationController
     if @deal.save
       send_first_message
       NewDealCardsBroadcastJob.perform_later(@deal)
-      flash[:notice] = "A request has been sent to #{@offer.advisor.name_anonymous} for the offer '#{@offer.title}'"
+      flash[:notice] = t('.notice', name: @offer.advisor.first_name, title: @offer.title)
       redirect_to deal_path(@deal)
     else
       render :new, layout: "client_form"
@@ -62,7 +62,7 @@ class DealsController < ApplicationController
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     PropositionExpiryJob.set(wait_until: @deal.proposition_deadline.end_of_day).perform_later(@deal)
-    flash[:notice] = "Your proposition was submitted to #{@deal.client.name_anonymous}"
+    flash[:notice] = t('.notice', name: @deal.client.first_name)
     redirect_to deal_path(@deal)
   end
 
@@ -77,14 +77,14 @@ class DealsController < ApplicationController
     send_status_message
     respond_to do |format|
       format.html {
-        flash[:alert] = "You declined the proposition of #{@deal.advisor.name_anonymous}"
+        flash[:alert] = t('.notice', name: @deal.advisor.first_name)
         redirect_to deal_path(@deal)
       }
       format.js
     end
   end
 
-  def open
+  def open_session
     @deal.open!
     @deal.open_at = DateTime.current.in_time_zone
     @deal.advisor_notifications += 1
@@ -96,14 +96,14 @@ class DealsController < ApplicationController
     DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
     respond_to do |format|
       format.html {
-        flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is open!"
+        flash[:notice] = t('.notice', id: @deal.id, name: @deal.advisor.first_name)
         redirect_to deal_path(@deal)
       }
       format.js
     end
   end
 
-  def close
+  def close_session
     @deal.closed!
     @deal.closed_at = DateTime.current.in_time_zone
     if @deal.client == current_user
@@ -123,7 +123,7 @@ class DealsController < ApplicationController
     @deal.offer.index!
     respond_to do |format|
       format.html {
-        flash[:alert] = "#session-#{@deal.id} with #{@deal.client == current_user ? @deal.advisor.name_anonymous : @deal.client.name_anonymous} is closed!"
+        flash[:alert] = t('.notice', id: @deal.id, name: @deal.client == current_user ? @deal.advisor.first_name : @deal.client.first_name)
         redirect_to deal_path(@deal)
       }
       format.js
@@ -149,7 +149,7 @@ class DealsController < ApplicationController
       @deal.save
       ReviewBroadcastJob.perform_later(@deal, receiver)
       DealCardsBroadcastJob.perform_later(@deal)
-      flash[:notice] = "Your review has been posted"
+      flash[:notice] = t('.notice')
       redirect_to deal_path(@deal)
     else
       if current_user == @deal.advisor
@@ -177,14 +177,14 @@ class DealsController < ApplicationController
     DealCardsBroadcastJob.perform_later(@deal)
     respond_to do |format|
       format.html {
-        flash[:notice] = "Messages have been disabl for #session-#{@deal.id}."
+        flash[:notice] = t('.notice', id: @deal.id)
         redirect_to deal_path(@deal)
       }
       format.js
     end
   end
 
-  def cancel
+  def cancel_session
     @deal.cancelled!
     @deal.messages_disabled = true
     if @deal.client == current_user
@@ -202,7 +202,7 @@ class DealsController < ApplicationController
     send_status_message
     respond_to do |format|
       format.html {
-        flash[:alert] = "#session-#{@deal.id} with #{@deal.client == current_user ? @deal.advisor.name_anonymous : @deal.client.name_anonymous} has been cancelled."
+        flash[:alert] = t('.notice', id: @deal.id, name: @deal.client == current_user ? @deal.advisor.first_name : @deal.client.first_name)
         redirect_to deal_path(@deal)
       }
       format.js

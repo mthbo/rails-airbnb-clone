@@ -85,7 +85,7 @@
         <% end %>
       </div>
       <div class="col-xs-8">
-        <% if policy(deal).open? %>
+        <% if policy(deal).open_session? %>
           <div class="deal-proposition-action-btns">
             <%= render "deals/decline", deal: deal %>
             <%= render "deals/accept", deal: deal %>

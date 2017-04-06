@@ -3,9 +3,14 @@ en:
     new:
       publish_new_offer: Publish a new offer
       back_to_profile: Back to profile
+    create:
+      notice: "The offer '%{title}' has been created."
     edit:
       edit_offer: Edit your offer
       back_to_offer: Back to offer
+    update:
+      notice_updated: "The offer '%{title}' has been updated"
+      notice_removed: "The offer '%{title}' has been removed"
     form:
       describe_offer_and_give_title: Describe your offer and give it a catchy title.
       convince: "Be clear, be specific and be original : your mission is to convince people you are the advisor they need!"

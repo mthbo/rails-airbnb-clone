@@ -14,29 +14,26 @@ class Deal < ApplicationRecord
   enum payment_state: [ :no_payment, :payment_pending, :paid ]
   enum who_reviews: [ :no_review, :client_is_reviewing, :advisor_is_reviewing]
 
-  validates :request, presence: { message: "Detail your request" }
-  validates :languages, presence: { message: "Select one language at least" }
-  validates :means, presence: { message: "Select one mean of communication at least" }
+  validates :request, :languages, :means, :deadline, presence: true
 
-  validates :deadline, presence: { message: "Specify a deadline for your request" }
   validate :deadline_must_be_future, if: :pending_or_open?
   validate :deadline_must_be_before_a_year, if: :pending_or_open?
 
-  validates :proposition, presence: { message: "The proposition must be described" }, length: { minimum: 50, message: "The description is too short, please tell a little more!" }, if: :not_new_nor_cancelled?
+  validates :proposition, presence: true, length: { minimum: 30 }, if: :not_new_nor_cancelled?
   validates :objectives, presence: true, length: { in: 1..10 }, if: :not_new_nor_cancelled?
 
-  validates :proposition_deadline, presence: { message: "Specify an expiry date for your proposition" }, if: :pending_not_new?
+  validates :proposition_deadline, presence: true, if: :pending_not_new?
   validate :proposition_deadline_must_be_future, if: :pending_not_new?
   validate :proposition_deadline_must_be_before_deadline, if: :pending_not_new?
 
-  validates :client_review, presence: { message: "Please write a short review" }, if: :client_is_reviewing?
-  validates :client_rating, presence: { message: "Please rate the session" }, if: :client_is_reviewing?
-  validates :client_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5], message: "Rate from 1 to 5 stars"}, if: :client_is_reviewing?
+  validates :client_review, presence: true, length: { maximum: 500 }, if: :client_is_reviewing?
+  validates :client_rating, presence: true, if: :client_is_reviewing?
+  validates :client_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5] }, if: :client_is_reviewing?
   validate :objectives_must_be_rated, if: :client_is_reviewing?
 
-  validates :advisor_review, presence: { message: "Please write a short review" }, if: :advisor_is_reviewing?
-  validates :advisor_rating, presence: { message: "Please rate the session" }, if: :advisor_is_reviewing?
-  validates :advisor_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5], message: "Rate from 1 to 5 stars"}, if: :advisor_is_reviewing?
+  validates :advisor_review, presence: true, length: { maximum: 500 }, if: :advisor_is_reviewing?
+  validates :advisor_rating, presence: true, if: :advisor_is_reviewing?
+  validates :advisor_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5] }, if: :advisor_is_reviewing?
 
   def advisor
     offer.advisor unless offer.nil?
@@ -156,27 +153,27 @@ class Deal < ApplicationRecord
   # Validations
 
   def deadline_must_be_future
-    errors.add(:deadline, "The deadline can't be in the past ") if
+    errors.add(:deadline, :past) if
       deadline.present? && deadline <= 1.day.ago
   end
 
   def deadline_must_be_before_a_year
-    errors.add(:deadline, "The deadline can't be later than a year from now") if
+    errors.add(:deadline, :more_than_a_year_from_now) if
       deadline.present? && deadline > 1.year.from_now
   end
 
   def proposition_deadline_must_be_future
-    errors.add(:proposition_deadline, "The expiry date can't be in the past") if
+    errors.add(:proposition_deadline, :past) if
       proposition_deadline.present? && proposition_deadline <= 1.day.ago
   end
 
   def proposition_deadline_must_be_before_deadline
-    errors.add(:proposition_deadline, "The expiry date can't be later than the proposition deadline") if
+    errors.add(:proposition_deadline, :after_deadline) if
       proposition_deadline.present? && proposition_deadline > deadline
   end
 
   def objectives_must_be_rated
-    errors.add(:objectives, "All objectives must be rated") if
+    errors.add(:objectives) if
       !(objectives.all? { |objective| objective.rating.present? })
   end
 

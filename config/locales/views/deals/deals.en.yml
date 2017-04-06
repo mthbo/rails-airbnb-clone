@@ -1,5 +1,21 @@
 en:
   deals:
+    create:
+      notice: "A request has been sent to %{name} regarding the offer '%{title}'"
+    submit_proposition:
+      notice: "Your proposition was submitted to %{name}"
+    decline_proposition:
+      notice: "You declined the proposition of %{name}"
+    open_session:
+      notice: "#session-%{id} with %{name} is open!"
+    close_session:
+      notice: "#session-%{id} with %{name} is closed!"
+    save_review:
+      notice: "Your evaluation has been posted"
+    disable_messages:
+      notice: "Messages have been disabled for #session-%{id}."
+    cncel_session:
+      notice: "#session-%{id} with %{name} is cancelled!"
     request_button:
       get_in_touch: "Get in touch"
       session: "Session"
@@ -163,11 +179,11 @@ en:
     client_rating_form:
       overall_evaluation: Overall evaluation
       evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
-      leave_a_review: "Leave a review to %{name} for this session."
+      leave_a_review: "Leave a review to %{name} for this session (max: 500 characters)."
       publish_evaluation: Publish the evaluation
     advisor_rating_form:
       evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
-      leave_a_review: "Leave a review to %{name} for this session."
+      leave_a_review: "Leave a review to %{name} for this session (max: 500 characters)."
       publish_evaluation: Publish the evaluation
     reviews:
       reviews: Reviews
