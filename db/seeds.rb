@@ -12,7 +12,7 @@ languages = [
   Language.create(name: "Spanish"),
   Language.create(name: "Italian"),
   Language.create(name: "German"),
-  Language.create(name: "Mandarin"),
+  Language.create(name: "Chinese"),
   Language.create(name: "Danish"),
   Language.create(name: "Dutch"),
   Language.create(name: "Hindi"),
@@ -20,7 +20,23 @@ languages = [
   Language.create(name: "Portuguese"),
   Language.create(name: "Russian"),
   Language.create(name: "Swahili"),
-  Language.create(name: "Arabic")
+  Language.create(name: "Arabic"),
+  Language.create(name: "Swedish"),
+  Language.create(name: "Greek"),
+  Language.create(name: "Malaysian"),
+  Language.create(name: "Indonesian"),
+  Language.create(name: "Hungarian"),
+  Language.create(name: "Norwegian"),
+  Language.create(name: "Polish"),
+  Language.create(name: "Brazilian Portuguese"),
+  Language.create(name: "Finnish"),
+  Language.create(name: "Turkish"),
+  Language.create(name: "Icelandic"),
+  Language.create(name: "Czech"),
+  Language.create(name: "Thai"),
+  Language.create(name: "Korean"),
+  Language.create(name: "Persian"),
+  Language.create(name: "Hebrew")
 ]
 
 languages_short_list = [

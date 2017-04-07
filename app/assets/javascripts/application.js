@@ -24,6 +24,7 @@
 //= require init_attachinary
 //= require locale
 //= require mobile_detection
+//= require navbar_menu
 //= require proposition
 //= require radio_button
 //= require search
