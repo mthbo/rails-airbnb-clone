@@ -4,6 +4,7 @@ $(document).ready(function() {
     $('#my-navbar-locale-toggle').on('click', function(event) {
       event.stopPropagation();
       hideProfileMenuIfVisible();
+      hideBurgerMenuIfVisible()
       if ($('#my-navbar-locale-menu').is(':hidden')) {
         showLocaleMenu();
       } else {
@@ -14,12 +15,21 @@ $(document).ready(function() {
     $('#my-navbar-profile-toggle').on('click', function(event) {
       event.stopPropagation();
       hideLocaleMenuIfVisible();
+      hideBurgerMenuIfVisible()
       $('#my-navbar-profile-menu').slideToggle(150);
+    });
+
+    $('#my-navbar-burger-toggle').on('click', function(event) {
+      event.stopPropagation();
+      hideLocaleMenuIfVisible();
+      hideProfileMenuIfVisible();
+      $('#my-navbar-burger-menu').slideToggle(150);
     });
 
     $(window).on('click', function() {
       hideLocaleMenuIfVisible();
       hideProfileMenuIfVisible();
+      hideBurgerMenuIfVisible()
     });
   }
 
@@ -48,5 +58,11 @@ function hideLocaleMenuIfVisible() {
 function hideProfileMenuIfVisible() {
   if ($('#my-navbar-profile-menu').is(':visible')) {
     $('#my-navbar-profile-menu').slideUp(150);
+  }
+}
+
+function hideBurgerMenuIfVisible() {
+  if ($('#my-navbar-burger-menu').is(':visible')) {
+    $('#my-navbar-burger-menu').slideUp(150);
   }
 }
