@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
@@ -358,6 +358,7 @@ class User < ApplicationRecord
       user.update(user_params)
     else
       user = User.new(user_params)
+      user.skip_confirmation!
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
     end
@@ -366,6 +367,7 @@ class User < ApplicationRecord
     I18n.locale = I18n.available_locales.include?(facebook_locale) ? facebook_locale : I18n.default_locale
     return user
   end
+
 
   private
 

@@ -20,6 +20,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def after_inactive_sign_up_path_for(resource)
+    confirm_email_users_path
+  end
+
   def update_resource(resource, params)
     resource.update_without_password(params)
   end

@@ -8,6 +8,10 @@ class UserPolicy < ApplicationPolicy
     user == record
   end
 
+  def welcome?
+    user == record
+  end
+
   def destroy?
     user == record && user.deals_ongoing.blank?
   end

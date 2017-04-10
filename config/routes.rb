@@ -22,13 +22,18 @@ Rails.application.routes.draw do
     devise_for :users,
       skip: :omniauth_callbacks,
       controllers: {
-        registrations: 'users/registrations'
+        registrations: 'users/registrations',
+        confirmations: 'users/confirmations'
       }
 
     root to: 'pages#home'
     get '/be_advisor', to: 'pages#be_advisor'
 
-    resources :users, only: [:show]
+    resources :users, only: [:show] do
+      collection do
+        get 'confirm_email', to: 'users#confirm_email'
+      end
+    end
     get '/dashboard', to: 'users#dashboard'
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
