@@ -34,7 +34,7 @@ fr:
               taken: Cet e-mail est déja utilisé
             password:
               blank: Veuillez choisir un mot de passe
-              too_short: Ce mot de passe trop court (min. 8 caractères)
+              too_short: Ce mot de passe est trop court (min. 8 caractères)
             birth_date:
               invalid: Cette date est invalide
             phone_number:
