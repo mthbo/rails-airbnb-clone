@@ -190,6 +190,9 @@ fr:
     unlocks:
       new:
         resend_unlock_instructions: Renvoyer les instructions de déblocage
+        email: E-mail
+        resend: Renvoyer
+        go_back: Revenir
       send_instructions: Vous allez recevoir sous quelques minutes un e-mail comportant des instructions pour déverrouiller votre compte.
       send_paranoid_instructions: Si votre e-mail existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour déverrouiller votre compte.
       unlocked: Votre compte a été déverrouillé avec succès. Veuillez vous connecter.
