@@ -44,7 +44,10 @@ fr:
       confirmed: Votre compte a été confirmé avec succès.
       new:
         resend_confirmation_instructions: Renvoyer les instructions de confirmation
-      send_instructions: Vous allez recevoir sous quelques minutes un e-mail comportant des instructions pour confirmer votre compte.
+        email: E-mail
+        resend: Renvoyer
+        go_back: Revenir
+      send_instructions: ''
       send_paranoid_instructions: Si votre e-mail existe sur notre base de données, vous recevrez sous quelques minutes un message avec des instructions pour confirmer votre compte.
     failure:
       already_authenticated: Vous êtes déjà connecté(e).
@@ -84,18 +87,23 @@ fr:
       success: Autorisé avec succès par votre compte %{kind}.
     passwords:
       edit:
-        change_my_password: Changer mon mot de passe
+        change_and_login: Changer et se connecter
         change_your_password: Changer votre mot de passe
         confirm_new_password: Confirmez votre nouveau mot de passe
-        new_password: Nouveau mot de passe
+        new_password: "Nouveau mot de passe (min. %{length} caractères)"
+        go_back: Revenir
       new:
         email: E-mail
         forgot_your_password: Mot de passe oublié ?
         send_me_reset_password_instructions: Envoyez-moi des instructions pour réinitialiser mon mot de passe.
         send: Envoyer
-        sign_in: Se connecter
+        go_back: Revenir
+      reset:
+        password_reset: Réinitialisation du mot de passe
+        reset_your_password: Vous allez recevoir sous quelques minutes un e-mail vous indiquant comment réinitialiser votre mot de passe.
+        check_your_emails: Vérifiez vos e-mails
       no_token: Vous ne pouvez pas accéder à cette page si vous n’y accédez pas depuis un e-mail de réinitialisation de mot de passe. Si vous venez en effet d’un tel e-mail, vérifiez que vous avez copié l’adresse URL en entier.
-      send_instructions: Vous allez recevoir sous quelques minutes un e-mail vous indiquant comment réinitialiser votre mot de passe.
+      send_instructions: ''
       send_paranoid_instructions: Si votre e-mail existe dans notre base de données, vous recevrez un lien vous permettant de récupérer votre mot de passe.
       updated: Votre mot de passe a été modifié avec succès. Vous êtes maintenant connecté(e).
       updated_not_active: Votre mot de passe a été modifié avec succès.
@@ -145,7 +153,12 @@ fr:
         first_name: Prénom
         last_name: Nom
         email: Adresse e-mail
-        password: Mot de passe (min. %{length} caractères)
+        password: "Mot de passe (min. %{length} caractères)"
+      confirm:
+        account_confirmation: Confirmation du compte
+        waiting_for_confirmation: En attente de confirmation...
+        activate_account: Un message contenant un lien de confirmation vous a été envoyé par e-mail. Veuillez suivre ce lien pour activer votre compte.
+        check_your_emails: Vérifiez vos e-mails
       signed_up: Bienvenue ! Vous vous êtes enregistré(e) avec succès.
       signed_up_but_inactive: Vous vous êtes enregistré(e) avec succès. Cependant, nous n’avons pas pu vous connecter car votre compte n’a pas encore été activé.
       signed_up_but_locked: Vous vous êtes enregistré(e) avec succès. Cependant, nous n’avons pas pu vous connecter car votre compte est verrouillé.
@@ -167,7 +180,7 @@ fr:
         already_signed_up: Déjà inscrit?
         no_account: Nouveau sur Papoters?
         back: Retour
-        didn_t_receive_confirmation_instructions: Vous n'avez pas reçu l'e-mail' de confirmation ?
+        didn_t_receive_confirmation_instructions: Instructions de confirmation non reçues ?
         didn_t_receive_unlock_instructions: Vous n'avez pas reçu l'e-mail' de déblocage ?
         forgot_your_password: Mot de passe oublié ?
         sign_in: Se connecter
@@ -182,11 +195,11 @@ fr:
       unlocked: Votre compte a été déverrouillé avec succès. Veuillez vous connecter.
   errors:
     messages:
-      already_confirmed: a déjà été confirmé(e)
-      confirmation_period_expired: doit être confirmé(e) en %{period}, veuillez en demander un(e) autre
+      already_confirmed: Ce compte a déjà été confirmé
+      confirmation_period_expired: Ce compte doit être confirmé en %{period}, veuillez en créer un nouveau
       expired: est expiré, veuillez en demander un autre
-      not_found: n’a pas été trouvé(e)
-      not_locked: n’était pas verrouillé(e)
+      not_found: Ce compte n’a pas été trouvé
+      not_locked: Ce compte n’était pas verrouillé
       not_saved:
         one: 'une erreur a empêché ce (cet ou cette) %{resource} d’être enregistré(e) :'
         other: "%{count} erreurs ont empêché ce (cet ou cette) %{resource} d’être enregistré(e) :"

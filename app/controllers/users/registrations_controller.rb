@@ -10,6 +10,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.offers.each { |offer| offer.remove_from_index! }
   end
 
+  def confirm
+  end
+
   protected
 
   def after_update_path_for(resource)
@@ -21,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_inactive_sign_up_path_for(resource)
-    confirm_email_users_path
+    users_confirm_path
   end
 
   def update_resource(resource, params)

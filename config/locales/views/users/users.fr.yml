@@ -50,8 +50,3 @@ fr:
       no_current_sessions: Vous n'avez aucune session en cours ou récemment clôturée.
       no_past_sessions: Vous n'avez aucune session archivée.
       no_cancelled_sessions: Vous n'avez aucune session annulée.
-    confirm_email:
-      greetings: Bienvenue sur Papoters!
-      confirm_account: Un message avec un lien de confirmation vous a été envoyé par mail. Veuillez suivre ce lien pour activer votre compte.
-
-

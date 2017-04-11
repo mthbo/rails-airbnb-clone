@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :confirm_email]
-  skip_after_action :verify_authorized, only: [:confirm_email]
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :find_user, only: [:show]
-  layout 'devise', only: [:confirm_email]
 
   def show
     @deals_reviewed = @user.deals_reviewed.page(params[:page])
@@ -12,9 +10,6 @@ class UsersController < ApplicationController
     @user = current_user
     authorize @user
     @pinned_offers = @user.find_liked_items
-  end
-
-  def confirm_email
   end
 
   private

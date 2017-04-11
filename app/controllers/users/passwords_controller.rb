@@ -1,0 +1,12 @@
+class Users::PasswordsController < Devise::PasswordsController
+
+  def reset
+  end
+
+  protected
+
+  def after_sending_reset_password_instructions_path_for(resource_name)
+    users_password_reset_path if is_navigational_format?
+  end
+
+end

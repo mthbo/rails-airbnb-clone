@@ -23,17 +23,19 @@ Rails.application.routes.draw do
       skip: :omniauth_callbacks,
       controllers: {
         registrations: 'users/registrations',
-        confirmations: 'users/confirmations'
+        confirmations: 'users/confirmations',
+        passwords: 'users/passwords'
       }
+
+    devise_scope :user do
+      get "users/confirm", to: "users/registrations#confirm"
+      get "users/password/reset", to: "users/passwords#reset"
+    end
 
     root to: 'pages#home'
     get '/be_advisor', to: 'pages#be_advisor'
 
-    resources :users, only: [:show] do
-      collection do
-        get 'confirm_email', to: 'users#confirm_email'
-      end
-    end
+    resources :users, only: [:show]
     get '/dashboard', to: 'users#dashboard'
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do

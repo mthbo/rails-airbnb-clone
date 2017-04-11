@@ -1,4 +1,13 @@
-<div class="text-right padded-top-xs">
+<div class="padded-top-s custom-form-flexbox">
+
+  <%- if devise_mapping.confirmable? && controller_name == 'sessions' %>
+    <p>
+      <%= link_to new_confirmation_path(resource_name), class: "font-weight-lighter" do %>
+        <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;&nbsp;
+        <%= t('.didn_t_receive_confirmation_instructions') %>
+      <% end %>
+    </p>
+  <% end -%>
 
   <%- if devise_mapping.recoverable? && controller_name == 'sessions' %>
     <p>
@@ -9,10 +18,6 @@
     </p>
   <% end -%>
 
-  <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-    <p><%= link_to t('.didn_t_receive_confirmation_instructions'), new_confirmation_path(resource_name) %></p>
-  <% end -%>
-
   <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
     <p><%= link_to t('.didn_t_receive_unlock_instructions'), new_unlock_path(resource_name) %></p>
   <% end -%>
@@ -21,11 +26,11 @@
 
 <div class="text-center padded-top-xs">
 
-  <%- if controller_name != 'sessions' %>
+  <%- if controller_name != 'sessions' && controller_name != 'confirmations' %>
     <p><%= t '.already_signed_up' %>&nbsp;&nbsp; <%= link_to t(".sign_in"), new_session_path(resource_name), class: "btn btn-gray" %></p>
   <% end -%>
 
-  <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%- if devise_mapping.registerable? && controller_name != 'registrations' && controller_name != 'confirmations' %>
     <p><%= t '.no_account' %>&nbsp;&nbsp; <%= link_to t(".sign_up"), new_registration_path(resource_name), class: "btn btn-gray" %></p>
   <% end -%>
 
