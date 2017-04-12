@@ -1,5 +1,9 @@
 <% require 'devise/version' %>
-<p><%= t('.greeting', recipient: @resource.email) %></p>
+<p><%= t('.greeting', recipient: @resource.first_name) %></p>
 
+<p><%= t('.pleased_you_join') %></p>
 <p><%= t('.instruction') %></p>
-<p><%= link_to t('.action'), confirmation_url(@resource, confirmation_token: (Devise::VERSION.start_with?('3.') ? @token : @resource.confirmation_token)) %></p>
+
+<div style="text-align: center; padding: 30px 0;">
+  <%= link_to t('.action'), confirmation_url(@resource, confirmation_token: (Devise::VERSION.start_with?('3.') ? @token : @resource.confirmation_token)), style: "text-decoration: none; font-weight: normal; padding: 10px 15px; border-radius: 4px; border: none; color: white; background: linear-gradient(164deg, #30689D 0%, #30485F 100%);" %>
+</div>

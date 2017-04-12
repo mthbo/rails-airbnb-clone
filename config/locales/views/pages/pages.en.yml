@@ -26,7 +26,8 @@ en:
     be_advisor:
       be_advisor: "Become advisor"
       banner_title: "Your knowledge and your experience have value!"
-      publish_offer_link: "Publish an offer as advisor"
+      publish_offer_link: "Publish an offer"
+      sign_up_as_papoter_link: "Sign up as Papoter"
       arrow_down: "Find out more"
       inspirations_title: "There are definitely some topics that hold no secrets for you. What are they?"
       guidelines_title: "Advise people, build your reputation and make yourself valuable."
@@ -43,6 +44,7 @@ en:
       guideline_text_4_1: "After session closing, your service is rated and reviewed. You also receive your payment if you agreed on a priced service."
       guideline_text_4_2: "Pricing your service is only available after you proved your worth, with at least three free sessions for an offer."
       publish_offer_button: "Publish an offer"
+      sign_up_as_papoter_button: "Sign up as Papoter"
       find_advisor_title: "Papoters' community is growing!"
       find_advisor_subtitle: "Get inspired by what people already offer."
       find_advisor_button: "Find an advisor"

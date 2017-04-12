@@ -23,6 +23,10 @@ module Papoters
       generate.assets false
     end
 
+    config.to_prepare do
+      Devise::Mailer.layout "mailer"
+    end
+
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
     config.time_zone = 'Europe/Paris'

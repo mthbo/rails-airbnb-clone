@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
@@ -355,9 +355,11 @@ class User < ApplicationRecord
     user = User.where(provider: auth.provider, uid: auth.uid).first
     user ||= User.where(email: auth.info.email).first # User did a regular sign up in the past.
     if user
+      user.skip_confirmation!
       user.update(user_params)
     else
       user = User.new(user_params)
+      user.skip_confirmation!
       user.password = Devise.friendly_token[0,20]  # Fake password for validation
       user.save
     end
@@ -367,6 +369,7 @@ class User < ApplicationRecord
     return user
   end
 
+
   private
 
   # Validations
@@ -374,6 +377,10 @@ class User < ApplicationRecord
   def birth_date_must_be_valid
     errors.add(:birth_date) if
       birth_date.present? && (birth_date > DateTime.current.in_time_zone || birth_date < 130.years.ago)
+  end
+
+  def send_devise_notification(notification, *args)
+    devise_mailer.send(notification, self, *args).deliver_later
   end
 
 end

@@ -22,8 +22,15 @@ Rails.application.routes.draw do
     devise_for :users,
       skip: :omniauth_callbacks,
       controllers: {
-        registrations: 'users/registrations'
+        registrations: 'users/registrations',
+        confirmations: 'users/confirmations',
+        passwords: 'users/passwords'
       }
+
+    devise_scope :user do
+      get "users/confirm", to: "users/registrations#confirm"
+      get "users/password/reset", to: "users/passwords#reset"
+    end
 
     root to: 'pages#home'
     get '/be_advisor', to: 'pages#be_advisor'

@@ -8,6 +8,22 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div style="background: linear-gradient(164deg, rgba(255, 201, 56, 0.5) 0%, rgba(66, 211, 170, 0.5) 100%); min-height: 100vh; font-family: 'Source Sans Pro', 'Helvetica', 'sans-serif'; font-size: 14px, color: rgb(74,74,74), letter-spacing: 0.2px; font-weight: lighter">
+      <div style="margin: 0px auto; max-width: 570px; text-align: center; padding: 15px">
+        <%= link_to root_url do %>
+          <%= image_tag "papoters_logo.svg", style: "height:45px" %>
+        <% end %>
+      </div>
+      <div style="margin: 0px auto; max-width: 570px; padding: 40px 15px; border-radius: 5px; background: rgba(255, 255, 255, 0.9)">
+        <div style="margin: 0px auto; max-width: 520px;">
+          <%= yield %>
+        </div>
+      </div>
+      <div style="margin: 0px auto; max-width: 570px; text-align: center; padding: 15px; color: rgb(130,130,130);">
+        <p>Papoters, le marché des savoirs</p>
+      </div>
+    </div>
+
   </body>
 </html>

@@ -2,7 +2,7 @@
   background-attachment: fixed;
   background-position: 50% 0;
   h1 {
-    font-size: 54px;
+    font-size: 52px;
   };
   h2 {
     font-size: 40px;
@@ -91,7 +91,7 @@
   width: 0;
 }
 
-#home-give-advice-link {
+.home-give-advice-link {
   color: $medium-dark-gray;
   padding-bottom: 3px;
   font-size: 34px;
@@ -217,7 +217,7 @@
     font-size: 18px;
     right: 20px;
   }
-  #home-give-advice-link {
+  .home-give-advice-link {
     padding-bottom: 3px;
     font-size: 20px;
   }

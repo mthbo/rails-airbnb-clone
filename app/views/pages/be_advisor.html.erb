@@ -12,7 +12,11 @@
     </div>
     <div class="home-banner-middle home-content-wrapper bg-green-transparent">
       <div class="home-flex-600">
-        <%= link_to t('.publish_offer_link'),new_offer_path, id: "home-give-advice-link" %>
+        <% if user_signed_in? %>
+          <%= link_to t('.publish_offer_link'), new_offer_path, class: "home-give-advice-link" %>
+        <% else %>
+          <%= link_to t('.sign_up_as_papoter_link'), new_user_registration_path, class: "home-give-advice-link" %>
+        <% end %>
       </div>
     </div>
     <div class="home-banner-bottom home-content-wrapper">
@@ -98,7 +102,11 @@
     </div>
 
     <div class="padded-top-xs">
-      <%= link_to t('.publish_offer_button'), new_offer_path, class: "btn btn-green home-btn" %>
+      <% if user_signed_in? %>
+        <%= link_to t('.publish_offer_button'), new_offer_path, class: "btn btn-green home-btn" %>
+      <% else %>
+        <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn" %>
+      <% end %>
     </div>
   </div>
 

@@ -6,7 +6,7 @@
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-  <div class="form-inputs">
+  <div class="form-inputs padded-top-xs">
     <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, autofocus: true, placeholder: t('.email'), input_html: { class: 'custom-form-input', type: 'email' } %>
     <%= f.input :password, as: :custom, symbol: "<i class='fa fa-lock fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.password'), input_html: { class: 'custom-form-input', type: 'password' } %>
     <%= f.input :remember_me, label_html: {class: "medium-dark-gray font-weight-lighter"}, as: :boolean if devise_mapping.rememberable? %>

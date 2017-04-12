@@ -15,13 +15,11 @@
 
   <div class="form-actions text-right">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-gradient") do %>
-      <i class='fa fa-send' aria-hidden='true'></i>&nbsp;&nbsp; <%= t(".send") %>
+      <i class='fa fa-envelope-o' aria-hidden='true'></i>&nbsp;&nbsp; <%= t(".send") %>
     <% end %>
   </div>
 <% end %>
 
-<div class="form-separation padded-top-s">
-  <div></div>
+<div class='text-right padded-top-xs font-weight-lighter'>
+  <%= link_to t('.go_back'), new_session_path(resource_name) %>
 </div>
-
-<%= render "devise/shared/links" %>
