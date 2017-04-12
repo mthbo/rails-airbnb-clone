@@ -61,34 +61,35 @@ fr:
       unconfirmed: Vous devez confirmer votre compte par e-mail.
     mailer:
       confirmation_instructions:
-        action: Confirmer mon e-mail
-        greeting: Bienvenue %{recipient}!
-        instruction: 'Vous pouvez confirmer votre e-mail grâce au lien ci-dessous:'
-        subject: Instructions de confirmation
+        action: Activer mon compte
+        greeting: Bienvenue %{recipient},
+        pleased_you_join: Nous sommes ravis de vous accueillir sur Papoters!
+        instruction: 'Pour confirmer votre e-mail et activer votre compte, veuillez cliquer sur le lien ci-dessous:'
+        subject: Confirmation de votre e-mail
       password_change:
-        greeting: Bonjour %{recipient}!
+        greeting: Bonjour %{recipient},
         message: Nous vous contactons pour vous notifier que votre mot de passe a été modifié.
-        subject: Mot de passe modifié.
+        subject: Modification de votre mot de passe
       reset_password_instructions:
-        action: Changer mon mot de passe
-        greeting: Bonjour %{recipient}!
-        instruction: 'Quelqu''un a demandé un lien pour changer votre mot de passe, le voici :'
+        action: Réinitialiser mon mot de passe
+        greeting: Bonjour %{recipient},
+        instruction: 'Nous avons reçu une demande pour réinitialiser votre mot de passe. Veuillez cliquer sur le lien ci-dessous pour continuer:'
         instruction_2: Si vous n'avez pas émis cette demande, merci d'ignorer ce e-mail.
         instruction_3: Votre mot de passe ne changera pas tant que vous n'aurez pas cliqué sur ce lien et renseigné un nouveau mot de passe.
-        subject: Instructions pour changer le mot de passe
+        subject: Réinitialisation de votre mot de passe
       unlock_instructions:
         action: Débloquer mon compte
-        greeting: Bonjour %{recipient}!
+        greeting: Bonjour %{recipient},
         instruction: 'Suivez ce lien pour débloquer votre compte:'
         message: Votre compte a été bloqué suite à un nombre d'essais de connexions manquées trop important
-        subject: Instructions pour déverrouiller le compte
+        subject: Déblocage de votre compte
     omniauth_callbacks:
       failure: 'Nous ne pouvons pas vous authentifier depuis %{kind} pour la raison suivante : ''%{reason}''.'
       success: Autorisé avec succès par votre compte %{kind}.
     passwords:
       edit:
-        change_and_login: Changer et se connecter
-        change_your_password: Changer votre mot de passe
+        reset: Réinitialiser
+        password_reset: Réinitialisation du mot de passe
         confirm_new_password: Confirmez votre nouveau mot de passe
         new_password: "Nouveau mot de passe (min. %{length} caractères)"
         go_back: Revenir
@@ -149,7 +150,7 @@ fr:
       new:
         sign_up: S'inscrire
         sign_up_name: Inscription
-        create_account: Créer un compte
+        create_account: S'incrire comme Papoter
         first_name: Prénom
         last_name: Nom
         email: Adresse e-mail

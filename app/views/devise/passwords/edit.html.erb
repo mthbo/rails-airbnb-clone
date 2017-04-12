@@ -1,8 +1,8 @@
 <% content_for :title do %>
-  <%= "Papoters | #{t('.change_your_password')}" %>
+  <%= "Papoters | #{t('.password_reset')}" %>
 <% end %>
 
-<h2><%= t(".change_your_password") %></h2>
+<h2><%= t(".password_reset") %></h2>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
@@ -16,7 +16,7 @@
 
   <div class="form-actions text-right padded-top-xs">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-gradient") do %>
-      <i class='fa fa-sign-in' aria-hidden='true'></i>&nbsp;&nbsp; <%= t(".change_and_login") %>
+      <i class='fa fa-sign-in' aria-hidden='true'></i>&nbsp;&nbsp; <%= t(".reset") %>
     <% end %>
   </div>
 <% end %>
