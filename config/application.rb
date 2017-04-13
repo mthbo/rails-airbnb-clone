@@ -23,10 +23,6 @@ module Papoters
       generate.assets false
     end
 
-    config.to_prepare do
-      Devise::Mailer.layout "mailer"
-    end
-
     config.action_view.embed_authenticity_token_in_remote_forms = true
 
     config.time_zone = 'Europe/Paris'
@@ -37,6 +33,10 @@ module Papoters
     config.middleware.use I18n::JS::Middleware
 
     config.active_job.queue_adapter = :sidekiq
+
+    # config.to_prepare do
+    #   Devise::Mailer.layout "mailer"
+    # end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
