@@ -13,7 +13,7 @@
 
         <div style="margin: 0px auto; max-width: 570px; padding: 20px 15px 15px 15px">
           <div style="margin: 0px auto; max-width: 520px; text-align: center;">
-            <%= link_to root_url do %>
+            <%= link_to root_url(locale: I18n.locale) do %>
               <%= image_tag "papoters.png", height: '45', width: '115', title: 'Papoters' %>
             <% end %>
           </div>

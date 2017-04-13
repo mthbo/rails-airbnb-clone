@@ -11,7 +11,7 @@ class Message < ApplicationRecord
   def build_first_message
     language_flags = self.deal.languages.map{ |language| "<span class='flag-icon-message'>#{language.flag_img}</span>" }.join
     mean_pictos = self.deal.means.map { |mean| "<span class='mean-icon-message'>#{mean.picto_i}</span>" }.join
-    self.content = "#{self.deal.request} <br> #{language_flags} <br> #{mean_pictos}"
+    self.content = "#{self.deal.request} <br> #{language_flags} &nbsp;&nbsp; #{mean_pictos}"
     self.target = 'first_message'
   end
 

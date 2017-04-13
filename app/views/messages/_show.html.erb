@@ -26,12 +26,6 @@
 
     <div class="message">
       <div class="message-content">
-        <% if message.first_message? %>
-          <p class='message-deadline'>
-            <span class='info-icon'><%= image_tag('date.svg') %></span>
-            <span class='font-weight-normal'><%= l(message.deal.deadline.to_date, format: :default) %></span>
-          </p>
-        <% end %>
         <%= sanitize markdown_to_html(message.content) %>
       </div>
 

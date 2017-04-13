@@ -1,11 +1,11 @@
 <div class="deal-info-box padded-bottom-xs">
 
   <% if deal.client == current_user && deal.advisor %>
-    <p class="font-weight-normal blue"><%= t '.request_sent', name: deal.advisor.first_name %></p>
+    <p class="font-weight-normal blue"><%= t '.request_sent', name: deal.advisor.first_name, date: l(deal.deadline.to_date, format: :long) %></p>
     <p><%= t '.cancel_session' %></p>
 
   <% elsif deal.advisor == current_user && deal.client %>
-    <p class="font-weight-normal blue"><%= t '.request_received', name: deal.client.first_name %></p>
+    <p class="font-weight-normal blue"><%= t '.request_received', name: deal.client.first_name, date: l(deal.deadline.to_date, format: :long) %></p>
     <p><%= t '.cancel_session' %></p>
 
   <% end %>

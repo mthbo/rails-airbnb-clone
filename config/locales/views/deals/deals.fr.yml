@@ -54,8 +54,8 @@ fr:
       open: Ouvert
       closed: Clôturé
     info_request:
-      request_sent: "Vous avez envoyé une demande à %{name}. Vous devriez recevoir une proposition en retour si %{name} peut répondre à votre besoin."
-      request_received: "Vous avez reçu une demande de %{name}. Soumettez une proposition si vous pensez pouvoir répondre à son besoin, ou engagez la conversation pour demander des précisions."
+      request_sent: "Vous avez envoyé une demande à %{name}. Vous devriez recevoir une proposition en retour si %{name} peut répondre à votre besoin avant le %{date}."
+      request_received: "Vous avez reçu une demande de %{name}. Soumettez une proposition si vous pensez pouvoir répondre à son besoin avant le %{date}, ou engagez la conversation pour demander des précisions."
       cancel_session: "Annulez la session si vous ne voulez pas poursuivre."
     info_cancelled:
       session_is_cancelled: Cette session a été annulée, il n'y a plus rien à faire ici.

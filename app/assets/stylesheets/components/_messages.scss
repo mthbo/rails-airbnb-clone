@@ -7,9 +7,10 @@
   };
   .message {
     flex: 0 1 auto;
-    max-width: 80%;
+    max-width: 75%;
     .message-content {
-      padding: 5px 25px;
+      min-height: 30px;
+      padding: 10px 25px;
       overflow-wrap: break-word;
       pre {
         border-radius: 10px;
@@ -70,6 +71,7 @@
   .message-box {
     .message {
       .message-content {
+        min-height: 25px;
         padding: 10px 20px;
         pre {
           code {

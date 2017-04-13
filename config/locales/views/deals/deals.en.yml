@@ -54,8 +54,8 @@ en:
       open: Open
       closed: Closed
     info_request:
-      request_sent: "You sent a request to %{name}. You should get a proposition back if %{name} can meet your need."
-      request_received: "You received a request from %{name}. Submit a proposition if you think you can meet the needs of %{name}, or start chatting to ask for more details."
+      request_sent: "You sent a request to %{name}. You should get a proposition back if %{name} can meet your need before %{date}."
+      request_received: "You received a request from %{name}. Submit a proposition if you think you can meet the needs of %{name} before %{date}, or start chatting to ask for more details."
       cancel_session: "Cancel the session if you don't want to continue."
     info_cancelled:
       session_is_cancelled: This session has been cancelled, nothing more can be done here.

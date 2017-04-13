@@ -6,7 +6,7 @@
 <p><%= t('.instruction') %></p>
 
 <div style="text-align: center; padding: 30px 0;">
-  <%= link_to t('.action'), unlock_url(@resource, unlock_token: (Devise::VERSION.start_with?('3.') ? @token :@resource.unlock_token)), style: style: "font-weight: normal; text-decoration: none; padding: 10px 15px; border-radius: 4px; border: none; color: white; background: linear-gradient(164deg, rgb(255, 201, 56) 0%, rgb(66, 211, 170) 100%);" %>
+  <%= link_to t('.action'), unlock_url(@resource, unlock_token: (Devise::VERSION.start_with?('3.') ? @token :@resource.unlock_token), locale: I18n.locale), style: style: "font-weight: normal; text-decoration: none; padding: 10px 15px; border-radius: 4px; border: none; color: white; background: linear-gradient(164deg, rgb(255, 201, 56) 0%, rgb(66, 211, 170) 100%);" %>
 </div>
 
 <%= render 'signature' %>
