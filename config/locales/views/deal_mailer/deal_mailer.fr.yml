@@ -1,0 +1,15 @@
+fr:
+  deal_mailer:
+    deal_request:
+      subject: "#session-%{id} | Nouvelle demande reçue"
+      greeting: Bonjour %{advisor},
+      message: Vous avez reçu une demande de %{client} concernant votre offre '%{offer}'.
+      request: "%{request}"
+      deadline_html: "<span style='font-weight: normal;'>Date limite</span>: %{deadline}"
+      languages_html:
+        one: "<span style='font-weight: normal;'>Langue</span>: %{languages}"
+        other: "<span style='font-weight: normal;'>Langues</span>: %{languages}"
+      means_html:
+        one: "<span style='font-weight: normal;'>Moyen de communication</span>: %{means}"
+        other: "<span style='font-weight: normal;'>Moyens de communication</span>: %{languages}"
+      action: Répondre à %{client}

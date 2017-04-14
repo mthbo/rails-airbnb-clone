@@ -27,6 +27,7 @@ class DealsController < ApplicationController
     if @deal.save
       send_first_message
       NewDealCardsBroadcastJob.perform_later(@deal)
+      DealMailer.deal_request(@deal).deliver_later
       flash[:notice] = t('.notice', name: @offer.advisor.first_name, title: @offer.title)
       redirect_to deal_path(@deal)
     else
