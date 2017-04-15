@@ -3,13 +3,15 @@ en:
     deal_request:
       subject: "#session-%{id} | New request received"
       greeting: Hello %{advisor},
-      message: You received a request from %{client} regarding your offer '%{offer}'.
+      message_html: "You received a request from %{client} regarding your offer <span style='font-weight: normal;'>'%{offer}'</span>. Answer to %{client} for proposing your services."
+      request_from: Request from %{client}
       request: "%{request}"
-      deadline_html: "<srtrong>Deadline</strong>: %{deadline}"
+      deadline_html: "<span style='font-weight: normal;'>Deadline</span>: %{deadline}"
       languages_html:
-        one: "<srtrong>Language</strong>: %{languages}"
-        other: "<srtrong>Languages</strong>: %{languages}"
+        one: "<span style='font-weight: normal;'>Language</span>: %{languages}"
+        other: "<span style='font-weight: normal;'>Languages</span>: %{languages}"
       means_html:
-        one: "<srtrong>Mean of communication</strong>: %{means}"
-        other: "<srtrong>Means of communication</strong>: %{languages}"
+        one: "<span style='font-weight: normal;'>Mean of communication</span>: %{means}"
+        other: "<span style='font-weight: normal;'>Means of communication</span>: %{means}"
       action: Answer to %{client}
+    deal_proposition:

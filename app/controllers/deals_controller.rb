@@ -54,7 +54,7 @@ class DealsController < ApplicationController
 
   def submit_proposition
     @deal.proposition!
-    @deal.payment_pending! unless @deal.amount.blank?
+    @deal.payment_pending! unless (@deal.amount.blank? || @deal.amount.zero?)
     @deal.proposition_at = DateTime.current.in_time_zone
     @deal.client_notifications += 1
     @deal.advisor_notifications = 0
@@ -63,6 +63,7 @@ class DealsController < ApplicationController
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     PropositionExpiryJob.set(wait_until: @deal.proposition_deadline.end_of_day).perform_later(@deal)
+    DealMailer.deal_proposition(@deal).deliver_later
     flash[:notice] = t('.notice', name: @deal.client.first_name)
     redirect_to deal_path(@deal)
   end

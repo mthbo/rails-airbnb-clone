@@ -11,4 +11,9 @@ fr:
     be_advisor: "Devenir conseiller"
     t&p: "Conditions & Confidentialité"
     contact: "Contact"
+  mail_signature:
+    at_your_disposal: A votre service,
+    the_papoters_team: l'équipe Papoters
+  mail_footer:
+    the_knowledge_marketplace: Papoters, le marché des savoirs
 

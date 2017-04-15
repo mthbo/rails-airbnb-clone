@@ -11,5 +11,10 @@ en:
     be_advisor: "Become advisor"
     t&p: "Terms & Privacy"
     contact: "Contact"
+  mail_signature:
+    at_your_disposal: At your disposal,
+    the_papoters_team: the Papoters team
+  mail_footer:
+    the_knowledge_marketplace: Papoters, the knowledge marketplace
 
 

@@ -3,7 +3,8 @@ fr:
     deal_request:
       subject: "#session-%{id} | Nouvelle demande reçue"
       greeting: Bonjour %{advisor},
-      message: Vous avez reçu une demande de %{client} concernant votre offre '%{offer}'.
+      message_html: "Vous avez reçu une demande de %{client} concernant votre offre <span style='font-weight: normal;'>'%{offer}'</span>. Répondez à %{client} pour lui proposer vos services."
+      request_from: Demande de %{client}
       request: "%{request}"
       deadline_html: "<span style='font-weight: normal;'>Date limite</span>: %{deadline}"
       languages_html:
@@ -11,5 +12,6 @@ fr:
         other: "<span style='font-weight: normal;'>Langues</span>: %{languages}"
       means_html:
         one: "<span style='font-weight: normal;'>Moyen de communication</span>: %{means}"
-        other: "<span style='font-weight: normal;'>Moyens de communication</span>: %{languages}"
+        other: "<span style='font-weight: normal;'>Moyens de communication</span>: %{means}"
       action: Répondre à %{client}
+    deal_proposition:
