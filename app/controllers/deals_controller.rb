@@ -77,6 +77,7 @@ class DealsController < ApplicationController
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
+    DealMailer.deal_proposition_declined(@deal).deliver_later
     respond_to do |format|
       format.html {
         flash[:alert] = t('.notice', name: @deal.advisor.first_name)
@@ -96,6 +97,7 @@ class DealsController < ApplicationController
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
+    DealMailer.deal_proposition_accepted(@deal).deliver_later
     respond_to do |format|
       format.html {
         flash[:notice] = t('.notice', id: @deal.id, name: @deal.advisor.first_name)

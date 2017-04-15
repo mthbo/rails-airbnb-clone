@@ -19,7 +19,7 @@ fr:
       subject: "#session-%{id} | Nouvelle proposition reçue"
       greeting: Bonjour %{client},
       message: "Vous avez reçu une proposition de %{advisor} faisant suite à votre demande. Acceptez ou refusez cette proposition pour continuer."
-      action: Accepter or refuser
+      action: Accepter ou refuser
     proposition_recap:
       proposition_expiry_on: Proposition expirant le %{date}
       session: session
@@ -35,3 +35,28 @@ fr:
       means:
         one: "Moyen de communication"
         other: "Moyens de communication"
+    deal_proposition_declined:
+      subject: "#session-%{id} | Proposition refusée"
+      greeting: Bonjour %{advisor},
+      message: "%{client} a refusé votre proposition."
+      instructions: "Engagez une discussion avec %{client} pour parvenir à un accord et soumettre une nouvelle proposition."
+      action: Parvenir à un accord
+    deal_proposition_expired_advisor:
+      subject: "#session-%{id} | Proposition expirée"
+      greeting: Bonjour %{advisor},
+      message: "%{client} n'a pas accepté votre proposition avant sa date d'expiration."
+      instructions: "Engagez une discussion avec %{client} pour parvenir à un accord et soumettre une nouvelle proposition."
+      action: Parvenir à un accord
+    deal_proposition_expired_client:
+      subject: "#session-%{id} | Proposition expirée"
+      greeting: Bonjour %{client},
+      message: "Vous n'avez pas accepté la proposition de %{advisor} avant sa date d'expiration."
+      instructions: "Engagez une discussion avec %{advisor} pour parvenir à un accord et demander une nouvelle proposition."
+      action: Parvenir à un accord
+    deal_proposition_accepted:
+      subject: "#session-%{id} | Proposition acceptée"
+      greeting: Bonjour %{advisor},
+      message: "%{client} a accepté votre proposition!"
+      session: session
+      instructions_html: "est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{client} pour fournir votre service selon l'accord conclu."
+      action: Contactez %{client}

@@ -11,6 +11,8 @@ class PropositionExpiryJob < ApplicationJob
       DealStatusBroadcastJob.perform_later(deal, deal.advisor)
       DealCardsBroadcastJob.perform_later(deal)
       send_status_message(deal)
+      DealMailer.deal_proposition_expired_advisor(deal).deliver_later
+      DealMailer.deal_proposition_expired_client(deal).deliver_later
     end
   end
 

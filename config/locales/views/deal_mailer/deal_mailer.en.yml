@@ -35,3 +35,28 @@ en:
       means:
         one: "Mean of communication"
         other: "Means of communication"
+    deal_proposition_declined:
+      subject: "#session-%{id} | Proposition declined"
+      greeting: Hello %{advisor},
+      message: "%{client} declined your proposition."
+      instructions: "You may chat with %{client} to reach an agreement and submit a new proposition."
+      action: Reach an agreement
+    deal_proposition_expired_advisor:
+      subject: "#session-%{id} | Proposition expired"
+      greeting: Hello %{advisor},
+      message: "%{client} didn't accept your proposition before its expiration date."
+      instructions: "You may chat with %{client} to reach an agreement and submit a new proposition."
+      action: Reach an agreement
+    deal_proposition_expired_client:
+      subject: "#session-%{id} | Proposition expired"
+      greeting: Hello %{client},
+      message: "You didn't accept the proposition of %{advisor} before its expiration date."
+      instructions: "You may chat with %{advisor} to reach an agreement and ask for a new proposition."
+      action: Reach an agreement
+    deal_proposition_accepted:
+      subject: "#session-%{id} | Proposition accepted"
+      greeting: Hello %{advisor},
+      message: "%{client} accepted your proposition!"
+      session: session
+      instructions_html: "is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{client} to deliver your service as part of your agreement."
+      action: Get in touch with %{client}
