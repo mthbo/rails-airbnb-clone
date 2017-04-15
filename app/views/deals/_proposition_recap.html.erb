@@ -10,7 +10,7 @@
   <div>
     <p class="font-weight-normal">
       <%= t '.deadline' %>: &nbsp;
-      <span class="blue"><%= l(deal.deadline.to_date, format: :long) if deal.deadline %></span>
+      <span class="blue"><%= l(deal.deadline.to_date) if deal.deadline %></span>
     </p>
   </div>
 </div>

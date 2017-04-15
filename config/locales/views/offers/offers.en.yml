@@ -18,7 +18,7 @@ en:
       describe_offer: "Describe your offer (what you know better than anyone else, what is your method, which experiences enrich your knowledge, etc.)"
       select_languages: "Select the language(s) you accept to communicate with people on this offer (min: 1 - max: 5)."
       select_means: "Select the mean(s) you accept to communicate with people on this offer (min: 1)."
-      prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <strong>three free sessions</strong> for this offer."
+      prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <span class='font-weight-normal red'>%{count} free sessions</span> for this offer."
       sessions_for_free: "Sessions for this offer are for free."
       sessions_before_pricing_html:
         one: "You still need to achieve <span class='font-weight-normal red'>%{count} free session</span> for this offer before pricing your service."

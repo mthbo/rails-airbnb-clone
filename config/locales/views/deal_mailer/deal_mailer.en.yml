@@ -3,15 +3,35 @@ en:
     deal_request:
       subject: "#session-%{id} | New request received"
       greeting: Hello %{advisor},
-      message_html: "You received a request from %{client} regarding your offer <span style='font-weight: normal;'>'%{offer}'</span>. Answer to %{client} for proposing your services."
-      request_from: Request from %{client}
-      request: "%{request}"
-      deadline_html: "<span style='font-weight: normal;'>Deadline</span>: %{deadline}"
-      languages_html:
-        one: "<span style='font-weight: normal;'>Language</span>: %{languages}"
-        other: "<span style='font-weight: normal;'>Languages</span>: %{languages}"
-      means_html:
-        one: "<span style='font-weight: normal;'>Mean of communication</span>: %{means}"
-        other: "<span style='font-weight: normal;'>Means of communication</span>: %{means}"
+      message: "You received a request from %{client}. Answer to %{client} for proposing your services."
       action: Answer to %{client}
+    request_recap:
+      request_from: Request from %{client}
+      session: session
+      deadline: "Deadline"
+      languages:
+        one: "Language"
+        other: "Languages"
+      means:
+        one: "Mean of communication"
+        other: "Means of communication"
     deal_proposition:
+      subject: "#session-%{id} | New proposition received"
+      greeting: Hello %{client},
+      message: "You received a proposition from %{advisor} following your request. Accept or decline this proposition to continue."
+      action: Accept or decline
+    proposition_recap:
+      proposition_expiry_on: Proposition expiring on %{date}
+      session: session
+      price: Price
+      free: FREE
+      deadline: Deadline
+      targets:
+        one: Target
+        other: Targets
+      languages:
+        one: "Language"
+        other: "Languages"
+      means:
+        one: "Mean of communication"
+        other: "Means of communication"

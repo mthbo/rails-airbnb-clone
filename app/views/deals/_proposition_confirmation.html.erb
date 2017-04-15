@@ -11,7 +11,7 @@
         <div class="form-separation padded-top-s padded-bottom-xs">
           <div></div>
           <p>
-            <span class='font-weight-normal blue'><%= t '.proposition_expiring_on' %> <%= l(deal.proposition_deadline.to_date, format: :long) if deal.proposition_deadline %></span>
+            <span class='font-weight-normal blue'><%= t '.proposition_expiring_on' %> <%= l(deal.proposition_deadline.to_date) if deal.proposition_deadline %></span>
           </p>
           <div></div>
         </div>

@@ -121,7 +121,12 @@ class DealsController < ApplicationController
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
-    # @deal.offer.priced! if @deal.offer.deals_closed_count == 3
+    offer = @deal.offer
+    if offer.free_deals > 0
+      offer.free_deals -= 1
+      offer.save
+      # offer.priced! if offer.free_deals == 0
+    end
     @deal.offer.index!
     respond_to do |format|
       format.html {

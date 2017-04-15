@@ -23,7 +23,7 @@
     <%= sanitize markdown_to_html(review) %>
     <% if show_offer %>
       <p>
-        <% if policy(deal.offer).show? %>
+        <% if deal.offer && policy(deal.offer).show? %>
           <%= link_to "#{deal.offer.title}", offer_path(deal.offer)%>
         <% elsif deal.offer %>
           <%= deal.offer.title %>

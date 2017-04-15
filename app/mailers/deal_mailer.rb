@@ -1,5 +1,7 @@
 class DealMailer < ApplicationMailer
 
+  add_template_helper(TextHelper)
+
   def deal_request(deal)
     @deal = deal
     mail(to: @deal.advisor.email, subject: t('deal_mailer.deal_request.subject', id: @deal.id))

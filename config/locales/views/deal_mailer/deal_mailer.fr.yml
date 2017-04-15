@@ -3,15 +3,35 @@ fr:
     deal_request:
       subject: "#session-%{id} | Nouvelle demande reçue"
       greeting: Bonjour %{advisor},
-      message_html: "Vous avez reçu une demande de %{client} concernant votre offre <span style='font-weight: normal;'>'%{offer}'</span>. Répondez à %{client} pour lui proposer vos services."
-      request_from: Demande de %{client}
-      request: "%{request}"
-      deadline_html: "<span style='font-weight: normal;'>Date limite</span>: %{deadline}"
-      languages_html:
-        one: "<span style='font-weight: normal;'>Langue</span>: %{languages}"
-        other: "<span style='font-weight: normal;'>Langues</span>: %{languages}"
-      means_html:
-        one: "<span style='font-weight: normal;'>Moyen de communication</span>: %{means}"
-        other: "<span style='font-weight: normal;'>Moyens de communication</span>: %{means}"
+      message: "Vous avez reçu une demande de %{client}. Répondez à %{client} pour lui proposer vos services."
       action: Répondre à %{client}
+    request_recap:
+      request_from: Demande de %{client}
+      session: session
+      deadline: "Date limite"
+      languages:
+        one: "Langue"
+        other: "Langues"
+      means:
+        one: "Moyen de communication"
+        other: "Moyens de communication"
     deal_proposition:
+      subject: "#session-%{id} | Nouvelle proposition reçue"
+      greeting: Bonjour %{client},
+      message: "Vous avez reçu une proposition de %{advisor} faisant suite à votre demande. Acceptez ou refusez cette proposition pour continuer."
+      action: Accepter or refuser
+    proposition_recap:
+      proposition_expiry_on: Proposition expirant le %{date}
+      session: session
+      price: Prix
+      free: GRATUIT
+      deadline: Date limite
+      targets:
+        one: Objectif
+        other: Objectifs
+      languages:
+        one: "Langue"
+        other: "Langues"
+      means:
+        one: "Moyen de communication"
+        other: "Moyens de communication"
