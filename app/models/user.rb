@@ -352,8 +352,11 @@ class User < ApplicationRecord
     user_params[:token] = auth.credentials.token
     user_params[:token_expiry] = Time.at(auth.credentials.expires_at)
 
+    facebook_locale = auth.extra.raw_info.locale.split('_').first if auth.extra.raw_info.locale
+    user_params[:locale] = I18n.available_locales.include?(facebook_locale.to_sym) ? facebook_locale : I18n.default_locale.to_s
+
     user = User.where(provider: auth.provider, uid: auth.uid).first
-    user ||= User.where(email: auth.info.email).first # User did a regular sign up in the past.
+    user ||= User.where(email: auth.info.email).first
     if user
       user.skip_confirmation!
       user.update(user_params)
@@ -364,8 +367,7 @@ class User < ApplicationRecord
       user.save
     end
 
-    facebook_locale = auth.extra.raw_info.locale.split('_').first.to_sym if auth.extra.raw_info.locale
-    I18n.locale = I18n.available_locales.include?(facebook_locale) ? facebook_locale : I18n.default_locale
+    I18n.locale = user.locale
     return user
   end
 

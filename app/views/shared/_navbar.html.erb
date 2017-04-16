@@ -17,8 +17,14 @@
       <ul id="my-navbar-locale-menu" class="list-unstyled">
         <% I18n.available_locales.each do |locale| %>
           <li class="text-center">
-            <%= link_to url_for(locale: locale) do %>
-              <%= image_tag "flags/#{locale}.svg" %>
+            <% if user_signed_in? %>
+
+            <!-- update user locale and redirect to current url -->
+
+            <% else %>
+              <%= link_to url_for(locale: locale) do %>
+                <%= image_tag "flags/#{locale}.svg" %>
+              <% end %>
             <% end %>
           </li>
         <% end %>
