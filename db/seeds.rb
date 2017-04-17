@@ -75,6 +75,7 @@ i = 0
     first_name: first_names[i],
     last_name: last_names[i],
     password: "password",
+    locale: 'fr',
     phone_number: "+336#{Faker::PhoneNumber.subscriber_number(8)}",
     email: "#{first_names[i].downcase}.#{last_names[i].downcase}@papoters-test.com",
     city: cities[i],
