@@ -8,6 +8,10 @@ class UserPolicy < ApplicationPolicy
     user == record
   end
 
+  def change_locale?
+    user == record
+  end
+
   def destroy?
     user == record && user.deals_ongoing.blank?
   end

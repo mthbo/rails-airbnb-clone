@@ -12,6 +12,13 @@ class UsersController < ApplicationController
     @pinned_offers = @user.find_liked_items
   end
 
+  def change_locale
+    @user = current_user
+    authorize @user
+    @user.update(locale: params[:locale])
+    redirect_to params[:path]
+  end
+
   private
 
   def find_user

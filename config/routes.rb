@@ -32,11 +32,12 @@ Rails.application.routes.draw do
       get "users/password/reset", to: "users/passwords#reset"
     end
 
-    root to: 'pages#home'
-    get '/be_advisor', to: 'pages#be_advisor'
-
     resources :users, only: [:show]
     get '/dashboard', to: 'users#dashboard'
+    patch '/change_locale', to: 'users#change_locale'
+
+    root to: 'pages#home'
+    get '/be_advisor', to: 'pages#be_advisor'
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
       resources :deals, only: [:show, :new, :create], path: 'sessions' do
