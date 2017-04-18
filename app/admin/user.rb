@@ -21,6 +21,7 @@ ActiveAdmin.register User do
     column :age
     column :city
     column :country_code
+    column :locale
     column :sign_in_count
     column :offers_active_count
     column :offers_priced_count
@@ -45,6 +46,7 @@ ActiveAdmin.register User do
       row :zip_code
       row :city
       row :country
+      row :locale
       row :admin
     end
     attributes_table do
@@ -101,6 +103,7 @@ ActiveAdmin.register User do
       f.input :zip_code
       f.input :city
       f.input :country_code
+      f.input :locale
     end
     f.inputs "Admin" do
       f.input :admin

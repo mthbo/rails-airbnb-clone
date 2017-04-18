@@ -22,6 +22,7 @@ ActiveAdmin.register Offer do
     column :title
     column :status
     column :pricing
+    column :free_deals
     column :pin_count
     column :deals_ongoing_count
     column :deals_closed_count
@@ -38,6 +39,7 @@ ActiveAdmin.register Offer do
       row :advisor
       row :status
       row :pricing
+      row :free_deals
       row :title
       row :description
       row :languages do |offer|
@@ -74,6 +76,7 @@ ActiveAdmin.register Offer do
       f.input :description
       f.input :status
       f.input :pricing
+      f.input :free_deals
       f.input :means, as: :check_boxes
       f.input :languages, as: :check_boxes
     end
