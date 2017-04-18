@@ -3,6 +3,7 @@ $('.modal').on('hidden.bs.modal', function () {
   $('#deal-status-panel').html("<%= j render 'deals/status', deal: @deal %>");
   $('#deal-info-panel').html("<%= j render 'deals/info', deal: @deal %>");
   $('#deal-actions-panel').html("<%= j render 'deals/actions', deal: @deal %>");
+  $('#message_content').attr('placeholder', I18n.t('messages.form.messages_disabled'));
   $('#message_content').prop('disabled', true);
   $('#new_message button').prop('disabled', true);
   propositionToggle();

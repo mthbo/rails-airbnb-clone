@@ -14,7 +14,7 @@ en:
       notice: "Your evaluation has been posted"
     disable_messages:
       notice: "Messages have been disabled for #session-%{id}."
-    cncel_session:
+    cancel_session:
       notice: "#session-%{id} with %{name} is cancelled!"
     request_button:
       get_in_touch: "Get in touch"

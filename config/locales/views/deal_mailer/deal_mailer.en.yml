@@ -53,10 +53,44 @@ en:
       message: "You didn't accept the proposition of %{advisor} before its expiration date."
       instructions: "You may chat with %{advisor} to reach an agreement and ask for a new proposition."
       action: Reach an agreement
-    deal_proposition_accepted:
-      subject: "#session-%{id} | Proposition accepted"
+    deal_proposition_accepted_advisor:
+      subject: "#session-%{id} | Session open"
       greeting: Hello %{advisor},
       message: "%{client} accepted your proposition!"
       session: session
-      instructions_html: "is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{client} to deliver your service as part of your agreement."
+      instructions_html: "is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{client} to deliver your service as part of the agreement."
       action: Get in touch with %{client}
+    deal_proposition_accepted_client:
+      subject: "#session-%{id} | Session open"
+      greeting: Hello %{client},
+      message: "You accepted the proposition of %{advisor}!"
+      session: session
+      instructions_html: "is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{advisor} to get your service as part of the agreement."
+      action: Get in touch with %{advisor}
+    deal_expired_advisor:
+      subject: "#session-%{id} | Deadline has passed"
+      greeting: "Hello %{advisor},"
+      message_html: "The deadline for <strong style='color: #30485F;'>#session-%{id}</strong> with %{client} has passed."
+      instructions: "Close the session if you deem the service delivered."
+      action: Clôturer la session
+    deal_expired_client:
+      subject: "#session-%{id} | Deadline has passed"
+      greeting: "Hello %{client},"
+      message_html: "The deadline for <strong style='color: #30485F;'>#session-%{id}</strong> with %{advisor} has passed."
+      instructions: "Close the session if you deem the service delivered."
+      action: Clôturer la session
+    deal_closed_advisor:
+      subject: "#session-%{id} | Session closed"
+      greeting: Hello %{advisor},
+      session: session
+      message: "was closed."
+      instructions: "Evaluate your experience and leave a review to %{client}."
+      action: Evaluate the session
+    deal_closed_client:
+      subject: "#session-%{id} | Session closed"
+      greeting: Hello %{client},
+      session: session
+      message: "was closed."
+      instructions: "Evaluate the service delivered and leave a review to %{advisor}."
+      action: Evaluate the session
+    deal_review_advisor:

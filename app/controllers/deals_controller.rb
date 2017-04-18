@@ -97,7 +97,8 @@ class DealsController < ApplicationController
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
     DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
-    DealMailer.deal_proposition_accepted(@deal).deliver_later
+    DealMailer.deal_proposition_accepted_advisor(@deal).deliver_later
+    DealMailer.deal_proposition_accepted_client(@deal).deliver_later
     respond_to do |format|
       format.html {
         flash[:notice] = t('.notice', id: @deal.id, name: @deal.advisor.first_name)
@@ -123,6 +124,8 @@ class DealsController < ApplicationController
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
+    DealMailer.deal_closed_client(@deal).deliver_later
+    DealMailer.deal_closed_advisor(@deal).deliver_later
     offer = @deal.offer
     if offer.free_deals > 0
       offer.free_deals -= 1
@@ -158,6 +161,8 @@ class DealsController < ApplicationController
       @deal.save
       ReviewBroadcastJob.perform_later(@deal, receiver)
       DealCardsBroadcastJob.perform_later(@deal)
+      DealMailer.deal_review_advisor(@deal).deliver_later if receiver == @deal.advisor
+      DealMailer.deal_review_client(@deal).deliver_later if receiver == @deal.client
       flash[:notice] = t('.notice')
       redirect_to deal_path(@deal)
     else

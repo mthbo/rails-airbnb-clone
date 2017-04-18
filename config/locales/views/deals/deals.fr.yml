@@ -14,7 +14,7 @@ fr:
       notice: "Votre évaluation a été postée"
     disable_messages:
       notice: "Les messages ont été désactivés pour #session-%{id}."
-    cncel_session:
+    cancel_session:
       notice: "#session-%{id} avec %{name} est annulée!"
     request_button:
       get_in_touch: "Contacter"
