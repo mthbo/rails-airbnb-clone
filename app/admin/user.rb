@@ -72,6 +72,9 @@ ActiveAdmin.register User do
     end
     attributes_table do
       row :created_at
+      row :confirmed_at
+      row :confirmation_token
+      row :confirmation_sent_at
       row :updated_at
       row :sign_in_count
       row :remember_created_at
@@ -107,10 +110,11 @@ ActiveAdmin.register User do
     end
     f.inputs "Admin" do
       f.input :admin
+      f.input :confirmed_at
     end
     f.actions
   end
 
-  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :admin
+  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :admin, :confirmed_at
 
 end

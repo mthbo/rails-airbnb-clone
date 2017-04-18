@@ -83,6 +83,6 @@ ActiveAdmin.register Offer do
     f.actions
   end
 
-  permit_params :advisor_id, :title, :description, :status, :pricing, mean_ids: [], language_ids: []
+  permit_params :advisor_id, :title, :description, :status, :pricing, :free_deals, mean_ids: [], language_ids: []
 
 end
