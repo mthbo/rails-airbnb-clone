@@ -3,21 +3,27 @@ class NewDealCardsBroadcastJob < ApplicationJob
 
   def perform(deal)
     I18n.available_locales.each do |locale|
+      if deal.advisor
+        ActionCable.server.broadcast(
+          "new_deal_user_#{deal.advisor.id}:cards_#{locale}",
+          card: render_deal_card(deal, deal.advisor, locale),
+          deal_id: deal.id
+        )
+      end
+      if deal.client
+        ActionCable.server.broadcast(
+          "new_deal_user_#{deal.client.id}:cards_#{locale}",
+          card: render_deal_card(deal, deal.client, locale),
+          deal_id: deal.id
+        )
+      end
+    end
+    if deal.advisor
       ActionCable.server.broadcast(
-        "new_deal_user_#{deal.advisor.id}:cards_#{locale}",
-        card: render_deal_card(deal, deal.advisor, locale),
-        deal_id: deal.id
-      )
-      ActionCable.server.broadcast(
-        "new_deal_user_#{deal.client.id}:cards_#{locale}",
-        card: render_deal_card(deal, deal.client, locale),
-        deal_id: deal.id
+        "user_#{deal.advisor.id}:notifications",
+        notifications: render_user_notifications(deal.advisor)
       )
     end
-    ActionCable.server.broadcast(
-      "user_#{deal.advisor.id}:notifications",
-      notifications: render_user_notifications(deal.advisor)
-    )
   end
 
   private

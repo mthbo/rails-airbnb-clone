@@ -3,25 +3,33 @@ class DealCardsBroadcastJob < ApplicationJob
 
   def perform(deal)
     I18n.available_locales.each do |locale|
+      if deal.advisor
+        ActionCable.server.broadcast(
+          "deal_#{deal.id}_user_#{deal.advisor.id}:cards_#{locale}",
+          card: render_deal_card(deal, deal.advisor, locale),
+          general_status: deal.general_status,
+        )
+      end
+      if deal.client
+        ActionCable.server.broadcast(
+          "deal_#{deal.id}_user_#{deal.client.id}:cards_#{locale}",
+          card: render_deal_card(deal, deal.client, locale),
+          general_status: deal.general_status,
+        )
+      end
+    end
+    if deal.advisor
       ActionCable.server.broadcast(
-        "deal_#{deal.id}_user_#{deal.advisor.id}:cards_#{locale}",
-        card: render_deal_card(deal, deal.advisor, locale),
-        general_status: deal.general_status,
-      )
-      ActionCable.server.broadcast(
-        "deal_#{deal.id}_user_#{deal.client.id}:cards_#{locale}",
-        card: render_deal_card(deal, deal.client, locale),
-        general_status: deal.general_status,
+        "user_#{deal.advisor.id}:notifications",
+        notifications: render_user_notifications(deal.advisor)
       )
     end
-    ActionCable.server.broadcast(
-      "user_#{deal.advisor.id}:notifications",
-      notifications: render_user_notifications(deal.advisor)
-    )
-    ActionCable.server.broadcast(
-      "user_#{deal.client.id}:notifications",
-      notifications: render_user_notifications(deal.client)
-    )
+    if deal.client
+      ActionCable.server.broadcast(
+        "user_#{deal.client.id}:notifications",
+        notifications: render_user_notifications(deal.client)
+      )
+    end
   end
 
   private

@@ -3,12 +3,14 @@ class DealStatusBroadcastJob < ApplicationJob
 
   def perform(deal, receiver)
     I18n.available_locales.each do |locale|
-      ActionCable.server.broadcast(
-        "deal_#{deal.id}_user_#{receiver.id}:status_#{locale}",
-        status: render_status(deal, receiver, locale),
-        info: render_info(deal, receiver, locale),
-        actions: render_actions(deal, receiver, locale)
-      )
+      if receiver
+        ActionCable.server.broadcast(
+          "deal_#{deal.id}_user_#{receiver.id}:status_#{locale}",
+          status: render_status(deal, receiver, locale),
+          info: render_info(deal, receiver, locale),
+          actions: render_actions(deal, receiver, locale)
+        )
+      end
     end
   end
 

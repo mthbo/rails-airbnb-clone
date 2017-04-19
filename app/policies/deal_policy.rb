@@ -37,7 +37,7 @@ class DealPolicy < ApplicationPolicy
   end
 
   def new_review?
-    record.closed? && ((user == record.advisor && !record.reviewed_by_advisor?) || (user == record.client && !record.reviewed_by_client?))
+    record.closed? && ((user == record.advisor && record.client && !record.reviewed_by_advisor?) || (user == record.client && record.advisor && !record.reviewed_by_client?))
   end
 
   def save_review?

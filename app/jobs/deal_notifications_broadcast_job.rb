@@ -2,22 +2,30 @@ class DealNotificationsBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(deal)
-    ActionCable.server.broadcast(
-      "deal_#{deal.id}_user_#{deal.advisor.id}:notifications",
-      notifications: render_deal_notifications(deal, deal.advisor)
-    )
-    ActionCable.server.broadcast(
-      "deal_#{deal.id}_user_#{deal.client.id}:notifications",
-      notifications: render_deal_notifications(deal, deal.client)
-    )
-    ActionCable.server.broadcast(
-      "user_#{deal.advisor.id}:notifications",
-      notifications: render_user_notifications(deal.advisor)
-    )
-    ActionCable.server.broadcast(
-      "user_#{deal.client.id}:notifications",
-      notifications: render_user_notifications(deal.client)
-    )
+    if deal.advisor
+      ActionCable.server.broadcast(
+        "deal_#{deal.id}_user_#{deal.advisor.id}:notifications",
+        notifications: render_deal_notifications(deal, deal.advisor)
+      )
+    end
+    if deal.client
+      ActionCable.server.broadcast(
+        "deal_#{deal.id}_user_#{deal.client.id}:notifications",
+        notifications: render_deal_notifications(deal, deal.client)
+      )
+    end
+    if deal.advisor
+      ActionCable.server.broadcast(
+        "user_#{deal.advisor.id}:notifications",
+        notifications: render_user_notifications(deal.advisor)
+      )
+    end
+    if deal.client
+      ActionCable.server.broadcast(
+        "user_#{deal.client.id}:notifications",
+        notifications: render_user_notifications(deal.client)
+      )
+    end
   end
 
   private
