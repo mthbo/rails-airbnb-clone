@@ -94,5 +94,11 @@ fr:
       instructions: "Evaluez le service fourni et laissez un avis à %{advisor}."
       action: Evaluer la session
     deal_review_advisor:
+    review_recap:
+      review_by: Evaluation par %{sender}
+      session: session
+      overall_evaluation: Evaluation globale
+      happy: satisfait
+
 
 

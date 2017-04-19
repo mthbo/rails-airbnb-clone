@@ -1,0 +1,32 @@
+<div style="margin: 30px 0 25px 0; display: flex; align-items: center">
+  <div style="height: 1px; flex: 1 1 auto; background-color: rgb(157,157,157)"></div>
+  <p style="font-weight: normal; margin: 0 10px;"><%= t('.review_by', sender: sender.first_name) %></p>
+  <div style="height: 1px; flex: 1 1 auto; background-color: rgb(157,157,157)"></div>
+</div>
+
+<p>
+  <strong style="color: #30485F">#<%= t '.session' %>-<%= @deal.id %></strong> &nbsp;|&nbsp;
+  <span style="font-weight: normal;"><%= @deal.offer.title %></span>
+</p>
+
+<p>
+  <span style="font-weight: normal;"><%= t '.overall_evaluation' %>: &nbsp;</span>
+  <strong style="color: <%= sender == @deal.client ? '#FFC938' : '#42D3AA'; %>"><%= @deal.client_evaluation %></strong>
+</p>
+
+<% if sender == @deal.client %>
+  <% @deal.objectives.each_with_index do |objective, i| %>
+    <p style='display: flex; justify-content: space-between;'>
+      <span><span style="font-weight: normal;"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></span>
+      <% if objective.rating.present? %>
+        <strong style="color: #FFC938; margin-left: 10px"><%= objective.evaluation %></strong>
+      <% end %>
+    </p>
+  <% end %>
+<% end %>
+
+<p><%= sanitize markdown_to_html(review) %></p>
+
+<div style="margin: 25px 0; display: flex; align-items: center">
+  <div style="height: 1px; flex: 1 1 auto; background-color: rgb(157,157,157)"></div>
+</div>

@@ -18,4 +18,8 @@ class Objective < ApplicationRecord
     (1..5).to_a.map { |rating| [rating, {'data-html' => I18n.t("objective.#{EVALUATIONS[rating]}") }] }
   end
 
+  def evaluation
+    I18n.t("objective.#{EVALUATIONS[self.rating]}")
+  end
+
 end

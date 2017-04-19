@@ -147,6 +147,13 @@ class Deal < ApplicationRecord
     (1..5).to_a.map { |rating| [rating, {'data-html' => I18n.t("deal.#{EVALUATIONS[rating]}") }] }
   end
 
+  def client_evaluation
+    I18n.t("deal.#{EVALUATIONS[client_rating]}")
+  end
+
+  def advisor_evaluation
+    I18n.t("deal.#{EVALUATIONS[advisor_rating]}")
+  end
 
   private
 

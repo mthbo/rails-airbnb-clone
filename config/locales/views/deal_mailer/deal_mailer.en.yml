@@ -94,3 +94,8 @@ en:
       instructions: "Evaluate the service delivered and leave a review to %{advisor}."
       action: Evaluate the session
     deal_review_advisor:
+    review_recap:
+      review_by: Evaluation by %{sender}
+      session: session
+      overall_evaluation: Overall evaluation
+      happy: happy
