@@ -94,8 +94,33 @@ en:
       instructions: "Evaluate the service delivered and leave a review to %{advisor}."
       action: Evaluate the session
     deal_review_advisor:
+      subject: "#session-%{id} | Evaluation received"
+      greeting: Hello %{advisor},
+      message: "You received an evaluation from %{client} for the service delivered."
+      instructions: "Evaluate your experience and leave a review to %{client}."
+      action: Evaluate the session
+      action_bis: See the session
+    deal_review_client:
+      subject: "#session-%{id} | Evaluation received"
+      greeting: Hello %{client},
+      message: "You received an evaluation from %{advisor} for the past session."
+      instructions: "Evaluate the service delivered and leave a review to %{advisor}."
+      action: Evaluate the session
+      action_bis: See the session
     review_recap:
       review_by: Evaluation by %{sender}
       session: session
       overall_evaluation: Overall evaluation
       happy: happy
+    deal_cancelled_advisor:
+      subject: "#session-%{id} | Session cancelled"
+      greeting: Hello %{advisor},
+      session: session
+      message: "has been cancelled by %{client}. Nothing more can be done in this session."
+      action: See the session
+    deal_cancelled_client:
+      subject: "#session-%{id} | Session cancelled"
+      greeting: Hello %{client},
+      session: session
+      message: "has been cancelled by %{advisor}. Nothing more can be done in this session."
+      action: See the session

@@ -214,6 +214,8 @@ class DealsController < ApplicationController
     DealStatusBroadcastJob.perform_later(@deal, receiver)
     DealCardsBroadcastJob.perform_later(@deal)
     send_status_message
+    DealMailer.deal_cancelled_advisor(@deal).deliver_later if receiver == @deal.advisor
+    DealMailer.deal_cancelled_client(@deal).deliver_later if receiver == @deal.client
     respond_to do |format|
       format.html {
         flash[:alert] = t('.notice', id: @deal.id, name: @deal.client == current_user ? @deal.advisor.first_name : @deal.client.first_name)

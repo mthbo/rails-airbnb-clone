@@ -9,9 +9,13 @@
   <span style="font-weight: normal;"><%= @deal.offer.title %></span>
 </p>
 
-<p>
-  <span style="font-weight: normal;"><%= t '.overall_evaluation' %>: &nbsp;</span>
-  <strong style="color: <%= sender == @deal.client ? '#FFC938' : '#42D3AA'; %>"><%= @deal.client_evaluation %></strong>
+<p style="font-weight: normal;">
+  <span><%= t '.overall_evaluation' %>: &nbsp;</span>
+  <% if sender == @deal.client %>
+    <span style="color: #FFC938;"><%= @deal.client_evaluation %></span>
+  <% elsif sender == @deal.advisor %>
+    <span style="color: #42D3AA;"><%= @deal.advisor_evaluation %></span>
+  <% end %>
 </p>
 
 <% if sender == @deal.client %>
@@ -19,7 +23,7 @@
     <p style='display: flex; justify-content: space-between;'>
       <span><span style="font-weight: normal;"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></span>
       <% if objective.rating.present? %>
-        <strong style="color: #FFC938; margin-left: 10px"><%= objective.evaluation %></strong>
+        <span style="font-weight: normal; color: #FFC938; margin-left: 10px"><%= objective.evaluation %></span>
       <% end %>
     </p>
   <% end %>

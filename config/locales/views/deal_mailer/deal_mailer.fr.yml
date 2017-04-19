@@ -94,11 +94,36 @@ fr:
       instructions: "Evaluez le service fourni et laissez un avis à %{advisor}."
       action: Evaluer la session
     deal_review_advisor:
+      subject: "#session-%{id} | Evaluation reçue"
+      greeting: Bonjour %{advisor},
+      message: "Vous avez reçu une évaluation de %{client} pour le service fourni."
+      instructions: "Evaluez votre expérience et laissez un avis à %{client}."
+      action: Evaluer la session
+      action_bis: Voir la session
+    deal_review_client:
+      subject: "#session-%{id} | Evaluation reçue"
+      greeting: Bonjour %{client},
+      message: "Vous avez reçu une évaluation de %{advisor} pour la session passée."
+      instructions: "Evaluez le service fourni et laissez un avis à %{advisor}."
+      action: Evaluer la session
+      action_bis: Voir la session
     review_recap:
       review_by: Evaluation par %{sender}
       session: session
       overall_evaluation: Evaluation globale
       happy: satisfait
+    deal_cancelled_advisor:
+      subject: "#session-%{id} | Session annulée"
+      greeting: Bonjour %{advisor},
+      session: session
+      message: "a été annulée par %{client}. Vous ne pouvez plus rien faire dans cette session."
+      action: Voir la session
+    deal_cancelled_client:
+      subject: "#session-%{id} | Session annulée"
+      greeting: Bonjour %{client},
+      session: session
+      message: "a été annulée par %{advisor}. Vous ne pouvez plus rien faire dans cette session."
+      action: Voir la session
 
 
 
