@@ -22,7 +22,7 @@ class Message < ApplicationRecord
     elsif self.deal.proposition_declined?
       self.content = '.proposition_declined'
       self.target = 'deal_status_alert'
-    elsif self.deal.open?
+    elsif self.deal.opened?
       self.content = '.session_open'
       self.target = 'deal_status'
     elsif self.deal.open_expired?

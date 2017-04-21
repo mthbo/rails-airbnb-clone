@@ -10,7 +10,7 @@ class Deal < ApplicationRecord
 
   monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000 }
 
-  enum status: [ :request, :proposition, :proposition_declined, :open, :open_expired, :closed, :cancelled ]
+  enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
   enum payment_state: [ :no_payment, :payment_pending, :paid ]
   enum who_reviews: [ :no_review, :client_is_reviewing, :advisor_is_reviewing]
 
@@ -51,11 +51,11 @@ class Deal < ApplicationRecord
   end
 
   def pending_or_open?
-    pending? || open?
+    pending? || opened?
   end
 
   def open_or_expired?
-    open? || open_expired?
+    opened? || open_expired?
   end
 
   def pending_not_new?

@@ -88,8 +88,8 @@ class DealsController < ApplicationController
   end
 
   def open_session
-    @deal.open!
-    @deal.open_at = DateTime.current.in_time_zone
+    @deal.opened!
+    @deal.opened_at = DateTime.current.in_time_zone
     @deal.advisor_notifications += 1
     @deal.client_notifications = 0
     @deal.save
@@ -246,7 +246,7 @@ class DealsController < ApplicationController
       :amount,
       :proposition,
       :proposition_at,
-      :open_at,
+      :opened_at,
       :closed_at,
       :proposition_deadline,
       :who_reviews,

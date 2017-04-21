@@ -33,7 +33,7 @@ class DealPolicy < ApplicationPolicy
   end
 
   def close_session?
-    (record.client == user && (record.open? || record.open_expired?)) || (record.advisor == user && record.open_expired?)
+    (record.client == user && (record.opened? || record.open_expired?)) || (record.advisor == user && record.open_expired?)
   end
 
   def new_review?

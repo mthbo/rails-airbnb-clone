@@ -94,7 +94,7 @@ class Offer < ApplicationRecord
   end
 
   def deals_open
-    deals.where(status: :open).or(deals.where(status: :open_expired))
+    deals.where(status: :opened).or(deals.where(status: :open_expired))
   end
 
   def deals_ongoing
