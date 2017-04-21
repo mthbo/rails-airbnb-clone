@@ -14,7 +14,7 @@
   <% end %>
 
   <div class="padded-top-xs padded-bottom-xs">
-    <%= f.input :client_review, label: false, placeholder: t('.leave_a_review', name: @deal.advisor.first_name), input_html: { class: 'custom-form-input', rows: "5" } %>
+    <%= f.input :client_review, label: false, placeholder: t('.leave_a_review', name: @deal.advisor.first_name, max: Deal.validators_on(:client_review)[1].options[:maximum]), input_html: { class: 'custom-form-input', rows: "5" } %>
   </div>
 
   <%= f.hidden_field :client_review_at, value: DateTime.current.in_time_zone %>

@@ -34,7 +34,7 @@ en:
               taken: This email is already taken
             password:
               blank: Please choose a password
-              too_short: This password is too short (min. 8 characters)
+              too_short: This password is too short (min. %{count} characters)
             birth_date:
               invalid: This date is invalid
             phone_number:

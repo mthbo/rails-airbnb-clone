@@ -17,7 +17,7 @@ fr:
               too_short: "Cette description est trop courte, veuillez en dire un peu plus!"
             languages:
               blank: "Veuillez sélectionner au moins une langue"
-              too_long: "Trop de langues sont sélectionnées (max: 5)"
+              too_long: "Trop de langues sont sélectionnées (max: %{count})"
             means:
               blank: "Veuillez sélectionner au moins un moyen de communication"
         deal:
@@ -39,21 +39,24 @@ fr:
               blank: "Veuillez spécifier une date d'expiration"
               past: "La date d'expiration doit être future"
               after_deadline: "La date d'expiration doit être avant la date limite de la session"
+            amount:
+              less_than_or_equal_to: "Le prix ne peut être supérieur à %{count} €"
+              greater_than_or_equal_to: "Le prix ne peut être inférieur à %{count} €"
             client_review:
               blank: "Veuillez laisser un avis pour cette session"
-              too_long: "Votre avis est trop long (max: 500 caractères)"
+              too_long: "Votre avis est trop long (max: %{count} caractères)"
             client_rating:
               blank: "Veuillez évaluer cette session"
             advisor_review:
               blank: "Veuillez laisser un avis pour cette session"
-              too_long: "Votre avis est trop long (max: 500 caractères)"
+              too_long: "Votre avis est trop long (max: %{count} caractères)"
             advisor_rating:
               blank: "Veuillez évaluer cette session"
         objective:
           attributes:
             description:
               blank: Veuillez spécifier cet objectif
-              too_long: "Cet objectif est trop long (max: 150 caractères)"
+              too_long: "Cet objectif est trop long (max: %{count} caractères)"
   pundit:
     default: "Vous n'êtes pas autorisé(e) à effectuer cette action."
   language:

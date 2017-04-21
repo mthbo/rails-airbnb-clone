@@ -64,7 +64,8 @@ en:
       session: session
       new_proposition: New proposition
       unveil_action_plan: "Propose an action plan for this session to meet the need of %{name}."
-      set_targets: "Start by setting some targets you will be committed to achieve (min: 1 - max: 10)."
+      set_targets: "Start by setting some targets you will be committed to achieve."
+      objective_range: "min: 1 - max: %{max}"
       set_one_target: Set at least one target
       back_to_session: Back to session
     proposition_form:
@@ -72,16 +73,15 @@ en:
       describe_service: Describe the service proposed
       set_languages: "Set one or more language(s) to communicate with %{name} for this session."
       set_means: "Set one or more mean(s) to communicate with %{name} for this session."
-      set_deadline: Set the session deadline
       pick_date: Pick a date
-      set_price: Set the session price
+      set_price: Set the session price. Leave it blank if you propose a free session.
       session_for_free: This session will be for free.
       sessions_before_pricing_html:
         one: "You still need to achieve <span class='font-weight-normal red'>%{count} free session</span> for this offer before pricing your service."
         other: "You still need to achieve <span class='font-weight-normal red'>%{count} free sessions</span> for this offer before pricing your service."
       edit_offer: Edit your offer
       to_propose_priced_services: if you want to price your service.
-      set_expiry_date: Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it.
+      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."
       review_and_submit: Review and submit
     proposition_confirmation:
       proposition_submission: Proposition submission
@@ -179,11 +179,11 @@ en:
     client_rating_form:
       overall_evaluation: Overall evaluation
       evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
-      leave_a_review: "Leave a review to %{name} for this session (max: 500 characters)."
+      leave_a_review: "Leave a review to %{name} for this session (max: %{max} characters)."
       publish_evaluation: Publish the evaluation
     advisor_rating_form:
       evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
-      leave_a_review: "Leave a review to %{name} for this session (max: 500 characters)."
+      leave_a_review: "Leave a review to %{name} for this session (max: %{max} characters)."
       publish_evaluation: Publish the evaluation
     reviews:
       reviews: Reviews

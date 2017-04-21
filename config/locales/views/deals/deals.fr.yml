@@ -64,7 +64,8 @@ fr:
       session: session
       new_proposition: Nouvelle proposition
       unveil_action_plan: "Porposez un plan d'action pour cette session afin de répondre au besoin de %{name}."
-      set_targets: "Commencez par définir des objectifs que vous vous engagez à atteindre (min: 1 - max: 10)."
+      set_targets: "Commencez par définir des objectifs que vous vous engagez à atteindre."
+      objective_range: "min: 1 - max: %{max}"
       set_one_target: Définissez au moins un objectif
       back_to_session: Revenir à la session
     proposition_form:
@@ -72,16 +73,15 @@ fr:
       describe_service: Décrivez le service proposé
       set_languages: "Déterminez une ou plusieurs langue(s) pour communiquer avec %{name} pour cette session."
       set_means: "Déterminez un ou plusieurs moyen(s) pour communiquer avec %{name} pour cette session."
-      set_deadline: Déterminez la date limite de la session
       pick_date: Sélectionnez une date
-      set_price: Déterminez le prix de la session
+      set_price: Déterminez le prix de la session. Laissez le champ vide si vous proposez une session gratuite.
       session_for_free: "Cette session sera gratuite."
       sessions_before_pricing_html:
         one: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
         other: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
       edit_offer: Editez votre offre
       to_propose_priced_services: si vous voulez proposer des prestations payantes.
-      set_expiry_date: Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée.
+      set_expiry_date: "Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée."
       review_and_submit: Vérifier et soumettre
     proposition_confirmation:
       proposition_submission: Soumission de la proposition
@@ -179,11 +179,11 @@ fr:
     client_rating_form:
       overall_evaluation: Evaluation globale
       evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
-      leave_a_review: "Laissez un avis à %{name} pour cette session (max: 500 caractères)."
+      leave_a_review: "Laissez un avis à %{name} pour cette session (max: %{max} caractères)."
       publish_evaluation: Publier l'évaluation
     advisor_rating_form:
       evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
-      leave_a_review: "Laissez un avis à %{name} pour cette session (max: 500 caractères)."
+      leave_a_review: "Laissez un avis à %{name} pour cette session (max: %{max} caractères)."
       publish_evaluation: Publier l'évaluation
     reviews:
       reviews: Avis

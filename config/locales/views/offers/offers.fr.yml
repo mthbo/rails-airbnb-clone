@@ -16,8 +16,10 @@ fr:
       convince: "Soyez clair(e), soyez spécifique et soyez original(e): votre mission est de convaincre que vos conseils sont précieux!"
       give_title: Donnez un titre à votre offre
       describe_offer: "Décrivez votre offre (ce que vous connaissez mieux que quiconque, votre approche, les experiences qui enrichissent votre savoir,  etc.)"
-      select_languages: "Sélectionnez la ou les langue(s) que vous acceptez pour communiquer avec vos interlocuteurs pour cette offre (min: 1 - max: 5)."
-      select_means: "Sélectionnez le(s) moyen(s) que vous acceptez pour communiquer avec vos interlocuteurs pour cette offre (min: 1)."
+      select_languages: "Sélectionnez la ou les langue(s) que vous acceptez pour communiquer avec vos interlocuteurs pour cette offre."
+      languages_range: "min: 1 - max: %{max}"
+      select_means: "Sélectionnez le(s) moyen(s) que vous acceptez pour communiquer avec vos interlocuteurs pour cette offre."
+      means_range: "min: 1"
       prove_worth_before_pricing_html: "Proposer des prestations payantes n'est possible qu'après avoir fait vos preuves, avec au moins <span class='font-weight-normal red'>%{count} sessions gratuites</span> pour cette offre."
       sessions_for_free: "Les sessions pour cette offre sont gratuites."
       sessions_before_pricing_html:

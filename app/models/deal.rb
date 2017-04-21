@@ -8,7 +8,7 @@ class Deal < ApplicationRecord
   has_many :languages, through: :deal_languages
   has_many :messages, dependent: :destroy
 
-  monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000 }
+  monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 5, less_than_or_equal_to: 1000 }
 
   enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
   enum payment_state: [ :no_payment, :payment_pending, :paid ]
@@ -20,7 +20,7 @@ class Deal < ApplicationRecord
   validate :deadline_must_be_before_a_year, if: :pending_or_open?
 
   validates :proposition, presence: true, length: { minimum: 30 }, if: :not_new_nor_cancelled?
-  validates :objectives, presence: true, length: { in: 1..10 }, if: :not_new_nor_cancelled?
+  validates :objectives, presence: true, length: { maximum: 10 }, if: :not_new_nor_cancelled?
 
   validates :proposition_deadline, presence: true, if: :pending_not_new?
   validate :proposition_deadline_must_be_future, if: :pending_not_new?

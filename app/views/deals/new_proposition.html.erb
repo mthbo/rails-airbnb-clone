@@ -7,10 +7,10 @@
 
 <div class="padded-top-xs padded-bottom-xs">
   <p><%= t '.unveil_action_plan', name: @deal.client.first_name %></p>
-  <p><%= t '.set_targets' %></p>
-</div>
-
-<div class="padded-bottom-xs">
+  <p>
+    <%= t '.set_targets' %><br>
+    <em class="font-weight-normal"><%= t '.objective_range', max: Deal.validators_on(:objectives)[1].options[:maximum] %></em>
+  </p>
   <%= render 'objectives/form', deal: @deal, objective: @objective %>
 </div>
 

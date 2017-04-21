@@ -9,20 +9,24 @@
   <%= f.input :title, autofocus: true, label: false, placeholder: t('.give_title'), input_html: { class: 'custom-form-input' } %>
   <%= f.input :description, label: false, placeholder: t('.describe_offer'), input_html: { class: 'custom-form-input', rows: "10" } %>
 
-  <div class="padded-top-xs padded-bottom-xs">
-    <p><%= t '.select_languages' %></p>
-  </div>
-
-  <div class="custom-check-boxes">
+  <div class="padded-top-xs">
+    <p>
+      <%= t '.select_languages' %><br>
+      <em class="font-weight-normal"><%= t '.languages_range', max: Offer.validators_on(:languages)[1].options[:maximum] %></em>
+    </p>
+    <div class="custom-check-boxes">
     <%= f.association :languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
   </div>
-
-  <div class="padded-top-xs padded-bottom-xs">
-    <p><%= t '.select_means' %></p>
   </div>
 
-  <div class="custom-check-boxes">
+  <div class="padded-top-xs">
+    <p>
+      <%= t '.select_means' %><br>
+      <em class="font-weight-normal"><%= t '.means_range' %></em>
+    </p>
+    <div class="custom-check-boxes">
     <%= f.association :means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+  </div>
   </div>
 
   <div class="padded-top-xs">

@@ -17,7 +17,7 @@ en:
               too_short: This description is too short, please elaborate a little bit!
             languages:
               blank: "Please select at least one language"
-              too_long: "Too many languages are selected (max: 5)"
+              too_long: "Too many languages are selected (max: %{count})"
             means:
               blank: "Please select at least one mean of communication"
         deal:
@@ -39,21 +39,24 @@ en:
               blank: "Please specify an expiry date"
               past: "The expiry date must be future"
               after_deadline: "The expiry date must be before the session deadline"
+            amount:
+              less_than_or_equal_to: "The price can't be higher than %{count} €"
+              greater_than_or_equal_to: "The price can't be lower than %{count} €"
             client_review:
               blank: "Please leave a review for this session"
-              too_long: "Your review is too long (max: 500 characters)"
+              too_long: "Your review is too long (max: %{count} characters)"
             client_rating:
               blank: "Please evaluate this session"
             advisor_review:
               blank: "Please leave a review for this session"
-              too_long: "Your review is too long (max: 500 characters)"
+              too_long: "Your review is too long (max: %{count} characters)"
             advisor_rating:
               blank: "Please evaluate this session"
         objective:
           attributes:
             description:
               blank: Please specify this objective
-              too_long: "This objective is too long (max: 150 characters)"
+              too_long: "This objective is too long (max: %{count} characters)"
   pundit:
     default: 'You are not authorized to perform this action.'
   language:

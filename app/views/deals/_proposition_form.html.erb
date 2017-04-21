@@ -1,50 +1,31 @@
 <%= simple_form_for deal, url: save_proposition_deal_path, method: :patch, remote: true do |f| %>
   <%= f.error_notification %>
 
-  <div class="padded-top-xs padded-bottom-xs">
+  <div class="padded-top-xs">
     <p><%= t '.describe_service_and_not_included', name: deal.client.first_name %></p>
+    <%= f.input :proposition, label: false, placeholder: t('.describe_service'), input_html: { class: 'custom-form-input', rows: "7" } %>
   </div>
-
-  <%= f.input :proposition, label: false, placeholder: t('.describe_service'), input_html: { class: 'custom-form-input', rows: "7" } %>
 
   <div class="padded-top-xs">
     <p><%= t '.set_languages', name: deal.client.first_name %></p>
-  </div>
-
-  <div class="custom-check-boxes">
-    <%= f.association :languages, collection: deal.languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+    <div class="custom-check-boxes">
+      <%= f.association :languages, collection: deal.languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+    </div>
   </div>
 
   <div class="padded-top-xs">
     <p><%= t '.set_means', name: deal.client.first_name %></p>
-  </div>
-
-  <div class="custom-check-boxes">
-    <%= f.association :means, collection: deal.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
-  </div>
-
-
-  <div class="row padded-top-xs">
-    <div class="col-xs-12 col-sm-6">
-      <p><%= t '.set_deadline' %></p>
-      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: deal.deadline ? l(deal.deadline.to_date) : nil } %>
+    <div class="custom-check-boxes">
+      <%= f.association :means, collection: deal.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
     </div>
-
-    <% if deal.offer.priced? %>
-      <div class="col-xs-12 col-sm-6">
-        <p><%= t '.set_price' %></p>
-        <%= f.input :amount, as: :custom, symbol: Money.default_currency.symbol, required: true, label: false, placeholder: "00,00", input_html: { class: 'custom-form-input', type: "Number" }, value: 4 %>
-      </div>
-    <% end %>
   </div>
 
   <div class="padded-top-xs">
     <p><%= t '.set_expiry_date', name: deal.client.first_name %></p>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-6">
-      <%= f.input :proposition_deadline, as: :custom, symbol: "<i class='fa fa-fire fa-fw' aria-hidden='true'></i>".html_safe ,label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: deal.proposition_deadline ? l(deal.proposition_deadline.to_date) : nil } %>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :proposition_deadline, as: :custom, symbol: "<i class='fa fa-fire fa-fw' aria-hidden='true'></i>".html_safe ,label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: l(deal.deadline.to_date), date_start_date: "0d", date_start_view: "month"}, value: deal.proposition_deadline ? l(deal.proposition_deadline.to_date) : nil } %>
+      </div>
     </div>
   </div>
 
@@ -61,6 +42,16 @@
       <div class="custom-form-warning bg-white-transparent">
         <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
         <p><%= t '.session_for_free' %> <%= link_to t('.edit_offer'), edit_offer_path(deal.offer) %> <%= t '.to_propose_priced_services' %></p>
+      </div>
+    </div>
+
+  <% elsif deal.offer.priced? %>
+    <div class="padded-top-xs">
+      <p><%= t '.set_price' %></p>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <%= f.input :amount, as: :custom, symbol: Money.default_currency.symbol, required: true, label: false, placeholder: "00,00", input_html: { class: 'custom-form-input', type: "Number" }, value: 4 %>
+        </div>
       </div>
     </div>
 
