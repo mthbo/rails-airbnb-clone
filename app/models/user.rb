@@ -133,7 +133,7 @@ class User < ApplicationRecord
   end
 
   def advisor_deals_open
-    advisor_deals.where(status: :open).or(advisor_deals.where(status: :open_expired)).order(updated_at: :desc)
+    advisor_deals.where(status: :opened).or(advisor_deals.where(status: :open_expired)).order(updated_at: :desc)
   end
 
   def advisor_deals_ongoing
@@ -180,7 +180,7 @@ class User < ApplicationRecord
   end
 
   def client_deals_open
-    client_deals.where(status: :open).or(client_deals.where(status: :open_expired)).order(updated_at: :desc)
+    client_deals.where(status: :opened).or(client_deals.where(status: :open_expired)).order(updated_at: :desc)
   end
 
   def client_deals_ongoing
@@ -233,7 +233,7 @@ class User < ApplicationRecord
   end
 
   def deals_open
-    deals.where(status: :open).or(deals.where(status: :open_expired)).order(updated_at: :desc)
+    deals.where(status: :opened).or(deals.where(status: :open_expired)).order(updated_at: :desc)
   end
 
   def deals_ongoing

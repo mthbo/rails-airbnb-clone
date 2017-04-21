@@ -24,8 +24,8 @@
 
   <div class="text-center deal-status">
     <p class="<%= deal.open_or_expired? ? 'font-weight-bolder blue' : 'font-weight-normal medium-gray' %>" ><%= t '.open' %></p>
-    <% if deal.open_at %>
-      <p class="<%= deal.open_or_expired? ? 'blue' : 'medium-gray' %>"><small><%= l(deal.open_at.to_date) %></small></p>
+    <% if deal.opened_at %>
+      <p class="<%= deal.open_or_expired? ? 'blue' : 'medium-gray' %>"><small><%= l(deal.opened_at.to_date) %></small></p>
     <% else %>
       <p class="medium-gray %>"><small> - </small></p>
     <% end %>

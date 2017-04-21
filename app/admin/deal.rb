@@ -63,7 +63,7 @@ ActiveAdmin.register Deal do
       row :means do |deal|
         deal.means.map { |m| m.name }.join(", ")
       end
-      row :open_at
+      row :opened_at
       row :closed_at
       row :updated_at
     end
@@ -105,7 +105,7 @@ ActiveAdmin.register Deal do
       f.input :proposition
       f.input :languages, as: :check_boxes, collection: deal.offer.languages
       f.input :means, as: :check_boxes, collection: deal.offer.means
-      f.input :open_at
+      f.input :opened_at
       f.input :closed_at
       f.input :who_reviews
       f.input :client_review_at
@@ -129,7 +129,7 @@ ActiveAdmin.register Deal do
     :amount,
     :proposition,
     :proposition_at,
-    :open_at,
+    :opened_at,
     :closed_at,
     :proposition_deadline,
     :who_reviews,

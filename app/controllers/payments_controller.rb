@@ -16,7 +16,7 @@ class PaymentsController < ApplicationController
       currency:     @deal.amount.currency
     )
 
-    @deal.update(payment: charge.to_json, payment_state: 'paid', status: 'open', open_at: DateTime.current.in_time_zone)
+    @deal.update(payment: charge.to_json, payment_state: 'paid', status: 'opened', opened_at: DateTime.current.in_time_zone)
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     send_status_message
     DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)

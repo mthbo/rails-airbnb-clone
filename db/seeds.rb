@@ -152,7 +152,7 @@ deals1 = []
     proposition: Faker::Lorem.paragraph(10),
     proposition_deadline: Faker::Time.between(41.days.ago, 45.day.ago),
     proposition_at: Faker::Time.between(51.days.ago, 60.days.ago),
-    open_at: Faker::Time.between(46.days.ago, 50.days.ago),
+    opened_at: Faker::Time.between(46.days.ago, 50.days.ago),
     closed_at: Faker::Time.between(15.days.ago, 40.days.ago),
     client_review: Faker::Lorem.paragraph(6),
     advisor_review: Faker::Lorem.paragraph(6),
@@ -183,7 +183,7 @@ end
     proposition: Faker::Lorem.paragraph(10),
     proposition_deadline: Faker::Time.between(41.days.ago, 45.day.ago),
     proposition_at: Faker::Time.between(51.days.ago, 60.days.ago),
-    open_at: Faker::Time.between(46.days.ago, 50.days.ago),
+    opened_at: Faker::Time.between(46.days.ago, 50.days.ago),
     closed_at: Faker::Time.between(15.days.ago, 40.days.ago),
     client_review: Faker::Lorem.paragraph(6),
     advisor_review: Faker::Lorem.paragraph(6),
@@ -211,7 +211,7 @@ deals2 = []
 5.times do
   offer = offers_free.sample
   deals2 << Deal.new(
-    status: "open",
+    status: "opened",
     offer: offer,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
@@ -219,7 +219,7 @@ deals2 = []
     proposition: Faker::Lorem.paragraph(10),
     proposition_deadline: Faker::Time.between(0.days.ago, 5.days.ago),
     proposition_at: Faker::Time.between(11.days.ago, 15.days.ago),
-    open_at: Faker::Time.between(6.days.ago, 10.days.ago),
+    opened_at: Faker::Time.between(6.days.ago, 10.days.ago),
     languages: offer.languages,
     means: offer.means
   )
@@ -228,7 +228,7 @@ end
 5.times do
   offer = offers_priced.sample
   deals2 << Deal.new(
-    status: "open",
+    status: "opened",
     offer: offer,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
@@ -236,7 +236,7 @@ end
     proposition: Faker::Lorem.paragraph(10),
     proposition_deadline: Faker::Time.between(0.days.ago, 5.days.ago),
     proposition_at: Faker::Time.between(11.days.ago, 15.days.ago),
-    open_at: Faker::Time.between(6.days.ago, 10.days.ago),
+    opened_at: Faker::Time.between(6.days.ago, 10.days.ago),
     languages: offer.languages,
     means: offer.means,
     amount: rand(10..50)

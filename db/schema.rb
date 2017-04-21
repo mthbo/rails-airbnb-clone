@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416090000) do
+ActiveRecord::Schema.define(version: 20170421105123) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20170416090000) do
     t.text     "client_review"
     t.text     "advisor_review"
     t.datetime "proposition_at"
-    t.datetime "open_at"
+    t.datetime "opened_at"
     t.datetime "closed_at"
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false

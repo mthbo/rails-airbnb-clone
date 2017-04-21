@@ -18,7 +18,7 @@
       <% end %>
     </div>
 
-  <% elsif deal.open? && deal.advisor == current_user %>
+  <% elsif deal.opened? && deal.advisor == current_user %>
     <div class="padded-top-s">
       <p class="font-weight-normal"><%= t '.session_is_open_advisor', date: l(deal.deadline.to_date, format: :long), name: deal.client.first_name %></p>
     </div>
@@ -27,7 +27,7 @@
     <div class="padded-top-s">
       <% if deal.open_expired? %>
         <p class="font-weight-normal"><%= t '.deadline_has_passed' %></p>
-      <% elsif deal.open? && deal.client == current_user %>
+      <% elsif deal.opened? && deal.client == current_user %>
         <p class="font-weight-normal"><%= t '.session_is_open_client', date: l(deal.deadline.to_date, format: :long) %></p>
       <% end %>
     </div>
