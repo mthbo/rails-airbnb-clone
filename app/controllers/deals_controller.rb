@@ -27,6 +27,7 @@ class DealsController < ApplicationController
     if @deal.save
       send_first_message
       NewDealCardsBroadcastJob.perform_later(@deal)
+      RequestExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
       DealMailer.deal_request(@deal).deliver_later
       flash[:notice] = t('.notice', name: @offer.advisor.first_name, title: @offer.title)
       redirect_to deal_path(@deal)
@@ -187,7 +188,7 @@ class DealsController < ApplicationController
       @deal.advisor_notifications = 0
     end
     @deal.save
-    DisableMessagesBroadcastJob.perform_later(@deal, receiver)
+    DealStatusBroadcastJob.perform_later(@deal, receiver)
     DealCardsBroadcastJob.perform_later(@deal)
     respond_to do |format|
       format.html {

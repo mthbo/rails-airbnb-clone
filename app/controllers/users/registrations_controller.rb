@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
         deal.client_notifications += 1
       end
       deal.save
-      DisableMessagesBroadcastJob.perform_later(deal, receiver)
+      DealStatusBroadcastJob.perform_later(deal, receiver)
       DealCardsBroadcastJob.perform_later(deal)
     end
   end

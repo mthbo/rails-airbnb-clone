@@ -15,6 +15,19 @@ fr:
       means:
         one: "Moyen de communication"
         other: "Moyens de communication"
+    deal_request_expired_advisor:
+      subject: "#session-%{id} | Session annulée"
+      greeting: Bonjour %{advisor},
+      session: session
+      message: "a été annulée car la date limite a été atteinte. Vous ne pouvez plus rien faire dans cette session."
+      action: Voir la session
+    deal_request_expired_client:
+      subject: "#session-%{id} | Session annulée"
+      greeting: Bonjour %{client},
+      session: session
+      message: "a été annulée car la date limite a été atteinte. Vous ne pouvez plus rien faire dans cette session."
+      instructions: "Si les services de %{advisor} vous intéressent toujours, veuillez envoyer une nouvelle demande pour l'offre "
+      action: Voir la session
     deal_proposition:
       subject: "#session-%{id} | Nouvelle proposition reçue"
       greeting: Bonjour %{client},

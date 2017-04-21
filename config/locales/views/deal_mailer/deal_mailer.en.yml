@@ -15,6 +15,19 @@ en:
       means:
         one: "Mean of communication"
         other: "Means of communication"
+    deal_request_expired_advisor:
+      subject: "#session-%{id} | Session cancelled"
+      greeting: Hello %{advisor},
+      session: session
+      message: "has been cancelled because the deadline has passed. Nothing more can be done in this session."
+      action: See the session
+    deal_request_expired_client:
+      subject: "#session-%{id} | Session cancelled"
+      greeting: Hello %{client},
+      session: session
+      message: "has been cancelled because the deadline has passed. Nothing more can be done in this session."
+      instructions: "If you are still interested in the services of %{advisor}, please send a new request for the offer "
+      action: See the session
     deal_proposition:
       subject: "#session-%{id} | New proposition received"
       greeting: Hello %{client},

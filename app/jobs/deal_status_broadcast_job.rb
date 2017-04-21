@@ -8,7 +8,8 @@ class DealStatusBroadcastJob < ApplicationJob
           "deal_#{deal.id}_user_#{receiver.id}:status_#{locale}",
           status: render_status(deal, receiver, locale),
           info: render_info(deal, receiver, locale),
-          actions: render_actions(deal, receiver, locale)
+          actions: render_actions(deal, receiver, locale),
+          messages_disabled: deal.messages_disabled
         )
       end
     end
