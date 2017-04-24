@@ -11,8 +11,10 @@ $(document).ready(function() {
     var videoCallCheckBox = $("#deal_mean_ids_<%= Mean.video_call_id %>");
     videoCallCheckBox.on('click', function() {
       if (this.checked && $roomNameField.val() === "") {
+        console.log('test');
         appearin.getRandomRoomName().then(function (roomName) {
           $roomNameField.val(roomName);
+          console.log(roomName);
         });
       }
     });
