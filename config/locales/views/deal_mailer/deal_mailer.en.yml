@@ -51,19 +51,20 @@ en:
     deal_proposition_declined:
       subject: "#session-%{id} | Proposition declined"
       greeting: Hello %{advisor},
-      message: "%{client} declined your proposition."
+      message: "%{client} declined your proposition for "
+      session: session
       instructions: "You may chat with %{client} to reach an agreement and submit a new proposition."
       action: Reach an agreement
     deal_proposition_expired_advisor:
       subject: "#session-%{id} | Proposition expired"
       greeting: Hello %{advisor},
-      message: "%{client} didn't accept your proposition before its expiration date."
+      message_html: "%{client} didn't accept your proposition for <strong style='color: #30485F;'>#session-%{id}</strong> before its expiration date."
       instructions: "You may chat with %{client} to reach an agreement and submit a new proposition."
       action: Reach an agreement
     deal_proposition_expired_client:
       subject: "#session-%{id} | Proposition expired"
       greeting: Hello %{client},
-      message: "You didn't accept the proposition of %{advisor} before its expiration date."
+      message_html: "You didn't accept the proposition of %{advisor} for <strong style='color: #30485F;'>#session-%{id}</strong> before its expiration date."
       instructions: "You may chat with %{advisor} to reach an agreement and ask for a new proposition."
       action: Reach an agreement
     deal_proposition_accepted_advisor:

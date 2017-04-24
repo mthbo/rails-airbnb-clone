@@ -1,6 +1,6 @@
 <p><%= t('.greeting', advisor: @deal.advisor.first_name) %></p>
 
-<p><%= t('.message', client: @deal.client.first_name) %></p>
+<p><%= t('.message_html', client: @deal.client.first_name, id: @deal.id) %></p>
 <p><%= t('.instructions', client: @deal.client.first_name) %></p>
 
 <div style="text-align: center; padding: 30px 0;">

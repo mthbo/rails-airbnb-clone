@@ -51,19 +51,20 @@ fr:
     deal_proposition_declined:
       subject: "#session-%{id} | Proposition refusée"
       greeting: Bonjour %{advisor},
-      message: "%{client} a refusé votre proposition."
+      message: "%{client} a refusé votre proposition pour "
+      session: session
       instructions: "Engagez une discussion avec %{client} pour parvenir à un accord et soumettre une nouvelle proposition."
       action: Parvenir à un accord
     deal_proposition_expired_advisor:
       subject: "#session-%{id} | Proposition expirée"
       greeting: Bonjour %{advisor},
-      message: "%{client} n'a pas accepté votre proposition avant sa date d'expiration."
+      message_html: "%{client} n'a pas accepté votre proposition pour <strong style='color: #30485F;'>#session-%{id}</strong> avant sa date d'expiration."
       instructions: "Engagez une discussion avec %{client} pour parvenir à un accord et soumettre une nouvelle proposition."
       action: Parvenir à un accord
     deal_proposition_expired_client:
       subject: "#session-%{id} | Proposition expirée"
       greeting: Bonjour %{client},
-      message: "Vous n'avez pas accepté la proposition de %{advisor} avant sa date d'expiration."
+      message_html: "Vous n'avez pas accepté la proposition de %{advisor} pour <strong style='color: #30485F;'>#session-%{id}</strong> avant sa date d'expiration."
       instructions: "Engagez une discussion avec %{advisor} pour parvenir à un accord et demander une nouvelle proposition."
       action: Parvenir à un accord
     deal_proposition_accepted_advisor:
