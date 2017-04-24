@@ -11,25 +11,16 @@
   }
 }
 
-.flag-icon-message {
-  display: inline;
-  margin-right: 15px;
-  line-height: 2.2em;
-  img {
-    height: 22px;
-  }
-}
-
 .flag-icon-long {
   img {
     margin-right: 12px;
   }
 }
 
-.mean-icon-message {
-  margin-right: 5px;
-  margin-top: 5px;
-  line-height: 2.2em;
+.mean-icon {
+  i {
+    color: $dark-light-gray;
+  }
 }
 
 .mean-icon-long {

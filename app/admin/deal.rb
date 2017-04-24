@@ -43,6 +43,7 @@ ActiveAdmin.register Deal do
       row :client
       row :status
       row :messages_disabled
+      row :room_name
       row :deadline
       row :amount
       row :payment_state
@@ -94,6 +95,7 @@ ActiveAdmin.register Deal do
       f.input :client_id
       f.input :status
       f.input :payment_state
+      f.input :room_name
       f.input :messages_disabled
       f.input :deadline
       f.input :amount
@@ -124,6 +126,7 @@ ActiveAdmin.register Deal do
     :request,
     :status,
     :payment_state,
+    :room_name,
     :messages_disabled,
     :deadline,
     :amount,

@@ -35,6 +35,8 @@ class Deal < ApplicationRecord
   validates :advisor_rating, presence: true, if: :advisor_is_reviewing?
   validates :advisor_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5] }, if: :advisor_is_reviewing?
 
+  after_create_commit :create_first_message
+
   def advisor
     offer.advisor unless offer.nil?
   end
@@ -108,6 +110,10 @@ class Deal < ApplicationRecord
     (offer.free? if offer) || (!request? && (amount_cents.blank? || amount_cents.zero?))
   end
 
+  def video_call?
+    means.include?(Mean.find_by_name("Video call"))
+  end
+
   # Stats
 
   def objectives_count
@@ -156,6 +162,11 @@ class Deal < ApplicationRecord
   end
 
   private
+
+  def create_first_message
+    message = Message.new(deal: self, user: self.client, content: self.request)
+    message.save
+  end
 
   # Validations
 

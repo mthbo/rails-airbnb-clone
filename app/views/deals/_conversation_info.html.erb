@@ -1,0 +1,11 @@
+<ul class="list-inline no-margin-bottom">
+  <% deal.languages.each do |language| %>
+    <li class="flag-icon"><%= image_tag "flags/" + language.flag %></li>
+  <% end %>
+</ul>
+<p class="no-margin-bottom"> | </p>
+<ul class="list-inline no-margin-bottom">
+  <% deal.means.each do |mean| %>
+    <li class="mean-icon"><i class="fa fa-<%= mean.picto %> fa-lg" aria-hidden="true"></i></li>
+  <% end %>
+</ul>

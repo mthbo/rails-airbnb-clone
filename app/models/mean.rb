@@ -37,4 +37,8 @@ class Mean < ApplicationRecord
     deals.count
   end
 
+  def self.video_call_id
+    find_by_name("Video call").id
+  end
+
 end

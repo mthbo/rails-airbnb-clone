@@ -5,7 +5,7 @@
 <h2 class="no-margin-bottom"><%= t '.request_to' %> <%= link_to "#{@offer.advisor.first_name}", user_path(@offer.advisor) %></h2>
 <h3 class="no-margin-top"><%= link_to "#{@offer.title}", offer_path(@offer) %></h3>
 
-<%= simple_form_for [@offer, @deal]  do |f| %>
+<%= simple_form_for [@offer, @deal], html: { id: 'new-deal-form' }  do |f| %>
   <%= f.error_notification %>
 
   <div class="padded-top-xs padded-bottom-xs">
@@ -39,6 +39,10 @@
   <div class="custom-check-boxes">
     <%= f.association :means, collection: @offer.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
   </div>
+
+  <% if @offer.video_call? %>
+    <%= f.hidden_field :room_name %>
+  <% end %>
 
   <div class="text-right padded-top-s">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-yellow") do %>
