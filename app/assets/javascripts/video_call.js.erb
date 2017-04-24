@@ -9,7 +9,7 @@ $(document).ready(function() {
     var appearin = new AppearIn();
 
     var videoCallCheckBox = $("#deal_mean_ids_<%= Mean.video_call_id %>");
-    videoCallCheckBox.on('change', function() {
+    videoCallCheckBox.on('click', function() {
       if (this.checked && $roomNameField.val() === "") {
         appearin.getRandomRoomName().then(function (roomName) {
           $roomNameField.val(roomName);
