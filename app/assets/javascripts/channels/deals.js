@@ -61,6 +61,7 @@ function subcsribeToDealStatusChannel(dealId) {
         $('#message_content').attr('placeholder', I18n.t('messages.form.messages_disabled'));
         $('#message_content').prop('disabled', true);
         $('#new_message button').prop('disabled', true);
+        $('#video-call').remove();
       }
       propositionToggle();
     },

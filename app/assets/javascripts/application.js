@@ -28,6 +28,7 @@
 //= require proposition
 //= require radio_button
 //= require search
-//= require star-rating
+//= require star_rating
+//= require video_call
 
 

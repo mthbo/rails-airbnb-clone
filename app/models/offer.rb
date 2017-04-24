@@ -79,6 +79,11 @@ class Offer < ApplicationRecord
     end
   end
 
+
+  def video_call?
+    means.include?(Mean.find_by_name("Video call"))
+  end
+
   # Deals for an offer
 
   def deals_request

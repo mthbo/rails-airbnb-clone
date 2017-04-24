@@ -181,7 +181,9 @@
   background: $light-gray;
   border-radius: 5px 5px 0 0;
   padding: 3px 20px;
-  border-bottom: 1px solid $medium-gray;
+  // border-bottom: 1px solid $medium-gray;
+  display: flex;
+  justify-content: space-between;
 }
 
 .deal-user-info {
@@ -199,6 +201,30 @@ a.deal-user-info {
       border: $light-gray solid 1px;
     }
   }
+}
+
+.deal-conversation-info {
+  flex: 0 0 auto;
+  padding: 5px 20px;
+  border-bottom: 1px solid $medium-gray;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ul:first-child {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+  };
+  p {
+    flex: 0 0 auto;
+    padding: 0 15px;
+  };
+  ul:last-child {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  };
 }
 
 #deal-conversation-panel {
@@ -277,7 +303,7 @@ a.deal-user-info {
   .deal-conversation {
     height: 80vh;
   }
-  .deal-conversation-top, #deal-conversation-messages, #deal-conversation-form {
+  .deal-conversation-top, .deal-conversation-info, #deal-conversation-messages, #deal-conversation-form {
     padding-right: 10px;
     padding-left: 10px;
   }

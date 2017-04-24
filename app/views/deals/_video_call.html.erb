@@ -1,0 +1,22 @@
+<% if deal.video_call? && !deal.messages_disabled %>
+
+  <div id="video-call" data-room-name="<%= deal.room_name %>">
+
+    <a id="video-call-trigger" data-toggle="modal" data-target="#video-call-modal">
+      <i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i>
+    </a>
+
+    <div class="modal fade" id="video-call-modal" tabindex="-1" role="dialog" aria-labelledby="videoCallLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <iframe id="video-call-frame" frameborder="0"></iframe>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+<% end %>

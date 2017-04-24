@@ -25,7 +25,6 @@ class DealsController < ApplicationController
     @deal.client = current_user
     @deal.advisor_notifications += 1
     if @deal.save
-      send_first_message
       NewDealCardsBroadcastJob.perform_later(@deal)
       RequestExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
       DealMailer.deal_request(@deal).deliver_later
@@ -243,6 +242,7 @@ class DealsController < ApplicationController
       :request,
       :status,
       :messages_disabled,
+      :room_name,
       :deadline,
       :amount,
       :proposition,
@@ -260,12 +260,6 @@ class DealsController < ApplicationController
       mean_ids: [],
       language_ids: []
     )
-  end
-
-  def send_first_message
-    message = Message.new(deal: @deal, user: @deal.client)
-    message.build_first_message
-    message.save
   end
 
   def send_status_message

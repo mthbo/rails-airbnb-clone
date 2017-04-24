@@ -4,16 +4,9 @@ class Message < ApplicationRecord
 
   default_scope -> { order(created_at: :ASC) }
 
-  enum target: [ :message, :first_message, :deal_status, :deal_status_alert ]
+  enum target: [ :message, :deal_status, :deal_status_alert ]
 
   after_create_commit :async_message_broadcast
-
-  def build_first_message
-    language_flags = self.deal.languages.map{ |language| "<span class='flag-icon-message'>#{language.flag_img}</span>" }.join
-    mean_pictos = self.deal.means.map { |mean| "<span class='mean-icon-message'>#{mean.picto_i}</span>" }.join
-    self.content = "#{self.deal.request} <br> #{language_flags} &nbsp;&nbsp; #{mean_pictos}"
-    self.target = 'first_message'
-  end
 
   def build_deal_status_message
     if self.deal.proposition?
