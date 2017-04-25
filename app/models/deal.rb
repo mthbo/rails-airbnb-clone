@@ -8,7 +8,7 @@ class Deal < ApplicationRecord
   has_many :languages, through: :deal_languages
   has_many :messages, dependent: :destroy
 
-  monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 5, less_than_or_equal_to: 1000 }
+  monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 10, less_than_or_equal_to: 1000 }
 
   enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
   enum payment_state: [ :no_payment, :payment_pending, :paid ]
