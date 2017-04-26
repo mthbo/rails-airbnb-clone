@@ -1,26 +1,26 @@
 <h6><strong class="blue">#<%= t '.session' %>-<%= deal.id %></strong> &nbsp;|&nbsp; <%= deal.offer.title %></h6>
 
 <div class="padded-top-xs deal-proposition-recap-figures">
-  <div>
-    <p class="font-weight-normal">
-      <%= t '.price' %>: &nbsp;
-      <span class="blue"><%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : money_without_cents_and_with_symbol(deal.amount) %></span>&nbsp;&nbsp;
+    <p>
+      <span class="font-weight-normal"><%= t '.amount' %>:</span>&nbsp;
+      <% if (deal.amount_cents.blank? || deal.amount_cents.zero?) %>
+        <span class="font-weight-normal blue"><%= t('.free') %></span>
+      <% else %>
+        <span class="font-weight-normal blue"><%= t('money', amount: humanized_money(deal.total_amount), currency: deal.amount.currency.symbol )  %></span>&nbsp;
+        <em>( <%= t('.including_fees') %> <%= t('money', amount: humanized_money(deal.fees), currency: deal.amount.currency.symbol ) %> )</em>
+      <% end %>
+      &nbsp;&nbsp;
     </p>
-  </div>
-  <div>
     <p class="font-weight-normal">
       <%= t '.deadline' %>: &nbsp;
       <span class="blue"><%= l(deal.deadline.to_date) if deal.deadline %></span>
     </p>
-  </div>
 </div>
 
-<div>
-  <h6 class="extra-dark-gray"><%= t '.targets', count: deal.objectives.count %></h6>
-  <% deal.objectives.each_with_index do |objective, i| %>
-    <p><span class="font-weight-normal"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></p>
-  <% end %>
-</div>
+<h6 class="extra-dark-gray"><%= t '.targets', count: deal.objectives.count %></h6>
+<% deal.objectives.each_with_index do |objective, i| %>
+  <p><span class="font-weight-normal"><%= i + 1 %></span> &nbsp; | &nbsp; <%= objective.description %></p>
+<% end %>
 
 <div class="padded-top-xs">
   <%= sanitize markdown_to_html(deal.proposition) %>

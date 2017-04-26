@@ -35,7 +35,7 @@
           <% elsif deal.request? %>
             &mdash;
           <% else %>
-            <%= money_without_cents_and_with_symbol(deal.amount) %>
+            <%= t('money', amount: money_without_cents(deal.amount), currency: deal.amount.currency.symbol ) %>
           <% end %>
         </strong>
       </p>

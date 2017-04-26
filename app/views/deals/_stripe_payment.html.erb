@@ -1,6 +1,6 @@
 <script src="https://checkout.stripe.com/checkout.js"></script>
 
-<button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept_and_pay' %> <%= money_without_cents_and_with_symbol(deal.amount) %></button>
+<button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept_and_pay' %></button>
 
 <%= form_tag deal_payments_path(deal), id: "paymentForm" do %>
 
@@ -10,8 +10,8 @@
   <script>
     var handler = StripeCheckout.configure({
       key: "<%= Rails.configuration.stripe[:publishable_key] %>",
-      image: 'https://stripe.com/img/documentation/checkout/marketplace.png',
-      locale: 'auto',
+      image: "https://3.bp.blogspot.com/-W__wiaHUjwI/Vt3Grd8df0I/AAAAAAAAA78/7xqUNj8ujtY/s1600/image02.png",
+      locale: "<%= I18n.locale %>",
       email: "<%= current_user.email %>",
       token: function(token) {
         document.getElementById("stripeToken").value = token.id;
@@ -25,10 +25,10 @@
         $('.modal').modal('hide');
         handler.open({
           name: 'Papoters',
-          description: "#session-<%= deal.id %>",
+          description: "#session-<%= deal.id %> | <%= deal.offer.title %>",
           zipCode: true,
-          currency: "<%= deal.amount.currency %>",
-          amount: <%= deal.amount_cents %>
+          currency: "<%= deal.total_amount.currency %>",
+          amount: <%= deal.total_amount_cents %>
         });
         e.preventDefault();
     });

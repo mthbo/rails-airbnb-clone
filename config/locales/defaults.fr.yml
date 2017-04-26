@@ -40,8 +40,8 @@ fr:
               past: "La date d'expiration doit être future"
               after_deadline: "La date d'expiration doit être avant la date limite de la session"
             amount:
-              less_than_or_equal_to: "Le prix ne peut être supérieur à %{count} €"
-              greater_than_or_equal_to: "Le prix ne peut être inférieur à %{count} €"
+              less_than_or_equal_to: "Le montant ne peut être supérieur à %{count} €"
+              greater_than_or_equal_to: "Le montant ne peut être inférieur à %{count} €"
             client_review:
               blank: "Veuillez laisser un avis pour cette session"
               too_long: "Votre avis est trop long (max: %{count} caractères)"
@@ -90,7 +90,6 @@ fr:
     korean: "Coréen"
     persian: "Persan"
     hebrew: "Hébreu"
-
   mean:
     messaging: "Messages"
     phone_call: "Appel voix"
@@ -110,6 +109,7 @@ fr:
     all_right: bien
     great: super
     amazing: formidable
+  money: "%{amount} %{currency}"
   views:
     pagination:
       first: "&laquo;"

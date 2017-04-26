@@ -13,7 +13,7 @@
         <span class="info-icon">
           <%= image_tag 'amount.svg' %>
         </span>
-        <strong><%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : money_without_cents_and_with_symbol(deal.amount) %></strong>
+        <strong><%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : t('money', amount: humanized_money(deal.total_amount), currency: deal.amount.currency.symbol) %></strong>
       </p>
       <p>
         <span class="info-icon">

@@ -7,11 +7,10 @@ function setLocale() {
     availableLocales.push("<%= locale %>");
   <% end %>
 
-  var urlLocale = window.location.pathname.split('/')[1];
-  if (availableLocales.indexOf(urlLocale) >= 0) {
-    I18n.locale = urlLocale;
+  var currentLocale = $("#current-locale").data("locale");
+  if (availableLocales.indexOf(currentLocale) >= 0) {
+    I18n.locale = currentLocale;
   } else {
     I18n.locale = I18n.defaultLocale
   }
-
 };

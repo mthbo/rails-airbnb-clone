@@ -47,14 +47,14 @@ fr:
       clear_search: "Effacer la recherche"
       show_filters: "Afficher les filtres"
       hide_filters: "Cacher les filtres"
-      median_price: "Prix médian"
+      median_amount: "Montant médian"
       languages: "Langues"
       means: "Moyens de communication"
       show_more: "En voir plus"
       show_less: "En voir moins"
       most_relevant: "Meilleures offres"
-      lowest_price: "Prix croissant"
-      highest_price: "Prix décroissant"
+      lowest_amount: "Montant croissant"
+      highest_amount: "Montant décroissant"
       highest_rating: "Mieux notées"
       most_recent: "Plus récentes"
       offers_found: "offres trouvées"
@@ -89,6 +89,6 @@ fr:
       happy: "satisfaits"
     amounts:
       free: "GRATUIT"
-      no_price: "pas d'historique de prix"
+      no_history: "pas d'historique"
 
 

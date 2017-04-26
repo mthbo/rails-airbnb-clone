@@ -36,8 +36,9 @@ fr:
     proposition_recap:
       proposition_expiry_on: Proposition expirant le %{date}
       session: session
-      price: Prix
+      amount: Montant
       free: GRATUIT
+      including_fees: frais inclus
       deadline: Date limite
       targets:
         one: Objectif

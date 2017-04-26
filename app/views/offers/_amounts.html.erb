@@ -3,10 +3,10 @@
   <% if offer.free? %>
     <strong><%= t '.free' %></strong>
   <% elsif offer.median_amount_money.nil? %>
-    <span class="medium-gray"><%= t '.no_price' %></span>
+    <span class="medium-gray"><%= t '.no_history' %></span>
   <% else %>
-    <span class="medium-gray"><%= money_without_cents_and_with_symbol(offer.min_amount_money) %> &mdash; </span>
-    <strong><%= money_without_cents_and_with_symbol(offer.median_amount_money) %></strong>
-    <span class="medium-gray"> &mdash; <%= money_without_cents_and_with_symbol(offer.max_amount_money) %></span>
+    <span class="medium-gray"><%= t('money', amount: money_without_cents(offer.min_amount_money), currency: offer.min_amount_money.currency.symbol ) %> &mdash; </span>
+    <strong><%= t('money', amount: money_without_cents(offer.median_amount_money), currency: offer.median_amount_money.currency.symbol ) %></strong>
+    <span class="medium-gray"> &mdash; <%= t('money', amount: money_without_cents(offer.max_amount_money), currency: offer.max_amount_money.currency.symbol ) %></span>
   <% end %>
 </p>

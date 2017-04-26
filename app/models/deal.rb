@@ -8,7 +8,9 @@ class Deal < ApplicationRecord
   has_many :languages, through: :deal_languages
   has_many :messages, dependent: :destroy
 
-  monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 10, less_than_or_equal_to: 1000 }
+  monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 10, less_than_or_equal_to: 2000 }
+  monetize :fees_cents, allow_nil: true
+  monetize :total_amount_cents, allow_nil: true
 
   enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
   enum payment_state: [ :no_payment, :payment_pending, :paid ]
@@ -41,6 +43,23 @@ class Deal < ApplicationRecord
     offer.advisor unless offer.nil?
   end
 
+  def round_amount_and_set_fees
+    if self.amount_cents
+      self.amount_cents = self.amount_cents.fdiv(100).round * 100
+      if self.amount_cents > 5000
+        self.fees_cents = 50 + 5000 * 0.15 + (self.amount_cents - 5000) * 0.1
+      else
+        self.fees_cents = 50 + self.amount_cents * 0.15
+      end
+      self.fees_cents = self.fees_cents.fdiv(10).round * 10
+    end
+  end
+
+  def total_amount_cents
+    if amount_cents && fees_cents
+      amount_cents + fees_cents
+    end
+  end
 
   # Status
 

@@ -230,11 +230,11 @@ class Offer < ApplicationRecord
     if free?
       html << "<strong>#{I18n.t('offers.amounts.free', locale: locale)}</strong>"
     elsif median_amount.nil?
-      html << "<span class='medium-gray'>#{I18n.t('offers.amounts.no_price', locale: locale)}</span>"
+      html << "<span class='medium-gray'>#{I18n.t('offers.amounts.no_history', locale: locale)}</span>"
     else
-      html << "<span class='medium-gray'>#{ActionController::Base.helpers.money_without_cents_and_with_symbol(min_amount_money)} &mdash; </span>"
-      html << "<strong>#{ActionController::Base.helpers.money_without_cents_and_with_symbol(median_amount_money)}</strong>"
-      html << "<span class='medium-gray'> &mdash; #{ActionController::Base.helpers.money_without_cents_and_with_symbol(max_amount_money)}</span>"
+      html << "<span class='medium-gray'>#{ I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(min_amount_money), currency: min_amount_money.currency.symbol, locale: locale )} &mdash; </span>"
+      html << "<strong>#{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(median_amount_money), currency: median_amount_money.currency.symbol, locale: locale )}</strong>"
+      html << "<span class='medium-gray'> &mdash; #{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(max_amount_money), currency: max_amount_money.currency.symbol, locale: locale )}</span>"
     end
     html
   end

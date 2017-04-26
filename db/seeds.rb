@@ -174,6 +174,7 @@ end
 
 15.times do
   offer = offers_priced.sample
+  random_amount = rand(1000...5000)
   deals1 << Deal.new(
     status: "closed",
     offer: offer,
@@ -193,7 +194,8 @@ end
     advisor_rating: (1..5).to_a.sample,
     languages: offer.languages,
     means: offer.means,
-    amount: rand(10..50)
+    amount_cents: random_amount,
+    fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
   )
 end
 
@@ -227,6 +229,7 @@ end
 
 5.times do
   offer = offers_priced.sample
+  random_amount = rand(1000...5000)
   deals2 << Deal.new(
     status: "opened",
     offer: offer,
@@ -239,7 +242,8 @@ end
     opened_at: Faker::Time.between(6.days.ago, 10.days.ago),
     languages: offer.languages,
     means: offer.means,
-    amount: rand(10..50)
+    amount_cents: random_amount,
+    fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
   )
 end
 
@@ -271,8 +275,10 @@ end
 
 5.times do
   offer = offers_priced.sample
+  random_amount = rand(1000...5000)
   deals3 << Deal.new(
     status: "proposition",
+    payment_state: "payment_pending",
     offer: offer,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
@@ -282,7 +288,8 @@ end
     proposition_at: Faker::Time.between(1.day.ago, 2.days.ago),
     languages: offer.languages,
     means: offer.means,
-    amount: rand(10..50)
+    amount_cents: random_amount,
+    fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
   )
 end
 

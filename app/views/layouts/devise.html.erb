@@ -7,6 +7,8 @@
     <title>
       <%= yield_with_default(:title, "Papoters") %>
     </title>
+    <%= favicon_link_tag('papoters_favicon.png') %>
+    <meta name="description" content="The knowledge marketplace.">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -19,7 +21,7 @@
       <div class="container-fluid">
         <div class="custom-form-top">
           <%= link_to root_path, { class: "custom-form-logo" } do %>
-            <%= image_tag "papoters_logo.svg" %>
+            <%= image_tag "papoters.svg" %>
           <% end %>
         </div>
         <%= render 'shared/flash_form' %>
@@ -28,6 +30,8 @@
         </div>
       </div>
     </div>
+
+    <div id="current-locale" data-locale="<%= I18n.locale %>"></div>
 
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>

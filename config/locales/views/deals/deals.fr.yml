@@ -74,7 +74,9 @@ fr:
       set_languages: "Déterminez une ou plusieurs langue(s) pour communiquer avec %{name} pour cette session."
       set_means: "Déterminez un ou plusieurs moyen(s) pour communiquer avec %{name} pour cette session."
       pick_date: Sélectionnez une date
-      set_price: Déterminez le prix de la session. Laissez le champ vide si vous proposez une session gratuite.
+      set_price: Déterminez le montant de votre rémunération pour la session (des frais de transaction seront ajoutés à ce montant).
+      amount_range: "min: %{min} %{currency}"
+      leave_blank_if_free: Laissez le champ vide pour une session gratuite.
       session_for_free: "Cette session sera gratuite."
       sessions_before_pricing_html:
         one: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
@@ -92,8 +94,9 @@ fr:
       submit: Soumettre
     proposition_recap:
       session: session
-      price: Prix
+      amount: Montant
       free: GRATUIT
+      including_fees: frais inclus
       deadline: Date limite
       targets:
         one: Objectif

@@ -40,8 +40,8 @@ en:
               past: "The expiry date must be future"
               after_deadline: "The expiry date must be before the session deadline"
             amount:
-              less_than_or_equal_to: "The price can't be higher than %{count} €"
-              greater_than_or_equal_to: "The price can't be lower than %{count} €"
+              less_than_or_equal_to: "The amount can't be higher than %{count} €"
+              greater_than_or_equal_to: "The amount can't be lower than %{count} €"
             client_review:
               blank: "Please leave a review for this session"
               too_long: "Your review is too long (max: %{count} characters)"
@@ -109,6 +109,7 @@ en:
     all_right: all right
     great: great
     amazing: amazing
+  money: "%{currency}%{amount}"
   views:
     pagination:
       first: "&laquo;"

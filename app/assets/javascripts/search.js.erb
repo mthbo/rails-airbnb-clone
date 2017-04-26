@@ -45,9 +45,9 @@ $(document).ready(function() {
         indices: [{
           name: search.indexName, label: I18n.t('offers.search.most_relevant')
         }, {
-          name: "Offer_price_asc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.lowest_price')
+          name: "Offer_price_asc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.lowest_amount')
         }, {
-          name: "Offer_price_desc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.highest_price')
+          name: "Offer_price_desc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.highest_amount')
         }, {
           name: "Offer_rating_desc_" + "<%= ENV['RAILS_ENV'] %>", label: I18n.t('offers.search.highest_rating')
         }, {
@@ -67,7 +67,7 @@ $(document).ready(function() {
         container: '#search-amounts',
         attributeName: 'median_amount',
         templates: {
-          header: '<h6>' + I18n.t('offers.search.median_price') + '</h6>'
+          header: '<h6>' + I18n.t('offers.search.median_amount') + '</h6>'
         },
         tooltips: {
           format: function(rawValue) {

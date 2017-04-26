@@ -7,6 +7,8 @@
     <title>
       <%= yield_with_default(:title, "Papoters") %>
     </title>
+    <%= favicon_link_tag('papoters_favicon.png') %>
+    <meta name="description" content="The knowledge marketplace.">
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css' %>
@@ -22,6 +24,8 @@
     <div id="main">
       <%= yield %>
     </div>
+
+    <div id="current-locale" data-locale="<%= I18n.locale %>"></div>
 
     <%= render "shared/footer" %>
 

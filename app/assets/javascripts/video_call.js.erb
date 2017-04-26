@@ -8,16 +8,11 @@ $(document).ready(function() {
     var AppearIn = window.AppearIn;
     var appearin = new AppearIn();
 
-    var videoCallCheckBox = $("#deal_mean_ids_<%= Mean.video_call_id %>");
-    videoCallCheckBox.off('change');
-    videoCallCheckBox.on('change', function() {
-      checkBoxAppearance(this);
-      if (this.checked && $roomNameField.val() === "") {
-        appearin.getRandomRoomName().then(function (roomName) {
-          $roomNameField.val(roomName);
-        });
-      }
-    });
+    if ($roomNameField.val() === "") {
+      appearin.getRandomRoomName().then(function (roomName) {
+        $roomNameField.val(roomName);
+      });
+    }
   }
 
   // add the room to an iframe DOM Element

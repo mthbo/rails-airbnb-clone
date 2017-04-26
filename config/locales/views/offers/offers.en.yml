@@ -47,14 +47,14 @@ en:
       clear_search: "Clear search"
       show_filters: "Show filters"
       hide_filters: "Hide filters"
-      median_price: "Median price"
+      median_amount: "Median amount"
       languages: "Languages"
       means: "Means of communication"
       show_more: "Show more"
       show_less: "Show less"
       most_relevant: "Most relevant"
-      lowest_price: "Lowest price"
-      highest_price: "Highest price"
+      lowest_amount: "Lowest amount"
+      highest_amount: "Highest amount"
       highest_rating: "Highest rating"
       most_recent: "Most recent"
       offers_found: "offers found"
@@ -89,7 +89,7 @@ en:
       happy: "happy"
     amounts:
       free: "FREE"
-      no_price: "no price history"
+      no_history: "no history"
 
 
 

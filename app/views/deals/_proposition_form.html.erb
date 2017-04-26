@@ -47,10 +47,13 @@
 
   <% elsif deal.offer.priced? %>
     <div class="padded-top-xs">
-      <p><%= t '.set_price' %></p>
+      <p>
+        <%= t '.set_price' %><br>
+        <em  class="font-weight-normal"><%= t '.amount_range', min: money_without_cents(Deal.validators_on(:amount)[0].options[:greater_than_or_equal_to]), currency: Money.default_currency.symbol %> &nbsp; | &nbsp; <%= t '.leave_blank_if_free' %></em>
+      </p>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :amount, as: :custom, symbol: Money.default_currency.symbol, required: true, label: false, placeholder: "00,00", input_html: { class: 'custom-form-input', type: "Number" }, value: 4 %>
+          <%= f.input :amount, as: :custom, symbol: Money.default_currency.symbol, required: true, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? money_without_cents(deal.amount) : nil } %>
         </div>
       </div>
     </div>

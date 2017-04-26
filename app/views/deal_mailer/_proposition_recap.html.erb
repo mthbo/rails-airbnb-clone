@@ -10,9 +10,15 @@
 </p>
 
 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-  <p style='font-weight: normal; margin-bottom: 0'>
-    <%= t '.price' %>: &nbsp;
-    <span style="color: #30485F"><%= (@deal.amount_cents.blank? || @deal.amount_cents.zero?) ? t('.free') : money_without_cents_and_with_symbol(@deal.amount) %></span>&nbsp;&nbsp;
+  <p style='margin-bottom: 0'>
+    <span style="font-weight: normal;"><%= t '.amount' %>:</span>&nbsp;
+    <% if (@deal.amount_cents.blank? || @deal.amount_cents.zero?) %>
+      <span style="color: #30485F; font-weight: normal;"><%= t('.free') %></span>
+    <% else %>
+      <span style="color: #30485F; font-weight: normal;"><%= t('money', amount: humanized_money(@deal.total_amount), currency: @deal.amount.currency.symbol )  %></span>&nbsp;
+      <em>( <%= t('.including_fees') %> <%= t('money', amount: humanized_money(@deal.fees), currency: @deal.amount.currency.symbol ) %> )</em>
+    <% end %>
+    &nbsp;&nbsp;
   </p>
   <p style='font-weight: normal; margin-bottom: 0'>
     <%= t '.deadline' %>: &nbsp;
