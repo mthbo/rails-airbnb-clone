@@ -29,7 +29,7 @@ ActiveAdmin.register Offer do
     column :satisfaction do |offer|
       "#{(offer.satisfaction.fdiv(5) * 100).to_i} %" unless offer.satisfaction.nil?
     end
-    column :median_amount
+    column :median_amount_money
     actions
   end
 
@@ -57,7 +57,7 @@ ActiveAdmin.register Offer do
       row :deals_open_count
       row :deals_closed_count
       row :deals do |offer|
-        offer.deals.map { |d| link_to d.id, admin_deal_path(d) }.join(" | ").html_safe
+        offer.deals.map { |d| link_to "#session-#{d.id} | #{d.title}", admin_deal_path(d) }.join("<br>").html_safe
       end
       row :satisfaction do |offer|
         "#{(offer.satisfaction.fdiv(5) * 100).to_i} %" unless offer.satisfaction.nil?

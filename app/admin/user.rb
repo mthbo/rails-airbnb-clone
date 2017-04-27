@@ -55,19 +55,19 @@ ActiveAdmin.register User do
       row :offers_inactive_count
       row :offers_priced_count
       row :offers do |user|
-        user.offers.map { |o| link_to o.title, admin_offer_path(o) }.join("<br>").html_safe
+        user.offers.map { |o| link_to "#{o.id} | #{o.title}", admin_offer_path(o) }.join("<br>").html_safe
       end
       row :client_deals_pending_count
       row :client_deals_open_count
       row :client_deals_closed_count
       row :client_deals do |user|
-        user.client_deals.map { |d| link_to d.id, admin_deal_path(d) }.join(" | ").html_safe
+        user.client_deals.map { |d| link_to "#session-#{d.id} | #{d.title}", admin_deal_path(d) }.join("<br>").html_safe
       end
       row :advisor_deals_pending_count
       row :advisor_deals_open_count
       row :advisor_deals_closed_count
       row :advisor_deals do |user|
-        user.advisor_deals.map { |d| link_to d.id, admin_deal_path(d) }.join(" | ").html_safe
+        user.advisor_deals.map { |d| link_to "#session-#{d.id} | #{d.title}", admin_deal_path(d) }.join("<br>").html_safe
       end
     end
     attributes_table do
