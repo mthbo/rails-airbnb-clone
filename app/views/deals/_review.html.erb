@@ -24,11 +24,9 @@
     <% if show_offer %>
       <p>
         <% if deal.offer && policy(deal.offer).show? %>
-          <%= link_to "#{deal.offer.title}", offer_path(deal.offer)%>
-        <% elsif deal.offer %>
-          <%= deal.offer.title %>
+          <%= link_to deal.title, offer_path(deal.offer) %>
         <% else %>
-          -
+          <%= deal.title %>
         <% end %>
       </p>
     <% end %>

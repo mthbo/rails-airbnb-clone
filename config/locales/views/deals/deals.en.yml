@@ -21,7 +21,7 @@ en:
       session: "Session"
     new:
       request: Request
-      request_to: Request to
+      new_request_to: New request to %{name}
       explain_your_need: "Explain what you need advice for. Provide all the essential details to help %{name} makes a proposition that meets your need."
       detail_your_need: Detail your need
       what_is_your_deadline: What is your deadline?
@@ -42,8 +42,6 @@ en:
       deadline_expired: Deadline expired
       review_expected: Review expected
       messages_disabled: Messages disabled
-    title:
-      offer_no_longer_exists: The offer no longer exists
     status:
       request: Request
       proposition: Proposition
@@ -58,6 +56,7 @@ en:
       back_to_dashboard: Go back to dashboard
     new_proposition:
       new_proposition: New proposition
+      new_proposition_for: New proposition for %{name}
       unveil_action_plan: "Propose an action plan for this session to meet the need of %{name}."
       set_targets: "Start by setting some targets you will be committed to achieve."
       objective_range: "min: 1 - max: %{max}"
@@ -167,6 +166,7 @@ en:
       disable: Disable
     new_review:
       evaluation: Evaluation
+      session_evaluation: Evaluation of the session with %{name}
       target_achievement: Target achievement
       evaluate_target_achievement: "For each target of the session, how do you evaluate the service delivered by %{name}?"
       back_to_session: Back to session

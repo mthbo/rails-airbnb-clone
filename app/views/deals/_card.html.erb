@@ -6,11 +6,7 @@
 
   <div class="deal-card-top text-left">
     <h1 id="deal-card-id">#<%= t 'session' %>-<%= deal.id %></h1>
-    <% if deal.offer.present? %>
-      <h3><%= deal.offer.title %></h3>
-    <% else %>
-      <h3 class="medium-gray"><em>(<%= t '.offer_no_longer_exists' %>)</em></h3>
-    <% end %>
+    <h3><%= deal.title %></h3>
   </div>
 
   <div class="deal-card-body">
@@ -35,7 +31,7 @@
           <% elsif deal.request? %>
             &mdash;
           <% else %>
-            <%= t('money', amount: money_without_cents(deal.amount), currency: deal.amount.currency.symbol ) %>
+            <%= t('money', amount: humanized_money(deal.total_amount), currency: deal.total_amount.currency.symbol ) %>
           <% end %>
         </strong>
       </p>

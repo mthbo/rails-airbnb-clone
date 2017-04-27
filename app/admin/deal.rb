@@ -25,6 +25,7 @@ ActiveAdmin.register Deal do
     end
     column :status
     column :amount
+    column :fees
     column :objectives_count
     column :client_global_rating do |deal|
       "#{(deal.client_global_rating.fdiv(5) * 100).to_i} %" unless deal.client_global_rating.nil?
@@ -39,6 +40,7 @@ ActiveAdmin.register Deal do
     attributes_table do
       row :id
       row :offer
+      row :title
       row :advisor
       row :client
       row :status
@@ -46,6 +48,7 @@ ActiveAdmin.register Deal do
       row :room_name
       row :deadline
       row :amount
+      row :fees
       row :payment_state
       row :payment
     end
@@ -92,6 +95,7 @@ ActiveAdmin.register Deal do
   form do |f|
     f.inputs "Deal summary" do
       f.input :offer_id
+      f.input :title
       f.input :client_id
       f.input :status
       f.input :payment_state
@@ -99,6 +103,7 @@ ActiveAdmin.register Deal do
       f.input :messages_disabled
       f.input :deadline
       f.input :amount
+      f.input :fees
     end
     f.inputs "Deal details" do
       f.input :request
@@ -122,6 +127,7 @@ ActiveAdmin.register Deal do
 
   permit_params(
     :offer_id,
+    :title,
     :client_id,
     :request,
     :status,
@@ -130,6 +136,7 @@ ActiveAdmin.register Deal do
     :messages_disabled,
     :deadline,
     :amount,
+    :fees,
     :proposition,
     :proposition_at,
     :opened_at,

@@ -252,21 +252,25 @@ a.deal-user-info {
 
 .deal-reviews-box {
   border-radius: 5px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-left: 45px;
+  padding-right: 45px;
   background-color: rgba(255,255,255,0.8);
 }
 
 @media (max-width: $screen-md-max) {
   .deal-info {
     padding-right: 15px;
+  };
+  .deal-reviews-box {
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }
 
 @media (max-width: $screen-sm-max) {
   .deal-title, .deal-info, .deal-conversation, .deal-reviews {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 30px;
+    padding-left: 30px;
   };
 }
 

@@ -21,7 +21,7 @@ fr:
       session: "Session"
     new:
       request: Demande
-      request_to: Demande à
+      new_request_to: Nouvelle demande à %{name}
       explain_your_need: "Expliquez pourquoi vous avez besoin de conseils. Donnez tous les détails nécessaires afin d'aider %{name} à faire une proposition qui répond à votre besoin."
       detail_your_need: Précisez votre besoin
       what_is_your_deadline: Quelle est votre date limite?
@@ -42,8 +42,6 @@ fr:
       deadline_expired: Date limite expirée
       review_expected: Avis attendu
       messages_disabled: Messages désactivés
-    title:
-      offer_no_longer_exists: L'offre n'existe plus
     status:
       request: Demande
       proposition: Proposition
@@ -58,6 +56,7 @@ fr:
       back_to_dashboard: Revenir au tableau de bord
     new_proposition:
       new_proposition: Nouvelle proposition
+      new_proposition_for: Nouvelle proposition pour %{name}
       unveil_action_plan: "Porposez un plan d'action pour cette session afin de répondre au besoin de %{name}."
       set_targets: "Commencez par définir des objectifs que vous vous engagez à atteindre."
       objective_range: "min: 1 - max: %{max}"
@@ -167,6 +166,7 @@ fr:
       disable: Désactiver
     new_review:
       evaluation: Evaluation
+      session_evaluation: Evaluation de la session avec %{name}
       target_achievement: Réalisation des objectifs
       evaluate_target_achievement: "Pour chacun des objectifs de la session, comment évaluez-vous le service fourni par %{name}?"
       back_to_session: Revenir à la session

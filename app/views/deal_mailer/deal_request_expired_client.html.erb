@@ -8,7 +8,7 @@
 
 <p>
   <%= t('.instructions', advisor: @deal.advisor.first_name) %>
-  "<%= link_to @deal.offer.title, offer_url(@deal.offer, locale: I18n.locale), style: "font-weight: normal; text-decoration: none; color: #30485F;" %>".
+  "<%= link_to @deal.title, offer_url(@deal.offer, locale: I18n.locale), style: "font-weight: normal; text-decoration: none; color: #30485F;" %>".
 </p>
 
 <%= render 'shared/mail_signature' %>

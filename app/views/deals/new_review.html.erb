@@ -2,8 +2,13 @@
   <%= "Papoters | ##{t 'session'}-#{@deal.id} - #{t '.evaluation'}" %>
 <% end %>
 
-<h2 class="no-margin-bottom"><%= link_to "#session-#{@deal.id}", deal_path(@deal) %> -  <%= t '.evaluation' %></h2>
-<h3 class="no-margin-top"><%= link_to "#{@deal.offer.title}", offer_path(@deal.offer) %></h3>
+<h2><%= t '.session_evaluation', name: current_user == @deal.client ? @deal.advisor.first_name : @deal.client.first_name %></h2>
+<h4>
+  <span class="blue font-weight-normal">#<%= t 'session' %>-<%= @deal.id %></span>
+  <span class="hidden-xs hidden-sm">&nbsp; | &nbsp;</span>
+  <br class="hidden-md hidden-lg">
+  <%= @deal.title %>
+</h4>
 
 <% if current_user == @deal.client %>
 

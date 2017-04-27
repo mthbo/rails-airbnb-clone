@@ -28,7 +28,7 @@ class DealsController < ApplicationController
       NewDealCardsBroadcastJob.perform_later(@deal)
       RequestExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
       DealMailer.deal_request(@deal).deliver_later
-      flash[:notice] = t('.notice', name: @offer.advisor.first_name, title: @offer.title)
+      flash[:notice] = t('.notice', name: @offer.advisor.first_name, title: @deal.title)
       redirect_to deal_path(@deal)
     else
       render :new, layout: "client_form"
@@ -241,6 +241,7 @@ class DealsController < ApplicationController
   def deal_params
     params.require(:deal).permit(
       :offer_id,
+      :title,
       :request,
       :status,
       :messages_disabled,

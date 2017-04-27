@@ -23,7 +23,7 @@
         $('.modal').modal('hide');
         handler.open({
           name: 'Papoters',
-          description: "#session-<%= deal.id %> | <%= deal.offer.title %>",
+          description: "#session-<%= deal.id %> | <%= deal.title %>",
           zipCode: true,
           currency: "<%= deal.total_amount.currency %>",
           amount: <%= deal.total_amount_cents %>

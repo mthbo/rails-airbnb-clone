@@ -2,8 +2,8 @@
   <%= "Papoters | #{@offer.title} - #{t '.request'}" %>
 <% end %>
 
-<h2 class="no-margin-bottom"><%= t '.request_to' %> <%= link_to "#{@offer.advisor.first_name}", user_path(@offer.advisor) %></h2>
-<h3 class="no-margin-top"><%= link_to "#{@offer.title}", offer_path(@offer) %></h3>
+<h2><%= t '.new_request_to', name: @offer.advisor.first_name %></h2>
+<h4><%= @offer.title %></h4>
 
 <%= simple_form_for [@offer, @deal], html: { id: 'new-deal-form' }  do |f| %>
   <%= f.error_notification %>
@@ -40,6 +40,7 @@
     <%= f.association :means, collection: @offer.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
   </div>
 
+  <%= f.hidden_field :title, value: @offer.title %>
   <% if @offer.video_call? %>
     <%= f.hidden_field :room_name %>
   <% end %>

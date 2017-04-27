@@ -146,6 +146,7 @@ deals1 = []
   deals1 << Deal.new(
     status: "closed",
     offer: offer,
+    title: offer.title,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(15.days.ago, 40.days.ago),
@@ -174,10 +175,11 @@ end
 
 15.times do
   offer = offers_priced.sample
-  random_amount = rand(1000...5000)
+  random_amount = rand(10...50) * 100
   deals1 << Deal.new(
     status: "closed",
     offer: offer,
+    title: offer.title,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(15.days.ago, 40.days.ago),
@@ -215,6 +217,7 @@ deals2 = []
   deals2 << Deal.new(
     status: "opened",
     offer: offer,
+    title: offer.title,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(1.days.from_now, 60.days.from_now),
@@ -229,10 +232,11 @@ end
 
 5.times do
   offer = offers_priced.sample
-  random_amount = rand(1000...5000)
+  random_amount = rand(10...50) * 100
   deals2 << Deal.new(
     status: "opened",
     offer: offer,
+    title: offer.title,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(1.days.from_now, 60.days.from_now),
@@ -262,6 +266,7 @@ deals3 = []
   deals3 << Deal.new(
     status: "proposition",
     offer: offer,
+    title: offer.title,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(31.days.from_now, 60.days.from_now),
@@ -275,11 +280,12 @@ end
 
 5.times do
   offer = offers_priced.sample
-  random_amount = rand(1000...5000)
+  random_amount = rand(10...50) * 100
   deals3 << Deal.new(
     status: "proposition",
     payment_state: "payment_pending",
     offer: offer,
+    title: offer.title,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(31.days.from_now, 60.days.from_now),
@@ -309,6 +315,7 @@ deals4 = []
   deals4 << Deal.create(
     status: "request",
     offer: offer,
+    title: offer.title,
     client: users.select{ |user| user != offer.advisor }.sample,
     request: Faker::Lorem.paragraph(10),
     deadline: Faker::Time.between(31.days.from_now, 60.days.from_now),
