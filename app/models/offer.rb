@@ -18,75 +18,88 @@ class Offer < ApplicationRecord
 
   include AlgoliaSearch
 
-  I18n.available_locales.each do |locale|
-    algoliasearch index_name: "Offer_#{locale}", per_environment: true, if: :active? do
-      attribute :title, :description, :summary, :deals_closed_count, :satisfaction
-      attribute :median_amount do
-        min_amount.nil? ? 0 : median_amount / 100
-      end
-      attribute :created_at_i do
-        created_at.to_i
-      end
-      attribute :deals_closed_view do
+  algoliasearch per_environment: true, if: :active? do
+    attribute :title, :description, :summary, :deals_closed_count, :satisfaction
+    attribute :median_amount do
+      min_amount.nil? ? 0 : median_amount / 100
+    end
+    attribute :created_at_i do
+      created_at.to_i
+    end
+    I18n.available_locales.each do |locale|
+      attribute "deals_closed_view_#{locale}".to_sym do
         deals_closed_view(locale)
       end
-      attribute :satisfaction_view do
+      attribute "satisfaction_view_#{locale}".to_sym do
         satisfaction_view(locale)
       end
-      attribute :amounts_view do
+      attribute "amounts_view_#{locale}".to_sym do
         amounts_view(locale)
       end
-      attribute :languages do
-        languages.map { |language| {flag: language.flag_img, label: language.name_illustrated(locale)} }
+    end
+    attribute :languages do
+      languages.map do |language|
+        language_attributes = {flag: language.flag_img}
+        I18n.available_locales.each { |locale| language_attributes["label_#{locale}".to_sym] = language.name_illustrated(locale) }
+        language_attributes
       end
-      attribute :means do
-        means.map { |mean| {picto: mean.picto, label: mean.name_illustrated(locale)} }
+    end
+    attribute :means do
+      means.map do |mean|
+        mean_attributes = {picto: mean.picto}
+        I18n.available_locales.each { |locale| mean_attributes["label_#{locale}".to_sym] = mean.name_illustrated(locale) }
+        mean_attributes
       end
-      attribute :advisor do
-        { name: advisor.name_anonymous, avatar_img: advisor.avatar_img, grade_and_age: advisor.grade_and_age(locale), address: advisor.address_short(locale) }
+    end
+    attribute :advisor do
+      advisor_attributes = { name: advisor.name_anonymous, avatar_img: advisor.avatar_img }
+      I18n.available_locales.each do |locale|
+        advisor_attributes["grade_and_age_#{locale}".to_sym] = advisor.grade_and_age(locale)
+        advisor_attributes["address_#{locale}".to_sym] = advisor.address_short(locale)
       end
+      advisor_attributes
+    end
+    searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+    customRanking ['desc(deals_closed_count)', 'desc(satisfaction)', 'asc(median_amount)', 'desc(created_at_i)']
+    attributesForFaceting [:languages, :means, :median_amount]
+    separatorsToIndex '+#$€'
+    removeWordsIfNoResults 'allOptional'
+    ignorePlurals true
+
+    add_replica "Offer_price_asc", per_environment: true, inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-      customRanking ['desc(deals_closed_count)', 'desc(satisfaction)', 'asc(median_amount)', 'desc(created_at_i)']
+      customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
       attributesForFaceting [:languages, :means, :median_amount]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
+    end
 
-      add_replica "Offer_#{locale}_price_asc", per_environment: true, inherit: true do
-        searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-        customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
-        attributesForFaceting [:languages, :means, :median_amount]
-        separatorsToIndex '+#$€'
-        removeWordsIfNoResults 'allOptional'
-        ignorePlurals true
-      end
+    add_replica "Offer_price_desc", per_environment: true, inherit: true do
+      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
+      attributesForFaceting [:languages, :means, :median_amount]
+      separatorsToIndex '+#$€'
+      removeWordsIfNoResults 'allOptional'
+      ignorePlurals true
+    end
 
-      add_replica "Offer_#{locale}_price_desc", per_environment: true, inherit: true do
-        searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-        customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
-        attributesForFaceting [:languages, :means, :median_amount]
-        separatorsToIndex '+#$€'
-        removeWordsIfNoResults 'allOptional'
-        ignorePlurals true
-      end
+    add_replica "Offer_satisfaction_desc", per_environment: true, inherit: true do
+      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      customRanking ['desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
+      attributesForFaceting [:languages, :means, :median_amount]
+      separatorsToIndex '+#$€'
+      removeWordsIfNoResults 'allOptional'
+      ignorePlurals true
+    end
 
-      add_replica "Offer_#{locale}_satisfaction_desc", per_environment: true, inherit: true do
-        searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-        customRanking ['desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
-        attributesForFaceting [:languages, :means, :median_amount]
-        separatorsToIndex '+#$€'
-        removeWordsIfNoResults 'allOptional'
-        ignorePlurals true
-      end
-
-      add_replica "Offer_#{locale}_created_at_desc", per_environment: true, inherit: true do
-        searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-        customRanking ['desc(created_at_i)', 'desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)']
-        attributesForFaceting [:languages, :means, :median_amount]
-        separatorsToIndex '+#$€'
-        removeWordsIfNoResults 'allOptional'
-        ignorePlurals true
-      end
+    add_replica "Offer_created_at_desc", per_environment: true, inherit: true do
+      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      customRanking ['desc(created_at_i)', 'desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)']
+      attributesForFaceting [:languages, :means, :median_amount]
+      separatorsToIndex '+#$€'
+      removeWordsIfNoResults 'allOptional'
+      ignorePlurals true
     end
   end
 
