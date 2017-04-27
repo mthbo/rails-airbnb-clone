@@ -110,6 +110,8 @@ en:
     great: great
     amazing: amazing
   money: "%{currency}%{amount}"
+  session: session
+  free: FREE
   views:
     pagination:
       first: "&laquo;"

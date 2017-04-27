@@ -30,15 +30,12 @@ fr:
       select_means: "Selectionnez le ou les moyen(s) que vous acceptez pour communiquer avec %{name}."
       send: Envoyer
       back_to_offer: Revenir à l'offre
-    show:
-      session: session
     satisfaction:
       happy: "satisfait"
     review:
       account_cancelled: "Compte résilié"
     card:
       offer_no_longer_exists: L'offre n'existe plus
-      session: session
       free: GRATUIT
       proposition_pending: Proposition en attente
       proposition_declined: Proposition refusée
@@ -46,7 +43,6 @@ fr:
       review_expected: Avis attendu
       messages_disabled: Messages désactivés
     title:
-      session: session
       offer_no_longer_exists: L'offre n'existe plus
     status:
       request: Demande
@@ -61,7 +57,6 @@ fr:
       session_is_cancelled: Cette session a été annulée, il n'y a plus rien à faire ici.
       back_to_dashboard: Revenir au tableau de bord
     new_proposition:
-      session: session
       new_proposition: Nouvelle proposition
       unveil_action_plan: "Porposez un plan d'action pour cette session afin de répondre au besoin de %{name}."
       set_targets: "Commencez par définir des objectifs que vous vous engagez à atteindre."
@@ -71,10 +66,8 @@ fr:
     proposition_form:
       describe_service_and_not_included: "Décrivez le service que vous proposez à %{name} pour cette session. Si nécessaire, indiquez également ce qui n'est pas inclu dans votre service."
       describe_service: Décrivez le service proposé
-      set_languages: "Déterminez une ou plusieurs langue(s) pour communiquer avec %{name} pour cette session."
-      set_means: "Déterminez un ou plusieurs moyen(s) pour communiquer avec %{name} pour cette session."
       pick_date: Sélectionnez une date
-      set_price: Déterminez le montant de votre rémunération pour la session (des frais de transaction seront ajoutés à ce montant).
+      set_price: Déterminez le montant de votre rétribution pour la session (des frais de transaction seront ajoutés à ce montant).
       amount_range: "min: %{min} %{currency}"
       leave_blank_if_free: Laissez le champ vide pour une session gratuite.
       session_for_free: "Cette session sera gratuite."
@@ -93,7 +86,6 @@ fr:
       go_back: Revenir
       submit: Soumettre
     proposition_recap:
-      session: session
       amount: Montant
       free: GRATUIT
       including_fees: frais inclus
@@ -174,7 +166,6 @@ fr:
       go_back: Revenir
       disable: Désactiver
     new_review:
-      session: session
       evaluation: Evaluation
       target_achievement: Réalisation des objectifs
       evaluate_target_achievement: "Pour chacun des objectifs de la session, comment évaluez-vous le service fourni par %{name}?"

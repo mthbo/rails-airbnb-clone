@@ -1,10 +1,15 @@
 <p><%= t('.greeting', advisor: @deal.advisor.first_name) %></p>
 
-<p><strong style='color: #30485F;'>#<%= t('.session') %>-<%= @deal.id %></strong> <%= t('.message') %></p>
+<p><%= t('.message') %></p>
+
+<%= render 'deal_title' %>
+
 <p><%= t('.instructions', client: @deal.client.first_name) %></p>
 
-<div style="text-align: center; padding: 30px 0;">
-  <%= link_to t('.action'), deal_url(@deal, locale: I18n.locale), style: "font-weight: normal; text-decoration: none; padding: 10px 15px; border-radius: 4px; border: none; color: white; background: linear-gradient(164deg, rgb(255, 201, 56) 0%, rgb(66, 211, 170) 100%);" %>
-</div>
+<%= render 'deal_button', label: t('.action') %>
+
+<% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
+  <p style="font-weight: normal; color: #30485F"><em><%= t('.info', amount: humanized_money(@deal.amount), currency: @deal.amount.currency.symbol ) %></em></p>
+<% end %>
 
 <%= render 'shared/mail_signature' %>

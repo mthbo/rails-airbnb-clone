@@ -7,20 +7,6 @@
   </div>
 
   <div class="padded-top-xs">
-    <p><%= t '.set_languages', name: deal.client.first_name %></p>
-    <div class="custom-check-boxes">
-      <%= f.association :languages, collection: deal.languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
-    </div>
-  </div>
-
-  <div class="padded-top-xs">
-    <p><%= t '.set_means', name: deal.client.first_name %></p>
-    <div class="custom-check-boxes">
-      <%= f.association :means, collection: deal.means, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
-    </div>
-  </div>
-
-  <div class="padded-top-xs">
     <p><%= t '.set_expiry_date', name: deal.client.first_name %></p>
     <div class="row">
       <div class="col-xs-12 col-sm-6">

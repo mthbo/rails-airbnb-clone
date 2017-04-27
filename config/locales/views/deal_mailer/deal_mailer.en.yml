@@ -6,8 +6,7 @@ en:
       message: "You received a request from %{client}. Answer to %{client} for proposing your services."
       action: Answer to %{client}
     request_recap:
-      request_from: Request from %{client}
-      session: session
+      new_request: New request
       deadline: "Deadline"
       languages:
         one: "Language"
@@ -18,24 +17,22 @@ en:
     deal_request_expired_advisor:
       subject: "#session-%{id} | Session cancelled"
       greeting: Hello %{advisor},
-      session: session
-      message: "has been cancelled because the deadline has passed. Nothing more can be done in this session."
+      message: "The session below has been cancelled because the deadline has passed:"
       action: See the session
+      info: "Nothing more can be done in this session."
     deal_request_expired_client:
       subject: "#session-%{id} | Session cancelled"
       greeting: Hello %{client},
-      session: session
-      message: "has been cancelled because the deadline has passed. Nothing more can be done in this session."
-      instructions: "If you are still interested in the services of %{advisor}, please send a new request for the offer "
+      message: "The session below has been cancelled because the deadline has passed:"
       action: See the session
+      instructions: "If you are still interested in the services of %{advisor}, please send a new request for the offer "
     deal_proposition:
       subject: "#session-%{id} | New proposition received"
       greeting: Hello %{client},
       message: "You received a proposition from %{advisor} following your request. Accept or decline this proposition to continue."
+      proposition_expiry_on: Proposition expiring on %{date}
       action: Accept or decline
     proposition_recap:
-      proposition_expiry_on: Proposition expiring on %{date}
-      session: session
       amount: Amount
       free: FREE
       including_fees: including fees
@@ -52,60 +49,59 @@ en:
     deal_proposition_declined:
       subject: "#session-%{id} | Proposition declined"
       greeting: Hello %{advisor},
-      message: "%{client} declined your proposition for "
-      session: session
+      message: "%{client} declined your proposition for the session below:"
       instructions: "You may chat with %{client} to reach an agreement and submit a new proposition."
       action: Reach an agreement
     deal_proposition_expired_advisor:
       subject: "#session-%{id} | Proposition expired"
       greeting: Hello %{advisor},
-      message_html: "%{client} didn't accept your proposition for <strong style='color: #30485F;'>#session-%{id}</strong> before its expiration date."
+      message: "%{client} didn't accept your proposition for the session below before its expiration date:"
       instructions: "You may chat with %{client} to reach an agreement and submit a new proposition."
       action: Reach an agreement
     deal_proposition_expired_client:
       subject: "#session-%{id} | Proposition expired"
       greeting: Hello %{client},
-      message_html: "You didn't accept the proposition of %{advisor} for <strong style='color: #30485F;'>#session-%{id}</strong> before its expiration date."
+      message: "You didn't accept the proposition of %{advisor} for the session below before its expiration date:"
       instructions: "You may chat with %{advisor} to reach an agreement and ask for a new proposition."
       action: Reach an agreement
     deal_proposition_accepted_advisor:
       subject: "#session-%{id} | Session open"
       greeting: Hello %{advisor},
-      message: "%{client} accepted your proposition!"
-      session: session
-      instructions_html: "is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{client} to deliver your service as part of the agreement."
+      message: "%{client} accepted your proposition! You are now committed to deliver the service as part of your agreement."
+      agreement: Agreement
+      instructions_html: "The session is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{client} as of now!"
+      info: "The payout of %{currency}%{amount} to your account will be made after session closing."
       action: Get in touch with %{client}
     deal_proposition_accepted_client:
       subject: "#session-%{id} | Session open"
       greeting: Hello %{client},
-      message: "You accepted the proposition of %{advisor}!"
-      session: session
-      instructions_html: "is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{advisor} to get your service as part of the agreement."
+      message: "You accepted the proposition of %{advisor}, who is now committed to deliver the service as part of your agreement."
+      agreement: Agreement
+      instructions_html: "The session is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{advisor} as of now!"
       action: Get in touch with %{advisor}
     deal_expired_advisor:
       subject: "#session-%{id} | Deadline has passed"
       greeting: "Hello %{advisor},"
-      message_html: "The deadline for <strong style='color: #30485F;'>#session-%{id}</strong> with %{client} has passed."
+      message: "The deadline for the session below with %{client} has passed:"
       instructions: "Close the session if you deem the service delivered."
       action: Clôturer la session
     deal_expired_client:
       subject: "#session-%{id} | Deadline has passed"
       greeting: "Hello %{client},"
-      message_html: "The deadline for <strong style='color: #30485F;'>#session-%{id}</strong> with %{advisor} has passed."
+      message: "The deadline for the session below with %{advisor} has passed:"
       instructions: "Close the session if you deem the service delivered."
       action: Clôturer la session
     deal_closed_advisor:
       subject: "#session-%{id} | Session closed"
       greeting: Hello %{advisor},
-      session: session
-      message: "was closed."
+      message: "The session below was closed:"
       instructions: "Evaluate your experience and leave a review to %{client}."
       action: Evaluate the session
+      info: The payout of %{currency}%{amount} to your account will be made soon.
     deal_closed_client:
       subject: "#session-%{id} | Session closed"
       greeting: Hello %{client},
-      session: session
-      message: "was closed."
+      message: "The session below was closed:"
       instructions: "Evaluate the service delivered and leave a review to %{advisor}."
       action: Evaluate the session
     deal_review_advisor:
@@ -124,18 +120,17 @@ en:
       action_bis: See the session
     review_recap:
       review_by: Evaluation by %{sender}
-      session: session
       overall_evaluation: Overall evaluation
       happy: happy
     deal_cancelled_advisor:
       subject: "#session-%{id} | Session cancelled"
       greeting: Hello %{advisor},
-      session: session
-      message: "has been cancelled by %{client}. Nothing more can be done in this session."
+      message: "The session below has been cancelled by %{client}:"
       action: See the session
+      info: "Nothing more can be done in this session."
     deal_cancelled_client:
       subject: "#session-%{id} | Session cancelled"
       greeting: Hello %{client},
-      session: session
-      message: "has been cancelled by %{advisor}. Nothing more can be done in this session."
+      message: "The session below has been cancelled by %{advisor}:"
       action: See the session
+      info: "Nothing more can be done in this session."

@@ -30,15 +30,12 @@ en:
       select_means: "Select the mean(s) you accept to communicate with %{name}."
       send: Send
       back_to_offer: Go back to offer
-    show:
-      session: session
     satisfaction:
       happy: "happy"
     review:
       account_cancelled: "Account cancelled"
     card:
       offer_no_longer_exists: The offer no longer exists
-      session: session
       free: FREE
       proposition_pending: Proposition pending
       proposition_declined: Proposition declined
@@ -46,7 +43,6 @@ en:
       review_expected: Review expected
       messages_disabled: Messages disabled
     title:
-      session: session
       offer_no_longer_exists: The offer no longer exists
     status:
       request: Request
@@ -61,7 +57,6 @@ en:
       session_is_cancelled: This session has been cancelled, nothing more can be done here.
       back_to_dashboard: Go back to dashboard
     new_proposition:
-      session: session
       new_proposition: New proposition
       unveil_action_plan: "Propose an action plan for this session to meet the need of %{name}."
       set_targets: "Start by setting some targets you will be committed to achieve."
@@ -71,8 +66,6 @@ en:
     proposition_form:
       describe_service_and_not_included: "Describe the service you propose to %{name} for this session. If necessary, indicate also what is not included in your service."
       describe_service: Describe the service proposed
-      set_languages: "Set one or more language(s) to communicate with %{name} for this session."
-      set_means: "Set one or more mean(s) to communicate with %{name} for this session."
       pick_date: Pick a date
       set_price: Set the amount of your remuneration for this session (transactional fees will apply in addition to this amount).
       amount_range: "min: %{currency}%{min}"
@@ -93,7 +86,6 @@ en:
       go_back: Go back
       submit: Submit
     proposition_recap:
-      session: session
       amount: Amount
       free: FREE
       including_fees: including fees
@@ -174,7 +166,6 @@ en:
       go_back: Go back
       disable: Disable
     new_review:
-      session: session
       evaluation: Evaluation
       target_achievement: Target achievement
       evaluate_target_achievement: "For each target of the session, how do you evaluate the service delivered by %{name}?"
