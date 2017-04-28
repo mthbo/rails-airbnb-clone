@@ -9,7 +9,7 @@
     var handler = StripeCheckout.configure({
       key: "<%= Rails.configuration.stripe[:publishable_key] %>",
       image: "<%= image_path('papoters_stripe.png') %>",
-      color: "#FFC938",
+      color: "black",
       locale: "<%= I18n.locale %>",
       email: "<%= current_user.email %>",
       token: function(token) {
