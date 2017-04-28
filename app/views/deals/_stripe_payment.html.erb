@@ -8,7 +8,7 @@
   <script>
     var handler = StripeCheckout.configure({
       key: "<%= Rails.configuration.stripe[:publishable_key] %>",
-      image: "<%= image_url('papoters_favicon.png') %>",
+      image: "https://www.papoters.com/assets/papoters_favicon-5425863da0ba912dbfb6bb4f99b0c21ab93ce9d0e7c2629bae89423c05c080c7.png",
       locale: "<%= I18n.locale %>",
       email: "<%= current_user.email %>",
       token: function(token) {
