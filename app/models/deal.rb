@@ -1,4 +1,6 @@
 class Deal < ApplicationRecord
+  include Notifications
+
   belongs_to :client, class_name: 'User'
   belongs_to :offer
   has_many :objectives, dependent: :destroy

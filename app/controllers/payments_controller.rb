@@ -4,35 +4,31 @@ class PaymentsController < ApplicationController
   skip_after_action :verify_authorized, only: [:create]
 
   def create
-    customer = Stripe::Customer.create(
-      source: params[:stripeToken],
-      email:  params[:stripeEmail]
-    )
-
-    charge = Stripe::Charge.create(
-      customer:     customer.id,   # You should store this customer id and re-use it.
-      amount:       @deal.total_amount_cents,
-      description:  "Payment of user #{@deal.client.id} for #session-#{@deal.id}",
-      currency:     @deal.total_amount.currency
-    )
+    if @deal.client.stripe_id
+      @customer = Stripe::Customer.retrieve(@deal.client.stripe_id)
+      @customer.respond_to?(:deleted) ? create_customer : update_customer
+    else
+      create_customer
+    end
+    create_charge
 
     @deal.opened_at = DateTime.current.in_time_zone
-    @deal.payment = charge.to_json
-    @deal.advisor_notifications += 1
-    @deal.client_notifications = 0
+    @deal.payment = @charge.to_json
+    @deal.increment_notifications(@deal.advisor)
+    @deal.reset_notifications(@deal.client)
     @deal.save
     @deal.opened!
     @deal.paid!
+    @deal.client.update(stripe_id: @customer.id)
+    Message.create_status_message(@deal, current_user)
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     DealCardsBroadcastJob.perform_later(@deal)
-    send_status_message
     DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
     DealMailer.deal_proposition_accepted_advisor(@deal).deliver_later
     DealMailer.deal_proposition_accepted_client(@deal).deliver_later
     respond_to do |format|
       format.html {
-        flash[:notice] = "#session-#{@deal.id} with #{@deal.advisor.name_anonymous} is open!"
-        # flash[:notice] = t('.notice', id: @deal.id, name: @deal.advisor.first_name)
+        flash[:notice] = t('deals.open_session.notice', id: @deal.id, name: @deal.advisor.first_name)
         redirect_to deal_path(@deal)
       }
       format.js
@@ -49,10 +45,26 @@ private
     @deal = Deal.find(params[:deal_id])
   end
 
-  def send_status_message
-    message = Message.new(deal: @deal, user: current_user)
-    message.build_deal_status_message
-    message.save
+  def create_customer
+    @customer = Stripe::Customer.create(
+      source: params[:stripeToken],
+      email:  params[:stripeEmail]
+    )
+  end
+
+  def update_customer
+    @customer.source = params[:stripeToken]
+    @customer.email = params[:stripeEmail]
+    @customer.save
+  end
+
+  def create_charge
+    @charge = Stripe::Charge.create(
+      customer:     @customer.id,
+      amount:       @deal.total_amount_cents,
+      description:  "##{t('session')}-#{@deal.id} | #{@deal.title}",
+      currency:     @deal.total_amount.currency
+    )
   end
 
 end
