@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  include Receiver
   before_action :find_deal, only: [:create]
 
   def create
@@ -6,15 +7,9 @@ class MessagesController < ApplicationController
     @message.user = current_user
     authorize @message
     if @message.save
-      if @message.user == @deal.advisor
-        @deal.client_notifications += 1
-        @deal.advisor_notifications = 0
-        receiver = @deal.client
-      elsif @message.user == @deal.client
-        @deal.advisor_notifications += 1
-        @deal.client_notifications = 0
-        receiver = @deal.advisor
-      end
+      set_receiver
+      @deal.increment_notifications(@receiver)
+      @deal.reset_notifications(current_user)
       @deal.save(validate: false)
       DealNotificationsBroadcastJob.perform_later(@deal)
       respond_to do |format|

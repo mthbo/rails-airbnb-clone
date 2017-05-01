@@ -6,6 +6,6 @@
 
 <p><%= t('.instructions_html', advisor: @deal.advisor.first_name, date: l(@deal.deadline.to_date, format: :long)) %></p>
 
-<%= render 'deal_button', label: t('.action', client: @deal.advisor.first_name) %>
+<%= render 'deal_button', label: t('.action', advisor: @deal.advisor.first_name) %>
 
 <%= render 'shared/mail_signature' %>

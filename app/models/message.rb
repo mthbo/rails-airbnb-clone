@@ -1,4 +1,6 @@
 class Message < ApplicationRecord
+  include StatusMessages
+
   belongs_to :user
   belongs_to :deal
 
@@ -7,28 +9,6 @@ class Message < ApplicationRecord
   enum target: [ :message, :deal_status, :deal_status_alert ]
 
   after_create_commit :async_message_broadcast
-
-  def build_deal_status_message
-    if self.deal.proposition?
-      self.content = '.new_proposition'
-      self.target = 'deal_status'
-    elsif self.deal.proposition_declined?
-      self.content = '.proposition_declined'
-      self.target = 'deal_status_alert'
-    elsif self.deal.opened?
-      self.content = '.session_open'
-      self.target = 'deal_status'
-    elsif self.deal.open_expired?
-      self.content = '.session_deadline_passed'
-      self.target = 'deal_status_alert'
-    elsif self.deal.closed?
-      self.content = '.session_closed'
-      self.target = 'deal_status_alert'
-    elsif self.deal.cancelled?
-      self.content = '.session_cancelled'
-      self.target = 'deal_status_alert'
-    end
-  end
 
   def date_formatted
     if created_at.year < DateTime.current.in_time_zone.year
