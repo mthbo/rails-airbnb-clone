@@ -1,0 +1,23 @@
+<div class="modal fade" id="deal-open" tabindex="-1" role="dialog" aria-labelledby="dealOpenLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="dealOpenLabel"><%= t '.session_open' %></h4>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+          <h2 class="no-margin-bottom blue"><i class="fa fa-handshake-o fa-2x" aria-hidden="true"></i></h2>
+           <p class="font-weight-normal blue"><%= t '.agreement_reached' %></p>
+        </div>
+        <div class="padded-top-xs padded-bottom-xs">
+          <p><%= t('.payment_confirmed') unless (deal.amount_cents.blank? || deal.amount_cents.zero?) %> <%= t '.agreement_recap', name: deal.advisor.first_name %></p>
+          <p><%= t '.session_open_until' %> <span class="font-weight-normal"><%= l(deal.deadline.to_date, format: :long) %></span>.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back_to_session' %></button>
+      </div>
+    </div>
+  </div>
+</div>

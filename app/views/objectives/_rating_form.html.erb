@@ -1,4 +1,4 @@
-<%= simple_form_for objective, remote: true do |f| %>
+<%= simple_form_for objective, remote: true, data: {"no-loader" => true} do |f| %>
 
   <%= f.input :rating, label: false do %>
     <%= f.select :rating, Objective.evaluations, {include_blank: true}, {class: "form-control star-rating-yellow", onchange: "$(this.form).submit()"} %>

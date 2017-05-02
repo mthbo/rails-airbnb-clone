@@ -100,6 +100,7 @@ en:
         other: Means of communication
     info_proposition:
       proposition: Proposition
+      agreement: Agreement
       free: FREE
       languages:
         one: Language
@@ -137,6 +138,13 @@ en:
       go_back: Go back
     stripe_payment:
       accept_and_pay: Accept and pay
+    deal_open:
+      session_open: Session open
+      agreement_reached: Agreement reached!
+      payment_confirmed: "Your payment has been confirmed. "
+      agreement_recap: "You will receive an email containing the details of your agreement with %{name}."
+      session_open_until: The session is open until
+      go_back_to_session: Go back to session
     info_deal:
       client_declined: "%{name} declined your proposition. Submit a new proposition or cancel the session if you don't want to continue."
       you_declined: "You declined the proposition. Ask for a new proposition or cancel the session if you don't want to continue."

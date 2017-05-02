@@ -5,4 +5,5 @@ $('#deal-objectives-in-form').empty();
   <% @deal.objectives.each_with_index do |objective, i| %>
     $('#deal-objectives-in-form').append("<%= j render 'objectives/show_in_form', objective: objective, number: (i + 1) %>");
   <% end %>
+  unactivateLoader();
 <% end %>

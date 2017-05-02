@@ -22,6 +22,7 @@
 //= require google_maps_autocomplete
 //= require home_background
 //= require init_attachinary
+//= require loader
 //= require locale
 //= require mobile_detection
 //= require navbar_menu

@@ -6,9 +6,11 @@
   $('#deal-objectives-in-form').append(new_objective);
   new_objective.slideDown();
   $('#new_objective').html("<%= j render 'objectives/form', deal: @deal, objective: Objective.new %>");
+  unactivateLoader();
 <% else %>
   var new_objective = $("<%= j render 'objectives/show_in_form', objective: @objective, number: @deal.objectives_count %>").hide();
   $('#deal-objectives-in-form').append(new_objective);
   new_objective.slideDown();
   $('#new_objective').html("<%= j render 'objectives/form', deal: @deal, objective: Objective.new %>");
+  unactivateLoader();
 <% end %>

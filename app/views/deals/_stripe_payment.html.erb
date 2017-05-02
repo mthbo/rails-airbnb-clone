@@ -1,9 +1,10 @@
-<button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-check fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept_and_pay' %></button>
+<button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-handshake-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept_and_pay' %></button>
 
-<%= form_tag deal_payments_path(deal), id: "paymentForm" do %>
+<%= form_tag deal_payments_path(deal), id: "paymentForm", remote: true do %>
 
   <%= hidden_field_tag 'stripeToken' %>
   <%= hidden_field_tag 'stripeEmail' %>
+  <%= submit_tag "", id: 'paymentFormSubmit', class: "hidden" %>
 
   <script>
     var handler = StripeCheckout.configure({
@@ -15,7 +16,7 @@
       token: function(token) {
         document.getElementById("stripeToken").value = token.id;
         document.getElementById("stripeEmail").value = token.email;
-        document.getElementById("paymentForm").submit();
+        document.getElementById("paymentFormSubmit").click();
       }
     });
 

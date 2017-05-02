@@ -1,7 +1,7 @@
 <div class="deal-proposition">
 
   <div class="deal-proposition-top">
-    <h4 class="font-weight-normal"><%= t '.proposition' %></h4>
+    <h4 class="font-weight-normal"><%= (deal.proposition_any? || deal.cancelled?) ? t('.proposition') : t('.agreement') %></h4>
     <div class="deal-proposition-figures">
       <p>
         <span class="info-icon">
@@ -96,11 +96,11 @@
           </div>
         <% elsif deal.proposition_declined? || deal.cancelled? %>
           <div class="text-right deal-proposition-status">
-            <p class="red font-weight-normal"><i class="fa fa-ban fa-fw" aria-hidden="true"></i>&nbsp; <%= t '.declined' %></p>
+            <p class="red font-weight-normal"><i class="fa fa-thumbs-o-down fa-fw fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.declined' %></p>
           </div>
         <% else %>
           <div class="text-right deal-proposition-status">
-            <p class="blue font-weight-normal"><i class="fa fa-check fa-fw" aria-hidden="true"></i>&nbsp; <%= t '.accepted' %></p>
+            <p class="blue font-weight-normal"><i class="fa fa-handshake-o fa-fw fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.accepted' %></p>
           </div>
         <% end %>
       </div>

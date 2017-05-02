@@ -47,6 +47,7 @@ ActiveAdmin.register User do
       row :city
       row :country
       row :locale
+      row :stripe_id
       row :admin
     end
     attributes_table do
@@ -107,6 +108,7 @@ ActiveAdmin.register User do
       f.input :city
       f.input :country_code
       f.input :locale
+      f.input :stripe_id
     end
     f.inputs "Admin" do
       f.input :admin
@@ -115,6 +117,6 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :admin, :confirmed_at
+  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :stripe_id, :admin, :confirmed_at
 
 end

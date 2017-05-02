@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-red" data-toggle="modal" data-target="#deal-proposition-decline">
-  <i class="fa fa-ban" aria-hidden="true"></i>&nbsp; <%= t '.decline' %>
+  <i class="fa fa-thumbs-o-down" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.decline' %>
 </button>
 
 <div class="modal fade" id="deal-proposition-decline" tabindex="-1" role="dialog" aria-labelledby="dealPropositionDeclineLabel">
@@ -18,7 +18,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
         <%= link_to decline_proposition_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-red" do %>
-          <i class="fa fa-ban fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.decline' %>
+          <i class="fa fa-thumbs-o-down fa-lg fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.decline' %>
         <% end %>
       </div>
     </div>

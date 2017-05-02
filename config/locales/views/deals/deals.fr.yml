@@ -100,6 +100,7 @@ fr:
         other: Moyens de communication
     info_proposition:
       proposition: Proposition
+      agreement: Accord
       free: GRATUIT
       languages:
         one: Langue
@@ -112,7 +113,7 @@ fr:
       expires_on: Expire le
       pending: En attente
       declined: Refusée
-      accepted: Acceptée
+      accepted: Accepté
     cancel:
       cancel_session: Annuler la session
       session_cancellation: Annulation de la session
@@ -137,6 +138,13 @@ fr:
       go_back: Revenir
     stripe_payment:
       accept_and_pay: Accepter et payer
+    deal_open:
+      session_open: Session ouverte
+      agreement_reached: Accord conclu!
+      payment_confirmed: "Votre paiement a été confirmé."
+      agreement_recap: "Vous allez recevoir un e-mail contenant les détails de l'accord conclu avec %{name}."
+      session_open_until: La session est ouverte jusqu'au
+      go_back_to_session: Revenir à la session
     info_deal:
       client_declined: "%{name} a refusé votre proposition. Soumettez une nouvelle proposition ou annulez la session si vous ne voulez pas poursuivre."
       you_declined: "Vous avez refusé la proposition. Demandez une nouvelle proposition ou annulez la session si vous ne voulez pas poursuivre."

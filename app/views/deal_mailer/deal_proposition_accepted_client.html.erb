@@ -1,6 +1,11 @@
 <p><%= t('.greeting', client: @deal.client.first_name) %></p>
 
-<p><%= t('.message', advisor: @deal.advisor.first_name) %></p>
+<% if @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
+  <p><%= t('.message_free', advisor: @deal.advisor.first_name) %></p>
+<% else %>
+  <p><%= t('.message', advisor: @deal.advisor.first_name) %></p>
+<% end %>
+
 
 <%= render 'proposition_recap', header: t('.agreement') %>
 

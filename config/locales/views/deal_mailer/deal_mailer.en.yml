@@ -75,7 +75,8 @@ en:
     deal_proposition_accepted_client:
       subject: "#session-%{id} | Session open"
       greeting: Hello %{client},
-      message: "You accepted the proposition of %{advisor}, who is now committed to deliver the service as part of your agreement."
+      message_free: "You accepted the proposition of %{advisor}, who is now committed to deliver the service as part of your agreement."
+      message: "You accepted the proposition of %{advisor} and your payment has been confirmed. %{advisor} is now committed to deliver the service as part of your agreement."
       agreement: Agreement
       instructions_html: "The session is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{advisor} as of now!"
       action: Get in touch with %{advisor}

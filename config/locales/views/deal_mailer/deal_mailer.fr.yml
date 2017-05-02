@@ -68,15 +68,16 @@ fr:
       subject: "#session-%{id} | Session ouverte"
       greeting: Bonjour %{advisor},
       message: "%{client} a accepté votre proposition! Vous êtes désormais engagé(e) à fournir votre service selon l'accord conclu."
-      agreement: Accord conclu
+      agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{client} dès maintenant!"
       info: "Le versement de %{amount} %{currency} sur votre compte sera effectué à l'issue de la session, après sa clôture."
       action: Contactez %{client}
     deal_proposition_accepted_client:
       subject: "#session-%{id} | Session ouverte"
       greeting: Bonjour %{client},
-      message: "Vous avez accepté la proposition de %{advisor}, qui est désormais engagé(e) à fournir son service selon l'accord conclu."
-      agreement: Accord conclu
+      message_free: "Vous avez accepté la proposition de %{advisor}, qui est désormais engagé(e) à fournir son service selon l'accord conclu."
+      message: "Vous avez accepté la proposition de %{advisor} et votre paiement a été confirmé. %{advisor} est désormais engagé(e) à fournir son service selon l'accord conclu."
+      agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{advisor} dès maintenant!"
       action: Contactez %{advisor}
     deal_expired_advisor:

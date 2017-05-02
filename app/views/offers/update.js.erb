@@ -9,6 +9,7 @@
       var $trigger = $("<%= j render 'offers/status_trigger', offer: @offer %>").hide();
       $trigger_box.append($trigger);
       $trigger.show();
+      unactivateLoader();
     });
   } else if ($trigger_button.hasClass('inactivate-offer-btn')) {
     $trigger_button.animate({right:"+=18px"}, 'fast', 'swing', function() {
@@ -16,6 +17,7 @@
       var $trigger = $("<%= j render 'offers/status_trigger', offer: @offer %>").hide();
       $trigger_box.append($trigger);
       $trigger.show();
+      unactivateLoader();
     });
   }
 
