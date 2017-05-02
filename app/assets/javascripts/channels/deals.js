@@ -81,9 +81,12 @@ function typeMessage(dealId) {
 }
 
 function submitMessage() {
-  $('#message_content').on('keydown', function(event) {
+  $('#message_content').on('keyup', function(event) {
     if (event.keyCode === 13 && !event.shiftKey && !isMobile()) {
       $('#submit_message').click();
     }
+  });
+  $("#new_message").on('ajax:beforeSend', function() {
+    $('#message_content').val("");
   });
 }

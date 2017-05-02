@@ -12,9 +12,6 @@ class MessagesController < ApplicationController
       @deal.reset_notifications(current_user)
       @deal.save(validate: false)
       DealNotificationsBroadcastJob.perform_later(@deal)
-      respond_to do |format|
-        format.js
-      end
     end
   end
 
