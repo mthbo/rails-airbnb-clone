@@ -4,8 +4,8 @@ class PaymentsController < ApplicationController
   skip_after_action :verify_authorized, only: [:create]
 
   def create
-    if @deal.client.stripe_id
-      @customer = Stripe::Customer.retrieve(@deal.client.stripe_id)
+    if @deal.client.stripe_customer_id
+      @customer = Stripe::Customer.retrieve(@deal.client.stripe_customer_id)
       @customer.respond_to?(:deleted) ? create_customer : update_customer
     else
       create_customer
@@ -19,7 +19,7 @@ class PaymentsController < ApplicationController
     @deal.save
     @deal.opened!
     @deal.paid!
-    @deal.client.update(stripe_id: @customer.id)
+    @deal.client.update(stripe_customer_id: @customer.id)
     Message.create_status_message(@deal, current_user)
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     DealCardsBroadcastJob.perform_later(@deal)
@@ -53,6 +53,9 @@ private
   end
 
   def update_customer
+    # existing_source_ids = @customer.sources.map { |source| source.id }
+    # new_source = @customer.sources.new(source: params[:stripeToken])
+    # new_source.save unless existing_source_ids.include?(new_source.id)
     @customer.source = params[:stripeToken]
     @customer.email = params[:stripeEmail]
     @customer.save
@@ -61,7 +64,9 @@ private
   def create_charge
     @charge = Stripe::Charge.create(
       customer:     @customer.id,
-      amount:       @deal.total_amount_cents,
+      amount:       @deal.amount_cents,
+      # application_fee: @deal.fees_cents,,
+      # destination: @deal.advisor.stripe_account_id
       description:  "##{t('session')}-#{@deal.id} | #{@deal.title}",
       currency:     @deal.total_amount.currency
     )
