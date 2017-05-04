@@ -76,6 +76,7 @@ i = 0
     last_name: last_names[i],
     password: "password",
     locale: 'fr',
+    currency_code: 'EUR',
     phone_number: "+336#{Faker::PhoneNumber.subscriber_number(8)}",
     email: "#{first_names[i].downcase}.#{last_names[i].downcase}@papoters-test.com",
     city: cities[i],
@@ -196,6 +197,7 @@ end
     advisor_rating: (1..5).to_a.sample,
     languages: offer.languages,
     means: offer.means,
+    currency_code: 'EUR',
     amount_cents: random_amount,
     fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
   )
@@ -246,6 +248,7 @@ end
     opened_at: Faker::Time.between(6.days.ago, 10.days.ago),
     languages: offer.languages,
     means: offer.means,
+    currency_code: 'EUR',
     amount_cents: random_amount,
     fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
   )
@@ -294,6 +297,7 @@ end
     proposition_at: Faker::Time.between(1.day.ago, 2.days.ago),
     languages: offer.languages,
     means: offer.means,
+    currency_code: 'EUR',
     amount_cents: random_amount,
     fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
   )

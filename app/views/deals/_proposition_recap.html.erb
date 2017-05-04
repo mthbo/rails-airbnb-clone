@@ -6,8 +6,8 @@
       <% if (deal.amount_cents.blank? || deal.amount_cents.zero?) %>
         <span class="font-weight-normal blue"><%= t('.free') %></span>
       <% else %>
-        <span class="font-weight-normal blue"><%= t('money', amount: humanized_money(deal.total_amount), currency: deal.amount.currency.symbol )  %></span>&nbsp;
-        <em>( <%= t('.including_fees') %> <%= t('money', amount: humanized_money(deal.fees), currency: deal.amount.currency.symbol ) %> )</em>
+        <span class="font-weight-normal blue"><%= t('money', amount: humanized_money(deal.total_amount_converted(current_user.currency_code)), currency: deal.total_amount_converted(current_user.currency_code).symbol )  %></span>&nbsp;
+        <em>( <%= t('.including_fees') %> <%= t('money', amount: humanized_money(deal.fees_converted(current_user.currency_code)), currency: deal.fees_converted(current_user.currency_code).symbol ) %> )</em>
       <% end %>
       &nbsp;&nbsp;
     </p>

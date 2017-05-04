@@ -1,3 +1,5 @@
+require "money/bank/google_currency"
+
 MoneyRails.configure do |config|
 
     # To set the default currency
@@ -8,13 +10,14 @@ MoneyRails.configure do |config|
   #
   # Example:
   # config.default_bank = EuCentralBank.new
+  config.default_bank = Money::Bank::GoogleCurrency.new
 
   # Add exchange rates to current money bank object.
   # (The conversion rate refers to one direction only)
   #
   # Example:
-  config.add_rate "EUR", "USD", 1.09345
-  config.add_rate "USD", "EUR", 0.914536559
+  # config.add_rate "EUR", "USD", 1.09345
+  # config.add_rate "USD", "EUR", 0.914536559
 
   # To handle the inclusion of validations for monetized fields
   # The default value is true

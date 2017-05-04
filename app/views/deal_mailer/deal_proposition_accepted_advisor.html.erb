@@ -2,14 +2,14 @@
 
 <p><%= t('.message', client: @deal.client.first_name) %></p>
 
-<%= render 'proposition_recap', header: t('.agreement') %>
+<%= render 'proposition_recap', header: t('.agreement'), receiver: @deal.advisor %>
 
 <p><%= t('.instructions_html', client: @deal.client.first_name, date: l(@deal.deadline.to_date, format: :long)) %></p>
 
 <%= render 'deal_button', label: t('.action', client: @deal.client.first_name) %>
 
 <% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
-  <p style="font-weight: normal; color: #EE5F5B"><em><%= t('.info', amount: humanized_money(@deal.amount), currency: @deal.amount.currency.symbol ) %></em></p>
+  <p style="font-weight: normal; color: #EE5F5B"><em><%= t('.info', amount: humanized_money(@deal.amount_converted(@deal.advisor.currency_code)), currency: @deal.amount_converted(@deal.advisor.currency_code).symbol ) %></em></p>
 <% end %>
 
 <%= render 'shared/mail_signature' %>

@@ -7,7 +7,7 @@
 <% end %>
 
 
-<%= render 'proposition_recap', header: t('.agreement') %>
+<%= render 'proposition_recap', header: t('.agreement'), receiver: @deal.client %>
 
 <p><%= t('.instructions_html', advisor: @deal.advisor.first_name, date: l(@deal.deadline.to_date, format: :long)) %></p>
 

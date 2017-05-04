@@ -2,11 +2,17 @@
   <span class="info-icon"><%= image_tag 'amount.svg' %></span>
   <% if offer.free? %>
     <strong><%= t '.free' %></strong>
-  <% elsif offer.median_amount_money.nil? %>
+  <% elsif offer.median_amount_cents.nil? %>
     <span class="medium-gray"><%= t '.no_history' %></span>
   <% else %>
-    <span class="medium-gray"><%= t('money', amount: money_without_cents(offer.min_amount_money), currency: offer.min_amount_money.currency.symbol ) %> &mdash; </span>
-    <strong><%= t('money', amount: money_without_cents(offer.median_amount_money), currency: offer.median_amount_money.currency.symbol ) %></strong>
-    <span class="medium-gray"> &mdash; <%= t('money', amount: money_without_cents(offer.max_amount_money), currency: offer.max_amount_money.currency.symbol ) %></span>
+    <% if user_signed_in? %>
+      <span class="medium-gray"><%= t('money', amount: money_without_cents(offer.min_amount_converted(current_user.currency_code)), currency: offer.min_amount_converted(current_user.currency_code).symbol ) %> &mdash; </span>
+      <strong><%= t('money', amount: money_without_cents(offer.median_amount_converted(current_user.currency_code)), currency: offer.median_amount_converted(current_user.currency_code).symbol ) %></strong>
+      <span class="medium-gray"> &mdash; <%= t('money', amount: money_without_cents(offer.max_amount_converted(current_user.currency_code)), currency: offer.max_amount_converted(current_user.currency_code).symbol ) %></span>
+    <% else %>
+      <span class="medium-gray"><%= t('money', amount: money_without_cents(offer.min_amount_converted), currency: offer.min_amount_converted.symbol ) %> &mdash; </span>
+      <strong><%= t('money', amount: money_without_cents(offer.median_amount_converted), currency: offer.median_amount_converted.symbol ) %></strong>
+      <span class="medium-gray"> &mdash; <%= t('money', amount: money_without_cents(offer.max_amount_converted), currency: offer.max_amount_converted.symbol ) %></span>
+    <% end %>
   <% end %>
 </p>

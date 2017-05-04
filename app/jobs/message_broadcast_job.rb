@@ -7,6 +7,7 @@ class MessageBroadcastJob < ApplicationJob
         "deal_#{message.deal_id}:messages_#{locale}",
         message: render_message(message, locale),
         state: "sending",
+        target: message.target,
         user_id: message.user.id
       )
     end

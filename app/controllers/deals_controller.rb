@@ -39,7 +39,7 @@ class DealsController < ApplicationController
 
   def save_proposition
     if @deal.update(deal_params)
-      @deal.round_amount_and_set_fees if @deal.amount
+      @deal.set_fees if @deal.amount
       @deal.save
       respond_to do |format|
         format.js

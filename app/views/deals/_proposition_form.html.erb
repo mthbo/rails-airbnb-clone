@@ -39,7 +39,7 @@
       </p>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :amount, as: :custom, symbol: deal.advisor.currency.symbol, required: true, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? money_without_cents(deal.amount) : nil } %>
+          <%= f.input :amount, as: :custom, symbol: deal.advisor.currency.symbol, required: true, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? deal.amount : nil } %>
         </div>
       </div>
     </div>
