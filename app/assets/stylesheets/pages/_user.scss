@@ -4,6 +4,50 @@
   }
 }
 
-.user-edit-profile {
-  padding-top: 30px;
+.user-info-top {
+  display: flex;
+  justify-content: space-between;
+  h2 {
+    flex: 1 0 auto;
+  };
+  p {
+    padding-top: 30px;
+    padding-left: 15px;
+  }
+}
+
+.user-offers-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    flex: 1 0 auto;
+  };
+  div {
+    padding-top: 15px;
+    padding-left: 15px;
+  }
+}
+
+.user-stripe-account {
+  padding: 20px 45px;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  div {
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  .user-stripe-account {
+    padding: 15px;
+    flex-direction: column;
+    div {
+      padding-top: 15px;
+      padding-left: 0;
+    }
+  }
 }

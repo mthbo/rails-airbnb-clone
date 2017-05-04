@@ -12,6 +12,8 @@ en:
       my_offers: "My offers"
       offers: "Offers of %{user}"
       new_offer: "New offer"
+      accept_payment_instructions_html: "You need to connect your account with Stripe and to provide your bank account information <span class='font-weight-normal'>to price your services</span>."
+      connect_with_stripe: Connect with Stripe
       no_offers_you: "You have no offer published."
       publish_offer: "Publish an offer"
       or: "or"

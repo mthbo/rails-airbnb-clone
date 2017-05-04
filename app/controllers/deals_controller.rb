@@ -217,6 +217,7 @@ class DealsController < ApplicationController
       :room_name,
       :deadline,
       :amount,
+      :currency_code,
       :proposition,
       :proposition_at,
       :opened_at,

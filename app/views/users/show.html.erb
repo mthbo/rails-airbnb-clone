@@ -19,37 +19,29 @@
 <div class="padded-top-xs padded-bottom-xl">
   <div class="container">
     <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-      <div class="<%= @user == current_user ? 'col-xs-8 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
-        <h2>
-          <% if @user == current_user %>
-            <%= t('.about_me') %>
-          <% else %>
-            <%= t('.about', user: @user.first_name) %>
+        <div class="user-info-top">
+          <h2><%= @user == current_user ? t('.about_me') : t('.about', user: @user.first_name) %></h2>
+          <% if policy(@user).edit? %>
+            <p class="text-right">
+              <%= link_to edit_user_registration_path do %>
+                <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; <%= t('.edit_my_profile') %>
+              <% end %>
+            </p>
           <% end %>
-        </h2>
-      </div>
-      <% if policy(@user).edit? %>
-        <div class="col-xs-4 col-lg-5 text-right user-edit-profile">
-          <p>
-            <%= link_to edit_user_registration_path do %>
-              <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; <%= t('.edit_my_profile') %>
-            <% end %>
-          </p>
         </div>
-      <% end %>
-
-      <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-top-xs">
-        <% if @user.bio.present? %>
-          <%= sanitize markdown_to_html(@user.bio) %>
-        <% elsif policy(@user).edit? %>
-          <p class="font-weight-normal"><%= t('.no_information_you') %></p>
-          <p><%= link_to t('.edit_your_profile'), edit_user_registration_path %> <%= t('.be_known') %></p>
-        <% else %>
-          <p><%= t('.no_information', user: @user.first_name) %></p>
-        <% end %>
+        <div class="padded-top-xs">
+          <% if @user.bio.present? %>
+            <%= sanitize markdown_to_html(@user.bio) %>
+          <% elsif policy(@user).edit? %>
+            <p class="font-weight-normal"><%= t('.no_information_you') %></p>
+            <p><%= link_to t('.edit_your_profile'), edit_user_registration_path %> <%= t('.be_known') %></p>
+          <% else %>
+            <p><%= t('.no_information', user: @user.first_name) %></p>
+          <% end %>
+        </div>
       </div>
-
     </div>
   </div>
 </div>
@@ -57,27 +49,33 @@
 <div class="bg-light-gray padded-top-s padded-bottom-xl">
   <div class="container">
     <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-      <div class="<%= @user == current_user ? 'col-xs-6 col-lg-5 col-lg-offset-1' : 'col-xs-12 col-lg-5 col-lg-offset-1' %>" >
-        <h2>
-          <% if @user == current_user %>
-            <%= t('.my_offers') %>
-          <% else %>
-            <%= t('.offers', user: @user.first_name) %>
-          <% end %>
-        </h2>
-      </div>
-      <% if policy(@user.offers.new).new? %>
-        <div class="col-xs-6 col-lg-5 text-right padded-top-xs">
-          <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
-            <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+        <div class="user-offers-top">
+          <h2><%= @user == current_user ? t('.my_offers') : t('.offers', user: @user.first_name) %></h2>
+          <% if policy(@user.offers.new).new? %>
+            <div>
+              <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
+                <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+              <% end %>
+            </div>
           <% end %>
         </div>
-      <% end %>
 
-      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
         <% if @user == current_user %>
           <% if @user.offers_published.present? %>
+            <% unless @user.stripe_account_id %>
+              <div class="padded-top-s">
+                <div class="user-stripe-account">
+                  <p class="no-margin-bottom"><%= t '.accept_payment_instructions_html' %></p>
+                  <div>
+                    <a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=<%= ENV['STRIPE_CLIENT_ID'] %>&scope=read_write" class="btn btn-gray">
+                      <span class="info-icon"><%= image_tag 'stripe.svg' %></span><%= t '.connect_with_stripe' %>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            <% end %>
             <% @user.offers_published.each do |offer| %>
               <%= render "offers/card_without_user", offer: offer %>
             <% end %>
@@ -87,6 +85,7 @@
               <p><%= link_to t('.publish_offer'), new_offer_path %> <%= t '.or' %> <%= link_to t('.find_out_more'), be_advisor_path %> <%= t '.know_more' %></p>
             </div>
           <% end %>
+
         <% else %>
           <% if @user.offers_active.present? %>
             <% @user.offers_active.each do |offer| %>
@@ -96,8 +95,8 @@
             <p><%= t '.no_offers', user: @user.first_name %></p>
           <% end %>
         <% end %>
-      </div>
 
+      </div>
     </div>
   </div>
 </div>
