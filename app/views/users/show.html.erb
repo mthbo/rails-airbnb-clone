@@ -64,7 +64,7 @@
 
         <% if @user == current_user %>
           <% if @user.offers_published.present? %>
-            <% unless @user.stripe_account_id %>
+            <% if @user.stripe_account_id.blank? %>
               <div class="padded-top-s">
                 <div class="user-stripe-account">
                   <p class="no-margin-bottom"><%= t '.accept_payment_instructions_html' %></p>

@@ -48,27 +48,29 @@ private
   def create_customer
     @customer = Stripe::Customer.create(
       source: params[:stripeToken],
-      email:  params[:stripeEmail]
+      email:  params[:stripeEmail],
+      description: "#{@deal.client.first_name} #{@deal.client.last_name}"
     )
   end
 
   def update_customer
-    # existing_source_ids = @customer.sources.map { |source| source.id }
-    # new_source = @customer.sources.new(source: params[:stripeToken])
-    # new_source.save unless existing_source_ids.include?(new_source.id)
-    @customer.source = params[:stripeToken]
+    card = Stripe::Token.retrieve(params[:stripeToken]).card
+    default_source = @customer.sources.data.select{|source| source.fingerprint == card.fingerprint}.last if card
+    default_source = @customer.sources.create(card: params[:stripeToken]) unless default_source
+    @customer.default_source = default_source.id
     @customer.email = params[:stripeEmail]
+    @customer.description = "#{@deal.client.first_name} #{@deal.client.last_name}"
     @customer.save
   end
 
   def create_charge
     @charge = Stripe::Charge.create(
       customer:     @customer.id,
-      amount:       @deal.amount_cents,
-      # application_fee: @deal.fees_cents,,
-      # destination: @deal.advisor.stripe_account_id
+      amount:       @deal.total_amount_converted(current_user.currency).cents,
+      # application_fee: @deal.fees_cents,
+      # destination: @deal.advisor.stripe_account_id,
       description:  "##{t('session')}-#{@deal.id} | #{@deal.title}",
-      currency:     @deal.total_amount.currency
+      currency:     @deal.total_amount_converted(current_user.currency).currency.to_s
     )
   end
 

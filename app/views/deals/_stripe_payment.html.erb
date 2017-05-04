@@ -10,7 +10,7 @@
     var handler = StripeCheckout.configure({
       key: "<%= Rails.configuration.stripe[:publishable_key] %>",
       image: "<%= image_path('papoters_stripe.png') %>",
-      color: "black",
+      color: "white",
       locale: "<%= I18n.locale %>",
       email: "<%= current_user.email %>",
       token: function(token) {
@@ -21,16 +21,16 @@
     });
 
     document.getElementById('payButton').addEventListener('click', function(e) {
-        // Open Checkout with further options:
-        $('.modal').modal('hide');
-        handler.open({
-          name: 'Papoters',
-          description: "#<%= t('session') %>-<%= deal.id %> | <%= deal.title %>",
-          zipCode: true,
-          currency: "<%= deal.total_amount.currency %>",
-          amount: <%= deal.total_amount_cents %>
-        });
-        e.preventDefault();
+      $('.modal').modal('hide');
+      // Open Checkout with further options:
+      handler.open({
+        name: 'Papoters',
+        description: "#<%= t('session') %>-<%= deal.id %> | <%= deal.title %>",
+        zipCode: true,
+        currency: "<%= deal.total_amount_converted(current_user.currency).currency %>",
+        amount: <%= deal.total_amount_converted(current_user.currency).cents %>
+      });
+      e.preventDefault();
     });
 
     // Close Checkout on page navigation:
