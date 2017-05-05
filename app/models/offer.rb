@@ -190,15 +190,15 @@ class Offer < ApplicationRecord
   # Pricing stat
 
   def min_amount_cents
-    deals_closed.where.not(amount_cents: nil).map { |deal| deal.total_amount.exchange_to(Money.default_currency).cents }.min
+    deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.min
   end
 
   def max_amount_cents
-    deals_closed.where.not(amount_cents: nil).map { |deal| deal.total_amount.exchange_to(Money.default_currency).cents }.max
+    deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.max
   end
 
   def median_amount_cents
-    amounts = deals_closed.where.not(amount_cents: nil).map { |deal| deal.total_amount.exchange_to(Money.default_currency).cents }.sort
+    amounts = deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.sort
     len = amounts.length
     len.zero? ? nil : (amounts[(len - 1) / 2] + amounts[len / 2]) / 2
   end

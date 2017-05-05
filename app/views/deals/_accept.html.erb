@@ -1,5 +1,5 @@
 <button type="button" class="btn btn-blue" data-toggle="modal" data-target="#deal-proposition-acceptation">
-  <i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept' %>
+  <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept' %>
 </button>
 
 <div class="modal fade" id="deal-proposition-acceptation" tabindex="-1" role="dialog" aria-labelledby="dealPropositionAcceptationLabel">
@@ -26,7 +26,7 @@
 
           <% else %>
             <%= link_to open_session_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
-              <i class="fa fa-handshake-o fa-lg fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept' %>
+              <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept' %>
             <% end %>
           <% end %>
       </div>

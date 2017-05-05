@@ -1,4 +1,4 @@
-<button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-handshake-o fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept_and_pay' %></button>
+<button id="payButton" class="btn btn-form btn-blue"><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept_and_pay' %></button>
 
 <%= form_tag deal_payments_path(deal), id: "paymentForm", remote: true do %>
 
@@ -27,8 +27,8 @@
         name: 'Papoters',
         description: "#<%= t('session') %>-<%= deal.id %> | <%= deal.title %>",
         zipCode: true,
-        currency: "<%= deal.total_amount_converted(current_user.currency).currency %>",
-        amount: <%= deal.total_amount_converted(current_user.currency).cents %>
+        currency: "<%= deal.amount_converted(current_user.currency).currency %>",
+        amount: <%= deal.amount_converted(current_user.currency).cents %>
       });
       e.preventDefault();
     });

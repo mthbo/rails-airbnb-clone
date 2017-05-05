@@ -18,7 +18,7 @@
   <% if deal.offer.free? && deal.offer.free_deals > 0 %>
     <div class="padded-top-xs padded-bottom-xs">
       <div class="custom-form-warning bg-white-transparent">
-        <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
+        <%= image_tag('amount.svg') %>
         <p><%= t '.session_for_free' %> <%= t '.sessions_before_pricing_html', count: (@deal.offer.free_deals) %></p>
       </div>
     </div>
@@ -26,7 +26,7 @@
   <% elsif deal.offer.free? %>
     <div class="padded-top-xs padded-bottom-xs">
       <div class="custom-form-warning bg-white-transparent">
-        <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
+        <%= image_tag('amount.svg') %>
         <p><%= t '.session_for_free' %> <%= link_to t('.edit_offer'), edit_offer_path(deal.offer) %> <%= t '.to_propose_priced_services' %></p>
       </div>
     </div>
@@ -34,12 +34,12 @@
   <% elsif deal.offer.priced? %>
     <div class="padded-top-xs">
       <p>
-        <%= t '.set_price' %><br>
-        <em  class="font-weight-normal"><%= t '.amount_range', min: money_without_cents(deal.min_amount), currency: deal.min_amount.currency.symbol %> &nbsp; | &nbsp; <%= t '.leave_blank_if_free' %></em>
+        <%= t '.set_amount', name: deal.client.first_name %><br>
+        <em  class="font-weight-normal"><%= t '.amount_range', min: deal.min_amount.to_i, currency: deal.min_amount.currency.symbol %> &nbsp; | &nbsp; <%= t '.leave_blank_if_free' %></em>
       </p>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :amount, as: :custom, symbol: deal.advisor.currency.symbol, required: true, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? deal.amount : nil } %>
+          <%= f.input :amount, as: :custom, symbol: deal.advisor.currency.symbol, required: true, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? deal.amount.to_f : nil } %>
         </div>
       </div>
     </div>

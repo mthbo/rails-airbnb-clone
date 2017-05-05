@@ -4,12 +4,12 @@
 
 <%= render 'deal_title' %>
 
+<% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
+  <p><%= t('.info') %></p>
+<% end %>
+
 <p><%= t('.instructions', client: @deal.client.first_name) %></p>
 
 <%= render 'deal_button', label: t('.action') %>
-
-<% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
-  <p style="font-weight: normal; color: #30485F"><em><%= t('.info', amount: humanized_money(@deal.amount_converted(@deal.advisor.currency_code)), currency: @deal.amount_converted(@deal.advisor.currency_code).symbol ) %></em></p>
-<% end %>
 
 <%= render 'shared/mail_signature' %>

@@ -66,13 +66,13 @@ en:
       describe_service_and_not_included: "Describe the service you propose to %{name} for this session. If necessary, indicate also what is not included in your service."
       describe_service: Describe the service proposed
       pick_date: Pick a date
-      set_price: Set the amount of your remuneration for this session (transactional fees will apply in addition to this amount).
+      set_amount: Set the amount owed by %{name} for this session (transactional fees will be withheld on this amount).
       amount_range: "min: %{currency}%{min}"
       leave_blank_if_free: Leave it blank for a free session.
       session_for_free: This session will be for free.
       sessions_before_pricing_html:
-        one: "You still need to achieve <span class='font-weight-normal red'>%{count} free session</span> for this offer before pricing your service."
-        other: "You still need to achieve <span class='font-weight-normal red'>%{count} free sessions</span> for this offer before pricing your service."
+        one: "You still need to achieve <span class='font-weight-normal'>%{count} free session</span> for this offer before pricing your service."
+        other: "You still need to achieve <span class='font-weight-normal'>%{count} free sessions</span> for this offer before pricing your service."
       edit_offer: Edit your offer
       to_propose_priced_services: if you want to price your service.
       set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."
@@ -141,7 +141,7 @@ en:
     deal_open:
       session_open: Session open
       agreement_reached: Agreement reached!
-      payment_confirmed: "Your payment has been confirmed. "
+      payment_authorized: "Your payment has been authorized."
       agreement_recap: "You will receive an email containing the details of your agreement with %{name}."
       session_open_until: The session is open until
       go_back_to_session: Go back to session

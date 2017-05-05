@@ -66,11 +66,9 @@ private
   def create_charge
     @charge = Stripe::Charge.create(
       customer:     @customer.id,
-      amount:       @deal.total_amount_converted(current_user.currency).cents,
-      # application_fee: @deal.fees_cents,
-      # destination: @deal.advisor.stripe_account_id,
+      amount:       @deal.amount_converted(current_user.currency).cents,
       description:  "##{t('session')}-#{@deal.id} | #{@deal.title}",
-      currency:     @deal.total_amount_converted(current_user.currency).currency.to_s
+      currency:     @deal.amount_converted(current_user.currency).currency.to_s
     )
   end
 

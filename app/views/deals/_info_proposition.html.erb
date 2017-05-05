@@ -13,7 +13,7 @@
         <span class="info-icon">
           <%= image_tag 'amount.svg' %>
         </span>
-        <strong><%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : t('money', amount: humanized_money(deal.total_amount_converted(current_user.currency_code)), currency: deal.total_amount_converted(current_user.currency_code).symbol) %></strong>
+        <strong><%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : t('money', amount: humanized_money(deal.amount_converted(current_user.currency_code)), currency: deal.amount_converted(current_user.currency_code).symbol) %></strong>
       </p>
       <p>
         <span class="info-icon">
@@ -100,7 +100,7 @@
           </div>
         <% else %>
           <div class="text-right deal-proposition-status">
-            <p class="blue font-weight-normal"><i class="fa fa-handshake-o fa-fw fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.accepted' %></p>
+            <p class="blue font-weight-normal"><i class="fa fa-thumbs-o-up fa-fw fa-lg" aria-hidden="true"></i>&nbsp; <%= t '.accepted' %></p>
           </div>
         <% end %>
       </div>

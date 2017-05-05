@@ -1,11 +1,12 @@
 <p><%= t('.greeting', client: @deal.client.first_name) %></p>
 
-<% if @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
-  <p><%= t('.message_free', advisor: @deal.advisor.first_name) %></p>
-<% else %>
-  <p><%= t('.message', advisor: @deal.advisor.first_name) %></p>
-<% end %>
+<p><%= t('.message', advisor: @deal.advisor.first_name) %></p>
 
+<% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
+  <p>
+    <%= t('.info_html', amount: humanized_money(@deal.amount_converted(@deal.client.currency_code)), currency: @deal.amount_converted(@deal.client.currency_code).symbol ) %>
+  </p>
+<% end %>
 
 <%= render 'proposition_recap', header: t('.agreement'), receiver: @deal.client %>
 

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show]
     get '/dashboard', to: 'users#dashboard'
+    get '/stripe_connection', to: 'users#stripe_connection'
     patch '/change_locale', to: 'users#change_locale'
 
     root to: 'pages#home'

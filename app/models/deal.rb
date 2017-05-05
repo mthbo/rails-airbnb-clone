@@ -12,7 +12,7 @@ class Deal < ApplicationRecord
 
   monetize :amount_cents, allow_nil: true, numericality: true, with_model_currency: :currency_code
   monetize :fees_cents, allow_nil: true, with_model_currency: :currency_code
-  monetize :total_amount_cents, allow_nil: true, with_model_currency: :currency_code
+  monetize :advisor_amount_cents, allow_nil: true, with_model_currency: :currency_code
 
   enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
   enum payment_state: [ :no_payment, :payment_pending, :paid ]
@@ -73,9 +73,9 @@ class Deal < ApplicationRecord
     end
   end
 
-  def total_amount_cents
+  def advisor_amount_cents
     if amount_cents && fees_cents
-      amount_cents + fees_cents
+      amount_cents - fees_cents
     end
   end
 
@@ -95,8 +95,8 @@ class Deal < ApplicationRecord
     fees.exchange_to(currency_code) if fees
   end
 
-  def total_amount_converted(currency_code=Money.default_currency.to_s)
-    total_amount.exchange_to(currency_code) if total_amount
+  def advisor_amount_converted(currency_code=Money.default_currency.to_s)
+    advisor_amount.exchange_to(currency_code) if advisor_amount
   end
 
 

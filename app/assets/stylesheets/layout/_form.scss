@@ -220,10 +220,9 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
-
-  i {
-    font-size: 25px;
+  img {
     margin-right: 15px;
+    height: 25px;
   }
 }
 
@@ -310,9 +309,10 @@
   .custom-form-warning {
     padding: 15px 15px 10px 15px;
     border: $medium-light-gray solid 1px;
-    i {
-      font-size: 23px;
-      margin-right: 15px;
+    flex-direction: column;
+    img {
+      margin-right: 0;
+      margin-bottom: 15px;
     }
   }
 }

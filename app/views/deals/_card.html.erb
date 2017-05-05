@@ -31,7 +31,7 @@
           <% elsif deal.request? %>
             &mdash;
           <% else %>
-            <%= t('money', amount: humanized_money(deal.total_amount_converted(current_user.currency_code)), currency: deal.total_amount_converted(current_user.currency_code).symbol ) %>
+            <%= t('money', amount: humanized_money(deal.amount_converted(current_user.currency_code)), currency: deal.amount_converted(current_user.currency_code).symbol ) %>
           <% end %>
         </strong>
       </p>

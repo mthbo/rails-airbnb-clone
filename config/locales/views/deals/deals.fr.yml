@@ -66,13 +66,13 @@ fr:
       describe_service_and_not_included: "Décrivez le service que vous proposez à %{name} pour cette session. Si nécessaire, indiquez également ce qui n'est pas inclu dans votre service."
       describe_service: Décrivez le service proposé
       pick_date: Sélectionnez une date
-      set_price: Déterminez le montant de votre rétribution pour la session (des frais de transaction seront ajoutés à ce montant).
+      set_amount: Déterminez le montant dû par %{name} pour la session (des frais de transaction seront retenus sur ce montant).
       amount_range: "min: %{min} %{currency}"
       leave_blank_if_free: Laissez le champ vide pour une session gratuite.
       session_for_free: "Cette session sera gratuite."
       sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
-        other: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
+        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
+        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
       edit_offer: Editez votre offre
       to_propose_priced_services: si vous voulez proposer des prestations payantes.
       set_expiry_date: "Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée."
@@ -141,7 +141,7 @@ fr:
     deal_open:
       session_open: Session ouverte
       agreement_reached: Accord conclu!
-      payment_confirmed: "Votre paiement a été confirmé."
+      payment_authorized: "Votre paiement a été autorisé."
       agreement_recap: "Vous allez recevoir un e-mail contenant les détails de l'accord conclu avec %{name}."
       session_open_until: La session est ouverte jusqu'au
       go_back_to_session: Revenir à la session

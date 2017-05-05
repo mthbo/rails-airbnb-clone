@@ -32,13 +32,13 @@
   <div class="padded-top-xs">
     <% if @offer.id.blank? %>
       <div class="custom-form-warning bg-white-transparent">
-        <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
+        <%= image_tag 'amount.svg' %>
         <p><%= t '.prove_worth_before_pricing_html', count: (@offer.free_deals) %></p>
       </div>
 
     <% elsif @offer.free? && @offer.free_deals > 0 %>
       <div class="custom-form-warning bg-white-transparent">
-        <i class="fa fa-exclamation-triangle red" aria-hidden="true"></i>
+        <%= image_tag 'amount.svg' %>
         <p><%= t '.sessions_for_free' %> <%= t '.sessions_before_pricing_html', count: (@offer.free_deals) %></p>
       </div>
 

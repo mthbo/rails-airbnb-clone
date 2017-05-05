@@ -34,13 +34,13 @@
               <p>
                 <span class='info-icon'><%= image_tag 'amount.svg' %></span>
                 <% if I18n.locale == :fr %>
-                  <% if user_signed_in? && current_user.currency_code = "USD" %>
+                  <% if user_signed_in? && current_user.currency_code == "USD" %>
                     {{{amounts_view_USD_fr}}}
                   <% else %>
                     {{{amounts_view_EUR_fr}}}
                   <% end %>
                 <% else %>
-                  <% if user_signed_in? && current_user.currency_code = "USD" %>
+                  <% if user_signed_in? && current_user.currency_code == "USD" %>
                     {{{amounts_view_USD_en}}}
                   <% else %>
                     {{{amounts_view_EUR_en}}}
