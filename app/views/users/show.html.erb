@@ -69,11 +69,9 @@
                 <div class="user-stripe-account">
                   <p class="no-margin-bottom"><%= t '.accept_payment_instructions_html' %></p>
                   <div>
-                    <p>
-                      <a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=<%= ENV['STRIPE_CLIENT_ID'] %>&scope=read_write" class="btn btn-gray">
-                        <span class="info-icon"><%= image_tag 'amount.svg' %></span><%= t '.connect_with_stripe' %>
-                      </a>
-                    </p>
+                    <a href="https://connect.stripe.com/oauth/authorize?response_type=code&client_id=<%= ENV['STRIPE_CLIENT_ID'] %>&scope=read_write" class="btn btn-gray">
+                      <span class="info-icon"><%= image_tag 'amount.svg' %></span><%= t '.connect_with_stripe' %>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -111,18 +109,17 @@
         <h3>
           <%= t('.reviews', count: @deals_reviewed.total_count) %>
         </h3>
-        <h6>
-          <span class="yellow font-weight-normal">
+        <div class="user-reviews-subtitle">
+          <h6 class="yellow font-weight-normal">
             <%= @user.advisor_deals_reviewed.count %>
-            <%= t '.advice_given' %>
-          </span>
-          &nbsp; | &nbsp;
-          <span class="green font-weight-normal">
+            <%= t '.as_service_provider' %>
+          </h6>
+          <h6 class="hidden-xs">&nbsp; | &nbsp;</h6>
+          <h6 class="green font-weight-normal">
             <%= @user.client_deals_reviewed.count %>
-            <%= t '.advice_received' %>
-          </span>
-        </h6>
-
+            <%= t '.as_service_recipient' %>
+          </h6>
+        </div>
         <div>
           <% if  @deals_reviewed.present? %>
             <div id="user_reviews_page">

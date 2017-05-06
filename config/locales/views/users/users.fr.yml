@@ -24,8 +24,8 @@ fr:
         zero:  "Avis"
         one:   "%{count} avis"
         other: "%{count} avis"
-      advice_given: "pour conseils donnés"
-      advice_received: "pour conseils reçus"
+      as_service_provider: "comme fournisseur de service"
+      as_service_recipient: "comme bénéficiaire de service"
       no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
       no_reviews: "%{user} n'a reçu aucun avis pour le moment."
     info:
@@ -56,6 +56,6 @@ fr:
       stripe_connection: Connexion à Stripe
       account_connected: Compte activé!
       connected_to_stripe: Votre compte a été connecté à Stripe avec succès!
-      edit_your_offers_html: "Vous pouvez désormais proposer des services payants. Pour celà, éditez votre (ou vos) offre(s) et choisissez le mode <span class='font-weight-normal blue'>PAYANT</span>."
+      edit_your_offers_html: "Vous pouvez désormais proposer des services payants. Pour celà, éditez chacune de vos offres et choisissez le mode <span class='font-weight-normal blue'>PAYANT</span>."
       back_to_profile: Revenir au profil
 

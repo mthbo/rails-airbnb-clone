@@ -41,6 +41,10 @@
   }
 }
 
+.user-reviews-subtitle {
+  display: flex;
+}
+
 @media (max-width: $screen-xs-max) {
   .user-stripe-account {
     padding: 15px;
@@ -49,5 +53,8 @@
       padding-top: 15px;
       padding-left: 0;
     }
+  }
+  .user-reviews-subtitle {
+    display: block;
   }
 }
