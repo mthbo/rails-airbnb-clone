@@ -22,7 +22,7 @@ class Offer < ApplicationRecord
 
   include AlgoliaSearch
 
-  algoliasearch per_environment: true, if: :active? do
+  algoliasearch index_name: "#{ENV['ENV']}_offers", if: :active? do
     attribute :title, :description, :summary, :deals_closed_count, :satisfaction
     attribute :median_amount do
       median_amount.nil? ? 0 : median_amount.to_i
@@ -73,7 +73,7 @@ class Offer < ApplicationRecord
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
 
-    add_replica "Offer_price_asc", per_environment: true, inherit: true do
+    add_replica "#{ENV['ENV']}_offers_price_asc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
       customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
       attributesForFaceting [:languages, :means, :median_amount]
@@ -82,7 +82,7 @@ class Offer < ApplicationRecord
       ignorePlurals true
     end
 
-    add_replica "Offer_price_desc", per_environment: true, inherit: true do
+    add_replica "#{ENV['ENV']}_offers_price_desc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
       attributesForFaceting [:languages, :means, :median_amount]
@@ -91,7 +91,7 @@ class Offer < ApplicationRecord
       ignorePlurals true
     end
 
-    add_replica "Offer_satisfaction_desc", per_environment: true, inherit: true do
+    add_replica "#{ENV['ENV']}_offers_satisfaction_desc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
       attributesForFaceting [:languages, :means, :median_amount]
@@ -100,7 +100,7 @@ class Offer < ApplicationRecord
       ignorePlurals true
     end
 
-    add_replica "Offer_created_at_desc", per_environment: true, inherit: true do
+    add_replica "#{ENV['ENV']}_offers_created_at_desc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(created_at_i)', 'desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)']
       attributesForFaceting [:languages, :means, :median_amount]
