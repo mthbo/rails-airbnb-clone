@@ -12,9 +12,6 @@ en:
       my_offers: "My offers"
       offers: "Offers of %{user}"
       new_offer: "New offer"
-      accept_payment_instructions_html: "You need to connect your account with Stripe and to provide your bank account information for being able <span class='font-weight-normal'>to price your services</span>."
-      connect_with_stripe: Connect with Stripe
-      advising_services: Advising services
       no_offers_you: "You have no offer published."
       publish_offer: "Publish an offer"
       or: "or"
@@ -29,6 +26,11 @@ en:
       as_service_recipient: "as service recipient"
       no_reviews_you: "You didn't get any reviews yet."
       no_reviews: "%{user} didn't get any reviews yet."
+      payouts_not_authorized_html: "You are currently not authorized <span class='font-weight-normal'>to price your services</span> since Papoters is in <em class='font-weight-normal'>beta</em> version in your geographic area."
+    connect_to_stripe:
+      accept_payment_instructions_html: "You need to connect your account with Stripe and to provide your bank account information for being able <span class='font-weight-normal'>to price your services</span>."
+      connect_with_stripe: Connect with Stripe
+      advising_services: Advising services
     info:
       age: "yrs"
       grade_1: "Papoter"

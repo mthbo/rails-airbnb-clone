@@ -12,9 +12,6 @@ fr:
       my_offers: "Mes offres"
       offers: "Offres de %{user}"
       new_offer: "Nouvelle offre"
-      accept_payment_instructions_html: "Vous devez connecter votre compte à Stripe et fournir vos informations de compte bancaire pour pouvoir <span class='font-weight-normal'>proposer des services payants</span>."
-      connect_with_stripe: Se connecter à Stripe
-      advising_services: Services de conseil
       no_offers_you: "Vous n'avez aucune offre publiée."
       publish_offer: "Publiez une offre"
       or: "ou"
@@ -29,6 +26,11 @@ fr:
       as_service_recipient: "pour service reçu"
       no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
       no_reviews: "%{user} n'a reçu aucun avis pour le moment."
+      payouts_not_authorized_html: "Vous n'êtes pour le moment pas autorisé à proposer des <span class='font-weight-normal'>services payants</span> car Papoters est en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
+    connect_to_stripe:
+      accept_payment_instructions_html: "Vous devez connecter votre compte à Stripe et fournir vos informations de compte bancaire pour pouvoir <span class='font-weight-normal'>proposer des services payants</span>."
+      connect_with_stripe: Se connecter à Stripe
+      advising_services: Services de conseil
     info:
       age: "ans"
       grade_1: "Papoter"

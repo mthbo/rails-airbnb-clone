@@ -29,10 +29,14 @@
   }
 }
 
-.user-stripe-account {
+.user-offers-info {
+  margin-top: 2em;
   padding: 20px 45px;
   background-color: rgba(255,255,255,0.8);
   border-radius: 4px;
+}
+
+.user-connect-to-stripe {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,17 +45,38 @@
   }
 }
 
+.user-pricing-info {
+  display: flex;
+  align-items: center;
+  img {
+    margin-right: 25px;
+    height: 30px;
+  }
+  p {
+    margin-bottom: 0;
+  }
+}
+
 .user-reviews-subtitle {
   display: flex;
 }
 
 @media (max-width: $screen-xs-max) {
-  .user-stripe-account {
+  .user-offers-info {
     padding: 15px;
+  }
+  .user-connect-to-stripe {
     flex-direction: column;
     div {
       padding-top: 15px;
       padding-left: 0;
+    }
+  }
+  .user-pricing-info {
+    flex-direction: column;
+    img {
+      margin-right: 0;
+      margin-bottom: 15px;
     }
   }
   .user-reviews-subtitle {

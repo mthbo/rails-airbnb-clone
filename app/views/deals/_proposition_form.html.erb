@@ -15,10 +15,18 @@
     </div>
   </div>
 
-  <% if deal.offer.free? && deal.offer.free_deals > 0 %>
+  <% if !deal.advisor.payout_authorized %>
     <div class="padded-top-xs padded-bottom-xs">
       <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag('amount.svg') %>
+        <%= image_tag('no_amount.svg') %>
+        <p><%= t '.session_for_free' %> <%= t '.payouts_not_authorized_html' %></p>
+      </div>
+    </div>
+
+  <% elsif deal.offer.free? && deal.offer.free_deals > 0 %>
+    <div class="padded-top-xs padded-bottom-xs">
+      <div class="custom-form-warning bg-white-transparent">
+        <%= image_tag('no_amount.svg') %>
         <p><%= t '.session_for_free' %> <%= t '.sessions_before_pricing_html', count: (@deal.offer.free_deals) %></p>
       </div>
     </div>
@@ -26,7 +34,7 @@
   <% elsif deal.offer.free? %>
     <div class="padded-top-xs padded-bottom-xs">
       <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag('amount.svg') %>
+        <%= image_tag('no_amount.svg') %>
         <p><%= t '.session_for_free' %> <%= link_to t('.edit_offer'), edit_offer_path(deal.offer) %> <%= t '.to_propose_priced_services' %></p>
       </div>
     </div>

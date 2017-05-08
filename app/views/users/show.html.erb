@@ -65,15 +65,15 @@
         <% if @user == current_user %>
           <% if @user.offers_published.present? %>
             <% if @user.stripe_account_id.blank? %>
-              <div class="padded-top-s">
-                <div class="user-stripe-account">
-                  <p class="no-margin-bottom"><%= t '.accept_payment_instructions_html' %></p>
-                  <div>
-                    <a href=<%= "https://connect.stripe.com/oauth/authorize?response_type=code&client_id=#{ENV['STRIPE_CLIENT_ID']}&scope=read_write&stripe_user[email]=#{@user.email}&stripe_user[url]=#{user_url(@user)}&stripe_user[country]=#{@user.country_code}&stripe_user[business_name]=#{@user.name_anonymous.split.join('+')}+@Papoters&stripe_user[business_type]=sole_prop&stripe_user[first_name]=#{@user.first_name}&stripe_user[last_name]=#{@user.last_name}&stripe_user[dob_day]=#{@user.birth_date.day}&stripe_user[dob_month]=#{@user.birth_date.month}&stripe_user[dob_year]=#{@user.birth_date.year}&stripe_user[street_address]=#{@user.address.split.join('+')}&stripe_user[city]=#{@user.city}&stripe_user[zip]=#{@user.zip_code}&stripe_user[phone_number]=#{@user.phone_number}&stripe_user[physical_product]=false&stripe_user[product_category]=other&stripe_user[product_description]=#{t('.advising_services').split.join('+')}&stripe_user[currency]=#{@user.currency_code}"%> class="btn btn-gray">
-                      <span class="info-icon"><%= image_tag 'amount.svg' %></span><%= t '.connect_with_stripe' %>
-                    </a>
+              <div class="user-offers-info">
+                <% if @user.payout_authorized %>
+                  <%= render "connect_to_stripe" %>
+                <% else %>
+                  <div class="user-pricing-info">
+                    <%= image_tag 'no_amount.svg' %>
+                    <p><%= t '.payouts_not_authorized_html' %></p>
                   </div>
-                </div>
+                <% end %>
               </div>
             <% end %>
             <% @user.offers_published.each do |offer| %>

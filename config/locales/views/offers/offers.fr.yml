@@ -20,6 +20,7 @@ fr:
       languages_range: "min: 1 - max: %{max}"
       select_means: "Sélectionnez le(s) moyen(s) que vous acceptez pour communiquer avec vos interlocuteurs pour cette offre."
       means_range: "min: 1"
+      payouts_not_authorized_html: "Vous n'êtes pour le moment pas autorisé à proposer des <span class='font-weight-normal'>services payants</span> car Papoters est en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
       prove_worth_before_pricing_html: "Proposer des prestations payantes n'est possible qu'après avoir fait vos preuves, avec au moins <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre."
       sessions_for_free: "Les sessions pour cette offre sont gratuites."
       sessions_before_pricing_html:

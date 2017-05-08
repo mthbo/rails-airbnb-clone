@@ -49,6 +49,7 @@ ActiveAdmin.register User do
       row :country
       row :locale
       row :currency_code
+      row :payout_authorized
       row :stripe_customer_id
       row :stripe_account_id
       row :admin
@@ -112,6 +113,7 @@ ActiveAdmin.register User do
       f.input :country_code
       f.input :locale
       f.input :currency_code
+      f.input :payout_authorized
       f.input :stripe_customer_id
       f.input :stripe_account_id
     end
@@ -122,6 +124,6 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :currency_code, :stripe_customer_id, :stripe_account_id, :admin, :confirmed_at
+  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :currency_code, :stripe_customer_id, :stripe_account_id, :admin, :confirmed_at, :payout_authorized
 
 end

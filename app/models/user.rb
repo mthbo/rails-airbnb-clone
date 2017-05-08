@@ -69,6 +69,14 @@ class User < ApplicationRecord
     end
   end
 
+  def administrative_area
+    if (country_code && country_code == 'FR')
+      division
+    else
+      state
+    end
+  end
+
   def currency
     Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
   end

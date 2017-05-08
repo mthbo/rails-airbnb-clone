@@ -70,6 +70,7 @@ fr:
       amount_range: "min: %{min} %{currency}"
       leave_blank_if_free: Laissez le champ vide pour une session gratuite.
       session_for_free: "Cette session sera gratuite."
+      payouts_not_authorized_html: "Vous n'êtes pour le moment pas autorisé à proposer des <span class='font-weight-normal'>services payants</span> car Papoters est en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
       sessions_before_pricing_html:
         one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
         other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."

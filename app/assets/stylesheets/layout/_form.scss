@@ -215,7 +215,7 @@
 
 .custom-form-warning {
   margin-top: 1em;
-  padding: 15px 20px 10px 20px;
+  padding: 15px 20px;
   border: $medium-light-gray solid 1px;
   border-radius: 5px;
   display: flex;
@@ -223,6 +223,9 @@
   img {
     margin-right: 15px;
     height: 25px;
+  }
+  p {
+    margin-bottom: 0;
   }
 }
 
@@ -307,8 +310,7 @@
     }
   };
   .custom-form-warning {
-    padding: 15px 15px 10px 15px;
-    border: $medium-light-gray solid 1px;
+    padding: 15px;
     flex-direction: column;
     img {
       margin-right: 0;
