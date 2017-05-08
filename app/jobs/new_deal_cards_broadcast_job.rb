@@ -21,6 +21,7 @@ class NewDealCardsBroadcastJob < ApplicationJob
         deal_id: deal.id
       )
     end
+  end
 
   private
 
