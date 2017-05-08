@@ -15,8 +15,12 @@
     <% if (@deal.amount_cents.blank? || @deal.amount_cents.zero?) %>
       <span style="color: #30485F; font-weight: normal;"><%= t('.free') %></span>
     <% else %>
-      <span style="color: #30485F; font-weight: normal;"><%= t('money', amount: humanized_money(@deal.total_amount), currency: @deal.amount.currency.symbol )  %></span>&nbsp;
-      <em>( <%= t('.including_fees') %> <%= t('money', amount: humanized_money(@deal.fees), currency: @deal.amount.currency.symbol ) %> )</em>
+      <span style="color: #30485F; font-weight: normal;">
+        <%= t('money', amount: humanized_money(@deal.amount_converted(receiver.currency_code)), currency: @deal.amount_converted(receiver.currency_code).symbol)  %>
+      </span>&nbsp;
+      <em>( <%= t('.including_fees') %>
+        <%= t('money', amount: humanized_money(@deal.fees_converted(receiver.currency_code)), currency: @deal.fees_converted(receiver.currency_code).symbol) %> )
+      </em>
     <% end %>
     &nbsp;&nbsp;
   </p>

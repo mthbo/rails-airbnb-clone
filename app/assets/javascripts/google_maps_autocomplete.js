@@ -22,18 +22,21 @@ function onPlaceChanged() {
   if (components.country_code) {
     $('#user_country_code').val(components.country_code);
   }
+  $('#user_state').val(components.state);
+  $('#user_division').val(components.division);
 }
 
 function getAddressComponents(place) {
   // If you want lat/lng, you can look at:
   // - place.geometry.location.lat()
   // - place.geometry.location.lng()
-
   var street_number = null;
   var route = null;
   var zip_code = null;
   var city = null;
   var country_code = null;
+  var state = null;
+  var division = null;
   for (var i in place.address_components) {
     var component = place.address_components[i];
     for (var j in component.types) {
@@ -48,6 +51,10 @@ function getAddressComponents(place) {
         city = component.long_name;
       } else if (type == 'country') {
         country_code = component.short_name;
+      } else if (type == 'administrative_area_level_1') {
+        state = component.short_name;
+      } else if (type == 'administrative_area_level_2') {
+        division = component.short_name;
       }
     }
   }
@@ -56,6 +63,8 @@ function getAddressComponents(place) {
     address: street_number == null ? route : (street_number + ' ' + route),
     zip_code: zip_code,
     city: city,
-    country_code: country_code
+    country_code: country_code,
+    state: state,
+    division: division
   };
 }

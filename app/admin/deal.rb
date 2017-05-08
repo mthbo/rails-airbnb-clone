@@ -24,6 +24,7 @@ ActiveAdmin.register Deal do
       link_to deal.client_id, admin_user_path(deal.client)
     end
     column :status
+    column :currency_code
     column :amount
     column :fees
     column :objectives_count
@@ -47,6 +48,7 @@ ActiveAdmin.register Deal do
       row :messages_disabled
       row :room_name
       row :deadline
+      row :currency_code
       row :amount
       row :fees
       row :payment_state
@@ -102,6 +104,7 @@ ActiveAdmin.register Deal do
       f.input :room_name
       f.input :messages_disabled
       f.input :deadline
+      f.input :currency_code
       f.input :amount
       f.input :fees
     end
@@ -135,6 +138,7 @@ ActiveAdmin.register Deal do
     :room_name,
     :messages_disabled,
     :deadline,
+    :currency_code,
     :amount,
     :fees,
     :proposition,

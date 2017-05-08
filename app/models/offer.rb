@@ -16,12 +16,16 @@ class Offer < ApplicationRecord
   validates :languages, presence: true, length: { maximum: 5 }
   validates :means, presence: true
 
+  monetize :min_amount_cents, allow_nil: true
+  monetize :max_amount_cents, allow_nil: true
+  monetize :median_amount_cents, allow_nil: true
+
   include AlgoliaSearch
 
   algoliasearch per_environment: true, if: :active? do
     attribute :title, :description, :summary, :deals_closed_count, :satisfaction
     attribute :median_amount do
-      min_amount.nil? ? 0 : median_amount / 100
+      median_amount.nil? ? 0 : median_amount.to_i
     end
     attribute :created_at_i do
       created_at.to_i
@@ -33,8 +37,11 @@ class Offer < ApplicationRecord
       attribute "satisfaction_view_#{locale}".to_sym do
         satisfaction_view(locale)
       end
-      attribute "amounts_view_#{locale}".to_sym do
-        amounts_view(locale)
+      currency_codes = ['EUR', 'USD']
+      currency_codes.each do |currency_code|
+        attribute "amounts_view_#{currency_code}_#{locale}".to_sym do
+          amounts_view(locale, currency_code)
+        end
       end
     end
     attribute :languages do
@@ -182,36 +189,30 @@ class Offer < ApplicationRecord
 
   # Pricing stat
 
-  def min_amount
-    amount = deals_closed.minimum(:amount_cents).to_i + deals_closed.minimum(:fees_cents).to_i
-    amount.zero? ? nil : amount
+  def min_amount_cents
+    deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.min
   end
 
-  def max_amount
-    amount = deals_closed.maximum(:amount_cents).to_i + deals_closed.maximum(:fees_cents).to_i
-    amount.zero? ? nil : amount
+  def max_amount_cents
+    deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.max
   end
 
-  def median_amount
-    if deals_closed.present?
-      amounts = []
-      deals_closed.each { |deal| amounts << deal.total_amount_cents unless deal.total_amount_cents.nil? }
-      amounts.sort!
-      len = amounts.length
-      (amounts[(len - 1) / 2] + amounts[len / 2]) / 2 unless len.zero?
-    end
+  def median_amount_cents
+    amounts = deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.sort
+    len = amounts.length
+    len.zero? ? nil : (amounts[(len - 1) / 2] + amounts[len / 2]) / 2
   end
 
-  def min_amount_money
-    Money.new(min_amount) unless min_amount.nil?
+  def min_amount_converted(currency_code=Money.default_currency.to_s)
+    min_amount.exchange_to(currency_code) if min_amount
   end
 
-  def max_amount_money
-    Money.new(max_amount) unless max_amount.nil?
+  def max_amount_converted(currency_code=Money.default_currency.to_s)
+    max_amount.exchange_to(currency_code) if max_amount
   end
 
-  def median_amount_money
-    Money.new(median_amount) unless median_amount.nil?
+  def median_amount_converted(currency_code=Money.default_currency.to_s)
+    median_amount.exchange_to(currency_code) if median_amount
   end
 
 
@@ -251,16 +252,16 @@ class Offer < ApplicationRecord
     html
   end
 
-  def amounts_view(locale)
+  def amounts_view(locale, currency_code)
     html = ""
     if free?
       html << "<strong>#{I18n.t('offers.amounts.free', locale: locale)}</strong>"
-    elsif median_amount.nil?
+    elsif median_amount_cents.nil?
       html << "<span class='medium-gray'>#{I18n.t('offers.amounts.no_history', locale: locale)}</span>"
     else
-      html << "<span class='medium-gray'>#{ I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(min_amount_money), currency: min_amount_money.currency.symbol, locale: locale )} &mdash; </span>"
-      html << "<strong>#{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(median_amount_money), currency: median_amount_money.currency.symbol, locale: locale )}</strong>"
-      html << "<span class='medium-gray'> &mdash; #{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(max_amount_money), currency: max_amount_money.currency.symbol, locale: locale )}</span>"
+      html << "<span class='medium-gray'>#{ I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(min_amount_converted(currency_code)), currency: min_amount_converted(currency_code).symbol, locale: locale )} &mdash; </span>"
+      html << "<strong>#{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(median_amount_converted(currency_code)), currency: median_amount_converted(currency_code).symbol, locale: locale )}</strong>"
+      html << "<span class='medium-gray'> &mdash; #{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(max_amount_converted(currency_code)), currency: max_amount_converted(currency_code).symbol, locale: locale )}</span>"
     end
     html
   end

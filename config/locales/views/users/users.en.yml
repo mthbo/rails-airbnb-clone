@@ -22,10 +22,15 @@ en:
         zero:  "Reviews"
         one:   "%{count} review"
         other: "%{count} reviews"
-      advice_given: "for advice given"
-      advice_received: "for advice received"
+      as_service_provider: "as service provider"
+      as_service_recipient: "as service recipient"
       no_reviews_you: "You didn't get any reviews yet."
       no_reviews: "%{user} didn't get any reviews yet."
+      payouts_not_authorized_html: "You are currently not authorized <span class='font-weight-normal'>to price your services</span> since Papoters is in <em class='font-weight-normal'>beta</em> version in your geographic area."
+    connect_to_stripe:
+      accept_payment_instructions_html: "You need to connect your account with Stripe and to provide your bank account information for being able <span class='font-weight-normal'>to price your services</span>."
+      connect_with_stripe: Connect with Stripe
+      advising_services: Advising services
     info:
       age: "yrs"
       grade_1: "Papoter"
@@ -50,6 +55,13 @@ en:
       no_current_sessions: You have no session ongoing or closed recently.
       no_past_sessions: You have no archived session.
       no_cancelled_sessions: You have no cancelled session.
+    stripe_connection:
+      stripe_connection: Stripe connection
+      account_connected: Account ready!
+      connected_to_stripe: Your account has been successfully connected to Stripe!
+      edit_your_offers_html: "Now you can start pricing your services. To achieve this, edit each of your offers and switch to mode <span class='font-weight-normal blue'>PRICED</span>."
+      back_to_profile: Back to profile
+
 
 
 

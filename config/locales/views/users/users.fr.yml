@@ -22,10 +22,15 @@ fr:
         zero:  "Avis"
         one:   "%{count} avis"
         other: "%{count} avis"
-      advice_given: "pour conseils donnés"
-      advice_received: "pour conseils reçus"
+      as_service_provider: "pour service rendu"
+      as_service_recipient: "pour service reçu"
       no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
       no_reviews: "%{user} n'a reçu aucun avis pour le moment."
+      payouts_not_authorized_html: "Vous n'êtes pour le moment pas autorisé à proposer des <span class='font-weight-normal'>services payants</span> car Papoters est en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
+    connect_to_stripe:
+      accept_payment_instructions_html: "Vous devez connecter votre compte à Stripe et fournir vos informations de compte bancaire pour pouvoir <span class='font-weight-normal'>proposer des services payants</span>."
+      connect_with_stripe: Se connecter à Stripe
+      advising_services: Services de conseil
     info:
       age: "ans"
       grade_1: "Papoter"
@@ -50,3 +55,10 @@ fr:
       no_current_sessions: Vous n'avez aucune session en cours ou récemment clôturée.
       no_past_sessions: Vous n'avez aucune session archivée.
       no_cancelled_sessions: Vous n'avez aucune session annulée.
+    stripe_connection:
+      stripe_connection: Connexion à Stripe
+      account_connected: Compte activé!
+      connected_to_stripe: Votre compte a été connecté à Stripe avec succès!
+      edit_your_offers_html: "Vous pouvez désormais proposer des services payants. Pour celà, éditez chacune de vos offres et choisissez le mode <span class='font-weight-normal blue'>PAYANT</span>."
+      back_to_profile: Revenir au profil
+

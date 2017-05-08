@@ -37,6 +37,13 @@
   }
 }
 
+.icon-big {
+  margin-bottom: 10px;
+  img {
+    height: 50px;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .info-icon img {
     height: 18px;
@@ -46,5 +53,10 @@
   }
   .flag-icon-message img {
     height: 20px;
+  }
+  .icon-big {
+    img {
+      height: 40px;
+    }
   }
 }

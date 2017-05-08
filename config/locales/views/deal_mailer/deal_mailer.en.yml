@@ -68,15 +68,15 @@ en:
       subject: "#session-%{id} | Session open"
       greeting: Hello %{advisor},
       message: "%{client} accepted your proposition! You are now committed to deliver the service as part of your agreement."
+      info_html: "<span style='font-weight: normal;'>Your remuneration</span> for this session amounts to <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span>. The payout to your account will be made after session closing."
       agreement: Agreement
       instructions_html: "The session is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{client} as of now!"
-      info: "The payout of %{currency}%{amount} to your account will be made after session closing."
       action: Get in touch with %{client}
     deal_proposition_accepted_client:
       subject: "#session-%{id} | Session open"
       greeting: Hello %{client},
-      message_free: "You accepted the proposition of %{advisor}, who is now committed to deliver the service as part of your agreement."
-      message: "You accepted the proposition of %{advisor} and your payment has been confirmed. %{advisor} is now committed to deliver the service as part of your agreement."
+      message: "You accepted the proposition of %{advisor}, who is now committed to deliver the service as part of your agreement."
+      info_html: "Your payment of <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span> has been authorized. This payment will be triggered after session closing."
       agreement: Agreement
       instructions_html: "The session is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{advisor} as of now!"
       action: Get in touch with %{advisor}
@@ -96,9 +96,9 @@ en:
       subject: "#session-%{id} | Session closed"
       greeting: Hello %{advisor},
       message: "The session below was closed:"
+      info: The payout to your account is going to be made.
       instructions: "Evaluate your experience and leave a review to %{client}."
       action: Evaluate the session
-      info: The payout of %{currency}%{amount} to your account will be made soon.
     deal_closed_client:
       subject: "#session-%{id} | Session closed"
       greeting: Hello %{client},

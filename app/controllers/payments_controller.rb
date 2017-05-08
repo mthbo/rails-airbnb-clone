@@ -4,8 +4,8 @@ class PaymentsController < ApplicationController
   skip_after_action :verify_authorized, only: [:create]
 
   def create
-    if @deal.client.stripe_id
-      @customer = Stripe::Customer.retrieve(@deal.client.stripe_id)
+    if @deal.client.stripe_customer_id
+      @customer = Stripe::Customer.retrieve(@deal.client.stripe_customer_id)
       @customer.respond_to?(:deleted) ? create_customer : update_customer
     else
       create_customer
@@ -19,7 +19,7 @@ class PaymentsController < ApplicationController
     @deal.save
     @deal.opened!
     @deal.paid!
-    @deal.client.update(stripe_id: @customer.id)
+    @deal.client.update(stripe_customer_id: @customer.id)
     Message.create_status_message(@deal, current_user)
     DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
     DealCardsBroadcastJob.perform_later(@deal)
@@ -48,22 +48,27 @@ private
   def create_customer
     @customer = Stripe::Customer.create(
       source: params[:stripeToken],
-      email:  params[:stripeEmail]
+      email:  params[:stripeEmail],
+      description: "#{@deal.client.first_name} #{@deal.client.last_name}"
     )
   end
 
   def update_customer
-    @customer.source = params[:stripeToken]
+    card = Stripe::Token.retrieve(params[:stripeToken]).card
+    default_source = @customer.sources.data.select{|source| source.fingerprint == card.fingerprint}.last if card
+    default_source = @customer.sources.create(card: params[:stripeToken]) unless default_source
+    @customer.default_source = default_source.id
     @customer.email = params[:stripeEmail]
+    @customer.description = "#{@deal.client.first_name} #{@deal.client.last_name}"
     @customer.save
   end
 
   def create_charge
     @charge = Stripe::Charge.create(
       customer:     @customer.id,
-      amount:       @deal.total_amount_cents,
+      amount:       @deal.amount_converted(current_user.currency).cents,
       description:  "##{t('session')}-#{@deal.id} | #{@deal.title}",
-      currency:     @deal.total_amount.currency
+      currency:     @deal.amount_converted(current_user.currency).currency.to_s
     )
   end
 

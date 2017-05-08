@@ -29,7 +29,9 @@ ActiveAdmin.register Offer do
     column :satisfaction do |offer|
       "#{(offer.satisfaction.fdiv(5) * 100).to_i} %" unless offer.satisfaction.nil?
     end
-    column :median_amount_money
+    column :min_amount
+    column :median_amount
+    column :max_amount
     actions
   end
 
@@ -62,9 +64,9 @@ ActiveAdmin.register Offer do
       row :satisfaction do |offer|
         "#{(offer.satisfaction.fdiv(5) * 100).to_i} %" unless offer.satisfaction.nil?
       end
-      row :min_amount_money
-      row :median_amount_money
-      row :max_amount_money
+      row :min_amount
+      row :median_amount
+      row :max_amount
     end
     active_admin_comments
   end

@@ -16,7 +16,7 @@ $(document).ready(function() {
 
 
 function subscribeToDealCardsChannel(dealId) {
-  App['deal' + dealId + ':cards_' + I18n.locale] = App.cable.subscriptions.create({channel: 'DealCardsChannel', deal_id: dealId, locale: I18n.locale}, {
+  App['deal' + dealId + ':cards'] = App.cable.subscriptions.create({channel: 'DealCardsChannel', deal_id: dealId}, {
     received: function(data) {
       $('[data-deal-id=' + dealId + ']').slideUp().remove();
       switch (data.general_status) {
@@ -47,7 +47,7 @@ function subscribeToDealCardsChannel(dealId) {
 };
 
 function subscribeToNewDealCardsChannel() {
-  App['newDeal:cards_' + I18n.locale] = App.cable.subscriptions.create({channel: 'NewDealCardsChannel', locale: I18n.locale}, {
+  App['newDeal:cards'] = App.cable.subscriptions.create({channel: 'NewDealCardsChannel'}, {
     received: function(data) {
       $('.no-current-deal').hide();
       $(data.card).hide().prependTo($('#dashboard-request-deals')).slideDown();

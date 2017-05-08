@@ -2,7 +2,7 @@
 
 <p><%= t('.message', advisor: @deal.advisor.first_name) %></p>
 
-<%= render 'proposition_recap', header: t('.proposition_expiry_on', date: l(@deal.proposition_deadline.to_date)) %>
+<%= render 'proposition_recap', header: t('.proposition_expiry_on', date: l(@deal.proposition_deadline.to_date)), receiver: @deal.client %>
 
 <%= render 'deal_button', label: t('.action') %>
 

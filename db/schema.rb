@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501161510) do
+ActiveRecord::Schema.define(version: 20170508153012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20170501161510) do
     t.string   "room_name"
     t.integer  "fees_cents"
     t.string   "title"
+    t.string   "currency_code"
     t.index ["offer_id"], name: "index_deals_on_offer_id", using: :btree
   end
 
@@ -189,7 +190,12 @@ ActiveRecord::Schema.define(version: 20170501161510) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "locale"
-    t.string   "stripe_id"
+    t.string   "stripe_customer_id"
+    t.string   "stripe_account_id"
+    t.string   "currency_code",          default: "EUR"
+    t.string   "state"
+    t.string   "division"
+    t.boolean  "payout_authorized",      default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree

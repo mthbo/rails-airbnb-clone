@@ -10,9 +10,9 @@ class Deal < ApplicationRecord
   has_many :languages, through: :deal_languages
   has_many :messages, dependent: :destroy
 
-  monetize :amount_cents, allow_nil: true, numericality: { greater_than_or_equal_to: 10, less_than_or_equal_to: 2000 }
-  monetize :fees_cents, allow_nil: true
-  monetize :total_amount_cents, allow_nil: true
+  monetize :amount_cents, allow_nil: true, numericality: true, with_model_currency: :currency_code
+  monetize :fees_cents, allow_nil: true, with_model_currency: :currency_code
+  monetize :advisor_amount_cents, allow_nil: true, with_model_currency: :currency_code
 
   enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
   enum payment_state: [ :no_payment, :payment_pending, :paid ]
@@ -25,6 +25,9 @@ class Deal < ApplicationRecord
 
   validates :proposition, presence: true, length: { minimum: 30 }, if: :not_new_nor_cancelled?
   validates :objectives, presence: true, length: { maximum: 10 }, if: :not_new_nor_cancelled?
+
+  validate :amount_must_be_greater_than_min_amount, if: :pending_not_new?
+  validate :amount_must_be_less_than_or_equal_to_max_amount, if: :pending_not_new?
 
   validates :proposition_deadline, presence: true, if: :pending_not_new?
   validate :proposition_deadline_must_be_future, if: :pending_not_new?
@@ -45,23 +48,57 @@ class Deal < ApplicationRecord
     offer.advisor unless offer.nil?
   end
 
-  def round_amount_and_set_fees
+
+  # Money
+
+  def currency
+    Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
+  end
+
+  def flat_fee
+    Money.new(50, "EUR").exchange_to(self.currency_code)
+  end
+
+  def first_cutoff_amount
+    Money.new(5000, "EUR").exchange_to(self.currency_code)
+  end
+
+  def set_fees
     if self.amount_cents
-      self.amount_cents = self.amount_cents.fdiv(100).round * 100
-      if self.amount_cents > 5000
-        self.fees_cents = 50 + 5000 * 0.15 + (self.amount_cents - 5000) * 0.1
+      if self.amount_cents > first_cutoff_amount.cents
+        self.fees_cents = flat_fee.cents + first_cutoff_amount.cents * 0.15 + (self.amount_cents - first_cutoff_amount.cents) * 0.1
       else
-        self.fees_cents = 50 + self.amount_cents * 0.15
+        self.fees_cents = flat_fee.cents + self.amount_cents * 0.15
       end
-      self.fees_cents = self.fees_cents.fdiv(10).round * 10
     end
   end
 
-  def total_amount_cents
+  def advisor_amount_cents
     if amount_cents && fees_cents
-      amount_cents + fees_cents
+      amount_cents - fees_cents
     end
   end
+
+  def min_amount
+    Money.new(1000, "EUR").exchange_to(self.advisor.currency_code)
+  end
+
+  def max_amount
+    Money.new(200000, "EUR").exchange_to(self.advisor.currency_code)
+  end
+
+  def amount_converted(currency_code=Money.default_currency.to_s)
+    amount.exchange_to(currency_code) if amount
+  end
+
+  def fees_converted(currency_code=Money.default_currency.to_s)
+    fees.exchange_to(currency_code) if fees
+  end
+
+  def advisor_amount_converted(currency_code=Money.default_currency.to_s)
+    advisor_amount.exchange_to(currency_code) if advisor_amount
+  end
+
 
   # Status
 
@@ -190,6 +227,16 @@ class Deal < ApplicationRecord
   end
 
   # Validations
+
+  def amount_must_be_greater_than_min_amount
+    errors.add(:amount, :greater_than_or_equal_to, amount: min_amount.to_i, currency: advisor.currency.symbol ) if
+      amount.present? && amount.to_i < min_amount.to_i
+  end
+
+  def amount_must_be_less_than_or_equal_to_max_amount
+    errors.add(:amount, :less_than_or_equal_to, amount: max_amount.to_i, currency: advisor.currency.symbol ) if
+      amount.present? && amount.to_i > max_amount.to_i
+  end
 
   def deadline_must_be_future
     errors.add(:deadline, :past) if

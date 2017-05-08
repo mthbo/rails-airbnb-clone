@@ -72,6 +72,9 @@
 
   </div>
 
+  <%= f.hidden_field :state %>
+  <%= f.hidden_field :division %>
+
   <div class="text-right padded-top-s">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
       <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>

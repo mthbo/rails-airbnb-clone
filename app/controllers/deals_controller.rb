@@ -39,7 +39,7 @@ class DealsController < ApplicationController
 
   def save_proposition
     if @deal.update(deal_params)
-      @deal.round_amount_and_set_fees if @deal.amount
+      @deal.set_fees if @deal.amount
       @deal.save
       respond_to do |format|
         format.js
@@ -120,12 +120,10 @@ class DealsController < ApplicationController
     DealMailer.deal_closed_client(@deal).deliver_later
     DealMailer.deal_closed_advisor(@deal).deliver_later
     offer = @deal.offer
-    if offer.free_deals > 0
-      offer.free_deals -= 1
-      offer.save
-      # offer.priced! if offer.free_deals == 0
-    end
-    @deal.offer.index!
+    offer.free_deals -= 1 if offer.free_deals > 0
+    offer.priced! if (offer.free_deals == 0 && offer.advisor.stripe_account_id.present? && offer.advisor.payout_authorized )
+    offer.save
+    offer.index!
     respond_to do |format|
       format.html {
         flash[:alert] = t('.notice', id: @deal.id, name: @deal.client == current_user ? @deal.advisor.first_name : @deal.client.first_name)
@@ -146,11 +144,11 @@ class DealsController < ApplicationController
       @deal.increment_notifications(@receiver)
       @deal.reset_notifications(current_user)
       @deal.save
-      @deal.offer.index!
       ReviewBroadcastJob.perform_later(@deal, @receiver)
       DealCardsBroadcastJob.perform_later(@deal)
       DealMailer.deal_review_advisor(@deal).deliver_later if @receiver == @deal.advisor
       DealMailer.deal_review_client(@deal).deliver_later if @receiver == @deal.client
+      @deal.offer.index!
       flash[:notice] = t('.notice')
       redirect_to deal_path(@deal)
     else
@@ -217,6 +215,7 @@ class DealsController < ApplicationController
       :room_name,
       :deadline,
       :amount,
+      :currency_code,
       :proposition,
       :proposition_at,
       :opened_at,

@@ -68,15 +68,15 @@ fr:
       subject: "#session-%{id} | Session ouverte"
       greeting: Bonjour %{advisor},
       message: "%{client} a accepté votre proposition! Vous êtes désormais engagé(e) à fournir votre service selon l'accord conclu."
+      info_html: "<span style='font-weight: normal;'>Le montant de votre rétribution</span> pour cette session s'élève à <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span>. Le versement sur votre compte sera effectué après la clôture de la session."
       agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{client} dès maintenant!"
-      info: "Le versement de %{amount} %{currency} sur votre compte sera effectué à l'issue de la session, après sa clôture."
       action: Contactez %{client}
     deal_proposition_accepted_client:
       subject: "#session-%{id} | Session ouverte"
       greeting: Bonjour %{client},
-      message_free: "Vous avez accepté la proposition de %{advisor}, qui est désormais engagé(e) à fournir son service selon l'accord conclu."
-      message: "Vous avez accepté la proposition de %{advisor} et votre paiement a été confirmé. %{advisor} est désormais engagé(e) à fournir son service selon l'accord conclu."
+      message: "Vous avez accepté la proposition de %{advisor}, qui est désormais engagé(e) à fournir son service selon l'accord conclu."
+      info_html: "Votre paiement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> a été autorisé. Ce paiement sera déclenché après la clôture de la session."
       agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{advisor} dès maintenant!"
       action: Contactez %{advisor}
@@ -96,9 +96,9 @@ fr:
       subject: "#session-%{id} | Session clôturée"
       greeting: Bonjour %{advisor},
       message: "La session ci-dessous a été clôturée :"
+      info: "Le versement sur votre compte du montant de votre rétribution va être effectué."
       instructions: "Evaluez votre expérience et laissez un avis à %{client}."
       action: Evaluer la session
-      info: Le versement de %{amount} %{currency} sur votre compte va être effectué.
     deal_closed_client:
       subject: "#session-%{id} | Session clôturée"
       greeting: Bonjour %{client},

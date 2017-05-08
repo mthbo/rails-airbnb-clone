@@ -20,11 +20,12 @@ fr:
       languages_range: "min: 1 - max: %{max}"
       select_means: "Sélectionnez le(s) moyen(s) que vous acceptez pour communiquer avec vos interlocuteurs pour cette offre."
       means_range: "min: 1"
-      prove_worth_before_pricing_html: "Proposer des prestations payantes n'est possible qu'après avoir fait vos preuves, avec au moins <span class='font-weight-normal red'>%{count} sessions gratuites</span> pour cette offre."
+      payouts_not_authorized_html: "Vous n'êtes pour le moment pas autorisé à proposer des <span class='font-weight-normal'>services payants</span> car Papoters est en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
+      prove_worth_before_pricing_html: "Proposer des prestations payantes n'est possible qu'après avoir fait vos preuves, avec au moins <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre."
       sessions_for_free: "Les sessions pour cette offre sont gratuites."
       sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
-        other: "Vous devez encore réaliser <span class='font-weight-normal red'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
+        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
+        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
       select_pricing: Sélectionnez le mode de tarification pour cette offre.
       publish: Publier
       update: Mettre à jour
@@ -43,7 +44,7 @@ fr:
       ongoing_sessions: toutes les sessions en cours
       before_removing_offer: avant de supprimer cette offre.
     search:
-      input_placeholder: "J'ai besoin de conseils pour ..."
+      input_placeholder: "J'ai besoin d'aide pour ..."
       clear_search: "Effacer la recherche"
       show_filters: "Afficher les filtres"
       hide_filters: "Cacher les filtres"

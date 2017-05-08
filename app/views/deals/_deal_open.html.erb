@@ -6,12 +6,12 @@
         <h4 class="modal-title" id="dealOpenLabel"><%= t '.session_open' %></h4>
       </div>
       <div class="modal-body">
-        <div class="text-center">
-          <h2 class="no-margin-bottom blue"><i class="fa fa-handshake-o fa-2x" aria-hidden="true"></i></h2>
-           <p class="font-weight-normal blue"><%= t '.agreement_reached' %></p>
+        <div class="text-center padded-top-s padded-bottom-xs">
+          <div class="icon-big"><%= image_tag 'agreement.svg' %></div>
+          <p class="font-weight-normal blue"><%= t '.agreement_reached' %></p>
         </div>
         <div class="padded-top-xs padded-bottom-xs">
-          <p><%= t('.payment_confirmed') unless (deal.amount_cents.blank? || deal.amount_cents.zero?) %> <%= t '.agreement_recap', name: deal.advisor.first_name %></p>
+          <p><%= t('.payment_authorized') unless (deal.amount_cents.blank? || deal.amount_cents.zero?) %> <%= t '.agreement_recap', name: deal.advisor.first_name %></p>
           <p><%= t '.session_open_until' %> <span class="font-weight-normal"><%= l(deal.deadline.to_date, format: :long) %></span>.</p>
         </div>
       </div>

@@ -20,11 +20,12 @@ en:
       languages_range: "min: 1 - max: %{max}"
       select_means: "Select the mean(s) you accept to communicate with people on this offer."
       means_range: "min: 1"
-      prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <span class='font-weight-normal red'>%{count} free sessions</span> for this offer."
+      payouts_not_authorized_html: "You are currently not authorized <span class='font-weight-normal'>to price your services</span> since Papoters is in <em class='font-weight-normal'>beta</em> version in your geographic area."
+      prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer."
       sessions_for_free: "Sessions for this offer are for free."
       sessions_before_pricing_html:
-        one: "You still need to achieve <span class='font-weight-normal red'>%{count} free session</span> for this offer before pricing your service."
-        other: "You still need to achieve <span class='font-weight-normal red'>%{count} free sessions</span> for this offer before pricing your service."
+        one: "You still need to achieve <span class='font-weight-normal blue'>%{count} free session</span> for this offer before pricing your service."
+        other: "You still need to achieve <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer before pricing your service."
       select_pricing: Select the pricing option for this offer.
       publish: Publish
       update: Update
@@ -43,7 +44,7 @@ en:
       ongoing_sessions: all ongoing sessions
       before_removing_offer: before removing this offer.
     search:
-      input_placeholder: "I need some advice for ..."
+      input_placeholder: "I need some help for ..."
       clear_search: "Clear search"
       show_filters: "Show filters"
       hide_filters: "Hide filters"

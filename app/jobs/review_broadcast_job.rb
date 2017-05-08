@@ -2,15 +2,13 @@ class ReviewBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(deal, receiver)
-    I18n.available_locales.each do |locale|
-      if receiver
-        ActionCable.server.broadcast(
-          "deal_#{deal.id}_user_#{receiver.id}:status_#{locale}",
-          info: render_info(deal, receiver, locale),
-          actions: render_actions(deal, receiver, locale),
-          reviews: render_reviews(deal, receiver, locale)
-        )
-      end
+    if receiver
+      ActionCable.server.broadcast(
+        "deal_#{deal.id}_user_#{receiver.id}:status",
+        info: render_info(deal, receiver, receiver.locale),
+        actions: render_actions(deal, receiver, receiver.locale),
+        reviews: render_reviews(deal, receiver, receiver.locale)
+      )
     end
   end
 

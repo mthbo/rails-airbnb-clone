@@ -22,6 +22,7 @@ ActiveAdmin.register User do
     column :city
     column :country_code
     column :locale
+    column :currency_code
     column :sign_in_count
     column :offers_active_count
     column :offers_priced_count
@@ -47,7 +48,10 @@ ActiveAdmin.register User do
       row :city
       row :country
       row :locale
-      row :stripe_id
+      row :currency_code
+      row :payout_authorized
+      row :stripe_customer_id
+      row :stripe_account_id
       row :admin
     end
     attributes_table do
@@ -108,7 +112,10 @@ ActiveAdmin.register User do
       f.input :city
       f.input :country_code
       f.input :locale
-      f.input :stripe_id
+      f.input :currency_code
+      f.input :payout_authorized
+      f.input :stripe_customer_id
+      f.input :stripe_account_id
     end
     f.inputs "Admin" do
       f.input :admin
@@ -117,6 +124,6 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :stripe_id, :admin, :confirmed_at
+  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :currency_code, :stripe_customer_id, :stripe_account_id, :admin, :confirmed_at, :payout_authorized
 
 end

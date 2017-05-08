@@ -28,7 +28,7 @@ function subcsribeToMessagesChannel(dealId, currentUserId) {
         $('#message-typing').addClass("hide");
       } else if (data.state === "sending") {
         var $new_message = $(data.message).hide();
-        if (currentUserId !== data.user_id) {
+        if ((data.target === "message") && (currentUserId !== data.user_id)) {
           $new_message.removeClass("message-right");
           $new_message.removeClass("message-yellow");
           $new_message.removeClass("message-green");
@@ -51,7 +51,7 @@ function subcsribeToMessagesChannel(dealId, currentUserId) {
 
 function subcsribeToDealStatusChannel(dealId) {
 
-  App['deal' + dealId + ':status_' + I18n.locale] = App.cable.subscriptions.create({channel: 'DealStatusChannel', deal_id: dealId, locale: I18n.locale}, {
+  App['deal' + dealId + ':status_'] = App.cable.subscriptions.create({channel: 'DealStatusChannel', deal_id: dealId, locale: I18n.locale}, {
     received: function(data) {
       if (data.status !== undefined) { $('#deal-status-panel').html(data.status); }
       if (data.info !== undefined) { $('#deal-info-panel').html(data.info); }
