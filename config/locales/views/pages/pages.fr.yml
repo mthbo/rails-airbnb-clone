@@ -1,8 +1,7 @@
 fr:
   pages:
     home:
-      home: "Accueil"
-      # banner_title: "Trouvez un conseiller particulier pour tous vos besoins."
+      banner_title: "Trouvez un conseiller particulier pour tous vos besoins."
       banner_title: "coucou"
       input_placeholder: "J'ai besoin d'aide pour ..."
       arrow_down: "En savoir plus"
