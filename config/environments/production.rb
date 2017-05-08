@@ -39,7 +39,7 @@ Rails.application.configure do
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
   config.web_socket_server_url = "wss://#{ENV['APP_NAME']}.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = ["https://#{ENV['APP_NAME']}.herokuapp.com", "http://#{ENV['APP_NAME']}.herokuapp.com", 'https://www.papoters.com', 'http://www.papoters.com']
+  config.action_cable.allowed_request_origins = ["https://#{ENV['APP_NAME']}.herokuapp.com", "http://#{ENV['APP_NAME']}.herokuapp.com", "https://#{ENV['APP_DOMAIN']}", "http://#{ENV['APP_DOMAIN']}"]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
@@ -61,8 +61,8 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "www.papoters.com", protocol: "https" }
-  config.action_mailer.asset_host = "https://www.papoters.com"
+  config.action_mailer.default_url_options = { host: ENV['APP_DOMAIN'], protocol: "https" }
+  config.action_mailer.asset_host = "https://#{ENV['APP_DOMAIN']}"
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
