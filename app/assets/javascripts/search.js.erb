@@ -4,8 +4,6 @@ $(document).ready(function() {
 
     setLocale();
 
-    console.log("<%= ENV['ENV'] %>");
-
     var search = instantsearch({
       appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
       apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
