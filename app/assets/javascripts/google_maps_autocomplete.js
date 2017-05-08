@@ -16,6 +16,8 @@ function onPlaceChanged() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
 
+  console.log(components);
+
   $('#user_address').trigger('blur').val(components.address);
   $('#user_zip_code').val(components.zip_code);
   $('#user_city').val(components.city);
@@ -28,7 +30,6 @@ function getAddressComponents(place) {
   // If you want lat/lng, you can look at:
   // - place.geometry.location.lat()
   // - place.geometry.location.lng()
-
   var street_number = null;
   var route = null;
   var zip_code = null;

@@ -14,6 +14,7 @@ fr:
       new_offer: "Nouvelle offre"
       accept_payment_instructions_html: "Vous devez connecter votre compte à Stripe et fournir vos informations de compte bancaire pour pouvoir <span class='font-weight-normal'>proposer des services payants</span>."
       connect_with_stripe: Se connecter à Stripe
+      advising_services: Services de conseil
       no_offers_you: "Vous n'avez aucune offre publiée."
       publish_offer: "Publiez une offre"
       or: "ou"
@@ -24,8 +25,8 @@ fr:
         zero:  "Avis"
         one:   "%{count} avis"
         other: "%{count} avis"
-      as_service_provider: "comme fournisseur de service"
-      as_service_recipient: "comme bénéficiaire de service"
+      as_service_provider: "pour service rendu"
+      as_service_recipient: "pour service reçu"
       no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
       no_reviews: "%{user} n'a reçu aucun avis pour le moment."
     info:
