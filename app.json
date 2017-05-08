@@ -12,7 +12,16 @@
     "ALGOLIA_SEARCH_ONLY_API_KEY": {
       "required": true
     },
+    "APP_DOMAIN": {
+      "required": true
+    },
+    "APP_NAME": {
+      "required": true
+    },
     "CLOUDINARY_URL": {
+      "required": true
+    },
+    "ENV": {
       "required": true
     },
     "FB_ID": {
