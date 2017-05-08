@@ -1,0 +1,89 @@
+{
+  "name": "papoters",
+  "scripts": {
+  },
+  "env": {
+    "ALGOLIA_API_KEY": {
+      "required": true
+    },
+    "ALGOLIA_APPLICATION_ID": {
+      "required": true
+    },
+    "ALGOLIA_SEARCH_ONLY_API_KEY": {
+      "required": true
+    },
+    "CLOUDINARY_URL": {
+      "required": true
+    },
+    "FB_ID": {
+      "required": true
+    },
+    "FB_SECRET": {
+      "required": true
+    },
+    "GOOGLE_API_BROWSER_KEY": {
+      "required": true
+    },
+    "GOOGLE_API_SERVER_KEY": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "POSTMARK_API_KEY": {
+      "required": true
+    },
+    "POSTMARK_API_TOKEN": {
+      "required": true
+    },
+    "POSTMARK_INBOUND_ADDRESS": {
+      "required": true
+    },
+    "POSTMARK_SMTP_SERVER": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "REDISCLOUD_URL": {
+      "required": true
+    },
+    "REDISTOGO_URL": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "STRIPE_CLIENT_ID": {
+      "required": true
+    },
+    "STRIPE_PUBLISHABLE_KEY": {
+      "required": true
+    },
+    "STRIPE_SECRET_KEY": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql",
+    "postmark",
+    "rediscloud",
+    "redistogo"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
