@@ -1,4 +1,5 @@
 en:
+  title: "Papoters | The knowledge marketplace"
   activerecord:
     attributes:
       offer:

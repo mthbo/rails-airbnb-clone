@@ -1,4 +1,5 @@
 fr:
+  title: "Papoters | Le marché des savoirs"
   activerecord:
     attributes:
       offer:
