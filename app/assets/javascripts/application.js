@@ -18,6 +18,7 @@
 //= require dashboard_tab
 //= require datepicker
 //= require dropdown
+//= require env
 //= require flashes
 //= require google_maps_autocomplete
 //= require home_background

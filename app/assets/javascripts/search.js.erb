@@ -3,11 +3,12 @@ $(document).ready(function() {
   if ($('.my-navbar').length > 0) {
 
     setLocale();
+    var env = setEnv();
 
     var search = instantsearch({
       appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
       apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
-      indexName: "<%= ENV['ENV'] %>" + "_offers",
+      indexName: env + "_offers",
       urlSync: false
     });
 
@@ -45,13 +46,13 @@ $(document).ready(function() {
         indices: [{
           name: search.indexName, label: I18n.t('offers.search.most_relevant')
         }, {
-          name: "<%= ENV['ENV'] %>" + "_offers_price_asc", label: I18n.t('offers.search.lowest_amount')
+          name: env + "_offers_price_asc", label: I18n.t('offers.search.lowest_amount')
         }, {
-          name: "<%= ENV['ENV'] %>" + "_offers_price_desc", label: I18n.t('offers.search.highest_amount')
+          name: env + "_offers_price_desc", label: I18n.t('offers.search.highest_amount')
         }, {
-          name: "<%= ENV['ENV'] %>" + "_offers_satisfaction_desc", label: I18n.t('offers.search.highest_rating')
+          name: env + "_offers_satisfaction_desc", label: I18n.t('offers.search.highest_rating')
         }, {
-          name: "<%= ENV['ENV'] %>" + "_offers_created_at_desc", label: I18n.t('offers.search.most_recent')
+          name: env + "_offers_created_at_desc", label: I18n.t('offers.search.most_recent')
         }]
       })
     );
