@@ -47,7 +47,13 @@
 
           <div class="deal-conversation-top">
             <%= render 'users/info_in_deal', user: current_user == @deal.advisor ? @deal.client : @deal.advisor %>
-            <%= render 'video_call', deal: @deal %>
+            <% if @deal.video_call? && !@deal.messages_disabled %>
+              <div id="video-call">
+                <a href="https://appear.in/<%= @deal.room_name %>" target="_blank">
+                  <i class="fa fa-video-camera fa-fw fa-lg" aria-hidden="true"></i>
+                </a>
+              </div>
+            <% end %>
           </div>
 
           <div class="deal-conversation-info">
