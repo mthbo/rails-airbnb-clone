@@ -23,7 +23,7 @@ fr:
       be_advisor_title: "Vos connaissances et vos expériences ont (aussi) de la valeur!"
       be_advisor_subtitle: "Quels que soient vos talents, proposez vos services en toute simplicité."
       be_advisor_button: "Devenir conseiller"
-    be_advisor:
+    advisor:
       be_advisor: "Devenir conseiller"
       banner_title: "Proposez des services de conseil en toute simplicité."
       publish_offer_link: "Publier une offre"

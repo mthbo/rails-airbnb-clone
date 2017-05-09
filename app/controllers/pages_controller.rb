@@ -1,11 +1,11 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :be_advisor]
+  skip_before_action :authenticate_user!, only: [:home, :advisor]
 
   def home
     @search = ""
   end
 
-  def be_advisor
+  def advisor
   end
 
 end

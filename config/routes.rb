@@ -38,7 +38,7 @@ Rails.application.routes.draw do
     patch '/change_locale', to: 'users#change_locale'
 
     root to: 'pages#home'
-    get '/be_advisor', to: 'pages#be_advisor'
+    get '/advisor', to: 'pages#advisor'
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
       resources :deals, only: [:show, :new, :create], path: 'sessions' do
