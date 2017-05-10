@@ -3,7 +3,7 @@ en:
     home:
       home: "Home"
       banner_title: "Find a personal advisor to meet any of your need."
-      input_placeholder: "I need some help for ..."
+      input_placeholder: "I need some advice for ..."
       arrow_down: "Find out more"
       inspirations_title: "Don't stay left with your questions, regardless of the moment."
       guidelines_title: "The tailor-made approach: an advisor committed to meeting your need."
@@ -21,7 +21,7 @@ en:
       guideline_text_4_2: "Provide a feedback for the Papoters community: leave a review, rate the session and evaluate the achievement of the targets settled in the agreement."
       find_advisor_button: "Find an advisor"
       be_advisor_title: "Your knowledge and your experience have value (too)!"
-      be_advisor_subtitle: "Propose your services in a simple way, regardless of your talents."
+      be_advisor_subtitle: "Propose your services as advisor in a simple way and leverage your talents."
       be_advisor_button: "Become advisor"
     advisor:
       be_advisor: "Become advisor"
@@ -30,7 +30,7 @@ en:
       sign_up_as_papoter_link: "Sign up as Papoter"
       arrow_down: "Find out more"
       inspirations_title: "Your knowledge and your experience have value, share them!"
-      guidelines_title: "Give advice, build your reputation and make yourself valuable."
+      guidelines_title: "Give advice, build your reputation and leverage your talents."
       guideline_title_1: "Publish an offer"
       guideline_title_2: "Answer to requests"
       guideline_title_3: "Deliver advice"

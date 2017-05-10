@@ -44,7 +44,7 @@ fr:
       ongoing_sessions: toutes les sessions en cours
       before_removing_offer: avant de supprimer cette offre.
     search:
-      input_placeholder: "J'ai besoin d'aide pour ..."
+      input_placeholder: "J'ai besoin de conseils pour ..."
       clear_search: "Effacer la recherche"
       show_filters: "Afficher les filtres"
       hide_filters: "Cacher les filtres"

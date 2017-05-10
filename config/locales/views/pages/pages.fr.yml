@@ -3,7 +3,7 @@ fr:
     home:
       home: "Accueil"
       banner_title: "Trouvez un conseiller particulier pour tous vos besoins."
-      input_placeholder: "J'ai besoin d'aide pour ..."
+      input_placeholder: "J'ai besoin de conseils pour ..."
       arrow_down: "En savoir plus"
       inspirations_title: "Quelle que soit l'occasion, ne laissez plus vos questions sans réponses."
       guidelines_title: "Du sur-mesure : un conseiller dévoué pour vous accompagner."
@@ -20,8 +20,8 @@ fr:
       guideline_text_4_1: "La session peut être fermée à l'issue de la date limite fixée."
       guideline_text_4_2: "Faîtes un retour d'expérience pour la communauté Papoters: laissez un avis, notez la session et évaluez la réalisation des objectifs établis dans l'accord."
       find_advisor_button: "Trouver un conseiller"
-      be_advisor_title: "Vos connaissances et vos expériences ont (aussi) de la valeur!"
-      be_advisor_subtitle: "Quels que soient vos talents, proposez vos services en toute simplicité."
+      be_advisor_title: "Vos savoirs et vos expériences ont (aussi) de la valeur!"
+      be_advisor_subtitle: "Mettez à profit vos talents en proposant des services de conseil en toute simplicité."
       be_advisor_button: "Devenir conseiller"
     advisor:
       be_advisor: "Devenir conseiller"
@@ -29,7 +29,7 @@ fr:
       publish_offer_link: "Publier une offre"
       sign_up_as_papoter_link: "S'inscrire comme Papoter"
       arrow_down: "En savoir plus"
-      inspirations_title: "Vos connaissances et vos expériences ont de la valeur, partagez-les!"
+      inspirations_title: "Vos savoirs et vos expériences ont de la valeur, partagez-les!"
       guidelines_title: "Donnez des conseils, construisez votre réputation et faîtes fructifier vos talents!"
       guideline_title_1: "Publiez une offre"
       guideline_title_2: "Répondez aux demandes"

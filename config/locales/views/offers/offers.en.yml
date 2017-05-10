@@ -44,7 +44,7 @@ en:
       ongoing_sessions: all ongoing sessions
       before_removing_offer: before removing this offer.
     search:
-      input_placeholder: "I need some help for ..."
+      input_placeholder: "I need some advice for ..."
       clear_search: "Clear search"
       show_filters: "Show filters"
       hide_filters: "Hide filters"
