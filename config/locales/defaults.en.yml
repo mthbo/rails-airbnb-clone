@@ -1,5 +1,6 @@
 en:
   title: "Papoters | The knowledge marketplace"
+  description: "Papoters is a place for knowledge sharing where everyone can receive and offer advising services, in a simple and efficient way."
   activerecord:
     attributes:
       offer:
