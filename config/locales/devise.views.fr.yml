@@ -181,7 +181,7 @@ fr:
         already_signed_up: Déjà inscrit?
         no_account: Nouveau sur Papoters?
         back: Retour
-        didn_t_receive_confirmation_instructions: Instructions de confirmation non reçues ?
+        didn_t_receive_confirmation_instructions: E-mail de confirmation non reçu ?
         didn_t_receive_unlock_instructions: Vous n'avez pas reçu l'e-mail' de déblocage ?
         forgot_your_password: Mot de passe oublié ?
         sign_in: Se connecter

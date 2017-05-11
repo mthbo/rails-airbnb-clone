@@ -33,7 +33,7 @@
         </div>
         <div class="padded-top-xs">
           <% if @user.bio.present? %>
-            <%= sanitize markdown_to_html(@user.bio) %>
+            <%= sanitize auto_link(markdown_to_html(@user.bio)) %>
           <% elsif policy(@user).edit? %>
             <p class="font-weight-normal"><%= t('.no_information_you') %></p>
             <p><%= link_to t('.edit_your_profile'), edit_user_registration_path %> <%= t('.be_known') %></p>

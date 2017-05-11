@@ -240,8 +240,8 @@ label {
 // Links
 
 a {
-  color: $medium-dark-gray;
-  font-weight: bolder;
+  color: $flash-blue;
+  font-weight: normal;
   transition: all 0.3s ease;
   &:hover, &:focus:hover {
     text-decoration: none;
@@ -250,6 +250,13 @@ a {
   &:focus {
     text-decoration: none;
     outline: none;
+    color: $flash-blue;
+  }
+}
+
+.link-gray {
+  color: $medium-dark-gray;
+  &:focus {
     color: $medium-dark-gray;
   }
 }

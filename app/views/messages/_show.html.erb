@@ -26,7 +26,7 @@
 
     <div class="message">
       <div class="message-content">
-        <%= sanitize markdown_to_html(message.content) %>
+        <%= sanitize auto_link(markdown_to_html(message.content)) %>
       </div>
 
       <div class="message-date">

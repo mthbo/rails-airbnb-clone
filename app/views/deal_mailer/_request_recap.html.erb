@@ -14,7 +14,7 @@
   <%= l(@deal.deadline.to_date) %>
 </p>
 
-<p><%= sanitize markdown_to_html(@deal.request) %></p>
+<p><%= sanitize auto_link(markdown_to_html(@deal.request)) %></p>
 <p>
   <span style='font-weight: normal;'><%= t('.languages', count: @deal.languages.count) %>: &nbsp;</span>
   <%= @deal.languages.map{ |language| language.name_translated }.join(', ') %><br>

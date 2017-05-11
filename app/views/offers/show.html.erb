@@ -38,7 +38,7 @@
 
                 <div class="row">
                   <div class="col-xs-12 padded-top-xs">
-                    <%= sanitize markdown_to_html(@offer.description) %>
+                    <%= sanitize auto_link(markdown_to_html(@offer.description)) %>
                   </div>
                 </div>
 

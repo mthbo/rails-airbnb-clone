@@ -14,21 +14,21 @@
       </a>
       <a class="dashboard-tab active" data-target="#dashboard-current-deals">
         <h5><%= t '.current_sessions' %></h5>
-          <div id="deals-current-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_current_notifications == 0 %>">
-            <%= @user.deals_current_notifications %>
-          </div>
+        <div id="deals-current-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_current_notifications == 0 %>">
+          <%= @user.deals_current_notifications %>
+        </div>
       </a>
       <a class="dashboard-tab" data-target="#dashboard-past-deals">
         <h5><%= t '.past_sessions' %></h5>
-          <div id="deals-past-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_past_notifications == 0 %>">
-            <%= @user.deals_past_notifications %>
-          </div>
+        <div id="deals-past-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_past_notifications == 0 %>">
+          <%= @user.deals_past_notifications %>
+        </div>
       </a>
       <a class="dashboard-tab" data-target="#dashboard-cancelled-deals">
         <h5><%= t '.cancelled_sessions' %></h5>
-          <div id="deals-cancelled-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_cancelled_notifications == 0 %>">
-            <%= @user.deals_cancelled_notifications %>
-          </div>
+        <div id="deals-cancelled-notifications" class="dashboard-tab-notifications badge-notification badge-red <%= 'hidden' if @user.deals_cancelled_notifications == 0 %>">
+          <%= @user.deals_cancelled_notifications %>
+        </div>
       </a>
     </div>
 

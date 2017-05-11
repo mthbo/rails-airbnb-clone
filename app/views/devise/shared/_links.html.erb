@@ -2,7 +2,7 @@
 
   <%- if devise_mapping.confirmable? && controller_name == 'sessions' %>
     <p>
-      <%= link_to new_confirmation_path(resource_name), class: "font-weight-lighter" do %>
+      <%= link_to new_confirmation_path(resource_name) do %>
         <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;&nbsp;
         <%= t('.didn_t_receive_confirmation_instructions') %>
       <% end %>
@@ -11,7 +11,7 @@
 
   <%- if devise_mapping.recoverable? && controller_name == 'sessions' %>
     <p>
-      <%= link_to new_password_path(resource_name), class: "font-weight-lighter" do %>
+      <%= link_to new_password_path(resource_name) do %>
         <i class='fa fa-lock' aria-hidden='true'></i>&nbsp;&nbsp;
         <%= t(".forgot_your_password") %>
       <% end %>

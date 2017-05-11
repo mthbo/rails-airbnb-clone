@@ -48,7 +48,7 @@
         <% end %>
       </div>
     <% end %>
-    <%= sanitize markdown_to_html(deal.proposition) %>
+    <%= sanitize auto_link(markdown_to_html(deal.proposition)) %>
     <div class="row">
       <div class="col-xs-12 col-sm-6">
         <h6><%= t '.languages', count: deal.languages.count %></h6>

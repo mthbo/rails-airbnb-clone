@@ -23,7 +23,7 @@
 <% end %>
 
 <div class="padded-top-xs">
-  <%= sanitize markdown_to_html(deal.proposition) %>
+  <%= sanitize auto_link(markdown_to_html(deal.proposition)) %>
 </div>
 
 <div class="row padded-bottom-xs">

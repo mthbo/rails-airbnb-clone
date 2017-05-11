@@ -92,13 +92,13 @@ en:
         password_reset: Password reset
         confirm_new_password: Confirm new password
         new_password: "New password (min. %{length} characters)"
-        go_back: Revenir
+        go_back: Go back
       new:
         email: Email
         forgot_your_password: Forgot your password?
         send_me_reset_password_instructions: Send me reset password instructions.
         send: Send
-        go_back: Revenir
+        go_back: Go back
       reset:
         password_reset: Password reset
         reset_your_password: You will receive an email with instructions on how to reset your password in a few minutes.
@@ -181,7 +181,7 @@ en:
         already_signed_up: Already signed up?
         no_account: No account yet?
         back: Back
-        didn_t_receive_confirmation_instructions: Didn't receive confirmation instructions?
+        didn_t_receive_confirmation_instructions: Didn't receive confirmation email?
         didn_t_receive_unlock_instructions: Didn't receive unlock instructions?
         forgot_your_password: Forgot your password?
         sign_in: Log in
