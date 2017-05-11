@@ -9,3 +9,15 @@
   <h2 class="no-margin-bottom"><i class="fa fa-envelope-o fa-2x" aria-hidden="true"></i></h2>
   <p class="font-weight-normal"><%= t '.check_your_emails' %></p>
 </div>
+
+<div class="padded-top-xs custom-form-flexbox">
+  <p>
+    <%= link_to new_confirmation_path(resource_name) do %>
+      <i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;&nbsp;
+      <%= t('devise.shared.links.didn_t_receive_confirmation_instructions') %>
+    <% end %>
+  </p>
+  <p>
+    <%= link_to t('.back_home'), root_path %>
+  </p>
+</div>

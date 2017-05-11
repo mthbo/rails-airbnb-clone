@@ -160,6 +160,7 @@ fr:
         waiting_for_confirmation: En attente de confirmation...
         activate_account: Un message contenant un lien de confirmation vous a été envoyé par e-mail. Veuillez suivre ce lien pour activer votre compte.
         check_your_emails: Vérifiez vos e-mails
+        back_home: Revenir à l'accueil
       signed_up: Bienvenue ! Vous vous êtes enregistré(e) avec succès.
       signed_up_but_inactive: Vous vous êtes enregistré(e) avec succès. Cependant, nous n’avons pas pu vous connecter car votre compte n’a pas encore été activé.
       signed_up_but_locked: Vous vous êtes enregistré(e) avec succès. Cependant, nous n’avons pas pu vous connecter car votre compte est verrouillé.
