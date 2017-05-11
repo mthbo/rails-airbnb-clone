@@ -66,6 +66,14 @@
   align-items: flex-end;
 }
 
+.home-banner-small {
+  border-bottom: solid 1px $light-gray;
+  h1 {
+    font-family: $brand-font;
+    font-size: 60px;
+  }
+}
+
 #home-input {
   font-size: 34px;
   padding-right: 40px;
@@ -229,6 +237,11 @@
   }
   .home-banner-bottom{
     height: calc(40vh - 60px);
+  }
+  .home-banner-small {
+    h1 {
+      font-size: 44px;
+    }
   }
   #home-arrow-down {
     .glyphicon {

@@ -1,28 +1,29 @@
 <div class="my-footer">
 
-        <div class="my-footer-left">
-          <ul class="list-inline">
-            <li><%= link_to t('footer.home'), root_path %></li>
-            <li><%= link_to t('footer.be_advisor'), advisor_path %></li>
-            <li><%= link_to t('footer.t&p'), root_path %></li>
-            <li><%= mail_to "mathieu.bordeleau@papoters.com", t('footer.contact') %></li>
-          </ul>
-        </div>
+  <div class="my-footer-left">
+    <ul class="list-inline">
+      <li><%= link_to t('footer.home'), root_path %></li>
+      <li><%= link_to t('footer.be_advisor'), advisor_path %></li>
+      <li><%= link_to t('footer.about'), about_path %></li>
+      <li><%= link_to t('footer.t&p'), root_path %></li>
+      <li><%= mail_to "mathieu.bordeleau@papoters.com", t('footer.contact') %></li>
+    </ul>
+  </div>
 
-        <div class="my-footer-right">
-          <ul class="list-inline">
-            <li>
-              <%= link_to "https://www.facebook.com/papotersapp" do %>
-                <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
-              <% end %>
-              <%= link_to "https://www.instagram.com/papotersapp" do %>
-                <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
-              <% end %>
-              <%= link_to "https://twitter.com/papotersapp" do %>
-                <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
-              <% end %>
-            </li>
-          </ul>
-        </div>
+  <div class="my-footer-right">
+    <ul class="list-inline">
+      <li>
+        <%= link_to "https://www.facebook.com/papotersapp" do %>
+          <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to "https://www.instagram.com/papotersapp" do %>
+          <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to "https://twitter.com/papotersapp" do %>
+          <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+        <% end %>
+      </li>
+    </ul>
+  </div>
 
 </div>

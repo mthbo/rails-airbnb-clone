@@ -39,6 +39,7 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
     get '/advisor', to: 'pages#advisor'
+    get '/about', to: 'pages#about'
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
       resources :deals, only: [:show, :new, :create], path: 'sessions' do
