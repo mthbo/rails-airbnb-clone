@@ -30,7 +30,7 @@ en:
     connect_to_stripe:
       accept_payment_instructions_html: "You need to connect your account with Stripe and to provide your bank account information for being able <span class='font-weight-normal'>to price your services</span>."
       connect_with_stripe: Connect with Stripe
-      advising_services: Advising services
+      advisory_services: Advisory services
     info:
       age: "yrs"
       grade_1: "Papoter"

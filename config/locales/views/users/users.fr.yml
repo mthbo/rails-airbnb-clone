@@ -30,7 +30,7 @@ fr:
     connect_to_stripe:
       accept_payment_instructions_html: "Vous devez connecter votre compte à Stripe et fournir vos informations de compte bancaire pour pouvoir <span class='font-weight-normal'>proposer des services payants</span>."
       connect_with_stripe: Se connecter à Stripe
-      advising_services: Services de conseil
+      advisory_services: Services de conseil
     info:
       age: "ans"
       grade_1: "Papoter"
