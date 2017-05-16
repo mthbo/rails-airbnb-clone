@@ -1,0 +1,22 @@
+<% content_for :title do %>
+  <%= "Papoters | #{t('.country_title')}" %>
+<% end %>
+
+<%= simple_form_for @user,  url: update_country_path, method: :patch do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="col-xs-12 padded-top-s">
+      <p><%= t('.select_country') %></p>
+    </div>
+    <div class="col-xs-12 col-sm-6 padded-top-xs">
+      <%= f.input :country_code, label: false, prompt: t('.country'), input_html: { class: 'custom-form-input' } %>
+    </div>
+  </div>
+
+  <div class="text-right padded-top-s">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-green") do %>
+      <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+    <% end %>
+  </div>
+<% end %>

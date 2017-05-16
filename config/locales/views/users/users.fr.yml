@@ -26,7 +26,8 @@ fr:
       as_service_recipient: "pour service reçu"
       no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
       no_reviews: "%{user} n'a reçu aucun avis pour le moment."
-      payouts_not_authorized_html: "Vous n'êtes pour le moment pas autorisé à proposer des <span class='font-weight-normal'>services payants</span> car Papoters est en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
+      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
+      payouts_not_authorized_html: "Vous n'êtes pas autorisé à proposer des <span class='font-weight-normal'>services payants</span>"
     connect_to_stripe:
       accept_payment_instructions_html: "Vous devez connecter votre compte à Stripe et fournir vos informations de compte bancaire pour pouvoir <span class='font-weight-normal'>proposer des services payants</span>."
       connect_with_stripe: Se connecter à Stripe
@@ -61,4 +62,9 @@ fr:
       connected_to_stripe: Votre compte a été connecté à Stripe avec succès!
       edit_your_offers_html: "Vous pouvez désormais proposer des services payants. Pour celà, éditez chacune de vos offres et choisissez le mode <span class='font-weight-normal blue'>PAYANT</span>."
       back_to_profile: Revenir au profil
+    country:
+      country_title: Mon pays
+      select_country: Veuillez sélectionner votre pays de résidence pour pouvoir publier une offre.
+      country: -- Pays --
+      new_offer: Nouvelle offre
 

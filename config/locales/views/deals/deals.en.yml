@@ -70,7 +70,8 @@ en:
       amount_range: "min: %{currency}%{min}"
       leave_blank_if_free: Leave it blank for a free session.
       session_for_free: This session will be for free.
-      payouts_not_authorized_html: "You are currently not authorized <span class='font-weight-normal'>to price your services</span> since Papoters is in <em class='font-weight-normal'>beta</em> version in your geographic area."
+      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
+      payouts_not_authorized_html: "You are not authorized <span class='font-weight-normal'>to price your services</span>."
       sessions_before_pricing_html:
         one: "You still need to achieve <span class='font-weight-normal'>%{count} free session</span> for this offer before pricing your service."
         other: "You still need to achieve <span class='font-weight-normal'>%{count} free sessions</span> for this offer before pricing your service."

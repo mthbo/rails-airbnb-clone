@@ -15,11 +15,11 @@
     </div>
   </div>
 
-  <% if !deal.advisor.payout_authorized %>
+  <% if !deal.advisor.pricing_available? %>
     <div class="padded-top-xs padded-bottom-xs">
       <div class="custom-form-warning bg-white-transparent">
         <%= image_tag('no_amount.svg') %>
-        <p><%= t '.session_for_free' %> <%= t '.payouts_not_authorized_html' %></p>
+        <p><%= t '.session_for_free' %> <%= t '.pricing_not_available_html' %></p>
       </div>
     </div>
 
@@ -29,6 +29,12 @@
         <%= image_tag('no_amount.svg') %>
         <p><%= t '.session_for_free' %> <%= t '.sessions_before_pricing_html', count: (@deal.offer.free_deals) %></p>
       </div>
+    </div>
+
+  <% elsif !deal.offer.advisor.payout_authorized %>
+    <div class="custom-form-warning bg-white-transparent">
+      <%= image_tag 'no_amount.svg' %>
+      <p><%= t '.payouts_not_authorized_html' %></p>
     </div>
 
   <% elsif deal.offer.free? %>
@@ -47,7 +53,7 @@
       </p>
       <div class="row">
         <div class="col-xs-12 col-sm-6">
-          <%= f.input :amount, as: :custom, symbol: deal.advisor.currency.symbol, required: true, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? deal.amount.to_f : nil } %>
+          <%= f.input :amount, as: :custom, symbol: deal.advisor.currency.symbol, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? deal.amount.to_f : nil } %>
         </div>
       </div>
     </div>

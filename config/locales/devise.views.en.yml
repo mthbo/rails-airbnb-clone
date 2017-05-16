@@ -28,6 +28,8 @@ en:
             last_name:
               blank: Please provide your last name
               too_short: This name is too short
+            country_code:
+              blank: Please select a country
             email:
               blank: Please provide your email
               invalid: This email is invalid

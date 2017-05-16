@@ -55,8 +55,14 @@
           <h2><%= @user == current_user ? t('.my_offers') : t('.offers', user: @user.first_name) %></h2>
           <% if policy(@user.offers.new).new? %>
             <div>
-              <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
-                <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+              <% if @user.country_code.blank? %>
+                <%= link_to country_path, class: "btn btn-form btn-green" do %>
+                  <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+                <% end %>
+              <% else %>
+                <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
+                  <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+                <% end %>
               <% end %>
             </div>
           <% end %>
@@ -64,10 +70,14 @@
 
         <% if @user == current_user %>
           <% if @user.offers_published.present? %>
-            <% if @user.stripe_account_id.blank? %>
+
+            <% unless @user.payout_authorized %>
               <div class="user-offers-info">
-                <% if @user.payout_authorized %>
-                  <%= render "connect_to_stripe" %>
+                <% unless @user.pricing_available? %>
+                  <div class="user-pricing-info">
+                    <%= image_tag 'no_amount.svg' %>
+                    <p><%= t '.pricing_not_available_html' %></p>
+                  </div>
                 <% else %>
                   <div class="user-pricing-info">
                     <%= image_tag 'no_amount.svg' %>
@@ -76,6 +86,7 @@
                 <% end %>
               </div>
             <% end %>
+
             <% @user.offers_published.each do |offer| %>
               <%= render "offers/card_without_user", offer: offer %>
             <% end %>

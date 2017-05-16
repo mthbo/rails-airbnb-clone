@@ -28,6 +28,8 @@ fr:
             last_name:
               blank: Veuillez renseigner votre nom
               too_short: Ce nom est trop court
+            country_code:
+              blank: Veuillez sélectionner un pays
             email:
               blank: Veuillez renseigner votre e-mail
               invalid: Cet e-mail est invalide

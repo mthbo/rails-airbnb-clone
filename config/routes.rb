@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'users#dashboard'
     get '/stripe_connection', to: 'users#stripe_connection'
     patch '/change_locale', to: 'users#change_locale'
+    get '/country', to: 'users#country'
+    patch '/update_country', to: 'users#update_country'
 
     root to: 'pages#home'
     get '/advisor', to: 'pages#advisor'

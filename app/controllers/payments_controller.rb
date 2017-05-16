@@ -6,7 +6,11 @@ class PaymentsController < ApplicationController
   def create
     if @deal.client.stripe_customer_id
       @customer = Stripe::Customer.retrieve(@deal.client.stripe_customer_id)
-      @customer.respond_to?(:deleted) ? create_customer : update_customer
+      if (@customer.blank? || @customer.respond_to?(:deleted))
+        create_customer
+      else
+        update_customer
+      end
     else
       create_customer
     end

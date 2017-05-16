@@ -30,10 +30,10 @@
   </div>
 
   <div class="padded-top-xs">
-    <% if !@offer.advisor.payout_authorized %>
+    <% if !@offer.advisor.pricing_available? %>
       <div class="custom-form-warning bg-white-transparent">
         <%= image_tag 'no_amount.svg' %>
-        <p><%= t '.payouts_not_authorized_html' %></p>
+        <p><%= t '.pricing_not_available_html' %></p>
       </div>
 
     <% elsif @offer.id.blank? %>
@@ -46,6 +46,12 @@
       <div class="custom-form-warning bg-white-transparent">
         <%= image_tag 'no_amount.svg' %>
         <p><%= t '.sessions_for_free' %> <%= t '.sessions_before_pricing_html', count: (@offer.free_deals) %></p>
+      </div>
+
+    <% elsif !@offer.advisor.payout_authorized %>
+      <div class="custom-form-warning bg-white-transparent">
+        <%= image_tag 'no_amount.svg' %>
+        <p><%= t '.payouts_not_authorized_html' %></p>
       </div>
 
     <% else %>

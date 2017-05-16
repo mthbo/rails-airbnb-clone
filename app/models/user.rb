@@ -23,6 +23,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
   validate :birth_date_must_be_valid
+  validates :country_code, presence: true, allow_blank: false, on: :update
 
   # User information
 
@@ -79,6 +80,10 @@ class User < ApplicationRecord
 
   def currency
     Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
+  end
+
+  def pricing_available?
+    country_code == "FR"
   end
 
   def avatar_img

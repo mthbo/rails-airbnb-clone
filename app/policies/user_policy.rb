@@ -8,6 +8,14 @@ class UserPolicy < ApplicationPolicy
     user == record
   end
 
+  def country?
+    user == record
+  end
+
+  def update_country?
+    user == record
+  end
+
   def stripe_connection?
     user == record
   end
