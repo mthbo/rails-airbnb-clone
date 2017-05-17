@@ -25,6 +25,8 @@ class User < ApplicationRecord
   validate :birth_date_must_be_valid
   validates :country_code, presence: true, allow_blank: false, on: :update
 
+  STRIPE_ALLOWED_COUNTRIES = ['FR']
+
   # User information
 
   def first_name=(s)
@@ -83,7 +85,7 @@ class User < ApplicationRecord
   end
 
   def pricing_available?
-    country_code == "FR"
+    STRIPE_ALLOWED_COUNTRIES.include?(country_code)
   end
 
   def avatar_img

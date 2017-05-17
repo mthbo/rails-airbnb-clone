@@ -36,12 +36,12 @@
   border-radius: 4px;
 }
 
-.user-connect-to-stripe {
+.user-pricing-action {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  div {
-    padding-left: 25px;
+  a {
+    margin-left: 25px;
   }
 }
 
@@ -65,11 +65,11 @@
   .user-offers-info {
     padding: 15px;
   }
-  .user-connect-to-stripe {
+  .user-pricing-action {
     flex-direction: column;
-    div {
-      padding-top: 15px;
-      padding-left: 0;
+    a {
+      margin-top: 15px;
+      margin-left: 0;
     }
   }
   .user-pricing-info {

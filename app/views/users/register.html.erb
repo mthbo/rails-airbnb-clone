@@ -1,8 +1,10 @@
 <% content_for :title do %>
-  <%= "Papoters | #{t('.country_title')}" %>
+  <%= "Papoters | #{t('.account_registration')}" %>
 <% end %>
 
-<%= simple_form_for @user,  url: update_country_users_path, method: :patch do |f| %>
+<h2><%= t '.account_registration' %></h2>
+
+<%= simple_form_for @user do |f| %>
   <%= f.error_notification %>
 
   <div class="row">
@@ -15,8 +17,8 @@
   </div>
 
   <div class="text-right padded-top-s">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-green") do %>
-      <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
     <% end %>
   </div>
 <% end %>

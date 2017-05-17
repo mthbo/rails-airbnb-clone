@@ -9,7 +9,7 @@
         <%= render 'users/avatar', user: @user, size: 'avatar-xlarge' %>
         <%= render 'users/info', user: @user %>
         <% if policy(@user).dashboard? %>
-          <p><%= link_to t('.see_dashboard'), dashboard_path %></p>
+          <p><%= link_to t('.see_dashboard'), dashboard_users_path %></p>
         <% end %>
       </div>
     </div>
@@ -56,7 +56,7 @@
           <% if policy(@user.offers.new).new? %>
             <div>
               <% if @user.country_code.blank? %>
-                <%= link_to country_path, class: "btn btn-form btn-green" do %>
+                <%= link_to country_users_path, class: "btn btn-form btn-green" do %>
                   <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
                 <% end %>
               <% else %>
@@ -71,7 +71,7 @@
         <% if @user == current_user %>
           <% if @user.offers_published.present? %>
 
-            <% unless @user.payout_authorized %>
+            <% unless @user.pricing_authorized? || !policy(@user).update?  %>
               <div class="user-offers-info">
                 <% unless @user.pricing_available? %>
                   <div class="user-pricing-info">
@@ -79,9 +79,15 @@
                     <p><%= t '.pricing_not_available_html' %></p>
                   </div>
                 <% else %>
-                  <div class="user-pricing-info">
-                    <%= image_tag 'no_amount.svg' %>
-                    <p><%= t '.payouts_not_authorized_html' %></p>
+                  <div class="user-pricing-action">
+                    <p class="no-margin-bottom">
+                      <%= t '.pricing_not_authorized_html' %>
+                      <%= t '.register_instructions' %>
+                    </p>
+                    <%= link_to register_users_path, class: "btn btn-gray" do %>
+                      <span class="info-icon"><%= image_tag 'amount.svg' %></span>
+                      <%= t '.register_my_account' %>
+                    <% end %>
                   </div>
                 <% end %>
               </div>
@@ -90,6 +96,7 @@
             <% @user.offers_published.each do |offer| %>
               <%= render "offers/card_without_user", offer: offer %>
             <% end %>
+
           <% else %>
             <div class="padded-top-xs">
               <p class="font-weight-normal"><%= t '.no_offers_you' %></p>

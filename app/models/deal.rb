@@ -48,7 +48,6 @@ class Deal < ApplicationRecord
     offer.advisor unless offer.nil?
   end
 
-
   # Money
 
   def currency
@@ -56,19 +55,19 @@ class Deal < ApplicationRecord
   end
 
   def flat_fee
-    Money.new(50, "EUR").exchange_to(self.currency_code)
+    Money.new(ENV['PRICING_FLAT_FEE'].to_i, "EUR").exchange_to(self.currency_code)
   end
 
   def first_cutoff_amount
-    Money.new(5000, "EUR").exchange_to(self.currency_code)
+    Money.new(ENV['PRICING_FIRST_CUTOFF'].to_i, "EUR").exchange_to(self.currency_code)
   end
 
   def set_fees
     if self.amount_cents
       if self.amount_cents > first_cutoff_amount.cents
-        self.fees_cents = flat_fee.cents + first_cutoff_amount.cents * 0.15 + (self.amount_cents - first_cutoff_amount.cents) * 0.1
+        self.fees_cents = flat_fee.cents + first_cutoff_amount.cents * ENV['PRICING_FIRST_RATE'].to_f + (self.amount_cents - first_cutoff_amount.cents) * ENV['PRICING_SECOND_RATE'].to_f
       else
-        self.fees_cents = flat_fee.cents + self.amount_cents * 0.15
+        self.fees_cents = flat_fee.cents + self.amount_cents * ENV['PRICING_FIRST_RATE'].to_f
       end
     end
   end
@@ -80,11 +79,11 @@ class Deal < ApplicationRecord
   end
 
   def min_amount
-    Money.new(1000, "EUR").exchange_to(self.advisor.currency_code)
+    Money.new(ENV['PRICING_MIN_AMOUNT'].to_i, "EUR").exchange_to(self.advisor.currency_code)
   end
 
   def max_amount
-    Money.new(200000, "EUR").exchange_to(self.advisor.currency_code)
+    Money.new(ENV['PRICING_MAX_AMOUNT'].to_i, "EUR").exchange_to(self.advisor.currency_code)
   end
 
   def amount_converted(currency_code=Money.default_currency.to_s)

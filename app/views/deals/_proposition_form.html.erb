@@ -31,7 +31,7 @@
       </div>
     </div>
 
-  <% elsif !deal.offer.advisor.payout_authorized %>
+  <% elsif !deal.offer.advisor.pricing_authorized? %>
     <div class="custom-form-warning bg-white-transparent">
       <%= image_tag 'no_amount.svg' %>
       <p><%= t '.payouts_not_authorized_html' %></p>

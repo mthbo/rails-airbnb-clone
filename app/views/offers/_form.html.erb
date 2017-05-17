@@ -48,7 +48,7 @@
         <p><%= t '.sessions_for_free' %> <%= t '.sessions_before_pricing_html', count: (@offer.free_deals) %></p>
       </div>
 
-    <% elsif !@offer.advisor.payout_authorized %>
+    <% elsif !@offer.advisor.pricing_authorized %>
       <div class="custom-form-warning bg-white-transparent">
         <%= image_tag 'no_amount.svg' %>
         <p><%= t '.payouts_not_authorized_html' %></p>

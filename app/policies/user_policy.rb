@@ -1,9 +1,5 @@
 class UserPolicy < ApplicationPolicy
 
-  def update?
-    user == record
-  end
-
   def dashboard?
     user == record
   end
@@ -17,6 +13,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def stripe_connection?
+    user == record
+  end
+
+  def register?
+    user == record
+  end
+
+  def update?
     user == record
   end
 

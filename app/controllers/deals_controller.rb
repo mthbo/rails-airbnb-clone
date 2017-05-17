@@ -105,7 +105,7 @@ class DealsController < ApplicationController
     DealMailer.deal_closed_advisor(@deal).deliver_later
     offer = @deal.offer
     offer.free_deals -= 1 if offer.free_deals > 0
-    offer.priced! if (offer.free_deals == 0 && offer.advisor.stripe_account_id.present? && offer.advisor.payout_authorized )
+    offer.priced! if (offer.free_deals == 0 && offer.advisor.stripe_account_id.present? && offer.advisor.pricing_authorized? )
     offer.save
     offer.index!
     respond_to do |format|

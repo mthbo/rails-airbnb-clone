@@ -18,7 +18,7 @@
         <% I18n.available_locales.each do |locale| %>
           <li class="text-center">
             <% if user_signed_in? %>
-              <%= link_to change_locale_path(locale: locale, path: url_for(locale: locale)), method: :patch do %>
+              <%= link_to change_locale_users_path(locale: locale, path: url_for(locale: locale)), method: :patch do %>
                 <%= image_tag "flags/#{locale}.svg" %>
               <% end %>
             <% else %>
@@ -46,7 +46,7 @@
     <%= link_to t('navbar.be_advisor'), advisor_path, { class: "my-navbar-button btn btn-green" } %>
 
     <% if user_signed_in? %>
-      <%= link_to dashboard_path, { class: "btn my-navbar-button-round btn-blue" } do %>
+      <%= link_to dashboard_users_path, { class: "btn my-navbar-button-round btn-blue" } do %>
           <i class="fa fa-hashtag"></i>
           <div id="my-navbar-badge">
             <%= render 'users/notifications' %>
@@ -59,7 +59,7 @@
         </div>
         <ul id="my-navbar-profile-menu" class="list-unstyled">
           <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
-          <li><%= link_to t('navbar.dashboard'), dashboard_path %></li>
+          <li><%= link_to t('navbar.dashboard'), dashboard_users_path %></li>
           <li><%= link_to t('navbar.sign_out'), destroy_user_session_path, method: :delete %></li>
         </ul>
       </div>
@@ -91,7 +91,7 @@
       <% if user_signed_in? %>
         <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
         <li>
-          <%= link_to dashboard_path do %>
+          <%= link_to dashboard_users_path do %>
             <%= t('navbar.dashboard') %>
             <div id="my-navbar-burger-menu-badge">
               <%= render 'users/notifications' %>

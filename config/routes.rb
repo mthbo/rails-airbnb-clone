@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
 
+    root to: 'pages#home'
+    get '/advisor', to: 'pages#advisor'
+    get '/about', to: 'pages#about'
+
     devise_for :users,
       skip: :omniauth_callbacks,
       controllers: {
@@ -32,16 +36,15 @@ Rails.application.routes.draw do
       get "users/password/reset", to: "users/passwords#reset"
     end
 
-    resources :users, only: [:show]
-    get '/dashboard', to: 'users#dashboard'
-    get '/stripe_connection', to: 'users#stripe_connection'
-    patch '/change_locale', to: 'users#change_locale'
-    get '/country', to: 'users#country'
-    patch '/update_country', to: 'users#update_country'
-
-    root to: 'pages#home'
-    get '/advisor', to: 'pages#advisor'
-    get '/about', to: 'pages#about'
+    resources :users, only: [:show, :update] do
+      collection do
+        get 'dashboard', to: 'users#dashboard'
+        get 'register', to: 'users#register'
+        get 'country', to: 'users#country'
+        patch 'update_country', to: 'users#update_country'
+        patch 'change_locale', to: 'users#change_locale'
+      end
+    end
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
       resources :deals, only: [:show, :new, :create], path: 'sessions' do
