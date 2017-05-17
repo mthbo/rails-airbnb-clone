@@ -46,16 +46,16 @@ Rails.application.routes.draw do
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
       resources :deals, only: [:show, :new, :create], path: 'sessions' do
         member do
-          get 'new_proposition', to: 'deals#new_proposition'
-          get 'new_review', to: 'deals#new_review'
+          get 'proposition', to: 'deals#proposition'
+          get 'review', to: 'deals#review'
           patch 'save_proposition', to: 'deals#save_proposition'
           patch 'submit_proposition', to: 'deals#submit_proposition'
           patch 'decline_proposition', to: 'deals#decline_proposition'
-          patch 'open_session', to: 'deals#open_session'
-          patch 'close_session', to: 'deals#close_session'
+          patch 'accept_proposition', to: 'deals#accept_proposition'
+          patch 'complete', to: 'deals#complete'
           patch 'save_review', to: 'deals#save_review'
           patch 'disable_messages', to: 'deals#disable_messages'
-          patch 'cancel_session', to: 'deals#cancel_session'
+          patch 'cancel', to: 'deals#cancel'
         end
         resources :objectives, only: [:create, :update, :destroy]
         resources :messages, only: [:create]

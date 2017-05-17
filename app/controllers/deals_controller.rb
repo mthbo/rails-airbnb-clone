@@ -1,6 +1,7 @@
 class DealsController < ApplicationController
   include Receiver
-  before_action :find_deal, only: [:show, :new_proposition, :save_proposition, :submit_proposition, :decline_proposition, :open_session, :close_session, :new_review, :save_review, :disable_messages, :cancel_session]
+  include DealOpening
+  before_action :find_deal, only: [:show, :proposition, :save_proposition, :submit_proposition, :decline_proposition, :accept_proposition, :complete, :review, :save_review, :disable_messages, :cancel]
   before_action :find_offer, only: [:new, :create]
 
   def show
@@ -32,7 +33,7 @@ class DealsController < ApplicationController
     end
   end
 
-  def new_proposition
+  def proposition
     @objective = Objective.new
     render layout: "advisor_form"
   end
@@ -86,28 +87,11 @@ class DealsController < ApplicationController
     end
   end
 
-  def open_session
-    @deal.opened!
-    @deal.opened_at = DateTime.current.in_time_zone
-    @deal.increment_notifications(@deal.advisor)
-    @deal.reset_notifications(@deal.client)
-    @deal.save
-    Message.create_status_message(@deal, current_user)
-    DealStatusBroadcastJob.perform_later(@deal, @deal.advisor)
-    DealCardsBroadcastJob.perform_later(@deal)
-    DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
-    DealMailer.deal_proposition_accepted_advisor(@deal).deliver_later
-    DealMailer.deal_proposition_accepted_client(@deal).deliver_later
-    respond_to do |format|
-      format.html {
-        flash[:notice] = t('.notice', id: @deal.id, name: @deal.advisor.first_name)
-        redirect_to deal_path(@deal)
-      }
-      format.js
-    end
+  def accept_proposition
+    open_deal
   end
 
-  def close_session
+  def complete
     @deal.closed!
     @deal.closed_at = DateTime.current.in_time_zone
     set_receiver
@@ -133,7 +117,7 @@ class DealsController < ApplicationController
     end
   end
 
-  def new_review
+  def review
     render layout: current_user == @deal.advisor ? "advisor_form" : "client_form"
   end
 
@@ -152,7 +136,7 @@ class DealsController < ApplicationController
       flash[:notice] = t('.notice')
       redirect_to deal_path(@deal)
     else
-      render :new_review, layout: current_user == @deal.advisor ? "advisor_form" : "client_form"
+      render :review, layout: current_user == @deal.advisor ? "advisor_form" : "client_form"
     end
   end
 
@@ -173,7 +157,7 @@ class DealsController < ApplicationController
     end
   end
 
-  def cancel_session
+  def cancel
     @deal.cancelled!
     @deal.messages_disabled = true
     set_receiver

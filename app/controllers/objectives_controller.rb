@@ -10,12 +10,12 @@ class ObjectivesController < ApplicationController
     authorize @objective
     if @objective.save
       respond_to do |format|
-        format.html { redirect_to new_proposition_deal_path(@deal) }
+        format.html { redirect_to proposition_deal_path(@deal) }
         format.js
       end
     else
       respond_to do |format|
-        format.html { render 'deals/new_proposition' }
+        format.html { render 'deals/proposition' }
         format.js
       end
     end
@@ -25,12 +25,12 @@ class ObjectivesController < ApplicationController
     @deal = @objective.deal
     if @objective.update(objective_params)
       respond_to do |format|
-        format.html { redirect_to new_review_deal_path(@deal) }
+        format.html { redirect_to review_deal_path(@deal) }
         format.js
       end
     else
       respond_to do |format|
-        format.html { render 'deals/new_review' }
+        format.html { render 'deals/review' }
         format.js
       end
     end
@@ -40,7 +40,7 @@ class ObjectivesController < ApplicationController
     @objective.destroy
     @deal = @objective.deal
     respond_to do |format|
-      format.html { redirect_to new_proposition_deal_path(@deal) }
+      format.html { redirect_to proposition_deal_path(@deal) }
       format.js
     end
   end

@@ -45,7 +45,7 @@
       <p class="red"><%= t '.proposition_declined' %></p>
     <% elsif deal.open_expired? %>
       <p class="red"><%= t '.deadline_expired' %></p>
-    <% elsif policy(deal).new_review? %>
+    <% elsif policy(deal).review? %>
       <p class="blue"><%= t '.review_expected' %></p>
     <% elsif deal.messages_disabled %>
       <p class="red"><%= t '.messages_disabled' %></p>

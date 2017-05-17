@@ -6,15 +6,15 @@ fr:
       notice: "Votre proposition a été soumise à %{name}"
     decline_proposition:
       notice: "Vous avez refusé la proposition de %{name}"
-    open_session:
+    accept_proposition:
       notice: "#session-%{id} avec %{name} est ouverte!"
-    close_session:
+    complete:
       notice: "#session-%{id} avec %{name} est clôturée!"
     save_review:
       notice: "Votre évaluation a été postée"
     disable_messages:
       notice: "Les messages ont été désactivés pour #session-%{id}."
-    cancel_session:
+    cancel:
       notice: "#session-%{id} avec %{name} est annulée!"
     request_button:
       get_in_touch: "Contacter"
@@ -54,7 +54,7 @@ fr:
     info_cancelled:
       session_is_cancelled: Cette session a été annulée, il n'y a plus rien à faire ici.
       back_to_dashboard: Revenir au tableau de bord
-    new_proposition:
+    proposition:
       new_proposition: Nouvelle proposition
       new_proposition_for: Nouvelle proposition pour %{name}
       unveil_action_plan: "Porposez un plan d'action pour cette session afin de répondre au besoin de %{name}."
@@ -174,7 +174,7 @@ fr:
       are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
       go_back: Revenir
       disable: Désactiver
-    new_review:
+    review:
       evaluation: Evaluation
       session_evaluation: Evaluation de la session avec %{name}
       target_achievement: Réalisation des objectifs

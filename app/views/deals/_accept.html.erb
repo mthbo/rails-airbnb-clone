@@ -25,7 +25,7 @@
             <%= render 'deals/stripe_payment', deal: deal %>
 
           <% else %>
-            <%= link_to open_session_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
+            <%= link_to accept_proposition_deal_path(deal), method: :patch, remote: true, class: "btn btn-form btn-blue" do %>
               <i class="fa fa-thumbs-o-up fa-lg fa-fw" aria-hidden="true"></i>&nbsp;&nbsp; <%= t '.accept' %>
             <% end %>
           <% end %>
