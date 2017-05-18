@@ -16,6 +16,10 @@ en:
         address: Address
         zip_code: Zip code
         city: City
+        personal_address: Personal address
+        legal_types:
+          individual: Individual
+          company: Company
     models:
       user: User
     errors:

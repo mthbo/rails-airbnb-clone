@@ -71,7 +71,7 @@
         <% if @user == current_user %>
           <% if @user.offers_published.present? %>
 
-            <% unless @user.pricing_authorized? || !policy(@user).update?  %>
+            <% unless @user.pricing_enabled? || !policy(@user).update?  %>
               <div class="user-offers-info">
                 <% unless @user.pricing_available? %>
                   <div class="user-pricing-info">

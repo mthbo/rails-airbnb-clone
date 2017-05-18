@@ -7,18 +7,81 @@
 <%= simple_form_for @user do |f| %>
   <%= f.error_notification %>
 
-  <div class="row">
-    <div class="col-xs-12 padded-top-s">
-      <p><%= t('.select_country') %></p>
+  <div class="custom-radio-buttons padded-top-xs">
+    <%= f.input :legal_type, label: false, as: :radio_buttons, collection: User.translated_legal_types %>
+  </div>
+
+
+  <div class="form-separation padded-top-s padded-bottom-s">
+    <div></div>
+    <p><strong><%= t '.personal_details' %></strong></p>
+    <div></div>
+  </div>
+
+  <div class="row padded-top-xs">
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :first_name, label: false, placeholder: t('.first_name'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-12 col-sm-6 padded-top-xs">
-      <%= f.input :country_code, label: false, prompt: t('.country'), input_html: { class: 'custom-form-input' } %>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :last_name, label: false, placeholder: t('.last_name'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :birth_date, as: :custom, symbol: "<i class='fa fa-birthday-cake fa-fw' aria-hidden='true'></i>".html_safe, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "0d", date_start_date: "-150y", date_start_view: "decade" }, value: @user.birth_date ? l(@user.birth_date) : nil } %>
+    </div>
+  </div>
+
+  <div class="row padded-top-xs">
+    <div class="col-xs-12">
+      <%= f.input :personal_address, placeholder: t('.street'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-5 col-sm-4">
+      <%= f.input :personal_zip_code, label: false, placeholder: t('.zip_code'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-7 col-sm-4">
+      <%= f.input :personal_city, label: false, placeholder: t('.city'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class='custom-form-field'>
+        <%= @user.country %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-separation padded-top-m padded-bottom-s">
+    <div></div>
+    <p><strong><%= t '.business_details' %></strong></p>
+    <div></div>
+  </div>
+
+  <div class="row padded-top-xs">
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :business_name, placeholder: t('.business_name'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <%= f.input :business_tax_id, placeholder: t('.business_tax_id'), input_html: { class: 'custom-form-input' } %>
+    </div>
+  </div>
+
+  <div class="row padded-top-xs">
+    <div class="col-xs-12">
+      <%= f.input :address, placeholder: t('.street'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-5 col-sm-4">
+      <%= f.input :zip_code, label: false, placeholder: t('.zip_code'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-7 col-sm-4">
+      <%= f.input :city, label: false, placeholder: t('.city'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-12 col-sm-4">
+      <div class='custom-form-field'>
+        <%= @user.country %>
+      </div>
     </div>
   </div>
 
   <div class="text-right padded-top-s">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
-      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-green") do %>
+      <i class='fa fa-chevron-right fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.continue' %>
     <% end %>
   </div>
 <% end %>

@@ -16,6 +16,10 @@ fr:
         address: Adresse
         zip_code: Code postal
         city: Ville
+        personal_address: Adresse personnelle
+        legal_types:
+          individual: Individu
+          company: Entreprise
     models:
       user: Utilisateur
     errors:

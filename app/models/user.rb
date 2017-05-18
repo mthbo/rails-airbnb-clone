@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
+  enum legal_type: [ :individual, :company ]
+
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
   has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal', dependent: :nullify
   has_many :advisor_deals, through: :offers, source: :deals
@@ -23,7 +26,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
   validate :birth_date_must_be_valid
-  validates :country_code, presence: true, allow_blank: false, on: :update
+  # validates :country_code, presence: true, allow_blank: false, on: :update
 
   STRIPE_ALLOWED_COUNTRIES = ['FR']
 
@@ -69,14 +72,6 @@ class User < ApplicationRecord
       "#{country(locale)}"
     else
       " - "
-    end
-  end
-
-  def administrative_area
-    if (country_code && country_code == 'FR')
-      division
-    else
-      state
     end
   end
 
@@ -359,6 +354,15 @@ class User < ApplicationRecord
 
   def advisor_deals_closed_count
     advisor_deals_closed.count
+  end
+
+
+  # Legal type option I18n names
+
+  def self.translated_legal_types
+    legal_types.map do |legal_type, i|
+      [I18n.t("activerecord.attributes.user.legal_types.#{legal_type}"), legal_type]
+    end
   end
 
 

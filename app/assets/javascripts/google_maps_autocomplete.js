@@ -1,10 +1,21 @@
 $(document).ready(function() {
   var user_address = $('#user_address').get(0);
+  var user_personal_address = $('#user_personal_address').get(0);
 
   if (user_address) {
     var autocomplete = new google.maps.places.Autocomplete(user_address, { types: ['geocode'] });
-    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChanged);
+    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChangedUser);
     google.maps.event.addDomListener(user_address, 'keydown', function(e) {
+      if (e.keyCode == 13) {
+        e.preventDefault(); // Do not submit the form on Enter.
+      }
+    });
+  }
+
+  if (user_personal_address) {
+    var autocomplete = new google.maps.places.Autocomplete(user_personal_address, { types: ['geocode'] });
+    google.maps.event.addListener(autocomplete, 'place_changed', onPlaceChangedUserPersonal);
+    google.maps.event.addDomListener(user_personal_address, 'keydown', function(e) {
       if (e.keyCode == 13) {
         e.preventDefault(); // Do not submit the form on Enter.
       }
@@ -12,7 +23,7 @@ $(document).ready(function() {
   }
 });
 
-function onPlaceChanged() {
+function onPlaceChangedUser() {
   var place = this.getPlace();
   var components = getAddressComponents(place);
 
@@ -23,7 +34,19 @@ function onPlaceChanged() {
     $('#user_country_code').val(components.country_code);
   }
   $('#user_state').val(components.state);
-  $('#user_division').val(components.division);
+}
+
+function onPlaceChangedUserPersonal() {
+  var place = this.getPlace();
+  var components = getAddressComponents(place);
+
+  $('#user_personal_address').trigger('blur').val(components.address);
+  $('#user_personal_zip_code').val(components.zip_code);
+  $('#user_personal_city').val(components.city);
+  if (components.country_code) {
+    $('#user_country_code').val(components.country_code);
+  }
+  $('#user_personal_state').val(components.state);
 }
 
 function getAddressComponents(place) {
@@ -36,7 +59,6 @@ function getAddressComponents(place) {
   var city = null;
   var country_code = null;
   var state = null;
-  var division = null;
   for (var i in place.address_components) {
     var component = place.address_components[i];
     for (var j in component.types) {
@@ -53,8 +75,6 @@ function getAddressComponents(place) {
         country_code = component.short_name;
       } else if (type == 'administrative_area_level_1') {
         state = component.short_name;
-      } else if (type == 'administrative_area_level_2') {
-        division = component.short_name;
       }
     }
   }
@@ -64,7 +84,6 @@ function getAddressComponents(place) {
     zip_code: zip_code,
     city: city,
     country_code: country_code,
-    state: state,
-    division: division
+    state: state
   };
 }

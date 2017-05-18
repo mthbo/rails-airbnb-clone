@@ -48,7 +48,7 @@
         <p><%= t '.sessions_for_free' %> <%= t '.sessions_before_pricing_html', count: (@offer.free_deals) %></p>
       </div>
 
-    <% elsif !@offer.advisor.pricing_authorized %>
+    <% elsif !@offer.advisor.pricing_enabled? %>
       <div class="custom-form-warning bg-white-transparent">
         <%= image_tag 'no_amount.svg' %>
         <p><%= t '.payouts_not_authorized_html' %></p>
@@ -56,7 +56,7 @@
 
     <% else %>
       <p><%= t '.select_pricing' %></p>
-      <div class="custom-radio-buttons custom-form-pricing padded-top-xs">
+      <div class="custom-radio-buttons padded-top-xs">
         <%= f.input :pricing, label: false, as: :radio_buttons, collection: Offer.translated_pricings %>
       </div>
     <% end %>

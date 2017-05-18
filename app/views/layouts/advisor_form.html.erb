@@ -36,6 +36,7 @@
     <%= render "shared/loader" %>
 
     <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag "https://maps.google.com/maps/api/js?libraries=places&key=#{ENV['GOOGLE_API_BROWSER_KEY']}" %>
     <%= cloudinary_js_config %>
   </body>
 
