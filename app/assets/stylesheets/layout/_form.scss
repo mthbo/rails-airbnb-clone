@@ -234,12 +234,16 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   img {
     margin-right: 15px;
     height: 25px;
-  }
+  };
   p {
     margin-bottom: 0;
+  };
+  button {
+    margin-left: 25px;
   }
 }
 
@@ -324,6 +328,10 @@
     img {
       margin-right: 0;
       margin-bottom: 15px;
+    };
+    button {
+      margin-top: 15px;
+      margin-left: 0;
     }
   }
 }

@@ -16,7 +16,7 @@ class UserPolicy < ApplicationPolicy
     user == record
   end
 
-  def register?
+  def details?
     user == record
   end
 

@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :update] do
       collection do
         get 'dashboard', to: 'users#dashboard'
-        get 'register', to: 'users#register'
+        get 'details', to: 'users#details'
         get 'country', to: 'users#country'
         patch 'update_country', to: 'users#update_country'
         patch 'change_locale', to: 'users#change_locale'

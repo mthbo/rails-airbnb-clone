@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :find_user, only: [:show]
-  before_action :find_current_user, only: [:country, :update_country, :dashboard, :register, :update, :change_locale]
-  layout 'advisor_form', only: [:country, :update_country, :register, :update]
+  before_action :find_current_user, only: [:country, :update_country, :dashboard, :details, :update, :change_locale]
+  layout 'advisor_form', only: [:country, :update_country, :details, :update]
 
   def show
     @deals_reviewed = @user.deals_reviewed.page(params[:page])
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @pinned_offers = @user.find_liked_items
   end
 
-  def register
+  def details
   end
 
   def update
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       flash[:notice] = t('.notice')
       redirect_to user_path(@user)
     else
-      render :register
+      render :details
     end
   end
 

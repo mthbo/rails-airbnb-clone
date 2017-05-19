@@ -1,0 +1,57 @@
+<div class="modal fade" id="new-bank-account" tabindex="-1" role="dialog" aria-labelledby="newBankAccountLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="newBankAccountLabel"><i class="fa fa-lock fa-fw" aria-hidden="true"></i> <%= t '.new_bank_account' %></h4>
+      </div>
+      <div class="modal-body padded-bottom-s">
+        <p><%= t '.provide_account_number' %></p>
+        <div class="row">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2 padded-top-xs">
+            <input type="text" class="form-control custom-form-input" id="bankAccountNumber" placeholder="FR1420041010050500013M026">
+            <p class="red" id="bankErrors"></p>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-form btn-gray" data-dismiss="modal" id="bankAccountDismissButtton"><%= t '.go_back' %></button>
+        <button type="button" class="btn btn-form btn-green" id="bankAccountBindButtton"><i class="fa fa-lock fa-fw" aria-hidden="true"></i> <%= t '.bind_account' %></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  Stripe.setPublishableKey("<%= Rails.configuration.stripe[:publishable_key] %>");
+
+  var $bindButton = document.getElementById("bankAccountBindButtton");
+
+  $bindButton.addEventListener('click', function(e) {
+    $bindButton.setAttribute('disabled', 'disabled');
+    $bindButton.innerHTML = I18n.t('users.bank_account.verification');
+    Stripe.bankAccount.createToken({
+      country: "<%= @user.country_code %>",
+      currency: "<%= @user.currency.to_s %>",
+      account_number: document.getElementById("bankAccountNumber").value
+    }, stripeResponseHandler);
+  });
+
+  function stripeResponseHandler(status, response) {
+    $bindButton.removeAttribute('disabled');
+    $bindButton.innerHTML = "<i class='fa fa-lock fa-fw' aria-hidden='true'></i>  " + I18n.t('users.bank_account.bind_account');
+    if (response.error) {
+      document.getElementById("bankErrors").innerHTML = response.error.message;
+      document.getElementById("bankAccountNumber").style["border-color"] = "#EE5F5B";
+    } else {
+      document.getElementById("user_bank_name").value = response.bank_account.bank_name;
+      document.getElementById("user_bank_last4").value = response.bank_account.last4;
+      document.getElementById("user_stripeToken").value = response.id;
+      document.getElementById("bankAccountDetails").innerHTML = "<i class='fa fa-university fa-fw' aria-hidden='true'></i> <span class='font-weight-normal'>" + response.bank_account.bank_name + "</span>  <span class='medium-gray'>&sdot;&sdot;&sdot;&sdot;" + response.bank_account.last4 + "</span>";
+      document.getElementById("bankAccountNumber").value = "";
+      document.getElementById("bankErrors").innerHTML = "";
+      document.getElementById("bankAccountNumber").style["border-color"] = "#ccc";
+      document.getElementById("bankAccountDismissButtton").click();
+    }
+  }
+</script>
