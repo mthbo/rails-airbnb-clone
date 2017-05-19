@@ -1,0 +1,32 @@
+<div class="user-offers-info">
+  <% if !@user.pricing_available? || @user.no_pricing? %>
+    <div class="user-pricing-info">
+      <%= image_tag 'no_amount.svg' %>
+      <p><%= t '.pricing_not_available_html' %></p>
+    </div>
+
+  <% elsif @user.pricing_pending? %>
+    <div class="user-pricing-action">
+      <p class="no-margin-bottom">
+        <%= t '.pricing_not_enabled_html' %>
+        <%= t '.activation_instructions' %>
+      </p>
+      <%= link_to details_users_path, class: "btn btn-gray" do %>
+        <span class="info-icon"><%= image_tag 'amount.svg' %></span>
+        <%= t '.enable_pricing' %>
+      <% end %>
+    </div>
+
+  <% elsif @user.pricing_enabled? %>
+    <div class="user-pricing-info">
+      <%= image_tag 'amount.svg' %>
+      <p><%= t '.pricing_enabled_html' %></p>
+    </div>
+
+  <% elsif @user.pricing_disabled? %>
+    <div class="user-pricing-info">
+      <%= image_tag 'no_amount.svg' %>
+      <p><%= t '.pricing_disabled_html' %></p>
+    </div>
+  <% end %>
+</div>

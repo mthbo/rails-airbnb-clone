@@ -17,6 +17,8 @@ en:
         zip_code: Zip code
         city: City
         personal_address: Personal address
+        business_name: Company name
+        business_tax_id: Business ID (SIRET)
         legal_types:
           individual: Individual
           company: Company
@@ -34,6 +36,7 @@ en:
               too_short: This name is too short
             country_code:
               blank: Please select a country
+              invalid: Pricing is not available in this country
             email:
               blank: Please provide your email
               invalid: This email is invalid
@@ -45,6 +48,23 @@ en:
               invalid: This date is invalid
             phone_number:
               improbable_phone: This number is invalid
+            address:
+              blank: Please provide an address
+            zip_code:
+              blank: Please provide a zip code
+            city:
+              blank: Please provide a city name
+            personal_address:
+              blank: Please provide your address
+            personal_zip_code:
+              blank: Please provide your zip code
+            personal_city:
+              blank: Please provide your city name
+            business_name:
+              blank: Please provide a company name
+            business_tax_id:
+              blank: Please provide a business id
+
   devise:
     confirmations:
       confirmed: Your email address has been successfully confirmed.

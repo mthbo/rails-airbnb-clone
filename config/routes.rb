@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     root to: 'pages#home'
     get '/advisor', to: 'pages#advisor'
     get '/about', to: 'pages#about'
+    get '/terms', to: 'pages#terms'
 
     devise_for :users,
       skip: :omniauth_callbacks,

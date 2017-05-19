@@ -17,6 +17,8 @@ fr:
         zip_code: Code postal
         city: Ville
         personal_address: Adresse personnelle
+        business_name: Nom de l'entreprise
+        business_tax_id: Numéro d'immatriculation (SIRET)
         legal_types:
           individual: Individu
           company: Entreprise
@@ -34,6 +36,7 @@ fr:
               too_short: Ce nom est trop court
             country_code:
               blank: Veuillez sélectionner un pays
+              invalid: Les paiements ne sont pas disponibles dans ce pays
             email:
               blank: Veuillez renseigner votre e-mail
               invalid: Cet e-mail est invalide
@@ -43,8 +46,25 @@ fr:
               too_short: Ce mot de passe est trop court (min. %{count} caractères)
             birth_date:
               invalid: Cette date est invalide
+              blank: Veuillez renseigner votre date de naissance
             phone_number:
               improbable_phone: Ce numéro est invalide
+            address:
+              blank: Veuillez renseigner une adresse
+            zip_code:
+              blank: Veuillez renseigner un code postal
+            city:
+              blank: Veuillez renseigner une ville
+            personal_address:
+              blank: Veuillez renseigner votre adresse
+            personal_zip_code:
+              blank: Veuillez renseigner votre code postal
+            personal_city:
+              blank: Veuillez renseigner votre ville
+            business_name:
+              blank: Veuillez renseigner le nom de l'entreprise
+            business_tax_id:
+              blank: Veuillez renseigner le numéro d'immatriculation
   devise:
     confirmations:
       confirmed: Votre compte a été confirmé avec succès.

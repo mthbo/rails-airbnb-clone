@@ -26,7 +26,22 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
   validate :birth_date_must_be_valid
-  # validates :country_code, presence: true, allow_blank: false, on: :update
+
+  validates :country_code, presence: true, allow_blank: false, if: :country_required?
+  validate :country_must_be_valid
+
+  validates :birth_date, presence: true, if: :legal_details_required?
+  validates :address, presence: true, if: :legal_details_required?
+  validates :zip_code, presence: true, if: :legal_details_required?
+  validates :city, presence: true, if: :legal_details_required?
+  validates :bank_name, presence: true, if: :legal_details_required?
+  validates :bank_last4, presence: true, if: :legal_details_required?
+
+  validates :business_name, presence: true, if: :legal_details_company_required?
+  validates :business_tax_id, presence: true, if: :legal_details_company_required?
+  validates :personal_address, presence: true, if: :legal_details_company_required?
+  validates :personal_city, presence: true, if: :legal_details_company_required?
+  validates :personal_zip_code, presence: true, if: :legal_details_company_required?
 
   STRIPE_ALLOWED_COUNTRIES = ['FR']
 
@@ -81,6 +96,18 @@ class User < ApplicationRecord
 
   def pricing_available?
     STRIPE_ALLOWED_COUNTRIES.include?(country_code)
+  end
+
+  def country_required?
+    !self.no_pricing?
+  end
+
+  def legal_details_required?
+    pricing_enabled? || pricing_disabled?
+  end
+
+  def legal_details_company_required?
+    legal_details_required? && self.company?
   end
 
   def avatar_img
@@ -402,6 +429,11 @@ class User < ApplicationRecord
   def birth_date_must_be_valid
     errors.add(:birth_date) if
       birth_date.present? && (birth_date > DateTime.current.in_time_zone || birth_date < 130.years.ago)
+  end
+
+  def country_must_be_valid
+    errors.add(:country_code) if
+      legal_details_required? && !pricing_available?
   end
 
   def send_devise_notification(notification, *args)

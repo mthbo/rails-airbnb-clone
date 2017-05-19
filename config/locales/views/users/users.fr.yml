@@ -26,10 +26,13 @@ fr:
       as_service_recipient: "pour service reçu"
       no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
       no_reviews: "%{user} n'a reçu aucun avis pour le moment."
-      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
-      pricing_not_authorized_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> tant que votre compte n'est pas activé."
-      activation_instructions: "Activez votre compte en fournissant des informations sur votre identité et votre compte bancaire."
-      activate_my_account: Activer mon compte
+    pricing_info:
+      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique (paiements disponibles en France seulement)."
+      pricing_not_enabled_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> tant que vous n'avez pas activé les paiements."
+      activation_instructions: "Activez les paiements en fournissant des informations sur votre identité et votre compte bancaire."
+      enable_pricing: Activer les paiements
+      pricing_enabled_html: "Les paiements sont activés, vous pouvez proposer des <span class='font-weight-normal'>services payants</span>."
+      pricing_disabled_html: "Les paiements sont désactivés, vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span>."
     info:
       age: "ans"
       grade_1: "Papoter"
@@ -65,14 +68,41 @@ fr:
       select_country: Veuillez sélectionner votre pays de résidence pour pouvoir publier une offre.
       country: -- Pays --
       new_offer: Nouvelle offre
+      back_to_profile: Revenir au profil
     details:
-      account_details: Informations de compte
+      legal_details: Informations légales
+      select_legal_type: Veuillez choisir un statut en tant que prestataire de service sur Papoters.
+      personal_details: Informations personnelles
+      provide_personal_details: "Veuillez fournir l'ensemble des informations demandées sur votre identité."
+      first_name: Prénom
+      last_name: Nom
+      pick_date: "Sélectionnez une date"
+      street: Nom et numéro de rue
+      zip_code: Code postal
+      city: Ville
+      country: -- Pays --
+      business_details: Informations sur l'entreprise
+      provide_business_details: "Veuillez fournir l'ensemble des informations demandées sur votre entreprise."
+      business_name: Mon entreprise
+      business_tax_id: 321 654 987 12315
+      bank_account: Compte bancaire
+      bind_bank_account: Veuillez lier un compte bancaire sur lequel vous recevrez vos paiements.
+      no_bank_account: Aucun compte bancaire lié
+      new_account: Nouveau compte
+      details_verification: "Les informations fournies seront utilisées pour vérifier votre identité. Si besoin, des informations complémentaires pourront vous être demandées."
+      accept_service_agreement_1: "En transmettant ces informations, vous acceptez nos"
+      tos: "conditions générales d'utilisation"
+      accept_service_agreement_2: ainsi que les
+      stripe_service_agreement: "conditions d'utilisation des comptes Stripe Connect"
+      back_to_profile: Revenir au profil
+      update: Mettre à jour
     bank_account:
       new_bank_account: Nouveau compte bancaire
-      provide_account_number: "Veuillez renseigner le numéro IBAN du compte bancaire sur lequel vous voulez recevoir vos paiements."
+      provide_account_number_html: "Veuillez renseigner le <span class='font-weight-normal'>numéro IBAN</span> du compte bancaire sur lequel vous voulez recevoir vos paiements."
       go_back: Revenir
       bind_account: Lier le compte
       verification: Vérification...
+      provide_valid_number: Veuillez renseigner un numéro valide
     update:
-      notice: "Votre profil a été mis à jour avec succès"
+      notice: "Vos informations ont été mis à jour avec succès."
 

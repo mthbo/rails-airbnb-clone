@@ -14,9 +14,15 @@
     </div>
   </div>
 
+  <%= f.hidden_field :pricing, value: 'pricing_pending' %>
+
   <div class="text-right padded-top-s">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-green") do %>
       <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
     <% end %>
   </div>
 <% end %>
+
+<div class="text-right padded-top-xs">
+  <p><%= link_to t('.back_to_profile'), user_path(@user) %></p>
+</div>

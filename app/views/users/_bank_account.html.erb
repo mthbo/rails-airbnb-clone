@@ -1,15 +1,15 @@
-<div class="modal fade" id="new-bank-account" tabindex="-1" role="dialog" aria-labelledby="newBankAccountLabel">
+<div class="modal fade" id="new-bank-account" tabindex="-1" role="dialog" aria-labelledby="newBankAccountLabel" data-keyboard="false" data-backdrop="static">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="newBankAccountLabel"><i class="fa fa-lock fa-fw" aria-hidden="true"></i> <%= t '.new_bank_account' %></h4>
+        <h4 class="modal-title" id="newBankAccountLabel"><%= t '.new_bank_account' %></h4>
       </div>
       <div class="modal-body padded-bottom-s">
-        <p><%= t '.provide_account_number' %></p>
+        <p><%= t '.provide_account_number_html' %></p>
         <div class="row">
           <div class="col-xs-12 col-sm-8 col-sm-offset-2 padded-top-xs">
-            <input type="text" class="form-control custom-form-input" id="bankAccountNumber" placeholder="FR1420041010050500013M026">
+            <input type="text" class="form-control custom-form-input" id="bankAccountNumber" placeholder="FR1420041010050500013M026" autocomplete="off">
             <p class="red" id="bankErrors"></p>
           </div>
         </div>
@@ -41,7 +41,7 @@
     $bindButton.removeAttribute('disabled');
     $bindButton.innerHTML = "<i class='fa fa-lock fa-fw' aria-hidden='true'></i>  " + I18n.t('users.bank_account.bind_account');
     if (response.error) {
-      document.getElementById("bankErrors").innerHTML = response.error.message;
+      document.getElementById("bankErrors").innerHTML = I18n.t('users.bank_account.provide_valid_number');
       document.getElementById("bankAccountNumber").style["border-color"] = "#EE5F5B";
     } else {
       document.getElementById("user_bank_name").value = response.bank_account.bank_name;

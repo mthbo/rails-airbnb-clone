@@ -26,10 +26,13 @@ en:
       as_service_recipient: "as service recipient"
       no_reviews_you: "You didn't get any reviews yet."
       no_reviews: "%{user} didn't get any reviews yet."
-      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
-      pricing_not_authorized_html: "You can't <span class='font-weight-normal'>price your services</span> while your account is not activated."
-      activation_instructions: "Activate your account by providing information about your identity and your bank account."
-      activate_my_account: Activate my account
+    pricing_info:
+      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area (pricing only available in France)."
+      pricing_not_enabled_html: "You can't <span class='font-weight-normal'>price your services</span> while pricing is not enabled."
+      activation_instructions: "Enable pricing by providing information about your identity and your bank account."
+      enable_pricing: Enable pricing
+      pricing_enabled_html: "Pricing is enabled, you can <span class='font-weight-normal'>price your services</span>."
+      pricing_disabled_html: "Pricing is disabled, you can't <span class='font-weight-normal'>price your services</span>."
     info:
       age: "yrs"
       grade_1: "Papoter"
@@ -65,16 +68,43 @@ en:
       select_country: Please select your country of residence before publishing an offer.
       country: -- Country --
       new_offer: New offer
+      back_to_profile: Back to profile
     details:
-      account_details: Informations de compte
+      legal_details: Legal details
+      select_legal_type: Please choose a legal status as service provider on Papoters.
+      personal_details: Personal details
+      provide_personal_details: Please provide all the requested details about your identity.
+      first_name: First name
+      last_name: Last name
+      pick_date: "Pick a date"
+      street: Street number and name
+      zip_code: Zip code
+      city: City
+      country: -- Country --
+      business_details: Business details
+      provide_business_details: Please provide all the requested details about your company.
+      business_name: My company
+      business_tax_id: 321 654 987 12315
+      bank_account: Bank account
+      bind_bank_account: Please bind a bank account on which you will receive payouts.
+      no_bank_account: No bank account bound
+      new_account: New account
+      details_verification: The details provided will be used for identity verification. If required, additional information may be requested from you.
+      accept_service_agreement_1: "By transmitting these details, you accept our"
+      tos: "terms of service"
+      accept_service_agreement_2: and the
+      stripe_service_agreement: "Stripe Connected Account Agreement"
+      back_to_profile: Back to profile
+      update: Update
     bank_account:
       new_bank_account: New bank account
-      provide_account_number: "Please provide the IBAN number of the account you want to receive payouts on."
+      provide_account_number_html: "Please provide the <span class='font-weight-normal'>IBAN number</span> of the account you want to receive payouts on."
       go_back: Go back
       bind_account: Bind account
       verification: Verification...
+      provide_valid_number: Please provide a valid number
     update:
-      notice: "Your account has been updated successfully"
+      notice: "Your details has been updated successfully."
 
 
 
