@@ -13,7 +13,7 @@
   </div>
 
   <div class="form-actions text-right">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-gradient") do %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-gradient", data: {disable_with: t('.logging_in')}) do %>
       <i class='fa fa-sign-in' aria-hidden='true'></i>&nbsp;&nbsp; <%= t(".sign_in") %>
     <% end %>
   </div>

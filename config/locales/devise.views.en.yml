@@ -72,6 +72,7 @@ en:
         resend_confirmation_instructions: Resend confirmation instructions
         email: Email
         resend: Resend
+        sending: Sending...
         go_back: Go back
       send_instructions: ''
       send_paranoid_instructions: If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes.
@@ -115,6 +116,7 @@ en:
     passwords:
       edit:
         reset: Reset
+        reseting: Reseting...
         password_reset: Password reset
         confirm_new_password: Confirm new password
         new_password: "New password (min. %{length} characters)"
@@ -124,6 +126,7 @@ en:
         forgot_your_password: Forgot your password?
         send_me_reset_password_instructions: Send me reset password instructions.
         send: Send
+        sending: Sending...
         go_back: Go back
       reset:
         password_reset: Password reset
@@ -148,12 +151,14 @@ en:
         are_you_sure: Are you sure you want to do this?
         go_back: Go back
         cancel: Cancel
+        cancelling: Cancellation...
       edit:
         currently_waiting_confirmation_for_email: 'Currently waiting confirmation for: %{email}'
         leave_blank_if_you_don_t_want_to_change_it: leave blank if you don't want to change it
         title: Edit %{resource}
         unhappy: Unhappy?
         update: Update
+        updating: Updating
         back_to_profile: Back to profile
         we_need_your_current_password_to_confirm_your_changes: we need your current password to confirm your changes
         edit_profile: Edit my profile
@@ -175,6 +180,7 @@ en:
         country: -- Country --
       new:
         sign_up: Sign up
+        signing_up: Signing up...
         sign_up_name: Sign up
         create_account: Sign up as Papoter
         first_name: First name
@@ -197,6 +203,7 @@ en:
       already_signed_out: Logged out successfully.
       new:
         sign_in: Log in
+        logging_in: Logging in...
         sign_in_name: Log in
         sign_in_to_account: Log in to your account
         email: Email address
@@ -213,6 +220,7 @@ en:
         forgot_your_password: Forgot your password?
         sign_in: Log in
         sign_in_with_provider: Log in with %{provider}
+        connecting: Connecting...
         sign_up: Sign up
         or: OR
     unlocks:
@@ -220,6 +228,7 @@ en:
         resend_unlock_instructions: Resend unlock instructions
         email: Email
         resend: Resend
+        sending: Sending...
         go_back: Go back
       send_instructions: You will receive an email with instructions for how to unlock your account in a few minutes.
       send_paranoid_instructions: If your account exists, you will receive an email with instructions for how to unlock it in a few minutes.

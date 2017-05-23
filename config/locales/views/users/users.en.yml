@@ -29,7 +29,7 @@ en:
     pricing_info:
       pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area (pricing only available in France)."
       pricing_not_enabled_html: "You can't <span class='font-weight-normal'>price your services</span> while pricing is not enabled."
-      activation_instructions: "Enable pricing by providing information about your identity and your bank account."
+      activation_instructions: "Enable pricing by providing the required legal details."
       enable_pricing: Enable pricing
       pricing_enabled_html: "Pricing is enabled, you can <span class='font-weight-normal'>price your services</span>."
       pricing_disabled_html: "Pricing is disabled, you can't <span class='font-weight-normal'>price your services</span>."
@@ -68,6 +68,7 @@ en:
       select_country: Please select your country of residence before publishing an offer.
       country: -- Country --
       new_offer: New offer
+      saving: Saving...
       back_to_profile: Back to profile
     details:
       legal_details: Legal details
@@ -95,7 +96,8 @@ en:
       accept_service_agreement_2: and the
       stripe_service_agreement: "Stripe Connected Account Agreement"
       back_to_profile: Back to profile
-      update: Update
+      transmit: Transmit
+      transmitting: Transmitting...
     bank_account:
       new_bank_account: New bank account
       provide_account_number_html: "Please provide the <span class='font-weight-normal'>IBAN number</span> of the account you want to receive payouts on."
@@ -104,7 +106,7 @@ en:
       verification: Verification...
       provide_valid_number: Please provide a valid number
     update:
-      notice: "Your details has been updated successfully."
+      notice: "Your details has been transmitted successfully."
 
 
 

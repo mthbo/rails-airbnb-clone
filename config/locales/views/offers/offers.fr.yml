@@ -29,7 +29,9 @@ fr:
         other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
       select_pricing: Sélectionnez le mode de tarification pour cette offre.
       publish: Publier
+      publishing: Publication...
       update: Mettre à jour
+      updating: Mise à jour...
     removal:
       offer_removal: Suppression de l'offre
       offer_removal_for: Supprimez cette offre si vous ne voulez plus donner de conseils sur ce sujet.
@@ -40,6 +42,7 @@ fr:
       are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
       go_back: Revenir
       remove: Supprimer
+      removing: Suppression...
       cant_remove_offer: Vous ne pouvez pas supprimer cette offre pour le moment.
       close_or_cancel: Clôturez ou annulez
       ongoing_sessions: toutes les sessions en cours

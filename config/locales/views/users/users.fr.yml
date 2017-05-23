@@ -29,7 +29,7 @@ fr:
     pricing_info:
       pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique (paiements disponibles en France seulement)."
       pricing_not_enabled_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> tant que vous n'avez pas activé les paiements."
-      activation_instructions: "Activez les paiements en fournissant des informations sur votre identité et votre compte bancaire."
+      activation_instructions: "Activez les paiements en fournissant les informations légales requises."
       enable_pricing: Activer les paiements
       pricing_enabled_html: "Les paiements sont activés, vous pouvez proposer des <span class='font-weight-normal'>services payants</span>."
       pricing_disabled_html: "Les paiements sont désactivés, vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span>."
@@ -68,6 +68,7 @@ fr:
       select_country: Veuillez sélectionner votre pays de résidence pour pouvoir publier une offre.
       country: -- Pays --
       new_offer: Nouvelle offre
+      saving: Enregistrement...
       back_to_profile: Revenir au profil
     details:
       legal_details: Informations légales
@@ -95,7 +96,8 @@ fr:
       accept_service_agreement_2: ainsi que les
       stripe_service_agreement: "conditions d'utilisation des comptes Stripe Connect"
       back_to_profile: Revenir au profil
-      update: Mettre à jour
+      transmit: Transmettre
+      transmitting: Transmission...
     bank_account:
       new_bank_account: Nouveau compte bancaire
       provide_account_number_html: "Veuillez renseigner le <span class='font-weight-normal'>numéro IBAN</span> du compte bancaire sur lequel vous voulez recevoir vos paiements."
@@ -104,5 +106,5 @@ fr:
       verification: Vérification...
       provide_valid_number: Veuillez renseigner un numéro valide
     update:
-      notice: "Vos informations ont été mis à jour avec succès."
+      notice: "Vos informations ont été transmises avec succès."
 

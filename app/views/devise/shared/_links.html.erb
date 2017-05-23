@@ -44,7 +44,7 @@
   </div>
   <div class="text-center">
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-form btn-facebook" do %>
+      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-form btn-facebook", data: {disable_with: t('.connecting')} do %>
         <i class="fa fa-facebook fa-fw" aria-hidden="true"></i> <%= t('.sign_in_with_provider', provider: provider.to_s.titleize) %>
       <% end %>
     <% end -%>

@@ -29,7 +29,9 @@ en:
         other: "You still need to achieve <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer before pricing your service."
       select_pricing: Select the pricing option for this offer.
       publish: Publish
+      publishing: Publishing...
       update: Update
+      updating: Updating...
     removal:
       offer_removal: Offer removal
       offer_removal_for: Remove this offer if you don't want to give advice on this topic anymore.
@@ -40,6 +42,7 @@ en:
       are_you_sure: Are you sure you want to do this?
       go_back: Go back
       remove: Remove
+      removing: Removing...
       cant_remove_offer: You can't remove this offer right now.
       close_or_cancel: Close or cancel
       ongoing_sessions: all ongoing sessions
