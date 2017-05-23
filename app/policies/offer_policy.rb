@@ -1,7 +1,11 @@
 class OfferPolicy < ApplicationPolicy
 
-  def create?
+  def new?
     record.advisor == user
+  end
+
+  def create?
+    record.advisor == user && user.country_code.present?
   end
 
   def update?

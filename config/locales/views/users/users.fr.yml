@@ -29,10 +29,13 @@ fr:
     pricing_info:
       pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique (paiements disponibles en France seulement)."
       pricing_not_enabled_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> tant que vous n'avez pas activé les paiements."
-      activation_instructions: "Activez les paiements en fournissant les informations légales requises."
+      activation_instructions: "Activez les paiements en fournissant les informations légales et bancaires requises."
       enable_pricing: Activer les paiements
       pricing_enabled_html: "Les paiements sont activés, vous pouvez proposer des <span class='font-weight-normal'>services payants</span>."
+      edit_legal_details: Editez vos informations légales et bancaires
+      update_legal_details_instructions: si celles-ci ont changé.
       pricing_disabled_html: "Les paiements sont désactivés, vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span>."
+      reactivation_instructions: pour réactiver les paiements.
     info:
       age: "ans"
       grade_1: "Papoter"
@@ -71,7 +74,7 @@ fr:
       saving: Enregistrement...
       back_to_profile: Revenir au profil
     details:
-      legal_details: Informations légales
+      legal_details: Informations légales et bancaires
       select_legal_type: Veuillez choisir un statut en tant que prestataire de service sur Papoters.
       personal_details: Informations personnelles
       provide_personal_details: "Veuillez fournir l'ensemble des informations demandées sur votre identité."

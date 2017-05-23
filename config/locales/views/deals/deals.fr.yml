@@ -29,6 +29,7 @@ fr:
       select_languages: "Selectionnez la ou les langue(s) que vous acceptez pour communiquer avec %{name}."
       select_means: "Selectionnez le ou les moyen(s) que vous acceptez pour communiquer avec %{name}."
       send: Envoyer
+      sending: Envoi...
       back_to_offer: Revenir à l'offre
     satisfaction:
       happy: "satisfait"
@@ -69,16 +70,21 @@ fr:
       set_amount: Déterminez le montant dû par %{name} pour la session (des frais de transaction seront retenus sur ce montant).
       amount_range: "min: %{min} %{currency}"
       leave_blank_if_free: Laissez le champ vide pour une session gratuite.
-      session_for_free: "Cette session sera gratuite."
-      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
-      payouts_not_authorized_html: "Vous n'êtes pas autorisé à proposer des <span class='font-weight-normal'>services payants</span>."
-      sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
-        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
-      edit_offer: Editez votre offre
-      to_propose_priced_services: si vous voulez proposer des prestations payantes.
       set_expiry_date: "Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée."
       review_and_submit: Vérifier et soumettre
+      reviewing: Vérification...
+    pricing_info:
+      session_for_free: "Cette session sera gratuite."
+      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique (paiements disponibles en France seulement)."
+      sessions_before_pricing_html:
+        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des services payants."
+        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des services payants."
+      edit_offer: Editez votre offre
+      to_propose_priced_services: si vous voulez proposer des services payantes.
+      enable_pricing: Activez les paiements
+      activation_instructions: "en fournissant les informations légales et bancaires requises pour proposer des services payants."
+      update_legal_details: Mettez à jour vos informations légales et bancaires
+      reactivation_instructions: "pour réactiver les paiements."
     proposition_confirmation:
       proposition_submission: Soumission de la proposition
       review_before_submitting: Vérifiez votre proposition avant de la soumettre.
@@ -86,6 +92,7 @@ fr:
       proposition_expiring_on: Proposition expirant le
       go_back: Revenir
       submit: Soumettre
+      submitting: Soumission...
     proposition_recap:
       amount: Montant
       free: GRATUIT
@@ -185,10 +192,12 @@ fr:
       evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
       leave_a_review: "Laissez un avis à %{name} pour cette session (max: %{max} caractères)."
       publish_evaluation: Publier l'évaluation
+      publishing: Publication...
     advisor_rating_form:
       evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
       leave_a_review: "Laissez un avis à %{name} pour cette session (max: %{max} caractères)."
       publish_evaluation: Publier l'évaluation
+      publishing: Publication...
     reviews:
       reviews: Avis
 

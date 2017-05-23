@@ -15,7 +15,7 @@
   <%= f.hidden_field :who_reviews, value: "advisor_is_reviewing" %>
 
   <div class="text-right padded-top-xs">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue", data: {disable_with: t('.publishing')}) do %>
       <i class='fa fa-star fa-lg green' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.publish_evaluation' %>
     <% end %>
   </div>

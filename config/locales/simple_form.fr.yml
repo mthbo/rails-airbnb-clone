@@ -9,5 +9,5 @@ fr:
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
-      default_message: "Il y a quelques erreurs... Suivez les indications pour poursuivre."
+      default_message: "Oups, tout n'est pas en règle!.. Suivez les indications pour continuer."
     # Examples

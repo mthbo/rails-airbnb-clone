@@ -30,35 +30,13 @@
   </div>
 
   <div class="padded-top-xs">
-    <% if !@offer.advisor.pricing_available? %>
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag 'no_amount.svg' %>
-        <p><%= t '.pricing_not_available_html' %></p>
-      </div>
-
-    <% elsif @offer.id.blank? %>
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag 'amount.svg' %>
-        <p><%= t '.prove_worth_before_pricing_html', count: (@offer.free_deals) %></p>
-      </div>
-
-    <% elsif @offer.free? && @offer.free_deals > 0 %>
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag 'no_amount.svg' %>
-        <p><%= t '.sessions_for_free' %> <%= t '.sessions_before_pricing_html', count: (@offer.free_deals) %></p>
-      </div>
-
-    <% elsif !@offer.advisor.pricing_enabled? %>
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag 'no_amount.svg' %>
-        <p><%= t '.payouts_not_authorized_html' %></p>
-      </div>
-
-    <% else %>
+    <% if current_user.pricing_available? && current_user.pricing_enabled? %>
       <p><%= t '.select_pricing' %></p>
       <div class="custom-radio-buttons padded-top-xs">
         <%= f.input :pricing, label: false, as: :radio_buttons, collection: Offer.translated_pricings %>
       </div>
+    <% else %>
+      <%= render "pricing_info" %>
     <% end %>
   </div>
 

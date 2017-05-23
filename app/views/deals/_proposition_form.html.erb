@@ -15,38 +15,8 @@
     </div>
   </div>
 
-  <% if !deal.advisor.pricing_available? %>
-    <div class="padded-top-xs padded-bottom-xs">
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag('no_amount.svg') %>
-        <p><%= t '.session_for_free' %> <%= t '.pricing_not_available_html' %></p>
-      </div>
-    </div>
-
-  <% elsif deal.offer.free? && deal.offer.free_deals > 0 %>
-    <div class="padded-top-xs padded-bottom-xs">
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag('no_amount.svg') %>
-        <p><%= t '.session_for_free' %> <%= t '.sessions_before_pricing_html', count: (@deal.offer.free_deals) %></p>
-      </div>
-    </div>
-
-  <% elsif !deal.offer.advisor.pricing_enabled? %>
-    <div class="custom-form-warning bg-white-transparent">
-      <%= image_tag 'no_amount.svg' %>
-      <p><%= t '.payouts_not_authorized_html' %></p>
-    </div>
-
-  <% elsif deal.offer.free? %>
-    <div class="padded-top-xs padded-bottom-xs">
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag('no_amount.svg') %>
-        <p><%= t '.session_for_free' %> <%= link_to t('.edit_offer'), edit_offer_path(deal.offer) %> <%= t '.to_propose_priced_services' %></p>
-      </div>
-    </div>
-
-  <% elsif deal.offer.priced? %>
-    <div class="padded-top-xs">
+  <div class="padded-top-xs">
+    <% if deal.offer.priced? && deal.advisor.pricing_available? && deal.advisor.pricing_enabled? %>
       <p>
         <%= t '.set_amount', name: deal.client.first_name %><br>
         <em  class="font-weight-normal"><%= t '.amount_range', min: deal.min_amount.to_i, currency: deal.min_amount.currency.symbol %> &nbsp; | &nbsp; <%= t '.leave_blank_if_free' %></em>
@@ -56,13 +26,15 @@
           <%= f.input :amount, as: :custom, symbol: deal.advisor.currency.symbol, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? deal.amount.to_f : nil } %>
         </div>
       </div>
-    </div>
-
-    <%= f.hidden_field :currency_code, value: deal.advisor.currency_code %>
-  <% end %>
+      <%= f.hidden_field :currency_code, value: deal.advisor.currency_code %>
+    <% else %>
+      <%= render 'pricing_info', deal: deal %>
+      <%= f.hidden_field :amount, value: nil %>
+    <% end %>
+  </div>
 
   <div class="text-right padded-top-xs">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-green") do %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.reviewing') }) do %>
       <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.review_and_submit' %>
     <% end %>
   </div>

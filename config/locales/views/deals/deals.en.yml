@@ -29,6 +29,7 @@ en:
       select_languages: "Select the language(s) you accept to communicate with %{name}."
       select_means: "Select the mean(s) you accept to communicate with %{name}."
       send: Send
+      sending: Sending...
       back_to_offer: Go back to offer
     satisfaction:
       happy: "happy"
@@ -69,16 +70,22 @@ en:
       set_amount: Set the amount owed by %{name} for this session (transactional fees will be withheld on this amount).
       amount_range: "min: %{currency}%{min}"
       leave_blank_if_free: Leave it blank for a free session.
+      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."
+      review_and_submit: Review and submit
+      reviewing: Reviewing...
+    pricing_info:
       session_for_free: This session will be for free.
-      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
+      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area (pricing only available in France)."
       payouts_not_authorized_html: "You are not authorized <span class='font-weight-normal'>to price your services</span>."
       sessions_before_pricing_html:
         one: "You still need to achieve <span class='font-weight-normal'>%{count} free session</span> for this offer before pricing your service."
         other: "You still need to achieve <span class='font-weight-normal'>%{count} free sessions</span> for this offer before pricing your service."
       edit_offer: Edit your offer
       to_propose_priced_services: if you want to price your service.
-      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."
-      review_and_submit: Review and submit
+      enable_pricing: Enable pricing
+      activation_instructions: "by providing the required legal and banking details."
+      update_legal_details: Update your legal and banking details
+      reactivation_instructions: "to reenable pricing."
     proposition_confirmation:
       proposition_submission: Proposition submission
       review_before_submitting: Review your proposition before confirming submission.
@@ -86,6 +93,7 @@ en:
       proposition_expiring_on: Proposition expiring on
       go_back: Go back
       submit: Submit
+      submitting: Submitting...
     proposition_recap:
       amount: Amount
       free: FREE
@@ -185,10 +193,12 @@ en:
       evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
       leave_a_review: "Leave a review to %{name} for this session (max: %{max} characters)."
       publish_evaluation: Publish the evaluation
+      publishing: Publishing...
     advisor_rating_form:
       evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
       leave_a_review: "Leave a review to %{name} for this session (max: %{max} characters)."
       publish_evaluation: Publish the evaluation
+      publishing: Publishing...
     reviews:
       reviews: Reviews
 

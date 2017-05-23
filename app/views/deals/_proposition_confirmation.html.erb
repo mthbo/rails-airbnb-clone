@@ -19,7 +19,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal"><%= t '.go_back' %></button>
-        <%= link_to submit_proposition_deal_path(deal), method: :patch, class: "btn btn-form btn-green" do %>
+        <%= link_to submit_proposition_deal_path(deal), method: :patch, class: "btn btn-form btn-green", data: {disable_with: t('.submitting') } do %>
           <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.submit' %>
         <% end %>
       </div>

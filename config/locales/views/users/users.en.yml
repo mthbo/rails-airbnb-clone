@@ -29,10 +29,13 @@ en:
     pricing_info:
       pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area (pricing only available in France)."
       pricing_not_enabled_html: "You can't <span class='font-weight-normal'>price your services</span> while pricing is not enabled."
-      activation_instructions: "Enable pricing by providing the required legal details."
+      activation_instructions: "Enable pricing by providing the required legal and banking details."
       enable_pricing: Enable pricing
       pricing_enabled_html: "Pricing is enabled, you can <span class='font-weight-normal'>price your services</span>."
+      edit_legal_details: Edit your legal and banking details
+      update_legal_details_instructions: if they have changed.
       pricing_disabled_html: "Pricing is disabled, you can't <span class='font-weight-normal'>price your services</span>."
+      reactivation_instructions: "to reenable pricing."
     info:
       age: "yrs"
       grade_1: "Papoter"
@@ -71,7 +74,7 @@ en:
       saving: Saving...
       back_to_profile: Back to profile
     details:
-      legal_details: Legal details
+      legal_details: Legal and banking details
       select_legal_type: Please choose a legal status as service provider on Papoters.
       personal_details: Personal details
       provide_personal_details: Please provide all the requested details about your identity.

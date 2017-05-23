@@ -20,18 +20,22 @@ en:
       languages_range: "min: 1 - max: %{max}"
       select_means: "Select the mean(s) you accept to communicate with people on this offer."
       means_range: "min: 1"
-      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
-      payouts_not_authorized_html: "You are not authorized <span class='font-weight-normal'>to price your services</span>."
-      prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer."
-      sessions_for_free: "Sessions for this offer are for free."
-      sessions_before_pricing_html:
-        one: "You still need to achieve <span class='font-weight-normal blue'>%{count} free session</span> for this offer before pricing your service."
-        other: "You still need to achieve <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer before pricing your service."
       select_pricing: Select the pricing option for this offer.
       publish: Publish
       publishing: Publishing...
       update: Update
       updating: Updating...
+    pricing_info:
+      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area (pricing only available in France)."
+      prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer."
+      sessions_for_free: "Sessions for this offer are for free."
+      sessions_before_pricing_html:
+        one: "You still need to achieve <span class='font-weight-normal blue'>%{count} free session</span> for this offer before pricing your service."
+        other: "You still need to achieve <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer before pricing your service."
+      enable_pricing: Enable pricing
+      activation_instructions: "by providing the required legal and banking details."
+      update_legal_details: Update your legal and banking details
+      reactivation_instructions: "to reenable pricing."
     removal:
       offer_removal: Offer removal
       offer_removal_for: Remove this offer if you don't want to give advice on this topic anymore.
