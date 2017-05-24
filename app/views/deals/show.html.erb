@@ -7,7 +7,7 @@
   <div class="deal-banner-top <%= current_user == @deal.advisor ? 'deal-banner-green' : 'deal-banner-yellow' %>"></div>
   <div class="deal-banner-bottom <%= current_user == @deal.advisor ? 'deal-banner-green' : 'deal-banner-yellow' %>"></div>
 
-  <% if @deal.offer.priced? %>
+  <% if @deal.offer.priced? && @deal.advisor.pricing_available? && @deal.advisor.pricing_enabled? %>
     <script src="https://checkout.stripe.com/checkout.js"></script>
   <% end %>
 

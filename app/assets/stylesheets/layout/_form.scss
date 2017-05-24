@@ -327,10 +327,18 @@
     padding-right: 15px;
     padding-left: 15px;
   };
+  .custom-check-boxes .check_boxes {
+    .checkbox {
+      label {
+        padding: 8px 13px;
+      }
+    }
+  };
   .custom-radio-buttons .radio_buttons {
     .radio {
       label {
         min-width: 110px;
+        padding: 8px 13px;
       }
     }
   };

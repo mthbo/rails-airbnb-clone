@@ -43,9 +43,6 @@ function onPlaceChangedUserPersonal() {
   $('#user_personal_address').trigger('blur').val(components.address);
   $('#user_personal_zip_code').val(components.zip_code);
   $('#user_personal_city').val(components.city);
-  if (components.country_code) {
-    $('#user_country_code').val(components.country_code);
-  }
   $('#user_personal_state').val(components.state);
 }
 

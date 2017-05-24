@@ -5,7 +5,7 @@ class PaymentsController < ApplicationController
   skip_after_action :verify_authorized, only: [:create]
 
   def create
-    @customer = @deal.client.stripe_customer_id ? Stripe::Customer.retrieve(@deal.client.stripe_customer_id) : nil
+    @customer = @deal.client.stripe_customer_id.present? ? Stripe::Customer.retrieve(@deal.client.stripe_customer_id) : nil
     (@customer.blank? || @customer.respond_to?(:deleted)) ? create_customer : update_customer
     create_charge
     open_deal

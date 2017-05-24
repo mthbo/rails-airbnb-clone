@@ -2,14 +2,24 @@
   <%= "Papoters | #{t('.legal_details')}" %>
 <% end %>
 
-<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
 
 <h2><%= t '.legal_details' %></h2>
 
 <%= simple_form_for @user do |f| %>
   <%= f.error_notification %>
 
-  <div class="padded-bottom-xs">
+   <div class="padded-top-xs padded-bottom-xs">
+    <p><%= t('.select_country') %></p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <%= f.input :country_code, label: false, prompt: t('.country'), input_html: { class: 'custom-form-input' } %>
+    </div>
+  </div>
+
+  <div class="padded-top-xs padded-bottom-xs">
     <p><%= t '.select_legal_type' %></p>
   </div>
 
@@ -43,16 +53,11 @@
     <div class="col-xs-12">
       <%= f.input :personal_address, placeholder: t('.street'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-5 col-sm-3">
+    <div class="col-xs-5 col-sm-4">
       <%= f.input :personal_zip_code, label: false, placeholder: t('.zip_code'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-7 col-sm-4">
+    <div class="col-xs-7 col-sm-8">
       <%= f.input :personal_city, label: false, placeholder: t('.city'), input_html: { class: 'custom-form-input' } %>
-    </div>
-    <div class="col-xs-12 col-sm-5">
-      <div class='custom-form-field'>
-        <%= @user.country %>
-      </div>
     </div>
   </div>
 
@@ -79,16 +84,11 @@
     <div class="col-xs-12">
       <%= f.input :address, placeholder: t('.street'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-5 col-sm-3">
+    <div class="col-xs-5 col-sm-4">
       <%= f.input :zip_code, label: false, placeholder: t('.zip_code'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-7 col-sm-4">
+    <div class="col-xs-7 col-sm-8">
       <%= f.input :city, label: false, placeholder: t('.city'), input_html: { class: 'custom-form-input' } %>
-    </div>
-    <div class="col-xs-12 col-sm-5">
-      <div class='custom-form-field'>
-        <%= @user.country %>
-      </div>
     </div>
   </div>
 
@@ -117,7 +117,7 @@
 
   <%= f.hidden_field :bank_name %>
   <%= f.hidden_field :bank_last4 %>
-  <%= f.hidden_field :pricing, value: 'pricing_enabled' %>
+  <%= f.hidden_field :pricing, value: 'pricing_disabled' %>
   <%= f.input :stripeToken, as: :hidden, input_html: { value: '' } %>
 
   <div class="padded-top-m">

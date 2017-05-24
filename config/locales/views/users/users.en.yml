@@ -75,6 +75,7 @@ en:
       back_to_profile: Back to profile
     details:
       legal_details: Legal and banking details
+      select_country: Please select your country of residence.
       select_legal_type: Please choose a legal status as service provider on Papoters.
       personal_details: Personal details
       provide_personal_details: Please provide all the requested details about your identity.

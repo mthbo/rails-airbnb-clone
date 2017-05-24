@@ -75,6 +75,7 @@ fr:
       back_to_profile: Revenir au profil
     details:
       legal_details: Informations légales et bancaires
+      select_country: Veuillez sélectionner votre pays de résidence.
       select_legal_type: Veuillez choisir un statut en tant que prestataire de service sur Papoters.
       personal_details: Informations personnelles
       provide_personal_details: "Veuillez fournir l'ensemble des informations demandées sur votre identité."
