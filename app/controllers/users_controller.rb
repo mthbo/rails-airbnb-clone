@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include StripeAccount
+  skip_before_action :verify_authenticity_token, only: [:webhook]
   skip_before_action :authenticate_user!, only: [:show]
   before_action :find_user, only: [:show, :update]
   before_action :find_current_user, only: [:country, :update_country, :dashboard, :details, :change_locale]
@@ -41,6 +42,10 @@ class UsersController < ApplicationController
   def change_locale
     @user.update(locale: params[:locale])
     redirect_to params[:path]
+  end
+
+  def webhook
+    # Process webhook data in `params`
   end
 
   private

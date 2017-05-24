@@ -82,9 +82,12 @@ fr:
       first_name: Prénom
       last_name: Nom
       pick_date: "Sélectionnez une date"
+      address: Adresse
+      personal_address: Adresse personnelle
       street: Nom et numéro de rue
       zip_code: Code postal
       city: Ville
+      state: Etat
       country: -- Pays --
       business_details: Informations sur l'entreprise
       provide_business_details: "Veuillez fournir l'ensemble des informations demandées sur votre entreprise."

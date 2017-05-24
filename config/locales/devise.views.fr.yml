@@ -174,10 +174,12 @@ fr:
         contact_details_not_disclosed: Vos coordonnées ne seront pas révélées publiquement, hormis votre ville et votre pays de résidence.
         email: "Adresse e-mail"
         phone_number: "42 42 42 42 42"
+        address: Adresse
         street: Nom et numéro de rue
         zip_code: Code postal
         city: Ville
         country: -- Pays --
+        state: Etat
       new:
         sign_up: S'inscrire
         signing_up: Inscription...

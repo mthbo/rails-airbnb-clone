@@ -5,43 +5,49 @@ module StripeAccount
     @account = Stripe::Account.create({
       country: @user.country_code,
       managed: true,
-      external_account: params[:user][:stripeToken],
       tos_acceptance: {
         ip: request.remote_ip,
         date: DateTime.now.to_i
-      },
-      legal_entity: {
-        type: @user.legal_type,
-        first_name: @user.first_name,
-        last_name: @user.last_name,
-        dob: {
-          day: @user.birth_date.day,
-          month: @user.birth_date.month,
-          year: @user.birth_date.year,
-        },
-        address: {
-          line1: @user.address,
-          postal_code: @user.zip_code,
-          city: @user.city
-        }
       }
     })
-    if @account.legal_entity.type == "company"
-      @account.legal_entity.business_name = @user.business_name
-      @account.legal_entity.business_tax_id = @user.business_tax_id
-      @account.legal_entity.personal_address.line1 = @user.personal_address
-      @account.legal_entity.personal_address.postal_code = @user.personal_zip_code
-      @account.legal_entity.personal_address.city = @user.personal_city
-      @account.save
-    end
     @user.stripe_account_id = @account.id
-    @user.pricing_enabled! if (@account.payouts_enabled && @account.charges_enabled)
     @user.save
+    update_account
   end
 
   def update_account
+    edit_legal_entity
+    edit_external_account if params[:user][:stripeToken].present?
+    edit_business if @user.legal_type == "company"
+    @account.save
+    (@account.payouts_enabled && @account.charges_enabled) ? @user.pricing_enabled! : @user.pricing_disabled!
   end
 
-  def delete_account
+  private
+
+  def edit_legal_entity
+    @account.legal_entity.type = @user.legal_type
+    @account.legal_entity.first_name = @user.first_name
+    @account.legal_entity.last_name = @user.last_name
+    @account.legal_entity.dob.day = @user.birth_date.day
+    @account.legal_entity.dob.month = @user.birth_date.month
+    @account.legal_entity.dob.year = @user.birth_date.year
+    @account.legal_entity.address.line1 = @user.address
+    @account.legal_entity.address.postal_code = @user.zip_code
+    @account.legal_entity.address.city = @user.city
+  end
+
+  def edit_external_account
+    @account.external_account = params[:user][:stripeToken]
+  end
+
+  def edit_business
+    @account.legal_entity.business_name = @user.business_name
+    @account.legal_entity.business_tax_id = @user.business_tax_id
+    @account.legal_entity.personal_address.line1 = @user.personal_address
+    @account.legal_entity.personal_address.postal_code = @user.personal_zip_code
+    @account.legal_entity.personal_address.city = @user.personal_city
+    @account.legal_entity.personal_address.city = @user.personal_city
+    @account.legal_entity.additional_owners = nil if @user.additional_owners.blank?
   end
 end

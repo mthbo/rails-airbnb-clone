@@ -174,10 +174,12 @@ en:
         contact_details_not_disclosed: Your contact details won't be disclosed publicly, apart from your city and your country of residence.
         email: "Email address"
         phone_number: "42 42 42 42 42"
+        address: Address
         street: Street number and name
         zip_code: Zip code
         city: City
         country: -- Country --
+        state: State
       new:
         sign_up: Sign up
         signing_up: Signing up...

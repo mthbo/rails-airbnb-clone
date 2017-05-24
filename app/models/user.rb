@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal', dependent: :nullify
   has_many :advisor_deals, through: :offers, source: :deals
   has_many :messages, dependent: :nullify
+  has_many :additional_owners, dependent: :destroy
 
   has_attachment :photo, accept: [:jpg, :png, :gif]
 

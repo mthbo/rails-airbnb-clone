@@ -30,7 +30,7 @@
   </div>
 
   <div class="padded-top-xs">
-    <% if current_user.pricing_available? && current_user.pricing_enabled? %>
+    <% if @offer.free_deals == 0 && current_user.pricing_available? && current_user.pricing_enabled? %>
       <p><%= t '.select_pricing' %></p>
       <div class="custom-radio-buttons padded-top-xs">
         <%= f.input :pricing, label: false, as: :radio_buttons, collection: Offer.translated_pricings %>

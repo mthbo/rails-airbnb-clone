@@ -44,6 +44,7 @@ Rails.application.routes.draw do
         get 'country', to: 'users#country'
         patch 'update_country', to: 'users#update_country'
         patch 'change_locale', to: 'users#change_locale'
+        post 'webhook', to: "users#webhook"
       end
     end
 

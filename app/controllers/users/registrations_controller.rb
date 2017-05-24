@@ -2,7 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   after_action :index_offers, only: [:update]
   before_action :remove_offers_from_index, only: [:destroy]
   before_action :disable_all_deal_messages, only: [:destroy]
-
+  before_action :delete_stripe_account, only: [:destroy]
 
   def confirm
   end
@@ -50,6 +50,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
       DealStatusBroadcastJob.perform_later(deal, receiver)
       DealCardsBroadcastJob.perform_later(deal)
     end
+  end
+
+  def delete_stripe_account
+    @account = resource.stripe_account_id.present? ? Stripe::Account.retrieve(resource.stripe_account_id) : nil
+    @account.delete unless (@account.blank? || @account.respond_to?(:deleted))
   end
 
 end
