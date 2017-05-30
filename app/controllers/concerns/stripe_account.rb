@@ -4,7 +4,13 @@ module StripeAccount
   def create_account
     @account = Stripe::Account.create({
       country: @user.country_code,
-      managed: true,
+      type: 'custom',
+      metadata: {
+        internal_id: @user.id
+      },
+      payout_schedule: {
+        interval: "manual"
+      },
       tos_acceptance: {
         ip: request.remote_ip,
         date: DateTime.now.to_i
@@ -16,6 +22,7 @@ module StripeAccount
   end
 
   def update_account
+    edit_account
     edit_legal_entity
     edit_external_account if params[:user][:stripeToken].present?
     edit_business if @user.legal_type == "company"
@@ -24,6 +31,10 @@ module StripeAccount
   end
 
   private
+
+  def edit_account
+    @account.email = @user.email
+  end
 
   def edit_legal_entity
     @account.legal_entity.type = @user.legal_type

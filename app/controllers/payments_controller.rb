@@ -45,7 +45,11 @@ private
       customer:     @customer.id,
       amount:       @deal.amount_converted(current_user.currency).cents,
       description:  "##{t('session')}-#{@deal.id} | #{@deal.title}",
-      currency:     @deal.amount_converted(current_user.currency).currency.to_s
+      currency:     @deal.amount_converted(current_user.currency).currency.to_s,
+      destination: {
+        amount: @deal.advisor_amount_converted(current_user.currency).cents,
+        account: @deal.advisor.stripe_account_id,
+      }
     )
     @deal.payment = @charge.to_json
     @deal.paid!
