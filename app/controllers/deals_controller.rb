@@ -1,7 +1,7 @@
 class DealsController < ApplicationController
   include Receiver
   include DealOpening
-  before_action :find_deal, only: [:show, :proposition, :save_proposition, :submit_proposition, :decline_proposition, :accept_proposition, :complete, :review, :save_review, :disable_messages, :cancel]
+  before_action :find_deal, only: [:show, :proposition, :save_proposition, :submit_proposition, :decline_proposition, :accept_proposition, :close, :review, :save_review, :disable_messages, :cancel]
   before_action :find_offer, only: [:new, :create]
 
   def show
@@ -91,7 +91,7 @@ class DealsController < ApplicationController
     open_deal
   end
 
-  def complete
+  def close
     @deal.closed!
     @deal.closed_at = DateTime.current.in_time_zone
     set_receiver
@@ -103,6 +103,7 @@ class DealsController < ApplicationController
     DealCardsBroadcastJob.perform_later(@deal)
     DealMailer.deal_closed_client(@deal).deliver_later
     DealMailer.deal_closed_advisor(@deal).deliver_later
+    StripePayoutJob.set(wait_until: 7.days.from_now).perform_later(@deal) if @deal.paid!
     offer = @deal.offer
     offer.free_deals -= 1 if offer.free_deals > 0
     offer.priced! if (offer.free_deals == 0 && offer.advisor.stripe_account_id.present? && offer.advisor.pricing_enabled? )

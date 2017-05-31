@@ -8,7 +8,7 @@ fr:
       notice: "Vous avez refusé la proposition de %{name}"
     accept_proposition:
       notice: "#session-%{id} avec %{name} est ouverte!"
-    complete:
+    close:
       notice: "#session-%{id} avec %{name} est clôturée!"
     save_review:
       notice: "Votre évaluation a été postée"

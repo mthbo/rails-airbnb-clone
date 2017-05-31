@@ -57,7 +57,7 @@ Rails.application.routes.draw do
           patch 'submit_proposition', to: 'deals#submit_proposition'
           patch 'decline_proposition', to: 'deals#decline_proposition'
           patch 'accept_proposition', to: 'deals#accept_proposition'
-          patch 'complete', to: 'deals#complete'
+          patch 'close', to: 'deals#close'
           patch 'save_review', to: 'deals#save_review'
           patch 'disable_messages', to: 'deals#disable_messages'
           patch 'cancel', to: 'deals#cancel'

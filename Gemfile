@@ -9,7 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'redis'
 
 gem 'sidekiq'
-gem 'sidekiq-failures'
+# gem 'sidekiq-failures'
 
 gem 'activeadmin', github: 'activeadmin/activeadmin'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'

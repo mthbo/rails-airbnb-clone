@@ -8,7 +8,7 @@ en:
       notice: "You declined the proposition of %{name}"
     accept_proposition:
       notice: "#session-%{id} with %{name} is open!"
-    complete:
+    close:
       notice: "#session-%{id} with %{name} is closed!"
     save_review:
       notice: "Your evaluation has been posted"

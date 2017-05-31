@@ -23,7 +23,7 @@
       <p class="font-weight-normal"><%= t '.session_is_open_advisor', date: l(deal.deadline.to_date, format: :long), name: deal.client.first_name %></p>
     </div>
 
-  <% elsif policy(deal).complete? %>
+  <% elsif policy(deal).close? %>
     <div class="padded-top-s">
       <% if deal.open_expired? %>
         <p class="font-weight-normal"><%= t '.deadline_has_passed' %></p>

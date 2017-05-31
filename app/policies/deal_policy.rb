@@ -32,7 +32,7 @@ class DealPolicy < ApplicationPolicy
     record.client == user && record.proposition?
   end
 
-  def complete?
+  def close?
     (record.client == user && (record.opened? || record.open_expired?)) || (record.advisor == user && record.open_expired?)
   end
 

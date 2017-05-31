@@ -21,7 +21,7 @@ class Deal < ApplicationRecord
   validates :request, :languages, :means, :deadline, presence: true
 
   validate :deadline_must_be_future, if: :pending_or_open?
-  validate :deadline_must_be_before_a_year, if: :pending_or_open?
+  validate :deadline_must_be_before_limit, if: :pending_or_open?
 
   validates :proposition, presence: true, length: { minimum: 30 }, if: :not_new_nor_cancelled?
   validates :objectives, presence: true, length: { maximum: 10 }, if: :not_new_nor_cancelled?
@@ -242,9 +242,9 @@ class Deal < ApplicationRecord
       deadline.present? && deadline <= 1.day.ago
   end
 
-  def deadline_must_be_before_a_year
-    errors.add(:deadline, :more_than_a_year_from_now) if
-      deadline.present? && deadline > 1.year.from_now
+  def deadline_must_be_before_limit
+    errors.add(:deadline, :after_limit, days: 90) if
+      deadline.present? && deadline > 90.days.from_now
   end
 
   def proposition_deadline_must_be_future

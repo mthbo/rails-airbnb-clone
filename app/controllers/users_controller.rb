@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       @account = @user.stripe_account_id.present? ? Stripe::Account.retrieve(@user.stripe_account_id) : nil
-      (@account.blank? || @account.respond_to?(:deleted)) ? create_account : update_account
+      (@account.blank? || @account.respond_to?(:deleted)) ? create_stripe_account : update_stripe_account
       flash[:notice] = t('.notice')
       redirect_to user_path(@user)
     else

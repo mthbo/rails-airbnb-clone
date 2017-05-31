@@ -5,7 +5,7 @@
     <% end %>
   <% end %>
   <%= render 'deals/cancel', deal: deal %>
-<% elsif policy(deal).complete? %>
+<% elsif policy(deal).close? %>
   <%= render 'deals/close', deal: deal %>
 <% elsif policy(deal).review? %>
   <%= link_to review_deal_path(deal), class: "btn btn-form btn-blue" do %>

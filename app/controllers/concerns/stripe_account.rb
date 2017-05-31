@@ -1,7 +1,7 @@
 module StripeAccount
   extend ActiveSupport::Concern
 
-  def create_account
+  def create_stripe_account
     @account = Stripe::Account.create({
       country: @user.country_code,
       type: 'custom',
@@ -18,10 +18,10 @@ module StripeAccount
     })
     @user.stripe_account_id = @account.id
     @user.save
-    update_account
+    update_stripe_account
   end
 
-  def update_account
+  def update_stripe_account
     edit_account
     edit_legal_entity
     edit_external_account if params[:user][:stripeToken].present?

@@ -49,7 +49,8 @@ private
       destination: {
         amount: @deal.advisor_amount_converted(current_user.currency).cents,
         account: @deal.advisor.stripe_account_id,
-      }
+      },
+      metadata: { deal_id: @deal.id }
     )
     @deal.payment = @charge.to_json
     @deal.paid!
