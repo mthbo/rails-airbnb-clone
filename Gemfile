@@ -34,7 +34,6 @@ gem 'omniauth-facebook'
 gem 'pundit'
 gem 'money-rails'
 gem 'google_currency'
-gem 'stripe'
 gem 'geocoder'
 gem 'kaminari'
 gem 'kramdown'
@@ -48,6 +47,9 @@ gem 'devise-i18n'
 gem "i18n-js", ">= 3.0.0.rc11"
 
 gem "algoliasearch-rails"
+
+gem 'stripe'
+gem 'ultrahook'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'

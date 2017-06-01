@@ -1,6 +1,6 @@
 <p>
   <span class="info-icon"><%= image_tag 'amount.svg' %></span>
-  <% if offer.free? %>
+  <% if offer.free? || !offer.advisor.pricing_enabled? %>
     <strong><%= t '.free' %></strong>
   <% elsif offer.median_amount_cents.nil? %>
     <span class="medium-gray"><%= t '.no_history' %></span>
