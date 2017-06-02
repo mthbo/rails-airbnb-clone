@@ -27,7 +27,6 @@ module StripeAccount
     edit_external_account if params[:user][:stripeToken].present?
     edit_business if @user.legal_type == "company"
     @account.save
-    (@account.payouts_enabled && @account.charges_enabled) ? @user.pricing_enabled! : @user.pricing_disabled!
   end
 
   private

@@ -141,7 +141,7 @@
 
   <%= f.hidden_field :bank_name %>
   <%= f.hidden_field :bank_last4 %>
-  <%= f.hidden_field :pricing, value: 'pricing_disabled' %>
+  <%= f.hidden_field :pricing, value: @user.pricing_pending? ? 'pricing_enabled' : @user.pricing %>
   <%= f.input :stripeToken, as: :hidden, input_html: { value: '' } %>
 
   <div class="padded-top-m">
