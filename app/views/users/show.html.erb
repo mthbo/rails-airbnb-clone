@@ -55,7 +55,7 @@
           <h2><%= @user == current_user ? t('.my_offers') : t('.offers', user: @user.first_name) %></h2>
           <% if policy(@user.offers.new).new? %>
             <div>
-              <% if @user.country_code.blank? %>
+              <% if @user.no_pricing? %>
                 <%= link_to country_users_path, class: "btn btn-form btn-green" do %>
                   <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
                 <% end %>

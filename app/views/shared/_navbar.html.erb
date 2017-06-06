@@ -6,7 +6,12 @@
 
   <div class="my-navbar-left">
     <%= link_to root_path, { class: "my-navbar-brand" } do %>
-      <%= image_tag "papoters.svg" %>
+      <div class="hidden-sm hidden-md hidden-lg">
+        <%= image_tag "papoters_short.svg" %>
+      </div>
+      <div class="hidden-xs">
+        <%= image_tag "papoters.svg" %>
+      </div>
     <% end %>
 
     <div class="my-navbar-item">
