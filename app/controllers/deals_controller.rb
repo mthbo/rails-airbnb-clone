@@ -103,7 +103,10 @@ class DealsController < ApplicationController
     DealCardsBroadcastJob.perform_later(@deal)
     DealMailer.deal_closed_client(@deal).deliver_later
     DealMailer.deal_closed_advisor(@deal).deliver_later
-    StripePayoutJob.set(wait_until: 7.days.from_now).perform_later(@deal) if @deal.paid!
+    if @deal.paid!
+      StripePayoutJob.set(wait_until: 7.days.from_now).perform_later(@deal)
+      @deal.payout_pending!
+    end
     offer = @deal.offer
     offer.free_deals -= 1 if offer.free_deals > 0
     offer.priced! if (offer.free_deals == 0 && offer.advisor.stripe_account_id.present? && offer.advisor.pricing_enabled? )
@@ -148,7 +151,6 @@ class DealsController < ApplicationController
     @deal.reset_notifications(current_user)
     @deal.save
     DealStatusBroadcastJob.perform_later(@deal, @receiver)
-    DealCardsBroadcastJob.perform_later(@deal)
     respond_to do |format|
       format.html {
         flash[:notice] = t('.notice', id: @deal.id)

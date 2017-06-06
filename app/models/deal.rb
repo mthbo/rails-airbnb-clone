@@ -15,7 +15,7 @@ class Deal < ApplicationRecord
   monetize :advisor_amount_cents, allow_nil: true, with_model_currency: :currency_code
 
   enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
-  enum payment_state: [ :no_payment, :payment_pending, :paid ]
+  enum payment_state: [ :no_payment, :payment_pending, :paid, :payout_pending, :payout_made, :payout_failed ]
   enum who_reviews: [ :no_review, :client_is_reviewing, :advisor_is_reviewing]
 
   validates :request, :languages, :means, :deadline, presence: true

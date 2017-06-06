@@ -24,6 +24,7 @@ ActiveAdmin.register Deal do
       link_to deal.client_id, admin_user_path(deal.client)
     end
     column :status
+    column :payment_state
     column :currency_code
     column :amount
     column :fees
@@ -53,6 +54,7 @@ ActiveAdmin.register Deal do
       row :fees
       row :payment_state
       row :payment
+      row :payout
     end
     attributes_table do
       row :created_at

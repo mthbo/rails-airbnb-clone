@@ -42,7 +42,9 @@ en:
       proposition_declined: Proposition declined
       deadline_expired: Deadline expired
       review_expected: Review expected
-      messages_disabled: Messages disabled
+      payout_pending: Payout pending
+      payout_made: Payout made
+      payout_failed: Payout failed
     status:
       request: Request
       proposition: Proposition

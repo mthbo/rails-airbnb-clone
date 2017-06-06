@@ -3,7 +3,7 @@ class StripePayoutJob < ApplicationJob
 
   def perform(deal)
     if deal.present? && deal.advisor.present?
-      Stripe::Payout.create(
+      payout = Stripe::Payout.create(
         {
           amount: deal.advisor_amount_converted(deal.advisor.currency).cents,
           currency: deal.advisor_amount_converted(deal.advisor.currency).currency.to_s,
@@ -12,6 +12,8 @@ class StripePayoutJob < ApplicationJob
         },
         {stripe_account: deal.advisor.stripe_account_id},
       )
+      deal.payout = payout.to_json
+      deal.save
     end
   end
 

@@ -42,7 +42,9 @@ fr:
       proposition_declined: Proposition refusée
       deadline_expired: Date limite expirée
       review_expected: Avis attendu
-      messages_disabled: Messages désactivés
+      payout_pending: Versement en attente
+      payout_made: Versement effectué
+      payout_failed: Echec versement
     status:
       request: Demande
       proposition: Proposition
