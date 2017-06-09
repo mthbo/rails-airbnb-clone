@@ -30,9 +30,13 @@ class StripeController < ApplicationController
         charges_enabled = @event.data.object.charges_enabled
         (payouts_enabled && charges_enabled) ? @user.pricing_enabled! : @user.pricing_disabled!
 
+      when 'account.external_account.updated'
+        status = @event.data.object.status
+        @user.bank_invalid! if status == "verification_failed" || "errored"
+
       when 'payout.paid'
         retrieve_payout_deal
-        @deal.payout_made! if @deal.present?
+        @deal.payout_made! if @deal.present? && @deal.payout_pending!
 
       when 'payout.failed'
         retrieve_payout_deal

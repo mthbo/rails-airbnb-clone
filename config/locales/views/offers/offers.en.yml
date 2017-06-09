@@ -26,7 +26,7 @@ en:
       update: Update
       updating: Updating...
     pricing_info:
-      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area (pricing only available in France)."
+      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
       prove_worth_before_pricing_html: "Pricing your service is only available after you proved your worth, with at least <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer."
       sessions_for_free: "Sessions for this offer are for free."
       sessions_before_pricing_html:
@@ -34,8 +34,9 @@ en:
         other: "You still need to achieve <span class='font-weight-normal blue'>%{count} free sessions</span> for this offer before pricing your service."
       enable_pricing: Enable pricing
       activation_instructions: "by providing the required legal and banking details."
-      update_legal_details: Update your legal and banking details
-      reactivation_instructions: "to reenable pricing."
+      pricing_disabled: Pricing has been disabled for your account.
+      visit_your_profile: Visit your profile
+      to_find_out_more: "to find out more."
     removal:
       offer_removal: Offer removal
       offer_removal_for: Remove this offer if you don't want to give advice on this topic anymore.

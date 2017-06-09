@@ -26,7 +26,7 @@ fr:
       update: Mettre à jour
       updating: Mise à jour...
     pricing_info:
-      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique (paiements disponibles en France seulement)."
+      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
       prove_worth_before_pricing_html: "Proposer des prestations payantes n'est possible qu'après avoir fait vos preuves, avec au moins <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre."
       sessions_for_free: "Les sessions pour cette offre sont gratuites."
       sessions_before_pricing_html:
@@ -34,8 +34,9 @@ fr:
         other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des services payants."
       enable_pricing: Activez les paiements
       activation_instructions: "en fournissant les informations légales et bancaires requises pour proposer des services payants."
-      update_legal_details: Mettez à jour vos informations légales et bancaires
-      reactivation_instructions: "pour réactiver les paiements."
+      pricing_disabled: Les paiements ont été désactivés sur votre compte.
+      visit_your_profile: Consultez votre profil
+      to_find_out_more: "pour en savoir plus."
     removal:
       offer_removal: Suppression de l'offre
       offer_removal_for: Supprimez cette offre si vous ne voulez plus donner de conseils sur ce sujet.

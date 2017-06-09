@@ -8,6 +8,7 @@ class User < ApplicationRecord
   acts_as_voter
 
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
+  enum bank_status: [:no_bank, :bank_valid, :bank_invalid]
   enum legal_type: [ :individual, :company ]
 
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
@@ -35,14 +36,16 @@ class User < ApplicationRecord
   validates :address, presence: true, if: :legal_details_required?
   validates :zip_code, presence: true, if: :legal_details_required?
   validates :city, presence: true, if: :legal_details_required?
-  validates :bank_name, presence: true, if: :legal_details_required?
-  validates :bank_last4, presence: true, if: :legal_details_required?
+  validates :identity_document_name, presence: true, if: :legal_details_required?
 
   validates :business_name, presence: true, if: :legal_details_company_required?
   validates :business_tax_id, presence: true, if: :legal_details_company_required?
   validates :personal_address, presence: true, if: :legal_details_company_required?
   validates :personal_city, presence: true, if: :legal_details_company_required?
   validates :personal_zip_code, presence: true, if: :legal_details_company_required?
+
+  validates :bank_name, presence: true, if: :bank_invalid?
+  validates :bank_last4, presence: true, if: :bank_invalid?
 
   STRIPE_ALLOWED_COUNTRIES = ['FR']
 
@@ -95,6 +98,13 @@ class User < ApplicationRecord
     Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
   end
 
+  def self.stripe_allowed_countries(locale=I18n.locale)
+    STRIPE_ALLOWED_COUNTRIES.map do |country_code|
+      country_data = ISO3166::Country[country_code]
+      country_data.translations[locale.to_s] || country_data.name
+    end
+  end
+
   def pricing_available?
     STRIPE_ALLOWED_COUNTRIES.include?(country_code)
   end
@@ -104,7 +114,7 @@ class User < ApplicationRecord
   end
 
   def legal_details_required?
-    pricing_enabled? || pricing_disabled?
+    !self.no_pricing? && !self.pricing_pending?
   end
 
   def legal_details_company_required?
@@ -204,6 +214,10 @@ class User < ApplicationRecord
 
   def advisor_deals_reviewed
     advisor_deals.where.not(client_review_at: nil).order(client_review_at: :desc)
+  end
+
+  def advisor_deals_payout_failed
+    advisor_deals_closed.where(payment_state: :payout_failed)
   end
 
 

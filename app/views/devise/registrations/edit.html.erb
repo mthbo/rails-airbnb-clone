@@ -32,7 +32,7 @@
     </div>
     <div class="col-xs-12 col-sm-6">
       <label><%= t '.profile_picture' %></label>
-      <div class="user-photo-wrapper">
+      <div class="custom-file-upload user-photo-wrapper">
         <%= f.input_field :photo, as: :attachinary, placeholder: false %>
         <%= f.label :photo, label: "<i class='fa fa-download' aria-hidden='true'></i>&nbsp;&nbsp; #{t '.choose_picture'}".html_safe, class: 'btn btn-form btn-white' %>
       </div>

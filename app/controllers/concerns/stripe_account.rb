@@ -22,18 +22,27 @@ module StripeAccount
   end
 
   def update_stripe_account
-    edit_account
     edit_legal_entity
-    edit_external_account if params[:user][:stripeToken].present?
     edit_business if @user.legal_type == "company"
     @account.save
   end
 
-  private
-
-  def edit_account
-    @account.email = @user.email
+  def update_stripe_bank
+    if params[:user][:stripeToken].present?
+      @account.external_account = params[:user][:stripeToken]
+      @account.save
+      status = @account.external_accounts.first.status
+      unless status == "verification_failed" || "errored"
+        @user.bank_valid!
+        @user.advisor_deals_payout_failed.each do |deal|
+          deal.payout_pending!
+          StripePayoutJob.perform_later(deal)
+        end
+      end
+    end
   end
+
+  private
 
   def edit_legal_entity
     @account.legal_entity.type = @user.legal_type
@@ -45,10 +54,6 @@ module StripeAccount
     @account.legal_entity.address.line1 = @user.address
     @account.legal_entity.address.postal_code = @user.zip_code
     @account.legal_entity.address.city = @user.city
-  end
-
-  def edit_external_account
-    @account.external_account = params[:user][:stripeToken]
   end
 
   def edit_business

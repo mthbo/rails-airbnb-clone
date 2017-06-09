@@ -2,8 +2,6 @@
   <%= "Papoters | #{t('.legal_details')}" %>
 <% end %>
 
-<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
-
 <h2><%= t '.legal_details' %></h2>
 
 <%= simple_form_for @user do |f| %>
@@ -19,11 +17,11 @@
     </div>
   </div>
 
-  <div class="padded-top-xs padded-bottom-xs">
+  <div class="padded-top-xs padded-bottom-xs hidden">
     <p><%= t '.select_legal_type' %></p>
   </div>
 
-  <div class="custom-radio-buttons">
+  <div class="custom-radio-buttons hidden">
     <%= f.input :legal_type, label: false, as: :radio_buttons, collection: User.translated_legal_types %>
   </div>
 
@@ -72,6 +70,28 @@
     </div>
   </div>
 
+  <div class="row padded-top-xs">
+    <div class="col-xs-12">
+      <p>
+        <%= t '.upload_identity_document' %>
+        <em class="font-weight-normal"><%= t '.file_format' %></em>
+      </p>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="custom-file-upload">
+        <%= f.input_field :identity_document, as: :file, placeholder: false, accept: "image/jpeg,image/png" %>
+        <%= f.label :identity_document, label: "<i class='fa fa-download' aria-hidden='true'></i>&nbsp;&nbsp; #{t '.choose_file'}".html_safe, class: 'btn btn-form btn-white' %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-6">
+      <div class="custom-file-upload-name" id="identity-document-name">
+        <span class="red"><%= t '.no_file_selected' %></span>
+      </div>
+    </div>
+  </div>
+
+  <%= f.hidden_field :identity_document_name, value: nil %>
+
   <div class="form-separation padded-top-m padded-bottom-xs user-business-details hidden">
     <div></div>
     <p><strong><%= t '.business_details' %></strong></p>
@@ -114,35 +134,9 @@
     </div>
   </div>
 
-  <div class="form-separation padded-top-m padded-bottom-xs">
-    <div></div>
-    <p><strong><%= t '.bank_account' %></strong></p>
-    <div></div>
-  </div>
+  <%= f.hidden_field :pricing, value: @user.pricing_pending? ? 'pricing_disabled' : @user.pricing %>
 
-  <div class="padded-top-xs">
-    <p><%= t '.bind_bank_account' %></p>
-  </div>
-
-  <div class="custom-form-frame-action bg-white-transparent">
-    <p id="bankAccountDetails">
-      <% if @user.bank_name && @user.bank_last4 %>
-        <i class="fa fa-university fa-fw" aria-hidden="true"></i>
-        <span class="font-weight-normal"><%= @user.bank_name %></span>
-        <span class="medium-gray">&sdot;&sdot;&sdot;&sdot;<%= @user.bank_last4 %></span>
-      <% else %>
-        <span class="red"><%= t '.no_bank_account' %></span>
-      <% end %>
-    </p>
-    <button type=button class="btn btn-gray" data-toggle="modal" data-target="#new-bank-account"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; <%= t('.new_account') %></button>
-  </div>
-
-  <%= f.hidden_field :bank_name %>
-  <%= f.hidden_field :bank_last4 %>
-  <%= f.hidden_field :pricing, value: @user.pricing_pending? ? 'pricing_enabled' : @user.pricing %>
-  <%= f.input :stripeToken, as: :hidden, input_html: { value: '' } %>
-
-  <div class="padded-top-m">
+  <div class="padded-top-s">
     <p><%= t '.details_verification' %></p>
     <p>
       <%= t '.accept_service_agreement_1' %>
@@ -153,8 +147,8 @@
   </div>
 
   <div class="text-right padded-top-s">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.transmitting')}) do %>
-      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.transmit' %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.updating')}) do %>
+      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
     <% end %>
   </div>
 <% end %>
@@ -162,5 +156,3 @@
 <div class="text-right padded-top-xs">
   <p><%= link_to t('.back_to_profile'), user_path(@user) %></p>
 </div>
-
-<%= render 'bank_account' %>

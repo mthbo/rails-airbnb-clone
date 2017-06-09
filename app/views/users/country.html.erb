@@ -12,6 +12,16 @@
     <div class="col-xs-12 col-sm-6 padded-top-xs">
       <%= f.input :country_code, label: false, prompt: t('.country'), input_html: { class: 'custom-form-input' } %>
     </div>
+    <div class="col-xs-12">
+      <p><em>
+        <% if User.stripe_allowed_countries.present? %>
+          <%= t('.country_restrictions') %>
+          <%= User.stripe_allowed_countries.split.join(", ") %>
+        <% else %>
+          <%= t('.country_restrictions_beta') %>
+        <% end %>
+      </em></p>
+    </div>
   </div>
 
   <%= f.hidden_field :pricing, value: 'pricing_pending' %>

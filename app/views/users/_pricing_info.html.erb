@@ -1,16 +1,18 @@
 <div class="user-offers-info">
   <% if !@user.pricing_available? || @user.no_pricing? %>
-    <div class="user-pricing-info">
+    <div class="user-offers-info-left">
       <%= image_tag 'no_amount.svg' %>
       <p><%= t '.pricing_not_available_html' %></p>
     </div>
 
   <% elsif @user.pricing_pending? %>
-    <div class="user-pricing-action">
+    <div class="user-offers-info-left">
       <p class="no-margin-bottom">
         <%= t '.pricing_not_enabled_html' %>
         <%= t '.activation_instructions' %>
       </p>
+    </div>
+    <div class="user-offers-info-right">
       <%= link_to details_users_path, class: "btn btn-gray" do %>
         <span class="info-icon"><%= image_tag 'amount.svg' %></span>
         <%= t '.enable_pricing' %>
@@ -18,17 +20,22 @@
     </div>
 
   <% elsif @user.pricing_enabled? %>
-    <div class="user-pricing-info">
+    <div class="user-offers-info-left">
       <%= image_tag 'amount.svg' %>
       <p>
         <%= t '.pricing_enabled_html' %><br>
-        <%= link_to t('.edit_legal_details'), details_users_path %>
-        <%= t '.update_legal_details_instructions' %>
+      </p>
+    </div>
+    <div class="user-offers-info-right">
+      <p class="text-right">
+        <%= link_to bank_users_path do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; <%= t('.edit_bank_account') %>
+        <% end %>
       </p>
     </div>
 
   <% elsif @user.pricing_disabled? %>
-    <div class="user-pricing-info">
+    <div class="user-offers-info-left">
       <%= image_tag 'no_amount.svg' %>
       <p>
         <%= t '.pricing_disabled_html' %><br>
@@ -36,5 +43,6 @@
         <%= t '.reactivation_instructions' %>
       </p>
     </div>
+
   <% end %>
 </div>

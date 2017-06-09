@@ -43,8 +43,10 @@ Rails.application.routes.draw do
       collection do
         get 'dashboard', to: 'users#dashboard'
         get 'details', to: 'users#details'
+        get 'bank', to: 'users#bank'
         get 'country', to: 'users#country'
         patch 'update_country', to: 'users#update_country'
+        patch 'update_bank', to: 'users#update_bank'
         patch 'change_locale', to: 'users#change_locale'
       end
     end

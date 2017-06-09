@@ -9,7 +9,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update_country?
-    user == record
+    country?
   end
 
   def stripe_connection?
@@ -17,11 +17,19 @@ class UserPolicy < ApplicationPolicy
   end
 
   def details?
-    user == record
+    user == record && !user.no_pricing?
   end
 
   def update?
     user == record
+  end
+
+  def bank?
+    user == record && !user.no_pricing? && !user.pricing_pending?
+  end
+
+  def update_bank?
+    bank?
   end
 
   def change_locale?

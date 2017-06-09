@@ -27,13 +27,13 @@ fr:
       no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
       no_reviews: "%{user} n'a reçu aucun avis pour le moment."
     pricing_info:
-      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique (paiements disponibles en France seulement)."
+      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
       pricing_not_enabled_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> tant que vous n'avez pas activé les paiements."
       activation_instructions: "Activez les paiements en fournissant les informations légales et bancaires requises."
       enable_pricing: Activer les paiements
       pricing_enabled_html: "Les paiements sont activés, vous pouvez proposer des <span class='font-weight-normal'>services payants</span>."
-      edit_legal_details: Editez vos informations légales et bancaires
-      update_legal_details_instructions: si celles-ci ont changé.
+      edit_bank_account: Editer votre compte bancaire
+      edit_legal_details: Editez vos informations légales
       pricing_disabled_html: "Les paiements sont désactivés, vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span>."
       reactivation_instructions: pour réactiver les paiements.
     info:
@@ -73,8 +73,10 @@ fr:
       new_offer: Nouvelle offre
       saving: Enregistrement...
       back_to_profile: Revenir au profil
+      country_restrictions: "A titre d'information, proposer des services payants n'est aujourd'hui possible que pour les résidents des pays suivants :"
+      country_restrictions_beta: "Papoters étant aujourd'hui en version bêta, il n'est pas encore possible de proposer des services payants."
     details:
-      legal_details: Informations légales et bancaires
+      legal_details: Informations légales
       select_country: Veuillez sélectionner votre pays de résidence.
       select_legal_type: Veuillez choisir un statut en tant que prestataire de service sur Papoters.
       personal_details: Informations personnelles
@@ -89,22 +91,32 @@ fr:
       city: Ville
       state: Etat
       country: -- Pays --
+      upload_identity_document: Veuillez télécharger un document d'identité (carte d'identité ou passeport).
+      file_format: Format image (png ou jpeg), max. 8 Mo
+      choose_file: Choisir un fichier
+      over_size_limit: Taille du fichier trop grande
+      no_file_selected: Aucun fichier sélectionné
       business_details: Informations sur l'entreprise
       provide_business_details: "Veuillez fournir l'ensemble des informations demandées sur votre entreprise."
       business_name: Mon entreprise
       business_tax_id: 321 654 987 12315
-      bank_account: Compte bancaire
-      bind_bank_account: Veuillez lier un compte bancaire sur lequel vous recevrez vos paiements.
-      no_bank_account: Aucun compte bancaire lié
-      new_account: Nouveau compte
-      details_verification: "Les informations fournies seront utilisées pour vérifier votre identité. Si besoin, des informations complémentaires pourront vous être demandées."
+      details_verification: "Les informations fournies seront utilisées pour vérifier votre identité."
       accept_service_agreement_1: "En transmettant ces informations, vous acceptez nos"
       tos: "conditions générales d'utilisation"
       accept_service_agreement_2: ainsi que les
       stripe_service_agreement: "conditions d'utilisation des comptes Stripe Connect"
       back_to_profile: Revenir au profil
-      transmit: Transmettre
-      transmitting: Transmission...
+      update: Mettre à jour
+      updating: Mise à jour...
+    bank:
+      bank_account: Compte bancaire
+      bind_bank_account: Veuillez lier un compte bancaire sur lequel vous recevrez vos paiements.
+      no_bank_account: Aucun compte bancaire lié
+      new_account: Nouveau compte
+      bank_account_error: Votre compte bancaire ne semble pas recevoir de paiements
+      back_to_profile: Revenir au profil
+      update: Mettre à jour
+      updating: Mise à jour...
     bank_account:
       new_bank_account: Nouveau compte bancaire
       provide_account_number_html: "Veuillez renseigner le <span class='font-weight-normal'>numéro IBAN</span> du compte bancaire sur lequel vous voulez recevoir vos paiements."

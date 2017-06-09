@@ -28,8 +28,9 @@
     <p>
       <p>
         <%= t '.sessions_for_free' %><br>
-        <%= link_to t('.update_legal_details'), details_users_path %>
-        <%= t '.reactivation_instructions' %>
+        <%= t '.pricing_disabled' %>
+        <%= link_to t('.visit_your_profile'), user_path(current_user) %>
+        <%= t '.to_find_out_more' %>
       </p>
     </p>
 
