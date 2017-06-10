@@ -17,11 +17,11 @@
     </div>
   </div>
 
-  <div class="padded-top-xs padded-bottom-xs hidden">
+  <div class="padded-top-xs padded-bottom-xs">
     <p><%= t '.select_legal_type' %></p>
   </div>
 
-  <div class="custom-radio-buttons hidden">
+  <div class="custom-radio-buttons">
     <%= f.input :legal_type, label: false, as: :radio_buttons, collection: User.translated_legal_types %>
   </div>
 

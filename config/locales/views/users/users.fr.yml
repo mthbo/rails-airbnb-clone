@@ -100,7 +100,7 @@ fr:
       provide_business_details: "Veuillez fournir l'ensemble des informations demandées sur votre entreprise."
       business_name: Mon entreprise
       business_tax_id: 321 654 987 12315
-      details_verification: "Les informations fournies seront utilisées pour vérifier votre identité."
+      details_verification: "Les informations fournies seront soumises à vérification et ne pourront plus être modifiées."
       accept_service_agreement_1: "En transmettant ces informations, vous acceptez nos"
       tos: "conditions générales d'utilisation"
       accept_service_agreement_2: ainsi que les

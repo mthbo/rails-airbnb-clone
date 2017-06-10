@@ -24,6 +24,7 @@ module StripeAccount
   def update_stripe_account
     edit_legal_entity
     edit_business if @user.legal_type == "company"
+    attach_verification_document
     @account.save
   end
 
@@ -54,6 +55,17 @@ module StripeAccount
     @account.legal_entity.address.line1 = @user.address
     @account.legal_entity.address.postal_code = @user.zip_code
     @account.legal_entity.address.city = @user.city
+  end
+
+  def attach_verification_document
+    @file = Stripe::FileUpload.create(
+      {
+        purpose: 'identity_document',
+        file: File.new(params[:user][:identity_document].path)
+      },
+      {stripe_account: @account.id}
+    )
+    @account.legal_entity.verification.document = @file.id
   end
 
   def edit_business

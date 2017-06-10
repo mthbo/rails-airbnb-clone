@@ -100,7 +100,7 @@ en:
       provide_business_details: Please provide all the requested details about your company.
       business_name: My company
       business_tax_id: 321 654 987 12315
-      details_verification: The details provided will be used for identity verification.
+      details_verification: The details provided will be used for identity verification and they will no longer be edited.
       accept_service_agreement_1: "By transmitting these details, you accept our"
       tos: "terms of service"
       accept_service_agreement_2: and the
