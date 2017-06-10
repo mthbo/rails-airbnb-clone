@@ -1,0 +1,26 @@
+<div class="deal-info-box">
+  <p>
+
+    <% if deal.payment_pending? %>
+      <%= t '.payout_amount_expected_html', amount: humanized_money(deal.advisor_amount_converted(deal.advisor.currency_code)), currency: deal.advisor_amount_converted(deal.advisor.currency_code).symbol %>
+
+    <% elsif  deal.paid? %>
+      <%= t '.payout_amount_html', amount: humanized_money(deal.advisor_amount_converted(deal.advisor.currency_code)), currency: deal.advisor_amount_converted(deal.advisor.currency_code).symbol %>
+
+    <% elsif deal.payout_pending? %>
+      <%= t '.payout_expected_html', amount: humanized_money(deal.advisor_amount_converted(deal.advisor.currency_code)), currency: deal.advisor_amount_converted(deal.advisor.currency_code).symbol %>
+      <%= l((deal.closed_at + 7.days).to_date, format: :long) if deal.payout_made_at %>.
+
+    <% elsif deal.payout_made? %>
+      <%= t '.payout_made_html', amount: humanized_money(deal.advisor_amount_converted(deal.advisor.currency_code)), currency: deal.advisor_amount_converted(deal.advisor.currency_code).symbol %>
+      <%= l(deal.payout_made_at.to_date, format: :long) if deal.payout_made_at %>.
+
+    <% elsif deal.payout_failed? %>
+      <span class="red"><%= t '.payout_failed_html', amount: humanized_money(deal.advisor_amount_converted(deal.advisor.currency_code)), currency: deal.advisor_amount_converted(deal.advisor.currency_code).symbol %></span><br>
+      <%= link_to t('.visit_your_profile'), user_path(deal.advisor) %>
+      <%= t '.to_find_out_reason' %>
+
+    <% end %>
+
+  </p>
+</div>

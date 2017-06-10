@@ -17,11 +17,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def details?
-    user == record && !user.no_pricing?
+    user == record && !user.no_pricing? &&!user.pricing_enabled?
   end
 
   def update?
-    user == record
+    details?
   end
 
   def bank?

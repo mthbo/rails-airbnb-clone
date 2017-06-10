@@ -12,6 +12,7 @@
 //= require i18n/translations
 
 //= require arrow_scroll
+//= require bank_account
 //= require cable
 //= require checkbox
 //= require conversation_scroll

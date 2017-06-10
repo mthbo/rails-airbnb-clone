@@ -2,9 +2,9 @@
   <%= "Papoters | #{t('.bank_account')}" %>
 <% end %>
 
-<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
-
 <h2><%= t '.bank_account' %></h2>
+
+<div id="stripe-js-api"></div>
 
 <%= simple_form_for @user,  url: update_bank_users_path, method: :patch do |f| %>
   <%= f.error_notification %>

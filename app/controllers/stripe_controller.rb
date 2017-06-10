@@ -32,11 +32,15 @@ class StripeController < ApplicationController
 
       when 'account.external_account.updated'
         status = @event.data.object.status
-        @user.bank_invalid! if status == "verification_failed" || "errored"
+        @user.bank_invalid! if ["verification_failed", "errored"].include?(status)
 
       when 'payout.paid'
         retrieve_payout_deal
-        @deal.payout_made! if @deal.present? && @deal.payout_pending!
+        if @deal.present? && @deal.payout_pending?
+          @deal.payout_made!
+          @deal.payout_made_at = DateTime.now
+          @deal.save
+        end
 
       when 'payout.failed'
         retrieve_payout_deal

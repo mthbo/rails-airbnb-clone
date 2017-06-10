@@ -7,6 +7,8 @@
       </div>
       <div class="modal-body padded-top-s padded-bottom-s">
         <p><%= t '.provide_account_number_html' %></p>
+        <div id="bankAccountCountryCode" data-country-code="<%= @user.country_code %>"></div>
+        <div id="bankAccountCurrency" data-currency="<%= @user.currency.to_s %>"></div>
         <div class="row">
           <div class="col-xs-12 col-sm-8 col-sm-offset-2 padded-top-xs">
             <input type="text" class="form-control custom-form-input" id="bankAccountNumber" placeholder="FR1420041010050500013M026" autocomplete="off">
@@ -21,45 +23,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  var stripe = Stripe("<%= Rails.configuration.stripe[:publishable_key] %>");
-  var $bindButton = document.getElementById("bankAccountBindButtton");
-  var $bankAccountNumber = document.getElementById("bankAccountNumber");
-  var $bankError = document.getElementById("bankErrors");
-
-  $bindButton.addEventListener('click', function(e) {
-    $bindButton.setAttribute('disabled', 'disabled');
-    $bindButton.innerHTML = I18n.t('users.bank_account.verification');
-    stripe.createToken('bank_account', {
-      country: "<%= @user.country_code %>",
-      currency: "<%= @user.currency.to_s %>",
-      account_number: document.getElementById("bankAccountNumber").value
-    }).then(function(result) {
-      $bindButton.removeAttribute('disabled');
-      $bindButton.innerHTML = "<i class='fa fa-lock fa-fw' aria-hidden='true'></i>  " + I18n.t('users.bank_account.bind_account');
-      if (result.error) {
-        stripeErrorHandler(result.error);
-      } else if (result.token) {
-        stripeTokenHandler(result.token);
-      }
-    })
-  });
-
-  function stripeErrorHandler(error) {
-    $bankError.innerHTML = I18n.t('users.bank_account.provide_valid_number');
-    $bankAccountNumber.style["border-color"] = "#EE5F5B";
-  }
-
-  function stripeTokenHandler(token) {
-    document.getElementById("user_bank_name").value = token.bank_account.bank_name;
-    document.getElementById("user_bank_last4").value = token.bank_account.last4;
-    document.getElementById("user_stripeToken").value = token.id;
-    document.getElementById("bankAccountDetails").innerHTML = "<i class='fa fa-university fa-fw' aria-hidden='true'></i> <span class='font-weight-normal'>" + token.bank_account.bank_name + "</span>  <span class='medium-gray'>&sdot;&sdot;&sdot;&sdot;" + token.bank_account.last4 + "</span>";
-    $bankError.innerHTML = "";
-    $bankAccountNumber.value = "";
-    $bankAccountNumber.style["border-color"] = "#ccc";
-    document.getElementById("bankAccountDismissButtton").click();
-  }
-
-</script>

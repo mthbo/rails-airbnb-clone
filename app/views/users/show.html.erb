@@ -23,7 +23,7 @@
 
         <div class="user-info-top">
           <h2><%= @user == current_user ? t('.about_me') : t('.about', user: @user.first_name) %></h2>
-          <% if policy(@user).edit? %>
+          <% if @user == current_user %>
             <p class="text-right">
               <%= link_to edit_user_registration_path do %>
                 <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; <%= t('.edit_my_profile') %>
@@ -34,7 +34,7 @@
         <div class="padded-top-xs">
           <% if @user.bio.present? %>
             <%= sanitize auto_link(markdown_to_html(@user.bio)) %>
-          <% elsif policy(@user).edit? %>
+          <% elsif @user == current_user %>
             <p class="font-weight-normal"><%= t('.no_information_you') %></p>
             <p><%= link_to t('.edit_your_profile'), edit_user_registration_path %> <%= t('.be_known') %></p>
           <% else %>

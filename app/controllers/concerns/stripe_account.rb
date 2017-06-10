@@ -22,6 +22,7 @@ module StripeAccount
   end
 
   def update_stripe_account
+    @account.email = @user.email
     edit_legal_entity
     edit_business if @user.legal_type == "company"
     attach_verification_document
@@ -33,7 +34,7 @@ module StripeAccount
       @account.external_account = params[:user][:stripeToken]
       @account.save
       status = @account.external_accounts.first.status
-      unless status == "verification_failed" || "errored"
+      unless ["verification_failed", "errored"].include?(status)
         @user.bank_valid!
         @user.advisor_deals_payout_failed.each do |deal|
           deal.payout_pending!
@@ -57,6 +58,16 @@ module StripeAccount
     @account.legal_entity.address.city = @user.city
   end
 
+  def edit_business
+    @account.legal_entity.business_name = @user.business_name
+    @account.legal_entity.business_tax_id = @user.business_tax_id
+    @account.legal_entity.personal_address.line1 = @user.personal_address
+    @account.legal_entity.personal_address.postal_code = @user.personal_zip_code
+    @account.legal_entity.personal_address.city = @user.personal_city
+    @account.legal_entity.personal_address.city = @user.personal_city
+    @account.legal_entity.additional_owners = nil if @user.additional_owners.blank?
+  end
+
   def attach_verification_document
     @file = Stripe::FileUpload.create(
       {
@@ -66,15 +77,5 @@ module StripeAccount
       {stripe_account: @account.id}
     )
     @account.legal_entity.verification.document = @file.id
-  end
-
-  def edit_business
-    @account.legal_entity.business_name = @user.business_name
-    @account.legal_entity.business_tax_id = @user.business_tax_id
-    @account.legal_entity.personal_address.line1 = @user.personal_address
-    @account.legal_entity.personal_address.postal_code = @user.personal_zip_code
-    @account.legal_entity.personal_address.city = @user.personal_city
-    @account.legal_entity.personal_address.city = @user.personal_city
-    @account.legal_entity.additional_owners = nil if @user.additional_owners.blank?
   end
 end
