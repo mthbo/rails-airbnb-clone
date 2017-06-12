@@ -100,14 +100,16 @@ fr:
       provide_business_details: "Veuillez fournir l'ensemble des informations demandées sur votre entreprise."
       business_name: Mon entreprise
       business_tax_id: 321 654 987 12315
-      details_verification: "Les informations fournies soumises à vérification et ne pourront plus être modifiées."
-      accept_service_agreement_1: "En transmettant ces informations, vous acceptez nos"
+      details_verification: "Les informations fournies seront soumises à vérification. En cas d'irrégularité constatée, votre compte pourra être désactivé."
+      accept_service_agreement_1: "En fournissant ces informations, vous acceptez nos"
       tos: "conditions générales d'utilisation"
       accept_service_agreement_2: ainsi que les
       stripe_service_agreement: "conditions d'utilisation des comptes Stripe Connect"
       back_to_profile: Revenir au profil
-      update: Mettre à jour
-      updating: Mise à jour...
+      submit: Soumettre à vérification
+      submitting: Soumission...
+    update:
+      notice: "Vos informations ont été soumises avec succès."
     bank:
       bank_account: Compte bancaire
       bind_bank_account: Veuillez lier un compte bancaire sur lequel vous recevrez vos paiements.
@@ -115,8 +117,8 @@ fr:
       new_account: Nouveau compte
       bank_account_error: Votre compte bancaire ne semble pas recevoir de paiements
       back_to_profile: Revenir au profil
-      update: Mettre à jour
-      updating: Mise à jour...
+      save: Enregistrer
+      saving: Enregistrement...
     bank_account:
       new_bank_account: Nouveau compte bancaire
       provide_account_number_html: "Veuillez renseigner le <span class='font-weight-normal'>numéro IBAN</span> du compte bancaire sur lequel vous voulez recevoir vos paiements."
@@ -124,6 +126,6 @@ fr:
       bind_account: Lier le compte
       verification: Vérification...
       provide_valid_number: Veuillez renseigner un numéro valide
-    update:
-      notice: "Vos informations ont été transmises avec succès."
+    update_bank:
+      notice: "Votre compte bancaire a bien été enregistré."
 

@@ -121,4 +121,11 @@ class DealMailer < ApplicationMailer
     end
   end
 
+  def deal_payout_failed(deal)
+    @deal = deal
+    I18n.with_locale(@deal.advisor.locale.to_sym) do
+      mail(to: @deal.advisor.email, subject: t('deal_mailer.deal_payout_failed.subject', id: @deal.id))
+    end
+  end
+
 end

@@ -34,13 +34,7 @@ module StripeAccount
       @account.external_account = params[:user][:stripeToken]
       @account.save
       status = @account.external_accounts.first.status
-      unless ["verification_failed", "errored"].include?(status)
-        @user.bank_valid!
-        @user.advisor_deals_payout_failed.each do |deal|
-          deal.payout_pending!
-          StripePayoutJob.perform_later(deal)
-        end
-      end
+      @user.bank_valid! unless ["verification_failed", "errored"].include?(status)
     end
   end
 

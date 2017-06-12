@@ -17,7 +17,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def details?
-    user == record && !user.no_pricing? &&!user.pricing_enabled?
+    user == record && !user.no_pricing?
   end
 
   def update?

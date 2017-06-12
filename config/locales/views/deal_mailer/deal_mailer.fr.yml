@@ -135,6 +135,12 @@ fr:
       message: "La session ci-dessous a été annulée par %{advisor} :"
       action: Voir la session
       info: "Vous ne pouvez plus rien faire dans cette session."
+    deal_payout_failed:
+      subject: "#session-%{id} | Echec versement"
+      greeting: Bonjour %{advisor},
+      info_html: "Le versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire pour la session ci-dessous a échoué :"
+      instructions: "Consultez votre profil pour en connaître les raisons."
+      action: Voir mon profil
 
 
 

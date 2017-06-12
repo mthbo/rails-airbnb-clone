@@ -33,8 +33,8 @@
   <%= f.input :stripeToken, as: :hidden, input_html: { value: '' } %>
 
   <div class="text-right padded-top-s">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.updating')}) do %>
-      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.saving')}) do %>
+      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.save' %>
     <% end %>
   </div>
 <% end %>

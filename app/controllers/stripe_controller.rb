@@ -28,7 +28,12 @@ class StripeController < ApplicationController
       when 'account.updated'
         payouts_enabled = @event.data.object.payouts_enabled
         charges_enabled = @event.data.object.charges_enabled
-        (payouts_enabled && charges_enabled) ? @user.pricing_enabled! : @user.pricing_disabled!
+        if (payouts_enabled && charges_enabled)
+          @user.pricing_enabled!
+          retry_failed_payouts
+        else
+          @user.pricing_disabled!
+        end
 
       when 'account.external_account.updated'
         status = @event.data.object.status
@@ -44,7 +49,10 @@ class StripeController < ApplicationController
 
       when 'payout.failed'
         retrieve_payout_deal
-        @deal.payout_failed! if @deal.present?
+        if @deal.present?
+          @deal.payout_failed!
+          DealMailer.deal_payout_failed(@deal).deliver_later
+        end
 
       end
     end
@@ -60,4 +68,12 @@ class StripeController < ApplicationController
     deal_id = payout.metadata.deal_id if payout.present?
     @deal = Deal.find(deal_id) if deal_id.present?
   end
+
+  def retry_failed_payouts
+    @user.advisor_deals_payout_failed.each do |deal|
+      deal.payout_pending!
+      StripePayoutJob.perform_later(deal)
+    end
+  end
+
 end

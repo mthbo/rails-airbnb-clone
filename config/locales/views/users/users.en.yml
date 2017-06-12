@@ -100,14 +100,16 @@ en:
       provide_business_details: Please provide all the requested details about your company.
       business_name: My company
       business_tax_id: 321 654 987 12315
-      details_verification: The details provided will be used for identity verification and they will no longer be edited.
+      details_verification: The details provided will be verified. In the event of any irregularity observed, your account may be disabled.
       accept_service_agreement_1: "By transmitting these details, you accept our"
       tos: "terms of service"
       accept_service_agreement_2: and the
       stripe_service_agreement: "Stripe Connected Account Agreement"
       back_to_profile: Back to profile
-      update: Update
-      updating: updating...
+      submit: Submit to verification
+      submitting: Submitting...
+    update:
+      notice: "Your details has been submitted successfully."
     bank:
       bank_account: Bank account
       bind_bank_account: Please bind a bank account on which you will receive payouts.
@@ -115,8 +117,8 @@ en:
       new_account: New account
       bank_account_error: It seems your bank account doesn't receive payouts
       back_to_profile: Back to profile
-      update: Update
-      updating: updating...
+      save: Save
+      saving: Saving...
     bank_account:
       new_bank_account: New bank account
       provide_account_number_html: "Please provide the <span class='font-weight-normal'>IBAN number</span> of the account you want to receive payouts on."
@@ -124,8 +126,8 @@ en:
       bind_account: Bind account
       verification: Verification...
       provide_valid_number: Please provide a valid number
-    update:
-      notice: "Your details has been transmitted successfully."
+    update_bank:
+      notice: "Your bank account has been saved successfully."
 
 
 
