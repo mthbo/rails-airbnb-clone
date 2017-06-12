@@ -10,11 +10,14 @@
         <div id="bankAccountCountryCode" data-country-code="<%= @user.country_code %>"></div>
         <div id="bankAccountCurrency" data-currency="<%= @user.currency.to_s %>"></div>
         <div class="row">
-          <div class="col-xs-12 col-sm-8 col-sm-offset-2 padded-top-xs">
+          <div class="col-xs-12 col-sm-8 col-sm-offset-2 padded-top-xs padded-bottom-xs">
             <input type="text" class="form-control custom-form-input" id="bankAccountNumber" placeholder="FR1420041010050500013M026" autocomplete="off">
             <p class="red" id="bankErrors"></p>
           </div>
         </div>
+        <% if !@user.no_bank? %>
+          <p><%= t '.replace_current_account' %></p>
+        <% end %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-form btn-gray" data-dismiss="modal" id="bankAccountDismissButtton"><%= t '.go_back' %></button>

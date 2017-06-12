@@ -121,6 +121,19 @@ class User < ApplicationRecord
     legal_details_required? && self.company?
   end
 
+  def disabled_reason_category
+    case self.disabled_reason
+    when 'rejected.fraud' then 'rejected'
+    when 'rejected.terms_of_service' then 'rejected'
+    when 'rejected.listed' then 'rejected'
+    when 'rejected.other' then 'rejected'
+    when 'fields_needed' then 'fields_needed'
+    when 'listed' then 'pending'
+    when 'under_review' then 'pending'
+    when 'other' then 'pending'
+    end
+  end
+
   def avatar_img
     if photo.present?
       ActionController::Base.helpers.cl_image_tag(photo.path, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar-medium bg-light-gray").to_s

@@ -23,6 +23,9 @@ ActiveAdmin.register User do
     column :country_code
     column :locale
     column :currency_code
+    column :pricing
+    column :bank_status
+    column :legal_type
     column :sign_in_count
     column :offers_active_count
     column :offers_priced_count
@@ -37,22 +40,36 @@ ActiveAdmin.register User do
   show do
     attributes_table do
       row :id
+      row :admin
       row :email
+      row :locale
+      row :legal_type
       row :first_name
       row :last_name
       row :bio
       row :age
       row :phone_number
+      row :country
       row :address
       row :zip_code
       row :city
-      row :country
-      row :locale
-      row :currency_code
+      row :state
+      row :identity_document_name
+      row :business_name
+      row :business_tax_id
+      row :personal_address
+      row :personal_zip_code
+      row :personal_city
+      row :personal_state
+    end
+    attributes_table do
       row :pricing
       row :stripe_customer_id
       row :stripe_account_id
-      row :admin
+      row :currency_code
+      row :bank_status
+      row :bank_name
+      row :bank_last4
     end
     attributes_table do
       row :grade

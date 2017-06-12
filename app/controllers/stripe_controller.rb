@@ -21,21 +21,26 @@ class StripeController < ApplicationController
       return
     end
 
-    @user = params[:account] && User.find_by( stripe_account_id: params[:account] )
-    if @user.present?
+    if params[:account].present?
       case @event.try(:type)
 
       when 'account.updated'
+        retrieve_user
         payouts_enabled = @event.data.object.payouts_enabled
         charges_enabled = @event.data.object.charges_enabled
-        if (payouts_enabled && charges_enabled)
+        if payouts_enabled && charges_enabled
           @user.pricing_enabled!
           retry_failed_payouts
         else
           @user.pricing_disabled!
         end
+        @user.disabled_reason = @event.data.object.verification.disabled_reason
+        @user.verification_status = @event.data.object.legal_entity.verification.details_code
+        @user.verified = (@event.data.object.legal_entity.verification.status == 'verified') ? true : false
+        @user.save
 
       when 'account.external_account.updated'
+        retrieve_user
         status = @event.data.object.status
         @user.bank_invalid! if ["verification_failed", "errored"].include?(status)
 
@@ -43,7 +48,7 @@ class StripeController < ApplicationController
         retrieve_payout_deal
         if @deal.present? && @deal.payout_pending?
           @deal.payout_made!
-          @deal.payout_made_at = DateTime.now
+          @deal.payout = @event.data.object.to_json
           @deal.save
         end
 
@@ -51,6 +56,8 @@ class StripeController < ApplicationController
         retrieve_payout_deal
         if @deal.present?
           @deal.payout_failed!
+          @deal.payout = @event.data.object.to_json
+          @deal.save
           DealMailer.deal_payout_failed(@deal).deliver_later
         end
 
@@ -61,6 +68,10 @@ class StripeController < ApplicationController
   end
 
   private
+
+  def retrieve_user
+    @user = User.find_by( stripe_account_id: params[:account] )
+  end
 
   def retrieve_payout_deal
     payout_id = @event.data.object.id

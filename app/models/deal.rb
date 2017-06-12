@@ -98,6 +98,21 @@ class Deal < ApplicationRecord
     advisor_amount.exchange_to(currency_code) if advisor_amount
   end
 
+  def payout_arrival_expected_at
+    if closed_at.present?
+      expected_date = self.closed_at + 7.days
+      current_date = DateTime.current.in_time_zone
+      expected_date < current_date ? current_date : expected_date
+    end
+  end
+
+  def payout_arrival_at
+    if payout.present?
+      timestamp = JSON.parse(Deal.last.payout)["arrival_date"]
+      Time.at(timestamp).to_datetime.in_time_zone
+    end
+  end
+
 
   # Status
 

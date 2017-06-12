@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      @account = @user.stripe_account_id.present? ? Stripe::Account.retrieve(@user.stripe_account_id) : nil
+      retrieve_stripe_account
       (@account.blank? || @account.respond_to?(:deleted)) ? create_stripe_account : update_stripe_account
       flash[:notice] = t('.notice')
       @user.bank_valid? ? redirect_to(user_path(@user)) : redirect_to(bank_users_path)
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
 
   def update_bank
     if @user.update(user_params)
-      @account = @user.stripe_account_id.present? ? Stripe::Account.retrieve(@user.stripe_account_id) : nil
+      retrieve_stripe_account
       update_stripe_bank unless (@account.blank? || @account.respond_to?(:deleted))
       flash[:notice] = t('.notice')
       redirect_to user_path(@user)
@@ -71,6 +71,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:country_code, :legal_type, :first_name, :last_name, :birth_date, :address, :city, :zip_code, :state, :business_name, :business_tax_id, :personal_address, :personal_city, :personal_zip_code, :personal_state, :pricing, :bank_name, :bank_last4, :bank_status, :identity_document_name)
+  end
+
+  def retrieve_stripe_account
+    @account = @user.stripe_account_id.present? ? Stripe::Account.retrieve(@user.stripe_account_id) : nil
   end
 
 end

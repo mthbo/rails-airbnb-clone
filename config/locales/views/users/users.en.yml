@@ -32,8 +32,8 @@ en:
       activation_instructions: "Enable pricing by providing the required legal and banking details."
       enable_pricing: Enable pricing
       pricing_enabled_html: "Pricing is enabled, you can <span class='font-weight-normal'>price your services</span>."
-      edit_bank_account: Edit your bank account
-      edit_legal_details: Edit your legal details
+      change_bank_account: Change my bank account
+      edit_legal_details: Edit my details
       pricing_disabled_html: "Pricing is disabled, you can't <span class='font-weight-normal'>price your services</span>."
       reactivation_instructions: "to reenable pricing."
     info:
@@ -126,6 +126,7 @@ en:
       bind_account: Bind account
       verification: Verification...
       provide_valid_number: Please provide a valid number
+      replace_current_account: This new bank account will replace the current bound account.
     update_bank:
       notice: "Your bank account has been saved successfully."
 

@@ -13,7 +13,7 @@ module StripeAccount
       },
       tos_acceptance: {
         ip: request.remote_ip,
-        date: DateTime.now.to_i
+        date: DateTime.current.in_time_zone.to_i
       }
     })
     @user.stripe_account_id = @account.id

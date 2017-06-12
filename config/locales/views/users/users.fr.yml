@@ -32,10 +32,16 @@ fr:
       activation_instructions: "Activez les paiements en fournissant les informations légales et bancaires requises."
       enable_pricing: Activer les paiements
       pricing_enabled_html: "Les paiements sont activés, vous pouvez proposer des <span class='font-weight-normal'>services payants</span>."
-      edit_bank_account: Editer votre compte bancaire
-      edit_legal_details: Editez vos informations légales
-      pricing_disabled_html: "Les paiements sont désactivés, vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span>."
-      reactivation_instructions: pour réactiver les paiements.
+      change_bank_account: Modifier mon compte bancaire
+      pricing_disabled_rejected_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car votre compte a été rejeté."
+      pricing_disabled_fields_needed_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> pour les raisons évoquées ci-dessous."
+      pricing_disabled_pending_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span>. Vos informations sont en cours de vérification."
+      verification_failed: "La vérification de vos informations a échouée pour la raison suivante : "
+      edit_legal_details: Editer vos informations
+      submit_verification_again: pour les soumettre à nouveau à vérification.
+      bank_account_error: Votre compte bancaire ne semble pas recevoir les versements.
+      provide_new_bank_account: Renseignez un nouveau compte bancaire
+      reactivate_pricing: pour réactiver les paiements.
     info:
       age: "ans"
       grade_1: "Papoter"
@@ -115,7 +121,7 @@ fr:
       bind_bank_account: Veuillez lier un compte bancaire sur lequel vous recevrez vos paiements.
       no_bank_account: Aucun compte bancaire lié
       new_account: Nouveau compte
-      bank_account_error: Votre compte bancaire ne semble pas recevoir de paiements
+      bank_account_error: Votre compte bancaire ne semble pas recevoir les versements
       back_to_profile: Revenir au profil
       save: Enregistrer
       saving: Enregistrement...
@@ -126,6 +132,7 @@ fr:
       bind_account: Lier le compte
       verification: Vérification...
       provide_valid_number: Veuillez renseigner un numéro valide
+      replace_current_account: Ce nouveau compte bancaire remplacera le compte actuellement lié.
     update_bank:
       notice: "Votre compte bancaire a bien été enregistré."
 

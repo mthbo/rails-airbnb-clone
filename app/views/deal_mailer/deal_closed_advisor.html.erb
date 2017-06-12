@@ -5,7 +5,7 @@
 <%= render 'deal_title' %>
 
 <% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
-  <p><%= t('.info_html', date: l(@deal.closed_at.to_date + 7.days, format: :long), amount: humanized_money(@deal.advisor_amount_converted(@deal.advisor.currency_code)), currency: @deal.advisor_amount_converted(@deal.advisor.currency_code).symbol) %></p>
+  <p><%= t('.info_html', date: l(@deal.payout_arrival_expected_at.to_date, format: :long), amount: humanized_money(@deal.advisor_amount_converted(@deal.advisor.currency_code)), currency: @deal.advisor_amount_converted(@deal.advisor.currency_code).symbol) %></p>
 <% end %>
 
 <p><%= t('.instructions', client: @deal.client.first_name) %></p>
