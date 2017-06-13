@@ -47,7 +47,7 @@ class User < ApplicationRecord
   validates :bank_name, presence: true, if: :bank_invalid?
   validates :bank_last4, presence: true, if: :bank_invalid?
 
-  STRIPE_ALLOWED_COUNTRIES = ['FR']
+  STRIPE_ALLOWED_COUNTRIES = []
 
   # User information
 
