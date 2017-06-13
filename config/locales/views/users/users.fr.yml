@@ -53,6 +53,9 @@ fr:
       bank_account_error: Votre compte bancaire ne semble pas recevoir les versements.
       provide_new_bank_account: Renseignez un nouveau compte bancaire
       reactivate_pricing: pour réactiver les paiements.
+      no_bank_account: Il n'y a aucun compte bancaire lié à votre compte.
+      provide_bank_account: Renseignez un compte bancaire
+      activate_pricing: pour activer les paiements.
     info:
       age: "ans"
       grade_1: "Papoter"

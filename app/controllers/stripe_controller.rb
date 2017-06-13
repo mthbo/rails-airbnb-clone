@@ -7,7 +7,7 @@ class StripeController < ApplicationController
     endpoint_secret = ENV['STRIPE_ENDPOINT_SECRET']
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    event = nil
+    @event = nil
 
     begin
       @event = Stripe::Webhook.construct_event(payload, sig_header, endpoint_secret)
@@ -26,23 +26,27 @@ class StripeController < ApplicationController
 
       when 'account.updated'
         retrieve_user
-        payouts_enabled = @event.data.object.payouts_enabled
-        charges_enabled = @event.data.object.charges_enabled
-        if payouts_enabled && charges_enabled
-          @user.pricing_enabled!
-          retry_failed_payouts
-        else
-          @user.pricing_disabled!
+        if @user.present?
+          payouts_enabled = @event.data.object.payouts_enabled
+          charges_enabled = @event.data.object.charges_enabled
+          if payouts_enabled && charges_enabled
+            @user.pricing_enabled!
+            retry_failed_payouts
+          else
+            @user.pricing_disabled!
+          end
+          @user.disabled_reason = @event.data.object.verification.disabled_reason
+          @user.verification_status = @event.data.object.legal_entity.verification.details_code
+          @user.verified = (@event.data.object.legal_entity.verification.status == 'verified') ? true : false
+          @user.save
         end
-        @user.disabled_reason = @event.data.object.verification.disabled_reason
-        @user.verification_status = @event.data.object.legal_entity.verification.details_code
-        @user.verified = (@event.data.object.legal_entity.verification.status == 'verified') ? true : false
-        @user.save
 
       when 'account.external_account.updated'
         retrieve_user
-        status = @event.data.object.status
-        @user.bank_invalid! if ["verification_failed", "errored"].include?(status)
+        if @user.present?
+          status = @event.data.object.status
+          @user.bank_invalid! if ["verification_failed", "errored"].include?(status)
+        end
 
       when 'payout.paid'
         retrieve_payout_deal

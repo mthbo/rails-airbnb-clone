@@ -59,6 +59,13 @@
               <%= link_to t('.provide_new_bank_account'), bank_users_path, class: "link-red" %>
               <%= t '.reactivate_pricing' %>
             </p>
+
+          <% elsif @user.no_bank? %>
+            <p class="red">
+              <%= t '.no_bank_account' %><br>
+              <%= link_to t('.provide_bank_account'), bank_users_path, class: "link-red" %>
+              <%= t '.activate_pricing' %>
+            </p>
           <% end %>
 
         <% when 'fields_needed' %>
@@ -76,6 +83,13 @@
               <%= t '.bank_account_error' %><br>
               <%= link_to t('.provide_new_bank_account'), bank_users_path, class: "link-red" %>
               <%= t '.reactivate_pricing' %>
+            </p>
+
+          <% elsif @user.no_bank? %>
+            <p class="red">
+              <%= t '.no_bank_account' %><br>
+              <%= link_to t('.provide_bank_account'), bank_users_path, class: "link-red" %>
+              <%= t '.activate_pricing' %>
             </p>
 
           <% end %>
