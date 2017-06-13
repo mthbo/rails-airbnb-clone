@@ -1,11 +1,17 @@
-<% if deal.request? %>
-  <%= render 'deals/info_request', deal: deal %>
-<% elsif deal.cancelled? && deal.proposition_at %>
-  <%= render 'deals/info_proposition', deal: deal %>
-  <%= render 'deals/info_cancelled' %>
-<% elsif deal.cancelled? %>
-  <%= render 'deals/info_cancelled' %>
-<% else %>
-  <%= render 'deals/info_proposition', deal: deal %>
-  <%= render 'deals/info_deal', deal: deal %>
+<% if current_user == deal.advisor && !deal.no_payment? %>
+  <%= render 'deals/info_payout', deal: deal %>
 <% end %>
+
+<div class="padded-top-xs">
+  <% if deal.request? %>
+    <%= render 'deals/info_request', deal: deal %>
+  <% elsif deal.cancelled? && deal.proposition_at %>
+    <%= render 'deals/info_proposition', deal: deal %>
+    <%= render 'deals/info_cancelled' %>
+  <% elsif deal.cancelled? %>
+    <%= render 'deals/info_cancelled' %>
+  <% else %>
+    <%= render 'deals/info_proposition', deal: deal %>
+    <%= render 'deals/info_deal', deal: deal %>
+  <% end %>
+</div>

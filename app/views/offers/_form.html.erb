@@ -30,37 +30,23 @@
   </div>
 
   <div class="padded-top-xs">
-    <% if !@offer.advisor.payout_authorized %>
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag 'no_amount.svg' %>
-        <p><%= t '.payouts_not_authorized_html' %></p>
-      </div>
-
-    <% elsif @offer.id.blank? %>
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag 'amount.svg' %>
-        <p><%= t '.prove_worth_before_pricing_html', count: (@offer.free_deals) %></p>
-      </div>
-
-    <% elsif @offer.free? && @offer.free_deals > 0 %>
-      <div class="custom-form-warning bg-white-transparent">
-        <%= image_tag 'no_amount.svg' %>
-        <p><%= t '.sessions_for_free' %> <%= t '.sessions_before_pricing_html', count: (@offer.free_deals) %></p>
-      </div>
-
-    <% else %>
+    <% if @offer.free_deals == 0 && current_user.pricing_available? && current_user.pricing_enabled? %>
       <p><%= t '.select_pricing' %></p>
-      <div class="custom-radio-buttons custom-form-pricing padded-top-xs">
+      <div class="custom-radio-buttons padded-top-xs">
         <%= f.input :pricing, label: false, as: :radio_buttons, collection: Offer.translated_pricings %>
       </div>
+    <% else %>
+      <%= render "pricing_info" %>
     <% end %>
   </div>
 
   <div class="text-right padded-top-s">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-green") do %>
-      <% if @offer.id.blank? %>
+    <% if @offer.id.blank? %>
+      <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.publishing')}) do %>
         <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.publish' %>
-      <% else %>
+      <% end %>
+    <% else %>
+      <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.updating')}) do %>
         <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
       <% end %>
     <% end %>

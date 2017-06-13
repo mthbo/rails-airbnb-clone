@@ -34,26 +34,24 @@
   padding: 20px 45px;
   background-color: rgba(255,255,255,0.8);
   border-radius: 4px;
-}
-
-.user-connect-to-stripe {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  div {
-    padding-left: 25px;
-  }
-}
-
-.user-pricing-info {
-  display: flex;
-  align-items: center;
-  img {
-    margin-right: 25px;
-    height: 30px;
-  }
   p {
     margin-bottom: 0;
+  }
+  .user-offers-info-left {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 25px;
+      height: 30px;
+    }
+  };
+  .user-offers-info-right {
+    flex: 0 1 auto;
+    margin-left: 25px;
   }
 }
 
@@ -64,19 +62,17 @@
 @media (max-width: $screen-xs-max) {
   .user-offers-info {
     padding: 15px;
-  }
-  .user-connect-to-stripe {
     flex-direction: column;
-    div {
-      padding-top: 15px;
-      padding-left: 0;
-    }
-  }
-  .user-pricing-info {
-    flex-direction: column;
-    img {
-      margin-right: 0;
-      margin-bottom: 15px;
+    .user-offers-info-left {
+      flex-direction: column;
+      img {
+        margin-right: 0;
+        margin-bottom: 15px;
+      }
+    };
+    .user-offers-info-right {
+      margin-top: 15px;
+      margin-left: 0;
     }
   }
   .user-reviews-subtitle {

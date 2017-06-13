@@ -33,7 +33,7 @@ en:
             deadline:
               blank: "Please specify a deadline"
               past: "The deadline must be future"
-              more_than_a_year_from_now: "The deadline must be before a year from now"
+              after_limit: "The deadline must be before %{days} days from now"
             proposition:
               blank: "Please provide some details regarding your the service proposed"
               too_short: "The description of the service is too short, please elaborate a little bit!"

@@ -4,7 +4,7 @@
 
     <%= f.input :content, label: false, placeholder: deal.messages_disabled? ? t('.messages_disabled') : t('.message_for', name: deal.client.first_name), input_html: { class: 'custom-form-input input-rounded input-focus-green', rows: "1"}, wrapper_html: { class: 'inline-form-input'}, disabled: deal.messages_disabled? %>
 
-    <%= button_tag(type: 'submit', id: "submit_message", class: 'btn inline-form-btn btn-round btn-green', disabled: deal.messages_disabled?) do %>
+    <%= button_tag(type: 'submit', id: "submit_message", class: 'btn inline-form-btn btn-round btn-green', disabled: deal.messages_disabled?, data: {disable_with: "..." }) do %>
       <i class='fa fa-paper-plane' aria-hidden='true'></i>
     <% end %>
 
@@ -12,7 +12,7 @@
 
     <%= f.input :content, label: false, placeholder: deal.messages_disabled? ? t('.messages_disabled') : t('.message_for', name: deal.advisor.first_name), input_html: { class: 'custom-form-input input-rounded input-focus-yellow', rows: "1"}, wrapper_html: { class: 'inline-form-input'}, disabled: deal.messages_disabled? %>
 
-    <%= button_tag(type: 'submit', id: "submit_message", class: 'btn inline-form-btn btn-round btn-yellow', disabled: deal.messages_disabled?) do %>
+    <%= button_tag(type: 'submit', id: "submit_message", class: 'btn inline-form-btn btn-round btn-yellow', disabled: deal.messages_disabled?, data: {disable_with: "..." }) do %>
       <i class='fa fa-paper-plane' aria-hidden='true'></i>
     <% end %>
 

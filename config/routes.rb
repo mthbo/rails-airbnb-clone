@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
 
+  post '/stripe/webhook', to: "stripe#webhook"
+
   devise_for :users,
     only: :omniauth_callbacks,
     controllers: {
@@ -18,6 +20,11 @@ Rails.application.routes.draw do
     }
 
   scope '(:locale)', locale: /#{I18n.available_locales.join("|")}/ do
+
+    root to: 'pages#home'
+    get '/advisor', to: 'pages#advisor'
+    get '/about', to: 'pages#about'
+    get '/terms', to: 'pages#terms'
 
     devise_for :users,
       skip: :omniauth_callbacks,
@@ -32,28 +39,31 @@ Rails.application.routes.draw do
       get "users/password/reset", to: "users/passwords#reset"
     end
 
-    resources :users, only: [:show]
-    get '/dashboard', to: 'users#dashboard'
-    get '/stripe_connection', to: 'users#stripe_connection'
-    patch '/change_locale', to: 'users#change_locale'
-
-    root to: 'pages#home'
-    get '/advisor', to: 'pages#advisor'
-    get '/about', to: 'pages#about'
+    resources :users, only: [:show, :update] do
+      collection do
+        get 'dashboard', to: 'users#dashboard'
+        get 'details', to: 'users#details'
+        get 'bank', to: 'users#bank'
+        get 'country', to: 'users#country'
+        patch 'update_country', to: 'users#update_country'
+        patch 'update_bank', to: 'users#update_bank'
+        patch 'change_locale', to: 'users#change_locale'
+      end
+    end
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
       resources :deals, only: [:show, :new, :create], path: 'sessions' do
         member do
-          get 'new_proposition', to: 'deals#new_proposition'
-          get 'new_review', to: 'deals#new_review'
+          get 'proposition', to: 'deals#proposition'
+          get 'review', to: 'deals#review'
           patch 'save_proposition', to: 'deals#save_proposition'
           patch 'submit_proposition', to: 'deals#submit_proposition'
           patch 'decline_proposition', to: 'deals#decline_proposition'
-          patch 'open_session', to: 'deals#open_session'
-          patch 'close_session', to: 'deals#close_session'
+          patch 'accept_proposition', to: 'deals#accept_proposition'
+          patch 'close', to: 'deals#close'
           patch 'save_review', to: 'deals#save_review'
           patch 'disable_messages', to: 'deals#disable_messages'
-          patch 'cancel_session', to: 'deals#cancel_session'
+          patch 'cancel', to: 'deals#cancel'
         end
         resources :objectives, only: [:create, :update, :destroy]
         resources :messages, only: [:create]

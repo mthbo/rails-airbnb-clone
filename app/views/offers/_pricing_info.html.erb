@@ -1,0 +1,39 @@
+<div class="custom-form-frame-info bg-white-transparent">
+
+  <% if !current_user.pricing_available? %>
+    <%= image_tag 'no_amount.svg' %>
+    <p><%= t '.pricing_not_available_html' %></p>
+
+  <% elsif @offer.id.blank? %>
+    <%= image_tag 'amount.svg' %>
+    <p><%= t '.prove_worth_before_pricing_html', count: (@offer.free_deals) %></p>
+
+  <% elsif @offer.free? && @offer.free_deals > 0 %>
+    <%= image_tag 'no_amount.svg' %>
+    <p>
+      <%= t '.sessions_for_free' %><br>
+      <%= t '.sessions_before_pricing_html', count: (@offer.free_deals) %>
+    </p>
+
+  <% elsif current_user.pricing_pending? %>
+    <%= image_tag 'no_amount.svg' %>
+    <p>
+      <%= t '.sessions_for_free' %><br>
+      <%= link_to t('.enable_pricing'), details_users_path %>
+      <%= t '.activation_instructions' %>
+    </p>
+
+  <% elsif current_user.pricing_disabled? %>
+    <%= image_tag 'no_amount.svg' %>
+    <p>
+      <p>
+        <%= t '.sessions_for_free' %><br>
+        <%= t '.pricing_disabled' %>
+        <%= link_to t('.visit_your_profile'), user_path(current_user) %>
+        <%= t '.to_find_out_more' %>
+      </p>
+    </p>
+
+  <% end %>
+
+</div>

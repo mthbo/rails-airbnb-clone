@@ -23,6 +23,9 @@ ActiveAdmin.register User do
     column :country_code
     column :locale
     column :currency_code
+    column :pricing
+    column :bank_status
+    column :legal_type
     column :sign_in_count
     column :offers_active_count
     column :offers_priced_count
@@ -37,22 +40,36 @@ ActiveAdmin.register User do
   show do
     attributes_table do
       row :id
+      row :admin
       row :email
+      row :locale
+      row :legal_type
       row :first_name
       row :last_name
       row :bio
       row :age
       row :phone_number
+      row :country
       row :address
       row :zip_code
       row :city
-      row :country
-      row :locale
-      row :currency_code
-      row :payout_authorized
+      row :state
+      row :identity_document_name
+      row :business_name
+      row :business_tax_id
+      row :personal_address
+      row :personal_zip_code
+      row :personal_city
+      row :personal_state
+    end
+    attributes_table do
+      row :pricing
       row :stripe_customer_id
       row :stripe_account_id
-      row :admin
+      row :currency_code
+      row :bank_status
+      row :bank_name
+      row :bank_last4
     end
     attributes_table do
       row :grade
@@ -113,7 +130,7 @@ ActiveAdmin.register User do
       f.input :country_code
       f.input :locale
       f.input :currency_code
-      f.input :payout_authorized
+      f.input :pricing
       f.input :stripe_customer_id
       f.input :stripe_account_id
     end
@@ -124,6 +141,6 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :currency_code, :stripe_customer_id, :stripe_account_id, :admin, :confirmed_at, :payout_authorized
+  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :currency_code, :stripe_customer_id, :stripe_account_id, :admin, :confirmed_at, :pricing
 
 end

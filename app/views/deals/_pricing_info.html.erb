@@ -1,0 +1,44 @@
+<div class="padded-bottom-s">
+  <div class="custom-form-frame-info bg-white-transparent">
+
+    <% if !deal.advisor.pricing_available? %>
+      <%= image_tag('no_amount.svg') %>
+      <p>
+        <%= t '.session_for_free' %><br>
+        <%= t '.pricing_not_available_html' %>
+      </p>
+
+    <% elsif deal.offer.free? && deal.offer.free_deals > 0 %>
+      <%= image_tag('no_amount.svg') %>
+      <p>
+        <%= t '.session_for_free' %><br>
+        <%= t '.sessions_before_pricing_html', count: (@deal.offer.free_deals) %></p>
+
+    <% elsif deal.offer.free? && deal.advisor.pricing_enabled? %>
+      <%= image_tag('no_amount.svg') %>
+      <p>
+        <%= t '.session_for_free' %><br>
+        <%= link_to t('.edit_offer'), edit_offer_path(deal.offer) %>
+        <%= t '.to_propose_priced_services' %>
+      </p>
+
+    <% elsif deal.offer.advisor.pricing_pending? %>
+      <%= image_tag 'no_amount.svg' %>
+      <p>
+        <%= t '.session_for_free' %><br>
+        <%= link_to t('.enable_pricing'), details_users_path %>
+        <%= t '.activation_instructions' %>
+      </p>
+
+    <% elsif deal.offer.advisor.pricing_disabled? %>
+      <%= image_tag 'no_amount.svg' %>
+      <p>
+        <%= t '.session_for_free' %><br>
+        <%= t '.pricing_disabled' %>
+        <%= link_to t('.visit_your_profile'), user_path(current_user) %>
+        <%= t '.to_find_out_more' %>
+      </p>
+
+    <% end %>
+  </div>
+</div>

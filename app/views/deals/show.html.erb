@@ -7,7 +7,7 @@
   <div class="deal-banner-top <%= current_user == @deal.advisor ? 'deal-banner-green' : 'deal-banner-yellow' %>"></div>
   <div class="deal-banner-bottom <%= current_user == @deal.advisor ? 'deal-banner-green' : 'deal-banner-yellow' %>"></div>
 
-  <% if @deal.offer.priced? %>
+  <% if @deal.offer.priced? && @deal.advisor.pricing_available? && @deal.advisor.pricing_enabled? %>
     <script src="https://checkout.stripe.com/checkout.js"></script>
   <% end %>
 
@@ -26,7 +26,7 @@
       <div class="col-xs-12 col-md-6">
         <div class="deal-info">
 
-          <div class="padded-bottom-s" id="deal-status-panel">
+          <div class="padded-bottom-xs" id="deal-status-panel">
             <%= render 'status', deal: @deal %>
           </div>
 
@@ -47,13 +47,7 @@
 
           <div class="deal-conversation-top">
             <%= render 'users/info_in_deal', user: current_user == @deal.advisor ? @deal.client : @deal.advisor %>
-            <% if @deal.video_call? && !@deal.messages_disabled %>
-              <div id="video-call">
-                <a href="https://appear.in<%= @deal.room_name %>" target="_blank" class="btn <%= current_user == @deal.advisor ? 'btn-green' : 'btn-yellow' %>">
-                  <i class="fa fa-video-camera" aria-hidden="true"></i>
-                </a>
-              </div>
-            <% end %>
+            <%= render 'video_call', deal: @deal %>
           </div>
 
           <div class="deal-conversation-info">

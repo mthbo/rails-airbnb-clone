@@ -15,13 +15,13 @@ class Deal < ApplicationRecord
   monetize :advisor_amount_cents, allow_nil: true, with_model_currency: :currency_code
 
   enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
-  enum payment_state: [ :no_payment, :payment_pending, :paid ]
+  enum payment_state: [ :no_payment, :payment_pending, :paid, :payout_pending, :payout_made, :payout_failed ]
   enum who_reviews: [ :no_review, :client_is_reviewing, :advisor_is_reviewing]
 
   validates :request, :languages, :means, :deadline, presence: true
 
   validate :deadline_must_be_future, if: :pending_or_open?
-  validate :deadline_must_be_before_a_year, if: :pending_or_open?
+  validate :deadline_must_be_before_limit, if: :pending_or_open?
 
   validates :proposition, presence: true, length: { minimum: 30 }, if: :not_new_nor_cancelled?
   validates :objectives, presence: true, length: { maximum: 10 }, if: :not_new_nor_cancelled?
@@ -48,7 +48,6 @@ class Deal < ApplicationRecord
     offer.advisor unless offer.nil?
   end
 
-
   # Money
 
   def currency
@@ -56,19 +55,19 @@ class Deal < ApplicationRecord
   end
 
   def flat_fee
-    Money.new(50, "EUR").exchange_to(self.currency_code)
+    Money.new(ENV['PRICING_FLAT_FEE'].to_i, "EUR").exchange_to(self.currency_code)
   end
 
   def first_cutoff_amount
-    Money.new(5000, "EUR").exchange_to(self.currency_code)
+    Money.new(ENV['PRICING_FIRST_CUTOFF'].to_i, "EUR").exchange_to(self.currency_code)
   end
 
   def set_fees
     if self.amount_cents
       if self.amount_cents > first_cutoff_amount.cents
-        self.fees_cents = flat_fee.cents + first_cutoff_amount.cents * 0.15 + (self.amount_cents - first_cutoff_amount.cents) * 0.1
+        self.fees_cents = flat_fee.cents + first_cutoff_amount.cents * ENV['PRICING_FIRST_RATE'].to_f + (self.amount_cents - first_cutoff_amount.cents) * ENV['PRICING_SECOND_RATE'].to_f
       else
-        self.fees_cents = flat_fee.cents + self.amount_cents * 0.15
+        self.fees_cents = flat_fee.cents + self.amount_cents * ENV['PRICING_FIRST_RATE'].to_f
       end
     end
   end
@@ -80,11 +79,11 @@ class Deal < ApplicationRecord
   end
 
   def min_amount
-    Money.new(1000, "EUR").exchange_to(self.advisor.currency_code)
+    Money.new(ENV['PRICING_MIN_AMOUNT'].to_i, "EUR").exchange_to(self.advisor.currency_code)
   end
 
   def max_amount
-    Money.new(200000, "EUR").exchange_to(self.advisor.currency_code)
+    Money.new(ENV['PRICING_MAX_AMOUNT'].to_i, "EUR").exchange_to(self.advisor.currency_code)
   end
 
   def amount_converted(currency_code=Money.default_currency.to_s)
@@ -97,6 +96,21 @@ class Deal < ApplicationRecord
 
   def advisor_amount_converted(currency_code=Money.default_currency.to_s)
     advisor_amount.exchange_to(currency_code) if advisor_amount
+  end
+
+  def payout_arrival_expected_at
+    if closed_at.present?
+      expected_date = self.closed_at + 7.days
+      current_date = DateTime.current.in_time_zone
+      expected_date < current_date ? current_date : expected_date
+    end
+  end
+
+  def payout_arrival_at
+    if payout.present?
+      timestamp = JSON.parse(Deal.last.payout)["arrival_date"]
+      Time.at(timestamp).to_datetime.in_time_zone
+    end
   end
 
 
@@ -243,9 +257,9 @@ class Deal < ApplicationRecord
       deadline.present? && deadline <= 1.day.ago
   end
 
-  def deadline_must_be_before_a_year
-    errors.add(:deadline, :more_than_a_year_from_now) if
-      deadline.present? && deadline > 1.year.from_now
+  def deadline_must_be_before_limit
+    errors.add(:deadline, :after_limit, days: 90) if
+      deadline.present? && deadline > 90.days.from_now
   end
 
   def proposition_deadline_must_be_future

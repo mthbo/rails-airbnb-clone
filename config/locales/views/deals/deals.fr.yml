@@ -6,15 +6,15 @@ fr:
       notice: "Votre proposition a été soumise à %{name}"
     decline_proposition:
       notice: "Vous avez refusé la proposition de %{name}"
-    open_session:
+    accept_proposition:
       notice: "#session-%{id} avec %{name} est ouverte!"
-    close_session:
+    close:
       notice: "#session-%{id} avec %{name} est clôturée!"
     save_review:
       notice: "Votre évaluation a été postée"
     disable_messages:
       notice: "Les messages ont été désactivés pour #session-%{id}."
-    cancel_session:
+    cancel:
       notice: "#session-%{id} avec %{name} est annulée!"
     request_button:
       get_in_touch: "Contacter"
@@ -29,6 +29,7 @@ fr:
       select_languages: "Selectionnez la ou les langue(s) que vous acceptez pour communiquer avec %{name}."
       select_means: "Selectionnez le ou les moyen(s) que vous acceptez pour communiquer avec %{name}."
       send: Envoyer
+      sending: Envoi...
       back_to_offer: Revenir à l'offre
     satisfaction:
       happy: "satisfait"
@@ -41,12 +42,22 @@ fr:
       proposition_declined: Proposition refusée
       deadline_expired: Date limite expirée
       review_expected: Avis attendu
-      messages_disabled: Messages désactivés
+      payout_pending: Versement en attente
+      payout_made: Versement effectué
+      payout_failed: Echec versement
     status:
       request: Demande
       proposition: Proposition
       open: Ouvert
       closed: Clôturé
+    info_payout:
+      payout_amount_expected_html: "Si votre proposition est acceptée, votre rétribution s'élèvera à <span class='font-weight-normal'>%{amount} %{currency}</span>."
+      payout_amount_html: "Votre rétribution s'élève à <span class='font-weight-normal'>%{amount} %{currency}</span> et sera versée sur votre compte bancaire après clôture de la session."
+      payout_expected_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> devrait être effectué le "
+      payout_made_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> a été effectué le "
+      payout_failed_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> a été échoué."
+      visit_your_profile: Consultez votre profil
+      to_find_out_reason: "pour en connaître les raisons."
     info_request:
       request_sent: "Vous avez envoyé une demande à %{name}. Vous devriez recevoir une proposition en retour si %{name} peut répondre à votre besoin avant le %{date}."
       request_received: "Vous avez reçu une demande de %{name}. Soumettez une proposition si vous pensez pouvoir répondre à son besoin avant le %{date}, ou engagez la conversation pour demander des précisions."
@@ -54,7 +65,7 @@ fr:
     info_cancelled:
       session_is_cancelled: Cette session a été annulée, il n'y a plus rien à faire ici.
       back_to_dashboard: Revenir au tableau de bord
-    new_proposition:
+    proposition:
       new_proposition: Nouvelle proposition
       new_proposition_for: Nouvelle proposition pour %{name}
       unveil_action_plan: "Porposez un plan d'action pour cette session afin de répondre au besoin de %{name}."
@@ -69,15 +80,22 @@ fr:
       set_amount: Déterminez le montant dû par %{name} pour la session (des frais de transaction seront retenus sur ce montant).
       amount_range: "min: %{min} %{currency}"
       leave_blank_if_free: Laissez le champ vide pour une session gratuite.
-      session_for_free: "Cette session sera gratuite."
-      payouts_not_authorized_html: "Vous n'êtes pour le moment pas autorisé à proposer des <span class='font-weight-normal'>services payants</span> car Papoters est en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
-      sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
-        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
-      edit_offer: Editez votre offre
-      to_propose_priced_services: si vous voulez proposer des prestations payantes.
       set_expiry_date: "Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée."
       review_and_submit: Vérifier et soumettre
+      reviewing: Vérification...
+    pricing_info:
+      session_for_free: "Cette session sera gratuite."
+      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
+      sessions_before_pricing_html:
+        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des services payants."
+        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des services payants."
+      edit_offer: Editez votre offre
+      to_propose_priced_services: si vous voulez proposer des services payantes.
+      enable_pricing: Activez les paiements
+      activation_instructions: "en fournissant les informations légales et bancaires requises."
+      pricing_disabled: Les paiements ont été désactivés sur votre compte.
+      visit_your_profile: Consultez votre profil
+      to_find_out_more: "pour en savoir plus."
     proposition_confirmation:
       proposition_submission: Soumission de la proposition
       review_before_submitting: Vérifiez votre proposition avant de la soumettre.
@@ -85,6 +103,7 @@ fr:
       proposition_expiring_on: Proposition expirant le
       go_back: Revenir
       submit: Soumettre
+      submitting: Soumission...
     proposition_recap:
       amount: Montant
       free: GRATUIT
@@ -173,7 +192,7 @@ fr:
       are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
       go_back: Revenir
       disable: Désactiver
-    new_review:
+    review:
       evaluation: Evaluation
       session_evaluation: Evaluation de la session avec %{name}
       target_achievement: Réalisation des objectifs
@@ -184,10 +203,12 @@ fr:
       evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
       leave_a_review: "Laissez un avis à %{name} pour cette session (max: %{max} caractères)."
       publish_evaluation: Publier l'évaluation
+      publishing: Publication...
     advisor_rating_form:
       evaluate_your_experience: "Comment évaluez-vous votre expérience avec %{name} lors de cette session?"
       leave_a_review: "Laissez un avis à %{name} pour cette session (max: %{max} caractères)."
       publish_evaluation: Publier l'évaluation
+      publishing: Publication...
     reviews:
       reviews: Avis
 

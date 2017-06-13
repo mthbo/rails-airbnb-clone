@@ -26,11 +26,33 @@ en:
       as_service_recipient: "as service recipient"
       no_reviews_you: "You didn't get any reviews yet."
       no_reviews: "%{user} didn't get any reviews yet."
-      payouts_not_authorized_html: "You are currently not authorized <span class='font-weight-normal'>to price your services</span> since Papoters is in <em class='font-weight-normal'>beta</em> version in your geographic area."
-    connect_to_stripe:
-      accept_payment_instructions_html: "You need to connect your account with Stripe and to provide your bank account information for being able <span class='font-weight-normal'>to price your services</span>."
-      connect_with_stripe: Connect with Stripe
-      advisory_services: Advisory services
+    pricing_info:
+      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
+      pricing_not_enabled_html: "You can't <span class='font-weight-normal'>price your services</span> while pricing is not enabled."
+      activation_instructions: "Enable pricing by providing the required legal and banking details."
+      enable_pricing: Enable pricing
+      pricing_enabled_html: "Pricing is enabled, you can <span class='font-weight-normal'>price your services</span>."
+      change_bank_account: Change my bank account
+      pricing_disabled_rejected_html: "You can't <span class='font-weight-normal'>price your services</span> because your account has been rejected."
+      pricing_disabled_fields_needed_html: "You can't <span class='font-weight-normal'>price your services</span> for the reasons described bellow."
+      pricing_disabled_pending_html: "You can't <span class='font-weight-normal'>price your services</span>. Your details are currently under review."
+      verification_failed: "The verification of your details failed for the following reason: "
+      scan_corrupt: The ID image uploaded is corrupt.
+      scan_not_readable: The image supplied was not readable. It may have been too blurry or not well lit.
+      scan_failed_greyscale: The image supplied was not readable because it was grayscale. Please upload a color copy instead.
+      scan_not_uploaded: No ID scan was uploaded.
+      scan_id_type_not_supported: The ID type submitted is not supported.
+      scan_id_country_not_supported: The ID country is not supported.
+      scan_name_mismatch: The name on the ID does not match the name on the account.
+      scan_failed_other: The ID image uploaded could not be verified.
+      scan_failed_test_mode: The test ID could not be verified.
+      failed_keyed_identity: The provided identity information could not be verified.
+      failed_other: Verification failure.
+      edit_legal_details: Edit your details
+      submit_verification_again: to submit them to verification again.
+      bank_account_error: It's seems payouts are not arriving to your bank account.
+      provide_new_bank_account: Provide a new bank account
+      reactivate_pricing: to reenable pricing.
     info:
       age: "yrs"
       grade_1: "Papoter"
@@ -61,6 +83,69 @@ en:
       connected_to_stripe: Your account has been successfully connected to Stripe!
       edit_your_offers_html: "Now you can start pricing your services. To achieve this, edit each of your offers and switch to mode <span class='font-weight-normal blue'>PRICED</span>."
       back_to_profile: Back to profile
+    country:
+      country_title: My country
+      select_country: Please select your country of residence before publishing an offer.
+      country: -- Country --
+      new_offer: New offer
+      saving: Saving...
+      back_to_profile: Back to profile
+      country_restrictions: "For your information, pricing services is only allowed for the residents of the following countries: "
+      country_restrictions_beta: "Pricing services is not allowed yet since Papoters is still in beta version."
+    details:
+      legal_details: Legal details
+      select_country: Please select your country of residence.
+      select_legal_type: Please choose a legal status as service provider on Papoters.
+      personal_details: Personal details
+      provide_personal_details: Please provide all the requested details about your identity.
+      first_name: First name
+      last_name: Last name
+      pick_date: "Pick a date"
+      address: Address
+      personal_address: Personal address
+      street: Street number and name
+      zip_code: Zip code
+      city: City
+      state: State
+      country: -- Country --
+      upload_identity_document: Please upload an identity document (ID card or passport).
+      file_format: Color image format (png ou jpeg), max. 8 MB
+      choose_file: Choose a file
+      over_size_limit: File size over limit
+      no_file_selected: No file selected
+      business_details: Business details
+      provide_business_details: Please provide all the requested details about your company.
+      business_name: My company
+      business_tax_id: 321 654 987 12315
+      details_verification: The details provided will be verified. In the event of any irregularity observed, your account may be disabled.
+      accept_service_agreement_1: "By transmitting these details, you accept our"
+      tos: "terms of service"
+      accept_service_agreement_2: and the
+      stripe_service_agreement: "Stripe Connected Account Agreement"
+      back_to_profile: Back to profile
+      submit: Submit to verification
+      submitting: Submitting...
+    update:
+      notice: "Your details has been submitted successfully."
+    bank:
+      bank_account: Bank account
+      bind_bank_account: Please bind a bank account on which you will receive payouts.
+      no_bank_account: No bank account bound
+      new_account: New account
+      bank_account_error: It seems your bank account doesn't receive payouts
+      back_to_profile: Back to profile
+      save: Save
+      saving: Saving...
+    bank_account:
+      new_bank_account: New bank account
+      provide_account_number_html: "Please provide the <span class='font-weight-normal'>IBAN number</span> of the account you want to receive payouts on."
+      go_back: Go back
+      bind_account: Bind account
+      verification: Verification...
+      provide_valid_number: Please provide a valid number
+      replace_current_account: This new bank account will replace the current bound account.
+    update_bank:
+      notice: "Your bank account has been saved successfully."
 
 
 

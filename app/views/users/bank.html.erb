@@ -1,0 +1,50 @@
+<% content_for :title do %>
+  <%= "Papoters | #{t('.bank_account')}" %>
+<% end %>
+
+<h2><%= t '.bank_account' %></h2>
+
+<div id="stripe-js-api"></div>
+
+<%= simple_form_for @user,  url: update_bank_users_path, method: :patch do |f| %>
+  <%= f.error_notification %>
+
+  <div class="padded-top-xs">
+    <p><%= t '.bind_bank_account' %></p>
+  </div>
+
+  <div class="custom-form-frame-action bg-white-transparent">
+    <p id="bankAccountDetails">
+      <% if @user.bank_name.present? && @user.bank_last4.present? %>
+        <i class="fa fa-university fa-fw" aria-hidden="true"></i>
+        <span class="font-weight-normal"><%= @user.bank_name %></span>
+        <span class="medium-gray">&sdot;&sdot;&sdot;&sdot;<%= @user.bank_last4 %></span>
+        <% if @user.bank_invalid? %>
+          <br><span class="red"><%= t '.bank_account_error' %></span>
+        <% end %>
+      <% else %>
+        <span class="red"><%= t '.no_bank_account' %></span>
+      <% end %>
+    </p>
+    <button type=button class="btn btn-gray" data-toggle="modal" data-target="#new-bank-account"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp; <%= t('.new_account') %></button>
+  </div>
+
+  <%= f.hidden_field :bank_name, value: @user.bank_invalid? ? nil : @user.bank_name %>
+  <%= f.hidden_field :bank_last4, value: @user.bank_invalid? ? nil : @user.bank_last4 %>
+  <%= f.hidden_field :bank_status, value: @user.no_bank? ? 'bank_invalid' : @user.bank_status %>
+  <%= f.input :stripeToken, as: :hidden, input_html: { value: '' } %>
+
+  <%= f.hidden_field :pricing, value: @user.no_bank? ? 'pricing_enabled' : @user.pricing %>
+
+  <div class="text-right padded-top-s">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.saving')}) do %>
+      <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.save' %>
+    <% end %>
+  </div>
+<% end %>
+
+<div class="text-right padded-top-xs">
+  <p><%= link_to t('.back_to_profile'), user_path(@user) %></p>
+</div>
+
+<%= render 'bank_account' %>

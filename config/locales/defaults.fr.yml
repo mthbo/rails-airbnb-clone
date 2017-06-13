@@ -33,7 +33,7 @@ fr:
             deadline:
               blank: "Veuillez spécifier une date limite"
               past: "La date limite doit être future"
-              more_than_a_year_from_now: "La date limite doit être dans moins d'un an"
+              after_limit: "La date limite doit être dans moins de %{days} jours"
             proposition:
               blank: "Veuillez apporter quelques précisions concernant le service proposé"
               too_short: "La description du service est trop courte, veuillez en dire un peu plus!"

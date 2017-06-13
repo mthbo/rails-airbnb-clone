@@ -20,7 +20,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+1y", date_start_date: "0d", date_start_view: "month"}, value: @deal.deadline ? l(@deal.deadline.to_date) : nil } %>
+      <%= f.input :deadline, as: :custom, symbol: "<i class='fa fa-calendar-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "+90d", date_start_date: "0d", date_start_view: "month"}, value: @deal.deadline ? l(@deal.deadline.to_date) : nil } %>
     </div>
   </div>
 
@@ -46,7 +46,7 @@
   <% end %>
 
   <div class="text-right padded-top-s">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-yellow") do %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-yellow", data: {disable_with: t('.sending') }) do %>
       <i class='fa fa-paper-plane' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.send' %>
     <% end %>
   </div>

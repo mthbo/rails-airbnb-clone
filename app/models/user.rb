@@ -7,10 +7,15 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
+  enum bank_status: [:no_bank, :bank_valid, :bank_invalid]
+  enum legal_type: [ :individual, :company ]
+
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
   has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal', dependent: :nullify
   has_many :advisor_deals, through: :offers, source: :deals
   has_many :messages, dependent: :nullify
+  has_many :additional_owners, dependent: :destroy
 
   has_attachment :photo, accept: [:jpg, :png, :gif]
 
@@ -23,6 +28,26 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { minimum: 2 }
   validates :last_name, presence: true, length: { minimum: 2 }
   validate :birth_date_must_be_valid
+
+  validates :country_code, presence: true, allow_blank: false, if: :country_required?
+  validate :country_must_be_valid
+
+  validates :birth_date, presence: true, if: :legal_details_required?
+  validates :address, presence: true, if: :legal_details_required?
+  validates :zip_code, presence: true, if: :legal_details_required?
+  validates :city, presence: true, if: :legal_details_required?
+  validates :identity_document_name, presence: true, if: :legal_details_required?
+
+  validates :business_name, presence: true, if: :legal_details_company_required?
+  validates :business_tax_id, presence: true, if: :legal_details_company_required?
+  validates :personal_address, presence: true, if: :legal_details_company_required?
+  validates :personal_city, presence: true, if: :legal_details_company_required?
+  validates :personal_zip_code, presence: true, if: :legal_details_company_required?
+
+  validates :bank_name, presence: true, if: :bank_invalid?
+  validates :bank_last4, presence: true, if: :bank_invalid?
+
+  STRIPE_ALLOWED_COUNTRIES = ['FR']
 
   # User information
 
@@ -69,16 +94,46 @@ class User < ApplicationRecord
     end
   end
 
-  def administrative_area
-    if (country_code && country_code == 'FR')
-      division
-    else
-      state
+  def currency
+    Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
+  end
+
+  def self.stripe_allowed_countries(locale=I18n.locale)
+    STRIPE_ALLOWED_COUNTRIES.map do |country_code|
+      country_data = ISO3166::Country[country_code]
+      country_data.translations[locale.to_s] || country_data.name
     end
   end
 
-  def currency
-    Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
+  def pricing_available?
+    STRIPE_ALLOWED_COUNTRIES.include?(country_code)
+  end
+
+  def country_required?
+    !self.no_pricing?
+  end
+
+  def legal_details_required?
+    !self.no_pricing? && !self.pricing_pending?
+  end
+
+  def legal_details_company_required?
+    legal_details_required? && self.company?
+  end
+
+  def disabled_reason_category
+    case self.disabled_reason
+    when 'rejected.fraud' then 'rejected'
+    when 'rejected.terms_of_service' then 'rejected'
+    when 'rejected.listed' then 'rejected'
+    when 'rejected.other' then 'rejected'
+    when 'fields_needed' then 'fields_needed'
+    when 'listed' then 'pending'
+    when 'under_review' then 'pending'
+    when 'other' then 'pending'
+    when '' then 'pending'
+    when nil then 'pending'
+    end
   end
 
   def avatar_img
@@ -174,6 +229,10 @@ class User < ApplicationRecord
 
   def advisor_deals_reviewed
     advisor_deals.where.not(client_review_at: nil).order(client_review_at: :desc)
+  end
+
+  def advisor_deals_payout_failed
+    advisor_deals_closed.where(payment_state: :payout_failed)
   end
 
 
@@ -355,6 +414,15 @@ class User < ApplicationRecord
   end
 
 
+  # Legal type option I18n names
+
+  def self.translated_legal_types
+    legal_types.map do |legal_type, i|
+      [I18n.t("activerecord.attributes.user.legal_types.#{legal_type}"), legal_type]
+    end
+  end
+
+
   # Facebook oauth
 
   def self.find_for_facebook_oauth(auth)
@@ -391,6 +459,11 @@ class User < ApplicationRecord
   def birth_date_must_be_valid
     errors.add(:birth_date) if
       birth_date.present? && (birth_date > DateTime.current.in_time_zone || birth_date < 130.years.ago)
+  end
+
+  def country_must_be_valid
+    errors.add(:country_code) if
+      legal_details_required? && !pricing_available?
   end
 
   def send_devise_notification(notification, *args)

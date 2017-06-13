@@ -6,15 +6,15 @@ en:
       notice: "Your proposition was submitted to %{name}"
     decline_proposition:
       notice: "You declined the proposition of %{name}"
-    open_session:
+    accept_proposition:
       notice: "#session-%{id} with %{name} is open!"
-    close_session:
+    close:
       notice: "#session-%{id} with %{name} is closed!"
     save_review:
       notice: "Your evaluation has been posted"
     disable_messages:
       notice: "Messages have been disabled for #session-%{id}."
-    cancel_session:
+    cancel:
       notice: "#session-%{id} with %{name} is cancelled!"
     request_button:
       get_in_touch: "Get in touch"
@@ -29,6 +29,7 @@ en:
       select_languages: "Select the language(s) you accept to communicate with %{name}."
       select_means: "Select the mean(s) you accept to communicate with %{name}."
       send: Send
+      sending: Sending...
       back_to_offer: Go back to offer
     satisfaction:
       happy: "happy"
@@ -41,12 +42,22 @@ en:
       proposition_declined: Proposition declined
       deadline_expired: Deadline expired
       review_expected: Review expected
-      messages_disabled: Messages disabled
+      payout_pending: Payout pending
+      payout_made: Payout made
+      payout_failed: Payout failed
     status:
       request: Request
       proposition: Proposition
       open: Open
       closed: Closed
+    info_payout:
+      payout_amount_expected_html: "If your proposition is accepeted, your remuneration will amount to <span class='font-weight-normal'>%{currency}%{amount}</span>."
+      payout_amount_html: "Your remuneration amounts to <span class='font-weight-normal'>%{currency}%{amount}</span> and the payout to your bank account will be made after session closing."
+      payout_expected_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account should be made on "
+      payout_made_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account was made on "
+      payout_failed_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account has failed."
+      visit_your_profile: Visit your profile
+      to_find_out_reason: "to find out the reasons."
     info_request:
       request_sent: "You sent a request to %{name}. You should get a proposition back if %{name} can meet your need before %{date}."
       request_received: "You received a request from %{name}. Submit a proposition if you think you can meet the needs of %{name} before %{date}, or start chatting to ask for more details."
@@ -54,7 +65,7 @@ en:
     info_cancelled:
       session_is_cancelled: This session has been cancelled, nothing more can be done here.
       back_to_dashboard: Go back to dashboard
-    new_proposition:
+    proposition:
       new_proposition: New proposition
       new_proposition_for: New proposition for %{name}
       unveil_action_plan: "Propose an action plan for this session to meet the need of %{name}."
@@ -69,15 +80,23 @@ en:
       set_amount: Set the amount owed by %{name} for this session (transactional fees will be withheld on this amount).
       amount_range: "min: %{currency}%{min}"
       leave_blank_if_free: Leave it blank for a free session.
+      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."
+      review_and_submit: Review and submit
+      reviewing: Reviewing...
+    pricing_info:
       session_for_free: This session will be for free.
-      payouts_not_authorized_html: "You are currently not authorized <span class='font-weight-normal'>to price your services</span> since Papoters is in <em class='font-weight-normal'>beta</em> version in your geographic area."
+      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
+      payouts_not_authorized_html: "You are not authorized <span class='font-weight-normal'>to price your services</span>."
       sessions_before_pricing_html:
         one: "You still need to achieve <span class='font-weight-normal'>%{count} free session</span> for this offer before pricing your service."
         other: "You still need to achieve <span class='font-weight-normal'>%{count} free sessions</span> for this offer before pricing your service."
       edit_offer: Edit your offer
       to_propose_priced_services: if you want to price your service.
-      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."
-      review_and_submit: Review and submit
+      enable_pricing: Enable pricing
+      activation_instructions: "by providing the required legal and banking details."
+      pricing_disabled: Pricing has been disabled for your account.
+      visit_your_profile: Visit your profile
+      to_find_out_more: "to find out more."
     proposition_confirmation:
       proposition_submission: Proposition submission
       review_before_submitting: Review your proposition before confirming submission.
@@ -85,6 +104,7 @@ en:
       proposition_expiring_on: Proposition expiring on
       go_back: Go back
       submit: Submit
+      submitting: Submitting...
     proposition_recap:
       amount: Amount
       free: FREE
@@ -173,7 +193,7 @@ en:
       are_you_sure: Are you sure you want to do this?
       go_back: Go back
       disable: Disable
-    new_review:
+    review:
       evaluation: Evaluation
       session_evaluation: Evaluation of the session with %{name}
       target_achievement: Target achievement
@@ -184,10 +204,12 @@ en:
       evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
       leave_a_review: "Leave a review to %{name} for this session (max: %{max} characters)."
       publish_evaluation: Publish the evaluation
+      publishing: Publishing...
     advisor_rating_form:
       evaluate_your_experience: "How do you evaluate your experience with %{name} throughout this session?"
       leave_a_review: "Leave a review to %{name} for this session (max: %{max} characters)."
       publish_evaluation: Publish the evaluation
+      publishing: Publishing...
     reviews:
       reviews: Reviews
 

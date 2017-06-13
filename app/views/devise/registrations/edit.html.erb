@@ -32,7 +32,7 @@
     </div>
     <div class="col-xs-12 col-sm-6">
       <label><%= t '.profile_picture' %></label>
-      <div class="user-photo-wrapper">
+      <div class="custom-file-upload user-photo-wrapper">
         <%= f.input_field :photo, as: :attachinary, placeholder: false %>
         <%= f.label :photo, label: "<i class='fa fa-download' aria-hidden='true'></i>&nbsp;&nbsp; #{t '.choose_picture'}".html_safe, class: 'btn btn-form btn-white' %>
       </div>
@@ -50,7 +50,6 @@
   </div>
 
   <div class="row">
-
     <div class="col-xs-12 col-sm-7">
       <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, required: true, placeholder: t('.email'), input_html: { class: 'custom-form-input', type: 'email'} %>
     </div>
@@ -58,25 +57,27 @@
       <%= f.input :phone_number, as: :custom, symbol: "<i class='fa fa-phone fa-fw' aria-hidden='true'></i>".html_safe, label: false, placeholder: t('.phone_number'), input_html: { class: 'custom-form-input', type: 'tel', value: resource.phone_number ? resource.phone_number.phony_formatted(format: :international, spaces: ' ') : nil } %>
     </div>
     <div class="col-xs-12">
-      <%= f.input :address, placeholder: t('.street'), input_html: { class: 'custom-form-input' } %>
+      <h6 class="blue"><%= t '.address' %></h6>
     </div>
-    <div class="col-xs-5 col-sm-3">
+    <div class="col-xs-12 col-sm-8">
+      <%= f.input :address, label: false, placeholder: t('.street'), input_html: { class: 'custom-form-input' } %>
+    </div>
+    <div class="col-xs-5 col-sm-4">
       <%= f.input :zip_code, label: false, placeholder: t('.zip_code'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-7 col-sm-4">
+    <div class="col-xs-7 col-sm-5">
       <%= f.input :city, label: false, placeholder: t('.city'), input_html: { class: 'custom-form-input' } %>
     </div>
-    <div class="col-xs-12 col-sm-5">
+    <div class="col-xs-9 col-sm-5">
       <%= f.input :country_code, label: false, prompt: t('.country'), input_html: { class: 'custom-form-input' } %>
     </div>
-
+    <div class="col-xs-3 col-sm-2 hidden user-state-field" >
+      <%= f.input :state, label: false, placeholder: t('.state'), input_html: { class: 'custom-form-input' } %>
+    </div>
   </div>
 
-  <%= f.hidden_field :state %>
-  <%= f.hidden_field :division %>
-
   <div class="text-right padded-top-s">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue") do %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue", data: {disable_with: t('.updating')}) do %>
       <i class='fa fa-cloud-upload fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.update' %>
     <% end %>
   </div>

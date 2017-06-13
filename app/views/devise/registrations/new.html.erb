@@ -25,7 +25,7 @@
   <%= f.hidden_field :locale, value: I18n.locale %>
 
   <div class="form-actions text-right">
-    <%= button_tag(type: 'submit', class: "btn btn-form btn-gradient") do %>
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-gradient", data: {disable_with: t('.signing_up')}) do %>
       <i class='fa fa-sign-in' aria-hidden='true'></i>&nbsp;&nbsp; <%= t(".sign_up") %>
     <% end %>
   </div>

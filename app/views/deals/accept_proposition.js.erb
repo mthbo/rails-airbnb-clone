@@ -1,7 +1,4 @@
-$('#deal-proposition-acceptation').modal('hide');
-$('#deal-proposition-acceptation').on('hidden.bs.modal', function () {
-  $("#deal-open").modal('show');
-});
+$("#deal-open").modal('show');
 $('#deal-open').on('hidden.bs.modal', function () {
   $('#deal-status-panel').html("<%= j render 'deals/status', deal: @deal %>");
   $('#deal-info-panel').html("<%= j render 'deals/info', deal: @deal %>");

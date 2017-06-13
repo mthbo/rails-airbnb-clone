@@ -29,7 +29,6 @@ class ApplicationController < ActionController::Base
       :city,
       :zip_code,
       :state,
-      :division,
       :country_code,
       :photo,
       :bio,

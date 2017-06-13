@@ -68,7 +68,7 @@ fr:
       subject: "#session-%{id} | Session ouverte"
       greeting: Bonjour %{advisor},
       message: "%{client} a accepté votre proposition! Vous êtes désormais engagé(e) à fournir votre service selon l'accord conclu."
-      info_html: "<span style='font-weight: normal;'>Le montant de votre rétribution</span> pour cette session s'élève à <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span>. Le versement sur votre compte sera effectué après la clôture de la session."
+      info_html: "<span style='font-weight: normal;'>Le montant de votre rétribution</span> pour cette session s'élève à <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span>. Le versement sur votre compte bancaire sera effectué après la clôture de la session."
       agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{client} dès maintenant!"
       action: Contactez %{client}
@@ -76,7 +76,7 @@ fr:
       subject: "#session-%{id} | Session ouverte"
       greeting: Bonjour %{client},
       message: "Vous avez accepté la proposition de %{advisor}, qui est désormais engagé(e) à fournir son service selon l'accord conclu."
-      info_html: "Votre paiement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> a été autorisé. Ce paiement sera déclenché après la clôture de la session."
+      info_html: "Votre paiement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> a été autorisé."
       agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{advisor} dès maintenant!"
       action: Contactez %{advisor}
@@ -96,7 +96,7 @@ fr:
       subject: "#session-%{id} | Session clôturée"
       greeting: Bonjour %{advisor},
       message: "La session ci-dessous a été clôturée :"
-      info: "Le versement sur votre compte du montant de votre rétribution va être effectué."
+      info_html: "Le versement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> sur votre compte bancaire devrait être effectué le <span style='font-weight: normal'>%{date}</span>."
       instructions: "Evaluez votre expérience et laissez un avis à %{client}."
       action: Evaluer la session
     deal_closed_client:
@@ -135,6 +135,12 @@ fr:
       message: "La session ci-dessous a été annulée par %{advisor} :"
       action: Voir la session
       info: "Vous ne pouvez plus rien faire dans cette session."
+    deal_payout_failed:
+      subject: "#session-%{id} | Echec versement"
+      greeting: Bonjour %{advisor},
+      info_html: "Le versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire pour la session ci-dessous a échoué :"
+      instructions: "Consultez votre profil pour en connaître les raisons."
+      action: Voir mon profil
 
 
 

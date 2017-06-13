@@ -9,7 +9,7 @@
         <%= render 'users/avatar', user: @user, size: 'avatar-xlarge' %>
         <%= render 'users/info', user: @user %>
         <% if policy(@user).dashboard? %>
-          <p><%= link_to t('.see_dashboard'), dashboard_path %></p>
+          <p><%= link_to t('.see_dashboard'), dashboard_users_path %></p>
         <% end %>
       </div>
     </div>
@@ -23,7 +23,7 @@
 
         <div class="user-info-top">
           <h2><%= @user == current_user ? t('.about_me') : t('.about', user: @user.first_name) %></h2>
-          <% if policy(@user).edit? %>
+          <% if @user == current_user %>
             <p class="text-right">
               <%= link_to edit_user_registration_path do %>
                 <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp; <%= t('.edit_my_profile') %>
@@ -34,7 +34,7 @@
         <div class="padded-top-xs">
           <% if @user.bio.present? %>
             <%= sanitize auto_link(markdown_to_html(@user.bio)) %>
-          <% elsif policy(@user).edit? %>
+          <% elsif @user == current_user %>
             <p class="font-weight-normal"><%= t('.no_information_you') %></p>
             <p><%= link_to t('.edit_your_profile'), edit_user_registration_path %> <%= t('.be_known') %></p>
           <% else %>
@@ -55,8 +55,14 @@
           <h2><%= @user == current_user ? t('.my_offers') : t('.offers', user: @user.first_name) %></h2>
           <% if policy(@user.offers.new).new? %>
             <div>
-              <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
-                <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+              <% if @user.no_pricing? %>
+                <%= link_to country_users_path, class: "btn btn-form btn-green" do %>
+                  <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+                <% end %>
+              <% else %>
+                <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
+                  <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.new_offer' %>
+                <% end %>
               <% end %>
             </div>
           <% end %>
@@ -64,21 +70,11 @@
 
         <% if @user == current_user %>
           <% if @user.offers_published.present? %>
-            <% if @user.stripe_account_id.blank? %>
-              <div class="user-offers-info">
-                <% if @user.payout_authorized %>
-                  <%= render "connect_to_stripe" %>
-                <% else %>
-                  <div class="user-pricing-info">
-                    <%= image_tag 'no_amount.svg' %>
-                    <p><%= t '.payouts_not_authorized_html' %></p>
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
+            <%= render "pricing_info" %>
             <% @user.offers_published.each do |offer| %>
               <%= render "offers/card_without_user", offer: offer %>
             <% end %>
+
           <% else %>
             <div class="padded-top-xs">
               <p class="font-weight-normal"><%= t '.no_offers_you' %></p>

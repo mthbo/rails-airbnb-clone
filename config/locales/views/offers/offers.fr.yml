@@ -20,15 +20,23 @@ fr:
       languages_range: "min: 1 - max: %{max}"
       select_means: "Sélectionnez le(s) moyen(s) que vous acceptez pour communiquer avec vos interlocuteurs pour cette offre."
       means_range: "min: 1"
-      payouts_not_authorized_html: "Vous n'êtes pour le moment pas autorisé à proposer des <span class='font-weight-normal'>services payants</span> car Papoters est en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
+      select_pricing: Sélectionnez le mode de tarification pour cette offre.
+      publish: Publier
+      publishing: Publication...
+      update: Mettre à jour
+      updating: Mise à jour...
+    pricing_info:
+      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
       prove_worth_before_pricing_html: "Proposer des prestations payantes n'est possible qu'après avoir fait vos preuves, avec au moins <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre."
       sessions_for_free: "Les sessions pour cette offre sont gratuites."
       sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des prestations payantes."
-        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des prestations payantes."
-      select_pricing: Sélectionnez le mode de tarification pour cette offre.
-      publish: Publier
-      update: Mettre à jour
+        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des services payants."
+        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des services payants."
+      enable_pricing: Activez les paiements
+      activation_instructions: "en fournissant les informations légales et bancaires requises pour proposer des services payants."
+      pricing_disabled: Les paiements ont été désactivés sur votre compte.
+      visit_your_profile: Consultez votre profil
+      to_find_out_more: "pour en savoir plus."
     removal:
       offer_removal: Suppression de l'offre
       offer_removal_for: Supprimez cette offre si vous ne voulez plus donner de conseils sur ce sujet.
@@ -39,6 +47,7 @@ fr:
       are_you_sure: "Êtes-vous sûr de vouloir faire ça?"
       go_back: Revenir
       remove: Supprimer
+      removing: Suppression...
       cant_remove_offer: Vous ne pouvez pas supprimer cette offre pour le moment.
       close_or_cancel: Clôturez ou annulez
       ongoing_sessions: toutes les sessions en cours

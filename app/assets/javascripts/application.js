@@ -12,12 +12,14 @@
 //= require i18n/translations
 
 //= require arrow_scroll
+//= require bank_account
 //= require cable
 //= require checkbox
 //= require conversation_scroll
 //= require dashboard_tab
 //= require datepicker
 //= require env
+//= require id_file_input
 //= require flashes
 //= require google_maps_autocomplete
 //= require home_background
@@ -30,6 +32,7 @@
 //= require radio_button
 //= require search
 //= require star_rating
+//= require user_details
 //= require video_call
 
 

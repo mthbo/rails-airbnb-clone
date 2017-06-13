@@ -68,7 +68,7 @@ en:
       subject: "#session-%{id} | Session open"
       greeting: Hello %{advisor},
       message: "%{client} accepted your proposition! You are now committed to deliver the service as part of your agreement."
-      info_html: "<span style='font-weight: normal;'>Your remuneration</span> for this session amounts to <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span>. The payout to your account will be made after session closing."
+      info_html: "<span style='font-weight: normal;'>Your remuneration</span> for this session amounts to <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span>. The payout to your bank account will be made after session closing."
       agreement: Agreement
       instructions_html: "The session is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{client} as of now!"
       action: Get in touch with %{client}
@@ -76,7 +76,7 @@ en:
       subject: "#session-%{id} | Session open"
       greeting: Hello %{client},
       message: "You accepted the proposition of %{advisor}, who is now committed to deliver the service as part of your agreement."
-      info_html: "Your payment of <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span> has been authorized. This payment will be triggered after session closing."
+      info_html: "Your payment of <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span> has been authorized."
       agreement: Agreement
       instructions_html: "The session is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{advisor} as of now!"
       action: Get in touch with %{advisor}
@@ -96,7 +96,7 @@ en:
       subject: "#session-%{id} | Session closed"
       greeting: Hello %{advisor},
       message: "The session below was closed:"
-      info: The payout to your account is going to be made.
+      info_html: "The payout of <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span> to your bank account should be made on <span style='font-weight: normal'>%{date}</span>."
       instructions: "Evaluate your experience and leave a review to %{client}."
       action: Evaluate the session
     deal_closed_client:
@@ -135,3 +135,9 @@ en:
       message: "The session below has been cancelled by %{advisor}:"
       action: See the session
       info: "Nothing more can be done in this session."
+    deal_payout_failed:
+      subject: "#session-%{id} | Payout failed"
+      greeting: Hello %{advisor},
+      info_html: "The payout of <span style='font-weight: normal;'>%{currency}%{amount}</span> to your bank account for the session below has failed:"
+      instructions: "Visit your profile to find out the reasons."
+      action: See my profile
