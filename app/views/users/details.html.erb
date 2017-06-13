@@ -135,6 +135,8 @@
   </div>
 
   <%= f.hidden_field :pricing, value: @user.pricing_pending? ? 'pricing_disabled' : @user.pricing %>
+  <%= f.hidden_field :disabled_reason, value: nil %>
+  <%= f.hidden_field :verification_status, value: nil %>
 
   <div class="padded-top-s">
     <p><%= t '.details_verification' %></p>

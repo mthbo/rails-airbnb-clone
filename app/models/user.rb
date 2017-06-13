@@ -131,6 +131,8 @@ class User < ApplicationRecord
     when 'listed' then 'pending'
     when 'under_review' then 'pending'
     when 'other' then 'pending'
+    when '' then 'pending'
+    when nil then 'pending'
     end
   end
 

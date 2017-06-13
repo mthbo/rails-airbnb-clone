@@ -2,7 +2,7 @@
   <% if !@user.pricing_available? || @user.no_pricing? %>
     <div class="user-offers-info-left">
       <%= image_tag 'no_amount.svg' %>
-      <p><%= t '.pricing_not_available_html' %></p>
+      <p class="no-margin-bottom"><%= t '.pricing_not_available_html' %></p>
     </div>
 
   <% elsif @user.pricing_pending? %>
@@ -25,10 +25,10 @@
       <div>
         <p><%= t '.pricing_enabled_html' %></p>
         <% if @user.verification_status.present? %>
-          <p class="padded-top-xs">
-            <span class="red"><%= t '.verification_failed' %></span>
-            <span class="font-weight-normal red"><%= t ".#{@user.verification_status}" %></span>.
-            <%= link_to t('.edit_legal_details'), details_users_path %>
+          <p class="red">
+            <%= t '.verification_failed' %>
+            <%= t ".#{@user.verification_status}" %><br>
+            <%= link_to t('.edit_legal_details'), details_users_path, class: "link-red" %>
             <%= t '.submit_verification_again' %>
           </p>
         <% end %>
@@ -53,21 +53,28 @@
 
         <% when 'pending' %>
           <p><%= t '.pricing_disabled_pending_html' %></p>
+          <% if @user.bank_invalid? %>
+            <p class="red">
+              <%= t '.bank_account_error' %><br>
+              <%= link_to t('.provide_new_bank_account'), bank_users_path, class: "link-red" %>
+              <%= t '.reactivate_pricing' %>
+            </p>
+          <% end %>
 
         <% when 'fields_needed' %>
           <p><%= t '.pricing_disabled_fields_needed_html' %></p>
           <% if @user.verification_status.present? %>
-            <p class="padded-top-xs">
-              <span class="red"><%= t '.verification_failed' %></span>
-              <span class="font-weight-normal red"><%= t ".#{@user.verification_status}" %></span>.
-              <%= link_to t('.edit_legal_details'), details_users_path %>
+            <p class="red">
+              <%= t '.verification_failed' %>
+              <%= t ".#{@user.verification_status}" %><br>
+              <%= link_to t('.edit_legal_details'), details_users_path, class: "link-red" %>
               <%= t '.submit_verification_again' %>
             </p>
 
           <% elsif @user.bank_invalid? %>
-            <p class="padded-top-xs">
-              <span class="red font"><%= t '.bank_account_error' %></span>
-              <%= link_to t('.provide_new_bank_account'), bank_users_path %>
+            <p class="red">
+              <%= t '.bank_account_error' %><br>
+              <%= link_to t('.provide_new_bank_account'), bank_users_path, class: "link-red" %>
               <%= t '.reactivate_pricing' %>
             </p>
 

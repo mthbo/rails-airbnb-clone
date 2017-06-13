@@ -261,6 +261,16 @@ a {
   }
 }
 
+.link-red {
+  color: $red;
+  &:hover, &:focus:hover {
+    color: $dark-red;
+  }
+  &:focus {
+    color: $red;
+  }
+}
+
 .link {
   position: absolute;
   top: 0;

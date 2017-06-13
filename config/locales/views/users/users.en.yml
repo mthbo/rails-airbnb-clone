@@ -33,9 +33,26 @@ en:
       enable_pricing: Enable pricing
       pricing_enabled_html: "Pricing is enabled, you can <span class='font-weight-normal'>price your services</span>."
       change_bank_account: Change my bank account
-      edit_legal_details: Edit my details
-      pricing_disabled_html: "Pricing is disabled, you can't <span class='font-weight-normal'>price your services</span>."
-      reactivation_instructions: "to reenable pricing."
+      pricing_disabled_rejected_html: "You can't <span class='font-weight-normal'>price your services</span> because your account has been rejected."
+      pricing_disabled_fields_needed_html: "You can't <span class='font-weight-normal'>price your services</span> for the reasons described bellow."
+      pricing_disabled_pending_html: "You can't <span class='font-weight-normal'>price your services</span>. Your details are currently under review."
+      verification_failed: "The verification of your details failed for the following reason: "
+      scan_corrupt: The ID image uploaded is corrupt.
+      scan_not_readable: The image supplied was not readable. It may have been too blurry or not well lit.
+      scan_failed_greyscale: The image supplied was not readable because it was grayscale. Please upload a color copy instead.
+      scan_not_uploaded: No ID scan was uploaded.
+      scan_id_type_not_supported: The ID type submitted is not supported.
+      scan_id_country_not_supported: The ID country is not supported.
+      scan_name_mismatch: The name on the ID does not match the name on the account.
+      scan_failed_other: The ID image uploaded could not be verified.
+      scan_failed_test_mode: The test ID could not be verified.
+      failed_keyed_identity: The provided identity information could not be verified.
+      failed_other: Verification failure.
+      edit_legal_details: Edit your details
+      submit_verification_again: to submit them to verification again.
+      bank_account_error: It's seems payouts are not arriving to your bank account.
+      provide_new_bank_account: Provide a new bank account
+      reactivate_pricing: to reenable pricing.
     info:
       age: "yrs"
       grade_1: "Papoter"
@@ -92,7 +109,7 @@ en:
       state: State
       country: -- Country --
       upload_identity_document: Please upload an identity document (ID card or passport).
-      file_format: Image format (png ou jpeg), max. 8 MB
+      file_format: Color image format (png ou jpeg), max. 8 MB
       choose_file: Choose a file
       over_size_limit: File size over limit
       no_file_selected: No file selected

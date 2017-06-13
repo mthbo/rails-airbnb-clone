@@ -37,6 +37,17 @@ fr:
       pricing_disabled_fields_needed_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> pour les raisons évoquées ci-dessous."
       pricing_disabled_pending_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span>. Vos informations sont en cours de vérification."
       verification_failed: "La vérification de vos informations a échouée pour la raison suivante : "
+      scan_corrupt: Le document d'identité transmis est corrompu.
+      scan_not_readable: Le document d'identité transmis n'est pas lisible (trop flou ou trop sombre).
+      scan_failed_greyscale: Le document d'identité transmis n'est pas lisible car en noir et blanc. Veuillez fournir un document en couleur.
+      scan_not_uploaded: Aucun document d'identité transmis.
+      scan_id_type_not_supported: Le type de document d'identité transmis n'est pas supporté.
+      scan_id_country_not_supported: Le pays du document d'identité transmis n'est pas supporté.
+      scan_name_mismatch: Le nom visible sur le document d'identité ne correspond pas au nom indiqué.
+      scan_failed_other: Le document d'identité transmis n'a pas pu être vérifié.
+      scan_failed_test_mode: Le document d'identité test n'a pas pu être vérifié.
+      failed_keyed_identity: Les informations d'identité fournies n'ont pas pu être vérifiées.
+      failed_other: Echec de vérification.
       edit_legal_details: Editer vos informations
       submit_verification_again: pour les soumettre à nouveau à vérification.
       bank_account_error: Votre compte bancaire ne semble pas recevoir les versements.
@@ -98,7 +109,7 @@ fr:
       state: Etat
       country: -- Pays --
       upload_identity_document: Veuillez télécharger un document d'identité (carte d'identité ou passeport).
-      file_format: Format image (png ou jpeg), max. 8 Mo
+      file_format: Format image couleur (png ou jpeg), max. 8 Mo
       choose_file: Choisir un fichier
       over_size_limit: Taille du fichier trop grande
       no_file_selected: Aucun fichier sélectionné

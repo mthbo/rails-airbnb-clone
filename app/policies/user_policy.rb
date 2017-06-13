@@ -17,7 +17,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def details?
-    user == record && !user.no_pricing? && !user.verified?
+    user == record && !user.no_pricing? && !user.verified? && (user.disabled_reason_category != 'rejected')
   end
 
   def update?
@@ -25,7 +25,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def bank?
-    user == record && !user.no_pricing? && !user.pricing_pending?
+    user == record && !user.no_pricing? && !user.pricing_pending? && (user.disabled_reason_category != 'rejected')
   end
 
   def update_bank?
