@@ -22,10 +22,10 @@ ActiveAdmin.register User do
     column :city
     column :country_code
     column :locale
-    column :currency_code
     column :pricing
-    column :bank_status
     column :legal_type
+    column :bank_status
+    column :verified
     column :sign_in_count
     column :offers_active_count
     column :offers_priced_count
@@ -43,17 +43,30 @@ ActiveAdmin.register User do
       row :admin
       row :email
       row :locale
-      row :legal_type
       row :first_name
       row :last_name
       row :bio
       row :age
+      row :photo
       row :phone_number
       row :country
       row :address
       row :zip_code
       row :city
       row :state
+      row :latitude
+      row :longitude
+    end
+    attributes_table do
+      row :pricing
+      row :legal_type
+      row :verified
+      row :stripe_customer_id
+      row :stripe_account_id
+      row :currency_code
+      row :disabled_reason
+      row :disabled_reason_category
+      row :verification_status
       row :identity_document_name
       row :business_name
       row :business_tax_id
@@ -61,12 +74,6 @@ ActiveAdmin.register User do
       row :personal_zip_code
       row :personal_city
       row :personal_state
-    end
-    attributes_table do
-      row :pricing
-      row :stripe_customer_id
-      row :stripe_account_id
-      row :currency_code
       row :bank_status
       row :bank_name
       row :bank_last4
@@ -88,6 +95,7 @@ ActiveAdmin.register User do
       row :advisor_deals_pending_count
       row :advisor_deals_open_count
       row :advisor_deals_closed_count
+      row :advisor_deals_payout_failed_counts
       row :advisor_deals do |user|
         user.advisor_deals.map { |d| link_to "#session-#{d.id} | #{d.title}", admin_deal_path(d) }.join("<br>").html_safe
       end
@@ -107,6 +115,8 @@ ActiveAdmin.register User do
       row :encrypted_password
       row :reset_password_token
       row :reset_password_sent_at
+    end
+    attributes_table do
       row :provider
       row :uid
       row :facebook_picture_url
@@ -117,30 +127,17 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.inputs "Identity" do
-      f.input :email
-      f.input :first_name
-      f.input :last_name
-      f.input :bio
-      f.input :birth_date
-      f.input :phone_number
-      f.input :address
-      f.input :zip_code
-      f.input :city
-      f.input :country_code
-      f.input :locale
-      f.input :currency_code
-      f.input :pricing
-      f.input :stripe_customer_id
-      f.input :stripe_account_id
-    end
-    f.inputs "Admin" do
+    f.inputs "User" do
       f.input :admin
       f.input :confirmed_at
+      f.input :country_code
+      f.input :currency_code
+      f.input :pricing
+      f.input :bank_status
     end
     f.actions
   end
 
-  permit_params :email, :phone_number, :first_name, :last_name, :address, :bio, :birth_date, :zip_code, :city, :country_code, :locale, :currency_code, :stripe_customer_id, :stripe_account_id, :admin, :confirmed_at, :pricing
+  permit_params :admin, :confirmed_at, :country_code, :currency_code, :pricing, :bank_status
 
 end

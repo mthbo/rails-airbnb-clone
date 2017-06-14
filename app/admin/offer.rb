@@ -29,9 +29,9 @@ ActiveAdmin.register Offer do
     column :satisfaction do |offer|
       "#{(offer.satisfaction.fdiv(5) * 100).to_i} %" unless offer.satisfaction.nil?
     end
-    column :min_amount
-    column :median_amount
-    column :max_amount
+    column :min_amount_converted
+    column :median_amount_converted
+    column :max_amount_converted
     actions
   end
 
@@ -64,27 +64,22 @@ ActiveAdmin.register Offer do
       row :satisfaction do |offer|
         "#{(offer.satisfaction.fdiv(5) * 100).to_i} %" unless offer.satisfaction.nil?
       end
-      row :min_amount
-      row :median_amount
-      row :max_amount
+      row :min_amount_converted
+      row :median_amount_converted
+      row :max_amount_converted
     end
     active_admin_comments
   end
 
   form do |f|
     f.inputs "Offer details" do
-      f.input :advisor_id
-      f.input :title
-      f.input :description
       f.input :status
       f.input :pricing
       f.input :free_deals
-      f.input :means, as: :check_boxes
-      f.input :languages, as: :check_boxes
     end
     f.actions
   end
 
-  permit_params :advisor_id, :title, :description, :status, :pricing, :free_deals, mean_ids: [], language_ids: []
+  permit_params :status, :pricing, :free_deals
 
 end

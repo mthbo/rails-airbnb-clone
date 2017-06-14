@@ -49,6 +49,13 @@ class User < ApplicationRecord
 
   STRIPE_ALLOWED_COUNTRIES = ['FR']
 
+  def self.stripe_allowed_countries(locale=I18n.locale)
+    STRIPE_ALLOWED_COUNTRIES.map do |country_code|
+      country_data = ISO3166::Country[country_code]
+      country_data.translations[locale.to_s] || country_data.name
+    end
+  end
+
   # User information
 
   def first_name=(s)
@@ -75,6 +82,10 @@ class User < ApplicationRecord
     write_attribute(:city, s.to_s.capitalize)
   end
 
+  def personal_city=(s)
+    write_attribute(:personal_city, s.to_s.capitalize)
+  end
+
   def country(locale=I18n.locale)
     if country_code.present?
       country_data = ISO3166::Country[country_code]
@@ -96,13 +107,6 @@ class User < ApplicationRecord
 
   def currency
     Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
-  end
-
-  def self.stripe_allowed_countries(locale=I18n.locale)
-    STRIPE_ALLOWED_COUNTRIES.map do |country_code|
-      country_data = ISO3166::Country[country_code]
-      country_data.translations[locale.to_s] || country_data.name
-    end
   end
 
   def pricing_available?
@@ -411,6 +415,10 @@ class User < ApplicationRecord
 
   def advisor_deals_closed_count
     advisor_deals_closed.count
+  end
+
+  def advisor_deals_payout_failed_count
+    advisor_deals_payout_failed.count
   end
 
 

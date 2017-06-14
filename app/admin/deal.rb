@@ -48,22 +48,28 @@ ActiveAdmin.register Deal do
       row :status
       row :messages_disabled
       row :room_name
-      row :deadline
+      row :client_notifications
+      row :advisor_notifications
+      row :messages_count
+    end
+    attributes_table do
+      row :payment_state
       row :currency_code
       row :amount
+      row :advisor_amount
       row :fees
-      row :payment_state
       row :payment
       row :payout
     end
     attributes_table do
       row :created_at
+      row :deadline
       row :request
       row :proposition_at
       row :proposition_deadline
       row :proposition
       row :objectives do |deal|
-        deal.objectives.each_with_index.map { |o, i| link_to "#{i + 1} | #{o.description}", admin_objective_path(o) }.join("<br>").html_safe
+        deal.objectives.each_with_index.map { |o, i| "#{i + 1} | #{o.description}" }.join("<br>").html_safe
       end
       row :languages do |deal|
         deal.languages.map { |l| l.name }.join(", ")
@@ -97,66 +103,15 @@ ActiveAdmin.register Deal do
   end
 
   form do |f|
-    f.inputs "Deal summary" do
-      f.input :offer_id
-      f.input :title
-      f.input :client_id
+    f.inputs "Deal" do
       f.input :status
       f.input :payment_state
       f.input :room_name
       f.input :messages_disabled
-      f.input :deadline
-      f.input :currency_code
-      f.input :amount
-      f.input :fees
-    end
-    f.inputs "Deal details" do
-      f.input :request
-      f.input :proposition_at
-      f.input :proposition_deadline
-      f.input :proposition
-      f.input :languages, as: :check_boxes, collection: deal.offer.languages
-      f.input :means, as: :check_boxes, collection: deal.offer.means
-      f.input :opened_at
-      f.input :closed_at
-      f.input :who_reviews
-      f.input :client_review_at
-      f.input :client_rating
-      f.input :client_review
-      f.input :advisor_review_at
-      f.input :advisor_rating
-      f.input :advisor_review
     end
     f.actions
   end
 
-  permit_params(
-    :offer_id,
-    :title,
-    :client_id,
-    :request,
-    :status,
-    :payment_state,
-    :room_name,
-    :messages_disabled,
-    :deadline,
-    :currency_code,
-    :amount,
-    :fees,
-    :proposition,
-    :proposition_at,
-    :opened_at,
-    :closed_at,
-    :proposition_deadline,
-    :who_reviews,
-    :client_review,
-    :client_review_at,
-    :client_rating,
-    :advisor_review,
-    :advisor_review_at,
-    :advisor_rating,
-    mean_ids: [],
-    language_ids: []
-  )
+  permit_params( :status, :payment_state, :room_name, :messages_disabled )
 
 end

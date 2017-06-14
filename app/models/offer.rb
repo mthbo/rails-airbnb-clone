@@ -110,6 +110,17 @@ class Offer < ApplicationRecord
     end
   end
 
+  # Pricing option I18n names
+
+  def self.translated_pricings
+    icons = [
+      "<span class='info-icon'>#{ ActionController::Base.helpers.image_tag('no_amount.svg') }</span>".html_safe,
+      "<span class='info-icon'>#{ ActionController::Base.helpers.image_tag('amount.svg') }</span>".html_safe
+    ]
+    pricings.map do |pricing, i|
+      [icons[i] + I18n.t("activerecord.attributes.offer.pricings.#{pricing}"), pricing]
+    end
+  end
 
   def video_call?
     means.include?(Mean.find_by_name("Video call"))
@@ -213,19 +224,6 @@ class Offer < ApplicationRecord
 
   def median_amount_converted(currency_code=Money.default_currency.to_s)
     median_amount.exchange_to(currency_code) if median_amount
-  end
-
-
-  # Pricing option I18n names
-
-  def self.translated_pricings
-    icons = [
-      "<span class='info-icon'>#{ ActionController::Base.helpers.image_tag('no_amount.svg') }</span>".html_safe,
-      "<span class='info-icon'>#{ ActionController::Base.helpers.image_tag('amount.svg') }</span>".html_safe
-    ]
-    pricings.map do |pricing, i|
-      [icons[i] + I18n.t("activerecord.attributes.offer.pricings.#{pricing}"), pricing]
-    end
   end
 
 

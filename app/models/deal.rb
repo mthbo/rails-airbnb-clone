@@ -188,6 +188,10 @@ class Deal < ApplicationRecord
 
   # Stats
 
+  def messages_count
+    messages.count
+  end
+
   def objectives_count
     objectives.count
   end
