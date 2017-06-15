@@ -47,13 +47,19 @@ class User < ApplicationRecord
   validates :bank_name, presence: true, if: :bank_invalid?
   validates :bank_last4, presence: true, if: :bank_invalid?
 
-  STRIPE_ALLOWED_COUNTRIES = ['FR']
+  def self.pricing_available_country_codes
+    ENV['PRICING_AVAILABLE_COUNTRIES'].split
+  end
 
-  def self.stripe_allowed_countries(locale=I18n.locale)
-    STRIPE_ALLOWED_COUNTRIES.map do |country_code|
+  def self.pricing_available_countries(locale=I18n.locale)
+    ENV['PRICING_AVAILABLE_COUNTRIES'].split.map do |country_code|
       country_data = ISO3166::Country[country_code]
       country_data.translations[locale.to_s] || country_data.name
     end
+  end
+
+  def pricing_available?
+    ENV['PRICING_AVAILABLE_COUNTRIES'].split.include?(country_code)
   end
 
   # User information
@@ -107,10 +113,6 @@ class User < ApplicationRecord
 
   def currency
     Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
-  end
-
-  def pricing_available?
-    STRIPE_ALLOWED_COUNTRIES.include?(country_code)
   end
 
   def country_required?

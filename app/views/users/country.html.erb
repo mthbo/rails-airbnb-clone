@@ -14,9 +14,9 @@
     </div>
     <div class="col-xs-12">
       <p><em>
-        <% if User.stripe_allowed_countries.present? %>
+        <% if User.pricing_available_countries.present? %>
           <%= t('.country_restrictions') %>
-          <%= User.stripe_allowed_countries.split.join(", ") %>
+          <%= User.pricing_available_countries.split.join(", ") %>
         <% else %>
           <%= t('.country_restrictions_beta') %>
         <% end %>

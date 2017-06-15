@@ -4,47 +4,17 @@ class Language < ApplicationRecord
   has_many :deal_languages, dependent: :destroy
   has_many :deals, through: :deal_languages
 
-  default_scope -> { order(name: :ASC) }
+  validates :name, presence: true
+  validates :code, presence: true
 
-  FLAGS = {
-    "French" => "fr.svg",
-    "English" => "en.svg",
-    "Spanish" => "es.svg",
-    "Italian" => "it.svg",
-    "German" => "de.svg",
-    "Chinese" => "zh.svg",
-    "Danish" => "da.svg",
-    "Dutch" => "nl.svg",
-    "Hindi" => "hi.svg",
-    "Japanese" => "ja.svg",
-    "Russian" => "ru.svg",
-    "Swahili" => "sw.svg",
-    "Arabic" => "ar.svg",
-    "Swedish" => "sv.svg",
-    "Greek" => "gr.svg",
-    "Malaysian" => "my.svg",
-    "Indonesian" => "id.svg",
-    "Hungarian" => "hu.svg",
-    "Norwegian" => "nb.svg",
-    "Polish" => "pl.svg",
-    "Brazilian Portuguese" => "pt-BR.svg",
-    "Portuguese" => "pt-PT.svg",
-    "Finnish" => "fi.svg",
-    "Turkish" => "tr.svg",
-    "Icelandic" => "is.svg",
-    "Czech" => "cs.svg",
-    "Thai" => "th.svg",
-    "Korean" => "ko.svg",
-    "Persian" => "fa.svg",
-    "Hebrew" => "he.svg"
-  }
+  default_scope -> { order(code: :ASC) }
 
   def name_translated(locale=I18n.locale)
     I18n.t("language.#{name.downcase.split.join("_")}", locale: locale)
   end
 
   def flag
-    FLAGS[self.name]
+    "#{self.code}.svg"
   end
 
   def flag_img

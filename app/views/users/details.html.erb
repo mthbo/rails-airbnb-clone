@@ -13,7 +13,7 @@
 
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <%= f.input :country_code, label: false, prompt: t('.country'), input_html: { class: 'custom-form-input' }, only: User::STRIPE_ALLOWED_COUNTRIES %>
+      <%= f.input :country_code, label: false, prompt: t('.country'), input_html: { class: 'custom-form-input' }, only: User.pricing_available_country_codes %>
     </div>
   </div>
 

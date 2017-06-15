@@ -9,36 +9,36 @@ if ENV['ENV'] != "prod"
   Language.destroy_all
 
   languages = [
-    Language.create(name: "French"),
-    Language.create(name: "English"),
-    Language.create(name: "Spanish"),
-    Language.create(name: "Italian"),
-    Language.create(name: "German"),
-    Language.create(name: "Chinese"),
-    Language.create(name: "Danish"),
-    Language.create(name: "Dutch"),
-    Language.create(name: "Hindi"),
-    Language.create(name: "Japanese"),
-    Language.create(name: "Portuguese"),
-    Language.create(name: "Russian"),
-    Language.create(name: "Swahili"),
-    Language.create(name: "Arabic"),
-    Language.create(name: "Swedish"),
-    Language.create(name: "Greek"),
-    Language.create(name: "Malaysian"),
-    Language.create(name: "Indonesian"),
-    Language.create(name: "Hungarian"),
-    Language.create(name: "Norwegian"),
-    Language.create(name: "Polish"),
-    Language.create(name: "Brazilian Portuguese"),
-    Language.create(name: "Finnish"),
-    Language.create(name: "Turkish"),
-    Language.create(name: "Icelandic"),
-    Language.create(name: "Czech"),
-    Language.create(name: "Thai"),
-    Language.create(name: "Korean"),
-    Language.create(name: "Persian"),
-    Language.create(name: "Hebrew")
+    Language.create(code:"fr" ,name: "French"),
+    Language.create(code:"en" ,name: "English"),
+    Language.create(code:"es" ,name: "Spanish"),
+    Language.create(code:"it" ,name: "Italian"),
+    Language.create(code:"de" ,name: "German"),
+    Language.create(code:"zh" ,name: "Chinese"),
+    Language.create(code:"da" ,name: "Danish"),
+    Language.create(code:"nl" ,name: "Dutch"),
+    Language.create(code:"hi" ,name: "Hindi"),
+    Language.create(code:"ja" ,name: "Japanese"),
+    Language.create(code:"pt-PT" ,name: "Portuguese"),
+    Language.create(code:"ru" ,name: "Russian"),
+    Language.create(code:"sw" ,name: "Swahili"),
+    Language.create(code:"ar" ,name: "Arabic"),
+    Language.create(code:"sv" ,name: "Swedish"),
+    Language.create(code:"gr" ,name: "Greek"),
+    Language.create(code:"my" ,name: "Malaysian"),
+    Language.create(code:"id" ,name: "Indonesian"),
+    Language.create(code:"hu" ,name: "Hungarian"),
+    Language.create(code:"nb" ,name: "Norwegian"),
+    Language.create(code:"pl" ,name: "Polish"),
+    Language.create(code:"pt-BR" ,name: "Brazilian Portuguese"),
+    Language.create(code:"fi" ,name: "Finnish"),
+    Language.create(code:"tr" ,name: "Turkish"),
+    Language.create(code:"is" ,name: "Icelandic"),
+    Language.create(code:"cs" ,name: "Czech"),
+    Language.create(code:"th" ,name: "Thai"),
+    Language.create(code:"ko" ,name: "Korean"),
+    Language.create(code:"fa" ,name: "Persian"),
+    Language.create(code:"he" ,name: "Hebrew")
   ]
 
   languages_short_list = [
@@ -51,12 +51,12 @@ if ENV['ENV'] != "prod"
   ]
 
   means = [
-    Mean.create(name: "Messaging"),
-    Mean.create(name: "Phone call"),
-    Mean.create(name: "Video call"),
-    Mean.create(name: "Meeting"),
-    Mean.create(name: "Documents"),
-    Mean.create(name: "Sign language")
+    Mean.create(name: "Messaging", picto: 'comments'),
+    Mean.create(name: "Phone call", picto: 'phone'),
+    Mean.create(name: "Video call", picto: 'video-camera'),
+    Mean.create(name: "Meeting", picto: 'coffee'),
+    Mean.create(name: "Documents", picto: 'file-text'),
+    Mean.create(name: "Sign language", picto: 'sign-language')
   ]
 
   means_short_list = [
@@ -169,10 +169,12 @@ if ENV['ENV'] != "prod"
     )
     offer.free_deals -= 1
     offer.save
+    offer.advisor.pricing_pending!
     if offer.free_deals.zero?
       offer.priced!
       offers_free.delete(offer)
       offers_priced << offer
+      offer.advisor.pricing_enabled!
     end
   end
 
@@ -201,7 +203,8 @@ if ENV['ENV'] != "prod"
       means: offer.means,
       currency_code: 'EUR',
       amount_cents: random_amount,
-      fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
+      fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10,
+      payment_state: "payout_made"
     )
   end
 
@@ -252,7 +255,8 @@ if ENV['ENV'] != "prod"
       means: offer.means,
       currency_code: 'EUR',
       amount_cents: random_amount,
-      fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
+      fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10,
+      payment_state: "paid"
     )
   end
 
@@ -288,7 +292,6 @@ if ENV['ENV'] != "prod"
     random_amount = rand(10...50) * 100
     deals3 << Deal.new(
       status: "proposition",
-      payment_state: "payment_pending",
       offer: offer,
       title: offer.title,
       client: users.select{ |user| user != offer.advisor }.sample,
@@ -301,7 +304,8 @@ if ENV['ENV'] != "prod"
       means: offer.means,
       currency_code: 'EUR',
       amount_cents: random_amount,
-      fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10
+      fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10,
+      payment_state: "payment_pending"
     )
   end
 

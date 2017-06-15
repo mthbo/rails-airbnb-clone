@@ -4,21 +4,11 @@ class Mean < ApplicationRecord
   has_many :deal_means, dependent: :destroy
   has_many :deals, through: :deal_means
 
-  PICTOS = {
-    "Messaging" => 'comments',
-    "Phone call" => 'phone',
-    "Video call" => 'video-camera',
-    "Meeting" => 'coffee',
-    "Documents" => 'file-text',
-    "Sign language" => 'sign-language'
-  }
+  validates :name, presence: true
+  validates :picto, presence: true
 
   def name_translated(locale=I18n.locale)
     I18n.t("mean.#{name.downcase.split.join("_")}", locale: locale)
-  end
-
-  def picto
-    PICTOS[self.name]
   end
 
   def picto_i
