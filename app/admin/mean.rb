@@ -17,6 +17,7 @@ ActiveAdmin.register Mean do
     selectable_column
     column :id
     column :name
+    column :picto
     column :offers_count
     column :deals_count
     actions
@@ -26,11 +27,22 @@ ActiveAdmin.register Mean do
     attributes_table do
       row :id
       row :name
+      row :picto
       row :offers_count
       row :deals_count
       row :created_at
       row :updated_at
     end
   end
+
+  form do |f|
+    f.inputs "Mean details" do
+      f.input :name
+      f.input :picto
+    end
+    f.actions
+  end
+
+  permit_params :name, :picto
 
 end

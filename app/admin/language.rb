@@ -17,6 +17,7 @@ ActiveAdmin.register Language do
     selectable_column
     column :id
     column :name
+    column :code
     column :offers_count
     column :deals_count
     actions
@@ -26,6 +27,7 @@ ActiveAdmin.register Language do
     attributes_table do
       row :id
       row :name
+      row :code
       row :offers_count
       row :deals_count
       row :created_at
@@ -33,5 +35,14 @@ ActiveAdmin.register Language do
     end
   end
 
+  form do |f|
+    f.inputs "Language details" do
+      f.input :name
+      f.input :code
+    end
+    f.actions
+  end
+
+  permit_params :name, :code
 
 end
