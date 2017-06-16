@@ -174,7 +174,6 @@ if ENV['ENV'] != "prod"
       offer.priced!
       offers_free.delete(offer)
       offers_priced << offer
-      offer.advisor.pricing_enabled!
     end
   end
 

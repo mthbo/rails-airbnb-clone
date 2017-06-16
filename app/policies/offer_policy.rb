@@ -1,5 +1,9 @@
 class OfferPolicy < ApplicationPolicy
 
+  def new?
+    record.advisor == user
+  end
+
   def create?
     record.advisor == user && !user.no_pricing?
   end
