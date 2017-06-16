@@ -190,6 +190,10 @@ class User < ApplicationRecord
     offers_published.where(pricing: :priced)
   end
 
+  def offers_pricing_possible
+    offers_published.where(free_deals: 0)
+  end
+
 
   # User deals as advisor
 

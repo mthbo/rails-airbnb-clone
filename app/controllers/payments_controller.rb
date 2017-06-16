@@ -25,7 +25,8 @@ private
     @customer = Stripe::Customer.create(
       source: params[:stripeToken],
       email:  params[:stripeEmail],
-      description: "#{@deal.client.first_name} #{@deal.client.last_name}"
+      description: "#{@deal.client.first_name} #{@deal.client.last_name}",
+      metadata: { user_id: @deal.client.id }
     )
     @deal.client.update(stripe_customer_id: @customer.id)
   end

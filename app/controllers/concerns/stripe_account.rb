@@ -6,7 +6,7 @@ module StripeAccount
       country: @user.country_code,
       type: 'custom',
       metadata: {
-        internal_id: @user.id
+        user_id: @user.id
       },
       payout_schedule: {
         interval: "manual"
@@ -18,6 +18,7 @@ module StripeAccount
     })
     @user.stripe_account_id = @account.id
     @user.save
+    @user.offers_pricing_possible.each { |offer| offer.priced! }
     update_stripe_account
   end
 
