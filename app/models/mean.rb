@@ -7,6 +7,8 @@ class Mean < ApplicationRecord
   validates :name, presence: true
   validates :picto, presence: true
 
+  default_scope -> { order(id: :ASC) }
+
   def name_translated(locale=I18n.locale)
     I18n.t("mean.#{name.downcase.split.join("_")}", locale: locale)
   end
