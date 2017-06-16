@@ -262,8 +262,8 @@ class Deal < ApplicationRecord
   end
 
   def deadline_must_be_before_limit
-    errors.add(:deadline, :after_limit, days: 90) if
-      deadline.present? && deadline > 90.days.from_now
+    errors.add(:deadline, :after_limit, days: 83) if
+      deadline.present? && deadline > 83.days.from_now
   end
 
   def proposition_deadline_must_be_future
