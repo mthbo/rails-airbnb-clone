@@ -252,7 +252,7 @@ class Offer < ApplicationRecord
 
   def amounts_view(locale, currency_code)
     html = ""
-    if free? || !self.adsivor.pricing_available? || !self.advisor.pricing_enabled?
+    if free? || !self.advisor.pricing_available? || !self.advisor.pricing_enabled?
       html << "<strong>#{I18n.t('offers.amounts.free', locale: locale)}</strong>"
     elsif median_amount_cents.nil?
       html << "<span class='medium-gray'>#{I18n.t('offers.amounts.no_history', locale: locale)}</span>"
