@@ -42,12 +42,6 @@
     "POSTMARK_API_KEY": {
       "required": true
     },
-    "POSTMARK_API_TOKEN": {
-      "required": true
-    },
-    "POSTMARK_INBOUND_ADDRESS": {
-      "required": true
-    },
     "POSTMARK_SMTP_SERVER": {
       "required": true
     },
