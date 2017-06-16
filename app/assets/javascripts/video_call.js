@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-  // get a guaranteed unique and random room name inside appear.in
 
   var $roomNameField = $("#deal_room_name");
 
