@@ -33,6 +33,5 @@
 //= require search
 //= require star_rating
 //= require user_details
-//= require video_call
 
 

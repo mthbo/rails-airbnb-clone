@@ -25,6 +25,7 @@ ActiveAdmin.register Deal do
     end
     column :status
     column :payment_state
+    column :room_name
     column :currency_code
     column :amount
     column :fees

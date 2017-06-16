@@ -41,9 +41,6 @@
   </div>
 
   <%= f.hidden_field :title, value: @offer.title %>
-  <% if @offer.video_call? %>
-    <%= f.hidden_field :room_name %>
-  <% end %>
 
   <div class="text-right padded-top-s">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-yellow", data: {disable_with: t('.sending') }) do %>

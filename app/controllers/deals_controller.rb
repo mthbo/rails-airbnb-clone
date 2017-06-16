@@ -23,6 +23,10 @@ class DealsController < ApplicationController
     @deal.client = current_user
     @deal.increment_notifications(@deal.advisor)
     if @deal.save
+      if @deal.video_call?
+        @deal.room_name = "/papoters-#{@deal.id}-#{SecureRandom.urlsafe_base64}"
+        @deal.save(validate: false)
+      end
       NewDealCardsBroadcastJob.perform_later(@deal)
       RequestExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
       DealMailer.deal_request(@deal).deliver_later
@@ -199,7 +203,6 @@ class DealsController < ApplicationController
       :request,
       :status,
       :messages_disabled,
-      :room_name,
       :deadline,
       :amount,
       :currency_code,
