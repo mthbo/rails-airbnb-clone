@@ -5,5 +5,5 @@
     <h6 class="medium-gray"><%= t '.offer_inactive_advisor' %></h6>
   <% end %>
 <% elsif offer.inactive? %>
-  <h6 class="medium-gray"><%= t '.offer_inactive_advisor', advisor_name: offer.advisor.first_name %></h6>
+  <h6 class="medium-gray"><%= t '.offer_inactive_client', advisor_name: offer.advisor.first_name %></h6>
 <% end %>
