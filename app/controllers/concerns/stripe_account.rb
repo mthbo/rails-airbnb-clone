@@ -18,7 +18,10 @@ module StripeAccount
     })
     @user.stripe_account_id = @account.id
     @user.save
-    @user.offers_pricing_possible.each { |offer| offer.priced! }
+    @user.offers_pricing_possible.each do |offer|
+      offer.priced!
+      offer.index!
+    end
     update_stripe_account
   end
 

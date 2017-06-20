@@ -113,7 +113,7 @@ class DealsController < ApplicationController
     end
     offer = @deal.offer
     offer.free_deals -= 1 if offer.free_deals > 0
-    offer.priced! if (offer.free_deals == 0 && offer.advisor.stripe_account_id.present? && offer.advisor.pricing_enabled? )
+    offer.priced! if (offer.free_deals == 0 && offer.advisor.pricing_enabled?)
     offer.save
     offer.index!
     respond_to do |format|

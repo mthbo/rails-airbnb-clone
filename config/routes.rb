@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   ActiveAdmin.routes(self)
   mount Attachinary::Engine => "/attachinary"
-
   mount ActionCable.server => '/cable'
 
   # Sidekiq Web UI, only for admins.
