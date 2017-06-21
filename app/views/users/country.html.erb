@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  <%= "Papoters | #{t('.country_title')}" %>
-<% end %>
+<% content_for :title, "Papoters | #{t('.country_title')}" %>
 
 <%= simple_form_for @user,  url: update_country_users_path, method: :patch do |f| %>
   <%= f.error_notification %>

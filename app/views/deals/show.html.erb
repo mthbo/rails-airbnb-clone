@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  <%= "Papoters | ##{t 'session'}-#{@deal.id}" %>
-<% end %>
+<% content_for :title, "Papoters | ##{t 'session'}-#{@deal.id}" %>
 
 <div id="deal-page" class= "padded-top-xxl padded-bottom-l bg-light-gray" data-deal-id="<%= @deal.id %>" >
 

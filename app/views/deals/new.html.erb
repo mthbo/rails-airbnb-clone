@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  <%= "Papoters | #{@offer.title} - #{t '.request'}" %>
-<% end %>
+<% content_for :title, "Papoters | #{@offer.title} - #{t '.request'}" %>
 
 <h2><%= t '.new_request_to', name: @offer.advisor.first_name %></h2>
 <h4><%= @offer.title %></h4>

@@ -111,6 +111,10 @@ class User < ApplicationRecord
     end
   end
 
+  def meta_description
+    self.bio.present? ? self.bio : nil
+  end
+
   def currency
     Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
   end

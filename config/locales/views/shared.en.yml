@@ -7,7 +7,7 @@ en:
     sign_in: "Log in"
     sign_out: "Logout"
   footer:
-    home: "Home"
+    need_advice: "Need for advice?"
     be_advisor: "Become advisor"
     about: "About"
     t&p: "Terms & Privacy"

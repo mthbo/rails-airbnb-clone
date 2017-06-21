@@ -1,6 +1,4 @@
-<% content_for :title do %>
-  <%= "Papoters | ##{t 'session'}-#{@deal.id} - #{t '.new_proposition'}" %>
-<% end %>
+<% content_for :title, "Papoters | ##{t 'session'}-#{@deal.id} - #{t '.new_proposition'}" %>
 
 <h2><%= t '.new_proposition_for', name: @deal.client.first_name %></h2>
 <h4>
