@@ -1,6 +1,6 @@
 fr:
   title: "Papoters | Le marché des savoirs"
-  description: "Papoters est un lieu de partage des savoirs où chacun peut recevoir et offrir des services de conseil de manière simple et efficace."
+  description: "Papoters est un lieu de partage des savoirs où chacun peut recevoir et offrir des services de conseil."
   activerecord:
     attributes:
       offer:

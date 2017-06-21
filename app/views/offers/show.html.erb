@@ -1,6 +1,13 @@
-
-<% content_for :title do %>
-  <%= "Papoters | #{@offer.title}" %>
+<% content_for :title, "Papoters | #{@offer.title}" %>
+<% content_for :meta_description, @offer.meta_description %>
+<% content_for :meta_image do %>
+  <% if @offer.advisor && @offer.advisor.photo.present? %>
+    <%= cl_image_path(@offer.advisor.photo.path, secure: true) %>
+  <% elsif @offer.advisor && @offer.advisor.facebook_picture_url %>
+    <%= @offer.advisor.facebook_picture_url %>
+  <% else %>
+    <%= image_url("avatar.png") %>
+  <% end %>
 <% end %>
 
 <div class="padded-top-xxl padded-bottom-xxl bg-light-gray">

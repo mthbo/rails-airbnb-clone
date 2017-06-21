@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title><%= yield_with_default(:title, t('title')) %></title>
+<meta name="description" content="<%= yield_with_default(:meta_description, t('description')) %>">
+
+<meta property="og:title" content="<%= yield_with_default(:title, t('title')) %>" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="<%= request.original_url %>" />
+<meta property="og:image" content="<%= yield_with_default(:meta_image, image_url('papoters_favicon.png')) %>" />
+<meta property="og:description" content="<%= yield_with_default(:meta_description, t('description')) %>" />
+<meta property="og:site_name" content="Papoters" />
+<meta property="og:locale" content="<%= I18n.locale || I18n.default_locale %>" />
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@papotersapp">
+<meta name="twitter:title" content="<%= yield_with_default(:title, t('title')) %>">
+<meta name="twitter:description" content="<%= yield_with_default(:meta_description, t('description')) %>">
+<meta name="twitter:creator" content="@papotersapp">
+<meta name="twitter:image:src" content="<%= yield_with_default(:meta_image, image_url('papoters_favicon.png')) %>">
+
+<%= favicon_link_tag('papoters_favicon.png') %>
+<%= csrf_meta_tags %>
+<%= action_cable_meta_tag %>
+<%= stylesheet_link_tag 'application', media: 'all' %>

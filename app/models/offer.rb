@@ -226,6 +226,9 @@ class Offer < ApplicationRecord
     median_amount.exchange_to(currency_code) if median_amount
   end
 
+  def meta_description
+    description[0..160]
+  end
 
   # For Algolia
 
