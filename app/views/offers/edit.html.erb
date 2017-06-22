@@ -2,12 +2,11 @@
 
 <h2><%= t '.edit_offer' %></h2>
 
-<div data-offer-status-id="<%= @offer.id %>">
-  <%= render 'offers/status_trigger', offer: @offer %>
-</div>
-
-<div data-offer-info-id="<%= @offer.id %>" class="padded-bottom-xs">
+<div class="edit-offer-status padded-bottom-xs">
   <%= render 'offers/status_info', offer: @offer %>
+  <div>
+    <%= render 'offers/status_trigger', offer: @offer %>
+  </div>
 </div>
 
 <%= render 'form' %>

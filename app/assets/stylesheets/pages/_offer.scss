@@ -64,6 +64,15 @@
   margin-top: 29px;
 }
 
+.edit-offer-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  h6 {
+    margin-right: 15px;
+  }
+}
+
 
 @media (max-width: $screen-sm-max) {
   .offer-container {
