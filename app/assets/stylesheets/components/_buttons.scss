@@ -81,6 +81,11 @@
   vertical-align: middle;
 }
 
+.btn-small {
+  font-size: 14px;
+  padding: 4px 8px;
+}
+
 .btn-gray {
   border: $medium-gray solid 1px;
   color: $dark-gray;
@@ -97,6 +102,22 @@
     color: $dark-gray;
   };
 }
+
+.btn-dark-gray {
+  border: none;
+  color: white;
+  background: $gradient-gray-dark;
+  &:hover {
+    background: $reverse-gradient-gray-dark;
+  };
+  &:active {
+    background: $gradient-gray-dark;
+  };
+  &:focus {
+    color: white;
+  };
+}
+
 
 .btn-white {
   border: $medium-gray solid 1px;

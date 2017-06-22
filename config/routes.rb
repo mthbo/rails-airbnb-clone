@@ -70,6 +70,7 @@ Rails.application.routes.draw do
       end
       member do
         post 'pin', to: 'offers#pin'
+        post 'status', to: 'offers#status'
       end
     end
 

@@ -9,11 +9,15 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def update?
-    record.advisor == user
+    record.advisor == user && !record.archived?
+  end
+
+  def status?
+    record.advisor == user && !record.archived?
   end
 
   def pin?
-    record.advisor != user
+    record.advisor != user && !record.archived?
   end
 
   def remove?

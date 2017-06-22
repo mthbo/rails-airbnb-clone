@@ -42,6 +42,7 @@ gem 'phony_rails'
 gem 'acts_as_votable'
 gem 'bootstrap-datepicker-rails'
 gem 'postmark-rails'
+gem 'clipboard-rails'
 
 gem 'rails-i18n', '~> 5.0.0'
 gem 'devise-i18n'

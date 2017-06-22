@@ -1,6 +1,6 @@
 class OffersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
-  before_action :find_offer, only: [:show, :edit, :update, :pin]
+  before_action :find_offer, only: [:show, :edit, :update, :status, :pin]
   layout 'advisor_form', only: [:new, :create, :edit, :update]
 
   def show
@@ -42,6 +42,14 @@ class OffersController < ApplicationController
       end
     else
       render :edit
+    end
+  end
+
+  def status
+    if @offer.active?
+      @offer.inactive!
+    elsif @offer.inactive?
+      @offer.active!
     end
   end
 

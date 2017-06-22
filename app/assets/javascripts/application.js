@@ -10,16 +10,19 @@
 //= require jquery-bar-rating
 //= require algolia/v3/algoliasearch.min
 //= require i18n/translations
+//= require clipboard
 
 //= require arrow_scroll
 //= require bank_account
 //= require cable
 //= require checkbox
 //= require conversation_scroll
+//= require copy_link
 //= require dashboard_tab
 //= require datepicker
 //= require env
 //= require id_file_input
+//= require facebook_share
 //= require flashes
 //= require google_maps_autocomplete
 //= require home_background
@@ -28,6 +31,8 @@
 //= require locale
 //= require mobile_detection
 //= require navbar_menu
+//= require offer_pin
+//= require offer_status
 //= require proposition
 //= require radio_button
 //= require search

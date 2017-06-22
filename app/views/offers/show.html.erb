@@ -27,9 +27,7 @@
                   </div>
 
                   <div class="col-xs-12">
-                    <div data-offer-info-id="<%= @offer.id %>">
-                      <%= render 'offers/status_info', offer: @offer %>
-                    </div>
+                    <%= render 'offers/status_info', offer: @offer %>
                   </div>
 
                 </div>
@@ -44,9 +42,7 @@
                   <div class="offer-top-right">
                     <% if policy(@offer).update? %>
                       <div class="offer-trigger">
-                        <div data-offer-status-id="<%= @offer.id %>" class="offer-trigger-slider">
-                          <%= render 'offers/status_trigger', offer: @offer %>
-                        </div>
+                        <%= render 'offers/status_trigger', offer: @offer %>
                       </div>
                     <% else %>
                       <h2>
@@ -82,6 +78,11 @@
                 </div>
               </div>
 
+              <div class="offer-share">
+                <h6>Partager</h6>&nbsp;&nbsp;&nbsp;
+                <button title="Copier le lien" id="copyLinkBtn" class="btn btn-small btn-dark-gray"><i class="fa fa-link fa-fw" aria-hidden="true"></i></button>&nbsp;&nbsp;&nbsp;
+                <button title="Partager sur Facebook" id="facebookShareBtn" class="btn btn-small btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></button>&nbsp;&nbsp;&nbsp;
+              </div>
 
             </div>
 
