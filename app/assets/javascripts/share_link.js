@@ -3,10 +3,17 @@ $(document).ready(function(){
   $copyLinkBtn = $('#copyLinkBtn');
   $copyLinkBtn.attr("data-clipboard-text", window.location.href);
 
-  $copyLinkBtn.tooltip({
-    trigger: 'hover',
-    placement: 'auto bottom'
-  });
+  if (isMobile()) {
+    $copyLinkBtn.tooltip({
+      trigger: 'click',
+      placement: 'auto bottom'
+    });
+  } else {
+    $copyLinkBtn.tooltip({
+      trigger: 'hover',
+      placement: 'auto bottom'
+    });
+  }
 
   // Clipboard
 
