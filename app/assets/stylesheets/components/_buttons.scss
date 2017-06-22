@@ -27,8 +27,9 @@
 .offer-trigger-slider {
   height: 24px;
   width: 42px;
-  border-radius: 13px;
+  border-radius: 12px;
   position: relative;
+  transition: all 0.3s ease;
 }
 
 .activate-offer-slider {
@@ -36,7 +37,7 @@
 }
 
 .inactivate-offer-slider {
-  background: $gradient-green-dark;
+  background-color: $green;
 }
 
 .offer-trigger-btn {
@@ -46,7 +47,7 @@
   width: 20px;
   border-radius: 50%;
   background-color: white;
-  transition: none;
+  transition: all 0.3s ease;
 }
 
 .inactivate-offer-btn {
@@ -275,4 +276,21 @@
     padding: 10px 15px;
     height: 40px;
   };
+  .offer-trigger-slider {
+    height: 22px;
+    width: 38px;
+    border-radius: 11px;
+  }
+  .offer-trigger-btn {
+    height: 18px;
+    width: 18px;
+  }
+  .inactivate-offer-btn {
+    right: 2px;
+    left: 18px;
+  }
+  .activate-offer-btn {
+    left: 2px;
+    right: 18px;
+  }
 }
