@@ -30,7 +30,7 @@ $(document).ready(function() {
         $statusInfo.fadeIn();
       });
     } else if ($(this).hasClass('inactivate-offer-btn')) {
-      $(this).animate({left:"-=18px"}, 'fast', 'swing', function() {
+      $(this).animate({right:"+=18px"}, 'fast', 'swing', function() {
         $(this).addClass('activate-offer-btn');
         $(this).removeClass('inactivate-offer-btn');
         $(this).parent().addClass('activate-offer-slider');
