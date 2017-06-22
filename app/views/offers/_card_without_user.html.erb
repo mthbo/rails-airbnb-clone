@@ -16,9 +16,7 @@
           <h2><%= offer.title %></h2>
         </div>
         <div class="col-xs-12">
-          <div data-offer-info-id="<%= offer.id %>">
-            <%= render 'offers/status_info', offer: offer %>
-          </div>
+          <%= render 'offers/status_info', offer: offer %>
         </div>
       </div>
 
@@ -59,9 +57,7 @@
         <div class="offer-card-top-right">
           <% if policy(offer).update? %>
             <div class="offer-trigger">
-              <div data-offer-status-id="<%= offer.id %>" class="offer-trigger-slider">
-                <%= render 'offers/status_trigger', offer: offer %>
-              </div>
+              <%= render 'offers/status_trigger', offer: offer %>
             </div>
           <% else %>
             <h2>

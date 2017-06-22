@@ -15,7 +15,7 @@
   </div>
 </div>
 
-<div class="padded-top-xs padded-bottom-xl">
+<div class="padded-top-xs padded-bottom-s">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
@@ -39,6 +39,9 @@
           <% else %>
             <p><%= t('.no_information', user: @user.first_name) %></p>
           <% end %>
+        </div>
+        <div class="padded-top-xs">
+          <%= render 'shared/share' %>
         </div>
       </div>
     </div>

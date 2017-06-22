@@ -113,6 +113,7 @@ fr:
     amazing: formidable
   money: "%{amount} %{currency}"
   session: session
+  free: GRATUIT
   views:
     pagination:
       first: "&laquo;"

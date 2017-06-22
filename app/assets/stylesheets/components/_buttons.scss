@@ -226,6 +226,36 @@
   };
 }
 
+.btn-linkedin {
+  border: none;
+  color: white;
+  background: $gradient-linkedin;
+  &:hover {
+    background: $reverse-gradient-linkedin;
+  };
+  &:active {
+    background: $gradient-linkedin;
+  };
+  &:focus {
+    color: white;
+  };
+}
+
+.btn-twitter {
+  border: none;
+  color: white;
+  background: $gradient-twitter;
+  &:hover {
+    background: $reverse-gradient-twitter;
+  };
+  &:active {
+    background: $gradient-twitter;
+  };
+  &:focus {
+    color: white;
+  };
+}
+
 .btn-round {
   border-radius: 50%;
 }
@@ -235,17 +265,12 @@
   .btn {
     font-size: 14px;
   };
+  .btn-small {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
   .btn-form {
     padding: 10px 15px;
     height: 40px;
   };
-  .offer-trigger-slider {
-    height: 22px;
-    width: 39px;
-    border-radius: 11px;
-  };
-  .offer-trigger-btn {
-    height: 18px;
-    width: 18px;
-  }
 }

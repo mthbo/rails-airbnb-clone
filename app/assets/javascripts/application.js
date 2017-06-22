@@ -17,12 +17,10 @@
 //= require cable
 //= require checkbox
 //= require conversation_scroll
-//= require copy_link
 //= require dashboard_tab
 //= require datepicker
 //= require env
 //= require id_file_input
-//= require facebook_share
 //= require flashes
 //= require google_maps_autocomplete
 //= require home_background
@@ -36,6 +34,10 @@
 //= require proposition
 //= require radio_button
 //= require search
+//= require share_facebook
+//= require share_link
+//= require share_linkedin
+//= require share_twitter
 //= require star_rating
 //= require user_details
 

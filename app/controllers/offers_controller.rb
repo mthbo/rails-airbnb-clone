@@ -28,17 +28,12 @@ class OffersController < ApplicationController
 
   def update
     if @offer.update(offer_params)
-      respond_to do |format|
-        format.html {
-          if @offer.archived?
-            flash[:notice] = t('.notice_removed', title: @offer.title)
-            redirect_to user_path(current_user)
-          else
-            flash[:notice] = t('.notice_updated', title: @offer.title)
-            redirect_to offer_path(@offer)
-          end
-        }
-        format.js
+      if @offer.archived?
+        flash[:notice] = t('.notice_removed', title: @offer.title)
+        redirect_to user_path(current_user)
+      else
+        flash[:notice] = t('.notice_updated', title: @offer.title)
+        redirect_to offer_path(@offer)
       end
     else
       render :edit

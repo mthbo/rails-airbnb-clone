@@ -1,11 +1,11 @@
 <% if offer.active? %>
   <div class="offer-trigger-slider inactivate-offer-slider">
-    <%= link_to status_offer_path(offer), method: :post, remote: :true, "data-no-loader": true, class: "offer-trigger-btn inactivate-offer-btn", title: "Désactiver l'offre", "data-offer-id": offer.id do %>
+    <%= link_to status_offer_path(offer), method: :post, remote: :true, "data-no-loader": true, class: "offer-trigger-btn inactivate-offer-btn", title: t('.inactivate_offer'), "data-offer-id": offer.id do %>
     <% end %>
   </div>
 <% elsif offer.inactive? %>
   <div class="offer-trigger-slider activate-offer-slider">
-    <%= link_to status_offer_path(offer), method: :post, remote: :true, "data-no-loader": true, class: "offer-trigger-btn activate-offer-btn", title: "Activer l'offre", "data-offer-id": offer.id do %>
+    <%= link_to status_offer_path(offer), method: :post, remote: :true, "data-no-loader": true, class: "offer-trigger-btn activate-offer-btn", title: t('.activate_offer'), "data-offer-id": offer.id do %>
     <% end %>
   </div>
 <% end %>

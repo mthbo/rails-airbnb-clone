@@ -85,9 +85,12 @@ en:
         other: "%{count} reviews"
       first_review_advisor: "Give advice sessions to get your first reviews!"
       first_review_client: "Be advised by %{advisor_name} and leave a first review for this offer!"
+    status_trigger:
+      activate_offer: "Activate offer"
+      inactivate_offer: "Inactivate offer"
     status_info:
-      offer_active_advisor: "This offer is active. Switch to status 'inactive' if you don't want to receive requests."
-      offer_inactive_advisor: "This offer is inactive. Switch to status 'active' if you want to receive requests."
+      offer_active_advisor: "This offer is active, inactivate it if you don't want to receive requests."
+      offer_inactive_advisor: "This offer is inactive, activate it if you want to receive requests."
       offer_inactive_client: "This offer is inactive. %{advisor_name} doesn't accept any requests for this offer at this time."
     deals_count:
       sessions_html:
@@ -100,6 +103,7 @@ en:
     amounts:
       free: "FREE"
       no_history: "no history"
-
-
+    pin_button:
+      pin_offer: "Pin offer"
+      forget_offer: "Forget offer"
 

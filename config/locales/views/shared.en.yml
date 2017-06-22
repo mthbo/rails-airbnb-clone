@@ -17,5 +17,19 @@ en:
     the_papoters_team: the Papoters team
   mail_footer:
     the_knowledge_marketplace: Papoters, the knowledge marketplace
+  share:
+    share: Share
+    copy_link: Copy link
+    link_copied: "Link copied!"
+    copy_failed: "Copy failed!"
+    share_on_fb: Share on Facebook
+    share_on_li: Share on LinkedIn
+    share_on_tw: Share on Twitter
+    have_a_look: "Have%20a%20look%20to%20this%20page%20on%20Papoters"
+    advice: advice
+    services: services
+    collaborative: collaborative
+    market: market
+    knowledge: knowledge
 
 

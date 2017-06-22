@@ -85,9 +85,12 @@ fr:
         other: "%{count} avis"
       first_review_advisor: "Donnez des sessions de conseil pour obtenir vos premiers avis!"
       first_review_client: "Prenez conseil auprès de %{advisor_name} et laissez un premier avis pour cette offre!"
+    status_trigger:
+      activate_offer: "Activer l'offre"
+      inactivate_offer: "Désactiver l'offre"
     status_info:
-      offer_active_advisor: "Cette offre est active. Passez son status à 'inactif' si vous ne souhaitez pas recevoir de demandes."
-      offer_inactive_advisor: "Cette offre est inactive. Passez son status à 'actif' si vous souhaitez recevoir des demandes."
+      offer_active_advisor: "Cette offre est active, désactivez la si vous ne souhaitez pas recevoir de demandes."
+      offer_inactive_advisor: "Cette offre est inactive, activez la si vous souhaitez recevoir des demandes."
       offer_inactive_client: "Cette offre est inactive. %{advisor_name} n'accepte pas les demandes pour cette offre pour le moment."
     deals_count:
       sessions_html:
@@ -100,5 +103,9 @@ fr:
     amounts:
       free: "GRATUIT"
       no_history: "pas d'historique"
+    pin_button:
+      pin_offer: "Epingler l'offre"
+      forget_offer: "Oublier l'offre"
+
 
 

@@ -59,6 +59,11 @@ $flash-blue: #4d7093;
 $facebook-blue: #3b5998;
 $dark-facebook-blue: #18387B;
 
+$linkedin-blue: #0077B5;
+$dark-linkedin-blue: #004E77;
+
+$twitter-blue: #00ACED;
+$dark-twitter-blue: #0084B4;
 
 
 $gradient: linear-gradient(164deg, rgba(255, 201, 56, 0.5) 0%, rgba(66, 211, 170, 0.5) 100%);
@@ -95,4 +100,10 @@ $reverse-gradient-gray-dark: linear-gradient(344deg, $medium-gray 0%, $dark-gray
 
 $gradient-facebook: linear-gradient(164deg, $facebook-blue 0%, $dark-facebook-blue 100%);
 $reverse-gradient-facebook: linear-gradient(344deg, $facebook-blue 0%, $dark-facebook-blue 100%);
+
+$gradient-linkedin: linear-gradient(164deg, $linkedin-blue 0%, $dark-linkedin-blue 100%);
+$reverse-gradient-linkedin: linear-gradient(344deg, $linkedin-blue 0%, $dark-linkedin-blue 100%);
+
+$gradient-twitter: linear-gradient(164deg, $twitter-blue 0%, $dark-twitter-blue 100%);
+$reverse-gradient-twitter: linear-gradient(344deg, $twitter-blue 0%, $dark-twitter-blue 100%);
 

@@ -18,7 +18,14 @@ $(document).ready(function() {
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-  $('#facebookShareBtn').click(function() {
+  var $fbBtn = $('#facebookShareBtn');
+
+  $fbBtn.tooltip({
+    trigger: 'hover',
+    placement: 'auto bottom'
+  });
+
+  $fbBtn.click(function() {
     FB.ui({
       method: 'share',
       display: 'popup',

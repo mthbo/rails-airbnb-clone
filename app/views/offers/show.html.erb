@@ -56,15 +56,15 @@
 
               <div class="offer-details">
                 <div class="row">
-                  <div class="col-xs-12 col-sm-4 padded-bottom-xs">
+                  <div class="col-xs-12 col-sm-4">
                     <h6><%= t '.languages', count: @offer.languages.count %></h6>
                     <%= render 'offers/languages_long', offer: @offer %>
                   </div>
-                  <div class="col-xs-12 col-sm-4 padded-bottom-xs">
+                  <div class="col-xs-12 col-sm-4">
                     <h6><%= t '.means', count: @offer.means.count %></h6>
                     <%= render 'offers/means_long', offer: @offer %>
                   </div>
-                  <div class="col-xs-12 col-sm-4 text-right padded-bottom-xs">
+                  <div class="col-xs-12 col-sm-4 text-right">
                     <% if policy(@offer).edit? %>
                       <p>
                         <%= link_to edit_offer_path(@offer) do %>
@@ -72,16 +72,16 @@
                         <% end %>
                       </p>
                     <% elsif @offer.active? %>
-                      <%= render 'deals/request_button', size: 'big', offer: @offer %>
+                      <div class="padded-bottom-xs">
+                        <%= render 'deals/request_button', size: 'big', offer: @offer %>
+                      </div>
                     <% end %>
                   </div>
                 </div>
               </div>
 
               <div class="offer-share">
-                <h6>Partager</h6>&nbsp;&nbsp;&nbsp;
-                <button title="Copier le lien" id="copyLinkBtn" class="btn btn-small btn-dark-gray"><i class="fa fa-link fa-fw" aria-hidden="true"></i></button>&nbsp;&nbsp;&nbsp;
-                <button title="Partager sur Facebook" id="facebookShareBtn" class="btn btn-small btn-facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></button>&nbsp;&nbsp;&nbsp;
+                <%= render 'shared/share' %>
               </div>
 
             </div>
