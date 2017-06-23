@@ -33,6 +33,8 @@ $(document).ready(function() {
     FB.ui({
       method: 'share',
       display: 'popup',
+      quote: I18n.t('share.have_a_look'),
+      mobile_iframe: true,
       href: window.location.href,
     }, function(response){});
   });
