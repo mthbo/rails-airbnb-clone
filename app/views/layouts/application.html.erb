@@ -15,9 +15,7 @@
       <%= yield %>
     </div>
 
-    <div id="current-locale" data-locale="<%= I18n.locale %>"></div>
-    <div id="current-env" data-env="<%= ENV['ENV'] %>"></div>
-
+    <%= render "shared/config_vars" %>
     <%= render "shared/footer" %>
     <%= render "shared/loader" %>
 

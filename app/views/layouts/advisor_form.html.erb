@@ -21,8 +21,7 @@
       </div>
     </div>
 
-    <div id="current-locale" data-locale="<%= I18n.locale %>"></div>
-
+    <%= render "shared/config_vars" %>
     <%= render "shared/loader" %>
 
     <%= javascript_include_tag 'application' %>

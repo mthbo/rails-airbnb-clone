@@ -1,8 +1,10 @@
 $(document).ready(function() {
 
+  var fbAppId = $("#fb-app-id").data("id");
+
   window.fbAsyncInit = function() {
     FB.init({
-      appId            : "<%= ENV['FB_ID'] %>" ,
+      appId            : fbAppId,
       autoLogAppEvents : true,
       xfbml            : true,
       version          : 'v2.9'
