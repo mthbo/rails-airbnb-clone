@@ -3,7 +3,7 @@ $(document).ready(function() {
   if ($('.my-navbar').length > 0) {
 
     setLocale();
-    var env = setEnv();
+    var env = $("#current-env").data("env");
 
     var search = instantsearch({
       appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",

@@ -19,7 +19,6 @@
 //= require conversation_scroll
 //= require dashboard_tab
 //= require datepicker
-//= require env
 //= require id_file_input
 //= require flashes
 //= require google_maps_autocomplete

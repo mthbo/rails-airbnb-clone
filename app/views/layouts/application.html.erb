@@ -22,6 +22,7 @@
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "https://cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.js" %>
     <%= cloudinary_js_config %>
+    <%= yield(:after_js) %>
 
   </body>
 
