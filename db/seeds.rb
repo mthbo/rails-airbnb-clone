@@ -1,4 +1,4 @@
-if ENV['ENV'] != "prod"
+if ENV['PIPELINE_ENV'] != "prod"
 
   Objective.destroy_all
   Message.destroy_all
