@@ -21,6 +21,7 @@
 //= require datepicker
 //= require id_file_input
 //= require flashes
+//= require google_analytics
 //= require google_maps_autocomplete
 //= require home_background
 //= require init_attachinary
