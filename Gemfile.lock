@@ -88,7 +88,6 @@ GEM
       thor (~> 0.19)
     builder (3.2.3)
     byebug (9.0.6)
-    chartkick (2.2.4)
     clipboard-rails (1.7.1)
     cloudinary (1.1.7)
       aws_cf_signer
