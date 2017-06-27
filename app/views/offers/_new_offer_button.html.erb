@@ -1,0 +1,11 @@
+<% if policy(user.offers.new).new? %>
+  <% if user.no_pricing? %>
+    <%= link_to country_users_path, class: "btn btn-form btn-green" do %>
+      <i class='fa fa-plus fa-fw' aria-hidden='true'></i>&nbsp; <%= label %>
+    <% end %>
+  <% else %>
+    <%= link_to new_offer_path, class: "btn btn-form btn-green" do %>
+      <i class='fa fa-plus fa-fw' aria-hidden='true'></i>&nbsp; <%= label %>
+    <% end %>
+  <% end %>
+<% end %>

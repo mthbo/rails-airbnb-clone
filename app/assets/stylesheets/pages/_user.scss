@@ -59,6 +59,14 @@
   display: flex;
 }
 
+.user-welcome-btns {
+  .btn {
+    margin: 12px 0;
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .user-offers-info {
     padding: 15px;

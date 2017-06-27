@@ -23,22 +23,18 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [
       :first_name,
       :last_name,
+      :bio,
+      :birth_date,
+      :photo,
       :email,
-      :password,
       :address,
       :city,
       :zip_code,
       :state,
       :country_code,
-      :photo,
-      :bio,
-      :password,
       :phone_number,
-      :birth_date,
-      :locale,
-      :currency_code,
-      :stripe_customer_id,
-      :stripe_account_id
+      :password,
+      :locale
     ])
   end
 

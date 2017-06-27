@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
     resources :users, only: [:show, :update] do
       collection do
+        get 'welcome', to: 'users#welcome'
         get 'dashboard', to: 'users#dashboard'
         get 'details', to: 'users#details'
         get 'bank', to: 'users#bank'

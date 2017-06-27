@@ -16,6 +16,7 @@ ActiveAdmin.register User do
     selectable_column
     column :id
     column :email
+    column :new
     column :first_name
     column :last_name
     column :age
@@ -101,6 +102,7 @@ ActiveAdmin.register User do
       end
     end
     attributes_table do
+      row :new
       row :created_at
       row :confirmed_at
       row :confirmation_token
@@ -129,6 +131,7 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "User" do
       f.input :admin
+      f.input :new
       f.input :confirmed_at
       f.input :country_code
       f.input :currency_code
@@ -138,6 +141,6 @@ ActiveAdmin.register User do
     f.actions
   end
 
-  permit_params :admin, :confirmed_at, :country_code, :currency_code, :pricing, :bank_status
+  permit_params :admin, :new, :confirmed_at, :country_code, :currency_code, :pricing, :bank_status
 
 end

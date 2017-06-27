@@ -85,7 +85,8 @@ if ENV['PIPELINE_ENV'] != "prod"
       country_code: "FR",
       bio: Faker::Lorem.paragraph(20),
       birth_date: Faker::Time.between(60.years.ago, 18.years.ago),
-      confirmed_at: Faker::Time.between(0.days.ago, 10.days.ago)
+      confirmed_at: Faker::Time.between(0.days.ago, 10.days.ago),
+      new: false
     )
     i += 1
   end

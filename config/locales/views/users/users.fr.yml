@@ -1,5 +1,12 @@
 fr:
   users:
+    welcome:
+      welcome: "Bienvenue"
+      glad_to_count_you_in: Nous sommes ravis de vous compter parmi les membres de la communauté!
+      discover_opportunities: Découvrez les opportunités qui s'offrent à vous sur Papoters.
+      find_an_advisor: Trouver un conseiller
+      see_your_profile: Voir votre profil
+      publish_an_offer: Publier une offre
     show:
       see_dashboard: "Voir mon tableau de bord"
       about_me: "A propos de moi"

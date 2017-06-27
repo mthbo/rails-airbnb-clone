@@ -1,0 +1,24 @@
+<% content_for :title, "Papoters | #{t('.welcome')}!" %>
+
+<div class="text-center padded-top-s padded-bottom-xs">
+  <div class="icon-big"><%= image_tag 'agreement.svg' %></div>
+  <p class="font-weight-normal blue"><%= "#{t('.welcome')} #{@user.first_name}!" %></p>
+</div>
+
+<p class="font-weight-normal"><%= t '.glad_to_count_you_in' %></p>
+<p><%= t '.discover_opportunities' %></p>
+
+<div class="padded-top-xs padded-bottom-xs user-welcome-btns text-center">
+  <%= link_to user_path(current_user), class: "btn btn-form btn-blue" do %>
+    <i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp;
+    <%= t('.see_your_profile') %>
+  <% end %>
+
+  <%= link_to root_path, class: "btn btn-form btn-yellow" do %>
+    <i class='fa fa-search fa-fw' aria-hidden="true"></i>&nbsp;
+    <%= t('.find_an_advisor') %>
+  <% end %>
+
+  <%= render 'offers/new_offer_button', user: current_user, label: t('.publish_an_offer') %>
+
+</div>

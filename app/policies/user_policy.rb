@@ -1,5 +1,9 @@
 class UserPolicy < ApplicationPolicy
 
+  def welcome?
+    user == record
+  end
+
   def dashboard?
     user == record
   end

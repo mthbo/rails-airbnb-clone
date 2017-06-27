@@ -1,5 +1,12 @@
 en:
   users:
+    welcome:
+      welcome: "Welcome"
+      glad_to_count_you_in: We are glad to count you in as a member of Papoters' cummunity!
+      discover_opportunities: Discover the opportunities that Papoters offers to you.
+      find_an_advisor: Find an advisor
+      see_your_profile: See your profile
+      publish_an_offer: Publish an offer
     show:
       see_dashboard: "See my dashboard"
       about_me: "About me"

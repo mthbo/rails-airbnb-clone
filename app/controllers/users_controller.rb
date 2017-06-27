@@ -2,11 +2,16 @@ class UsersController < ApplicationController
   include StripeAccount
   skip_before_action :authenticate_user!, only: [:show]
   before_action :find_user, only: [:show, :update]
-  before_action :find_current_user, only: [:country, :update_country, :dashboard, :details, :change_locale, :bank, :update_bank]
+  before_action :find_current_user, only: [:welcome, :country, :update_country, :dashboard, :details, :change_locale, :bank, :update_bank]
   layout 'advisor_form', only: [:country, :details, :bank, :update, :update_country, :update_bank]
 
   def show
     @deals_reviewed = @user.deals_reviewed.page(params[:page])
+  end
+
+  def welcome
+    @user.update(new: false)
+    render layout: "client_form"
   end
 
   def dashboard
