@@ -387,7 +387,6 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-datepicker-rails
   bootstrap-sass
-  chartkick
   clipboard-rails
   cloudinary (= 1.1.7)
   cocoon
