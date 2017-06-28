@@ -159,7 +159,7 @@ class User < ApplicationRecord
     if photo.present?
       ActionController::Base.helpers.cl_image_path(photo.path)
     else
-      facebook_picture_url || ActionController::Base.helpers.image_path("avatar.png")
+      facebook_picture_url
     end
   end
 
