@@ -155,6 +155,14 @@ class User < ApplicationRecord
     end
   end
 
+  def avatar_link
+    if photo.present?
+      ActionController::Base.helpers.cl_image_path(photo.path)
+    else
+      facebook_picture_url || ActionController::Base.helpers.image_path("avatar.png")
+    end
+  end
+
   def grade(locale=I18n.locale)
     if advisor_deals_closed_count > 20
       I18n.t('users.info.grade_4', locale: locale)

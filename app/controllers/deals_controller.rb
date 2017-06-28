@@ -24,7 +24,7 @@ class DealsController < ApplicationController
     @deal.increment_notifications(@deal.advisor)
     if @deal.save
       if @deal.video_call?
-        @deal.room_name = "/papoters-#{@deal.id}-#{SecureRandom.urlsafe_base64}"
+        @deal.room_name = "/#{ENV['APP_NAME']}-#{@deal.id}-#{SecureRandom.urlsafe_base64}"
         @deal.save(validate: false)
       end
       NewDealCardsBroadcastJob.perform_later(@deal)
