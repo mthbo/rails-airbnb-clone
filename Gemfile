@@ -44,6 +44,7 @@ gem 'money-rails'
 gem 'google_currency'
 gem 'stripe'
 gem 'gibbon'
+gem 'forest_liana'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'

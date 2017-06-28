@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount ForestLiana::Engine => '/forest'
   ActiveAdmin.routes(self)
   mount Attachinary::Engine => "/attachinary"
   mount ActionCable.server => '/cable'
