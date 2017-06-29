@@ -6,7 +6,7 @@ en:
       input_placeholder: "I need some advice for ..."
       arrow_down: "Find out more"
       inspirations_title: "Don't stay left with your questions, regardless of the moment."
-      guidelines_title: "The tailor-made approach: an advisor committed to meeting your need."
+      guidelines_title: "The tailor-made way: an advisor committed to meeting your need."
       guideline_title_1: "Find an advisor"
       guideline_title_2: "Reach an agreement"
       guideline_title_3: "Get advice"
@@ -20,6 +20,7 @@ en:
       guideline_text_4_1: "The session can be closed after the deadline set has passed."
       guideline_text_4_2: "Provide a feedback for the Papoters community: leave a review, rate the session and evaluate the achievement of the targets settled in the agreement."
       find_advisor_button: "Find an advisor"
+      offer_sample_title: Compare advising offers openly.
       be_advisor_title: "Your knowledge and your experience have value (too)!"
       be_advisor_subtitle: "Propose your services as advisor in a simple way and leverage your talents."
       be_advisor_button: "Become advisor"

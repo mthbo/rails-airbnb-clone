@@ -1,0 +1,47 @@
+<div class="offer-card-small">
+
+  <div class="offer-card-small-content">
+    <div class="container-fluid">
+
+      <div class="row padded-bottom-xs">
+        <div class="col-xs-12">
+          <h2><%= offer.title %></h2>
+        </div>
+        <div class="col-xs-12">
+          <%= render 'offers/status_info', offer: offer %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-3">
+          <%= render 'offers/deals_count', offer: offer %>
+        </div>
+        <div class="col-xs-9">
+          <div class="row">
+            <div class="col-xs-12 text-right">
+              <%= render 'offers/satisfaction', offer: offer %>
+            </div>
+            <div class="col-xs-12 text-right">
+              <%= render 'offers/amounts', offer: offer %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="offer-card-small-user bg-gradient">
+    <div class="offer-card-small-user-avatar">
+      <%= render 'users/avatar', user: offer.advisor, size: 'avatar-medium' %>
+    </div>
+    <div>
+      <%= render 'users/info', user: offer.advisor %>
+    </div>
+  </div>
+
+  <% if policy(offer).show? %>
+    <%= link_to "", offer_path(offer), class: "link offer-card-link" %>
+  <% end %>
+
+</div>

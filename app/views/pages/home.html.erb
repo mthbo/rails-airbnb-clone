@@ -41,7 +41,7 @@
     </div>
   </div>
 
-  <div style='background-image: url("<%= image_path('backgrounds/background_grid_gray.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white">
+  <div style='background-image: url("<%= image_path('backgrounds/background_grid_gray.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white home-guidelines">
     <div class="home-content-wrapper padded-bottom-l">
       <div class="home-flex-700">
         <h2><%= t '.guidelines_title' %></h2>
@@ -104,14 +104,44 @@
       </div>
     </div>
 
-    <div class="padded-top-xs">
+  </div>
+
+  <div class="bg-light-gray padded-top-l padded-bottom-xl">
+    <div class="home-content-wrapper padded-bottom-m text-center">
+      <div class="home-flex-700">
+        <h2><%= t '.offer_sample_title' %></h2>
+      </div>
+    </div>
+    <div class="home-offer-sample-wrapper">
+      <div class="home-flex-1200">
+        <div class="home-offer-sample-container">
+          <div class="row">
+            <% if @offer_sample.length > 0 %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <%= render 'offers/card_small', offer: @offer_sample[0] %>
+              </div>
+            <% end %>
+            <% if @offer_sample.length > 1 %>
+              <div class="col-xs-12 col-sm-6 col-md-4">
+                <%= render 'offers/card_small', offer: @offer_sample[1] %>
+              </div>
+            <% end %>
+            <% if @offer_sample.length > 2 %>
+              <div class="col-xs-12 col-sm-12 col-md-4">
+                <%= render 'offers/card_small', offer: @offer_sample[2] %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="home-content-wrapper padded-top-m text-center">
       <button id="home-btn-search-trigger" class="btn btn btn-yellow home-btn">
         <i class='fa fa-search'></i>&nbsp;
         <%= t '.find_advisor_button' %>
       </button>
     </div>
   </div>
-
 
   <div class="bg-gray-transparent padded-top-l padded-bottom-xl text-center ">
     <div class="home-content-wrapper">

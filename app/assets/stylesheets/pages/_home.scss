@@ -1,6 +1,14 @@
 .home {
   background-attachment: fixed;
   background-position: 50% 0;
+}
+
+.home-content-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
   h1 {
     font-size: 52px;
   };
@@ -10,21 +18,6 @@
   h3 {
     font-size: 26px;
   };
-  h4 {
-    font-size: 25px;
-    padding-top: 10px;
-    font-family: $special-font;
-    font-weight: bolder;
-    color: $dark-light-gray;
-  }
-}
-
-.home-content-wrapper {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 .home-flex-800 {
@@ -154,6 +147,16 @@
   background-position: 50% 45px;
 }
 
+.home-guidelines {
+  h4 {
+    font-size: 25px;
+    padding-top: 10px;
+    font-family: $special-font;
+    font-weight: bolder;
+    color: $dark-light-gray;
+  }
+}
+
 .home-guideline-container {
   position: relative;
   img {
@@ -201,8 +204,20 @@
   }
 }
 
+.home-offer-sample-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.home-flex-1200 {
+  flex: 0 1 1200px;
+}
+
 @media (max-width: $screen-xs-max) {
-  .home {
+  .home-content-wrapper {
     h1 {
       font-size: 30px;
     };
@@ -212,9 +227,6 @@
     h3 {
       font-size: 20px;
     };
-    h4 {
-      font-size: 24px;
-    }
   }
   .home-btn {
     font-size: 16px;
@@ -246,6 +258,11 @@
   #home-arrow-down {
     .glyphicon {
       font-size: 30px;
+    }
+  }
+  .home-guidelines {
+    h4 {
+      font-size: 24px;
     }
   }
   .home-guideline-text {

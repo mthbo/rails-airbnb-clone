@@ -110,6 +110,10 @@ class Offer < ApplicationRecord
     end
   end
 
+  def self.sample(x)
+    Offer.where(status: :active).sample(x)
+  end
+
   # Pricing option I18n names
 
   def self.translated_pricings
