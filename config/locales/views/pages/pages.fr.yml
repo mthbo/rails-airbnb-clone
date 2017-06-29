@@ -1,12 +1,14 @@
 fr:
   pages:
     home:
-      need_advice: "Besoin de conseils?"
-      banner_title: "Trouvez un conseiller particulier pour tous vos besoins."
+      home_title: "Faîtes-vous conseiller"
+      home_meta: "Le marché des savoirs"
+      banner_title_html: "Ne cherchez plus. <br>Faîtes-vous conseiller."
       input_placeholder: "J'ai besoin de conseils pour ..."
       arrow_down: "En savoir plus"
       inspirations_title: "Quelle que soit l'occasion, ne laissez plus vos questions sans réponses."
-      guidelines_title: "Du sur-mesure : un conseiller dévoué pour vous accompagner."
+      offer_sample_title: "Faîtes appel à un conseiller qualifié par la communauté."
+      guidelines_title: "Expérimentez un service sur-mesure, en toute simplicité."
       guideline_title_1: "Trouvez un conseiller"
       guideline_title_2: "Parvenez à un accord"
       guideline_title_3: "Soyez conseillé"
@@ -20,9 +22,8 @@ fr:
       guideline_text_4_1: "La session peut être fermée à l'issue de la date limite fixée."
       guideline_text_4_2: "Faîtes un retour d'expérience pour la communauté Papoters: laissez un avis, notez la session et évaluez la réalisation des objectifs établis dans l'accord."
       find_advisor_button: "Trouver un conseiller"
-      offer_sample_title: Comparez les offres de conseil en toute transparence.
-      be_advisor_title: "Vos savoirs et vos expériences ont (aussi) de la valeur!"
-      be_advisor_subtitle: "Mettez à profit vos talents en proposant des services de conseil en toute simplicité."
+      be_advisor_title: "Vos savoirs et vos expériences ont de la valeur!"
+      be_advisor_subtitle: "Proposez vos services en devenant conseiller."
       be_advisor_button: "Devenir conseiller"
     advisor:
       be_advisor: "Devenir conseiller"

@@ -1,8 +1,10 @@
 en:
   pages:
     home:
-      need_advice: "Need for advice?"
+      home_title: "Need for advice?"
+      home_meta: "The knowledge marketplace"
       banner_title: "Find a personal advisor to meet any of your need."
+      banner_title_html: "Look no further.<br>Be advised."
       input_placeholder: "I need some advice for ..."
       arrow_down: "Find out more"
       inspirations_title: "Don't stay left with your questions, regardless of the moment."
