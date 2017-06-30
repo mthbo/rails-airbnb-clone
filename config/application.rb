@@ -33,6 +33,7 @@ module Papoters
     config.middleware.use I18n::JS::Middleware
 
     config.active_job.queue_adapter = :sidekiq
+  end
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

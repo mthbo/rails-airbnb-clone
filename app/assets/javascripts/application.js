@@ -11,34 +11,6 @@
 //= require algolia/v3/algoliasearch.min
 //= require i18n/translations
 //= require clipboard
-
-//= require arrow_scroll
-//= require bank_account
-//= require cable
-//= require checkbox
-//= require conversation_scroll
-//= require dashboard_tab
-//= require datepicker
-//= require id_file_input
-//= require flashes
-//= require google_analytics
-//= require google_maps_autocomplete
-//= require home_background
-//= require init_attachinary
-//= require loader
-//= require locale
-//= require mobile_detection
-//= require navbar_menu
-//= require offer_pin
-//= require offer_status
-//= require proposition
-//= require radio_button
-//= require search
-//= require share_facebook
-//= require share_link
-//= require share_linkedin
-//= require share_twitter
-//= require star_rating
-//= require user_details
+//= require_tree .
 
 

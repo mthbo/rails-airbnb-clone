@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  mount ForestLiana::Engine => '/forest'
-  ActiveAdmin.routes(self)
-  mount Attachinary::Engine => "/attachinary"
+  mount Attachinary::Engine => '/attachinary'
   mount ActionCable.server => '/cable'
+
+  mount ForestLiana::Engine => '/forest'
 
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
