@@ -32,6 +32,9 @@ $(document).ready(function(){
   $('#navbar-be-advisor-btn').click(function() {
     ga('send', 'event', 'Become advisor', 'click', 'Go to advisor page from navbar');
   })
+  $('#footer-be-advisor-btn').click(function() {
+    ga('send', 'event', 'Become advisor', 'click', 'Go to advisor page from footer');
+  })
 
   // GA event trackers for Sign up
 
