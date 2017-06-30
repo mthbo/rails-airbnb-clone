@@ -12,13 +12,11 @@ $(document).ready(function(){
     ga('send', 'pageview');
 
     $('#searchbar-input').focusin(function() {
-      ga('send', 'event', 'Search', 'focusin');
-      console.log(ga.q);
+      ga('send', 'event', 'Search', 'focusin', 'Start searching');
     })
 
     $('#be-advisor-btn').click(function() {
-      ga('send', 'event', 'Buttons', 'click', 'Be advisor button');
-      console.log(ga.q);
+      ga('send', 'event', 'Become advisor', 'click', 'Go to advisor page');
     })
 
   }
