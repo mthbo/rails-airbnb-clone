@@ -1,14 +1,14 @@
 en:
   pages:
     home:
-      home_title: "Need for advice?"
-      home_meta: "The knowledge marketplace"
-      banner_title: "Find a personal advisor to meet any of your need."
+      title: "Need for advice?"
+      meta_description: "Get in touch with the best advisor to help you."
       banner_title_html: "Look no further.<br>Be advised."
       input_placeholder: "I need some advice for ..."
       arrow_down: "Find out more"
       inspirations_title: "Don't stay left with your questions, regardless of the moment."
-      guidelines_title: "The tailor-made way: an advisor committed to meeting your need."
+      offer_sample_title: "Get in touch with the best advisor to help you."
+      guidelines_title: "The easiest way to get a tailor-made support."
       guideline_title_1: "Find an advisor"
       guideline_title_2: "Reach an agreement"
       guideline_title_3: "Get advice"
@@ -22,12 +22,12 @@ en:
       guideline_text_4_1: "The session can be closed after the deadline set has passed."
       guideline_text_4_2: "Provide a feedback for the Papoters community: leave a review, rate the session and evaluate the achievement of the targets settled in the agreement."
       find_advisor_button: "Find an advisor"
-      offer_sample_title: Compare advising offers openly.
-      be_advisor_title: "Your knowledge and your experience have value (too)!"
-      be_advisor_subtitle: "Propose your services as advisor in a simple way and leverage your talents."
+      be_advisor_title: "Your knowledge and your experience have value!"
+      be_advisor_subtitle: "Propose your services as advisor and leverage your knowledge."
       be_advisor_button: "Become advisor"
     advisor:
-      be_advisor: "Become advisor"
+      title: "Become advisor"
+      meta_description: "Propose your services as advisor and leverage your knowledge."
       banner_title: "Propose your services as advisor and leverage your knowledge."
       publish_offer_link: "Publish an offer"
       sign_up_as_papoter_link: "Sign up as Papoter"
