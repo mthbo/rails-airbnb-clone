@@ -1,12 +1,12 @@
-<% content_for :title, "Papoters | #{t('.need_advice')}" %>
-<% content_for :meta_description, t('.banner_title') %>
+<% content_for :title, "Papoters | #{t('.title')}" %>
+<% content_for :meta_description, t('.meta_description') %>
 
 <div class="home" style='background-image: url("<%= image_path('backgrounds/background.png') %>");'>
 
   <div class="home-banner text-center bg-gray-transparent">
     <div class="home-banner-top home-content-wrapper">
       <div class="home-flex-800">
-        <h1><%= t '.banner_title' %></h1>
+        <h1><%= t '.banner_title_html' %></h1>
       </div>
     </div>
     <div class="home-banner-middle home-content-wrapper bg-yellow-transparent">
@@ -41,7 +41,36 @@
     </div>
   </div>
 
-  <div style='background-image: url("<%= image_path('backgrounds/background_grid_gray.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white">
+  <div class="bg-light-gray padded-top-l padded-bottom-xl">
+    <div class="home-content-wrapper padded-bottom-m text-center">
+      <div class="home-flex-700">
+        <h2><%= t '.offer_sample_title' %></h2>
+      </div>
+    </div>
+    <div class="home-offer-sample-wrapper padded-bottom-xs">
+      <div class="home-flex-1200">
+        <div class="row">
+          <% if @offer_sample.length > 0 %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <%= render 'offers/card_small', offer: @offer_sample[0] %>
+            </div>
+          <% end %>
+          <% if @offer_sample.length > 1 %>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+              <%= render 'offers/card_small', offer: @offer_sample[1] %>
+            </div>
+          <% end %>
+          <% if @offer_sample.length > 2 %>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <%= render 'offers/card_small', offer: @offer_sample[2] %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style='background-image: url("<%= image_path('backgrounds/background_grid_gray.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white home-guidelines">
     <div class="home-content-wrapper padded-bottom-l">
       <div class="home-flex-700">
         <h2><%= t '.guidelines_title' %></h2>
@@ -103,15 +132,13 @@
         </div>
       </div>
     </div>
-
-    <div class="padded-top-xs">
+    <div class="home-content-wrapper padded-top-xs text-center">
       <button id="home-btn-search-trigger" class="btn btn btn-yellow home-btn">
         <i class='fa fa-search'></i>&nbsp;
         <%= t '.find_advisor_button' %>
       </button>
     </div>
   </div>
-
 
   <div class="bg-gray-transparent padded-top-l padded-bottom-xl text-center ">
     <div class="home-content-wrapper">

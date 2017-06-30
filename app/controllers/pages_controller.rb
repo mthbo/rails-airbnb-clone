@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @search = ""
+    @offer_sample = Offer.sample(3)
   end
 
   def advisor

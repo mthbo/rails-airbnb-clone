@@ -110,6 +110,11 @@ class Offer < ApplicationRecord
     end
   end
 
+  def self.sample(x)
+    offset = rand(Offer.where(status: :active).count - x)
+    Offer.where(status: :active).offset(offset).limit(x)
+  end
+
   # Pricing option I18n names
 
   def self.translated_pricings
