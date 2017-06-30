@@ -13,10 +13,12 @@ $(document).ready(function(){
 
     $('#searchbar-input').focusin(function() {
       ga('send', 'event', 'Search', 'focusin');
+      console.log(ga.q);
     })
 
     $('#be-advisor-btn').click(function() {
       ga('send', 'event', 'Buttons', 'click', 'Be advisor button');
+      console.log(ga.q);
     })
 
   }
