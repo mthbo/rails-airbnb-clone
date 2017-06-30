@@ -111,7 +111,7 @@ class Offer < ApplicationRecord
   end
 
   def self.sample(x)
-    offset = rand(Offer.where(status: :active).count - x)
+    offset = rand(Offer.where(status: :active).count - x + 1)
     Offer.where(status: :active).offset(offset).limit(x)
   end
 
