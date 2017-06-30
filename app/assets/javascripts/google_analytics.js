@@ -11,6 +11,14 @@ $(document).ready(function(){
     ga('create', gaID, 'auto');
     ga('send', 'pageview');
 
+    $('#searchbar-input').focusin(function() {
+      ga('send', 'event', 'Search', 'focusin');
+    })
+
+    $('#be-advisor-btn').click(function() {
+      ga('send', 'event', 'Buttons', 'click', 'Be advisor button');
+    })
+
   }
 
 });

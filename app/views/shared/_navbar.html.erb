@@ -48,7 +48,7 @@
  <!-- Not appearing on small screens -->
 
   <div class="my-navbar-right hidden-xs">
-    <%= link_to t('navbar.be_advisor'), advisor_path, { class: "my-navbar-button btn btn-green" } %>
+    <%= link_to t('navbar.be_advisor'), advisor_path, { class: "my-navbar-button btn btn-green", id: "be-advisor-btn" } %>
 
     <% if user_signed_in? %>
       <%= link_to dashboard_users_path, { class: "btn my-navbar-button-round btn-blue" } do %>
@@ -91,7 +91,7 @@
     </div>
 
     <ul id="my-navbar-burger-menu" class="list-unstyled">
-      <li><%= link_to t('navbar.be_advisor'), advisor_path %></li>
+      <li><%= link_to t('navbar.be_advisor'), advisor_path, id: "be-advisor-btn" %></li>
 
       <% if user_signed_in? %>
         <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
