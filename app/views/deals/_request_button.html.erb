@@ -1,5 +1,5 @@
 <% if policy(offer.deals.new).new? %>
-  <%= link_to new_offer_deal_path(offer), class: "btn btn-yellow #{'btn-form' if size == 'big'}" do %>
+  <%= link_to new_offer_deal_path(offer), class: "btn btn-yellow #{'btn-form' if size == 'big'}", id: "deal-request-btn" do %>
     <i class="fa fa-paper-plane" aria-hidden="true"></i>  &nbsp;&nbsp;<%= t '.get_in_touch' %>
   <% end %>
 <% elsif  user_signed_in? && offer.ongoing_deal(current_user).present? %>

@@ -12,9 +12,9 @@
     <div class="home-banner-middle home-content-wrapper bg-green-transparent">
       <div class="home-flex-600">
         <% if user_signed_in? %>
-          <%= link_to t('.publish_offer_link'), new_offer_path, class: "home-give-advice-link" %>
+          <%= link_to t('.publish_offer_link'), current_user.no_pricing? ? country_users_path : new_offer_path, class: "home-give-advice-link", id: "publish-offer-advisor-banner" %>
         <% else %>
-          <%= link_to t('.sign_up_as_papoter_link'), new_user_registration_path, class: "home-give-advice-link" %>
+          <%= link_to t('.sign_up_as_papoter_link'), new_user_registration_path, class: "home-give-advice-link", id: "sign-up-advisor-banner" %>
         <% end %>
       </div>
     </div>
@@ -102,9 +102,9 @@
 
     <div class="padded-top-xs">
       <% if user_signed_in? %>
-        <%= link_to t('.publish_offer_button'), new_offer_path, class: "btn btn-green home-btn" %>
+        <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_users_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
       <% else %>
-        <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn" %>
+        <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-btn" %>
       <% end %>
     </div>
   </div>
@@ -121,7 +121,7 @@
       </div>
     </div>
     <div class="padded-top-xs">
-      <button id="home-btn-search-trigger" class="btn btn btn-yellow home-btn">
+      <button id="advisor-btn-search-trigger" class="btn btn btn-yellow home-btn">
         <i class='fa fa-search'></i>&nbsp;
         <%= t '.find_advisor_button' %>
       </button>

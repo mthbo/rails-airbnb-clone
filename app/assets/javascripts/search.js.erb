@@ -123,6 +123,7 @@ $(document).ready(function() {
       if ($('#home-input').val() !== "") {
         $('#searchbar').slideDown(150);
         HomeInputToSearchbar();
+        ga('send', 'event', 'Search', 'input', 'Search from home page input');
       }
     });
 
@@ -134,6 +135,7 @@ $(document).ready(function() {
           SearchbarInputToHome();
         } else {
           $('#searchbar-input').focus();
+          ga('send', 'event', 'Search', 'click', 'Search from navbar button');
         }
       });
     });
@@ -142,6 +144,19 @@ $(document).ready(function() {
       event.stopPropagation();
       $('#searchbar').slideToggle(150, function() {
         $('#searchbar-input').focus();
+        if ($('#searchbar').is(':visible')) {
+          ga('send', 'event', 'Search', 'click', 'Search from home page button');
+        }
+      });
+    });
+
+    $('#advisor-btn-search-trigger').on('click', function(event) {
+      event.stopPropagation();
+      $('#searchbar').slideToggle(150, function() {
+        $('#searchbar-input').focus();
+        if ($('#searchbar').is(':visible')) {
+          ga('send', 'event', 'Search', 'click', 'Search from advisor page button');
+        }
       });
     });
 

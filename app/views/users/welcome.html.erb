@@ -9,16 +9,19 @@
 <p><%= t '.discover_opportunities' %></p>
 
 <div class="padded-top-xs padded-bottom-xs user-welcome-btns text-center">
-  <%= link_to user_path(current_user), class: "btn btn-form btn-blue" do %>
+  <%= link_to user_path(@user), class: "btn btn-form btn-blue", id: 'welcome-user-profile' do %>
     <i class="fa fa-user-o fa-fw" aria-hidden="true"></i>&nbsp;
     <%= t('.see_your_profile') %>
   <% end %>
 
-  <%= link_to root_path, class: "btn btn-form btn-yellow" do %>
+  <%= link_to root_path, class: "btn btn-form btn-yellow", id: 'welcome-search' do %>
     <i class='fa fa-search fa-fw' aria-hidden="true"></i>&nbsp;
     <%= t('.find_an_advisor') %>
   <% end %>
 
-  <%= render 'offers/new_offer_button', user: current_user, label: t('.publish_an_offer') %>
+  <%= link_to advisor_path, class: "btn btn-form btn-green", id: 'welcome-advisor' do %>
+    <i class='fa fa-info fa-fw' aria-hidden="true"></i>&nbsp;
+    <%= t('.become_advisor') %>
+  <% end %>
 
 </div>
