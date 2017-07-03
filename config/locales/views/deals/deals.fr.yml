@@ -211,5 +211,8 @@ fr:
       publishing: Publication...
     reviews:
       reviews: Avis
+    video_call:
+      access_to_room: Accéder à la visioconférence
+
 
 

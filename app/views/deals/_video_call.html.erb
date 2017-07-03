@@ -1,6 +1,6 @@
 <% if deal.video_call? && !deal.messages_disabled %>
   <div id="video-call">
-    <a href="https://appear.in<%= deal.room_name %>" target="_blank" class="btn <%= current_user == deal.advisor ? 'btn-green' : 'btn-yellow' %>">
+    <a href="https://appear.in<%= deal.room_name %>" target="_blank" class="btn <%= current_user == deal.advisor ? 'btn-green' : 'btn-yellow' %>" id="video-call-btn" title="<%= t '.access_to_room' %>">
       <i class="fa fa-video-camera" aria-hidden="true"></i>
     </a>
   </div>

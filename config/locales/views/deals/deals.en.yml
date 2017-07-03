@@ -212,5 +212,7 @@ en:
       publishing: Publishing...
     reviews:
       reviews: Reviews
+    video_call:
+      access_to_room: Access to videoconference
 
 
