@@ -43,6 +43,7 @@ gem 'google_currency'
 gem 'stripe'
 gem 'gibbon'
 gem 'forest_liana'
+gem 'sitemap_generator'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'

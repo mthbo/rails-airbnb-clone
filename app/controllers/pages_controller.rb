@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :advisor, :about, :terms]
+  skip_before_action :authenticate_user!, only: [:home, :advisor, :about, :terms, :contact]
+  layout 'client_form', only: [:contact]
 
   def home
     @search = ""
@@ -13,6 +14,9 @@ class PagesController < ApplicationController
   end
 
   def terms
+  end
+
+  def contact
   end
 
 end

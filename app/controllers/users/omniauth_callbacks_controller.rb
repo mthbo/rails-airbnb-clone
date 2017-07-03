@@ -6,7 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if user.persisted?
       if user.new?
         sign_in(user)
-        redirect_to welcome_users_path
+        redirect_to welcome_path
       else
         sign_in_and_redirect user, event: :authentication
       end

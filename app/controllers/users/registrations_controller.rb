@@ -18,7 +18,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_inactive_sign_up_path_for(resource)
-    users_confirm_path
+    confirm_path
   end
 
   def update_resource(resource, params)

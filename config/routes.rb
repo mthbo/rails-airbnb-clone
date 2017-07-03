@@ -2,10 +2,8 @@ Rails.application.routes.draw do
 
   mount Attachinary::Engine => '/attachinary'
   mount ActionCable.server => '/cable'
-
   mount ForestLiana::Engine => '/forest'
 
-  # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
@@ -15,6 +13,7 @@ Rails.application.routes.draw do
 
   devise_for :users,
     only: :omniauth_callbacks,
+    path: '',
     controllers: {
       omniauth_callbacks: 'users/omniauth_callbacks'
     }
@@ -25,9 +24,16 @@ Rails.application.routes.draw do
     get '/advisor', to: 'pages#advisor'
     get '/about', to: 'pages#about'
     get '/terms', to: 'pages#terms'
+    get '/contact', to: 'pages#contact'
 
     devise_for :users,
       skip: :omniauth_callbacks,
+      path: '',
+      path_names: {
+        sign_up: 'signup',
+        sign_in: 'login',
+        sign_out: 'logout'
+      },
       controllers: {
         registrations: 'users/registrations',
         confirmations: 'users/confirmations',
@@ -35,22 +41,20 @@ Rails.application.routes.draw do
       }
 
     devise_scope :user do
-      get "users/confirm", to: "users/registrations#confirm"
-      get "users/password/reset", to: "users/passwords#reset"
+      get "confirm", to: "users/registrations#confirm"
+      get "password/reset", to: "users/passwords#reset"
     end
 
-    resources :users, only: [:show, :update] do
-      collection do
-        get 'welcome', to: 'users#welcome'
-        get 'dashboard', to: 'users#dashboard'
-        get 'details', to: 'users#details'
-        get 'bank', to: 'users#bank'
-        get 'country', to: 'users#country'
-        patch 'update_country', to: 'users#update_country'
-        patch 'update_bank', to: 'users#update_bank'
-        patch 'change_locale', to: 'users#change_locale'
-      end
-    end
+    resources :users, only: [:show, :update]
+
+    get 'welcome', to: 'users#welcome'
+    get 'dashboard', to: 'users#dashboard'
+    get 'details', to: 'users#details'
+    get 'bank', to: 'users#bank'
+    get 'country', to: 'users#country'
+    patch 'update_country', to: 'users#update_country'
+    patch 'update_bank', to: 'users#update_bank'
+    patch 'change_locale', to: 'users#change_locale'
 
     resources :offers, only: [:show, :new, :create, :edit, :update], shallow: true do
       resources :deals, only: [:show, :new, :create], path: 'sessions' do

@@ -37,7 +37,7 @@ class UsersController < ApplicationController
       retrieve_stripe_account
       (@account.blank? || @account.respond_to?(:deleted)) ? create_stripe_account : update_stripe_account
       flash[:notice] = t('.notice')
-      @user.bank_valid? ? redirect_to(user_path(@user)) : redirect_to(bank_users_path)
+      @user.bank_valid? ? redirect_to(user_path(@user)) : redirect_to(bank_path)
     else
       render :details
     end

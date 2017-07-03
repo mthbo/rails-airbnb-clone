@@ -12,7 +12,7 @@
     <div class="home-banner-middle home-content-wrapper bg-green-transparent">
       <div class="home-flex-600">
         <% if user_signed_in? %>
-          <%= link_to t('.publish_offer_link'), current_user.no_pricing? ? country_users_path : new_offer_path, class: "home-give-advice-link", id: "publish-offer-advisor-banner" %>
+          <%= link_to t('.publish_offer_link'), current_user.no_pricing? ? country_path : new_offer_path, class: "home-give-advice-link", id: "publish-offer-advisor-banner" %>
         <% else %>
           <%= link_to t('.sign_up_as_papoter_link'), new_user_registration_path, class: "home-give-advice-link", id: "sign-up-advisor-banner" %>
         <% end %>
@@ -102,7 +102,7 @@
 
     <div class="padded-top-xs">
       <% if user_signed_in? %>
-        <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_users_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
+        <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
       <% else %>
         <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-btn" %>
       <% end %>
