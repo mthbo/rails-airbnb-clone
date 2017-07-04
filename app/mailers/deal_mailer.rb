@@ -1,5 +1,5 @@
 class DealMailer < ApplicationMailer
-
+  default from: %(Papoters <#{ENV['SESSIONS_EMAIL']}>)
   add_template_helper(TextHelper)
 
   def deal_request(deal)
