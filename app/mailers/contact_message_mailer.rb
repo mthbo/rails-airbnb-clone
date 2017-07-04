@@ -1,5 +1,5 @@
 class ContactMessageMailer < ApplicationMailer
-  default to: ENV['CONTACT_EMAIL']
+  default to: ENV['EMAIL_CONTACT']
   layout 'mailer_simple'
 
   add_template_helper(TextHelper)
