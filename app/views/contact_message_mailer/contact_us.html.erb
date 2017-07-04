@@ -1,1 +1,1 @@
-<p><%= @message_body %></p>
+<p><%= sanitize markdown_to_html(@message_body) %></p>
