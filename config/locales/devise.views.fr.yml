@@ -208,7 +208,7 @@ fr:
         logging_in: Connexion...
         sign_in_name: Connexion
         sign_in_to_account: Connexion à votre compte
-        email: Addresse e-mail
+        email: Adresse e-mail
         password: Mot de passe
       signed_in: Connecté(e) avec succès.
       signed_out: Déconnecté(e) avec succès.

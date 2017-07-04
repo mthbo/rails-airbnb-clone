@@ -1,0 +1,26 @@
+<% content_for :title, "Papoters | #{t '.contact_us'}" %>
+
+<h2><%= t '.contact_us' %></h2>
+
+<%= simple_form_for(@contact_message) do |f| %>
+  <%= f.error_notification %>
+
+  <p><%= t '.your_email' %></p>
+
+  <%= f.input :email, as: :custom, symbol: "<i class='fa fa-envelope-o fa-fw' aria-hidden='true'></i>".html_safe, label: false, required: true, placeholder: t('.email'), input_html: { class: 'custom-form-input', type: 'email', value: user_signed_in? ? current_user.email : nil } %>
+
+  <div class="padded-top-xs">
+    <p><%= t '.your_message' %></p>
+  </div>
+
+  <%= f.input :subject, autofocus: true, label: false, placeholder: t('.subject'), input_html: { class: 'custom-form-input' } %>
+  <%= f.input :body, as: :text, label: false, placeholder: t('.body'), input_html: { class: 'custom-form-input', rows: "7" } %>
+
+  <%= f.hidden_field :user_id, value: user_signed_in? ? current_user.id : nil %>
+
+  <div class="text-right padded-top-xs">
+    <%= button_tag(type: 'submit', class: "btn btn-form btn-blue", data: {disable_with: t('.sending')}) do %>
+      <i class='fa fa-send fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.send' %>
+    <% end %>
+  </div>
+<% end %>

@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: %("Papoters" <mathieu.bordeleau@papoters.com>)
+  default from: %(Papoters <#{ENV['CONTACT_EMAIL']}>)
   layout 'mailer'
 end

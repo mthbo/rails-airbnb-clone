@@ -44,6 +44,7 @@ gem 'stripe'
 gem 'gibbon'
 gem 'forest_liana'
 gem 'sitemap_generator'
+gem 'validates_email_format_of'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'

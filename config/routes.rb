@@ -24,7 +24,10 @@ Rails.application.routes.draw do
     get '/advisor', to: 'pages#advisor'
     get '/about', to: 'pages#about'
     get '/terms', to: 'pages#terms'
-    get '/contact', to: 'pages#contact'
+
+    get '/contact', to: 'contact_messages#new', as: 'new_contact_message'
+    post '/contact', to: 'contact_messages#create', as: 'contact_messages'
+
 
     devise_for :users,
       skip: :omniauth_callbacks,

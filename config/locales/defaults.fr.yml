@@ -59,6 +59,15 @@ fr:
             description:
               blank: Veuillez spécifier cet objectif
               too_long: "Cet objectif est trop long (max: %{count} caractères)"
+        contact_message:
+          attributes:
+            subject:
+              blank: Veuillez renseigner l'objet de votre message
+            email:
+              blank: Veuillez renseigner votre e-mail
+              invalid_email_address: Cet e-mail est invalide
+            body:
+              blank: Veuillez apporter quelques précisions concernant votre demande
   pundit:
     default: "Vous n'êtes pas autorisé(e) à effectuer cette action."
   language:

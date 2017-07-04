@@ -1,0 +1,13 @@
+en:
+  contact_messages:
+    new:
+      contact_us: Contact us
+      your_email: Please provide your email address
+      email: Email address
+      your_message: "Please detail your request. We will do our best to answer you as quickly as possible."
+      subject: Subject of your request
+      body: Your message
+      send: Send
+      sending: "Sending..."
+    create:
+      notice: "Your message has been sent successfully."

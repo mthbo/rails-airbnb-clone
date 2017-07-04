@@ -59,6 +59,15 @@ en:
             description:
               blank: Please specify this objective
               too_long: "This objective is too long (max: %{count} characters)"
+        contact_message:
+          attributes:
+            subject:
+              blank: Please provide the subject of your message
+            email:
+              blank: Please provide your email
+              invalid_email_address: This email is invalid
+            body:
+              blank: Please provide some details regarding your request
   pundit:
     default: 'You are not authorized to perform this action.'
   language:
