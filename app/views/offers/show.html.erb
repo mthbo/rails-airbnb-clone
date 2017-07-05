@@ -94,7 +94,7 @@
                 <div class="offer-user-avatar">
                   <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-medium' %>
                 </div>
-                <div>
+                <div class="offer-user-info">
                   <%= render 'users/info', user: @offer.advisor %>
                 </div>
               <% end %>
@@ -151,7 +151,7 @@
             <div class="offer-user-avatar">
               <%= render 'users/avatar', user: @offer.advisor, size: 'avatar-large' %>
             </div>
-            <div>
+            <div class="offer-user-info">
               <%= render 'users/info', user: @offer.advisor %>
             </div>
           <% end %>

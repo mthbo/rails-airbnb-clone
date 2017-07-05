@@ -68,6 +68,22 @@
   };
 }
 
+.offer-card-user-info {
+  img {
+    margin-right: 10px;
+    height: 22px;
+    margin-bottom: 5px;
+  }
+}
+
+.offer-card-small-user-info {
+  img {
+    margin-right: 10px;
+    height: 18px;
+    margin-bottom: 5px;
+  }
+}
+
 .offer-card-small-user {
   flex: 0 1 auto;
   padding: 10px 15px;
@@ -178,6 +194,11 @@
     h4 {
       font-size: 14px;
     };
+  }
+  .offer-card-user-info {
+    img {
+      height: 18px;
+    }
   }
   .offer-card-top-right {
     right: 15px;

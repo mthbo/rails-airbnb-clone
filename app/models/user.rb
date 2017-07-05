@@ -177,8 +177,20 @@ class User < ApplicationRecord
     end
   end
 
+  def grade_img
+    if advisor_deals_closed_count > 20
+      "#{ActionController::Base.helpers.image_tag('grades/grade_4.svg')}"
+    elsif advisor_deals_closed_count > 10
+      "#{ActionController::Base.helpers.image_tag('grades/grade_3.svg')}"
+    elsif advisor_deals_closed_count > 3
+      "#{ActionController::Base.helpers.image_tag('grades/grade_2.svg')}"
+    else
+      "#{ActionController::Base.helpers.image_tag('grades/grade_1.svg')}"
+    end
+  end
+
   def grade_and_age(locale=I18n.locale)
-    html = grade(locale)
+    html = grade_img + grade(locale)
     if age.present?
       html << "&nbsp; | &nbsp;#{age} #{I18n.t('users.info.age', locale: locale)}"
     end

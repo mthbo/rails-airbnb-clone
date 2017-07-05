@@ -27,6 +27,14 @@
   position: relative;
 }
 
+.offer-user-info {
+  img {
+    margin-right: 10px;
+    height: 22px;
+    margin-bottom: 5px;
+  }
+}
+
 .offer-user-link {
   position: absolute;
   border-radius: 0 15px 0 0;
@@ -109,6 +117,11 @@
   .offer-details {
     padding-top: 1em;
   };
+  .offer-user-info {
+    img {
+      height: 18px;
+    }
+  }
   .offer-user-link {
     padding: 10px 15px;
     h1 {

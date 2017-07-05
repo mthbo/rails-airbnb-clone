@@ -1,3 +1,11 @@
+.user-banner-info {
+  img {
+    margin-right: 10px;
+    height: 26px;
+    margin-bottom: 5px;
+  }
+}
+
 .user-top {
   h1, h3, h4 {
     margin-top: 15px;
@@ -68,6 +76,11 @@
 }
 
 @media (max-width: $screen-xs-max) {
+  .user-banner-info {
+    img {
+      height: 22px;
+    }
+  }
   .user-offers-info {
     padding: 15px;
     flex-direction: column;
