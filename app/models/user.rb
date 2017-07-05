@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  after_create :subscribe_to_newsletter, if: Proc.new { ENV['PIPELINE_ENV'] == "prod" }
+
   acts_as_voter
 
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
@@ -479,6 +481,10 @@ class User < ApplicationRecord
 
 
   private
+
+  def subscribe_to_newsletter
+    SubscribeToNewsletterService.new(self).call
+  end
 
   # Validations
 
