@@ -4,14 +4,14 @@ en:
       title: "Need for advice?"
       meta_description: "Get in touch with the best advisor to help you."
       banner_title: "Find an advisor to"
-      rot_1: plan a trip
-      rot_2: start a business
-      rot_3: manage your finances
-      rot_4: renovate your house
-      rot_5: relocate
-      rot_6: plan your wedding
-      rot_7: handle a dispute
-      rot_8: raise your children
+      rot_1: make your life easier
+      rot_2: plan a trip
+      rot_3: start a business
+      rot_4: manage your finances
+      rot_5: renovate your house
+      rot_6: relocate
+      rot_7: develop an activity
+      rot_8: plan your wedding
       rot_9: learn gardening
       rot_10: change your life
       input_placeholder: "I need some advice for ..."
