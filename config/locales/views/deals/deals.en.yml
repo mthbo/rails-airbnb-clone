@@ -53,13 +53,13 @@ en:
     info_payout:
       payout_amount_expected_html: "If your proposition is accepeted, your remuneration will amount to <span class='font-weight-normal'>%{currency}%{amount}</span>."
       payout_amount_html: "Your remuneration amounts to <span class='font-weight-normal'>%{currency}%{amount}</span> and the payout to your bank account will be made after session closing."
-      payout_expected_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account should be made on "
+      payout_expected_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account should arrive on "
       payout_made_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account was made on "
       payout_failed_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account has failed."
       visit_your_profile: Visit your profile
       to_find_out_reason: "to find out the reasons."
     info_request:
-      request_sent: "You sent a request to %{name}. You should get a proposition back if %{name} can meet your need before %{date}."
+      request_sent: "You sent a request to %{name}. You should get a proposition if %{name} can meet your need before %{date}."
       request_received: "You received a request from %{name}. Submit a proposition if you think you can meet the needs of %{name} before %{date}, or start chatting to ask for more details."
       cancel_session: "Cancel the session if you don't want to continue."
     info_cancelled:

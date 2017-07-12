@@ -53,13 +53,13 @@ fr:
     info_payout:
       payout_amount_expected_html: "Si votre proposition est acceptée, votre rétribution s'élèvera à <span class='font-weight-normal'>%{amount} %{currency}</span>."
       payout_amount_html: "Votre rétribution s'élève à <span class='font-weight-normal'>%{amount} %{currency}</span> et sera versée sur votre compte bancaire après clôture de la session."
-      payout_expected_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> devrait être effectué le "
+      payout_expected_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> devrait vous parvenir autour du "
       payout_made_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> a été effectué le "
       payout_failed_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> a été échoué."
       visit_your_profile: Consultez votre profil
       to_find_out_reason: "pour en connaître les raisons."
     info_request:
-      request_sent: "Vous avez envoyé une demande à %{name}. Vous devriez recevoir une proposition en retour si %{name} peut répondre à votre besoin avant le %{date}."
+      request_sent: "Vous avez envoyé une demande à %{name}. Vous devriez recevoir une proposition si %{name} peut répondre à votre besoin avant le %{date}."
       request_received: "Vous avez reçu une demande de %{name}. Soumettez une proposition si vous pensez pouvoir répondre à son besoin avant le %{date}, ou engagez la conversation pour demander des précisions."
       cancel_session: "Annulez la session si vous ne voulez pas poursuivre."
     info_cancelled:

@@ -100,9 +100,7 @@ class Deal < ApplicationRecord
 
   def payout_arrival_expected_at
     if closed_at.present?
-      expected_date = self.closed_at + 7.days
-      current_date = DateTime.current.in_time_zone
-      expected_date < current_date ? current_date : expected_date
+      expected_date = self.closed_at + 10.days
     end
   end
 

@@ -45,7 +45,7 @@ private
     @charge = Stripe::Charge.create(
       customer:     @customer.id,
       amount:       @deal.amount_converted(current_user.currency).cents,
-      description:  "##{t('session')}-#{@deal.id} | #{@deal.title}",
+      description:  "#{@deal.advisor.name_anonymous} ##{t('session')}-#{@deal.id} | #{@deal.title}",
       currency:     @deal.amount_converted(current_user.currency).currency.to_s,
       destination: {
         amount: @deal.advisor_amount_converted(current_user.currency).cents,
