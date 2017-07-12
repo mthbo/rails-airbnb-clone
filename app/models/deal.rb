@@ -108,7 +108,7 @@ class Deal < ApplicationRecord
 
   def payout_arrival_at
     if payout.present?
-      timestamp = JSON.parse(Deal.last.payout)["arrival_date"]
+      timestamp = JSON.parse(self.payout)["arrival_date"]
       Time.at(timestamp).to_datetime.in_time_zone
     end
   end

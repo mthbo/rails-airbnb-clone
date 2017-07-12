@@ -96,7 +96,7 @@ fr:
       subject: "#session-%{id} | Session clôturée"
       greeting: Bonjour %{advisor},
       message: "La session ci-dessous a été clôturée :"
-      info_html: "Le versement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> sur votre compte bancaire devrait être effectué le <span style='font-weight: normal'>%{date}</span>."
+      info_html: "Le versement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> sur votre compte bancaire sera effectué le <span style='font-weight: normal'>%{date}</span>."
       instructions: "Evaluez votre expérience et laissez un avis à %{client}."
       action: Evaluer la session
     deal_closed_client:

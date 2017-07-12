@@ -96,7 +96,7 @@ en:
       subject: "#session-%{id} | Session closed"
       greeting: Hello %{advisor},
       message: "The session below was closed:"
-      info_html: "The payout of <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span> to your bank account should be made on <span style='font-weight: normal'>%{date}</span>."
+      info_html: "The payout of <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span> to your bank account will be made on <span style='font-weight: normal'>%{date}</span>."
       instructions: "Evaluate your experience and leave a review to %{client}."
       action: Evaluate the session
     deal_closed_client:
