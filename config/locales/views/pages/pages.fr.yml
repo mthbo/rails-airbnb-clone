@@ -2,7 +2,7 @@ fr:
   pages:
     home:
       title: "Besoin de conseils?"
-      meta_description: "Faites appel au meilleur conseiller pour vous accompagner."
+      meta_description: "Pour tous vos projets, faites appel au meilleur conseiller pour vous accompagner."
       banner_title: "Trouver un conseiller pour"
       rot_1: tous vos projets
       rot_2: préparer un voyage
@@ -10,8 +10,8 @@ fr:
       rot_4: gérer vos finances
       rot_5: organiser un événement
       rot_6: vous expatrier
-      rot_8: dévolopper une activité
-      rot_7: rénover votre logement
+      rot_7: dévolopper une activité
+      rot_8: rénover votre logement
       rot_9: vivre vos passions
       rot_10: vous simplifier la vie!
       input_placeholder: "J'ai besoin de conseils pour ..."
@@ -32,24 +32,25 @@ fr:
       guideline_text_4_1: "La session peut être fermée à l'issue de la date limite fixée."
       guideline_text_4_2: "Faîtes un retour d'expérience pour la communauté Papoters: laissez un avis, notez la session et évaluez la réalisation des objectifs établis dans l'accord."
       find_advisor_button: "Trouver un conseiller"
-      be_advisor_title: "Vos connaissances et vos expériences ont de la valeur!"
-      be_advisor_subtitle: "Mettez à profit vos savoirs en proposant des services de conseil."
+      be_advisor_title: "Vos connaissances et vos expériences sont précieuses!"
+      be_advisor_subtitle: "Mettez-les à profit en devenant conseiller."
       be_advisor_button: "Devenir conseiller"
     advisor:
       title: "Devenez conseiller"
-      meta_description: "Mettez à profit vos savoirs en proposant des services de conseil."
-      banner_title: "Mettez à profit vos savoirs en proposant des services de conseil."
+      meta_description: "Donnez des conseils, bâtissez votre réputation et mettez à profit vos savoirs."
+      banner_title: "Donnez des conseils, bâtissez votre réputation et mettez à profit vos savoirs."
       publish_offer_link: "Publier une offre"
       sign_up_as_papoter_link: "S'inscrire comme Papoter"
       arrow_down: "En savoir plus"
-      inspirations_title: "Vos connaissances et vos expériences ont de la valeur, partagez-les!"
-      guidelines_title: "Donnez des conseils, construisez votre réputation et faîtes fructifier vos talents!"
+      inspirations_title: "Vos connaissances et vos expériences sont précieuses, partagez-les!"
+      offer_example_title: "Publiez des offres pour mettre vos expertises en lumière."
+      guidelines_title: "Devenez une référence et offrez vos services à leur juste valeur."
       guideline_title_1: "Publiez une offre"
       guideline_title_2: "Répondez aux demandes"
       guideline_title_3: "Donnez des conseils"
       guideline_title_4: "Obtenez vos récompenses !"
       guideline_text_1_1: "Le savoir et le temps sont deux de vos plus précieux atouts: mettez-les à profit grâce à Papoters!"
-      guideline_text_1_2: "Publiez une offre, mettez vos talents en lumière et faîtes vous remarquer. Après 3 sessions gratuites, vous pourrez faire payer vos services."
+      guideline_text_1_2: "Publiez une offre, mettez vos expertises en lumière et faîtes vous remarquer. Après 3 sessions gratuites, vous pourrez faire payer vos services."
       guideline_text_2_1: "Plus votre offre sucsite d'intérêt, plus vous recevrez de demandes pour des sessions de conseil."
       guideline_text_2_2: "Pour chaque demande, établissez les conditions et les ojectifs de la session. Si votre proposition est acceptée, la session est ouverte!"
       guideline_text_3_1: "Une fois la session ouverte, vous êtes engagé(e) à fournir votre service selon l'accord conclu."

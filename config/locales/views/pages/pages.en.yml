@@ -2,12 +2,12 @@ en:
   pages:
     home:
       title: "Need for advice?"
-      meta_description: "Get in touch with the best advisor to help you."
+      meta_description: "Get in touch with the best advisor to help you out with any of your projects."
       banner_title: "Find an advisor to"
-      rot_1: help you out
+      rot_1: achieve any project
       rot_2: plan a trip
       rot_3: start a business
-      rot_4: manage your finances
+      rot_4: manage your money
       rot_5: plan an event
       rot_6: relocate
       rot_7: develop an activity
@@ -17,8 +17,8 @@ en:
       input_placeholder: "I need some advice for ..."
       arrow_down: "Find out more"
       inspirations_title: "Don't stay left with your questions, regardless of the moment."
-      offer_sample_title: "Get in touch with the best advisor to help you."
-      guidelines_title: "The easiest way to get a tailor-made support."
+      offer_sample_title: "Get in touch with the best advisor to help you out."
+      guidelines_title: "A tailor-made support, as easy as ABC."
       guideline_title_1: "Find an advisor"
       guideline_title_2: "Reach an agreement"
       guideline_title_3: "Get advice"
@@ -33,23 +33,24 @@ en:
       guideline_text_4_2: "Provide a feedback for the Papoters community: leave a review, rate the session and evaluate the achievement of the targets settled in the agreement."
       find_advisor_button: "Find an advisor"
       be_advisor_title: "Your knowledge and your experience have value!"
-      be_advisor_subtitle: "Propose your services as advisor and leverage your knowledge."
+      be_advisor_subtitle: "Become advisor to leverage them."
       be_advisor_button: "Become advisor"
     advisor:
       title: "Become advisor"
-      meta_description: "Propose your services as advisor and leverage your knowledge."
-      banner_title: "Propose your services as advisor and leverage your knowledge."
+      meta_description: "Give advice, build your reputation and leverage your knowlegde."
+      banner_title: "Give advice, build your reputation and leverage your knowlegde."
       publish_offer_link: "Publish an offer"
       sign_up_as_papoter_link: "Sign up as Papoter"
       arrow_down: "Find out more"
       inspirations_title: "Your knowledge and your experience have value, share them!"
-      guidelines_title: "Give advice, build your reputation and make your talents worthwhile."
+      offer_example_title: "Publish offers to showcase your expertises."
+      guidelines_title: "Establish yourself and offer your services at their right value."
       guideline_title_1: "Publish an offer"
       guideline_title_2: "Answer to requests"
       guideline_title_3: "Deliver advice"
       guideline_title_4: "Get your rewards !"
       guideline_text_1_1: "Knowledge and time are two of your most precious assets : leverage them thanks to Papoters!"
-      guideline_text_1_2: "Publish an offer, show off your talents and draw attention to yourself. After 3 free sessions, you can start pricing your services."
+      guideline_text_1_2: "Publish an offer, showcase your expertises and draw attention to yourself. After 3 free sessions, you can start pricing your services."
       guideline_text_2_1: "The more interest you offer arouses, the more requests you will receive for advice sessions."
       guideline_text_2_2: "For each request, set the targets and the conditions of the session. If your proposition is accepted, the session is open!"
       guideline_text_3_1: "Once the session is open, you are committed to deliver the service as part of your agreement."

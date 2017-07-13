@@ -8,6 +8,7 @@ class PagesController < ApplicationController
   end
 
   def advisor
+    @offer = Offer.first
   end
 
   def about

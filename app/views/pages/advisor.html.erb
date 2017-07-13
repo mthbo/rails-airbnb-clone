@@ -37,6 +37,21 @@
     </div>
   </div>
 
+  <div class="bg-light-gray padded-top-l padded-bottom-xl">
+    <div class="home-content-wrapper padded-bottom-s text-center">
+      <div class="home-flex-700">
+        <h2><%= t '.offer_example_title' %></h2>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-lg-10 col-lg-offset-1 padded-bottom-s">
+          <%= render 'offers/card', offer: @offer %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div style='background-image: url("<%= image_path('backgrounds/background_grid_gray.png') %>");' class="padded-top-l padded-bottom-xl text-center bg-white home-guidelines">
     <div class="home-content-wrapper padded-bottom-l">
       <div class="home-flex-700">
