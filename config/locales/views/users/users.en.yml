@@ -125,7 +125,7 @@ en:
       business_name: My company
       business_tax_id: 321 654 987 12315
       details_verification: The details provided will be verified. In the event of any irregularity observed, your account may be disabled.
-      accept_service_agreement_1: "By transmitting these details, you accept our"
+      accept_service_agreement_1: "By transmitting these details, you agree to our"
       tos: "terms of service"
       accept_service_agreement_2: and the
       stripe_service_agreement: "Stripe Connected Account Agreement"

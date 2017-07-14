@@ -22,6 +22,15 @@
 
   <%= f.hidden_field :locale, value: I18n.locale %>
 
+  <div>
+    <p>
+      <%= t '.accept_service_agreement_1' %>
+      <%= link_to t('.tos'), terms_path, target: "blank" %>
+      <%= t '.accept_service_agreement_2' %>
+      <%= link_to t('.privacy'), privacy_path, target: "blank" %>.
+    </p>
+  </div>
+
   <div class="form-actions text-right">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-gradient", data: {disable_with: t('.signing_up')}) do %>
       <i class='fa fa-sign-in' aria-hidden='true'></i>&nbsp;&nbsp; <%= t(".sign_up") %>

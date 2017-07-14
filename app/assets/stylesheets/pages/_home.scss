@@ -69,6 +69,9 @@
 
 .home-banner-small {
   border-bottom: solid 1px $light-gray;
+}
+
+.home-banner-special-title {
   h1 {
     font-family: $brand-font;
     font-size: 60px;
@@ -258,7 +261,7 @@
   .home-banner-bottom{
     height: calc(40vh - 60px);
   }
-  .home-banner-small {
+  .home-banner-special-title {
     h1 {
       font-size: 44px;
     }

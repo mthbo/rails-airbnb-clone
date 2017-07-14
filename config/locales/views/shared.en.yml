@@ -10,7 +10,8 @@ en:
     need_advice: "Need for advice?"
     be_advisor: "Become advisor"
     about: "About"
-    t&p: "Terms & Privacy"
+    terms: "TOS"
+    privacy: "Politique de confidentialité"
     contact: "Contact us"
   mail_signature:
     at_your_disposal: At your disposal,

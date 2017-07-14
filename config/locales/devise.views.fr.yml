@@ -190,6 +190,10 @@ fr:
         last_name: Nom
         email: Adresse e-mail
         password: "Mot de passe (min. %{length} caractères)"
+        accept_service_agreement_1: "En vous inscrivant et en utilisant Papoters, vous acceptez nos"
+        tos: "conditions générales d'utilisation"
+        accept_service_agreement_2: et notre
+        privacy: "politique de confidentialité"
       confirm:
         account_confirmation: Confirmation du compte
         waiting_for_confirmation: En attente de confirmation...

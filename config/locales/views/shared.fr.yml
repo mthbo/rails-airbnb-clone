@@ -10,7 +10,8 @@ fr:
     need_advice: "Besoin de conseils?"
     be_advisor: "Devenir conseiller"
     about: "A propos"
-    t&p: "Conditions & Confidentialité"
+    terms: "CGU"
+    privacy: "Politique de confidentialité"
     contact: "Nous contacter"
   mail_signature:
     at_your_disposal: A votre service,
