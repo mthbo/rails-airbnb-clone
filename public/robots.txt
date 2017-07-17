@@ -4,4 +4,4 @@
 # User-agent: *
 # Disallow: /
 
-Sitemap: https://www.papoters.com/sitemap.xml.gz
+Sitemap: http://s3-eu-west-1.amazonaws.com/papoters/sitemap.xml.gz
