@@ -2,8 +2,8 @@ fr:
   pages:
     home:
       title: "Besoin de conseils?"
-      meta_description: "Trouver un conseiller particulier pour tous vos projets."
-      banner_title: "Trouver un conseiller pour"
+      meta_description: "Trouvez un conseiller pour tous vos projets."
+      banner_title: "Trouvez un conseiller pour"
       rot_1: tous vos projets
       rot_2: préparer un voyage
       rot_3: monter votre entreprise
@@ -18,7 +18,7 @@ fr:
       arrow_down: "En savoir plus"
       inspirations_title: "Quelle que soit l'occasion, ne laissez plus vos questions sans réponses."
       offer_sample_title: "Faites appel au meilleur conseiller pour vous accompagner."
-      guidelines_title: "Un accompagnement sur-mesure, en toute simplicité."
+      guidelines_title: "Obtenez des conseils sur-mesure, en toute simplicité."
       guideline_title_1: "Trouvez un conseiller"
       guideline_title_2: "Parvenez à un accord"
       guideline_title_3: "Soyez conseillé"
@@ -33,18 +33,18 @@ fr:
       guideline_text_4_2: "Faîtes un retour d'expérience pour la communauté Papoters: laissez un avis, notez la session et évaluez la réalisation des objectifs établis dans l'accord."
       find_advisor_button: "Trouver un conseiller"
       be_advisor_title: "Vos connaissances et vos expériences sont précieuses!"
-      be_advisor_subtitle: "Mettez-les à profit en devenant conseiller."
+      be_advisor_subtitle: "Devenez conseiller et publiez votre première offre."
       be_advisor_button: "Devenir conseiller"
     advisor:
       title: "Devenez conseiller"
-      meta_description: "Donnez des conseils, bâtissez votre réputation et mettez à profit vos savoirs."
-      banner_title: "Donnez des conseils, bâtissez votre réputation et mettez à profit vos savoirs."
+      meta_description: "Donnez des conseils et mettez à profit vos savoirs."
+      banner_title: "Donnez des conseils et mettez à profit vos savoirs."
       publish_offer_link: "Publier une offre"
       sign_up_as_papoter_link: "S'inscrire comme Papoter"
       arrow_down: "En savoir plus"
       inspirations_title: "Vos connaissances et vos expériences sont précieuses, partagez-les!"
-      offer_example_title: "Publiez des offres pour mettre vos expertises en lumière."
-      guidelines_title: "Devenez une référence et offrez vos services à leur juste valeur."
+      offer_example_title: "Publiez une offre et devenez une référence sur votre domaine d'expertise."
+      guidelines_title: "Bâtissez votre réputation et offrez vos services à leur juste valeur."
       guideline_title_1: "Publiez une offre"
       guideline_title_2: "Répondez aux demandes"
       guideline_title_3: "Donnez des conseils"
