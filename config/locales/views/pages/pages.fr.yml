@@ -2,7 +2,7 @@ fr:
   pages:
     home:
       title: "Besoin de conseils?"
-      meta_description: "Trouvez un conseiller pour tous vos projets."
+      meta_description: "Trouvez un conseiller pour vous accompagner dans tous vos projets."
       banner_title: "Trouvez un conseiller pour"
       rot_1: tous vos projets
       rot_2: préparer un voyage
@@ -37,8 +37,8 @@ fr:
       be_advisor_button: "Devenir conseiller"
     advisor:
       title: "Devenez conseiller"
-      meta_description: "Donnez des conseils et mettez à profit vos savoirs."
-      banner_title: "Donnez des conseils et mettez à profit vos savoirs."
+      meta_description: "Mettez à profit vos savoirs en donnant des conseils."
+      banner_title: "Mettez à profit vos savoirs en donnant des conseils."
       publish_offer_link: "Publier une offre"
       sign_up_as_papoter_link: "S'inscrire comme Papoter"
       arrow_down: "En savoir plus"
