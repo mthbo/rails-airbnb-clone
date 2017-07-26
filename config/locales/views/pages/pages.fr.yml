@@ -4,10 +4,10 @@ fr:
       title: "Besoin de conseils?"
       meta_description: "Trouvez un conseiller pour vous accompagner dans tous vos projets."
       banner_title: "Trouvez un conseiller pour"
-      rot_1: tous vos projets
-      rot_2: préparer un voyage
-      rot_3: monter votre entreprise
-      rot_4: gérer vos finances
+      rot_1: préparer un voyage
+      rot_2: monter votre entreprise
+      rot_3: gérer vos finances
+      rot_4: préparer un examen
       rot_5: organiser un événement
       rot_6: vous expatrier
       rot_7: dévolopper une activité
@@ -16,23 +16,23 @@ fr:
       rot_10: vous simplifier la vie!
       input_placeholder: "J'ai besoin de conseils pour ..."
       arrow_down: "En savoir plus"
-      inspirations_title: "Quelle que soit l'occasion, ne laissez plus vos questions sans réponses."
-      offer_sample_title: "Faites appel au meilleur conseiller pour vous accompagner."
-      guidelines_title: "Obtenez des conseils sur-mesure, en toute simplicité."
-      guideline_title_1: "Trouvez un conseiller"
-      guideline_title_2: "Parvenez à un accord"
-      guideline_title_3: "Soyez conseillé"
-      guideline_title_4: "Exprimez votre satisfaction !"
-      guideline_text_1_1: "Bloqué(e) dans vos projets? Noyé(e) dans l'information? Fiez-vous à un conseillé avisé, gagnez du temps et simplifiez-vous la vie!"
-      guideline_text_1_2: "Entrez votre recherche sur Papoters et découvrez le meilleur conseiller pour vous accompagner."
-      guideline_text_2_1: "Prenez contact avec votre conseiller dans une session privée et précisez votre besoin."
-      guideline_text_2_2: "Acceptez les conditions proposées pour ouvrir la session, ou continuez à échanger pour trouver un accord. La session peut être gratuite ou payante."
-      guideline_text_3_1: "Une fois la session ouverte, votre conseiller est engagé à vous accompagner selon l'accord conclu."
-      guideline_text_3_2: "Les modes de communication dépendent de ce que vous avez convenu: messages, coup de fil, appel vidéo, rencontre, etc."
-      guideline_text_4_1: "La session peut être fermée à l'issue de la date limite fixée."
-      guideline_text_4_2: "Faîtes un retour d'expérience pour la communauté Papoters: laissez un avis, notez la session et évaluez la réalisation des objectifs établis dans l'accord."
+      inspirations_title: "Faîtes appel à un expert pour vous accompagner dans vos projets."
+      benefits_title: "Des conseils sur-mesure, tout simplement."
+      benefits_title_1: Explorez les offres en accès libre
+      benefits_text_1: Entrez votre recherche et trouvez le conseiller qui peut vous aider.
+      benefits_title_2: Demandez le sur-mesure
+      benefits_text_2: Prenez contact avec un conseiller pour obtenir une proposition personnalisée.
+      benefits_title_3: Des conseils à leur juste valeur
+      benefits_text_3: Profitez de conseils gratuits auprès des conseillers en apprentissage.
+      benefits_title_4: Un accord pour chaque session
+      benefits_text_4: Acceptez la proposition qui vous est faîtes ou demandez un ajustement.
+      benefits_title_5: Communiquez où que vous soyez
+      benefits_text_5: Profitez de l’interface mise à disposition pour communiquer sans limite.
+      benefits_title_6: Payez en ligne en toute sécurité
+      benefits_text_6: Papoters se charge de faire l'intermédiaire entre vous et votre conseiller.
+      offer_sample_title: "Trouvez rapidement l'offre qui répond à votre besoin."
       find_advisor_button: "Trouver un conseiller"
-      be_advisor_title: "Vos connaissances et vos expériences sont précieuses!"
+      be_advisor_title: "Vos savoirs et votre temps sont précieux!"
       be_advisor_subtitle: "Devenez conseiller et publiez votre première offre."
       be_advisor_button: "Devenir conseiller"
     advisor:
@@ -52,7 +52,7 @@ fr:
       guideline_text_1_1: "Le savoir et le temps sont deux de vos plus précieux atouts: mettez-les à profit grâce à Papoters!"
       guideline_text_1_2: "Publiez une offre, mettez vos expertises en lumière et faîtes vous remarquer. Après 3 sessions gratuites, vous pourrez faire payer vos services."
       guideline_text_2_1: "Plus votre offre sucsite d'intérêt, plus vous recevrez de demandes pour des sessions de conseil."
-      guideline_text_2_2: "Pour chaque demande, établissez les conditions et les ojectifs de la session. Si votre proposition est acceptée, la session est ouverte!"
+      guideline_text_2_2: "Pour chaque demande, établissez les conditions et les objectifs de la session. Si votre proposition est acceptée, la session est ouverte!"
       guideline_text_3_1: "Une fois la session ouverte, vous êtes engagé(e) à fournir votre service selon l'accord conclu."
       guideline_text_3_2: "Les modes de communication dépendent de ce que vous avez convenu: messages, coup de fil, appel vidéo, rencontre, etc."
       guideline_text_4_1: "A l'issue de la session, votre service est évalué par le bénéficiaire. L'évaluation dépend de la réalisation des objectifs établis dans l'accord."

@@ -6,6 +6,7 @@
   border-radius: 5px;
   position: relative;
   max-width: 550px;
+  overflow: hidden;
 }
 
 .deal-card-notifications {
@@ -87,25 +88,21 @@
 
 .deal-card-right {
   position: absolute;
-  border-radius: 0 5px 5px 0;
   right: 0;
   top: 0;
   bottom: 0;
-  width: 5px;
-  border: 5px dotted;
+  width: 8px;
 }
 
 .deal-card-client {
   .deal-card-right {
     background: $yellow;
-    border-color: $light-yellow;
   }
 }
 
 .deal-card-advisor {
   .deal-card-right {
     background: $green;
-    border-color: $light-green;
   }
 }
 

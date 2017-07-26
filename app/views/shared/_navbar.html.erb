@@ -52,10 +52,10 @@
 
     <% if user_signed_in? %>
       <%= link_to dashboard_path, { class: "btn my-navbar-button-round btn-blue" } do %>
-          <i class="fa fa-hashtag"></i>
-          <div id="my-navbar-badge">
-            <%= render 'users/notifications' %>
-          </div>
+        <i class="fa fa-hashtag"></i>
+        <div id="my-navbar-badge">
+          <%= render 'users/notifications' %>
+        </div>
       <% end %>
 
       <div class="my-navbar-item">
