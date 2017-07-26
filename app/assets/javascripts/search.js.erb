@@ -122,7 +122,8 @@ $(document).ready(function() {
     $('#home-input').on('input', function() {
       if ($('#home-input').val() !== "") {
         $('#searchbar').slideDown(150);
-        HomeInputToSearchbar();
+        homeInputToSearchbar();
+        hideNavbarSearchIcon();
         ga('send', 'event', 'Search', 'input', 'Search from home page input');
       }
     });
@@ -132,9 +133,11 @@ $(document).ready(function() {
         if ($('#searchbar').is(':hidden')) {
           $('#searchbar-input').focusout();
           showMainHideSearch();
-          SearchbarInputToHome();
+          searchbarInputToHome();
+          showNavbarSearchIcon();
         } else {
           $('#searchbar-input').focus();
+          hideNavbarSearchIcon();
           ga('send', 'event', 'Search', 'click', 'Search from navbar button');
         }
       });
@@ -145,7 +148,10 @@ $(document).ready(function() {
       $('#searchbar').slideToggle(150, function() {
         $('#searchbar-input').focus();
         if ($('#searchbar').is(':visible')) {
+          hideNavbarSearchIcon();
           ga('send', 'event', 'Search', 'click', 'Search from home page button');
+        } else {
+          showNavbarSearchIcon();
         }
       });
     });
@@ -155,7 +161,10 @@ $(document).ready(function() {
       $('#searchbar').slideToggle(150, function() {
         $('#searchbar-input').focus();
         if ($('#searchbar').is(':visible')) {
+          hideNavbarSearchIcon();
           ga('send', 'event', 'Search', 'click', 'Search from advisor page button');
+        } else {
+          showNavbarSearchIcon();
         }
       });
     });
@@ -164,6 +173,7 @@ $(document).ready(function() {
       if ($('#searchbar').is(':visible')) {
         $('#searchbar').slideUp(150);
         $('#searchbar-input').focusout();
+        showNavbarSearchIcon();
       }
     });
 
@@ -197,13 +207,13 @@ function getTemplate(templateName) {
   return document.getElementById(templateName + '-template').innerHTML;
 }
 
-function SearchbarInputToHome() {
+function searchbarInputToHome() {
   if ($('#home-input').length > 0) {
     $('#home-input').val($('#searchbar-input').val());
   }
 }
 
-function HomeInputToSearchbar() {
+function homeInputToSearchbar() {
   $('#searchbar-input').val($('#home-input').val());
   $('#searchbar-input').focus();
 }
@@ -232,4 +242,14 @@ function filtersDiscloseContent() {
     $('#search-filters-toggle').addClass('hidden');
     $('#search-clear').removeClass('hidden');
   }
+}
+
+function hideNavbarSearchIcon() {
+  $('#my-navbar-btn-search-trigger i').remove();
+  $('#my-navbar-btn-search-trigger').append("<i class='fa fa-caret-up fa-lg' aria-hidden='true'></i>");
+}
+
+function showNavbarSearchIcon() {
+  $('#my-navbar-btn-search-trigger i').remove();
+  $('#my-navbar-btn-search-trigger').append("<i class='fa fa-search'></i>");
 }

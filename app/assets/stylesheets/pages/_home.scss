@@ -122,9 +122,23 @@
 }
 
 #home-arrow-down {
-  .glyphicon {
-    font-size: 50px;
+  animation: animatedArrowUpDown 0.5s alternate infinite;
+  &:hover {
+    animation: animatedArrowUpUp 0.25s forwards;
+  };
+  img {
+    height: 115px;
+    width: 115px;
   }
+}
+
+@keyframes animatedArrowUpDown {
+  0% { padding-bottom: 0; }
+  100% { padding-bottom: 10px; }
+}
+@keyframes animatedArrowUpUp {
+  0% { padding-bottom: 0; }
+  100% { padding-bottom: 15px; }
 }
 
 .home-inspirations-top {
@@ -159,6 +173,38 @@
 .home-inspirations-body-3 {
   height: calc(100vh - 54px);
   background-position: 50% 45px;
+}
+
+.home-benefits-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  h3 {
+    color: $blue;
+    font-size: 23px;
+    font-weight: normal;
+  }
+  p {
+    font-size: 19px;
+    color: $medium-dark-gray;
+  }
+}
+
+.home-benefits-picto {
+  background-color: white;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0 8px 16px rgba(48, 72, 95, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  img {
+    width: 70px;
+    height: 70px;
+  }
 }
 
 .home-guidelines {
@@ -230,6 +276,12 @@
   flex: 0 1 1200px;
 }
 
+.home-bottom-img {
+  img {
+    width: 70px;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .home-content-wrapper {
     h1 {
@@ -270,8 +322,17 @@
     }
   }
   #home-arrow-down {
-    .glyphicon {
-      font-size: 30px;
+    img {
+      height: 85px;
+      width: 85px;
+    }
+  }
+  .home-benefits-box {
+    h3 {
+      font-size: 18px;
+    }
+    p {
+      font-size: 16px !important;
     }
   }
   .home-guidelines {
@@ -284,4 +345,9 @@
       font-size: 16px !important;
     }
   };
+  .home-bottom-img {
+    img {
+      width: 60px;
+    }
+  }
 }
