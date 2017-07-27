@@ -152,7 +152,7 @@ class User < ApplicationRecord
     if photo.present?
       ActionController::Base.helpers.cl_image_tag(photo.path, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar-medium bg-light-gray").to_s
     else
-      url = facebook_picture_url || "avatar.png"
+      url = facebook_picture_url || "avatar.svg"
       ActionController::Base.helpers.image_tag(url, class: "avatar-medium bg-light-gray").to_s
     end
   end

@@ -17,7 +17,7 @@
   background-color: white;
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2);
   border-radius: 5px;
-  margin: 20px auto;
+  margin-top: 40px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -174,7 +174,6 @@
 
 @media (max-width: $screen-xs-max) {
   .offer-card-small {
-    margin: 20px auto;
     min-height: auto;
   }
   .offer-card-content {
