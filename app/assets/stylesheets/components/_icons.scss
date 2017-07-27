@@ -61,6 +61,13 @@
   }
 }
 
+.icon-extra-big {
+  margin-bottom: 10px;
+  img {
+    height: 80px;
+  }
+}
+
 @media (max-width: $screen-xs-max) {
   .info-icon img {
     height: 18px;
@@ -74,6 +81,11 @@
   .icon-big {
     img {
       height: 40px;
+    }
+  }
+  .icon-extra-big {
+    img {
+      height: 65px;
     }
   }
 }

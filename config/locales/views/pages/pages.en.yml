@@ -1,13 +1,13 @@
 en:
   pages:
     home:
-      title: "Need for advice?"
+      title: On demand expert advice
       meta_description: "Find an advisor to help you out with any of your projects."
       banner_title: "Find an advisor to"
-      rot_1: achieve any project
-      rot_2: plan a trip
-      rot_3: start a business
-      rot_4: manage your money
+      rot_1: plan a trip
+      rot_2: start a business
+      rot_3: manage your money
+      rot_4: prepare an exam
       rot_5: plan an event
       rot_6: relocate
       rot_7: develop an activity
@@ -15,24 +15,23 @@ en:
       rot_9: pursue your passions
       rot_10: make your life easier!
       input_placeholder: "I need some advice for ..."
-      arrow_down: "Find out more"
-      inspirations_title: "Don't stay left with your questions, whatever the moment."
-      offer_sample_title: "Get in touch with the best advisor to help you out."
-      guidelines_title: "Get tailor-made advice, as easy as ABC."
-      guideline_title_1: "Find an advisor"
-      guideline_title_2: "Reach an agreement"
-      guideline_title_3: "Get advice"
-      guideline_title_4: "Express your satisfaction !"
-      guideline_text_1_1: "Stuck with your projects? Drowned in information? Rely on an advisor in the know, save time and prevent yourself from many troubles!"
-      guideline_text_1_2: "Type your search on Papoters and find out the best advisor to meet your need."
-      guideline_text_2_1: "Get in touch with your advisor and explain your need in a private session."
-      guideline_text_2_2: "Accept the conditions proposed to open the session, or keep chatting to reach an agreement. It may be a free or a paid session."
-      guideline_text_3_1: "Once the session is open, your advisor is committed to support you as part of your agreement."
-      guideline_text_3_2: "The means of communication depend on what you agreed: messaging, phone call, video call, meeting, etc."
-      guideline_text_4_1: "The session can be closed after the deadline set has passed."
-      guideline_text_4_2: "Provide a feedback for the Papoters community: leave a review, rate the session and evaluate the achievement of the targets settled in the agreement."
+      inspirations_title: "Get in touch with an expert to help you out with any of your projects."
+      benefits_title: "On demand advice, as easy as ABC."
+      benefits_title_1: Browse offers freely
+      benefits_text_1: Type your search and find out the advisor who can help you out.
+      benefits_title_2: Ask for tailor-made advice
+      benefits_text_2: Get in touch with an advisor to get a proposition that fits your needs.
+      benefits_title_3: Advice at their fair value
+      benefits_text_3: Benefit from free advice dispensed by learning advisors.
+      benefits_title_4: An agreement for each session
+      benefits_text_4: Accept the proposition made to you or ask for an adjustment.
+      benefits_title_5: Communicate wherever you are
+      benefits_text_5: Use the interface provided to communicate without limit.
+      benefits_title_6: Secure online payment
+      benefits_text_6: Papoters acts as a go-between for you and your advisor.
+      offer_sample_title: "A community of experts at your service."
       find_advisor_button: "Find an advisor"
-      be_advisor_title: "Your knowledge and your experiences have value!"
+      be_advisor_title: "Your knowledge and your time are precious!"
       be_advisor_subtitle: "Become advisor and publish your first offer."
       be_advisor_button: "Become advisor"
     advisor:
@@ -41,7 +40,6 @@ en:
       banner_title: "Leverage your knowledge by giving advice."
       publish_offer_link: "Publish an offer"
       sign_up_as_papoter_link: "Sign up as Papoter"
-      arrow_down: "Find out more"
       inspirations_title: "Your knowledge and your experiences have value, share them!"
       offer_example_title: "Publish an offer and become a reference on your area of expertise."
       guidelines_title: "Build your reputation and offer your services at their right value."

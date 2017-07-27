@@ -1,7 +1,7 @@
 fr:
   pages:
     home:
-      title: "Besoin de conseils?"
+      title: Demandez conseil à des experts
       meta_description: "Trouvez un conseiller pour vous accompagner dans tous vos projets."
       banner_title: "Trouvez un conseiller pour"
       rot_1: préparer un voyage
@@ -15,7 +15,6 @@ fr:
       rot_9: vivre vos passions
       rot_10: vous simplifier la vie!
       input_placeholder: "J'ai besoin de conseils pour ..."
-      arrow_down: "En savoir plus"
       inspirations_title: "Faîtes appel à un expert pour vous accompagner dans vos projets."
       benefits_title: "Des conseils sur demande, tout simplement."
       benefits_title_1: Explorez les offres en accès libre
@@ -28,7 +27,7 @@ fr:
       benefits_text_4: Acceptez la proposition qui vous est faîte ou demandez un ajustement.
       benefits_title_5: Communiquez où que vous soyez
       benefits_text_5: Profitez de l’interface mise à disposition pour communiquer sans limite.
-      benefits_title_6: Payez en ligne en toute sécurité
+      benefits_title_6: Paiement en ligne sécurisé
       benefits_text_6: Papoters se charge de faire l'intermédiaire entre vous et votre conseiller.
       offer_sample_title: "Une communauté d'experts à votre service."
       find_advisor_button: "Trouver un conseiller"
@@ -41,7 +40,6 @@ fr:
       banner_title: "Mettez à profit vos savoirs en donnant des conseils."
       publish_offer_link: "Publier une offre"
       sign_up_as_papoter_link: "S'inscrire comme Papoter"
-      arrow_down: "En savoir plus"
       inspirations_title: "Vos connaissances et vos expériences sont précieuses, partagez-les!"
       offer_example_title: "Publiez une offre et devenez une référence sur votre domaine d'expertise."
       guidelines_title: "Bâtissez votre réputation et offrez vos services à leur juste valeur."
