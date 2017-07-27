@@ -1,6 +1,6 @@
 fr:
   title: "Papoters | Le conseil à la demande"
-  description: "Papoters facilite le transfert de connaissances en offrant un lieu d'échange de services de conseil."
+  description: "Papoters facilite la transmission de connaissances en offrant un lieu d'échange de services de conseil."
   activerecord:
     attributes:
       offer:

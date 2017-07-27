@@ -1,6 +1,6 @@
 en:
-  title: "Papoters | The knowledge marketplace"
-  description: "Papoters is a place for knowledge sharing where everyone can receive and offer advisory services."
+  title: "Papoters | On demand advising"
+  description: "Papoters facilitates knowledge transfer by offering a place to exchange advisory services."
   activerecord:
     attributes:
       offer:
