@@ -12,18 +12,14 @@
       min-height: 30px;
       padding: 10px 25px;
       overflow-wrap: break-word;
-      pre {
-        border-radius: 10px;
-        margin: 5px 0;
-        background-color: rgba(255,255,255,0.5);
-        border: none;
-        code {
-          font-family: monospace;
-          white-space: pre-wrap;
-          display: inline-block;
-          font-size: 13px;
-        }
-      }
+      // pre {
+      //   code {
+      //     font-family: monospace;
+      //     white-space: pre-wrap;
+      //     display: inline-block;
+      //     font-size: 13px;
+      //   }
+      // }
     }
   };
 }
@@ -67,17 +63,38 @@
   line-height: 2.2em;
 }
 
+code {
+ color: $dark-gray;
+ background-color: $extra-light-gray;
+ font-size: 13px;
+}
+
+pre {
+  border-radius: 10px;
+  border: none;
+  margin: 5px 0;
+  color: $dark-gray;
+  background-color: $extra-light-gray;
+  font-size: 13px;
+  font-family: 'Consolas', monospace;
+  .line-numbers {
+    padding-right: 10px;
+  }
+}
+
+blockquote {
+  padding: 0 0 0 10px;
+  margin: 2px 0;
+  font-size: inherit;
+  color: $medium-dark-gray;
+}
+
 @media (max-width: $screen-xs-max) {
   .message-box {
     .message {
       .message-content {
         min-height: 25px;
         padding: 10px 20px;
-        pre {
-          code {
-            font-size: 12px;
-          }
-        }
       }
     }
   };
@@ -89,6 +106,9 @@
   .message-left {
     .message-content {
       border-radius: 20px 20px 20px 0;
-    }
+    };
   }
+  code, pre {
+   font-size: 11px;
+  };
 }

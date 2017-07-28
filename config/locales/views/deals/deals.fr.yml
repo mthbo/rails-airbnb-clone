@@ -213,6 +213,14 @@ fr:
       reviews: Avis
     video_call:
       access_to_room: Accéder à la visioconférence
+    conversation_tips:
+      bold: gras
+      italics: italique
+      strikes: barré
+      code: code
+      preformatted: préformaté
+      quote: citation
+
 
 
 
