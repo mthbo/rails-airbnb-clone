@@ -88,13 +88,6 @@
   min-height: 60vh;
 }
 
-.home-banner-special-title {
-  h1 {
-    font-family: $brand-font;
-    font-size: 60px;
-  }
-}
-
 #home-input {
   font-size: 34px;
   padding-right: 40px;
@@ -217,16 +210,6 @@
   }
 }
 
-.home-guidelines {
-  h4 {
-    font-size: 25px;
-    padding-top: 10px;
-    font-family: $special-font;
-    font-weight: bolder;
-    color: $dark-light-gray;
-  }
-}
-
 .home-guideline-container {
   position: relative;
   img {
@@ -346,11 +329,6 @@
   }
   .home-banner-bottom{
     height: calc(40vh - 60px);
-  }
-  .home-banner-special-title {
-    h1 {
-      font-size: 44px;
-    }
   }
   #home-arrow-down {
     img {
