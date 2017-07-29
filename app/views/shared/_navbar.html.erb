@@ -7,16 +7,16 @@
   <div class="my-navbar-left">
     <%= link_to root_path, { class: "my-navbar-brand" } do %>
       <div class="hidden-sm hidden-md hidden-lg">
-        <%= image_tag "papoters_icon.svg" %>
+        <%= image_tag "papoters_icon.svg", width: '35px', height: '35px' %>
       </div>
       <div class="hidden-xs">
-        <%= image_tag "papoters.svg" %>
+        <%= image_tag "papoters.svg", width: '180px', height: '45px' %>
       </div>
     <% end %>
 
     <div class="my-navbar-item">
       <div id="my-navbar-locale-toggle">
-        <%= image_tag "flags/#{I18n.locale}.svg" %>
+        <%= image_tag "flags/#{I18n.locale}.svg", height: '20px' %>
         <i class="fa fa-caret-down" aria-hidden="true"></i>
       </div>
       <ul id="my-navbar-locale-menu" class="list-unstyled">
@@ -24,11 +24,11 @@
           <li class="text-center">
             <% if user_signed_in? %>
               <%= link_to change_locale_path(locale: locale, path: url_for(locale: locale)), method: :patch do %>
-                <%= image_tag "flags/#{locale}.svg" %>
+                <%= image_tag "flags/#{locale}.svg", height: '20px' %>
               <% end %>
             <% else %>
               <%= link_to locale: locale do %>
-                <%= image_tag "flags/#{locale}.svg" %>
+                <%= image_tag "flags/#{locale}.svg", height: '20px' %>
               <% end %>
             <% end %>
           </li>
