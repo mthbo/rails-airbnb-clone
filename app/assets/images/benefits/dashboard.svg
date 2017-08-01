@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="81px" height="81px" viewBox="0 0 81 81" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>dashboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="1.44569486" y="1.23973059" width="16.8299127" height="14.4322002" rx="1"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#FEFAEE" offset="0%"></stop>
+            <stop stop-color="#FFC938" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-4" x="1.44569486" y="1.23973059" width="16.8299127" height="14.4322002" rx="1"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-6">
+            <stop stop-color="#D2F4EB" offset="0%"></stop>
+            <stop stop-color="#42D3AA" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-7" x="1.44569486" y="1.23973059" width="16.8299127" height="14.4322002" rx="1"></rect>
+        <rect id="path-9" x="1.44569486" y="1.23973059" width="16.8299127" height="14.4322002" rx="1"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="dashboard">
+            <g id="Group-2" transform="translate(18.000000, 22.000000)">
+                <g id="Group">
+                    <rect id="Rectangle-14" fill="#30485F" x="0" y="0" width="19.7213025" height="16.9116614" rx="2"></rect>
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Rectangle-14" fill="#FFFFFF" xlink:href="#path-1"></use>
+                    <rect id="Rectangle" fill="#30485F" mask="url(#mask-2)" x="14.3181818" y="0" width="6.13636364" height="16.2123552"></rect>
+                    <rect id="Rectangle-15" fill="url(#linearGradient-3)" mask="url(#mask-2)" x="15.3409091" y="0" width="4.09090909" height="16.2123552"></rect>
+                </g>
+                <g id="Group-Copy-2" transform="translate(0.000000, 20.540541)">
+                    <rect id="Rectangle-14" fill="#30485F" x="0" y="0" width="19.7213025" height="16.9116614" rx="2"></rect>
+                    <mask id="mask-5" fill="white">
+                        <use xlink:href="#path-4"></use>
+                    </mask>
+                    <use id="Rectangle-14" fill="#FFFFFF" xlink:href="#path-4"></use>
+                    <rect id="Rectangle" fill="#30485F" mask="url(#mask-5)" x="14.3181818" y="0" width="6.13636364" height="16.2123552"></rect>
+                    <rect id="Rectangle-15" fill="url(#linearGradient-6)" mask="url(#mask-5)" x="15.3409091" y="0" width="4.09090909" height="16.2123552"></rect>
+                </g>
+                <g id="Group-Copy-4" transform="translate(24.545455, 20.540541)">
+                    <rect id="Rectangle-14" fill="#30485F" x="0" y="0" width="19.7213025" height="16.9116614" rx="2"></rect>
+                    <mask id="mask-8" fill="white">
+                        <use xlink:href="#path-7"></use>
+                    </mask>
+                    <use id="Rectangle-14" fill="#FFFFFF" xlink:href="#path-7"></use>
+                    <rect id="Rectangle" fill="#30485F" mask="url(#mask-8)" x="14.3181818" y="0" width="6.13636364" height="16.2123552"></rect>
+                    <rect id="Rectangle-15" fill="url(#linearGradient-3)" mask="url(#mask-8)" x="15.3409091" y="0" width="4.09090909" height="16.2123552"></rect>
+                </g>
+                <g id="Group-Copy-3" transform="translate(24.545455, 0.000000)">
+                    <rect id="Rectangle-14" fill="#30485F" x="0" y="0" width="19.7213025" height="16.9116614" rx="2"></rect>
+                    <mask id="mask-10" fill="white">
+                        <use xlink:href="#path-9"></use>
+                    </mask>
+                    <use id="Rectangle-14" fill="#FFFFFF" xlink:href="#path-9"></use>
+                    <rect id="Rectangle" fill="#30485F" mask="url(#mask-10)" x="14.3181818" y="0" width="6.13636364" height="16.2123552"></rect>
+                    <rect id="Rectangle-15" fill="url(#linearGradient-6)" mask="url(#mask-10)" x="15.3409091" y="0" width="4.09090909" height="16.2123552"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
