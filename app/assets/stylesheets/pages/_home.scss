@@ -64,6 +64,11 @@
   line-height: 1.5 !important;
 }
 
+.home-banner-subtitle {
+  color: $medium-dark-gray;
+  font-size: 30px !important;
+}
+
 .home-banner-rotate {
   border-bottom: solid 2px $yellow;
 }
@@ -77,7 +82,38 @@
 
 .home-banner-bottom {
   height: calc(40vh - 80px);
+  display: flex;
+  justify-content: center;
   align-items: flex-end;
+}
+
+.home-banner-vertical {
+  background-image: image-url("backgrounds/background_disclose.png");
+  background-position: 50% -46px;
+  display: flex;
+  height: calc(100vh + 54px);
+}
+
+.home-banner-left {
+  width: 40%;
+  height: 100%;
+  padding-left: 35px;
+  h1 {
+    font-size: 44px;
+  }
+}
+
+.home-banner-left-top {
+  flex-direction: column;
+  justify-content: flex-end;
+  height: calc(60vh + 80px);
+}
+
+.home-banner-triangle {
+  width: 0;
+  height: 0;
+  border-bottom: calc(100vh + 54px) solid $extra-light-gray;
+  border-right: 100px solid transparent;
 }
 
 .home-banner-small {
@@ -152,30 +188,10 @@
   height: 54px;
 }
 
-#home-inspirations-animated-background {
-  background-position: 50% 35%;
-  animation: animatedBackground 12s ease infinite forwards;
-}
-
-@keyframes animatedBackground {
-  0% { background-position: 50% 35%; }
-  20% { background-position: calc(50% - 600px) 35%; }
-  35% { background-position: calc(50% - 1400px) 35%; }
-  50% { background-position: calc(50% - 2000px) 35%; }
-  65% { background-position: calc(50% - 2400px) 35%; }
-  80% { background-position: calc(50% - 3000px) 35%; }
-  100% { background-position: calc(50% - 3400px) 35%; }
-}
-
-.home-inspirations-body-1 {
+.home-inspirations-body {
   height: calc(100vh - 54px);
   background-image: image-url("backgrounds/background_disclose.png");
   background-position: 50% 0;
-}
-
-.home-inspirations-body-2 {
-  height: calc(100vh - 54px);
-  background-position: 50% 35%;
 }
 
 .home-benefits-box {

@@ -3,38 +3,28 @@
 
 <div class="home">
 
-  <div class="home-banner text-center bg-gray-transparent">
-    <div class="home-banner-top home-content-wrapper">
-      <div class="home-flex-700">
-        <h1><%= t '.banner_title' %></h1>
+  <div class="home-banner home-banner-vertical">
+    <div class="home-banner-left bg-light-gray">
+      <div class="home-content-wrapper home-banner-left-top">
+        <h1 class="home-banner-title"><%= t '.banner_title' %></h1>
+        <h2 class="home-banner-subtitle"><%= t '.banner_subtitle' %></h2>
+        <div class="padded-top-m">
+          <% if user_signed_in? %>
+            <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
+          <% else %>
+            <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-btn" %>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="home-banner-middle home-content-wrapper bg-green-transparent">
-      <div class="home-flex-600">
-        <% if user_signed_in? %>
-          <%= link_to t('.publish_offer_link'), current_user.no_pricing? ? country_path : new_offer_path, class: "home-give-advice-link", id: "publish-offer-advisor-banner" %>
-        <% else %>
-          <%= link_to t('.sign_up_as_papoter_link'), new_user_registration_path, class: "home-give-advice-link", id: "sign-up-advisor-banner" %>
+      <div class="home-content-wrapper home-banner-bottom">
+        <%= link_to root_path, id: "home-arrow-down" do %>
+          <%= image_tag 'arrow_down.svg' %>
         <% end %>
       </div>
     </div>
-    <div class="home-banner-bottom home-content-wrapper">
-      <%= link_to root_path, id: "home-arrow-down" do %>
-        <%= image_tag 'arrow_down.svg' %>
-      <% end %>
-    </div>
+    <div class="home-banner-triangle"></div>
   </div>
 
-  <div>
-    <div class="home-inspirations-top bg-gray-transparent"></div>
-    <div id="home-inspirations-animated-background" class="bg-white" style='background-image: url("<%= image_path('backgrounds/background_line.png') %>");'>
-      <div class="home-inspirations-body-2 text-center padded-top-l home-content-wrapper" style='background-image: url("<%= image_path('backgrounds/background_disclose_line.png') %>");'>
-        <div class="home-flex-700">
-          <h2 class="white"><%= t '.inspirations_title' %></h2>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="padded-top-l padded-bottom-m text-center bg-white home-benefits">
     <div class="home-content-wrapper padded-bottom-m">
