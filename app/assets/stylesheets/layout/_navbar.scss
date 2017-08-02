@@ -122,6 +122,23 @@
   position: relative;
 }
 
+#my-navbar-btn-search-trigger {
+  transition: all .2s ease-in-out;
+  &.search-bar-active {
+    i {
+      color: transparent;
+      &:before {
+        display: block;
+        width: 0;
+        height: 0;
+        border-bottom: white solid 9px;
+        border-right: transparent solid 8px;
+        border-left: transparent solid 8px;
+      }
+    }
+  }
+}
+
 #my-navbar-badge {
   position: absolute;
   top: -5px;
@@ -287,6 +304,17 @@
     margin: 0 10px;
     height: 35px;
     width: 35px;
+  }
+  #my-navbar-btn-search-trigger {
+    &.search-bar-active {
+      i {
+        &:before {
+          border-bottom: white solid 8px;
+          border-right: transparent solid 6px;
+          border-left: transparent solid 6px;
+        }
+      }
+    }
   }
   #my-navbar-burger-toggle {
     span {

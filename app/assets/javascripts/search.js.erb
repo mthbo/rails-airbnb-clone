@@ -245,11 +245,9 @@ function filtersDiscloseContent() {
 }
 
 function hideNavbarSearchIcon() {
-  $('#my-navbar-btn-search-trigger i').remove();
-  $('#my-navbar-btn-search-trigger').append("<i class='fa fa-caret-up fa-lg' aria-hidden='true'></i>");
+  $('#my-navbar-btn-search-trigger').addClass('search-bar-active');
 }
 
 function showNavbarSearchIcon() {
-  $('#my-navbar-btn-search-trigger i').remove();
-  $('#my-navbar-btn-search-trigger').append("<i class='fa fa-search'></i>");
+  $('#my-navbar-btn-search-trigger').removeClass('search-bar-active');
 }
