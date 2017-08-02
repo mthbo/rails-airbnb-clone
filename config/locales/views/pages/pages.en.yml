@@ -35,28 +35,26 @@ en:
       be_advisor_subtitle: "Become advisor and publish your first offer."
       be_advisor_button: "Become advisor"
     advisor:
-      title: "Become advisor"
-      meta_description: "Leverage your knowledge by giving advice."
-      banner_title: "Leverage your knowledge by giving advice."
-      publish_offer_link: "Publish an offer"
-      sign_up_as_papoter_link: "Sign up as Papoter"
-      inspirations_title: "Your knowledge and your experiences have value, share them!"
-      offer_example_title: "Publish an offer and become a reference on your area of expertise."
-      guidelines_title: "Build your reputation and offer your services at their right value."
-      guideline_title_1: "Publish an offer"
-      guideline_title_2: "Answer to requests"
-      guideline_title_3: "Deliver advice"
-      guideline_title_4: "Get your rewards !"
-      guideline_text_1_1: "Knowledge and time are two of your most precious assets : leverage them thanks to Papoters!"
-      guideline_text_1_2: "Publish an offer, showcase your expertises and draw attention to yourself. After 3 free sessions, you can start pricing your services."
-      guideline_text_2_1: "The more interest you offer arouses, the more requests you will receive for advice sessions."
-      guideline_text_2_2: "For each request, set the targets and the conditions of the session. If your proposition is accepted, the session is open!"
-      guideline_text_3_1: "Once the session is open, you are committed to deliver the service as part of your agreement."
-      guideline_text_3_2: "The means of communication depend on what you agreed: messaging, phone call, video call, meeting, etc."
-      guideline_text_4_1: "After session closing, your service is evaluated by the recipient. The evaluation depends on the achievement of the targets settled in the agreement."
-      guideline_text_4_2: "If you agreed on a priced service, you will get your remuneration."
+      title: "Give advice on demand"
+      meta_description: "Leverage your knowledge and your time by giving advice."
+      banner_title: "Your knowledge and your time are precious."
+      banner_subtitle: "Give advice and leverage both of them."
       publish_offer_button: "Publish an offer"
       sign_up_as_papoter_button: "Sign up as Papoter"
+      benefits_title: "Offer your services as advisor."
+      benefits_title_1: Une vitrine pour vos expertises
+      benefits_text_1: Publiez une offre de conseil pour chacune de vos expertises.
+      benefits_title_2: Vos services, vos conditions
+      benefits_text_2: Définissez le contenu et les conditions d’éxécution de chaque session de conseil.
+      benefits_title_3: Apprenez à conseiller
+      benefits_text_3: Bâtissez votre réputation en délivrant vos 3 premières sessions gratuitement.
+      benefits_title_4: Fixez vos tarifs librement
+      benefits_text_4: Adaptez le prix d’une session à la demande que vous recevez.
+      benefits_title_5: Gérer efficacement votre activité
+      benefits_text_5: Suivez l’état de vos sessions et de vos paiements dans votre tableau de bord.
+      benefits_title_6: Conseillez où que vous soyez
+      benefits_text_6: Communiquez avec vos interlocuteurs grâce à l’interface de session.
+      offer_example_title: "Publish an offer and become a reference."
       find_advisor_title: "Papoters community is growing!"
       find_advisor_subtitle: "Get inspired by the offers already published."
       find_advisor_button: "Find an advisor"

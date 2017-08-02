@@ -35,14 +35,13 @@ fr:
       be_advisor_subtitle: "Devenez conseiller et publiez votre première offre."
       be_advisor_button: "Devenir conseiller"
     advisor:
-      title: "Devenez conseiller"
-      meta_description: "Mettez à profit vos savoirs en donnant des conseils."
+      title: "Donnez des conseils à la demande"
+      meta_description: "Mettez à profit vos savoirs et votre temps en donnant des conseils."
       banner_title: "Vos savoirs et votre temps sont précieux."
       banner_subtitle: "Mettez les à profit en donnant des conseils."
-      publish_offer_link: "Publier une offre"
-      sign_up_as_papoter_link: "S'inscrire comme Papoter"
-      inspirations_title: "Vos connaissances et votre temps sont précieux, faîtes-en bon usage!"
-      benefits_title: "Le service de conseil à la porté de tous."
+      publish_offer_button: "Publier une offre de conseil"
+      sign_up_as_papoter_button: "S'inscrire comme Papoter"
+      benefits_title: "Proposez vos services comme conseiller."
       benefits_title_1: Une vitrine pour vos expertises
       benefits_text_1: Publiez une offre de conseil pour chacune de vos expertises.
       benefits_title_2: Vos services, vos conditions
@@ -56,8 +55,6 @@ fr:
       benefits_title_6: Conseillez où que vous soyez
       benefits_text_6: Communiquez avec vos interlocuteurs grâce à l’interface de session.
       offer_example_title: "Publiez une offre et devenez une référence."
-      publish_offer_button: "Publier une offre"
-      sign_up_as_papoter_button: "S'inscrire comme Papoter"
       find_advisor_title: "La communauté Papoters s'aggrandit!"
       find_advisor_subtitle: "Trouvez votre inspiration dans les offres déjà publiées."
       find_advisor_button: "Trouver un conseiller"

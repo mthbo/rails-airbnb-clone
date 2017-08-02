@@ -12,21 +12,19 @@
         </h1>
       </div>
     </div>
-    <div class="home-banner-middle home-content-wrapper bg-yellow-transparent">
+    <div class="home-banner-input-bar home-content-wrapper bg-yellow-transparent">
       <input type="text" id="home-input" class="home-flex-600" autofocus="true" placeholder="<%= t '.input_placeholder' %>">
       <div id="home-input-icon"><i class='fa fa-search'></i></div>
     </div>
-    <div class="home-banner-bottom home-content-wrapper">
-      <%= link_to root_path, id: "home-arrow-down" do %>
-        <%= image_tag 'arrow_down.svg' %>
-      <% end %>
+  </div>
+
+  <div class="home-scroll-arrow">
+    <div id="home-arrow-down">
+      <%= image_tag 'arrow_down.svg' %>
     </div>
   </div>
 
-  <div class="home-inspirations-top bg-gray-transparent"></div>
-
-
-  <div class="home-inspirations-body text-center padded-top-l home-content-wrapper">
+  <div class="home-inspirations text-center padded-top-l home-content-wrapper">
     <div class="home-flex-700">
       <h2 class="white"><%= t '.inspirations_title' %></h2>
     </div>

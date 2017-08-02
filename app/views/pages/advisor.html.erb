@@ -3,28 +3,47 @@
 
 <div class="home">
 
-  <div class="home-banner home-banner-vertical">
-    <div class="home-banner-left bg-light-gray">
-      <div class="home-content-wrapper home-banner-left-top">
-        <h1 class="home-banner-title"><%= t '.banner_title' %></h1>
-        <h2 class="home-banner-subtitle"><%= t '.banner_subtitle' %></h2>
-        <div class="padded-top-m">
-          <% if user_signed_in? %>
-            <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
-          <% else %>
-            <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-btn" %>
-          <% end %>
-        </div>
-      </div>
-      <div class="home-content-wrapper home-banner-bottom">
-        <%= link_to root_path, id: "home-arrow-down" do %>
-          <%= image_tag 'arrow_down.svg' %>
+  <div class="home-banner home-banner-vertical hidden-xs">
+    <div class="home-banner-left home-content-wrapper bg-light-gray">
+      <h1 class="home-banner-title"><%= t '.banner_title' %></h1>
+      <h2><%= t '.banner_subtitle' %></h2>
+      <div class="padded-top-m">
+        <% if user_signed_in? %>
+          <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
+        <% else %>
+          <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" %>
         <% end %>
       </div>
     </div>
     <div class="home-banner-triangle"></div>
   </div>
 
+  <div class="home-banner text-center bg-blue-transparent hidden-sm hidden-md hidden-lg">
+    <div class="home-banner-body home-content-wrapper">
+      <div class="home-flex-800">
+        <h1 class="home-banner-title"><%= t '.banner_title' %></h1>
+        <h2><%= t '.banner_subtitle' %></h2>
+      </div>
+    </div>
+    <div class="padded-top-m">
+      <% if user_signed_in? %>
+        <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
+      <% else %>
+        <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="home-scroll-arrow">
+    <div id="home-arrow-down">
+      <div class="hidden-xs hidden-lg">
+        <%= image_tag 'arrow_down.svg' %>
+      </div>
+      <div class="hidden-sm hidden-md">
+        <%= image_tag 'arrow_down_white.svg' %>
+      </div>
+    </div>
+  </div>
 
   <div class="padded-top-l padded-bottom-m text-center bg-white home-benefits">
     <div class="home-content-wrapper padded-bottom-m">
@@ -113,7 +132,7 @@
       </div>
     </div>
 
-    <div class="home-content-wrapper padded-top-s text-center">
+    <div class="home-content-wrapper padded-top-m padded-bottom-xs text-center">
       <% if user_signed_in? %>
         <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
       <% else %>
