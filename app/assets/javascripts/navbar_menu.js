@@ -21,6 +21,7 @@ $(document).ready(function() {
 
     $('#my-navbar-burger-toggle').on('click', function(event) {
       event.stopPropagation();
+      $(this).toggleClass('burger-menu-active');
       hideLocaleMenuIfVisible();
       hideProfileMenuIfVisible();
       $('#my-navbar-burger-menu').slideToggle(150);
@@ -63,6 +64,7 @@ function hideProfileMenuIfVisible() {
 
 function hideBurgerMenuIfVisible() {
   if ($('#my-navbar-burger-menu').is(':visible')) {
+    $('#my-navbar-burger-toggle').removeClass('burger-menu-active');
     $('#my-navbar-burger-menu').slideUp(150);
   }
 }

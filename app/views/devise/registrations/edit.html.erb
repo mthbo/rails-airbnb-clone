@@ -23,7 +23,7 @@
       <%= f.input :last_name, label: false, placeholder: t('.last_name'), input_html: { class: 'custom-form-input' } %>
     </div>
     <div class="col-xs-12">
-      <%= f.input :bio, label: false, autofocus: true, placeholder: t('.bio'), input_html: { class: 'custom-form-input', rows: "10" } %>
+      <%= f.input :bio, label: false, autofocus: true, placeholder: t('.bio'), input_group: {class: 'no-margin-bottom'}, input_html: { class: 'custom-form-input', rows: "10" } %>
     </div>
     <div class="col-xs-12 col-sm-6">
       <%= f.input :birth_date, as: :custom, symbol: "<i class='fa fa-birthday-cake fa-fw' aria-hidden='true'></i>".html_safe, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: "0d", date_start_date: "-150y", date_start_view: "decade" }, value: resource.birth_date ? l(resource.birth_date) : nil } %>

@@ -31,29 +31,29 @@ en:
       benefits_text_6: Papoters acts as a go-between for you and your advisor.
       offer_sample_title: "A community of experts at your service."
       find_advisor_button: "Find an advisor"
-      be_advisor_title: "Your knowledge and your time are precious!"
+      be_advisor_title: "Your knowledge and your time are valuable!"
       be_advisor_subtitle: "Become advisor and publish your first offer."
       be_advisor_button: "Become advisor"
     advisor:
       title: "Give advice on demand"
       meta_description: "Leverage your knowledge and your time by giving advice."
-      banner_title: "Your knowledge and your time are precious."
+      banner_title: "Your knowledge and your time are valuable."
       banner_subtitle: "Give advice and leverage both of them."
       publish_offer_button: "Publish an offer"
       sign_up_as_papoter_button: "Sign up as Papoter"
       benefits_title: "Offer your services as advisor."
-      benefits_title_1: Une vitrine pour vos expertises
-      benefits_text_1: Publiez une offre de conseil pour chacune de vos expertises.
-      benefits_title_2: Vos services, vos conditions
-      benefits_text_2: Définissez le contenu et les conditions d’éxécution de chaque session de conseil.
-      benefits_title_3: Apprenez à conseiller
-      benefits_text_3: Bâtissez votre réputation en délivrant vos 3 premières sessions gratuitement.
-      benefits_title_4: Fixez vos tarifs librement
-      benefits_text_4: Adaptez le prix d’une session à la demande que vous recevez.
-      benefits_title_5: Gérer efficacement votre activité
-      benefits_text_5: Suivez l’état de vos sessions et de vos paiements dans votre tableau de bord.
-      benefits_title_6: Conseillez où que vous soyez
-      benefits_text_6: Communiquez avec vos interlocuteurs grâce à l’interface de session.
+      benefits_title_1: Showcase your expertises
+      benefits_text_1: "Publish a service offer for each of your expertises."
+      benefits_title_2: Your services, your conditions
+      benefits_text_2: Specify the content and the conditions for each advice session.
+      benefits_title_3: Learn advising
+      benefits_text_3: Build your reputation by delivering your 3 first sessions for free.
+      benefits_title_4: Set your prices freely
+      benefits_text_4: Adapt the session price to the request you have received.
+      benefits_title_5: Manage your activty efficiently
+      benefits_text_5: Use your dashboard to follow the status of your sessions and your payments.
+      benefits_title_6: Advise wherever you are
+      benefits_text_6: Communicate with your interlocutors through the session interface.
       offer_example_title: "Publish an offer and become a reference."
       find_advisor_title: "Papoters community is growing!"
       find_advisor_subtitle: "Get inspired by the offers already published."

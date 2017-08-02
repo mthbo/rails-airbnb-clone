@@ -47,7 +47,7 @@
 
  <!-- Not appearing on small screens -->
 
-  <div class="my-navbar-right hidden-xs">
+  <div class="my-navbar-right hidden-xs hidden-sm">
     <%= link_to t('navbar.be_advisor'), advisor_path, { class: "my-navbar-button btn btn-green", id: "navbar-be-advisor-btn" } %>
 
     <% if user_signed_in? %>
@@ -80,9 +80,10 @@
 
   <!-- Appearing on small screens only -->
 
-  <div class="hidden-sm hidden-md hidden-lg">
-    <div id="my-navbar-burger-toggle">
-      <i class="fa fa-lg fa-bars blue"></i>
+  <div class="hidden-md hidden-lg">
+    <div id="my-navbar-burger-toggle" class="btn my-navbar-button-round btn-blue">
+      <span></span>
+<!--       <i class="fa fa-bars"></i> -->
       <% if user_signed_in? %>
         <div id="my-navbar-burger-badge">
           <%= render 'users/notifications' %>

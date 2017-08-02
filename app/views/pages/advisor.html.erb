@@ -3,7 +3,7 @@
 
 <div class="home">
 
-  <div class="home-banner home-banner-vertical hidden-xs">
+  <div class="home-banner home-banner-vertical hidden-xs hidden-sm">
     <div class="home-banner-left home-content-wrapper bg-light-gray">
       <h1 class="home-banner-title"><%= t '.banner_title' %></h1>
       <h2><%= t '.banner_subtitle' %></h2>
@@ -18,8 +18,8 @@
     <div class="home-banner-triangle"></div>
   </div>
 
-  <div class="home-banner text-center bg-blue-transparent hidden-sm hidden-md hidden-lg">
-    <div class="home-banner-body home-content-wrapper">
+  <div class="home-banner text-center bg-blue-transparent hidden-md hidden-lg">
+    <div class="home-banner-full-screen-top home-content-wrapper">
       <div class="home-flex-800">
         <h1 class="home-banner-title"><%= t '.banner_title' %></h1>
         <h2><%= t '.banner_subtitle' %></h2>
@@ -36,10 +36,10 @@
 
   <div class="home-scroll-arrow">
     <div id="home-arrow-down">
-      <div class="hidden-xs hidden-lg">
+      <div class="hidden-xs hidden-sm hidden-lg">
         <%= image_tag 'arrow_down.svg' %>
       </div>
-      <div class="hidden-sm hidden-md">
+      <div class="hidden-md">
         <%= image_tag 'arrow_down_white.svg' %>
       </div>
     </div>

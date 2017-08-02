@@ -60,19 +60,6 @@
   align-items: center;
 }
 
-.home-banner-body {
-  height: 60vh;
-  align-items: flex-end;
-  h1 {
-    color: white;
-    font-weight: lighter;
-  };
-  h2 {
-    color: $light-gray;
-    font-size: 22px !important;
-  }
-}
-
 .home-banner-title {
   line-height: 1.5 !important;
 }
@@ -115,6 +102,20 @@
   border-bottom: calc(100vh + 54px) solid $extra-light-gray;
   border-right: 100px solid transparent;
 }
+
+.home-banner-full-screen-top {
+  height: 55vh;
+  align-items: flex-end;
+  h1 {
+    color: white;
+    font-size: 42px !important;
+  };
+  h2 {
+    color: $light-gray;
+    font-size: 30px !important;
+  }
+}
+
 
 .home-banner-small {
   border-bottom: solid 1px $light-gray;
@@ -285,6 +286,14 @@
   }
   .home-banner-input-bar {
     height: 60px;
+  }
+  .home-banner-full-screen-top {
+    h1 {
+      font-size: 26px !important;
+    };
+    h2 {
+      font-size: 22px !important;
+    }
   }
   #home-arrow-down {
     img {
