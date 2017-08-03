@@ -18,10 +18,6 @@ module StripeAccount
     })
     @user.stripe_account_id = @account.id
     @user.save
-    @user.offers_pricing_possible.each do |offer|
-      offer.priced!
-      offer.index!
-    end
     update_stripe_account
   end
 
@@ -31,6 +27,7 @@ module StripeAccount
     edit_business if @user.legal_type == "company"
     attach_verification_document
     @account.save
+    @user.offers_priced.each { |offer| offer.index! }
   end
 
   def update_stripe_bank

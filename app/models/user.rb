@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
   acts_as_voter
 
-  enum status: [:new, :client, :advisor]
+  enum status: [:first_time, :client, :advisor]
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
   enum bank_status: [:no_bank, :bank_valid, :bank_invalid]
   enum legal_type: [ :individual, :company ]
@@ -219,10 +219,6 @@ class User < ApplicationRecord
 
   def offers_priced
     offers_published.where(pricing: :priced)
-  end
-
-  def offers_pricing_possible
-    offers_published.where(free_deals: 0)
   end
 
 

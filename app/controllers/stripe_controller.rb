@@ -39,7 +39,7 @@ class StripeController < ApplicationController
           @user.verification_status = @event.data.object.legal_entity.verification.details_code
           @user.verified = (@event.data.object.legal_entity.verification.status == 'verified') ? true : false
           @user.save
-          @user.offers_pricing_possible.each { |offer| offer.index! }
+          @user.offers_priced.each { |offer| offer.index! }
         end
 
       when 'account.external_account.updated'
