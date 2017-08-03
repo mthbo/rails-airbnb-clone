@@ -123,7 +123,7 @@ class User < ApplicationRecord
   end
 
   def country_required?
-    !self.no_pricing?
+    self.advisor?
   end
 
   def legal_details_required?

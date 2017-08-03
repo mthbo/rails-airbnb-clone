@@ -75,7 +75,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:country_code, :legal_type, :first_name, :last_name, :birth_date, :address, :city, :zip_code, :state, :business_name, :business_tax_id, :personal_address, :personal_city, :personal_zip_code, :personal_state, :pricing, :bank_name, :bank_last4, :bank_status, :identity_document_name, :disabled_reason, :verification_status)
+    params.require(:user).permit(:status, :country_code, :legal_type, :first_name, :last_name, :birth_date, :address, :city, :zip_code, :state, :business_name, :business_tax_id, :personal_address, :personal_city, :personal_zip_code, :personal_state, :pricing, :bank_name, :bank_last4, :bank_status, :identity_document_name, :disabled_reason, :verification_status)
   end
 
   def retrieve_stripe_account

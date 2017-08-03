@@ -60,7 +60,7 @@
             <h2><%= t('.my_offers') %></h2>
             <div>
               <% if policy(@user.offers.new).new? %>
-                <%= link_to @user.no_pricing? ? country_path : new_offer_path, class: "btn btn-form btn-green", id: 'publish-offer-user-profile' do %>
+                <%= link_to @user.client? ? country_path : new_offer_path, class: "btn btn-form btn-green", id: 'publish-offer-user-profile' do %>
                   <i class='fa fa-plus fa-fw' aria-hidden='true'></i>&nbsp; <%= t('.new_offer') %>
                 <% end %>
               <% end %>
