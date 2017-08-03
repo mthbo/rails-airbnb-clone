@@ -86,7 +86,7 @@ if ENV['PIPELINE_ENV'] != "prod"
       bio: Faker::Lorem.paragraph(20),
       birth_date: Faker::Time.between(60.years.ago, 18.years.ago),
       confirmed_at: Faker::Time.between(0.days.ago, 10.days.ago),
-      new: false
+      status: 'client'
     )
     i += 1
   end

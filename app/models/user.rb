@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  enum status: [:new, :client, :advisor]
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
   enum bank_status: [:no_bank, :bank_valid, :bank_invalid]
   enum legal_type: [ :individual, :company ]
@@ -165,7 +166,7 @@ class User < ApplicationRecord
     end
   end
 
-  def grade(locale=I18n.locale)
+  def grade_translated(locale=I18n.locale)
     if advisor_deals_closed_count > 20
       I18n.t('users.info.grade_4', locale: locale)
     elsif advisor_deals_closed_count > 10
@@ -190,7 +191,7 @@ class User < ApplicationRecord
   end
 
   def grade_and_age(locale=I18n.locale)
-    html = grade_img + grade(locale)
+    html = grade_img + grade_translated(locale)
     if age.present?
       html << "&nbsp; | &nbsp;#{age} #{I18n.t('users.info.age', locale: locale)}"
     end
@@ -199,6 +200,10 @@ class User < ApplicationRecord
 
 
   # User offers
+
+  def first_offer?
+    offers.blank?
+  end
 
   def offers_active
     offers.where(status: :active).order(updated_at: :desc)

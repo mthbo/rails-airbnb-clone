@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def welcome
-    @user.update(new: false)
+    @user.client!
     render layout: "client_form"
   end
 
