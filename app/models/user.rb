@@ -50,6 +50,8 @@ class User < ApplicationRecord
   validates :bank_name, presence: true, if: :bank_invalid?
   validates :bank_last4, presence: true, if: :bank_invalid?
 
+  # Pricing
+
   def self.pricing_available_country_codes
     ENV['PRICING_AVAILABLE_COUNTRIES'].split
   end
@@ -63,6 +65,11 @@ class User < ApplicationRecord
 
   def pricing_available?
     ENV['PRICING_AVAILABLE_COUNTRIES'].split.include?(country_code)
+  end
+
+  def free_deals_before_pricing
+    count = advisor_deals_closed.count
+    count >= 3 ? 0 : (3 - count)
   end
 
   # User information
@@ -166,7 +173,7 @@ class User < ApplicationRecord
     end
   end
 
-  def grade_translated(locale=I18n.locale)
+  def grade(locale=I18n.locale)
     if advisor_deals_closed_count > 20
       I18n.t('users.info.grade_4', locale: locale)
     elsif advisor_deals_closed_count > 10
@@ -191,7 +198,7 @@ class User < ApplicationRecord
   end
 
   def grade_and_age(locale=I18n.locale)
-    html = grade_img + grade_translated(locale)
+    html = grade_img + grade(locale)
     if age.present?
       html << "&nbsp; | &nbsp;#{age} #{I18n.t('users.info.age', locale: locale)}"
     end
@@ -200,10 +207,6 @@ class User < ApplicationRecord
 
 
   # User offers
-
-  def first_offer?
-    offers.blank?
-  end
 
   def offers_active
     offers.where(status: :active).order(updated_at: :desc)
@@ -219,6 +222,10 @@ class User < ApplicationRecord
 
   def offers_priced
     offers_published.where(pricing: :priced)
+  end
+
+  def offers_active_priced
+    offers_active.where(pricing: :priced)
   end
 
 

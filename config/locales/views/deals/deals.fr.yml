@@ -85,14 +85,14 @@ fr:
       reviewing: Vérification...
     pricing_info:
       session_for_free: "Cette session sera gratuite."
-      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
+      pricing_not_available: "Vous ne pouvez pas proposer de services payants car Papoters est en version beta dans votre zone géographique."
       sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des services payants."
-        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des services payants."
-      edit_offer: Editez votre offre
-      to_propose_priced_services: si vous voulez proposer des services payantes.
+        one: "Il vous reste encore <span class='font-weight-normal'>%{count} session gratuite</span> à effectuer avant de pouvoir proposer des services payants."
+        other: "Il vous reste encore <span class='font-weight-normal'>%{count} sessions gratuites</span> à effectuer avant de pouvoir proposer des services payants."
       enable_pricing: Activez les paiements
       activation_instructions: "en fournissant les informations légales et bancaires requises."
+      edit_offer: Editez votre offre
+      to_propose_priced_services: si vous voulez proposer des services payantes.
       pricing_disabled: Les paiements ont été désactivés sur votre compte.
       visit_your_profile: Consultez votre profil
       to_find_out_more: "pour en savoir plus."

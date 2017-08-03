@@ -27,7 +27,6 @@ module StripeAccount
     edit_business if @user.legal_type == "company"
     attach_verification_document
     @account.save
-    @user.offers_priced.each { |offer| offer.index! }
   end
 
   def update_stripe_bank

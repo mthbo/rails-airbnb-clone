@@ -34,15 +34,19 @@ en:
       no_reviews_you: "You didn't get any reviews yet."
       no_reviews: "%{user} didn't get any reviews yet."
     pricing_info:
-      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
-      pricing_not_enabled_html: "You can't <span class='font-weight-normal'>price your services</span> while pricing is not enabled."
+      pricing_not_available: "You can't price your services since Papoters is in beta version in your geographic area."
+      learn_before_pricing: "Your are in a learning period."
+      sessions_before_pricing_html:
+        one: "You still need to achieve <span class='font-weight-normal'>%{count} free session</span> before pricing your services."
+        other: "You still need to achieve <span class='font-weight-normal'>%{count} free sessions</span> before pricing your services."
+      pricing_not_enabled: "You can't price your services while pricing is not enabled."
       activation_instructions: "Enable pricing by providing the required legal and banking details."
       enable_pricing: Enable pricing
-      pricing_enabled_html: "Pricing is enabled, you can <span class='font-weight-normal'>price your services</span>."
+      pricing_enabled: "You can price your services."
       change_bank_account: Change my bank account
-      pricing_disabled_rejected_html: "You can't <span class='font-weight-normal'>price your services</span> because your account has been rejected."
-      pricing_disabled_fields_needed_html: "You can't <span class='font-weight-normal'>price your services</span> for the reasons described bellow."
-      pricing_disabled_pending_html: "You can't <span class='font-weight-normal'>price your services</span>. Your details are currently under review."
+      pricing_disabled_rejected: "You can't price your services because your account has been rejected."
+      pricing_disabled_fields_needed: "You can't price your services for the reasons described bellow."
+      pricing_disabled_pending: "You can't price your services. Your details are currently under review."
       verification_failed: "The verification of your details failed for the following reason: "
       scan_corrupt: The ID image uploaded is corrupt.
       scan_not_readable: The image supplied was not readable. It may have been too blurry or not well lit.
@@ -62,7 +66,7 @@ en:
       reactivate_pricing: to reenable pricing.
     info:
       age: "yrs"
-      grade_1: "Learner"
+      grade_1: "Papoter"
       grade_2: "Advisor"
       grade_3: "Expert"
       grade_4: "Guide"

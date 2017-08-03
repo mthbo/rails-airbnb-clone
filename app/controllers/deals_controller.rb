@@ -111,16 +111,11 @@ class DealsController < ApplicationController
       @deal.payout_pending!
       StripePayoutJob.set(wait_until: 7.days.from_now).perform_later(@deal)
     end
-    if @deal.advisor.no_pricing? && @deal.advisor.advisor_deals_closed.count >= 3
+    if @deal.advisor.no_pricing? && @deal.advisor.free_deals_before_pricing.zero?
       @deal.advisor.pricing_pending!
-      # UserMailer.pricing_pending(@deal).deliver_later
+      # UserMailer.pricing_pending(@deal.advisor).deliver_later if @deal.advisor.pricing_available?
     end
-    @deal.offer.index!
-    # offer = @deal.offer
-    # offer.free_deals -= 1 if offer.free_deals > 0
-    # offer.priced! if (offer.free_deals == 0 && offer.advisor.pricing_enabled?)
-    # offer.save
-    # offer.index!
+    @deal.advisor.offers_published.each { |offer| offer.index! }
     respond_to do |format|
       format.html {
         flash[:alert] = t('.notice', id: @deal.id, name: @deal.client == current_user ? @deal.advisor.first_name : @deal.client.first_name)

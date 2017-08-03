@@ -50,6 +50,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       retrieve_stripe_account
       update_stripe_bank unless (@account.blank? || @account.respond_to?(:deleted))
+      @user.offers_active_priced.each { |offer| offer.index! }
       flash[:notice] = t('.notice')
       redirect_to user_path(@user)
     else
