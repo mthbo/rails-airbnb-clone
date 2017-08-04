@@ -174,11 +174,11 @@ class User < ApplicationRecord
   end
 
   def grade(locale=I18n.locale)
-    if advisor_deals_closed_count > 20
+    if advisor_deals_closed_count >= 20
       I18n.t('users.info.grade_4', locale: locale)
-    elsif advisor_deals_closed_count > 10
+    elsif advisor_deals_closed_count >= 10
       I18n.t('users.info.grade_3', locale: locale)
-    elsif advisor_deals_closed_count > 3
+    elsif advisor_deals_closed_count >= 3
       I18n.t('users.info.grade_2', locale: locale)
     else
       I18n.t('users.info.grade_1', locale: locale)
@@ -186,11 +186,11 @@ class User < ApplicationRecord
   end
 
   def grade_img
-    if advisor_deals_closed_count > 20
+    if advisor_deals_closed_count >= 20
       "#{ActionController::Base.helpers.image_tag('grades/grade_4.svg')}"
-    elsif advisor_deals_closed_count > 10
+    elsif advisor_deals_closed_count >= 10
       "#{ActionController::Base.helpers.image_tag('grades/grade_3.svg')}"
-    elsif advisor_deals_closed_count > 3
+    elsif advisor_deals_closed_count >= 3
       "#{ActionController::Base.helpers.image_tag('grades/grade_2.svg')}"
     else
       "#{ActionController::Base.helpers.image_tag('grades/grade_1.svg')}"
