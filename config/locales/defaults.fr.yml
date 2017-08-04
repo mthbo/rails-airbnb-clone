@@ -1,5 +1,5 @@
 fr:
-  title: "Papoters | Le conseil à la demande"
+  title: "Papoters • Le conseil à la demande"
   description: "Papoters facilite la transmission des connaissances en offrant un lieu d'échange de services de conseil."
   activerecord:
     attributes:

@@ -113,7 +113,7 @@ class DealsController < ApplicationController
     end
     if @deal.advisor.no_pricing? && @deal.advisor.free_deals_before_pricing.zero?
       @deal.advisor.pricing_pending!
-      # UserMailer.pricing_pending(@deal.advisor).deliver_later if @deal.advisor.pricing_available?
+      UserMailer.pricing_pending(@deal.advisor).deliver_later if @deal.advisor.pricing_available?
     end
     @deal.advisor.offers_published.each { |offer| offer.index! }
     respond_to do |format|

@@ -1,0 +1,9 @@
+en:
+  user_mailer:
+    pricing_pending:
+      subject: "Congratulations, you are promoted Advisor on Papoters!"
+      greeting: "Hello %{advisor},"
+      message: "We are pleased to announce that your learning period is over. You are officially promoted Advisor on Papoters!"
+      instructions_1: "Thanks to your new status, you will be able to price your services."
+      instructions_2: "To enable pricing, provide the required legal and banking details so as we can verify your identity."
+      action: Enable pricing

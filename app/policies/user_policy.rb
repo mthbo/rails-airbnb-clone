@@ -16,10 +16,6 @@ class UserPolicy < ApplicationPolicy
     country?
   end
 
-  def stripe_connection?
-    user == record
-  end
-
   def details?
     user == record && !user.no_pricing? && !user.verified? && (user.disabled_reason_category != 'rejected')
   end

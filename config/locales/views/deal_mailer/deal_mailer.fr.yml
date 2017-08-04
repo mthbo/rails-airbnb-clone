@@ -71,7 +71,7 @@ fr:
       info_html: "<span style='font-weight: normal;'>Le montant de votre rétribution</span> pour cette session s'élève à <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span>. Le versement sur votre compte bancaire sera effectué après la clôture de la session."
       agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{client} dès maintenant!"
-      action: Contactez %{client}
+      action: Contacter %{client}
     deal_proposition_accepted_client:
       subject: "#session-%{id} | Session ouverte"
       greeting: Bonjour %{client},
@@ -79,7 +79,7 @@ fr:
       info_html: "Votre paiement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> a été autorisé."
       agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{advisor} dès maintenant!"
-      action: Contactez %{advisor}
+      action: Contacter %{advisor}
     deal_expired_advisor:
       subject: "#session-%{id} | Date limite dépassée"
       greeting: Bonjour %{advisor},

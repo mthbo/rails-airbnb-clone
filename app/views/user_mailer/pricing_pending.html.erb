@@ -1,0 +1,16 @@
+<p><%= t('.greeting', advisor: @advisor.first_name) %></p>
+
+<p><%= t('.message') %></p>
+
+<div style="text-align: center;">
+  <%= image_tag "first_star.png", height: '70', width: '150', title: 'First star' %>
+</div>
+
+<p style="font-weight: normal;"><%= t('.instructions_1') %></p>
+<p><%= t('.instructions_2') %></p>
+
+<div style="text-align: center; padding: 30px 0;">
+  <%= link_to t('.action'), details_url(locale: I18n.locale), style: "font-weight: normal; text-decoration: none; padding: 10px 15px; border-radius: 4px; border: none; color: white; background-color: #30485F;" %>
+</div>
+
+<%= render 'shared/mail_signature' %>

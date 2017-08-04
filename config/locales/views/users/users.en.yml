@@ -88,12 +88,6 @@ en:
       no_current_sessions: You have no session ongoing or closed recently.
       no_past_sessions: You have no archived session.
       no_cancelled_sessions: You have no cancelled session.
-    stripe_connection:
-      stripe_connection: Stripe connection
-      account_connected: Account ready!
-      connected_to_stripe: Your account has been successfully connected to Stripe!
-      edit_your_offers_html: "Now you can start pricing your services. To achieve this, edit each of your offers and switch to mode <span class='font-weight-normal blue'>PRICED</span>."
-      back_to_profile: Back to profile
     country:
       country_title: My country
       select_country: Please select your country of residence before publishing an offer.
