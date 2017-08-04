@@ -8,12 +8,12 @@ class UserPolicy < ApplicationPolicy
     user == record
   end
 
-  def country?
+  def advising?
     user == record
   end
 
   def update_country?
-    country?
+    advising?
   end
 
   def details?

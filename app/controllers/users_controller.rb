@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   include StripeAccount
   skip_before_action :authenticate_user!, only: [:show]
   before_action :find_user, only: [:show, :update]
-  before_action :find_current_user, only: [:welcome, :country, :update_country, :dashboard, :details, :change_locale, :bank, :update_bank]
-  layout 'advisor_form', only: [:country, :details, :bank, :update, :update_country, :update_bank]
+  before_action :find_current_user, only: [:welcome, :advising, :update_country, :dashboard, :details, :change_locale, :bank, :update_bank]
+  layout 'advisor_form', only: [:advising, :details, :bank, :update, :update_country, :update_bank]
 
   def show
     @deals_reviewed = @user.deals_reviewed.page(params[:page])
@@ -18,14 +18,14 @@ class UsersController < ApplicationController
     @pinned_offers = @user.find_liked_items
   end
 
-  def country
+  def advising
   end
 
   def update_country
     if @user.update(user_params)
       redirect_to new_offer_path
     else
-      render :country
+      render :advising
     end
   end
 

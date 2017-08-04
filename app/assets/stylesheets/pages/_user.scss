@@ -75,6 +75,17 @@
   }
 }
 
+.user-guidelines {
+  display: flex;
+  align-items: center;
+}
+
+.user-guidelines-picto {
+  width: 80px;
+  height: 80px;
+  margin-right: 10px;
+}
+
 @media (max-width: $screen-xs-max) {
   .user-banner-info {
     img {
@@ -98,5 +109,11 @@
   }
   .user-reviews-subtitle {
     display: block;
+  }
+  .user-guidelines {
+    flex-direction: column;
+  }
+  .user-guidelines-picto {
+    margin-right: 0;
   }
 }

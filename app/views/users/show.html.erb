@@ -60,7 +60,7 @@
             <h2><%= t('.my_offers') %></h2>
             <div>
               <% if policy(@user.offers.new).new? %>
-                <%= link_to !@user.advisor? ? country_path : new_offer_path, class: "btn btn-form btn-green", id: 'publish-offer-user-profile' do %>
+                <%= link_to !@user.advisor? ? advising_path : new_offer_path, class: "btn btn-form btn-green", id: 'publish-offer-user-profile' do %>
                   <i class='fa fa-plus fa-fw' aria-hidden='true'></i>&nbsp; <%= t('.new_offer') %>
                 <% end %>
               <% end %>
@@ -80,7 +80,7 @@
           <% else %>
             <div class="padded-top-xs">
               <p class="font-weight-normal"><%= t '.no_offers_you' %></p>
-              <p><%= link_to t('.publish_offer'), @user.no_pricing? ? country_path : new_offer_path, id: 'publish-offer-user-profile' %> <%= t '.or' %> <%= link_to t('.find_out_more'), advisor_path %> <%= t '.know_more' %></p>
+              <p><%= link_to t('.publish_offer'), @user.no_pricing? ? advising_path : new_offer_path, id: 'publish-offer-user-profile' %> <%= t '.or' %> <%= link_to t('.find_out_more'), advisor_path %> <%= t '.know_more' %></p>
             </div>
           <% end %>
 

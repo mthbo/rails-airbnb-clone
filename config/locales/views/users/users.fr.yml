@@ -91,15 +91,26 @@ fr:
       no_current_sessions: Vous n'avez aucune session en cours ou récemment clôturée.
       no_past_sessions: Vous n'avez aucune session archivée.
       no_cancelled_sessions: Vous n'avez aucune session annulée.
-    country:
-      country_title: Mon pays
-      select_country: Veuillez sélectionner votre pays de résidence pour pouvoir publier une offre.
+    advising:
+      advising_title: Devenir conseiller Papoters
+      advising_intro: Vous êtes sur le point de publier votre première offre sur Papoters. Voici quelques indications pour vous aider à bien démarrer.
+      advising_guidelines_title_1: Publiez une offre
+      advising_guidelines_body_1: Chaque offre est une vitrine pour l'une de vos expertises. Plus votre offre suscitera d'intérêt, plus vous recevrez de demandes pour des sessions de conseil.
+      advising_guidelines_title_2: Répondez aux demandes
+      advising_guidelines_body_2: Pour chaque demande reçue, faîtes une proposition décrivant le contenu, les objectifs et les conditions de la session. Si la proposition est acceptée, la session est ouverte!
+      advising_guidelines_title_3: Délivrez votre service
+      advising_guidelines_body_3: De l'ouverture à la clôture de la session, vous êtes engagé(e) à fournir votre service selon l'accord conclu. Utilisez l'interface de session pour communiquer avec votre interlocuteur.
+      advising_guidelines_title_4: Obtenez une évaluation
+      advising_guidelines_body_4: Vous serez évalué(e) selon la qualité de votre service, ainsi que sur l'atteinte des objectifs définis dans votre accord.
+      advising_guidelines_title_5: Faîtes payer vos services
+      advising_guidelines_body_5: Vos 3 premières sessions seront gratuites. A l'issue de cette période d'apprentissage, vous serez promu Conseiller et vous pourrez proposer des services payants.
+      select_country: Veuillez sélectionner votre pays de résidence avant de continuer.
+      country_restrictions: "Proposer des services payants n'est pour l'instant possible que pour les résidents des pays suivants :"
+      country_restrictions_beta: "Proposer des services payants n'est pour l'instant pas possible dans la version beta."
       country: -- Pays --
-      new_offer: Nouvelle offre
+      continue: Continuer
       saving: Enregistrement...
       back_to_profile: Revenir au profil
-      country_restrictions: "A titre d'information, proposer des services payants n'est aujourd'hui possible que pour les résidents des pays suivants :"
-      country_restrictions_beta: "Papoters étant aujourd'hui en version bêta, il n'est pas encore possible de proposer des services payants."
     details:
       legal_details: Informations légales
       select_country: Veuillez sélectionner votre pays de résidence.

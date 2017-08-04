@@ -88,7 +88,7 @@ en:
       no_current_sessions: You have no session ongoing or closed recently.
       no_past_sessions: You have no archived session.
       no_cancelled_sessions: You have no cancelled session.
-    country:
+    advising:
       country_title: My country
       select_country: Please select your country of residence before publishing an offer.
       country: -- Country --
