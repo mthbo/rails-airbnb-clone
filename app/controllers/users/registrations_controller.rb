@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def index_offers
-    resource.offers.each { |offer| offer.index! }
+    IndexOffersJob.perform_later(resource.offers_published)
   end
 
   def remove_offers_from_index
