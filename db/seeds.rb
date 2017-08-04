@@ -86,7 +86,7 @@ if ENV['PIPELINE_ENV'] != "prod"
       bio: Faker::Lorem.paragraph(20),
       birth_date: Faker::Time.between(60.years.ago, 18.years.ago),
       confirmed_at: Faker::Time.between(0.days.ago, 10.days.ago),
-      new: false
+      status: 'client'
     )
     i += 1
   end
@@ -126,18 +126,15 @@ if ENV['PIPELINE_ENV'] != "prod"
     "Se lancer dans le développement d'un site web"
   ]
 
-  offers_free = []
-  offers_priced = []
+  offers = []
   i = 0
   15.times do
-    offers_free << Offer.create(
+    offers << Offer.create(
       title: offer_titles[i],
       description: Faker::Lorem.paragraph(20),
       advisor: users.sample,
       languages: [Language.find_by_name("French")] + languages_short_list.sample(rand(0..3)),
-      means: [Mean.find_by_name("Messaging")] + means_short_list.sample(rand(0..4)),
-      free_deals: 3,
-      pricing: 'free'
+      means: [Mean.find_by_name("Messaging")] + means_short_list.sample(rand(0..4))
     )
     i += 1
   end
@@ -146,7 +143,7 @@ if ENV['PIPELINE_ENV'] != "prod"
 
   deals1 = []
   30.times do
-    offer = offers_free.sample
+    offer = offers.sample
     deals1 << Deal.new(
       status: "closed",
       offer: offer,
@@ -168,18 +165,10 @@ if ENV['PIPELINE_ENV'] != "prod"
       languages: offer.languages,
       means: offer.means
     )
-    offer.free_deals -= 1
-    offer.save
-    offer.advisor.pricing_pending!
-    if offer.free_deals.zero?
-      offer.priced!
-      offers_free.delete(offer)
-      offers_priced << offer
-    end
   end
 
   15.times do
-    offer = offers_priced.sample
+    offer = offers.sample
     random_amount = rand(10...50) * 100
     deals1 << Deal.new(
       status: "closed",
@@ -220,7 +209,7 @@ if ENV['PIPELINE_ENV'] != "prod"
 
   deals2 = []
   5.times do
-    offer = offers_free.sample
+    offer = offers.sample
     deals2 << Deal.new(
       status: "opened",
       offer: offer,
@@ -238,7 +227,7 @@ if ENV['PIPELINE_ENV'] != "prod"
   end
 
   5.times do
-    offer = offers_priced.sample
+    offer = offers.sample
     random_amount = rand(10...50) * 100
     deals2 << Deal.new(
       status: "opened",
@@ -271,7 +260,7 @@ if ENV['PIPELINE_ENV'] != "prod"
 
   deals3 = []
   5.times do
-    offer = offers_free.sample
+    offer = offers.sample
     deals3 << Deal.new(
       status: "proposition",
       offer: offer,
@@ -288,7 +277,7 @@ if ENV['PIPELINE_ENV'] != "prod"
   end
 
   5.times do
-    offer = offers_priced.sample
+    offer = offers.sample
     random_amount = rand(10...50) * 100
     deals3 << Deal.new(
       status: "proposition",
@@ -321,7 +310,7 @@ if ENV['PIPELINE_ENV'] != "prod"
 
   deals4 = []
   5.times do
-    offer = offers_priced.sample
+    offer = offers.sample
     deals4 << Deal.create(
       status: "request",
       offer: offer,
@@ -332,6 +321,11 @@ if ENV['PIPELINE_ENV'] != "prod"
       languages: offer.languages,
       means: offer.means
     )
+  end
+
+  User.all.each do |user|
+    user.advisor! if user.offers.present?
+    user.pricing_pending! if user.free_deals_before_pricing.zero?
   end
 
   Offer.reindex!

@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  enum status: [:first_time, :client, :advisor]
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
   enum bank_status: [:no_bank, :bank_valid, :bank_invalid]
   enum legal_type: [ :individual, :company ]
@@ -49,6 +50,8 @@ class User < ApplicationRecord
   validates :bank_name, presence: true, if: :bank_invalid?
   validates :bank_last4, presence: true, if: :bank_invalid?
 
+  # Pricing
+
   def self.pricing_available_country_codes
     ENV['PRICING_AVAILABLE_COUNTRIES'].split
   end
@@ -62,6 +65,11 @@ class User < ApplicationRecord
 
   def pricing_available?
     ENV['PRICING_AVAILABLE_COUNTRIES'].split.include?(country_code)
+  end
+
+  def free_deals_before_pricing
+    count = advisor_deals_closed.count
+    count >= 3 ? 0 : (3 - count)
   end
 
   # User information
@@ -122,7 +130,7 @@ class User < ApplicationRecord
   end
 
   def country_required?
-    !self.no_pricing?
+    self.advisor?
   end
 
   def legal_details_required?
@@ -216,8 +224,8 @@ class User < ApplicationRecord
     offers_published.where(pricing: :priced)
   end
 
-  def offers_pricing_possible
-    offers_published.where(free_deals: 0)
+  def offers_active_priced
+    offers_active.where(pricing: :priced)
   end
 
 

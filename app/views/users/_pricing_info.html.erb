@@ -1,14 +1,23 @@
 <div class="user-offers-info">
-  <% if !@user.pricing_available? || @user.no_pricing? %>
+  <% if !@user.pricing_available? %>
     <div class="user-offers-info-left">
       <%= image_tag 'no_amount.svg' %>
-      <p class="no-margin-bottom"><%= t '.pricing_not_available_html' %></p>
+      <p class="no-margin-bottom"><%= t '.pricing_not_available' %></p>
+    </div>
+
+  <% elsif @user.no_pricing? %>
+    <div class="user-offers-info-left">
+      <%= image_tag 'no_amount.svg' %>
+      <p class="no-margin-bottom">
+        <%= t '.learn_before_pricing' %>
+        <%= t '.sessions_before_pricing_html', count: (@user.free_deals_before_pricing) %>
+      </p>
     </div>
 
   <% elsif @user.pricing_pending? %>
     <div class="user-offers-info-left">
       <p class="no-margin-bottom">
-        <%= t '.pricing_not_enabled_html' %>
+        <%= t '.pricing_not_enabled' %>
         <%= t '.activation_instructions' %>
       </p>
     </div>
@@ -23,7 +32,7 @@
     <div class="user-offers-info-left">
       <%= image_tag 'amount.svg' %>
       <div>
-        <p><%= t '.pricing_enabled_html' %></p>
+        <p><%= t '.pricing_enabled' %></p>
         <% if @user.verification_status.present? %>
           <p class="red">
             <%= t '.verification_failed' %>
@@ -49,10 +58,10 @@
       <div>
         <% case @user.disabled_reason_category  %>
         <% when 'rejected' %>
-          <p><%= t '.pricing_disabled_rejected_html' %></p>
+          <p><%= t '.pricing_disabled_rejected' %></p>
 
         <% when 'pending' %>
-          <p><%= t '.pricing_disabled_pending_html' %></p>
+          <p><%= t '.pricing_disabled_pending' %></p>
           <% if @user.bank_invalid? %>
             <p class="red">
               <%= t '.bank_account_error' %><br>
@@ -69,7 +78,7 @@
           <% end %>
 
         <% when 'fields_needed' %>
-          <p><%= t '.pricing_disabled_fields_needed_html' %></p>
+          <p><%= t '.pricing_disabled_fields_needed' %></p>
           <% if @user.verification_status.present? %>
             <p class="red">
               <%= t '.verification_failed' %>

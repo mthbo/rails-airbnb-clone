@@ -34,15 +34,19 @@ fr:
       no_reviews_you: "Vous n'avez reçu aucun avis pour le moment."
       no_reviews: "%{user} n'a reçu aucun avis pour le moment."
     pricing_info:
-      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
-      pricing_not_enabled_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> tant que vous n'avez pas activé les paiements."
+      pricing_not_available: "Vous ne pouvez pas proposer de services payants car Papoters est en version beta dans votre zone géographique."
+      learn_before_pricing: "Vous êtes en période d'apprentissage."
+      sessions_before_pricing_html:
+        one: "Il vous reste encore <span class='font-weight-normal'>%{count} session gratuite</span> à effectuer avant de pouvoir proposer des services payants."
+        other: "Il vous reste encore <span class='font-weight-normal'>%{count} sessions gratuites</span> à effectuer avant de pouvoir proposer des services payants."
+      pricing_not_enabled: "Vous ne pouvez pas proposer de services payants tant que vous n'avez pas activé les paiements."
       activation_instructions: "Activez les paiements en fournissant les informations légales et bancaires requises."
       enable_pricing: Activer les paiements
-      pricing_enabled_html: "Les paiements sont activés, vous pouvez proposer des <span class='font-weight-normal'>services payants</span>."
+      pricing_enabled: "Vous pouvez proposer des services payants."
       change_bank_account: Modifier mon compte bancaire
-      pricing_disabled_rejected_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car votre compte a été rejeté."
-      pricing_disabled_fields_needed_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> pour les raisons évoquées ci-dessous."
-      pricing_disabled_pending_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span>. Vos informations sont en cours de vérification."
+      pricing_disabled_rejected: "Vous ne pouvez pas proposer de services payants car votre compte a été rejeté."
+      pricing_disabled_fields_needed: "Vous ne pouvez pas proposer de services payants pour les raisons évoquées ci-dessous."
+      pricing_disabled_pending: "Vous ne pouvez pas proposer de services payants. Vos informations sont en cours de vérification."
       verification_failed: "La vérification de vos informations a échouée pour la raison suivante : "
       scan_corrupt: Le document d'identité transmis est corrompu.
       scan_not_readable: Le document d'identité transmis n'est pas lisible (trop flou ou trop sombre).
@@ -65,7 +69,7 @@ fr:
       activate_pricing: pour activer les paiements.
     info:
       age: "ans"
-      grade_1: "Apprenti"
+      grade_1: "Papoter"
       grade_2: "Conseiller"
       grade_3: "Expert"
       grade_4: "Guide"
@@ -128,9 +132,7 @@ fr:
       business_name: Mon entreprise
       business_tax_id: 321 654 987 12315
       details_verification: "Les informations fournies seront soumises à vérification. En cas d'irrégularité constatée, votre compte pourra être désactivé."
-      accept_service_agreement_1: "En fournissant ces informations, vous acceptez nos"
-      tos: "conditions générales d'utilisation"
-      accept_service_agreement_2: ainsi que les
+      accept_service_agreement: "En fournissant ces informations, vous acceptez les"
       stripe_service_agreement: "conditions d'utilisation des comptes Stripe Connect"
       back_to_profile: Revenir au profil
       submit: Soumettre à vérification

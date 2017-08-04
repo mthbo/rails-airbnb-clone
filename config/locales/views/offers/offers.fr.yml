@@ -26,14 +26,14 @@ fr:
       update: Mettre à jour
       updating: Mise à jour...
     pricing_info:
-      pricing_not_available_html: "Vous ne pouvez pas proposer de <span class='font-weight-normal'>services payants</span> car Papoters est pour l'instant en version <em class='font-weight-normal'>beta</em> dans votre zone géographique."
-      prove_worth_before_pricing_html: "Proposer des prestations payantes n'est possible qu'après avoir fait vos preuves, avec au moins <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre."
-      sessions_for_free: "Les sessions pour cette offre sont gratuites."
+      pricing_not_available: "Vous ne pouvez pas proposer de services payants car Papoters est en version beta dans votre zone géographique."
+      learn_before_pricing: "Vous êtes en période d'apprentissage."
       sessions_before_pricing_html:
-        one: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} session gratuite</span> pour cette offre avant de pouvoir proposer des services payants."
-        other: "Vous devez encore réaliser <span class='font-weight-normal'>%{count} sessions gratuites</span> pour cette offre avant de pouvoir proposer des services payants."
+        one: "Il vous reste encore <span class='font-weight-normal'>%{count} session gratuite</span> à effectuer avant de pouvoir proposer des services payants."
+        other: "Il vous reste encore <span class='font-weight-normal'>%{count} sessions gratuites</span> à effectuer avant de pouvoir proposer des services payants."
+      pricing_not_enabled: "Vous ne pouvez pas encore proposer de services payants."
       enable_pricing: Activez les paiements
-      activation_instructions: "en fournissant les informations légales et bancaires requises pour proposer des services payants."
+      activation_instructions: "en fournissant les informations légales et bancaires requises."
       pricing_disabled: Les paiements ont été désactivés sur votre compte.
       visit_your_profile: Consultez votre profil
       to_find_out_more: "pour en savoir plus."

@@ -5,7 +5,7 @@ class OfferPolicy < ApplicationPolicy
   end
 
   def create?
-    record.advisor == user && !user.no_pricing?
+    record.advisor == user
   end
 
   def update?

@@ -85,15 +85,14 @@ en:
       reviewing: Reviewing...
     pricing_info:
       session_for_free: This session will be for free.
-      pricing_not_available_html: "You can't <span class='font-weight-normal'>price your services</span> since Papoters is still in <em class='font-weight-normal'>beta</em> version in your geographic area."
-      payouts_not_authorized_html: "You are not authorized <span class='font-weight-normal'>to price your services</span>."
+      pricing_not_available: "You can't price your services since Papoters is in beta version in your geographic area."
       sessions_before_pricing_html:
         one: "You still need to achieve <span class='font-weight-normal'>%{count} free session</span> for this offer before pricing your service."
         other: "You still need to achieve <span class='font-weight-normal'>%{count} free sessions</span> for this offer before pricing your service."
-      edit_offer: Edit your offer
-      to_propose_priced_services: if you want to price your service.
       enable_pricing: Enable pricing
       activation_instructions: "by providing the required legal and banking details."
+      edit_offer: Edit your offre
+      to_propose_priced_services: if you want to price your service.
       pricing_disabled: Pricing has been disabled for your account.
       visit_your_profile: Visit your profile
       to_find_out_more: "to find out more."

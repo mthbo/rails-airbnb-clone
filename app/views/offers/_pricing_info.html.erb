@@ -2,23 +2,19 @@
 
   <% if !current_user.pricing_available? %>
     <%= image_tag 'no_amount.svg' %>
-    <p><%= t '.pricing_not_available_html' %></p>
+    <p><%= t '.pricing_not_available' %></p>
 
-  <% elsif @offer.id.blank? %>
-    <%= image_tag 'amount.svg' %>
-    <p><%= t '.prove_worth_before_pricing_html', count: (@offer.free_deals) %></p>
-
-  <% elsif @offer.free? && @offer.free_deals > 0 %>
+  <% elsif current_user.no_pricing? %>
     <%= image_tag 'no_amount.svg' %>
     <p>
-      <%= t '.sessions_for_free' %><br>
-      <%= t '.sessions_before_pricing_html', count: (@offer.free_deals) %>
+      <%= t '.learn_before_pricing' %><br>
+      <%= t '.sessions_before_pricing_html', count: (current_user.free_deals_before_pricing) %>
     </p>
 
   <% elsif current_user.pricing_pending? %>
     <%= image_tag 'no_amount.svg' %>
     <p>
-      <%= t '.sessions_for_free' %><br>
+      <%= t '.pricing_not_enabled' %><br>
       <%= link_to t('.enable_pricing'), details_path %>
       <%= t '.activation_instructions' %>
     </p>
@@ -27,7 +23,6 @@
     <%= image_tag 'no_amount.svg' %>
     <p>
       <p>
-        <%= t '.sessions_for_free' %><br>
         <%= t '.pricing_disabled' %>
         <%= link_to t('.visit_your_profile'), user_path(current_user) %>
         <%= t '.to_find_out_more' %>

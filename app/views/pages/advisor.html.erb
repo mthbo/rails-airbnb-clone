@@ -9,7 +9,7 @@
       <h2><%= t '.banner_subtitle' %></h2>
       <div class="padded-top-m">
         <% if user_signed_in? %>
-          <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
+          <%= link_to t('.publish_offer_button'), !current_user.advisor? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
         <% else %>
           <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" %>
         <% end %>
@@ -27,7 +27,7 @@
     </div>
     <div class="padded-top-m">
       <% if user_signed_in? %>
-        <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
+        <%= link_to t('.publish_offer_button'), !current_user.advisor? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
       <% else %>
         <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" %>
       <% end %>
@@ -134,7 +134,7 @@
 
     <div class="home-content-wrapper padded-top-m padded-bottom-xs text-center">
       <% if user_signed_in? %>
-        <%= link_to t('.publish_offer_button'), current_user.no_pricing? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
+        <%= link_to t('.publish_offer_button'), !current_user.advisor? ? country_path : new_offer_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
       <% else %>
         <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-btn" %>
       <% end %>
