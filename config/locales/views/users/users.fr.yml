@@ -41,7 +41,8 @@ fr:
         other: "Il vous reste encore <span class='font-weight-normal'>%{count} sessions gratuites</span> à effectuer avant de pouvoir proposer des services payants."
       pricing_not_enabled: "Vous ne pouvez pas proposer de services payants tant que vous n'avez pas activé les paiements."
       activation_instructions: "Activez les paiements en fournissant les informations légales et bancaires requises."
-      enable_pricing: Activer les paous pouvez propo services payants."
+      enable_pricing: Activer les paiements
+      pricing_enabled: "Vous pouvez proposer des services payants."
       change_bank_account: Modifier mon compte bancaire
       pricing_disabled_rejected: "Vous ne pouvez pas proposer de services payants car votre compte a été rejeté."
       pricing_disabled_fields_needed: "Vous ne pouvez pas proposer de services payants pour les raisons évoquées ci-dessous."
@@ -131,9 +132,7 @@ fr:
       business_name: Mon entreprise
       business_tax_id: 321 654 987 12315
       details_verification: "Les informations fournies seront soumises à vérification. En cas d'irrégularité constatée, votre compte pourra être désactivé."
-      accept_service_agreement_1: "En fournissant ces informations, vous acceptez nos"
-      tos: "conditions générales d'utilisation"
-      accept_service_agreement_2: ainsi que les
+      accept_service_agreement: "En fournissant ces informations, vous acceptez les"
       stripe_service_agreement: "conditions d'utilisation des comptes Stripe Connect"
       back_to_profile: Revenir au profil
       submit: Soumettre à vérification
