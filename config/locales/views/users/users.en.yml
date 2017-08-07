@@ -89,14 +89,25 @@ en:
       no_past_sessions: You have no archived session.
       no_cancelled_sessions: You have no cancelled session.
     advising:
-      country_title: My country
-      select_country: Please select your country of residence before publishing an offer.
+      advising_title: Become advisor on Papoters
+      advising_intro: You are about to publish your first offer on Papoters. Here are some guidelines to get you started.
+      advising_guidelines_title_1: Publish an offer
+      advising_guidelines_body_1: Each offer showcases one of your expertises. The more attention you will draw to yourself, the more requests you will receive for advising sessions.
+      advising_guidelines_title_2: Answer to requests
+      advising_guidelines_body_2: For each request, make a proposition setting the content, the targets and the conditions of the session. If your proposition is accepted, the session is open!
+      advising_guidelines_title_3: Deliver your service
+      advising_guidelines_body_3: From the opening to the closure of the session, you are committed to deliver the service as part of your agreement. Use the session interface to communicate with your interlocutor.
+      advising_guidelines_title_4: Get an evaluation
+      advising_guidelines_body_4: You will be evaluated according to the quality of your service, as well as the achievement of the targets defined in your agreement.
+      advising_guidelines_title_5: Price your services
+      advising_guidelines_body_5: Your first 3 sessions will be for free. At the end of this learning period, you will be promoted Advisor and you will be able to price your services.
+      select_country: Please select your country of residence before continuing.
+      country_restrictions: "Pricing services is only allowed for the residents of the following countries: "
+      country_restrictions_beta: "Pricing services is not allowed yet since Papoters is in beta version."
       country: -- Country --
-      new_offer: New offer
+      continue: Continue
       saving: Saving...
       back_to_profile: Back to profile
-      country_restrictions: "For your information, pricing services is only allowed for the residents of the following countries: "
-      country_restrictions_beta: "Pricing services is not allowed yet since Papoters is still in beta version."
     details:
       legal_details: Legal details
       select_country: Please select your country of residence.
