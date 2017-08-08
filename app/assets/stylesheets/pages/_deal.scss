@@ -264,7 +264,7 @@ a.deal-user-info {
 }
 
 @media (max-width: $screen-sm-max) {
-  .deal-title, .deal-info, .deal-conversation, .deal-reviews {
+  .deal-title, .deal-info, .deal-conversation, .deal-reviews, .deal-conversatio-tips {
     padding-right: 30px;
     padding-left: 30px;
   };
@@ -274,7 +274,7 @@ a.deal-user-info {
   .deal-banner-top {
     height: 65px;
   };
-  .deal-title, .deal-info, .deal-conversation, .deal-reviews {
+  .deal-title, .deal-info, .deal-conversation, .deal-reviews, .deal-conversatio-tips {
     padding-right: 0;
     padding-left: 0;
   }

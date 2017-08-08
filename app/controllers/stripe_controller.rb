@@ -39,7 +39,7 @@ class StripeController < ApplicationController
           @user.verification_status = @event.data.object.legal_entity.verification.details_code
           @user.verified = (@event.data.object.legal_entity.verification.status == 'verified') ? true : false
           @user.save
-          IndexOffersJob.perform_later(@user.offers_active_priced)
+          IndexUserOffersJob.perform_later(@user)
         end
 
       when 'account.external_account.updated'

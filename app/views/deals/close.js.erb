@@ -3,5 +3,6 @@ $('.modal').on('hidden.bs.modal', function () {
   $('#deal-status-panel').html("<%= j render 'deals/status', deal: @deal %>");
   $('#deal-info-panel').html("<%= j render 'deals/info', deal: @deal %>");
   $('#deal-actions-panel').html("<%= j render 'deals/actions', deal: @deal %>");
+  $('#video-call').html("<%= j render 'deals/video_call', deal: @deal %>");
   propositionToggle();
 });

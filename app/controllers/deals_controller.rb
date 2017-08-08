@@ -107,7 +107,7 @@ class DealsController < ApplicationController
     DealCardsBroadcastJob.perform_later(@deal)
     DealMailer.deal_closed_client(@deal).deliver_later
     DealMailer.deal_closed_advisor(@deal).deliver_later
-    if @deal.paid!
+    if @deal.paid?
       @deal.payout_pending!
       StripePayoutJob.set(wait_until: 7.days.from_now).perform_later(@deal)
     end
@@ -115,7 +115,7 @@ class DealsController < ApplicationController
       @deal.advisor.pricing_pending!
       UserMailer.pricing_pending(@deal.advisor).deliver_later if @deal.advisor.pricing_available?
     end
-    IndexOffersJob.perform_later(@deal.advisor.offers_published)
+    IndexUserOffersJob.perform_later(@deal.advisor)
     respond_to do |format|
       format.html {
         flash[:alert] = t('.notice', id: @deal.id, name: @deal.client == current_user ? @deal.advisor.first_name : @deal.client.first_name)
@@ -140,7 +140,7 @@ class DealsController < ApplicationController
       DealCardsBroadcastJob.perform_later(@deal)
       DealMailer.deal_review_advisor(@deal).deliver_later if @receiver == @deal.advisor
       DealMailer.deal_review_client(@deal).deliver_later if @receiver == @deal.client
-      IndexOffersJob.perform_later([@deal.offer])
+      IndexOfferJob.perform_later(@deal.offer)
       flash[:notice] = t('.notice')
       redirect_to deal_path(@deal)
     else

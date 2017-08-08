@@ -57,11 +57,11 @@ function subcsribeToDealStatusChannel(dealId) {
       if (data.info !== undefined) { $('#deal-info-panel').html(data.info); }
       if (data.actions !== undefined) { $('#deal-actions-panel').html(data.actions); }
       if (data.reviews !== undefined) { $('#deal-reviews-panel').html(data.reviews); }
+      if (data.video_call !== undefined) { $('#video-call').html(data.video_call); }
       if (data.messages_disabled === true) {
         $('#message_content').attr('placeholder', I18n.t('messages.form.messages_disabled'));
         $('#message_content').prop('disabled', true);
         $('#new_message button').prop('disabled', true);
-        $('#video-call').remove();
       }
       propositionToggle();
     },

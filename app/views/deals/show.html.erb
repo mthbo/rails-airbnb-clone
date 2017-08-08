@@ -44,7 +44,9 @@
 
           <div class="deal-conversation-top">
             <%= render 'users/info_in_deal', user: current_user == @deal.advisor ? @deal.client : @deal.advisor %>
-            <%= render 'video_call', deal: @deal %>
+            <div id="video-call">
+              <%= render 'video_call', deal: @deal %>
+            </div>
           </div>
 
           <div class="deal-conversation-info">
@@ -62,7 +64,9 @@
           </div>
 
         </div>
-        <%= render 'conversation_tips' %>
+        <div class="deal-conversatio-tips">
+          <%= render 'conversation_tips' %>
+        </div>
       </div>
 
     </div>

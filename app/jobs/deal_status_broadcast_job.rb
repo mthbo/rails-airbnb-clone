@@ -8,6 +8,7 @@ class DealStatusBroadcastJob < ApplicationJob
         status: render_status(deal, receiver, receiver.locale),
         info: render_info(deal, receiver, receiver.locale),
         actions: render_actions(deal, receiver, receiver.locale),
+        video_call: render_video_call(deal, receiver, receiver.locale),
         messages_disabled: deal.messages_disabled
       )
     end
@@ -30,6 +31,12 @@ class DealStatusBroadcastJob < ApplicationJob
   def render_actions(deal, receiver, locale)
     I18n.with_locale(locale) do
       ApplicationController.render_with_signed_in_user(receiver, partial: 'deals/actions', locals: { deal: deal })
+    end
+  end
+
+  def render_video_call(deal, receiver, locale)
+    I18n.with_locale(locale) do
+      ApplicationController.render_with_signed_in_user(receiver, partial: 'deals/video_call', locals: { deal: deal })
     end
   end
 end

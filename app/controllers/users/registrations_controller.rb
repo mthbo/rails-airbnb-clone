@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def index_offers
-    IndexOffersJob.perform_later(resource.offers_published)
+    IndexUserOffersJob.perform_later(resource)
   end
 
   def remove_offers_from_index
