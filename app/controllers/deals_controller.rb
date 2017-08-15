@@ -109,7 +109,7 @@ class DealsController < ApplicationController
     DealMailer.deal_closed_advisor(@deal).deliver_later
     if @deal.paid?
       @deal.payout_pending!
-      StripePayoutJob.set(wait_until: 7.days.from_now).perform_later(@deal)
+      StripePayoutJob.set(wait_until: @deal.payout_triggered_at).perform_later(@deal)
     end
     if @deal.advisor.no_pricing? && @deal.advisor.free_deals_before_pricing.zero?
       @deal.advisor.pricing_pending!

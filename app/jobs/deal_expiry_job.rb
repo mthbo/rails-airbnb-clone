@@ -13,6 +13,7 @@ class DealExpiryJob < ApplicationJob
       DealCardsBroadcastJob.perform_later(deal)
       DealMailer.deal_expired_advisor(deal).deliver_later
       DealMailer.deal_expired_client(deal).deliver_later
+      DealAutomaticCloseJob.set(wait_until: deal.automatic_closed_at).perform_later(deal)
     end
   end
 

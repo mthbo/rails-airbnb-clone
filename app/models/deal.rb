@@ -98,10 +98,12 @@ class Deal < ApplicationRecord
     advisor_amount.exchange_to(currency_code) if advisor_amount
   end
 
+  def payout_triggered_at
+    [closed_at + ENV['PAYOUT_DELAY'].to_i.days, opened_at + ENV['PAYOUT_DELAY_MIN'].to_i.days].max if closed_at.present?
+  end
+
   def payout_arrival_expected_at
-    if closed_at.present?
-      expected_date = self.closed_at + 10.days
-    end
+    payout_triggered_at + ENV['PAYOUT_BANK_DELAY'].to_i.days if payout_triggered_at.present?
   end
 
   def payout_arrival_at
@@ -111,6 +113,9 @@ class Deal < ApplicationRecord
     end
   end
 
+  def automatic_closed_at
+    opened_at + ENV['PAYOUT_LIMIT'].to_i.days - 4.days if opened_at.present?
+  end
 
   # Status
 
@@ -260,8 +265,8 @@ class Deal < ApplicationRecord
   end
 
   def deadline_must_be_before_limit
-    errors.add(:deadline, :after_limit, days: 83) if
-      deadline.present? && deadline > 83.days.from_now
+    errors.add(:deadline, :after_limit, days: ENV['PAYOUT_LIMIT'].to_i - 5) if
+      deadline.present? && deadline > (ENV['PAYOUT_LIMIT'].to_i - 5).days.from_now
   end
 
   def proposition_deadline_must_be_future
