@@ -1,0 +1,26 @@
+.tooltip > .tooltip-inner {
+  background-color: $light-gray;
+  color: $dark-gray;
+}
+
+.tooltip.bottom .tooltip-arrow {
+  border-bottom-color: $light-gray;
+}
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: $light-gray;
+}
+
+.tooltip.left .tooltip-arrow {
+  border-left-color: $light-gray;
+}
+
+.tooltip.right .tooltip-arrow {
+  border-right-color: $light-gray;
+}
+
+@media (max-width: $screen-xs-max) {
+  .tooltip > .tooltip-inner {
+    font-size: 14px;
+  }
+}
