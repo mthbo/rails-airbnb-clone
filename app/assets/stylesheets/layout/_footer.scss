@@ -1,26 +1,38 @@
 .my-footer {
   background: white;
   border-top: solid 1px $light-gray;
-  width: 100%;
-  padding: 35px 35px 20px 35px;
+}
+
+.my-footer-box {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-wrap: wrap;
-  a {
-    padding: 2px 10px;
-    &:hover {
-    }
+}
+
+.my-footer-left {
+  display: flex;
+  flex-wrap: wrap;
+  div {
+    padding-right: 70px;
+    padding-bottom: 10px;
+  }
+  li {
+    margin-bottom: 8px;
   }
 }
 
-.my-footer-left, .my-footer-right {
-  padding-bottom: 10px;
+.my-footer-right {
+  li {
+    margin-right: 10px;
+  }
 }
 
 
 @media (max-width: $screen-xs-max) {
-  .my-footer {
-    padding: 35px 5px 20px 5px;
+  .my-footer-left {
+    div {
+      padding-right: 35px;
+    }
   }
 }

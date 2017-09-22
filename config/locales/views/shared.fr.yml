@@ -7,11 +7,14 @@ fr:
     sign_in: "Se connecter"
     sign_out: "Se déconnecter"
   footer:
+    discover: "Découvrir"
     need_advice: "Besoin de conseils?"
     be_advisor: "Devenir conseiller"
-    about: "A propos"
-    terms: "CGU"
-    privacy: "Politique de confidentialité"
+    manifesto: "Manifeste"
+    company: "Entreprise"
+    legal: "Mentions légales"
+    terms: "Conditions"
+    privacy: "Confidentialité"
     contact: "Nous contacter"
   mail_signature:
     at_your_disposal: A votre service,

@@ -23,7 +23,7 @@
                       <%= "col-xs-12" %>
                     <% end %>
                   >
-                    <h2><%= @offer.title %></h2>
+                    <h1><%= @offer.title %></h1>
                   </div>
 
                   <div class="col-xs-12">
@@ -79,11 +79,6 @@
                   </div>
                 </div>
               </div>
-
-              <div class="offer-share">
-                <%= render 'shared/share' %>
-              </div>
-
             </div>
 
           </div>
@@ -155,6 +150,20 @@
               <%= render 'users/info', user: @offer.advisor %>
             </div>
           <% end %>
+        </div>
+
+        <div class="offer-share padded-top-m">
+          <%= render 'shared/share' %>
+        </div>
+      </div>
+
+      <div class="container hidden-md hidden-lg">
+        <div class="row">
+          <div class="col-xs-12 col-md-9">
+            <div class="offer-share padded-top-s">
+              <%= render 'shared/share' %>
+            </div>
+          </div>
         </div>
       </div>
 

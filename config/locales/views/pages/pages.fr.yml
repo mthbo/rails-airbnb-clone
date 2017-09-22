@@ -58,7 +58,7 @@ fr:
       find_advisor_title: "La communauté Papoters s'aggrandit!"
       find_advisor_subtitle: "Trouvez votre inspiration dans les offres déjà publiées."
       find_advisor_button: "Trouver un conseiller"
-    about:
+    manifesto:
       banner_title: "Le conseil à la demande"
       title_1: Un lieu de transmission des savoirs
       paragraph_1: >
@@ -91,6 +91,23 @@ fr:
         Chaque session de conseil est unique et doit permettre aux participants de s'entendre sur les modalités de leur échange.
         Ceux-ci peuvent faire le choix d'une langue de travail ou encore des moyens de communication à leur disposition.
         La communication ainsi libérée, c'est un nouvel univers de possibilités qui s'offre à ceux qui souhaitent être conseillés ou partager leurs savoirs!
+    legal:
+      legal_notices: Mentions légales
+      title_1: Edition du site
+      paragraph_1: >
+        Le site www.papoters.com est édité par la société Papoters S.A.S., au capital social de 7 000 €,
+        immatriculée au Registre du Commerce et des Sociétés de Bayonne sous le numéro 831 788 575
+        et dont le siège social est situé 11 bis avenue Pasteur 64200 Biarritz, France (Siret n° 831 788 575 00015).
+      title_2: Responsable de la publication
+      paragraph_2: Monsieur Mathieu Bordeleau.
+      title_3: Hébergeur
+      paragraph_3: >
+        Le site www.papoters.com est hébergé par la société Heroku Inc., 650 7th Street, San Francisco, CA 94103, États-Unis.
+        Le stockage des données personnelles des utilisateurs est exclusivement réalisé sur les centre de données ("clusters")
+        localisés dans des Etats membres de l'Union Européenne de la société Amazon Inc., dont le siège social est situé 410 Terry Avenue North, Seattle, WA 98109, États-Unis.
+      title_4: Nous contacter
+      paragraph_4_1: "Par e-mail : contact@papoters.com"
+      paragraph_4_2: "Par courrier postal : Papoters, 11 bis avenue Pasteur, 64200 Biarritz, France"
     terms:
       tos: Conditions Générales d'Utilisation
     privacy:

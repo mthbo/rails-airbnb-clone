@@ -7,11 +7,14 @@ en:
     sign_in: "Log in"
     sign_out: "Logout"
   footer:
+    discover: "Discover"
     need_advice: "Need for advice?"
     be_advisor: "Become advisor"
-    about: "About"
-    terms: "TOS"
-    privacy: "Politique de confidentialité"
+    manifesto: "Manifesto"
+    company: "Company"
+    legal: "Legal"
+    terms: "Terms"
+    privacy: "Privacy"
     contact: "Contact us"
   mail_signature:
     at_your_disposal: At your disposal,

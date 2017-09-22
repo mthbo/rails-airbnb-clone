@@ -86,6 +86,11 @@
   margin-right: 10px;
 }
 
+.user-share {
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media (max-width: $screen-xs-max) {
   .user-banner-info {
     img {

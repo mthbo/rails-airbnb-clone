@@ -58,7 +58,7 @@ en:
       find_advisor_title: "Papoters community is growing!"
       find_advisor_subtitle: "Get inspired by the offers already published."
       find_advisor_button: "Find an advisor"
-    about:
+    manifesto:
       banner_title: "On demand advising"
       title_1: A place for knowledge transmission
       paragraph_1: >
@@ -91,6 +91,12 @@ en:
         Each advisory session is unique and participants must be allowed to agree on its conditions.
         They may choose the working language or the means of communication available.
         Unleashing communication broaden perspectives for those who want to be advised or to share their knowledge!
+    legal:
+      legal_notices: Legal notices
+      paragraph_1:
+      paragraph_2:
+      paragraph_3:
+      paragraph_4:
     terms:
       tos: Terms of Service
     privacy:

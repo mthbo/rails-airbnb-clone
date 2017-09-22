@@ -22,7 +22,8 @@ Rails.application.routes.draw do
 
     root to: 'pages#home'
     get '/advisor', to: 'pages#advisor'
-    get '/about', to: 'pages#about'
+    get '/manifesto', to: 'pages#manifesto'
+    get '/legal', to: 'pages#legal'
     get '/terms', to: 'pages#terms'
     get '/privacy', to: 'pages#privacy'
 

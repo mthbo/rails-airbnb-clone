@@ -23,12 +23,12 @@
   <%= f.hidden_field :locale, value: I18n.locale %>
 
   <div>
-    <p>
+    <p><small>
       <%= t '.accept_service_agreement_1' %>
       <%= link_to t('.tos'), terms_path, target: "blank" %>
       <%= t '.accept_service_agreement_2' %>
       <%= link_to t('.privacy'), privacy_path, target: "blank" %>.
-    </p>
+    </small></p>
   </div>
 
   <div class="form-actions text-right">

@@ -8,6 +8,10 @@
 
 .offer-general {
   position: relative;
+  h1 {
+    font-size: 30px;
+    font-weight: lighter;
+  }
 }
 
 .offer-details {
@@ -81,6 +85,11 @@
   }
 }
 
+.offer-share {
+  display: flex;
+  justify-content: flex-end;
+}
+
 
 @media (max-width: $screen-sm-max) {
   .offer-container {
@@ -113,6 +122,11 @@
 @media (max-width: $screen-xs-max) {
   .offer-sub-container {
     padding: 10px 0;
+  };
+  .offer-general {
+    h1 {
+      font-size: 24px;
+    }
   };
   .offer-details {
     padding-top: 1em;

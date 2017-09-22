@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :advisor, :about, :terms, :privacy]
+  skip_before_action :authenticate_user!, only: [:home, :advisor, :manifesto, :legal, :terms, :privacy]
   layout 'client_form', only: [:contact]
 
   def home
@@ -11,7 +11,10 @@ class PagesController < ApplicationController
     @offer = Offer.first
   end
 
-  def about
+  def manifesto
+  end
+
+  def legal
   end
 
   def terms

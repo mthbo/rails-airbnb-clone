@@ -1,30 +1,57 @@
-<div class="my-footer">
+<div class="my-footer padded-top-s padded-bottom-xs">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-10 col-lg-offset-1">
 
-  <div class="my-footer-left">
-    <ul class="list-inline">
-      <li><%= link_to t('footer.need_advice'), root_path %></li>
-      <li><%= link_to t('footer.be_advisor'), advisor_path, id: 'footer-be-advisor-btn' %></li>
-      <li><%= link_to t('footer.about'), about_path %></li>
-      <li><%= link_to t('footer.terms'), terms_path %></li>
-      <li><%= link_to t('footer.privacy'), privacy_path %></li>
-      <li><%= link_to t('footer.contact'), new_contact_message_path %></li>
-    </ul>
+        <div class="my-footer-top padded-bottom-s">
+          <%= image_tag "papoters.svg", width: '160px', height: '40px' %>
+        </div>
+
+        <div class="my-footer-box">
+
+          <div class="my-footer-left padded-bottom-xs">
+            <div>
+              <p class="font-weight-bolder"><%= t 'footer.discover' %></p>
+              <ul class="list-unstyled">
+                <li><%= link_to t('footer.need_advice'), root_path %></li>
+                <li><%= link_to t('footer.be_advisor'), advisor_path, id: 'footer-be-advisor-btn' %></li>
+                <li><%= link_to t('footer.manifesto'), manifesto_path %></li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-weight-bolder"><%= t 'footer.company' %></p>
+              <ul class="list-unstyled">
+                <li><%= link_to t('footer.legal'), legal_path %></li>
+                <li><%= link_to t('footer.terms'), terms_path %></li>
+                <li><%= link_to t('footer.privacy'), privacy_path %></li>
+                <li><%= link_to t('footer.contact'), new_contact_message_path %></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="my-footer-right padded-bottom-xs">
+            <ul class="list-inline">
+              <li>
+                <%= link_to "https://www.facebook.com/papotersapp" do %>
+                  <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "https://www.instagram.com/papotersapp" do %>
+                  <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to "https://twitter.com/papotersapp" do %>
+                  <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
   </div>
-
-  <div class="my-footer-right">
-    <ul class="list-inline">
-      <li>
-        <%= link_to "https://www.facebook.com/papotersapp" do %>
-          <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
-        <% end %>
-        <%= link_to "https://www.instagram.com/papotersapp" do %>
-          <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
-        <% end %>
-        <%= link_to "https://twitter.com/papotersapp" do %>
-          <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-
 </div>
