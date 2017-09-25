@@ -93,12 +93,88 @@ en:
         Unleashing communication broaden perspectives for those who want to be advised or to share their knowledge!
     legal:
       legal_notices: Legal notices
-      paragraph_1:
-      paragraph_2:
-      paragraph_3:
-      paragraph_4:
+      title_1: Website edition
+      paragraph_1: >
+        The website www.papoters.com is edited by the company Papoters S.A.S., with a share capital of €7,000,
+        registred to 'Registre du Commerce et des Sociétés' of Bayonne, France, with the number 831 788 575 (SIRET n° 831 788 575 00015).
+        The company head office is located on 11 bis avenue Pasteur 64200 Biarritz, France.
+      title_2: Publication director
+      paragraph_2: Mr Mathieu Bordeleau
+      title_3: Hosting
+      paragraph_3: >
+        The website www.papoters.com is hosted by the company Heroku Inc., 650 7th Street, San Francisco, CA 94103, USA.
+        The personal data of users are stored on data centers ("clusters"), localized in Members States of the European Union exclusively,
+        of the company Amazon Inc., 410 Terry Avenue North, Seattle, WA 98109, USA.
+      title_4: Contact us
+      paragraph_4_1: "By email : contact@papoters.com"
+      paragraph_4_2: "By postal mail : Papoters, 11 bis avenue Pasteur, 64200 Biarritz, France"
+      title_5: CNIL
+      paragraph_5: >
+        The company collects and processes personnal data, which was the subject of
+        a simplified declaration to the French authority for personal data protection,
+        la Commission Nationale de l'Informatique et des Libertés - CNIL (n° 2102758).
     terms:
       tos: Terms of Service
     privacy:
       privacy_policy: Privacy policy
+      preamble_title: Préambule
+      preamble_paragraph_1: >
+        La présente politique de traitement des données personnelles (ci-après « Politique de Confidentialité ») s'applique
+        quel que soit le moyen utilisé pour accéder aux services de la plateforme PAPOTERS (ci-après « la Plateforme » ou PAPOTERS ),
+        dont l’usage est régi par les Conditions Générales d’Utilisation. La Politique de Confidentialité expose les conditions dans lesquelles,
+        lorsque toute personne utilise la Plateforme, PAPOTERS collecte, conserve, utilise, sauvegarde des informations
+        concernant l’utilisateur (ci-après l’ « Utilisateur »), dont ses données personnelles, ainsi que les choix dont l’Utilisateur dispose
+        s'agissant de la collecte, l'utilisation et la divulgation de ces informations.
+      preamble_paragraph_2: >
+        L’accès ou l’utilisation de la Plateforme emporte automatiquement reconnaissance et acceptation sans restriction ni réserve
+        de la Politique de Confidentialité par l’Utilisateur, qu’il soit membre de la Plateforme (ci-après « le Membre »), ou non.
+      article_1_title: Article 1
+      article_1_paragraph_1: >
+        Les données à caractère personnel des Utilisateurs font l’objet d’un traitement automatisé par PAPOTERS aux fins de gestion
+        et d’administration de leur compte, ainsi qu’à des fins d’évaluation de l’exécution des services échangés et d’études de statistiques.
+      article_1_paragraph_2: >
+        PAPOTERS se conforme strictement aux lois en vigueur sur la collecte et le traitement des données à caractère personnel.
+        Lors de son inscription ou de son utilisation de la Plateforme (notamment au moment de remplir des formulaires),
+        l’Utilisateur est amené à indiquer des données personnelles et confidentielles qui lui permettront de bénéficier des fonctionnalités de la Plateforme.
+        Les données à caractère personnel recueillies sont destinées exclusivement à PAPOTERS, sauf si le Membre a accepté,
+        au moyen d’une case à cocher, de recevoir des offres commerciales provenant de partenaires de PAPOTERS.
+        Lesdites données sont conservées pour la durée nécessaire aux finalités pour lesquelles elles sont collectées et traitées.
+        Ce traitement a fait l’objet d’une déclaration auprès de la Commission Nationale de l’Informatique et des Libertés (CNIL) sous le numéro 2102758.
+      article_1_paragraph_3: >
+        En application des dispositions de la loi n°78-17 Informatique et Libertés du 6 janvier 1978, telle que modifiée par la loi nº 2004-801 du 6 août 2004,
+        chaque Membre dispose d'un droit d'accès, de modification, de rectification et de suppression des données le concernant.
+        Il peut ainsi exiger que soient rectifiées, complétées, clarifiées, mises à jour ou effacées les données à caractère personnel le concernant
+        qui sont inexactes, incomplètes, équivoques ou périmées. Chaque Membre peut également s’opposer, pour des motifs légitimes,
+        s’opposer au traitement des données le concernant.
+      article_1_paragraph_4: >
+        Chaque Membre peut exercer ses droits en écrivant à PAPOTERS par email à l’adresse contact@papoters.com ou par courrier postal
+        à l’adresse suivante : PAPOTERS, 11 bis avenue Pasteur, 64200 Biarritz. PAPOTERS mettra en œuvre les moyens à sa disposition
+        pour procéder au traitement des demandes de rectification et de suppression des données à caractère personnel des Membres.
+        PAPOTERS n’est toutefois pas tenue de répondre systématiquement et individuellement auxdites demandes des Membres.
+      article_2_title: Article 2
+      article_2_paragraph_1: >
+        Dans le cas où un Utilisateur se connecte à la Plateforme en utilisant les fonctionnalités de réseaux sociaux mises à sa disposition,
+        PAPOTERS aura accès à certaines des données (notamment, ses prénom, nom de famille, photographie et adresse e-mail sur Facebook)
+        de son compte sur ledit réseau social conformément aux conditions générales d’utilisation du réseau social concerné.
+        PAPOTERS est également susceptibles de recueillir certaines des données personnelles lorsque l’Utilisateur interagit
+        avec des fonctionnalités de ces réseaux sociaux, tel que les fonctionnalités « J’aime ».
+      article_3_title: Article 3
+      article_3_paragraph_1: >
+        Dans le cadre du service de paiement utilisé sur la Plateforme, Stripe collecte des données personnelles des Membres pour le compte de PAPOTERS.
+        Cette dernière est donc le responsable de traitement des données personnelles, Stripe agissant sur instructions de PAPOTERS en qualité de sous-traitant.
+      article_4_title: Article 4
+      article_4_paragraph_1: >
+        PAPOTERS est susceptible de mettre en place des cookies sur la Plateforme. Il s’agit d’un procédé automatique de traçage automatique
+        qui enregistre des informations relatives à la navigation des Utilisateurs sur la Plateforme, et stocke des informations saisies
+        lors des visites afin de faciliter la procédure d’inscription et l’utilisation de la Plateforme.
+        Le consentement exprès de l’Utilisateur est recueilli par PAPOTERS pour la mise en place des cookies sur l’équipement de l’Utilisateur.
+        L’Utilisateur peut s’opposer à leur mise en place et/ou les supprimer en suivant la procédure indiquée sur leur navigateur.
+      article_5_title: Article 5
+      article_5_paragraph_1: >
+        A la clôture du compte personnel du Membre, pour quelque cause que ce soit, les données à caractère personnel relatives à ce compte
+        et en particulier les données de trafic sont effacées ou rendues anonymes et ne pourront être utilisées qu’à des fins statistiques.
+        Cependant, il pourra être différé pour une durée maximale d’un (1) an aux opérations tendant à effacer ou à rendre anonymes
+        certaines catégories de données en vue d’assurer la sécurité des installations de PAPOTERS et pour les besoins de la recherche,
+        de la constatation et de la poursuite des infractions pénales, et dans le seul but de permettre, en tant que de besoin,
+        la mise à disposition d’informations pour l’autorité judiciaire.
 
