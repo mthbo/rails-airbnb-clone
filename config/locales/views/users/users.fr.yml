@@ -137,8 +137,8 @@ fr:
       business_name: Mon entreprise
       business_tax_id: 321 654 987 12315
       details_verification: "Les informations fournies seront soumises à vérification. En cas d'irrégularité constatée, votre compte pourra être désactivé."
-      accept_service_agreement: "En fournissant ces informations, vous acceptez les"
-      stripe_service_agreement: "conditions d'utilisation des comptes Stripe Connect"
+      accept_service_agreement: "En fournissant ces informations, vous acceptez l'"
+      stripe_service_agreement: "Accord sur le compte connecté Stripe"
       back_to_profile: Revenir au profil
       submit: Soumettre à vérification
       submitting: Soumission...

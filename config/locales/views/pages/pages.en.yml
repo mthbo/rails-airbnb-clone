@@ -94,19 +94,19 @@ en:
     legal:
       legal_notices: Legal notices
       title_1: Website edition
-      paragraph_1: >
+      paragraph_1_html: >
         The website www.papoters.com is edited by the company Papoters S.A.S., with a share capital of €7,000,
         registred to 'Registre du Commerce et des Sociétés' of Bayonne, France, with the number 831 788 575 (SIRET n° 831 788 575 00015).
         The company head office is located on 11 bis avenue Pasteur 64200 Biarritz, France.
       title_2: Publication director
       paragraph_2: Mr Mathieu Bordeleau
       title_3: Hosting
-      paragraph_3: >
-        The website www.papoters.com is hosted by the company Heroku Inc., 650 7th Street, San Francisco, CA 94103, USA.
-        The personal data of users are stored on data centers ("clusters"), localized in Members States of the European Union exclusively,
+      paragraph_3_html: >
+        The website <a href='https://www.papoters.com' target='blank'>www.papoters.com</a> is hosted by the company Heroku Inc., 650 7th Street, San Francisco, CA 94103, USA.
+        The personal data of users are stored on data centers, localized in Members States of the European Union exclusively,
         of the company Amazon Inc., 410 Terry Avenue North, Seattle, WA 98109, USA.
       title_4: Contact us
-      paragraph_4_1: "By email : contact@papoters.com"
+      paragraph_4_1_html: "By email : <a href='mailto:contact@papoters.com'>contact@papoters.com</a>"
       paragraph_4_2: "By postal mail : Papoters, 11 bis avenue Pasteur, 64200 Biarritz, France"
       title_5: CNIL
       paragraph_5: >
@@ -115,6 +115,741 @@ en:
         la Commission Nationale de l'Informatique et des Libertés - CNIL (n° 2102758).
     terms:
       tos: Terms of Service
+      preamble_title: Préambule
+      preamble_paragraph_1: >
+        La Plateforme PAPOTERS (ci-après « la Plateforme » ou « PAPOTERS ») est propriété de la société PAPOTERS, société par actions simplifiée
+        au capital de 7 000,00 (sept mille) euros, immatriculée au Registre du commerce et des sociétés de Bayonne sous le numéro SIREN 831 788 575,
+        ayant son siège social 11 bis avenue Pasteur, 64200 Biarritz, France  (ci-après « PAPOTERS »).
+      preamble_paragraph_2_html: >
+        PAPOTERS désigne l’ensemble des Sites et Applications (ci-après « les Supports ») constituant la Plateforme:
+        <br>- le site exploité par PAPOTERS, à savoir, le site <a href='https://www.papoters.com' target='blank'>www.papoters.com</a>,
+        ou toute autre adresse qui pourrait lui être substituée (ci-après le « Site ») ;
+        <br>- les applications mobiles iOs et Android (ci-après désignées collectivement l’« Application » ou les « Applications »).
+      preamble_paragraph_3: >
+        PAPOTERS est une place de marché qui permet à ses utilisateurs d’échanger des Services (ci-après les « Services »).
+        Le seul rôle de PAPOTERS est de mettre en relation les utilisateurs de la Plateforme.
+        Toute personne inscrite sur PAPOTERS en devient membre (ci-après les « Membres »).
+        Toute personne qui accède et utilise la Plateforme, qu’elle en soit Membre ou non, est considérée comme un utilisateur (ci-après l’« Utilisateur »).
+        Les Membres vont proposer leurs Services sur la Plateforme (ci-après les « Offreurs ») à d’autres Membres qui en ont fait la demande
+        ou qui se déclarent intéressés (ci-après les « Demandeurs »).
+        Un même Membre peut être Demandeur et Offreur selon la situation.
+      preamble_paragraph_4: >
+        Les présentes conditions générales d'utilisation (ci-après les « Conditions Générales ») gouvernent l'accès et l'utilisation de l'ensemble de la Plateforme
+        et décrivent les conditions selon lesquelles PAPOTERS propose l'accès à ses services par le biais de la Plateforme.
+        Les Conditions Générales s'appliquent à tout Utilisateur de PAPOTERS, qu'il soit Membre ou non.
+        L’accès ou l’utilisation de la Plateforme emporte automatiquement reconnaissance et acceptation sans restriction ni réserve des Conditions Générales par l’Utilisateur.
+      preamble_paragraph_5_html: >
+        En acceptant sans restriction ni réserve les présentes Conditions Générales, vous acceptez d’être lié
+        à l'<a href='https://stripe.com/legal#translation' target='blank'>Accord de Services de Stripe</a> (solution de paiement en ligne
+        utilisable pour le règlement des Services), celui-ci pouvant occasionnellement faire l’objet de modifications de la part de Stripe (voir Article 6).
+      preamble_paragraph_6: >
+        PAPOTERS se réserve la possibilité d’adapter ou de modifier à tout moment et sans préavis les présentes Conditions Générales
+        (y incluant les documents afférents, à l’exception des Conditions Générales liées à l’utilisation de Stripe).
+        Les modifications entrent en vigueur dès la mise en ligne des nouvelles Conditions Générales, dont la version qui prévaut est celle accessible en ligne.
+        Le fait de continuer à utiliser les services proposés par PAPOTERS après la modification des Conditions Générales
+        emporte automatiquement l’acceptation par l’Utilisateur des modifications des Conditions Générales.
+      article_1_title: 1 - Définitions
+      article_1_paragraph_1: >
+        1.1 « Utilisateur » : désigne toute personne qui accède ou utilise la Plateforme, qu'elle soit Membre ou non.
+      article_1_paragraph_2: >
+        1.2 « Membre » : désigne toute personne qui s'inscrit sur la Plateforme en suivant la procédure d’inscription mise en place par PAPOTERS.
+      article_1_paragraph_3: >
+        1.3 « Service » : désigne toute prestation de service échangée via la Plateforme, contre rémunération ou à titre gratuit.
+        Le Service doit être conforme aux présentes Conditions Générales.
+      article_1_paragraph_4: >
+        1.4 « Offreur » : désigne un Membre qui propose ses Services sur la Plateforme.
+      article_1_paragraph_5: >
+        1.5 « Offre » : désigne une offre de Service publiée sur la Plateforme par un Offreur.
+      article_1_paragraph_6: >
+        1.6 « Demandeur » : désigne un Membre ayant fait une demande de Service ou se déclarant intéressé par un Service.
+      article_1_paragraph_7: >
+        1.7 « Appel d’Offres » : désigne une annonce publiée sur la Plateforme par un Demandeur pour exprimer ses besoins.
+      article_1_paragraph_8: >
+        1.8 « Session » : désigne le cadre d’échange d’un Service entre l’Offreur et le Demandeur sur la Plateforme,
+        créé lors de la prise de contact initiale entre le Demandeur et l’Offreur.
+      article_1_paragraph_9: >
+        1.9 « Accord » : désigne un contrat de Service conclu entre l’Offreur et le Demandeur dans le cadre d’une Session,
+        décrivant le contenu, les objectifs et les conditions d’exécution de la Session, ainsi que, le cas échéant, la tarification de la Session.
+      article_1_paragraph_10: >
+        1.10 « Proposition » : désigne une proposition d’Accord établie par l’Offreur et soumise au Demandeur qui peut l’accepter ou la refuser.
+      article_1_paragraph_11: >
+        1.11 « Ouverture » : désigne l’instant marquant le commencement du Service, et coïncide avec la conclusion de l’Accord entre le Demandeur ou l’Offreur.
+      article_1_paragraph_12: >
+        1.12 « Clôture » : désigne l’instant marquant la fin du Service, et correspond à la clôture de la Session
+        par l’action du Demandeur, de l’Offreur ou automatiquement par la Plateforme.
+      article_1_paragraph_13: >
+        1.13 « Contenu(s) » : désigne tout contenu mis en ligne par un Membre sur un ou plusieurs Support(s), notamment,
+        sans que cette liste soit limitative, tout Service, toute donnée, information, texte, descriptif, tout commentaire, toute évaluation,
+        tout nom, pseudonyme, enseigne, photographie, image, son, vidéo, logo et tout autre élément mis en ligne par le Membre sur la Plateforme,
+        y compris lors de son inscription, dans une offre, une annonce, un message électronique, sur un forum ou sur le profil d'un autre Membre.
+      article_1_paragraph_14: >
+        1.14 « Service Interdit » : désigne un Service qu’il est interdit de proposer, de demander, de fournir ou de vendre sur la Plateforme,
+        ainsi que tel que plus amplement décrit à l'article 4.5 des présentes Conditions Générales.
+      article_1_paragraph_15_html: >
+        1.15 « Site » : désigne l'un quelconque des sites situés à l’adresse <a href='https://www.papoters.com' target='blank'>www.papoters.com</a>
+        (ou tout(es) autre(s) adresse(s) qui pourrai(en)t leur être substitué(s)) et « Sites » désignent l'ensemble des Sites précités.
+        Les Sites font partie de la Plateforme.
+      article_1_paragraph_16: >
+        1.16 « Application » : désigne l'une quelconque des applications mobiles PAPOTERS (ou tout(es) autre(s) adresse(s) qui pourrai(en)t
+        leur être substitué(s)) et « Applications » désignent l'ensemble des applications précitées. Les Applications font partie de la Plateforme.
+      article_1_paragraph_17: >
+        1.17 « Plateforme » : désigne la structure fonctionnelle et organisationnelle mise en place par PAPOTERS permettant la mise en relation
+        d’Offreurs et Demandeurs de Services, accessible par le biais de l'un quelconque des Sites ou Applications.
+        La Plateforme inclut l'ensemble des Sites et Applications et désigne donc indifféremment l'ensemble ou tout ou partie des Sites ou Applications.
+      article_1_paragraph_18: >
+        1.18 « Transaction » : désigne la transaction financière entre le Demandeur et l’Offreur lors d’une Session, dans la cas d’un échange de Service contre rémunération.
+      article_1_paragraph_19: >
+        1.19 « Service de Paiement » : désigne le système de gestion des transactions financières utilisé sur la Plateforme dans le cadre d’un échange de Service associé à une Transaction,
+        comprenant un système de paiement par carte bancaire sécurisé ainsi qu’un système de « Porte-Monnaie Virtuel » pour la réception des paiements.
+      article_1_paragraph_20: >
+        1.20 « Porte-Monnaie Virtuel » : désigne la réserve d'argent disponible sur le compte de l'Offreur qui a effectué au moins une vente de Service
+        sur l'un des quelconque Sites par le biais du Service de Paiement, et s'est vu créditer le fruit de sa vente.
+      article_1_paragraph_21: >
+        1.21 « Frais de Service » : désigne la rémunération perçue par PAPOTERS au titre la mise en relation permise par la Plateforme lors d’une Session tarifée.
+        Ces Frais de Service sont supportés par l’Offreur, calculés sur la base du montant total de la Transaction établi dans l’Accord
+        et déduits automatiquement au moment du transfert de la somme payée par le Demandeur vers le Porte-Monnaie Virtuel de l’Offreur.
+      article_2_title: 2 - Obligations de PAPOTERS
+      article_2_paragraph_1: >
+        2.1 La Plateforme est un espace d’échanges en ligne sur lequel des Services, conformes aux présentes Conditions Générales,
+        peuvent être proposés à la vente ou à titre gratuit, échangés, vendus et achetés par les Membres,
+        sous réserve que leur proposition, échange, vente ou achat ne soit pas contraire aux dispositions légales en vigueur et aux présentes Conditions Générales.
+      article_2_paragraph_2: >
+        2.2 A cette fin, PAPOTERS
+        (i) donne la possibilité aux Offreurs de présenter, de fournir et de vendre leurs Services par le biais de leur profil qui est personnel à chaque Offreur,
+        (ii) peut mettre à disposition des Offreurs des outils leur permettant de mettre en avant et de promouvoir leurs Offres de Service,
+        (iii) donne la possibilité aux Demandeurs d’exprimer leurs demandes sur PAPOTERS par le biais de leur profil qui est personnel à chaque Demandeur et
+        (iv) met à disposition des Membres des outils de collaboration, de communication et de gestion des paiements pour faciliter l’échange,
+        la vente et l’achat de Services entre Offreurs et Demandeurs dans le cadre de Sessions.
+      article_2_paragraph_3: >
+        2.3 Le rôle de PAPOTERS se limite à l'intermédiation entre Demandeurs et Offreurs, sauf stipulation expresse contraire des présentes.
+        PAPOTERS n'intervient en aucune manière dans les échanges entre un Demandeur et Offreur, qui décident seuls, et à leur propre discrétion, de la conclusion d’un Accord,
+        sur Proposition de l’Offreur, pour chaque Session par l'intermédiaire de la Plateforme.
+        A l'exception du rôle limité d'intermédiation décrit aux présentes Conditions Générales, PAPOTERS n'intervient en aucune manière
+        dans l’élaboration des Offres et des Propositions, dans la conclusion des Accords ainsi que dans la fourniture des Services.
+        PAPOTERS n’est pas cocontractant de l’Accord conclu entre l’Offreur et le Demandeur.
+        PAPOTERS n'a donc aucun contrôle sur les Services et ne peut en particulier garantir que le Service de l'Offreur satisfera le Demandeur,
+        ni vérifier que l’Offreur dispose des connaissances ou des savoir-faire nécessaires pour délivrer son Service, l’ensemble de ces éléments
+        étant exclusivement et directement sous la responsabilité personnelle de chaque Offreur, sauf stipulation expresse contraire des présentes Conditions Générales.
+        A défaut d’une telle stipulation, PAPOTERS ne pourra en aucun cas être tenue pour responsable au titre du présent article.
+      article_2_paragraph_4: >
+        2.4 PAPOTERS d'une part et l’Utilisateur, d'autre part, sont des parties indépendantes, chacune agissant en son propre nom et pour son propre compte.
+        Les présentes Conditions Générales ne créent aucun lien de subordination, de mandat, société en participation, entreprise commune, de relations employeur/employé
+        ou franchiseur/franchisé entre PAPOTERS et chaque Utilisateur.
+      article_2_paragraph_5: >
+        2.5 Sauf disposition légale impérative contraire, chaque Membre dégage PAPOTERS (ainsi que ses mandataires sociaux, dirigeants, agents et employés)
+        de toute responsabilité en cas de réclamation, différend et/ou litige entre Membres, et/ou de tout dommage présent ou futur, présumé ou non, constaté ou non,
+        résultant de manière directe ou indirecte de cette réclamation, ce différend et/ou ce litige.
+      article_2_paragraph_6: >
+        2.6 Sans préjudice de ce qui précède, PAPOTERS se réserve le droit de participer à la promotion des Services mis en ligne sur la Plateforme et commercialisés par les Offreurs,
+        notamment par la mise en place de partenariats avec d'autres sites Internet et/ou par des publications dans les médias et/ou par l'envoi d'e-mails publicitaires
+        dans le respect des dispositions légales applicables. Une telle participation ne saurait lui ôter la qualité de simple intermédiaire dans les échanges entre Offreurs et Demandeurs
+        dans la mesure où PAPOTERS ne fait que promouvoir la Plateforme et l’ensemble des Services qui y sont offerts (sans qu’une sélection de Services ne soit effectuée par PAPOTERS).
+        A aucun moment PAPOTERS intervient dans la relation entre Demandeur et Offreur concernant un ou plusieurs Services en particulier.
+      article_2_paragraph_7: >
+        2.7 PAPOTERS ne contrôle pas les informations mises en ligne par les Membres sur la Plateforme.
+        PAPOTERS recommande donc à chaque Membre de faire preuve de prudence et de bon sens lors de l'utilisation de la Plateforme.
+      article_3_title: 3 - Obligations du Membre
+      article_3_paragraph_1: >
+        3.1 L'accès à la Plateforme a un caractère gratuit et sa visualisation ne nécessite aucun enregistrement préalable.
+        Cependant, pour bénéficier des services de PAPOTERS en tant qu’Offreur ou Demandeur, l’Utilisateur doit préalablement s'inscrire en ouvrant un compte
+        sur l'un quelconque des Sites ou l’une quelconque des Applications.
+        PAPOTERS n’opère aucune sélection ni aucun contrôle a priori des Membres.
+        L'inscription n'est autorisée qu’aux personnes physiques de plus de 16 (seize) ans ayant la capacité d'accomplir des actes juridiques,
+        sous réserve, pour les mineurs, d'avoir obtenu l'autorisation préalable du représentant légal.
+        L'inscription d'une personne morale ne doit être entreprise que par une personne physique habilitée à la représenter, qui doit être nommée.
+      article_3_paragraph_2: >
+        3.2 Toute personne qui s'inscrit en tant que Membre s'engage à fournir des informations exactes, complètes et actualisées, et toutes autres données (notamment personnelles) qui seraient nécessaires
+        à la finalisation et au maintien de l'inscription sur la Plateforme, notamment une adresse électronique valide et toutes informations complémentaires nécessaires pour devenir Offreur ou Demandeur.
+        Chaque Membre s'engage également à mettre à jour son compte et à y apporter sans délai toute modification concernant ses informations.
+        Chaque Membre sera seul responsable des conséquences pouvant résulter de la fourniture d'informations mensongères, invalides ou erronées à PAPOTERS et/ou à un autre Membre.
+      article_3_paragraph_3_1_html: >
+        3.3 Pour s'inscrire, le Membre pourra:
+        <br>(i) soit suivre le processus d’inscription de la Plateforme, en remplissant l’ensemble des champs obligatoires figurant sur le formulaire d’inscription,
+        notamment une adresse e-mail valide, un nom d’utilisateur (comprenant un prénom et nom de famille) et un mot de passe;
+        <br>(ii) soit se connecter, via la Plateforme, à son compte Facebook.
+        En utilisant une telle fonctionnalité, le Membre comprend que PAPOTERS aura accès, publiera sur la Plateforme et conservera certaines informations de son compte Facebook.
+        Le Membre peut à tout moment supprimer le lien entre son compte PAPOTERS et son compte Facebook.
+        Pour en savoir plus sur l’utilisation des données dans le cadre du compte Facebook d’un Membre, consultez la Politique de Confidentialité et celle de Facebook.
+      article_3_paragraph_3_2: >
+        Pour s’inscrire sur la Plateforme, le Membre doit avoir lu et accepter les présentes Conditions Générales ainsi que la Politique de Confidentialité.
+      article_3_paragraph_3_3: >
+        Le Membre s'engage à ne pas s'enregistrer sous un nom d'utilisateur portant atteinte aux droits d'un tiers.
+        Notamment, le Membre n'utilisera pas un nom d'utilisateur portant atteinte aux droits d'auteur, marques, dénominations sociales ou enseignes d'un tiers ou d'un autre Membre.
+        Par ailleurs, le Membre s'interdit d'enregistrer comme nom d'utilisateur tout ou partie d'un lien URL, adresse ou autre nom de domaine pointant vers un site externe.
+        PAPOTERS se réserve le droit, notamment en cas de litige entre Membres, de demander au Membre qui n'a pas respecté le présent article de modifier son nom d'utilisateur
+        dans un délai qui lui sera communiqué par PAPOTERS.
+        A défaut de se conformer à cette demande, PAPOTERS pourra clôturer ou suspendre le compte du Membre concerné dans les conditions prévues à l'article 12.
+      article_3_paragraph_3_4_html: >
+        Le Membre s’interdit également d’usurper l’identité d’un Membre, ou de faire usage d’une ou plusieurs données de toute nature permettant de l’identifier
+        en vue de troubler sa tranquillité ou celle d’autrui, ou de porter atteinte à son honneur ou sa considération.
+        Ces faits sont répréhensibles sur le fondement de l’article 226-4-1 du Code pénal, qui les punit d’un an de prison et de 15 000 euros d’amende.
+        L’Utilisateur qui constate de tels faits en informe immédiatement PAPOTERS par email à l’adresse <a href="mailto:contact@papoters.com">contact@papoters.com</a>.
+      article_3_paragraph_3_5: >
+        PAPOTERS se réserve la possibilité de contrôler la déclaration effectuée par le Membre, et ce dernier s’engage à collaborer avec PAPOTERS
+        et à lui communiquer l’ensemble des informations et documents nécessaires à cette vérification, à première demande.En cas de fausse déclaration,
+        PAPOTERS se réserve la possibilité de suspendre et/ou clôturer le compte du Membre dans les conditions prévues à l’article 12 des présentes Conditions Générales.
+      article_3_paragraph_3_6: >
+        Les dispositions qui précèdent sont essentielles au respect par PAPOTERS de ses propres obligations vis-à-vis des Membres, conformément à la réglementation en vigueur.
+      article_3_paragraph_4: >
+        3.4 L'inscription du Membre lui permet de créer un compte unique par lequel il peut accéder à l'ensemble de la Plateforme à l'aide des mêmes adresse e-mail et mot de passe.
+        Le Membre pourra accéder à son compte depuis tout Support.
+      article_3_paragraph_5_html: >
+        3.5 L’adresse e-mail et le mot de passe du Membre sont strictement personnels et le Membre s'engage à en maintenir la confidentialité.
+        Cette obligation relève de sa seule responsabilité. Le Membre inscrit est seul autorisé à utiliser la Plateforme à l'aide de son e-mail et de son mot de passe
+        et s'engage à ne permettre à aucune autre personne un accès sous son identité ou son e-mail.
+        L'utilisation de l’adresse e-mail du Membre, associée à son mot de passe, fait présumer un accès et un usage de la Plateforme par ce Membre.
+        Dans l'hypothèse où il aurait connaissance d'un accès par un tiers à son compte, le Membre s'engage à en informer PAPOTERS sans délai par e-mail à l'adresse
+        <a href="mailto:contact@papoters.com">contact@papoters.com</a>, afin de permettre à PAPOTERS de prendre des mesures pour remédier à la situation.
+      article_3_paragraph_6_html: >
+        3.6 Chaque Membre s'engage à ne créer et à n'utiliser qu'un seul compte.
+        Toute dérogation à cette règle devra faire l'objet d'une demande de la part du Membre par e-mail à l'adresse <a href="mailto:contact@papoters.com">contact@papoters.com</a>
+        et d'une autorisation expresse et spécifique de PAPOTERS.
+        Le fait de créer ou d'utiliser de nouveaux comptes sous sa propre identité ou celle de tiers sans avoir demandé et obtenu l'autorisation préalable de PAPOTERS pourra entraîner,
+        à la discrétion de PAPOTERS, la suspension immédiate et/ou la clôture des comptes du Membre et de tous les services associés.
+      article_3_paragraph_7: >
+        3.7 Chaque Membre s'engage à utiliser la Plateforme et à publier des Contenus sur la Plateforme dans le respect des présentes Conditions Générales
+        et des dispositions législatives et/ou réglementaires en vigueur.
+      article_3_paragraph_8_1_html: >
+        3.8 Chaque Membre est seul responsable de son Contenu, PAPOTERS ne jouant qu'un rôle d'intermédiaire technique passif pour sa mise en ligne et ne contrôlant pas le Contenu avant sa mise en ligne.
+        Le Membre s'interdit de publier un ou des Contenus et plus généralement d'effectuer tout acte ou agissement, sur tout ou partie de la Plateforme :
+        <br>(i) portant atteinte aux droits d'auteur, brevets, marques, dessins et modèles, secrets de fabrication, enseigne et/ou à la vie privée des tiers ;
+        <br>(ii) diffamatoire, injurieux, dénigrant et/ou calomnieux ;
+        <br>(iii) discriminatoire et/ou incitant à la violence ou à la haine raciale, religieuse ou ethnique, ou encore à la xénophobie ou à l’antisémitisme ;
+        <br>(iv) obscène, pornographique et/ou pédophile, contraire à l’ordre public ou aux bonnes mœurs, ou dont l’objet ou la cause serait illégal ;
+        <br>(v) susceptible d'être qualifié de détournement, d'escroquerie, d'abus de confiance ou de tomber sous le coup de toute autre infraction pénale ;
+        <br>(vi) en vue d'obtenir ou de tenter d'obtenir le transfert de sommes d'argent sans qu'il y ait en contrepartie la fourniture d'un Service conforme aux présentes Conditions Générales
+        d'une valeur équivalente aux sommes sollicitées ;
+        <br>(vii) susceptible d'endommager tout système informatique ou d'intercepter clandestinement toutes données ou informations nominatives ;
+        <br>(viii) engageant ou susceptible d'engager la responsabilité de PAPOTERS ou ayant pour conséquence la perte du bénéfice de tout ou partie des services des prestataires de PAPOTERS
+        et notamment de ses prestataires de services Internet, prestataires de paiement et/ou prestataires de stockage ;
+        <br>(ix) susceptible de porter atteinte à l'image et/ou la réputation de PAPOTERS ou de la Plateforme et/ou de constituer des actes de concurrence déloyale ou parasitaire
+        à l'égard de PAPOTERS, de tout autre Membre et/ou de tiers ;
+        <br>(x) en vue de détourner ou de tenter de détourner tout ou partie des Demandeurs de l'un quelconque des Supports ou d'inciter tout ou partie des Demandeurs à ne pas ou ne plus acheter
+        sur l'un quelconque des Supports de la Plateforme ;
+        <br>(xi) potentiellement déloyal, préjudiciable, dénigrant ou nuisible à l'égard de PAPOTERS, de la Plateforme, de tout Membre et/ou de tout tiers ;
+        <br>(x) inexact ou trompeur ;
+        <br>(xi) qui viole ou est susceptible de violer toute loi ou règlement applicable et/ou toute clause contractuelle liant le Membre.
+      article_3_paragraph_8_2: >
+        Les dispositions ci-dessus sont également valables pour tous les liens mis en ligne par le Membre et renvoyant vers des contenus ou Contenus prohibés.
+      article_3_paragraph_8_3: >
+        Les Membres s’interdisent par ailleurs d’utiliser la Plateforme dans un but promotionnel, notamment pour des sites ou applications mobiles.
+      article_3_paragraph_9: >
+        3.9 En outre le Membre s'interdit
+        (i) d'inclure dans tout Contenu des termes portant atteinte aux droits d'un tiers, et notamment aux droits d'auteur, marques, dénominations sociales
+        ou enseignes d'un tiers ou d'un Membre, ou reprenant en tout ou partie d’un Contenu d'un autre Membre,
+        (ii) d'inclure dans tout Contenu tout ou partie d'un lien URL, adresse ou autre nom de domaine pointant vers un site externe à la Plateforme, et/ou
+        (iii) de contourner, détourner et/ou faire obstacle (ou tenter de contourner, détourner et/ou faire obstacle) de manière déloyale à un service soumis à rémunération sur la Plateforme.
+      article_3_paragraph_10: >
+        3.10 En communiquant un Contenu par le biais de la Plateforme, et notamment dans l’hypothèse où ce Contenu serait soumis à des droits de propriété intellectuelle,
+        le Membre concède à PAPOTERS (mais sans obligation pour PAPOTERS) une licence non-exclusive, susceptible de sous-licence, et gratuite, pour le monde entier, et pour la durée de l'inscription du Membre
+        et en tout état de cause dans la limite de la durée légale de protection des éventuels droits de propriété intellectuelle afférents, d'utiliser, de reproduire, représenter, publier, mettre à disposition,
+        communiquer, modifier, adapter, afficher, sur la Plateforme et sur tous autres supports (notamment sur tout support physique ou numérique, dans tout communiqué ou dossier de presse, support de présentation,
+        matériel promotionnel et/ou publicitaire, site Internet), par tous moyens, tout ou partie du Contenu, exclusivement à des fins internes, de communication, publicité, promotion ou de marketing.
+        Le Membre reconnaît que toute utilisation de son Contenu effectuée par PAPOTERS dans le respect des dispositions susvisées préalablement à sa désinscription,
+        la suppression ou la clôture de son compte ne pourra être remise en cause par le Membre.
+      article_3_paragraph_11: >
+        3.11 En communiquant un Contenu par le biais de la Plateforme, et notamment dans l’hypothèse où ce Contenu serait soumis à des droits de propriété intellectuelle,
+        le Membre concède également directement à tout Utilisateur une licence non-exclusive, personnelle, non-transférable, insusceptible de sous-licence, à titre gratuit, pour le monde entier,
+        et pour la durée de l'inscription du Membre et en tout état de cause dans la limite de la durée légale de protection des éventuels droits de propriété intellectuelle afférents,
+        de reproduire et de représenter le Contenu à des fins privées non commerciales.
+      article_3_paragraph_12: >
+        3.12 Le Membre reconnaît et accepte que son Contenu puisse être visualisé sur la Plateforme par tout Utilisateur qui pourra accéder à son profil et suivre son activité.
+        Des options de désinscription aux services de PAPOTERS sont disponibles sur le compte du Membre.
+        Cette désinscription entraîne la clôture et la suppression du compte du Membre (y incluant les données personnelles associées).
+      article_3_paragraph_13: >
+        3.13 Chaque Membre garantit PAPOTERS concernant tous les Contenus qu’il a publiés sur la Plateforme, et accepte en conséquence d'indemniser PAPOTERS en cas d'action d'un tiers contre PAPOTERS
+        dès lors que cette action aurait pour cause, fondement ou origine tout Contenu publié par lui sur la Plateforme.
+        Chaque Membre s'engage à supporter toutes les conséquences, notamment financières, qui pourraient résulter d'une telle action et à indemniser à première demande PAPOTERS.
+        PAPOTERS se réserve le droit, sans indemnité, ni notification, ni préavis, de supprimer tout Contenu dont elle a eu connaissance de son propre chef ou par la notification d’un Utilisateur,
+        qui violerait l'une des dispositions des Conditions Générales et/ou les dispositions législatives et/ou réglementaires en vigueur,
+        ainsi que de suspendre ou de clôturer le compte du Membre, sans préavis et sans indemnité.
+      article_3_paragraph_14_html: >
+        3.14 Dans l'hypothèse où un Utilisateur constaterait la proposition, la demande, l’échange ou la vente de Services Interdits sur la Plateforme, ou dans l’hypothèse où un Utilisateur
+        constaterait la publication d’un Contenu par un autre Membre ou un agissement comportement contrevenant aux dispositions des Conditions Générales (notamment ses articles 3.7,3.8 et 3.9)
+        et/ou aux dispositions législatives et/ou réglementaires en vigueur, il s'engage à en informer immédiatement PAPOTERS via les moyens mis à sa disposition sur la Plateforme
+        ou par e-mail à l'adresse suivante : <a href="mailto:contact@papoters.com">contact@papoters.com</a>.
+        Dans l’hypothèse où un Utilisateur signale à PAPOTERS un tel Contenu, PAPOTERS retirera promptement le Contenu concerné si celui-ci contrevient effectivement aux dispositions susvisées.
+        En revanche, en aucun cas PAPOTERS ne saurait être tenue d’une obligation générale de surveillance quant aux Contenus publiés sur la Plateforme par les Membres.
+      article_3_paragraph_15: >
+        3.15 Dans l'hypothèse où PAPOTERS aurait connaissance de tout acte ou agissement d'un Membre en dehors de la Plateforme
+        (i) en vue de détourner ou de tenter de détourner tout ou partie des Utilisateurs de la Plateforme ou d'inciter tout ou partie des Demandeurs ou Offreurs à ne pas
+        ou ne plus passer par la Plateforme pour échanger des Services,
+        (ii) potentiellement déloyal, préjudiciable, anti-commercial, dénigrant, diffamatoire, injurieux ou nuisible à l'égard de PAPOTERS, de la Plateforme, de tout Membre ou
+        (iii) violant à l'égard de PAPOTERS de quelconque autre manière les législations et réglementations applicables,
+        PAPOTERS se réserve le droit unilatéral de suspendre et/ou clôturer le compte du Membre dans les conditions prévues à l'article 12.
+      article_3_paragraph_16_1: >
+        3.16 Le Membre a une obligation d'agir de bonne foi et avec respect dans ses relations avec PAPOTERS et les autres Membres.
+        Les Membres s’engagent à entrer en contact entre eux uniquement aux fins de convenir des conditions et modalités de l’échange de Service envisagé.
+        Cette prise de contact s’effectue par écrit, par le biais de la Plateforme, dans le cadre de la Session.
+        La discussion est visible uniquement par les Membres concernés par l’échange de Service, les autres Utilisateurs n’y ayant pas accès.
+        A ce titre, les Membres reconnaissent qu’ils ne doivent communiquer aucune donnée personnelle dans le cadre de leur discussion (téléphone, adresse, mails, etc.)
+        ou tout autre élément ayant pour objet direct ou indirect de contourner la Plateforme (ci-après les « Contenus et/ou agissements non sollicités) avant qu’un Accord ait été conclu.
+      article_3_paragraph_16_2: >
+        Dans le respect des dispositions légales applicables, les Membres sont informés que PAPOTERS a mis en place un procédé d’analyse automatisé des échanges entre les Utilisateurs sur la Plateforme,
+        dans le seul but de détecter les Contenus et/ou agissements non sollicités et d’assurer le bon fonctionnement et l’amélioration de la Plateforme.
+        Si l’outil informatique de PAPOTERS détecte un tel Contenu et/ou agissement non sollicité, PAPOTERS prendra toutes les mesures nécessaires à l’encontre de l’Utilisateur concerné
+        conformément aux présentes Conditions Générales, y incluant la suspension ou la clôture de son Compte personnel.
+        Dans le cas où l’outil informatique de PAPOTERS détecte un potentiel Contenu et/ou agissement non sollicité, et uniquement dans cette hypothèse,
+        PAPOTERS pourra analyser manuellement la teneur des échanges entre les Utilisateurs.
+        S’il s’agit effectivement d’un Contenu et/ou agissement non sollicité, PAPOTERS pourra prendre à l’égard de l’Utilisateur concerné, les mêmes mesures que ci-dessus.
+      article_3_paragraph_16_3: >
+        Il est entendu qu’en aucun cas PAPOTERS ne prendra connaissance des échanges entre les Utilisateurs en dehors des cas susvisés.
+      article_3_paragraph_17: >
+        3.17 Les Membres représentent leurs propres intérêts.
+        Ainsi, ils délivrent ou acceptent que leur soient fournis des services sous leur seule et entière responsabilité.
+        PAPOTERS n’est aucunement partie à l’opération qui peut se tenir entre les Membres, étant précisé que PAPOTERS ne garantit en aucun cas que la prise de contact entre un Demandeur et un Offreur
+        débouchera sur la conclusion d’une opération, quelle qu’elle soit.
+        Les Membres doivent donc prendre toutes les précautions et mesures de sécurité utiles et nécessaires,
+        en s’assurant notamment que l’Offreur dispose des qualités, droits et compétences nécessaires pour fournir le Service proposé.
+      article_3_paragraph_18: >
+        3.18 Les Membres doivent obligatoirement disposer de toutes les assurances nécessaires (notamment responsabilité civile) pour la fourniture et la vente de Services, ou pour leur réception et achat.
+        Les Membres contrôlent et vérifient de leur propre chef que les assurances dont ils disposent couvrent toutes les situations qu’ils sont amenés à connaître en utilisant la Plateforme.
+        Ils garantissent PAPOTERS à ce titre, sa responsabilité ne pouvant en aucun cas être engagée lorsqu’un dommage a été subi par un Membre du fait d’un autre Membre.
+      article_4_title: 4 - Obligations de l’Offreur
+      article_4_paragraph_1: >
+        4.1 L'objectif de PAPOTERS est de favoriser les échanges et donc d’aider les Offreurs à proposer, à fournir et à vendre leurs Services.
+      article_4_paragraph_2_1: >
+        4.2 La Plateforme permet à l'Offreur de créer et d’accéder à son profil depuis tout Support par le biais d'un compte unique auquel sont associés une adresse email valide et un mot de passe uniques,
+        ainsi qu’un nom d'utilisateur (prénom et nom de famille). L’Offreur peut publier des Offres de Service depuis son profil, visibles par tout Utilisateur de la Plateforme,
+        afin de proposer ses Services à la vente ou à titre gratuit.
+      article_4_paragraph_2_2: >
+        Les Offres publiées par les Offreurs sur PAPOTERS doivent indiquer un certain nombre de critères (Services proposés, moyen(s) de communication, langue(s) d’échange, etc.),
+        certains de ces critères étant obligatoires.
+        A défaut, les annonces ne pourront être mises en ligne.
+        PAPOTERS se réserve la possibilité de modifier les critères à renseigner à tout moment et à sa seule discrétion.
+      article_4_paragraph_3: >
+        4.3 PAPOTERS peut également mettre à disposition des Offreurs des outils promotionnels, à sa seule discrétion et dans les conditions et modalités déterminées par PAPOTERS sur la Plateforme.
+        L'Offreur est libre d'utiliser ou non de tels outils.
+        L'utilisation par l'Offreur des outils promotionnels mis à disposition par PAPOTERS est effectuée sous la seule et unique responsabilité de l'Offreur.
+      article_4_paragraph_4: >
+        4.4 Chaque échange de Service s’effectue dans le cadre d’une Session entre l’Offreur et le Demandeur, tel que décrit plus en détail dans l’article 6.
+        Sur Proposition de l’Offreur, un Accord peut être conclu entre le Demandeur et l’Offreur.
+        Toute émission d’une Proposition engage l’Offreur à fournir le Service proposé, sous réserve d’acceptation par le Demandeur.
+        La fourniture du Service commence à l’Ouverture de la Session et se termine à sa Clôture.
+      article_4_paragraph_5_html: >
+        4.5 Chaque Offreur s’interdit de proposer à la vente ou à titre gratuit, de fournir ou de vendre sur la Plateforme :
+        <br>(i) tout ce qui ne relève pas de la prestation de Service, notamment tout objet, produit ou bien
+        <br>(ii) des Services non autorisés par PAPOTERS (liste non exhaustive):
+        <br>- Contenu réservé aux adultes ;
+        <br>- Appel aux dons financiers privés ou à but humanitaire ;
+        <br>- Offres pouvant mener à des pratiques tendancieuses ;
+        <br>- Avis de recherche d’une personne ;
+        <br>- Intervention directe ou indirecte sur le corps et/ou l’esprit des personnes de quelque nature que ce soit et notamment sans que cette liste ne soit limitative,
+        piercing, tatouage, hypnose, médecine conventionnelle ou alternative.
+        <br>(iii) des Services que l'Offreur n'est pas en mesure de fournir, notamment dans les conditions indiquées dans l'Accord;
+        <br>(iv) des Services contraires ou non-conformes aux lois et règlements en vigueur ou aux bonnes mœurs ou à l’ordre public, ou non autorisés en vertu de dispositions contractuelles,
+        notamment des Services frauduleux, portant atteinte aux droits d'un tiers, non-conformes aux prescriptions en vigueur relatives à la protection des consommateurs, la sécurité et à la santé des personnes.
+        PAPOTERS attire l'attention de l'Offreur sur la nécessité absolue pour l'Offreur qui propose un Service de s'assurer que ce Service est rigoureusement conforme aux lois,
+        règlements et autres prescriptions en vigueur, cette obligation n’incombant en aucune manière à PAPOTERS, qui ne procède à aucune vérification des Services
+        mis en vente ou offerts à titre gratuit sur la Plateforme (que ce soit préalablement ou postérieurement à la mise en ligne sur la Plateforme) ;
+        <br>(v) des Services susceptibles de constituer l’exercice illégal d’une activité réglementée ou soumise à autorisation, quelle qu’elle soit.
+      article_4_paragraph_6_html: >
+        4.6 Dans l'hypothèse où PAPOTERS constaterait, suite à une alerte d'un Membre ou de son propre fait, la proposition, l’échange ou la vente de Services Interdits sur la Plateforme,
+        PAPOTERS se réserve le droit de :
+        <br>(i) retirer de la Plateforme toute Offre de Service de l’Offreur et/ou toute Offre de l’Offreur contrevenant aux dispositions des présentes Conditions Générales
+        et/ou aux dispositions législatives et/ou réglementaires en vigueur ;
+        <br>(ii) bloquer, suspendre ou clôturer le compte de l'Offreur ;
+        <br>(iii) communiquer aux autorités compétentes toutes les informations requises concernant toute proposition, échange, vente ou achat d'un Service Interdit,
+        y compris les informations nominatives des Membres le cas échéant, et/ou de coopérer avec les autorités compétentes sur leur demande.
+      article_4_paragraph_7_html: >
+        4.7 Chaque Offreur s'engage à :
+        <br>(i) indiquer, dans chacune de ses Offres de Service, les caractéristiques et modalités de chaque Service offert à la vente ou à titre gratuit sur la Plateforme ;
+        <br>(ii) fournir, dans chaque Proposition d’Accord soumise au Demandeur, toutes les informations nécessaires sur le Service proposé,
+        notamment le contenu, les objectifs et les conditions de fourniture du Service (sa date limite, sa tarification le cas échéant, etc.), afin que le Demandeur ne puisse pas être induit en erreur.
+        Chaque Offreur est seul responsable de la fourniture de l'intégralité des éléments établis dans l’Accord conclu avec le Demandeur,
+        PAPOTERS n’intervenant pas, de quelque manière que ce soit, dans la détermination de ces éléments ;
+        <br>(iii) respecter les exigences de qualité de service imposées par PAPOTERS sur la Plateforme, étant entendu que ces exigences sont celles déterminées par les usages ;
+        <br>(iv) rendre un service de qualité, conforme aux attentes du Demandeur et respectueux des délais convenus avec celui-ci.
+      article_4_paragraph_8: >
+        4.8 Chaque Offreur est seul responsable de tout Service qu’il propose à la vente ou à titre gratuit sur la Plateforme, de même que de l'observation de l'ensemble des lois et réglementations applicables
+        aux Services proposés, telles que celles relatives à la fourniture, la commercialisation et la vente de ces Services, et sera seul responsable (notamment vis-à-vis d'un Demandeur mais également de PAPOTERS)
+        en cas de dommage causé par ses Services ou plus généralement de toutes les conséquences liées à l’offre, la fourniture et la vente de ses Services.
+        PAPOTERS ne saurait en aucune manière être tenue responsable de la non-conformité de l’offre, de la fourniture et la vente d'un Service par l'Offreur non-conforme aux lois et réglementations en vigueur.
+        L'Offreur s'engage à garantir PAPOTERS en cas de plainte, d'action ou de réclamation d'un tiers ou d’un Demandeur à l'encontre de PAPOTERS lié à la non-conformité d'un Service à la réglementation en vigueur,
+        et à indemniser PAPOTERS de toutes les conséquences liées à la non-conformité de ses Services aux lois et réglementations en vigueur.
+        L'Offreur s'engage en conséquence à prendre directement à sa charge le paiement de toutes sommes, y compris toutes éventuelles condamnations, frais de justice, honoraires d'avocat et autres montants
+        qui seraient dus à ce titre (ou à rembourser PAPOTERS à première demande).
+      article_4_paragraph_9: >
+        4.9 L'Offreur s'engage à garder les informations que le Demandeur lui aurait communiquées pour la bonne exécution du Service, strictement confidentielles, étant précisé qu’il les conservera
+        pour la seule durée d’exécution du Service. Il ne pourra les divulguer en aucun cas.
+        L'Offreur s'engage également à n'utiliser les coordonnées et autres données communiquées par le Demandeur que pour les stricts besoins de l'exécution du Service concerné et des obligations
+        légales qui s'y rattachent, et en conformité avec les présentes Conditions Générales.
+        Notamment, l'Offreur s'engage à ne pas proposer au Demandeur des Services en dehors du processus prévu par la Plateforme et à ne pas utiliser les données personnelles du Demandeur dont il pourrait
+        avoir connaissance à d'autres fins que la seule exécution du Service proposé sur la Plateforme.
+        Lorsque le Service a été fourni, l’Offreur s’engage à supprimer toute donnée personnelle relative au Demandeur en sa possession.
+      article_4_paragraph_10: >
+        4.10 L'Offreur dont le comportement (sur la Plateforme ou hors Plateforme) est susceptible de nuire à l'image et/ou à la réputation de PAPOTERS ou de la Plateforme pourra voir son comportement
+        sanctionné par PAPOTERS conformément à l'article 12 des présentes Conditions Générales, notamment en cas d’évaluations négatives répétées ou de litiges consécutifs avec un ou plusieurs Demandeurs.
+      article_4_paragraph_11: >
+        4.11 Chaque Offreur déclare et garantit détenir tous les droits nécessaires, notamment matériels et intellectuels, pour fournir ou vendre tout Service proposé par lui sur la Plateforme.
+        De même, l’Offreur déclare et garantit être qualifié, compétent et disposer, le cas échéant, du diplôme et/ou du titre requis.
+        L’Offreur garantit PAPOTERS contre toute réclamation concernant le contenu d'une Offre, d’une Proposition ou d’un Accord de Service et/ou l’exécution du Service.
+      article_4_paragraph_12: >
+        4.12 En cas de litige entre Offreurs du fait du Contenu publié par l'un d'eux (par exemple, en cas de concurrence déloyale alléguée par l'un des Offreurs),
+        il appartient aux Offreurs d'entrer en contact directement, sans l’intermédiaire de PAPOTERS, et de régler leur litige entre eux.
+        PAPOTERS n'est pas tenue d'intervenir et n'interviendra pas dans la résolution du litige.
+        PAPOTERS se réserve donc le droit de ne pas donner suite à la réclamation d'un Offreur qui lui serait adressée dans ce cas, sans encourir une quelconque responsabilité à ce titre.
+        Toutefois, l’Offreur pourra, à sa seule discrétion, consulter un avocat le cas échéant, et ce à ses seuls frais.
+      article_4_paragraph_13_1: >
+        4.13 S’il souhaite proposer ses Services à la vente, l’Offreur devra préalablement renseigner ou transmettre, de manière obligatoire, toute information ou document requis par la Plateforme,
+        notamment sa date de naissance, son adresse personnelle ainsi que la copie d’un document d’identité.
+        L’Offreur devra également mentionner s’il agit ou non en tant que professionnel et, le cas échéant, renseigner ou transmettre, de manière obligatoire, toute information ou document
+        requis par la Plateforme, notamment son numéro de SIRET, l’adresse de domiciliation de sa société ou toute autre information ou document relatifs à l’identité des autres mandataires sociaux
+        et/ou dirigeants de sa société.
+      article_4_paragraph_13_2: >
+        PAPOTERS se réserve la possibilité de contrôler la déclaration effectuée par l’Offreur, et ce dernier s’engage à collaborer avec PAPOTERS et à lui communiquer l’ensemble des informations
+        et documents nécessaires à cette vérification, à première demande.
+        En cas de fausse déclaration, PAPOTERS se réserve la possibilité de suspendre et/ou clôturer le compte de l’Offreur dans les conditions prévues à l’article 12 des présentes.
+      article_4_paragraph_13_3: >
+        En tout état de cause, conformément aux dispositions légales, il est entendu que tout Offreur réalisant sur la Plateforme un chiffre d’affaires annuel égal ou supérieur à
+        3 000 (trois mille) euros doit pouvoir justifier à PAPOTERS, dans les mêmes conditions que ci-dessus, de son statut de professionnel, et ce même s’il ne s’est pas déclaré comme tel sur la Plateforme.
+        Dans une telle hypothèse, l’Offreur s’engage à modifier son statut sur la Plateforme.
+        A défaut, PAPOTERS pourra prendre toute mesure qu’elle estime nécessaire conformément aux dispositions prévues aux présentes Conditions Générales,
+        y incluant notamment la suspension ou la clôture du Compte personnel de l’Offreur.
+      article_4_paragraph_14_1: >
+        4.14 L’Offreur agissant à titre professionnel s’oblige à respecter des obligations supplémentaires.
+        L’offre, la fourniture et la vente de Services via la Plateforme seront dans ce cas soumis à l’ensemble des dispositions applicables au droit de la consommation,
+        ainsi qu’à toute réglementation applicable à l’activité professionnelle de l’Offreur.
+        L’Offreur devra se mettre en conformité avec l’intégralité des obligations fiscales et sociales afférentes, notamment celles applicables aux plateformes collaboratives.
+      article_4_paragraph_14_2: >
+        Il appartient à chaque Offreur de déterminer s'il agit à titre professionnel ou non.
+        Toutefois, les informations ainsi fournies par PAPOTERS ne le sont qu'à titre indicatif et PAPOTERS ne saurait être tenue responsable à cet égard.
+        Il appartient à l'Offreur le cas échéant de solliciter, à ses frais, l'assistance notamment juridique nécessaire pour déterminer son statut et effectuer toutes formalités appropriées à ce titre.
+      article_4_paragraph_14_3: >
+        PAPOTERS rappelle en outre à l'Offreur agissant à titre professionnel son obligation de respecter l'ensemble des règles et obligations lui incombant en sa qualité de professionnel,
+        au regard de la loi applicable, notamment mais sans limitation du droit de la consommation (clarté de l'offre faite au consommateur, information du consommateur, disponibilité des Services,
+        conditions de fourniture, droit de rétractation du consommateur, garanties etc.), du droit des sociétés, du droit social, du droit fiscal, de la législation relative aux pratiques commerciales déloyales,
+        trompeuses ou agressives, et de celle relative aux soldes, qu'il affirme parfaitement connaître.
+        L’Offreur agissant à titre professionnel doit également respecter les obligations de déclaration auprès de l’administration, dont il fait son affaire, étant rappelé que le travail dissimulé par dissimulation
+        d’activité ou par dissimulation d’emploi salarié sont punis par l’article L. 8224-1 du Code du travail.
+        Il est rappelé à ce titre que PAPOTERS n’est pas l’employeur des Offreurs proposant les Services sur la Plateforme et n’a sur ce fondement aucune obligation ou responsabilité à leur égard.
+      article_4_paragraph_14_4: >
+        En agissant à titre professionnel, l’Offreur garantit en outre être qualifié, compétent et disposer de tous les diplômes et/ou titres éventuelles requis pour proposer ses Services sur la Plateforme.
+        Il est rappelé aux Membres que la loi interdit l’usage, sans droit, d’un titre attaché à une profession réglementée par l’autorité publique ou d’un diplôme officiel ou d’une qualité dont les conditions d’attribution
+        sont fixées par l’autorité publique.
+        La violation de cette règle est punie d’un an d’emprisonnement et de 15 000 euros d’amendes (article 433-17 du Code Pénal).
+        Par mesure de sécurité, PAPOTERS interdit formellement toute Offre ou demande ayant notamment pour objet, direct ou indirecte, la pratique de soins médicaux.
+      article_4_paragraph_14_5: >
+        L’Offreur fournit au Demandeur, le cas échéant, tous éléments permettant de justifier de sa qualité de professionnel (extrait Kbis, numéro d’immatriculation au Registre du Commerce et des Sociétés, etc.),
+        lequel s’oblige à réaliser aux vérifications et contrôles qui s’imposent.
+        PAPOTERS ne procède cependant à aucun contrôle ni aucune vérification des informations qui seraient fournis au Demandeur et, en conséquence, ne garantit pas l’exactitude, la loyauté et la réalité de ces informations,
+        dont l’Offreur est le seul et unique garant.
+      article_4_paragraph_14_6: >
+        L'Offreur agissant à titre professionnel garantit PAPOTERS qu'il se conformera en sa qualité de professionnel à toutes ses obligations et indemnisera PAPOTERS de toutes les conséquences liées au manquement
+        par l'Offreur à l'une quelconque de ses obligations en sa qualité d’Offreur professionnel.
+        L'Offreur professionnel s'engage en conséquence à prendre directement à sa charge le paiement de toutes sommes, y compris toutes éventuelles condamnations, frais de justice, honoraires d'avocat et autres montants
+        qui seraient dus à ce titre (ou à rembourser à première demande de PAPOTERS).
+      article_4_paragraph_14_7: >
+        En outre, l’Offreur professionnel doit obligatoirement disposer de toutes les assurances nécessaires, notamment de nature professionnelle, pour proposer ses Services sur la Plateforme, quels qu’ils soient.
+        L’Offreur professionnel contrôle et vérifie de son propre chef que les assurances dont il dispose couvrent toutes les situations qu’il est amené à connaître en utilisant la Plateforme.
+        Il en fait son affaire, et en seul et exclusif responsable.
+        PAPOTERS ne pourra en aucun cas être tenue responsable en cas de dommage subi par l’un des Membres du fait d’un autre Membre.
+      article_4_paragraph_14_8: >
+        Il est précisé que les éventuelles informations que PAPOTERS pourrait publier sur la Plateforme à ce sujet le sont à titre informatif et indicatif.
+        Ces informations ne sauraient être considérées comme exhaustives, leur but étant de renseigner rapidement les Offreurs sur certaines des obligations auxquelles ils sont susceptibles d’être assujettis.
+      article_4_paragraph_15_1: >
+        4.15 L'Offreur qui souhaite être payé par le biais du Service de Paiement, tel que décrit dans l’article 6, doit au préalable fournir un RIB à PAPOTERS.
+        L'Offreur accepte que les montants qui lui sont dus au titre de Services vendus sur la Plateforme et qui sont réglés sur la Plateforme par carte bancaire soient crédités sur son Porte-Monnaie Virtuel.
+        L’Offreur ne sera payé par ce biais qu’après confirmation du paiement du Demandeur pour le Service via le Service de Paiement.
+        L’Offreur récupérera le montant qui lui est dû pour le Service et disponible sur son Porte-Monnaie Virtuel par virement bancaire (uniquement pour les Offreurs en zone SEPA) après confirmation de
+        la fourniture du Service, selon les modalités décrites dans l’article 6.
+      article_4_paragraph_15_2: >
+        Il appartient exclusivement à l’Offreur de respecter les obligations légales résultant de la perception d’une somme d’argent, notamment de l’éventuelle déclaration des revenus ainsi perçus.
+      article_4_paragraph_16: >
+        4.16 Le Demandeur pourra évaluer son expérience avec le demandeur dans le cadre de la Session, conformément aux dispositions de l’article 7 ci-après.
+      article_5_title: 5 - Obligations du Demandeur
+      article_5_paragraph_1: >
+        5.1 Le Demandeur ne peut créer qu'un seul compte sur la Plateforme.
+        L'ouverture d'un compte par le Demandeur sur un Support lui permet d'accéder à l'ensemble de la Plateforme et de recevoir et d'acheter des Services sur l'un quelconque des Sites et Applications,
+        par le biais du même compte.
+      article_5_paragraph_2: >
+        5.2 Le Demandeur s'engage à respecter l'ensemble des lois et réglementations relatives à la réception et à l’achat de Services de toute nature.
+      article_5_paragraph_3: >
+        5.3 Le Demandeur peut prendre contact librement avec un Offreur ayant publié une Offre sur la Plateforme, afin de lui exposer son besoin et d’obtenir en retour une Proposition pour la fourniture d’un Service.
+        Le Demandeur est informé que ses échanges avec l’Offreur s’effectuent dans le cadre d’une Session, dont l’accès n’est pas autorisé aux autres Membres de la Plateforme, tel que décrit plus en détail dans l’article 6.
+      article_5_paragraph_4: >
+        5.4 La Plateforme permet également au Demandeur de publier des Appels d’Offres depuis son profil, visibles par tout Utilisateur de la Plateforme, afin de recevoir des Offres de Services de la part des Offreurs.
+      article_5_paragraph_5: >
+        5.5 Avant d’accepter la Proposition d’Accord décrivant le Service proposé et émise par l’Offreur lors d’une Session, le Demandeur devra vérifier l’ensembles des éléments de la Proposition,
+        notamment le contenu, les objectifs, les conditions de fourniture du Service et, le cas échéant, la tarification proposée.
+        Il pourra aviser l’Offreur en cas d’erreur ou de désaccord sur l’un des éléments, afin d’obtenir une nouvelle Proposition, ou bien refuser la Proposition.
+        Le Demandeur est seul responsable des conséquences liées à l’acceptation d’une Proposition, marquant la conclusion d’un Accord avec l’Offreur.
+      article_5_paragraph_6_1: >
+        5.6 Dès lors que le Demandeur a conclu un Accord avec l’Offreur, le Demandeur accepte de communiquer ses nom et prénom, ses coordonnées ainsi que toute autre information nécessaire à l'Offreur pour les besoins du Service.
+        Le Demandeur peut également avoir connaissance d’une ou plusieurs données personnelles de l’Offreur, qu’il conservera dans ce cas strictement confidentielles et utilisera pour la stricte fourniture du Service concernée.
+        Après la Clôture de la Session, le Demandeur s’engage à supprimer toute donnée personnelle relative à l’Offreur qu’il pourrait avoir en sa possession.
+      article_5_paragraph_6_2: >
+        En outre, le Demandeur s’engage à ne pas demander à l’Offreur des services en dehors du processus prévu par la Plateforme.
+      article_5_paragraph_7: >
+        5.7 A défaut de réception du Service, et suite à la Clôture de la Session, le Demandeur pourra effectuer une réclamation conformément aux articles 8 et 9 des présentes Conditions Générales.
+        Sans réclamation du Demandeur dans les 72 (soixante-douze) heures à compter de la Clôture, le Service sera réputée parfait entre l'Offreur et le Demandeur.
+      article_5_paragraph_8: >
+        5.8 Le Demandeur pourra évaluer le Service fourni par l’Offreur conformément aux dispositions de l’article 7 ci-après.
+      article_6_title: 6 - Sessions et Service de Paiement
+      article_6_paragraph_1: >
+        6.1 Les Membres peuvent échanger des Services librement sur PAPOTERS, sous réserve des interdictions prévues aux présentes Conditions Générales, notamment concernant les Contenus et les Services Interdits.
+        Chaque échange de Service entre un Demandeur et un Offreur sur la Plateforme s’effectue dans le cadre d’une Session, dont l’accès est limité au Demandeur et à l’Offreur.
+        La Session est créée lors de la prise de contact initiale entre le Demandeur et l’Offreur.
+        L’Offreur et le Demandeur peuvent conclure un Accord de Service, sur Proposition de l’Offreur et après acceptation du Demandeur, qui peut faire état d’une tarification pour la Session
+        ou bien d’une fourniture de Service à titre gratuit.
+        La conclusion de l’Accord marque l’Ouverture de la Session et le commencement du Service, et engage l’Offreur à fournir ledit Service jusqu’à la Clôture ou l’annulation de la Session.
+        PAPOTERS n’intervient à aucun moment ni en aucune manière sur la conclusion de l’Accord, ni sur l’établissement de la tarification de la Session.
+      article_6_paragraph_2: >
+        6.2 L’Offreur est informé qu’une Proposition émise est irrévocable et que celle-ci l’engage à fournir le Service dans le cas où le Demandeur accepte ladite Proposition
+        avant la date d’expiration établie par l’Offreur.
+        La Proposition peut être acceptée ou refusée par l’action du Demandeur, via les moyens mis à sa disposition sur la Plateforme, à tout moment entre l’émission de la Proposition et sa date d’expiration.
+        Sans manifestation du Demandeur durant cette période, la Proposition est automatiquement refusée.
+        En cas de refus, qu’il soit volontaire ou automatique, la Proposition est considérée comme caduque et l’Offreur est alors délivré de tout engagement vis à vis du Demandeur pour la fourniture du Service.
+        Après refus d’une Proposition, l’Offreur peut émettre une nouvelle Proposition pour la Session, les dispositions décrites précédemment s’appliquant de la même manière pour cette nouvelle Proposition.
+      article_6_paragraph_3_html: >
+        6.3 La Session peut être annulée par le Demandeur ou l’Offreur, via les moyens mis à leur disposition sur la Plateforme, tant que l’Accord n’a pas été conclu
+        et qu’aucune Proposition est en attente d’acceptation ou de refus, soit:
+        <br>(i) à tout moment avant émission de la première Proposition;
+        <br>(ii) après refus d’une Proposition, qu’il soit volontaire ou automatique, et sans qu’une nouvelle Proposition ait été émise par l’Offreur.
+      article_6_paragraph_4: >
+        6.4 Le Demandeur et l’Offreur sont informés que l’Accord est irrévocablement conclu par notification sur la Plateforme, ainsi que par un email envoyé à chacun à l’adresse indiquée lors de leur inscription
+        à la Plateforme, après que le Demandeur ait accepté la Proposition.
+        L’Offreur peut annuler une Session avant sa Clôture selon les modalités prévues dans l’article 6.12.
+        Toute demande d’annulation par le Demandeur postérieure à la conclusion de l’Accord est encadrée par les modalités prévues dans les articles 8 et 9.
+      article_6_paragraph_5_html: >
+        6.5 La fin du Service coïncide avec la Clôture de la Session et peut intervenir:
+        (i) par l’action du Demandeur, à tout moment après Ouverture de la Session, via les moyens mis à sa disposition sur la Plateforme;
+        (ii) par l’action de l’Offreur, après que la date limite prévue dans l’Accord avec le Demandeur ait été atteinte, via les moyens mis à sa disposition sur la Plateforme;
+        (iii) automatiquement, sans manifestation du Demandeur ou de l’Offreur après que le délai limite ait été atteint, soit 85 (quatre-vingt-cinq) jours à compter de la date d’Ouverture de la Session.
+      article_6_paragraph_6: >
+        6.6 Sans manifestation du Demandeur dans les 72 (soixante-douze) heures à compter de la Clôture, le Demandeur est réputé avoir confirmé tacitement le bon déroulement de la Session et la fourniture du Service.
+      article_6_paragraph_7: >
+        6.7 Lorsque l’Accord conclu d’une rémunération de l’Offreur pour la Session, en contrepartie du Service fourni, la Transaction financière entre le Demandeur et l’Offreur est gérée et sécurisée
+        par le biais du Service de Paiement.
+        L’acceptation de la Transaction s’effectue alors par le Demandeur en payant la somme due, et coïncide avec l’acception de la Proposition et l’Ouverture de la Session.
+        PAPOTERS n’intervient pas au moment du paiement effectif ou des contestations qui pourraient en découler.
+      article_6_paragraph_8_html: >
+        6.8 Le Service de Paiement pour les Membres officiant sur PAPOTERS est fourni par Stripe et ses modalités sont régies par
+        l’<a href='https://stripe.com/connect-account/legal#translation' target='blank'>Accord sur le compte connecté Stripe</a>,
+        qui inclut les Modalités de service de Stripe (l’ensemble étant appelé l'<a href='https://stripe.com/legal#translation' target='blank'>Accord de Services de Stripe</a>).
+        En agréant aux présentes Conditions Générales ou en continuant à opérer en tant que Membres officiant sur PAPOTERS, les Membres acceptent d’être liés
+        à l'<a href='https://stripe.com/legal#translation' target='blank'>Accord de Services de Stripe</a>, celui-ci pouvant occasionnellement faire l’objet de modifications de la part de Stripe.
+        Du fait que PAPOTERS permette d’effectuer les paiements via Stripe, les Membres acceptent de fournir à PAPOTERS des informations précises et complètes sur leur identité et leur activité,
+        et autorisent PAPOTERS à partager ces informations ainsi que celles concernant les Transactions effectuées via la solution de paiement fournie par Stripe.
+      article_6_paragraph_9: >
+        6.9 Le montant de la Transaction payé par le Demandeur correspond au montant indiqué dans la Proposition d’Accord émise par l’Offreur et acceptée par le Demandeur.
+        Ce montant inclut les Frais de Service perçus par PAPOTERS et calculés automatiquement sur la base du montant de la Transaction.
+        Après confirmation du paiement par le Demandeur, la somme due à l’Offreur, correspondant au montant de la Transaction diminué des Frais de Service de la Plateforme,
+        est transférée sur le Porte-Monnaie Virtuel de l’Offreur.
+        Après confirmation de la fourniture du Service la somme due à l’Offreur lui est transférée par virement bancaire (uniquement pour les Offreurs en zone SEPA).
+      article_6_paragraph_10_html: >
+        6.10 Le Demandeur peut contester le bon déroulement de la Session sous 72 (soixante-douze) heures à compter de la Clôture, via les moyens mis à sa disposition sur la Plateforme ou à l’adresse
+        <a href="mailto:contact@papoters.com">contact@papoters.com</a>.
+        Dans le cas d’une contestation, le processus de paiement de l’Offreur est bloqué et un litige est ouvert et est traité selon les modalités détaillées dans les articles 8 et 9.
+      article_6_paragraph_11: >
+        6.11 PAPOTERS n’est en aucun cas responsable ou garant à l’égard de l’Offreur d’un incident de paiement si, pour quelque raison que ce soit, la somme payée par le Demandeur venait à devoir être reversée
+        notamment en cas d’opposition sur la carte bancaire du Demandeur ou d’utilisation frauduleuse par un tiers de la carte bancaire du Demandeur.
+        Dans ce cas, l’Offreur s’oblige à restituer à PAPOTERS à première demande toute somme reçue remise en cause du fait d’un tel incident de paiement.
+      article_6_paragraph_12: >
+        6.12 Après confirmation du paiement par le Demandeur, l’Offreur a la possibilité, de sa propre et unique initiative, d’annuler la Session via les moyens mis à sa disposition sur la Plateforme,
+        et ce quelle qu’en soit la raison (demande d’annulation ou de rétractation du Demandeur, impossibilité à l’Offreur de fournir le Service, etc.).
+        L’annulation doit intervenir avant la Clôture de la Session et déclenche le remboursement du Demandeur de la totalité du montant qu’il a versé au titre de la Transaction, Frais de Service inclus.
+        Dans ce cas, l’Offreur accepte que le montant disponible sur son Porte-Monnaie Virtuel au titre de la Transaction soit automatiquement remboursé au Demandeur,
+        et qu’il ne peut exiger aucune compensation financière, ce qu’il reconnaît et accepte expressément.
+        PAPOTERS s’engage a restituer au Demandeur les Frais de Service perçus, sans intervenir d’aucune autre manière dans le processus d’annulation.
+      article_7_title: 7 - Evaluation des Sessions
+      article_7_paragraph_1_1: >
+        7.1 PAPOTERS met en place un système d’évaluation et d’avis accessible, après Clôture de chaque Session, par le Demandeur et l’Offreur.
+        Le système permet au Demandeur d’évaluer la réalisation des objectifs établis dans l’Accord et l’expérience avec l’Offreur, sous forme d’attribution « d’étoiles » complété de la possibilité de laisser un avis.
+        La note maximum est de 5 (cinq) étoiles.
+        Les Offreurs ont également la possibilité d’évaluer les Demandeurs en fonction de la qualité des interactions qu’ils ont eues.
+        Ces évaluations et avis sont publics et accessibles à tous les Utilisateurs sur le profil des Membres.
+        L’évaluation a uniquement vocation à permettre l’amélioration de la qualité de l’exécution des Services, et n’a pas pour objectif d’exclure un Membre de la Plateforme.
+      article_7_paragraph_1_2: >
+        Les Membres s’engagent à utiliser de manière loyale, honnête et objective le système d’évaluation, toute utilisation abusive étant susceptible d’entraîner la responsabilité de celui qui en abuse.
+      article_7_paragraph_2: >
+        7.2 PAPOTERS se réserve la possibilité de prendre en compte les évaluations et avis pour le référencement des profils des Offreurs et des Demandeurs, ainsi que des Offres et des Appels d’Offres, dans le cadre d’une recherche.
+      article_8_title: 8 - Réclamations, annulations et droit de rétractation
+      article_8_paragraph_1_1: >
+        8.1 Cas des Offreurs et Demandeurs non professionnels
+      article_8_paragraph_1_2: >
+        Les réclamations, annulations et demandes de remboursement effectués par le Demandeur doivent être directement adressés à l'Offreur et seront directement gérés entre le Demandeur et l'Offreur
+        depuis leurs comptes respectifs sans aucune intervention de PAPOTERS.
+        Il appartient au Demandeur et à l'Offreur de se mettre d'accord.
+        Il est précisé que les dispositions du Code de la consommation, et notamment concernant le droit de rétractation, ne s’appliquent pas aux Offreurs et Demandeurs agissant à titre non professionnel.
+      article_8_paragraph_1_3: >
+        Nonobstant le paragraphe précédent, les Offreurs et Demandeurs non professionnels s’obligent à faire leurs meilleurs efforts pour régler leurs différends à l’amiable,
+        étant précisé en tout état de cause que PAPOTERS sera associé au règlement de tels litiges dans les seules limites de ce qui est prévu aux présentes Conditions Générales.
+      article_8_paragraph_2_1: >
+        8.2 Cas des Offreurs professionnels et Demandeurs non professionnels
+      article_8_paragraph_2_2: >
+        Dès lors que l’Offreur agit à titre professionnel, les dispositions du Code de la consommation s’appliquent, l’Offreur garantissant les connaître. Il s’oblige à les respecter.
+        Les réclamations, quelles qu’elles soient (annulation, demande de remboursement, exercices du droit de rétractation, etc.), sont adressées par le Demandeur à l'Offreur et seront
+        directement gérés entre eux sans aucune intervention de PAPOTERS.
+        L’Offreur s’engage à respecter scrupuleusement les dispositions légales et/ou règlementaires applicables en droit de la consommation (délai du droit de rétractation, etc.).
+      article_8_paragraph_2_3: >
+        En aucun cas PAPOTERS ne saurait être mêlée aux réclamations, demandes de rétractation et/ou toute autre demande formulée par le Demandeur auprès de l’Offreur professionnel,
+        sous réserve des seules dispositions des présentes Conditions Générales.
+        PAPOTERS n’est absolument pas tenue des dispositions du Code de la consommation applicables à l’Offreur professionnel, dans la mesure où elle n’intervient pas dans la relation entre Offreur et Demandeur.
+      article_8_paragraph_3_1: >
+        8.3 Dispositions applicables aux Membres professionnels et non-professionnels
+      article_8_paragraph_3_2: >
+        8.3.1 Le Demandeur et l'Offreur agiront avec toutes les diligences nécessaires à la bonne résolution des réclamations, exercices du droit de rétractation, annulations et demandes de remboursement.
+        La décision finale de rembourser le Demandeur appartient à l'Offreur.
+        Toutefois, si, après la Clôture de la Session, l’Offreur a refusé de faire droit à une réclamation, une demande de rétractation ou d’annulation formulée par le Demandeur ou n’a pas traité cette réclamation ou demande,
+        PAPOTERS étudie la réclamation ou demande du Demandeur à sa demande express et écrite qui doit être effectuée sous 72 (soixante-douze) heures à compter de la Clôture de la  Session.
+        En cas de refus ou de non-traitement abusif de la part de l'Offreur, PAPOTERS pourra rembourser le Demandeur de tout ou partie du montant de la Transaction concernée.
+        Le montant du remboursement sera débité du Porte-Monnaie Virtuel de l’Offreur et transféré au Demandeur dans les conditions prévues à l'article 8.3.3.
+      article_8_paragraph_3_3: >
+        8.3.2 En cas de réclamation et jusqu'à résolution du litige, PAPOTERS peut, exclusivement, et sur demande expresse du Demandeur, bloquer temporairement le Porte-Monnaie Virtuel de l'Offreur
+        ainsi que sa possibilité de publier des Offres ou de proposer des Services payants sur la Plateforme.
+        En cas de réclamations répétées visant un même Offreur ou d'un taux d'annulation élevé de la part d'un même Demandeur, PAPOTERS se réserve également le droit de suspendre temporairement ou définitivement
+        et/ou de clôturer le compte du Membre concerné.
+      article_8_paragraph_3_4: >
+        8.3.3 Le Demandeur qui a payé un Service par carte bancaire via le Service de Paiement de la Plateforme pourra se faire rembourser par virement sur le même compte bancaire qui a servi au paiement de la Transaction.
+      article_9_title: 9 - Complications et litiges
+      article_9_paragraph_1: >
+        9.1 PAPOTERS met à disposition des Demandeurs et des Offreurs un service de règlement des litiges, sur demande expresse du Demandeur concerné, et exclusivement dans l’hypothèse où ils n’arrivent pas
+        à résoudre leur différend directement entre eux et à l’amiable.
+        Le Membre à l’origine de la demande devra prouver les diligences effectuées avec l’autre Membre pour résoudre le litige à l’amiable.
+        Toute réclamation d’un Membre devra être détaillée, indiquer clairement les raisons du litige et être transmise à PAPOTERS par lettre simple ou par e-mail.
+      article_9_paragraph_2_html: >
+        9.2 PAPOTERS n'a aucune obligation concernant le règlement des litiges qui lui sont soumis par les Demandeurs et/ou Offreurs.
+        PAPOTERS fera seulement son possible pour trouver des solutions susceptibles de satisfaire les Membres, et à leur seule demande.
+        En aucun cas la responsabilité de PAPOTERS ne pourra être engagée sur ce fondement.
+        Dans le cas où un paiement a été effectuée via le Service de Paiement, PAPOTERS peut, sur demande expresse du Demandeur concerné par le litige, procéder au bloquage de la somme due à l’Offreur
+        au titre de la Transaction sur le Porte-Monnaie Virtuel de l’Offreur, jusqu'à un accord amiable entre le Demandeur et l’Offreur ou une décision judiciaire définitive.
+        Toutefois, quelle que soit la nature du Litige, le Porte-Monnaie Virtuel de l’Offreur ne pourra pas être bloqué au-delà de 90 (quatre-vingt-dix) jours à compter du paiement,
+        selon l'<a href='https://stripe.com/legal#translation' target='blank'>Accord de Services de Stripe</a>.
+      article_10_title: 10 - Propriété intellectuelle
+      article_10_paragraph_1: >
+        10.1 Sans que cette liste soit exhaustive, la marque « PAPOTERS » ainsi que ses dérivés, la Plateforme, y incluant les Sites et les Applications, ainsi que leurs contenus, agencements, présentations, logos,
+        chartes graphiques, informations, catalogues, textes, illustrations, photographies et images respectifs, et tous autres éléments visuels et sonores, y compris la technologie sous-jacente utilisée,
+        sont la propriété exclusive de PAPOTERS et/ou de tiers contractuellement liés à PAPOTERS qui seraient titulaires des droits de propriété intellectuelle afférents à la Plateforme.
+        Nonobstant ce qui précède, les Contenus fournis par chaque Membre sont et restent la propriété de chaque Membre, sous réserve de la licence concédée par le Membre à PAPOTERS et aux Utilisateurs
+        conformément aux articles 3.10 et 3.11 des présentes Conditions Générales.
+      article_10_paragraph_2: >
+        10.2 Il est interdit à l’Utilisateur de reproduire, représenter et/ou exploiter de quelque autre manière que ce soit tout ou partie de la marque « PAPOTERS » ou ses dérivés, de la Plateforme, d'un Site
+        ou d’une Application, des contenus, agencements, présentations, logos, chartes graphiques, informations, catalogues, textes, illustrations, photographies et images et de tous autres éléments visuels et sonores,
+        y compris la technologie sous-jacente utilisée, sans que cette liste soit limitative, sans l'autorisation préalable écrite de PAPOTERS.
+        Par exception à ce qui précède, l'Utilisateur de la Plateforme est autorisé à reproduire (y compris en téléchargeant ou en imprimant tout ou partie de la Plateforme) et représenter tout ou partie de la Plateforme,
+        à des fins strictement personnelles et privées et à l'exclusion de toute finalité commerciale ou lucrative.
+        De même, en aucun cas l’Utilisateur ne pourra transmettre et/ou diffuser, à quelque tiers que ce soit, lesdites reproductions, que ce soit à des fins commerciales ou non.
+        L’utilisation et l’inscription sur la Plateforme, via l’un des Sites ou l’une des Applications, n’emporte aucun transfert de droits de propriété intellectuelle au profit de l’Utilisateur.
+      article_10_paragraph_3: >
+        10.3 Tout Utilisateur qui édite un site web et souhaite créer un lien hypertexte direct vers l'un quelconque des Sites ou Applications doit demander l'autorisation préalable de PAPOTERS par écrit.
+        L'autorisation de PAPOTERS, accordée à sa seule discrétion et sans justification nécessaire, ne sera en aucun cas accordée de manière définitive.
+        Ce lien devra être supprimé à tout moment à la demande écrite de PAPOTERS, sans que cette dernière ait besoin d’en justifier.
+        En tout état de cause, il est entendu que si l’internaute cesse d’utiliser la Plateforme, il doit de fait supprimer tout lien hypertexte qu’il a créé sur son site web renvoyant vers l’un des Supports.
+      article_10_paragraph_4: >
+        10.4 Les liens hypertextes vers la Plateforme qui utilisent des techniques tels que le cadrage (framing) ou l'insertion par liens hypertextes (in-line linking) sont strictement interdits sauf autorisation
+        expresse écrite préalable accordée par PAPOTERS.
+      article_11_title: 11 - Conformité à la loi
+      article_11_paragraph_1: >
+        11.1 Chaque Membre s'engage à respecter les lois, réglementations et normes de toutes sortes en vigueur relatives à l'utilisation des services proposés via la Plateforme, à la mise en vente, à la location,
+        à l'achat, à la sollicitation d'offres d'achat, de locations et/ou à la vente d'objets ou de services.
+      article_11_paragraph_2: >
+        11.2 En outre, chaque Membre reconnaît expressément que l'utilisation de la Plateforme et des services fournis par PAPOTERS par le biais de la Plateforme peut entraîner une qualification de « commerçant »
+        au sens de l'article L121-1 du Code de commerce et que des obligations supplémentaires peuvent s'appliquer au Membre en sa qualité de professionnel.
+      article_11_paragraph_3: >
+        11.3 Dans le cas de fraude caractérisée ou sur demande, PAPOTERS communiquera toutes les informations nécessaires, y compris nominatives, aux services compétents chargés de la répression desdites fraudes et infractions.
+      article_12_title: 12 - Durée des Conditions Générales - Suspension et clôture du compte du Membre
+      article_12_paragraph_1: >
+        12.1 Les présentes Conditions Générales sont conclues pour une durée indéterminée.
+      article_12_paragraph_2_html: >
+        12.2 Sans exclure d'autres voies de recours, PAPOTERS se réserve le droit de donner un avertissement, de suspendre temporairement ou définitivement l'inscription et le compte d'un Membre, d'y mettre fin,
+        de clôturer son compte, de cesser de fournir ses services audit Membre, de plein droit, avec effet immédiat, dans les cas suivants :
+        <br>(i) en cas de violation de tout ou partie des présentes Conditions Générales ou des documents qui y sont incorporés par référence (y compris dans les cas visés ci-après) ;
+        <br>(ii) si PAPOTERS est dans l'incapacité de vérifier ou d'authentifier les informations fournies par le Membre, et que le Membre ne donne pas suite à ses demandes de vérification et/ou d'authentification ;
+        <br>(iii) si les agissements du Membre sont susceptibles d'engager la responsabilité de PAPOTERS, celle du Membre ou de tout autre Membre ;
+        <br>(iv) en cas de comportement du Membre contraire aux engagements de qualité de service de la Plateforme dont il reconnaît avoir pris connaissance, potentiellement nuisible, préjudiciable,
+        et/ou déloyal à l'égard de la Plateforme, de PAPOTERS ou de tout Membre ;
+        <br>(v) pour tout autre motif légitime à la discrétion de PAPOTERS.
+      article_12_paragraph_3: >
+        12.3 En cas de non-respect des présentes Conditions Générales et des documents en faisant partie intégrante par un Utilisateur, PAPOTERS pourra, à sa discrétion, empêcher l’Utilisateur d’accéder à tout ou partie de la Plateforme.
+      article_12_paragraph_4: >
+        12.4 Un Membre peu clôturer son compte via les moyens mis à sa disposition sur la Plateforme.
+        Le compte du Membre ne peut être clôturé par lui-même tant que toutes les Sessions auxquelles il participe en tant qu’Offreur ou Demandeur ne sont pas clôturées ou annulées.
+      article_12_paragraph_5: >
+        12.5 En cas de clôture du compte personnel du Membre de son propre fait ou à la discrétion de PAPOTERS conformément aux modalités prévues aux présentes Conditions Générales, ces dernières ne seront plus applicables à l’ancien Membre.
+        La clôture du compte personnel d’un Membre emporte suppression dudit compte, en ce compris les données personnelles qui y sont associées, sous réserve de dispositions dérogatoires des présentes Conditions Générales
+        ou de la loi dite Informatique et Libertés.
+      article_12_paragraph_6: >
+        12.6 Si le Porte-Monnaie Virtuel du Membre dont le compte a été supprimé présente un solde créditeur, le Membre doit solliciter le virement de ce montant sur son compte bancaire au moment de la suppression de son compte.
+        A défaut, ce montant restera acquis à PAPOTERS au bout de 120 jours.
+      article_13_title: 13 - Responsabilité
+      article_13_paragraph_1_1: >
+        13.1 PAPOTERS ne sera responsable que des dommages directs exclusivement imputables à une faute contractuelle commise par PAPOTERS.
+        Sauf faute de sa part, PAPOTERS ne pourra être tenue responsable d'un dommage éventuellement subi par un Membre ou un Utilisateur au titre de l'utilisation de tout ou partie de la Plateforme ou d'un Site
+        ou de l'impossibilité d'utiliser tout ou partie de la Plateforme ou d'un Site.
+        PAPOTERS ne pourra être davantage tenu responsable d'un éventuel dysfonctionnement, panne, retard ou interruption de l'accès au réseau Internet.
+      article_13_paragraph_1_2: >
+        PAPOTERS s'engage à faire ses meilleurs efforts pour sécuriser l'accès, la consultation et l'utilisation des services de la Plateforme.
+        Cette dernière est accessible 24 heures sur 24, 7 jours sur 7 sauf en cas de force majeure ou de survenance d'un évènement hors du contrôle de PAPOTERS et sous réserve des éventuelles pannes et interventions de maintenance
+        nécessaires au bon fonctionnement de la Plateforme, y incluant les Sites et les Applications.
+        Les interventions de maintenance pourront être effectuées sans que les Utilisateurs aient été préalablement avertis.
+      article_13_paragraph_1_3: >
+        L'Utilisateur déclare accepter les caractéristiques et les limites de l'Internet, et en particulier reconnaître
+        (i) que son utilisation de la Plateforme se fait à ses risques et périls,
+        (ii) que la Plateforme lui est accessible "en état" et en fonction de sa disponibilité et
+        (iii) que la protection de ses propres données et/ou logiciels lui incombe et qu’il lui appartient de prendre toutes les mesures appropriées de façon à les protéger des éventuels virus circulant sur le Site.
+      article_13_paragraph_1_4: >
+        PAPOTERS ne pourra en aucun cas être tenue pour responsable en raison d’une interruption de tout ou partie de la Plateforme quelle que soit la cause, la durée ou la fréquence de cette interruption.
+      article_13_paragraph_2_1: >
+        13.2 En sa qualité d'hébergeur des Contenus mis en ligne par les Membres, PAPOTERS ne pourra être tenu responsable au titre des Contenus publiés sur la Plateforme ou l'un quelconque des Sites par les Membres.
+        Cette limitation de responsabilité s’étend aux profils des Membres, dont PAPOTERS n’est pas garant de la moralité, de la loyauté, et de l’honnêteté.
+      article_13_paragraph_2_2: >
+        En outre, PAPOTERS n’est pas responsable en cas de mauvaise ou non-exécution d’un Service ou tout autre manquement contractuel, en cas d’accident survenu à l’occasion de la fourniture du/des Service(s),
+        en cas d’abus, de déloyauté ou de fraude émanant d’un Membre ou d’un tiers, ou de toute autre faute délictuelle ou infraction commise par un autre Membre ou un tiers à l’occasion de l’utilisation de la Plateforme de PAPOTERS.
+      article_13_paragraph_3_html: >
+        13.3 Vis-à-vis des Offreurs professionnels, en cas de faute prouvée commise par PAPOTERS, la responsabilité de PAPOTERS, toutes causes confondues et quelles que soient les circonstances,
+        ne pourra excéder le plus élevé des montants suivants :
+        <br>(i) le montant des Frais de Service payés par l’Offreur au cours des 12 mois précédant le fait générateur du dommage ; ou
+        <br>(ii) 150 euros.
+      article_13_paragraph_4_html: >
+        13.4 Chaque Utilisateur doit avertir PAPOTERS en cas de violation des présentes Conditions Générales notamment dans l'hypothèse où il constaterait l’offre ou la vente de Services Interdits, à l'adresse suivante :
+        <a href="mailto:contact@papoters.com">contact@papoters.com</a>.
+      article_13_paragraph_5: >
+        13.5 PAPOTERS ne saurait être tenue responsable au titre des litiges intervenant entre Membres.
+      article_13_paragraph_6: >
+        13.6 En cas d’engagement de la responsabilité de PAPOTERS par un Utilisateur, les parties reconnaissent que la production par PAPOTERS des enregistrements sur ses serveurs relatifs à l'utilisation de la Plateforme,
+        et notamment les codes d'accès nominatifs des Membres et des logs de connexion, feront foi entre les parties.
+      article_14_title: 14 - Données personnelles
+      article_14_paragraph_1: >
+        Dans le cadre de l’utilisation de la Plateforme par un Membre, PAPOTERS est amenée à collecter et traiter certaines de ses données personnelles.
+        En utilisant la Plateforme et s’inscrivant en tant que Membre, le Membre reconnait et accepte le traitement de ses données personnelles par PAPOTERS conformément à la loi applicable et aux stipulations de la
+      privacy_policy: Politique de confidentialité
+      article_15_title: 15 - Stipulations générales
+      article_15_paragraph_1: >
+        15.1 PAPOTERS se réserve à tout moment et à sa seule discrétion la faculté de suspendre ou d'interrompre l'accès et/ou l'exploitation de la Plateforme, en tout ou partie, notamment pour des interventions de maintenance,
+        des nécessités opérationnelles, des choix internes ou en cas d'urgence.
+        PAPOTERS se réserve également la faculté à tout moment et à sa seule discrétion de supprimer ou tout contenu, publié par PAPOTERS ou par tout Utilisateur, notamment pour des raisons techniques, commerciales ou pratiques.
+        Il est entendu que de telles interventions ne pourront en aucun cas engager la responsabilité de PAPOTERS, ni donner lieu à des indemnités ou à des dommages et intérêts au profit d'un Membre ou d'un Utilisateur de la Plateforme.
+      article_15_paragraph_2_html: >
+        15.2 Sauf stipulation expresse contraire des présentes Conditions Générales, toute notification envoyée à PAPOTERS doit être adressée
+        par e-mail à <a href="mailto:contact@papoters.com">contact@papoters.com</a>
+        et confirmée par courrier postal à : PAPOTERS SAS, 11 bis avenue Pasteur, 64200 Biarritz.
+      article_15_paragraph_3: >
+        15.3 Toute notification adressée à PAPOTERS mais destinée à un Membre sera envoyée par e-mail à l'adresse que ce Membre a communiquée à PAPOTERS lors de son inscription.
+        PAPOTERS fera ses meilleurs efforts pour faire parvenir la notification au Membre concerné dans les meilleurs délais mais ne pourra être tenue responsable de l’absence de transmission de ladite notification.
+      article_15_paragraph_4: >
+        15.4 Les notifications peuvent également parvenir au Membre, par lettre recommandée avec avis de réception, à l'adresse postale communiquée lors de l'inscription.
+      article_15_paragraph_5: >
+        15.5 Dans l'hypothèse où une ou plusieurs modalités figurant dans les Conditions Générales seraient considérées comme illégales, inopposables ou inapplicables par une décision de justice, les autres stipulations
+        des Conditions Générales resteront en vigueur, à la condition que l'économie générale des Conditions Générales n'en soit pas bouleversée.
+      article_15_paragraph_6: >
+        15.6 Chaque Membre accepte que les droits et obligations issus des présentes Conditions Générales ainsi que tous les documents constituant les accords entre les parties pourront librement et de plein droit être cédés
+        par PAPOTERS à un tiers, notamment en cas de cession d'actifs, de fusion ou d'acquisition.
+      article_15_paragraph_7: >
+        15.7 Le fait pour PAPOTERS de ne pas se prévaloir d’une défaillance ou d’un manquement aux présentes Conditions Générales par un Utilisateur n'altérera aucunement ses droits et actions à l'encontre de tout autre
+        manquement similaire et/ou ultérieur, et ne saurait également être interprété comme une renonciation à se prévaloir de cette défaillance ou de ce manquement.
+        Le fait pour PAPOTERS de ne pas se prévaloir d’une stipulation des Conditions Générales ou des autres documents composant l’intégralité des accords conclus entre les parties n’emporte aucunement
+        renonciation au bénéfice de ladite stipulation.
+      article_16_title: 16 - Loi applicable et juridiction compétente
+      article_16_paragraph_1: >
+        16.1 Les présentes Conditions Générales sont régies et interprétées conformément au droit français.
+      article_16_paragraph_2: >
+        16.2 Les tribunaux français auront compétence pour se prononcer sur tous les litiges susceptibles de naître entre un Utilisateur non professionnel et PAPOTERS relatifs aux présentes,
+        conformément aux règles applicables au droit de la consommation.
+        Par exception à ce qui précède, tout litige avec un utilisateur agissant à titre professionnel est la compétence exclusive du tribunal de commerce de Paris.
+      article_16_paragraph_3: >
+        16.3 Les litiges intervenant entre Membres doivent être réglés entre les Membres et PAPOTERS n'est pas requis d'intervenir et/ou de régler ledit litige, sa responsabilité ne pouvant en tout état de cause pas être
+        engagée par l’un ou l’autre des Membres impliqués dans ledit litige.
     privacy:
       privacy_policy: Privacy policy
       preamble_title: Préambule
@@ -146,8 +881,8 @@ en:
         Il peut ainsi exiger que soient rectifiées, complétées, clarifiées, mises à jour ou effacées les données à caractère personnel le concernant
         qui sont inexactes, incomplètes, équivoques ou périmées. Chaque Membre peut également s’opposer, pour des motifs légitimes,
         s’opposer au traitement des données le concernant.
-      article_1_paragraph_4: >
-        Chaque Membre peut exercer ses droits en écrivant à PAPOTERS par email à l’adresse contact@papoters.com ou par courrier postal
+      article_1_paragraph_4_html: >
+        Chaque Membre peut exercer ses droits en écrivant à PAPOTERS par email à l’adresse <a href="mailto:contact@papoters.com">contact@papoters.com</a> ou par courrier postal
         à l’adresse suivante : PAPOTERS, 11 bis avenue Pasteur, 64200 Biarritz. PAPOTERS mettra en œuvre les moyens à sa disposition
         pour procéder au traitement des demandes de rectification et de suppression des données à caractère personnel des Membres.
         PAPOTERS n’est toutefois pas tenue de répondre systématiquement et individuellement auxdites demandes des Membres.
