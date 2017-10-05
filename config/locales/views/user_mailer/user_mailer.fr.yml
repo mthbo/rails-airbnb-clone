@@ -1,9 +1,9 @@
 fr:
   user_mailer:
     pricing_pending:
-      subject: "Félicitations, vous êtes promu Conseiller Papoters!"
+      subject: "Félicitations, vous êtes promu(e) Conseiller Papoters!"
       greeting: "Bonjour %{advisor},"
-      message: "Nous avons le plaisir de vous annoncer que votre période d'apprentissage est terminée. Vous êtes officiellement promu Conseiller Papoters!"
+      message: "Nous avons le plaisir de vous annoncer que votre période d'apprentissage est terminée. Vous êtes officiellement promu(e) Conseiller Papoters!"
       instructions_1: "Grâce à votre nouveau statut, vous allez pouvoir proposer des services payants."
       instructions_2: "Pour activer les paiments, fournissez les informations légales et bancaires requises afin que nous vérifions votre identité."
       action: Activer les paiements
