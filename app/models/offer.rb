@@ -10,7 +10,7 @@ class Offer < ApplicationRecord
 
   extend FriendlyId
   friendly_id :slug_candidates
-  # after_create :regenerate_slug
+  after_create :regenerate_slug
 
   enum status: [ :active, :inactive, :archived ]
   enum pricing: [ :free, :priced ]
@@ -288,10 +288,10 @@ class Offer < ApplicationRecord
     ]
   end
 
-  # def regenerate_slug
-  #   self.slug = nil
-  #   self.save
-  # end
+  def regenerate_slug
+    self.slug = nil
+    self.save
+  end
 
   def should_generate_new_friendly_id?
     title_changed? || super
