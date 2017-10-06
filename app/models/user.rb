@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   extend FriendlyId
   friendly_id :slug_candidates
-  # after_create :regenerate_slug
+  after_create :regenerate_slug
 
   enum status: [:first_time, :client, :advisor]
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
@@ -527,10 +527,10 @@ class User < ApplicationRecord
     first_name_changed? || last_name_changed? || super
   end
 
-  # def regenerate_slug
-  #   self.slug = nil
-  #   self.save
-  # end
+  def regenerate_slug
+    self.slug = nil
+    self.save
+  end
 
   # Validations
 
