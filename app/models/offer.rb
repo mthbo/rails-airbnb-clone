@@ -282,10 +282,7 @@ class Offer < ApplicationRecord
   # Frindly URL
 
   def slug_candidates
-    [
-      :title,
-      [:title, :created_at_i]
-    ]
+    [:title, [:title, :created_at_i]]
   end
 
   def regenerate_slug

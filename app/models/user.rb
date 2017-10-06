@@ -513,10 +513,7 @@ class User < ApplicationRecord
   # Frindly URL
 
   def slug_candidates
-    [
-      :name_anonymous,
-      [:name_anonymous, :created_at_i],
-    ]
+    [:name_anonymous, [:name_anonymous, :created_at_i]]
   end
 
   def created_at_i
