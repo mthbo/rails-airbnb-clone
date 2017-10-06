@@ -30,10 +30,10 @@ SitemapGenerator::Sitemap.create do
   add '/privacy'
 
   User.find_each do |user|
-    add user_path(id: user.id), lastmod: user.updated_at
+    add user_path(id: user.slug), lastmod: user.updated_at
   end
 
   Offer.where.not(status: :archived).find_each do |offer|
-    add offer_path(id: offer.id), lastmod: offer.updated_at
+    add offer_path(id: offer.slug), lastmod: offer.updated_at
   end
 end
