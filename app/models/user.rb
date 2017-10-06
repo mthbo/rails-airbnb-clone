@@ -527,10 +527,10 @@ class User < ApplicationRecord
     first_name_changed? || last_name_changed? || super
   end
 
-  def regenerate_slug
-    self.slug = nil
-    self.save
-  end
+  # def regenerate_slug
+  #   self.slug = nil
+  #   self.save
+  # end
 
   # Validations
 
