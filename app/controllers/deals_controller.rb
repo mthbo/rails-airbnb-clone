@@ -193,7 +193,7 @@ class DealsController < ApplicationController
   end
 
   def find_offer
-    @offer = Offer.find(params[:offer_id])
+    @offer = Offer.friendly.find(params[:offer_id])
   end
 
   def deal_params

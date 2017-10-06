@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  extend FriendlyId
+  friendly_id :slug_candidates
+  after_create :regenerate_slug
+
   enum status: [:first_time, :client, :advisor]
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
   enum bank_status: [:no_bank, :bank_valid, :bank_invalid]
@@ -504,6 +508,28 @@ class User < ApplicationRecord
 
   def subscribe_to_newsletter
     SubscribeToNewsletterService.new(self).call
+  end
+
+  # Frindly URL
+
+  def slug_candidates
+    [
+      :name_anonymous,
+      [:name_anonymous, :created_at_i],
+    ]
+  end
+
+  def created_at_i
+    created_at.to_i
+  end
+
+  def should_generate_new_friendly_id?
+    first_name_changed? || last_name_changed? || super
+  end
+
+  def regenerate_slug
+    self.slug = nil
+    self.save
   end
 
   # Validations

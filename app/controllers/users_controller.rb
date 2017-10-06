@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @deals_reviewed = @user.deals_reviewed.page(params[:page])
+    redirect_to @user, status: :moved_permanently if request.path != user_path(@user)
   end
 
   def welcome
@@ -66,7 +67,7 @@ class UsersController < ApplicationController
   private
 
   def find_user
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     authorize @user
   end
 

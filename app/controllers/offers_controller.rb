@@ -5,6 +5,7 @@ class OffersController < ApplicationController
 
   def show
     @deals_reviewed = @offer.deals_reviewed.page(params[:page])
+    redirect_to @offer, status: :moved_permanently if request.path != offer_path(@offer)
   end
 
   def new
@@ -59,7 +60,7 @@ class OffersController < ApplicationController
   private
 
   def find_offer
-    @offer = Offer.find(params[:id])
+    @offer = Offer.friendly.find(params[:id])
     authorize @offer
   end
 

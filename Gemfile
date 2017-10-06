@@ -46,6 +46,7 @@ gem 'forest_liana'
 gem 'sitemap_generator'
 gem 'fog-aws'
 gem 'validates_email_format_of'
+gem 'friendly_id', '~> 5.1.0'
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'
