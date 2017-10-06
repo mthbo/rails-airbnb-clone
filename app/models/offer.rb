@@ -8,6 +8,10 @@ class Offer < ApplicationRecord
 
   acts_as_votable
 
+  extend FriendlyId
+  friendly_id :slug_candidates
+  after_create :regenerate_slug
+
   enum status: [ :active, :inactive, :archived ]
   enum pricing: [ :free, :priced ]
 
@@ -23,12 +27,9 @@ class Offer < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch index_name: "#{ENV['PIPELINE_ENV']}_offers", if: :active? do
-    attribute :title, :description, :summary, :deals_closed_count, :satisfaction
+    attribute :title, :slug, :description, :summary, :created_at_i, :deals_closed_count, :satisfaction
     attribute :median_amount do
       median_amount.nil? ? 0 : median_amount.to_i
-    end
-    attribute :created_at_i do
-      created_at.to_i
     end
     I18n.available_locales.each do |locale|
       attribute "deals_closed_view_#{locale}".to_sym do
@@ -235,6 +236,8 @@ class Offer < ApplicationRecord
     description[0..160]
   end
 
+  private
+
   # For Algolia
 
   def summary
@@ -270,6 +273,28 @@ class Offer < ApplicationRecord
       html << "<span class='medium-gray'> &mdash; #{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(max_amount_converted(currency_code)), currency: max_amount_converted(currency_code).symbol, locale: locale )}</span>"
     end
     html
+  end
+
+  def created_at_i
+    created_at.to_i
+  end
+
+  # Frindly URL
+
+  def slug_candidates
+    [
+      :title,
+      [:title, :created_at_i]
+    ]
+  end
+
+  def regenerate_slug
+    self.slug = nil
+    self.save
+  end
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
   end
 
 end
