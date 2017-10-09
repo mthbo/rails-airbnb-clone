@@ -13,6 +13,7 @@ module DealOpening
     DealExpiryJob.set(wait_until: @deal.deadline.end_of_day).perform_later(@deal)
     DealMailer.deal_proposition_accepted_advisor(@deal).deliver_later
     DealMailer.deal_proposition_accepted_client(@deal).deliver_later
+    DealMailer.deal_payment_receipt(@deal).deliver_later if @deal.paid?
     respond_to do |format|
       format.html {
         flash[:notice] = t('deals.accept_proposition.notice', id: @deal.id, name: @deal.advisor.first_name)

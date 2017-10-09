@@ -76,10 +76,18 @@ fr:
       subject: "#session-%{id} | Session ouverte"
       greeting: Bonjour %{client},
       message: "Vous avez accepté la proposition de %{advisor}, qui est désormais engagé(e) à fournir son service selon l'accord conclu."
-      info_html: "Votre paiement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> a été autorisé."
       agreement: Accord
       instructions_html: "La session est ouverte jusqu'au <span style='font-weight: normal'>%{date}</span>, prenez contact avec %{advisor} dès maintenant!"
       action: Contacter %{advisor}
+    deal_payment_receipt:
+      subject: "#session-%{id} | Votre reçu de paiement"
+      title: "Reçu de paiement"
+      client_html: "<span style='font-weight: normal;'>Client</span> : %{client}"
+      advisor_html: "<span style='font-weight: normal;'>Service délivré par</span> : %{advisor}"
+      total_amount: Montant total
+      fees: dont frais de service
+      payment: Paiement effectué le %{date}
+      card_html: "<span style='font-weight: normal;'>%{brand}</span> &nbsp; <span style='color: #828282;'>**** %{last4}</span>"
     deal_expired_advisor:
       subject: "#session-%{id} | Date limite dépassée"
       greeting: Bonjour %{advisor},

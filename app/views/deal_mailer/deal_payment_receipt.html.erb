@@ -1,0 +1,47 @@
+<p style="font-size:18px!important; font-weight:normal!important;">
+  <%= t('.title') %>
+</p>
+
+<p style="display: flex; justify-content: space-between; flex-wrap: wrap; font-size:16px!important; color:#828282!important;">
+  <span><%= l(@deal.opened_at.to_date, format: :long) %></span>
+  <span>n° <%= @receipt_number %></span>
+</p>
+
+<%= render 'deal_title' %>
+
+<p>
+  <%= t('.client_html', client: "#{@deal.client.first_name} #{@deal.client.last_name}") %><br>
+  <%= t('.advisor_html', advisor: "#{@deal.advisor.first_name} #{@deal.advisor.last_name}") %>
+</p>
+
+<div style="margin: 30px 0 25px 0; height: 1px; background-color: rgb(200,200,200)"></div>
+
+<div style="display: flex; justify-content: center; line-height: 1.7!important">
+  <div style="text-align: right">
+    <span style="font-size:16px!important; font-weight:normal!important;">
+      <%= t('.total_amount') %>
+    </span>
+    <br>
+    <span style="color:#828282!important;"><em>
+      <%= t('.fees') %>
+    </em></span>
+  </div>
+  <div style="text-align: right; margin-left: 20px;">
+    <span style="font-size:16px!important; font-weight:normal!important;">
+      <%= t('money', amount: humanized_money(@deal.amount_converted(@deal.client.currency_code), no_cents_if_whole: false), currency: @deal.amount_converted(@deal.client.currency_code).symbol ) %>
+    </span>
+    <br>
+    <span style="color:#828282!important;"><em>
+      <%= t('money', amount: humanized_money(@deal.fees_converted(@deal.client.currency_code), no_cents_if_whole: false), currency: @deal.fees_converted(@deal.client.currency_code).symbol ) %>
+    </em></span>
+  </div>
+</div>
+
+<p style="text-align: center; line-height: 1.7!important">
+  <%= t('.payment', date: l(@deal.opened_at.to_date, format: :long)) %><br>
+  <%= t('.card_html', brand: @payment["source"]["brand"], last4: @payment["source"]["last4"]) %>
+</p>
+
+<div style="margin: 25px 0 30px 0; height: 1px; background-color: rgb(200,200,200)"></div>
+
+

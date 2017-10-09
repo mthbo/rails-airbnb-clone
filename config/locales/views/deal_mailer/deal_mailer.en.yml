@@ -76,10 +76,18 @@ en:
       subject: "#session-%{id} | Session open"
       greeting: Hello %{client},
       message: "You accepted the proposition of %{advisor}, who is now committed to deliver the service as part of your agreement."
-      info_html: "Your payment of <span style='font-weight: normal; color: #30485F;'>%{currency}%{amount}</span> has been authorized."
       agreement: Agreement
       instructions_html: "The session is open until <span style='font-weight: normal'>%{date}</span>, get in touch with %{advisor} as of now!"
       action: Get in touch with %{advisor}
+    deal_payment_receipt:
+      subject: "#session-%{id} | Your payment receipt"
+      title: "Payment receipt"
+      client_html: "<span style='font-weight: normal;'>Client</span>: %{client}"
+      advisor_html: "<span style='font-weight: normal;'>Service provided by</span>: %{advisor}"
+      total_amount: Total amount
+      fees: including service fees
+      payment: Payment made on %{date}
+      card_html: "<span style='font-weight: normal;'>%{brand}</span> &nbsp; <span style='color: #828282;'>**** %{last4}</span>"
     deal_expired_advisor:
       subject: "#session-%{id} | Deadline has passed"
       greeting: "Hello %{advisor},"
