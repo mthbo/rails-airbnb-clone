@@ -53,7 +53,7 @@ en:
     info_payout:
       payout_amount_expected_html: "If your proposition is accepeted, your remuneration will amount to <span class='font-weight-normal'>%{currency}%{amount}</span>."
       payout_amount_html: "Your remuneration amounts to <span class='font-weight-normal'>%{currency}%{amount}</span> and the payout to your bank account will be made after session closing."
-      payout_expected_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account should arrive on "
+      payout_expected_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account will be made on "
       payout_made_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account was made on "
       payout_failed_html: "The payout of <span class='font-weight-normal'>%{currency}%{amount}</span> to your bank account has failed."
       visit_your_profile: Visit your profile

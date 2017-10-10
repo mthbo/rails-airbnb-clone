@@ -53,7 +53,7 @@ fr:
     info_payout:
       payout_amount_expected_html: "Si votre proposition est acceptée, votre rétribution s'élèvera à <span class='font-weight-normal'>%{amount} %{currency}</span>."
       payout_amount_html: "Votre rétribution s'élève à <span class='font-weight-normal'>%{amount} %{currency}</span> et sera versée sur votre compte bancaire après clôture de la session."
-      payout_expected_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> devrait vous parvenir autour du "
+      payout_expected_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> sera effectué le "
       payout_made_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> a été effectué le "
       payout_failed_html: "Le versement sur votre compte bancaire de <span class='font-weight-normal'>%{amount} %{currency}</span> a été échoué."
       visit_your_profile: Consultez votre profil

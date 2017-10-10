@@ -193,7 +193,7 @@ if ENV['PIPELINE_ENV'] != "prod"
       currency_code: 'EUR',
       amount_cents: random_amount,
       fees_cents: (50 + random_amount * 0.15).fdiv(10).round * 10,
-      payment_state: "payout_made"
+      payment_state: "payout_paid"
     )
   end
 

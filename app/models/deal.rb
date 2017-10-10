@@ -102,10 +102,6 @@ class Deal < ApplicationRecord
     [closed_at + ENV['PAYOUT_DELAY'].to_i.days, opened_at + ENV['PAYOUT_DELAY_MIN'].to_i.days].max if closed_at.present?
   end
 
-  def payout_arrival_expected_at
-    payout_triggered_at + ENV['PAYOUT_BANK_DELAY'].to_i.days if payout_triggered_at.present?
-  end
-
   def payout_arrival_at
     if payout.present?
       timestamp = JSON.parse(self.payout)["arrival_date"]

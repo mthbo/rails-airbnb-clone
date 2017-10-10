@@ -104,7 +104,7 @@ fr:
       subject: "#session-%{id} | Session clôturée"
       greeting: Bonjour %{advisor},
       message: "La session ci-dessous a été clôturée :"
-      info_html: "Le versement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> sur votre compte bancaire devrait vous parvenir autour du <span style='font-weight: normal'>%{date}</span>."
+      info_html: "Le versement de <span style='font-weight: normal; color: #30485F;'>%{amount} %{currency}</span> sur votre compte bancaire sera effectué le <span style='font-weight: normal'>%{date}</span>."
       instructions: "Evaluez votre expérience et laissez un avis à %{client}."
       action: Evaluer la session
     deal_closed_client:
@@ -146,7 +146,9 @@ fr:
     deal_payout_paid:
       subject: "#session-%{id} | Versement effectué"
       greeting: Bonjour %{advisor},
-      info_html: "Nous avons émis en votre faveur un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> par Virement bancaire. Ce versement devrait parvenir sur votre compte au plus tard le Jul 14, 2017 compte tenu des week-ends et jours fériés.
+      info_html: "Un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span>
+
+      Nous avons émis en votre faveur un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> par Virement bancaire.
 
       Le versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire pour la session ci-dessous a été effectué :"
     deal_payout_failed:

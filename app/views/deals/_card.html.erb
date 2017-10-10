@@ -52,7 +52,7 @@
     <% if current_user == deal.advisor %>
       <% if deal.payout_pending? %>
         <p class="blue"><%= t '.payout_pending' %></p>
-      <% elsif deal.payout_made? %>
+      <% elsif deal.payout_made? || deal.payout_paid? %>
         <p class="blue"><%= t '.payout_made' %></p>
       <% elsif deal.payout_failed? %>
         <p class="red"><%= t '.payout_failed' %></p>

@@ -9,7 +9,7 @@
 
     <% elsif deal.payout_pending? %>
       <%= t '.payout_expected_html', amount: humanized_money(deal.advisor_amount_converted(deal.advisor.currency_code)), currency: deal.advisor_amount_converted(deal.advisor.currency_code).symbol %>
-      <span class='font-weight-normal'><%= l((deal.payout_arrival_expected_at).to_date, format: :long) if deal.payout_arrival_expected_at %>.</span>
+      <span class='font-weight-normal'><%= l((deal.payout_triggered_at).to_date, format: :long) if deal.payout_triggered_at %>.</span>
 
     <% elsif deal.payout_made? || deal.payout_paid? %>
       <%= t '.payout_made_html', amount: humanized_money(deal.advisor_amount_converted(deal.advisor.currency_code)), currency: deal.advisor_amount_converted(deal.advisor.currency_code).symbol %>
