@@ -102,15 +102,15 @@ class DealsController < ApplicationController
     @deal.increment_notifications(@receiver)
     @deal.reset_notifications(current_user)
     @deal.save
+    if @deal.paid?
+      @deal.payout_pending!
+      StripePayoutJob.set(wait_until: @deal.payout_triggered_at).perform_later(@deal)
+    end
     Message.create_status_message(@deal, current_user)
     DealStatusBroadcastJob.perform_later(@deal, @receiver)
     DealCardsBroadcastJob.perform_later(@deal)
     DealMailer.deal_closed_client(@deal).deliver_later
     DealMailer.deal_closed_advisor(@deal).deliver_later
-    if @deal.paid?
-      @deal.payout_pending!
-      StripePayoutJob.set(wait_until: @deal.payout_triggered_at).perform_later(@deal)
-    end
     if @deal.advisor.no_pricing? && @deal.advisor.free_deals_before_pricing.zero?
       @deal.advisor.pricing_pending!
       UserMailer.pricing_pending(@deal.advisor).deliver_later if @deal.advisor.pricing_available?

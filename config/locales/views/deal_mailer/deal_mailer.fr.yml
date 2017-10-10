@@ -83,7 +83,7 @@ fr:
       subject: "#session-%{id} | Votre reçu de paiement"
       title: "Reçu de paiement"
       client_html: "<span style='font-weight: normal;'>Client</span> : %{client}"
-      advisor_html: "<span style='font-weight: normal;'>Service délivré par</span> : %{advisor}"
+      advisor_html: "<span style='font-weight: normal;'>Prestataire</span> : %{advisor}"
       total_amount: Montant total
       fees: dont frais de service
       payment: Paiement effectué le %{date}
@@ -143,14 +143,18 @@ fr:
       message: "La session ci-dessous a été annulée par %{advisor} :"
       action: Voir la session
       info: "Vous ne pouvez plus rien faire dans cette session."
-    deal_payout_paid:
+    deal_payout_made:
       subject: "#session-%{id} | Versement effectué"
       greeting: Bonjour %{advisor},
-      info_html: "Un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span>
-
-      Nous avons émis en votre faveur un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> par Virement bancaire.
-
-      Le versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire pour la session ci-dessous a été effectué :"
+      info_html: "Un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire a été effectué pour la session ci-dessous :"
+      title: Quittance de frais
+      client_html: "<span style='font-weight: normal;'>Client</span> : %{client}"
+      advisor_html: "<span style='font-weight: normal;'>Prestataire</span> : %{advisor}"
+      amount_charged: Montant total prestation
+      fees: Frais retenus (TVA comprise)
+      your_remuneration: Rétribution prestataire
+      payout_made_at: Versement effectué le %{date}
+      bank_html: "<span style='font-weight: normal;'>%{bank}</span> &nbsp; <span style='color: #828282;'>**** %{last4}</span>"
     deal_payout_failed:
       subject: "#session-%{id} | Echec versement"
       greeting: Bonjour %{advisor},

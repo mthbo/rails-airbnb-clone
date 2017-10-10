@@ -2,7 +2,7 @@ class StripePayoutJob < ApplicationJob
   queue_as :default
 
   def perform(deal)
-    if deal.present? && deal.advisor.present? && deal.advisor.pricing_enabled?
+    if deal.present? && deal.advisor.present? && deal.advisor.pricing_enabled? && (deal.payout_pending? || deal.payout_failed?)
       begin
         payout = Stripe::Payout.create(
           {

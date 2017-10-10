@@ -83,7 +83,7 @@ en:
       subject: "#session-%{id} | Your payment receipt"
       title: "Payment receipt"
       client_html: "<span style='font-weight: normal;'>Client</span>: %{client}"
-      advisor_html: "<span style='font-weight: normal;'>Service provided by</span>: %{advisor}"
+      advisor_html: "<span style='font-weight: normal;'>Service provider</span>: %{advisor}"
       total_amount: Total amount
       fees: including service fees
       payment: Payment made on %{date}
@@ -143,7 +143,7 @@ en:
       message: "The session below has been cancelled by %{advisor}:"
       action: See the session
       info: "Nothing more can be done in this session."
-    deal_payout_paid:
+    deal_payout_made:
       subject: "#session-%{id} | Payout made"
       greeting: Hello %{advisor},
       info_html: "The payout of <span style='font-weight: normal;'>%{currency}%{amount}</span> to your bank account for the session below was made:"

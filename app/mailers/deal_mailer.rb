@@ -130,10 +130,11 @@ class DealMailer < ApplicationMailer
     end
   end
 
-  def deal_payout_paid(deal)
+  def deal_payout_made(deal)
     @deal = deal
+    @receipt_number = "Q#{@deal.id}-#{@deal.client.id}"
     I18n.with_locale(@deal.advisor.locale.to_sym) do
-      mail(to: @deal.advisor.email, subject: t('deal_mailer.deal_payout_paid.subject', id: @deal.id))
+      mail(to: @deal.advisor.email, subject: t('deal_mailer.deal_payout_made.subject', id: @deal.id))
     end
   end
 
