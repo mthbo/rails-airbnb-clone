@@ -1,0 +1,9 @@
+<p><%= t('.greeting', advisor: @deal.advisor.first_name) %></p>
+
+<% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
+  <p><%= t('.info_html', amount: humanized_money(@deal.advisor_amount_converted(@deal.advisor.currency_code)), currency: @deal.advisor_amount_converted(@deal.advisor.currency_code).symbol) %></p>
+<% end %>
+
+<%= render 'deal_title' %>
+
+<%= render 'shared/mail_signature' %>

@@ -15,6 +15,8 @@ class StripePayoutJob < ApplicationJob
         )
         deal.payout = payout.to_json
         deal.save
+        deal.payout_made!
+        DealMailer.deal_payout_made(deal).deliver_later
 
       rescue Stripe::InvalidRequestError => e
         deal.payout_failed!

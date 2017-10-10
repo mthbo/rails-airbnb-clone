@@ -54,7 +54,7 @@ class DealMailer < ApplicationMailer
   def deal_payment_receipt(deal)
     @deal = deal
     @payment = JSON.parse(@deal.payment)
-    @receipt_number = "#{@deal.client.id}-#{@deal.id}"
+    @receipt_number = "R#{@deal.id}-#{@deal.client.id}"
     I18n.with_locale(@deal.client.locale.to_sym) do
       mail(to: @deal.client.email, subject: t('deal_mailer.deal_payment_receipt.subject', id: @deal.id))
     end
@@ -127,6 +127,13 @@ class DealMailer < ApplicationMailer
     @deal = deal
     I18n.with_locale(@deal.client.locale.to_sym) do
       mail(to: @deal.client.email, subject: t('deal_mailer.deal_cancelled_client.subject', id: @deal.id))
+    end
+  end
+
+  def deal_payout_paid(deal)
+    @deal = deal
+    I18n.with_locale(@deal.advisor.locale.to_sym) do
+      mail(to: @deal.advisor.email, subject: t('deal_mailer.deal_payout_paid.subject', id: @deal.id))
     end
   end
 

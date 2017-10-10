@@ -51,8 +51,8 @@ class StripeController < ApplicationController
 
       when 'payout.paid'
         retrieve_payout_deal
-        if @deal.present? && @deal.payout_pending?
-          @deal.payout_made!
+        if @deal.present? && (@deal.payout_made? || @deal.payout_failed?)
+          @deal.payout_paid!
           @deal.payout = @event.data.object.to_json
           @deal.save
         end

@@ -143,6 +143,12 @@ fr:
       message: "La session ci-dessous a été annulée par %{advisor} :"
       action: Voir la session
       info: "Vous ne pouvez plus rien faire dans cette session."
+    deal_payout_paid:
+      subject: "#session-%{id} | Versement effectué"
+      greeting: Bonjour %{advisor},
+      info_html: "Nous avons émis en votre faveur un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> par Virement bancaire. Ce versement devrait parvenir sur votre compte au plus tard le Jul 14, 2017 compte tenu des week-ends et jours fériés.
+
+      Le versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire pour la session ci-dessous a été effectué :"
     deal_payout_failed:
       subject: "#session-%{id} | Echec versement"
       greeting: Bonjour %{advisor},
