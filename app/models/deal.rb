@@ -12,6 +12,8 @@ class Deal < ApplicationRecord
 
   monetize :amount_cents, allow_nil: true, numericality: true, with_model_currency: :currency_code
   monetize :fees_cents, allow_nil: true, with_model_currency: :currency_code
+  monetize :fees_excluding_vat_cents, allow_nil: true, with_model_currency: :currency_code
+  monetize :fees_vat_cents, allow_nil: true, with_model_currency: :currency_code
   monetize :advisor_amount_cents, allow_nil: true, with_model_currency: :currency_code
 
   enum status: [ :request, :proposition, :proposition_declined, :opened, :open_expired, :closed, :cancelled ]
@@ -72,10 +74,16 @@ class Deal < ApplicationRecord
     end
   end
 
+  def fees_excluding_vat_cents
+    fees_cents.fdiv(1 + ENV['PRICING_FEES_VAT_RATE'].to_f).round if fees_cents
+  end
+
+  def fees_vat_cents
+    (fees_cents - fees_excluding_vat_cents) if fees_cents
+  end
+
   def advisor_amount_cents
-    if amount_cents && fees_cents
-      amount_cents - fees_cents
-    end
+    (amount_cents - fees_cents) if (amount_cents && fees_cents)
   end
 
   def min_amount
@@ -92,6 +100,14 @@ class Deal < ApplicationRecord
 
   def fees_converted(currency_code=Money.default_currency.to_s)
     fees.exchange_to(currency_code) if fees
+  end
+
+  def fees_excluding_vat_converted(currency_code=Money.default_currency.to_s)
+    fees_excluding_vat.exchange_to(currency_code) if fees_excluding_vat
+  end
+
+  def fees_vat_converted(currency_code=Money.default_currency.to_s)
+    fees_vat.exchange_to(currency_code) if fees_vat
   end
 
   def advisor_amount_converted(currency_code=Money.default_currency.to_s)
@@ -114,6 +130,22 @@ class Deal < ApplicationRecord
       timestamp = JSON.parse(self.payout)["arrival_date"]
       Time.at(timestamp).to_datetime.in_time_zone
     end
+  end
+
+  def payment_bank_brand
+    JSON.parse(self.payment)["source"]["brand"] if payment.present?
+  end
+
+  def payment_bank_last4
+    JSON.parse(self.payment)["source"]["last4"] if payment.present?
+  end
+
+  def payment_receipt_number
+    "R#{self.opened_at.strftime('%y%j')}-#{self.id}" if opened_at.present?
+  end
+
+  def transaction_receipt_number
+    "T#{self.payout_created_at.strftime('%y%j')}-#{self.id}" if payout_created_at.present?
   end
 
   def automatic_closed_at

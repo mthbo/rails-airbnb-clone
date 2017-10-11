@@ -1,21 +1,26 @@
 <p><%= t('.greeting', advisor: @deal.advisor.first_name) %></p>
 
-<p><%= t('.info_html', amount: humanized_money(@deal.advisor_amount_converted(@deal.advisor.currency_code)), currency: @deal.advisor_amount_converted(@deal.advisor.currency_code).symbol) %></p>
+<p><%= t('.info_1_html', amount: humanized_money(@deal.advisor_amount_converted(@deal.advisor.currency_code)), currency: @deal.advisor_amount_converted(@deal.advisor.currency_code).symbol) %></p>
+<p><%= t '.info_2' %></p>
+
+<%= render 'shared/mail_signature' %>
+
+<div style="margin: 40px 0 35px 0; height: 3px; border-top: 1px solid rgb(200,200,200); border-bottom: 1px solid rgb(200,200,200)"></div>
 
 <p style="font-size:18px!important; font-weight:normal!important;">
   <%= t('.title') %>
 </p>
 
 <p style="display: flex; justify-content: space-between; flex-wrap: wrap; font-size:16px!important; color:#828282!important;">
-  <span><%= l(@deal.opened_at.to_date, format: :long) %></span>
-  <span>n° <%= @receipt_number %></span>
+  <span><%= l(@deal.payout_created_at.to_date, format: :long) %></span>
+  <span>n° <%= @deal.transaction_receipt_number %></span>
 </p>
 
 <%= render 'deal_title' %>
 
 <p>
-  <%= t('.client_html', client: "#{@deal.client.first_name} #{@deal.client.last_name}") %><br>
-  <%= t('.advisor_html', advisor: "#{@deal.advisor.first_name} #{@deal.advisor.last_name}") %>
+  <%= t('.advisor_html', advisor: "#{@deal.advisor.first_name} #{@deal.advisor.last_name}") %><br>
+  <%= t('.client_html', client: "#{@deal.client.first_name} #{@deal.client.last_name}") %>
 </p>
 
 <div style="margin: 30px 0 25px 0; height: 1px; background-color: rgb(200,200,200)"></div>
@@ -27,11 +32,15 @@
     </span>
     <br>
     <span>
-      <%= t('.fees') %>
+      <%= t('.fees_excluding_vat') %>
+    </span>
+    <br>
+    <span>
+      <%= t('.fees_vat') %>
     </span>
     <br>
     <span style="font-size:16px!important; font-weight:normal!important; color: #30485F;">
-      <%= t('.your_remuneration') %>
+      <%= t('.advisor_remuneration') %>
     </span>
   </div>
   <div style="text-align: right; margin-left: 20px;">
@@ -40,7 +49,11 @@
     </span>
     <br>
     <span>
-      - <%= t('money', amount: humanized_money(@deal.fees_converted(@deal.client.currency_code), no_cents_if_whole: false), currency: @deal.fees_converted(@deal.client.currency_code).symbol ) %>
+      - <%= t('money', amount: humanized_money(@deal.fees_excluding_vat_converted(@deal.client.currency_code), no_cents_if_whole: false), currency: @deal.fees_excluding_vat_converted(@deal.client.currency_code).symbol ) %>
+    </span>
+    <br>
+    <span>
+      - <%= t('money', amount: humanized_money(@deal.fees_vat_converted(@deal.client.currency_code), no_cents_if_whole: false), currency: @deal.fees_vat_converted(@deal.client.currency_code).symbol ) %>
     </span>
     <br>
     <span style="font-size:16px!important; font-weight:normal!important; color: #30485F;">
@@ -55,5 +68,3 @@
 </p>
 
 <div style="margin: 25px 0 30px 0; height: 1px; background-color: rgb(200,200,200)"></div>
-
-<%= render 'shared/mail_signature' %>

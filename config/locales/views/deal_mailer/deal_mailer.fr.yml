@@ -84,7 +84,7 @@ fr:
       title: "Reçu de paiement"
       client_html: "<span style='font-weight: normal;'>Client</span> : %{client}"
       advisor_html: "<span style='font-weight: normal;'>Prestataire</span> : %{advisor}"
-      total_amount: Montant total
+      total_amount: Montant total payé
       fees: dont frais de service
       payment: Paiement effectué le %{date}
       card_html: "<span style='font-weight: normal;'>%{brand}</span> &nbsp; <span style='color: #828282;'>**** %{last4}</span>"
@@ -146,13 +146,15 @@ fr:
     deal_payout_made:
       subject: "#session-%{id} | Versement effectué"
       greeting: Bonjour %{advisor},
-      info_html: "Un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire a été effectué pour la session ci-dessous :"
-      title: Quittance de frais
+      info_1_html: "Un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> a été émis en votre faveur par virement bancaire. Ce versement devrait parvenir sur votre compte d'ici quelques jours, selon le délai de traitement de votre banque."
+      info_2: "Veuillez-trouvez ci-dessous le récépissé de la transaction."
+      title: Récépissé de transaction
       client_html: "<span style='font-weight: normal;'>Client</span> : %{client}"
       advisor_html: "<span style='font-weight: normal;'>Prestataire</span> : %{advisor}"
       amount_charged: Montant total prestation
-      fees: Frais retenus (TVA comprise)
-      your_remuneration: Rétribution prestataire
+      fees_excluding_vat: Frais retenus HT
+      fees_vat: TVA sur frais
+      advisor_remuneration: Rétribution prestataire
       payout_made_at: Versement effectué le %{date}
       bank_html: "<span style='font-weight: normal;'>%{bank}</span> &nbsp; <span style='color: #828282;'>**** %{last4}</span>"
     deal_payout_failed:

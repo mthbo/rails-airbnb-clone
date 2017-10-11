@@ -2,13 +2,13 @@
 
 <p><%= t('.message', client: @deal.client.first_name) %></p>
 
+<%= render 'proposition_recap', header: t('.agreement'), receiver: @deal.advisor %>
+
 <% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
   <p>
     <%= t('.info_html', amount: humanized_money(@deal.advisor_amount_converted(@deal.advisor.currency_code)), currency: @deal.advisor_amount_converted(@deal.advisor.currency_code).symbol ) %>
   </p>
 <% end %>
-
-<%= render 'proposition_recap', header: t('.agreement'), receiver: @deal.advisor %>
 
 <p><%= t('.instructions_html', client: @deal.client.first_name, date: l(@deal.deadline.to_date, format: :long)) %></p>
 

@@ -84,7 +84,7 @@ en:
       title: "Payment receipt"
       client_html: "<span style='font-weight: normal;'>Client</span>: %{client}"
       advisor_html: "<span style='font-weight: normal;'>Service provider</span>: %{advisor}"
-      total_amount: Total amount
+      total_amount: Total amount paid
       fees: including service fees
       payment: Payment made on %{date}
       card_html: "<span style='font-weight: normal;'>%{brand}</span> &nbsp; <span style='color: #828282;'>**** %{last4}</span>"
@@ -146,7 +146,17 @@ en:
     deal_payout_made:
       subject: "#session-%{id} | Payout made"
       greeting: Hello %{advisor},
-      info_html: "The payout of <span style='font-weight: normal;'>%{currency}%{amount}</span> to your bank account for the session below was made:"
+      info_1_html: "A payout of <span style='font-weight: normal;'>%{currency}%{amount}</span> has been issued in your favor by bank transfer. This payout should arrive on your account in a few days, depending on your bank's processing time."
+      info_2: "Please find below the receipt of the transaction."
+      title: Transaction receipt
+      client_html: "<span style='font-weight: normal;'>Client</span> : %{client}"
+      advisor_html: "<span style='font-weight: normal;'>Service provider</span> : %{advisor}"
+      amount_charged: Service total amount
+      fees_excluding_vat: Fees collected excl. VAT
+      fees_vat: VAT on fees
+      advisor_remuneration: Service provider remuneration
+      payout_made_at: Payout made on %{date}
+      bank_html: "<span style='font-weight: normal;'>%{bank}</span> &nbsp; <span style='color: #828282;'>**** %{last4}</span>"
     deal_payout_failed:
       subject: "#session-%{id} | Payout failed"
       greeting: Hello %{advisor},

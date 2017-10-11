@@ -16,7 +16,7 @@ en:
       rot_10: make your life easier!
       input_placeholder: "I need some advice for ..."
       inspirations_title: "Get in touch with an expert to help you out with any of your projects."
-      benefits_title: "On demand advice, as easy as ABC."
+      benefits_title: "On-demand advice, as easy as ABC."
       benefits_title_1: Browse offers freely
       benefits_text_1: Type your search and find out the advisor who can help you out.
       benefits_title_2: Ask for tailor-made advice
@@ -35,7 +35,7 @@ en:
       be_advisor_subtitle: "Become advisor and publish your first offer."
       be_advisor_button: "Become advisor"
     advisor:
-      title: "Give advice on demand"
+      title: "Give advice on-demand"
       meta_description: "Leverage your knowledge and your time by giving advice."
       banner_title: "Your knowledge and your time are valuable."
       banner_subtitle: "Give advice and leverage both of them."
@@ -59,7 +59,7 @@ en:
       find_advisor_subtitle: "Get inspired by the offers already published."
       find_advisor_button: "Find an advisor"
     manifesto:
-      banner_title: "On demand advising"
+      banner_title: "On-demand expert advice"
       title_1: A place for knowledge transmission
       paragraph_1: >
         What could be more precious than our knowledge?

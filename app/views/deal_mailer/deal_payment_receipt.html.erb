@@ -4,7 +4,7 @@
 
 <p style="display: flex; justify-content: space-between; flex-wrap: wrap; font-size:16px!important; color:#828282!important;">
   <span><%= l(@deal.opened_at.to_date, format: :long) %></span>
-  <span>n° <%= @receipt_number %></span>
+  <span>n° <%= @deal.payment_receipt_number %></span>
 </p>
 
 <%= render 'deal_title' %>
@@ -39,11 +39,9 @@
 
 <p style="text-align: center; line-height: 1.7!important">
   <%= t('.payment', date: l(@deal.opened_at.to_date, format: :long)) %><br>
-  <%= t('.card_html', brand: @payment["source"]["brand"], last4: @payment["source"]["last4"]) %>
+  <%= t('.card_html', brand: @deal.payment_bank_brand, last4: @deal.payment_bank_last4) %>
 </p>
 
 <div style="margin: 25px 0 30px 0; height: 1px; background-color: rgb(200,200,200)"></div>
-
-<%= render 'shared/mail_signature' %>
 
 
