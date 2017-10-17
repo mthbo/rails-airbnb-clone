@@ -160,6 +160,6 @@ en:
     deal_payout_failed:
       subject: "#session-%{id} | Payout failed"
       greeting: Hello %{advisor},
-      info_html: "The payout of <span style='font-weight: normal;'>%{currency}%{amount}</span> to your bank account for the session below has failed:"
+      info_html: "The payout of <span style='font-weight: normal;'>%{currency}%{amount}</span> to your bank account has failed, regarding the session below:"
       instructions: "Visit your profile to find out the reasons."
       action: See my profile

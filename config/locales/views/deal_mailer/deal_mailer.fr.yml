@@ -160,7 +160,7 @@ fr:
     deal_payout_failed:
       subject: "#session-%{id} | Echec versement"
       greeting: Bonjour %{advisor},
-      info_html: "Le versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire pour la session ci-dessous a échoué :"
+      info_html: "Un versement de <span style='font-weight: normal;'>%{amount} %{currency}</span> sur votre compte bancaire à échoué, concernant le session ci-dessous :"
       instructions: "Consultez votre profil pour en connaître les raisons."
       action: Voir mon profil
 
