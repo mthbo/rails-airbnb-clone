@@ -204,12 +204,30 @@
 
 .custom-inline-form {
   display: flex;
-  align-items: center;
+  align-items: flex-top;
   .inline-form-input {
     flex: 1 1 auto;
     margin-bottom: 0;
     textarea {
       height: 45px !important;
+    }
+  };
+  .inline-form-btn {
+    flex: 0 0 45px;
+    margin-left: 15px;
+    height: 45px
+  }
+}
+
+.custom-message-form {
+  display: flex;
+  align-items: flex-end;
+  .inline-form-input {
+    flex: 1 1 auto;
+    margin-bottom: 0;
+    textarea {
+      min-height: 45px;
+      max-height: 250px;
     }
   };
   .inline-form-btn {
@@ -334,6 +352,18 @@
     .inline-form-input {
       textarea {
         height: 40px !important;
+      }
+    };
+    .inline-form-btn {
+      flex: 0 0 40px;
+      height: 40px
+    }
+  };
+  .custom-message-form {
+    .inline-form-input {
+      textarea {
+        min-height: 40px;
+        max-height: 180px;
       }
     };
     .inline-form-btn {

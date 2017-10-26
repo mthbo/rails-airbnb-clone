@@ -25,7 +25,6 @@ function subscribeToUserNotificationsChannel(title) {
 
 function updateTitleNotifications(title) {
   var notificationCount = parseInt($('#user-notifications').text());
-  console.log(notificationCount);
   if (notificationCount !== 0) {
     var newTitle = '(' + notificationCount + ') ' + title;
     document.title = newTitle;

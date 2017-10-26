@@ -84,9 +84,12 @@ function submitMessage() {
   $('#message_content').on('keyup', function(event) {
     if (event.keyCode === 13 && !event.shiftKey && !isMobile()) {
       $('#submit_message').click();
+    } else {
+      $('#message_content')[0].style.height = $('#message_content')[0].scrollHeight+'px';
     }
   });
   $("#new_message").on('ajax:beforeSend', function() {
     $('#message_content').val("");
+    $('#message_content')[0].style.height = "40px";
   });
 }
