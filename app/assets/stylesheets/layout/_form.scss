@@ -1,3 +1,7 @@
+textarea {
+  resize: vertical;
+}
+
 .custom-form {
   max-width: 600px;
   margin: 0 auto;
@@ -228,6 +232,7 @@
     textarea {
       min-height: 45px;
       max-height: 250px;
+      resize: none;
     }
   };
   .inline-form-btn {
