@@ -6,7 +6,7 @@
     <p><%= t '.convince' %></p>
   </div>
 
-  <%= f.input :title, autofocus: true, label: false, placeholder: t('.give_title'), input_html: { class: 'custom-form-input' } %>
+  <%= f.input :title, autofocus: true, label: false, placeholder: t('.give_title'), input_html: { class: 'custom-form-input', maxlength: "90" } %>
   <%= f.input :description, label: false, placeholder: t('.describe_offer'), input_html: { class: 'custom-form-input', rows: "10" } %>
 
   <div class="padded-top-xs">
