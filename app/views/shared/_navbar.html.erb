@@ -51,7 +51,7 @@
     <%= link_to t('navbar.be_advisor'), advisor_path, { class: "my-navbar-button btn btn-green", id: "navbar-be-advisor-btn" } %>
 
     <% if user_signed_in? %>
-      <%= link_to dashboard_path, { class: "btn my-navbar-button-round btn-blue" } do %>
+      <%= link_to dashboard_path, { class: "btn my-navbar-button-round btn-blue", id: "my-navbar-dashboard-btn", title: t('navbar.dashboard') } do %>
         <i class="fa fa-hashtag"></i>
         <div id="my-navbar-badge">
           <%= render 'users/notifications' %>
