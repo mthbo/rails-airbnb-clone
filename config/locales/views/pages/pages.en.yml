@@ -3,17 +3,17 @@ en:
     home:
       title: Ask experts for advice
       meta_description: "Find an advisor to help you out with any of your projects."
-      banner_title: "Find an advisor to"
-      rot_1: plan a trip
-      rot_2: start a business
-      rot_3: manage your money
-      rot_4: prepare an exam
-      rot_5: plan an event
-      rot_6: relocate
-      rot_7: develop an activity
-      rot_8: renovate your house
-      rot_9: pursue your passions
-      rot_10: make your life easier!
+      banner_title: "Get expert advice for"
+      rot_1: arranging a trip
+      rot_2: starting a business
+      rot_3: organizing an event
+      rot_4: renovating a house
+      rot_5: planning a route
+      rot_6: developing an activity
+      rot_7: buying a product
+      rot_8: relocating
+      rot_9: learning a new job
+      rot_10: making your life easier!
       input_placeholder: "I need some advice for ..."
       inspirations_title: "Get in touch with an expert to help you out with any of your projects."
       benefits_title: "On-demand advice, as easy as ABC."

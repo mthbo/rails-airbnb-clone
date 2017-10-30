@@ -3,17 +3,23 @@
 
 <div class="home">
 
-  <div class="home-banner text-center bg-gray-transparent">
+  <div class="home-banner bg-gray-transparent">
     <div class="home-banner-top home-content-wrapper">
-      <div class="home-flex-800">
-        <h1 class="home-banner-title">
+      <div class="home-flex-700 padded-top-s">
+        <div class="hidden-sm hidden-md hidden-lg">
+          <%= image_tag "papoters_no_icon.svg", width: '160px', height: '42px' %>
+        </div>
+        <div class="hidden-xs">
+          <%= image_tag "papoters_no_icon.svg", width: '230px', height: '60px' %>
+        </div>
+        <h1 class="home-banner-title text-left dark-gray">
           <%= t '.banner_title' %><br>
           <span class="home-banner-rotate font-weight-bolder" data-period="1500" data-rotate='["<%= t '.rot_1' %>", "<%= t '.rot_2' %>", "<%= t '.rot_3' %>", "<%= t '.rot_4' %>", "<%= t '.rot_5' %>", "<%= t '.rot_6' %>", "<%= t '.rot_7' %>", "<%= t '.rot_8' %>", "<%= t '.rot_9' %>", "<%= t '.rot_10' %>"]'></span>
         </h1>
       </div>
     </div>
     <div class="home-banner-input-bar home-content-wrapper bg-yellow-transparent">
-      <input type="text" id="home-input" class="home-flex-600" autofocus="true" placeholder="<%= t '.input_placeholder' %>">
+      <input type="text" id="home-input" class="home-flex-700" autofocus="true" placeholder="<%= t '.input_placeholder' %>">
       <div id="home-input-icon"><i class='fa fa-search'></i></div>
     </div>
   </div>
@@ -24,13 +30,13 @@
     </div>
   </div>
 
-  <div class="home-inspirations text-center padded-top-l home-content-wrapper">
+  <div class="home-inspirations padded-top-l home-content-wrapper">
     <div class="home-flex-700">
       <h2 class="white"><%= t '.inspirations_title' %></h2>
     </div>
   </div>
 
-  <div class="padded-top-l padded-bottom-m text-center bg-white home-benefits">
+  <div class="padded-top-l padded-bottom-m bg-white home-benefits">
     <div class="home-content-wrapper padded-bottom-m">
       <div class="home-flex-700">
         <h2><%= t '.benefits_title' %></h2>
@@ -104,7 +110,7 @@
   </div>
 
   <div class="bg-light-gray padded-top-l padded-bottom-xl">
-    <div class="home-content-wrapper padded-bottom-xs text-center">
+    <div class="home-content-wrapper padded-bottom-xs">
       <div class="home-flex-700">
         <h2><%= t '.offer_sample_title' %></h2>
       </div>
