@@ -5,35 +5,43 @@ fr:
       meta_description: "Trouvez un conseiller pour vous accompagner dans tous vos projets."
       banner_title: "Trouvez un conseiller pour"
       rot_1: préparer un voyage
-      rot_2: monter votre entreprise
-      rot_3: gérer vos finances
-      rot_4: préparer un examen
-      rot_5: organiser un événement
-      rot_6: vous expatrier
-      rot_7: dévolopper une activité
-      rot_8: rénover votre logement
-      rot_9: vivre vos passions
-      rot_10: vous simplifier la vie!
+      rot_2: créer une entreprise
+      rot_3: organiser un événement
+      rot_4: rénover un logement
+      rot_5: planifier un itinéraire
+      rot_6: développer une activité
+      rot_7: acheter un produit
+      rot_8: vous expatrier
+      rot_9: préparer un examen
+      rot_10: changer de vie!
       input_placeholder: "J'ai besoin de conseils pour ..."
-      inspirations_title: "Faîtes appel à un expert pour vous accompagner dans vos projets."
+      inspirations_title: "Un projet en tête?"
+      inspirations_subtitle: "Demandez conseil à un expert et simplifiez-vous la vie!"
       benefits_title: "Des conseils sur demande, tout simplement."
-      benefits_title_1: Explorez les offres en accès libre
+      benefits_title_1: Trouvez un conseiller
       benefits_text_1: Entrez votre recherche et trouvez le conseiller qui peut vous aider.
       benefits_title_2: Demandez le sur-mesure
       benefits_text_2: Prenez contact avec un conseiller pour obtenir une proposition personnalisée.
-      benefits_title_3: Un accord pour chaque session
-      benefits_text_3: Des objectifs, des conditions et un prix fixe sont convenus avant chaque session.
+      benefits_title_3: Un conseiller dévoué
+      benefits_text_3: Votre conseiller s'engage sur des objectifs avant chaque session.
       benefits_title_4: Des conseils à leur juste valeur
-      benefits_text_4: Bénéficiez de conseils gratuits auprès des conseillers en apprentissage.
+      benefits_text_4: Bénéficiez de sessions gratuites avec les conseillers en apprentissage.
       benefits_title_5: Communiquez où que vous soyez
-      benefits_text_5: Profitez de l’interface de session pour communiquer avec votre conseiller.
-      benefits_title_6: Paiement en ligne sécurisé
+      benefits_text_5: Profitez de l’interface de session pour communiquer sans limites.
+      benefits_title_6: Des transactions sécurisées
       benefits_text_6: Papoters se charge de faire l'intermédiaire entre vous et votre conseiller.
       offer_sample_title: "Une communauté d'experts à votre service."
       find_advisor_button: "Trouver un conseiller"
+      groups_title: "Rejoignez nos groupes de discussion."
+      groups_subtitle: "Echangez avec des experts sur les sujets qui vous passionnent."
       be_advisor_title: "Vos savoirs et votre temps sont précieux!"
       be_advisor_subtitle: "Devenez conseiller et publiez votre première offre."
       be_advisor_button: "Devenir conseiller"
+    group_card:
+      the_experts: "Les experts"
+      travelers: "voyageurs"
+      entrepreneurs: "entrepreneurs"
+      diy: "bricoleurs"
     advisor:
       title: "Donnez des conseils à la demande"
       meta_description: "Mettez à profit vos savoirs et votre temps en donnant des conseils."
@@ -45,7 +53,7 @@ fr:
       benefits_title_1: Une vitrine pour vos expertises
       benefits_text_1: Publiez une offre de conseil pour chacune de vos expertises.
       benefits_title_2: Vos services, vos conditions
-      benefits_text_2: Définissez le contenu et les conditions d’éxécution de chaque session de conseil.
+      benefits_text_2: Définissez les objectifs et les conditions de chaque session de conseil.
       benefits_title_3: Apprenez à conseiller
       benefits_text_3: Bâtissez votre réputation en délivrant vos 3 premières sessions gratuitement.
       benefits_title_4: Fixez vos tarifs librement

@@ -1,0 +1,13 @@
+<div class="group-card padded-bottom-m">
+  <a href="<%= href %>" class="link group-card-link"></a>
+  <div class="group-card-img" style="background: url(<%= image_path("groups/#{name}.png") %>);">
+    <div class="group-card-img-filter"></div>
+    <%= image_tag "groups/#{name}_picto.svg", width: "80px", height: "80px" %>
+  </div>
+  <div class="group-card-text">
+    <h3>
+      <%= t '.the_experts' %>
+      <span class="medium-dark-gray">#<%= t ".#{name}" %></span>
+    </h3>
+  </div>
+</div>
