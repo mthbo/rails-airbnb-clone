@@ -194,10 +194,9 @@
 .home-benefits-box {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   padding-left: 10px;
   padding-right: 10px;
-  max-width: 370px;
   h3 {
     color: $blue;
     font-size: 23px;

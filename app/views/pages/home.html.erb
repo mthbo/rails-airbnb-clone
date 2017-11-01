@@ -5,7 +5,7 @@
 
   <div class="home-banner bg-gray-transparent">
     <div class="home-banner-top home-content-wrapper">
-      <div class="home-flex-700 padded-top-s">
+      <div class="home-flex-600 padded-top-m">
         <div class="hidden-sm hidden-md hidden-lg">
           <%= image_tag "papoters_no_icon.svg", width: '160px', height: '42px' %>
         </div>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="home-banner-input-bar home-content-wrapper bg-yellow-transparent">
-      <input type="text" id="home-input" class="home-flex-700" autofocus="true" placeholder="<%= t '.input_placeholder' %>">
+      <input type="text" id="home-input" class="home-flex-600" autofocus="true" placeholder="<%= t '.input_placeholder' %>">
       <div id="home-input-icon"><i class='fa fa-search'></i></div>
     </div>
   </div>
@@ -30,13 +30,14 @@
     </div>
   </div>
 
-  <div class="home-inspirations padded-top-l home-content-wrapper">
+  <div class="home-inspirations padded-top-l text-center home-content-wrapper">
     <div class="home-flex-700">
       <h2 class="white"><%= t '.inspirations_title' %></h2>
+      <h3 class="light-gray no-margin-top"><%= t '.inspirations_subtitle' %></h3>
     </div>
   </div>
 
-  <div class="padded-top-l padded-bottom-m bg-white home-benefits">
+  <div class="padded-top-l padded-bottom-m bg-white text-center home-benefits">
     <div class="home-content-wrapper padded-bottom-m">
       <div class="home-flex-700">
         <h2><%= t '.benefits_title' %></h2>
@@ -110,7 +111,7 @@
   </div>
 
   <div class="bg-light-gray padded-top-l padded-bottom-xl">
-    <div class="home-content-wrapper padded-bottom-xs">
+    <div class="home-content-wrapper padded-bottom-xs text-center">
       <div class="home-flex-700">
         <h2><%= t '.offer_sample_title' %></h2>
       </div>
@@ -151,21 +152,37 @@
     </div>
   </div>
 
-  <div class="bg-white padded-top-m padded-bottom-xl text-center ">
-    <div class="home-bottom-img">
-      <%= image_tag "papoters_icon.svg" %>
+  <div class="padded-top-l padded-bottom-m bg-white text-center">
+    <div class="home-content-wrapper padded-bottom-m">
+      <div class="home-flex-700">
+        <h2><%= t '.groups_title' %></h2>
+        <h3 class="medium-dark-gray no-margin-top"><%= t '.groups_subtitle' %></h3>
+      </div>
     </div>
+    <div class="container padded-top-xs">
+      <div class="row">
+        <div class="col-xs-12 col-md-4">
+          <%= render 'group_card', name: "travelers", href: "https://www.facebook.com/groups/les.experts.voyageurs/" %>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <%= render 'group_card', name: "entrepreneurs", href: "https://www.facebook.com/groups/les.experts.entrepreneurs/" %>
+        </div>
+        <div class="col-xs-12 col-md-4">
+          <%= render 'group_card', name: "diy", href: "https://www.facebook.com/groups/les.experts.bricoleurs/" %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bg-blue-transparent padded-top-l padded-bottom-xl text-center ">
     <div class="home-content-wrapper">
       <div class="home-flex-700">
-        <h2 class="no-margin-bottom"><%= t '.be_advisor_title' %></h2>
+        <h2 class="white"><%= t '.be_advisor_title' %></h2>
+        <h3 class="no-margin-top light-gray"><%= t '.be_advisor_subtitle' %></h3>
       </div>
     </div>
-    <div class="padded-bottom-s home-content-wrapper">
-      <div class="home-flex-600">
-        <h3 class="medium-dark-gray"><%= t '.be_advisor_subtitle' %></h3>
-      </div>
-    </div>
-    <div class="padded-top-xs">
+    <div class="padded-top-m">
       <%= link_to t('.be_advisor_button'), advisor_path, { class: "btn btn-green home-btn", id: "home-be-advisor-btn" } %>
     </div>
   </div>

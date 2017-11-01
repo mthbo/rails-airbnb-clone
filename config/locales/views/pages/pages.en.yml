@@ -3,37 +3,45 @@ en:
     home:
       title: Ask experts for advice
       meta_description: "Find an advisor to help you out with any of your projects."
-      banner_title: "Get expert advice for"
-      rot_1: arranging a trip
-      rot_2: starting a business
-      rot_3: organizing an event
-      rot_4: renovating a house
-      rot_5: planning a route
-      rot_6: developing an activity
-      rot_7: buying a product
-      rot_8: relocating
-      rot_9: learning a new job
-      rot_10: making your life easier!
+      banner_title: "Find an advisor to"
+      rot_1: arrange a trip
+      rot_2: start a business
+      rot_3: organize an event
+      rot_4: renovate a house
+      rot_5: plan a route
+      rot_6: develop an activity
+      rot_7: buy a product
+      rot_8: relocate
+      rot_9: prepare an exam
+      rot_10: change your life!
       input_placeholder: "I need some advice for ..."
-      inspirations_title: "Get in touch with an expert to help you out with any of your projects."
+      inspirations_title: "A project in mind?"
+      inspirations_subtitle: "Ask an expert for advice and make your life easier!"
       benefits_title: "On-demand advice, as easy as ABC."
-      benefits_title_1: Browse offers freely
+      benefits_title_1: Find an advisor
       benefits_text_1: Type your search and find out the advisor who can help you out.
       benefits_title_2: Ask for tailor-made advice
       benefits_text_2: Get in touch with an advisor to get a proposition that fits your needs.
-      benefits_title_3: An agreement for each session
-      benefits_text_3: Objectives, conditions and a fixed price are set before each session.
+      benefits_title_3: A committed advisor
+      benefits_text_3: Your advisor commits on objectives before each session.
       benefits_title_4: Advice at their fair value
       benefits_text_4: Benefit from free advice dispensed by learning advisors.
       benefits_title_5: Communicate wherever you are
       benefits_text_5: Use the session interface to communicate with your advisor.
-      benefits_title_6: Secure online payment
+      benefits_title_6: Secure transactions
       benefits_text_6: Papoters acts as a go-between for you and your advisor.
       offer_sample_title: "A community of experts at your service."
       find_advisor_button: "Find an advisor"
+      groups_title: "Join our discussion groups."
+      groups_subtitle: "Share with experts on the topics you are passionate about."
       be_advisor_title: "Your knowledge and your time are valuable!"
       be_advisor_subtitle: "Become advisor and publish your first offer."
       be_advisor_button: "Become advisor"
+    group_card:
+      the_experts: "Les experts"
+      travelers: "voyageurs"
+      entrepreneurs: "entrepreneurs"
+      diy: "bricoleurs"
     advisor:
       title: "Give advice on-demand"
       meta_description: "Leverage your knowledge and your time by giving advice."
