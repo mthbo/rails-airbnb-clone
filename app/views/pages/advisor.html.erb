@@ -142,9 +142,9 @@
   </div>
 
   <div class="bg-white padded-top-m padded-bottom-xl text-center ">
-    <div class="home-bottom-img">
-      <%= image_tag "papoters_icon.svg" %>
-    </div>
+    <%= link_to root_path, class: "home-bottom-img" do %>
+      <%= image_tag "papoters_icon.svg", width: '70px', height: '70px' %>
+    <% end %>
     <div class="home-content-wrapper">
       <div class="home-flex-700">
         <h2 class="no-margin-bottom"><%= t '.find_advisor_title' %></h2>
