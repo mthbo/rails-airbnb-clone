@@ -36,6 +36,19 @@ $(document).ready(function(){
     ga('send', 'event', 'Become advisor', 'click', 'Go to advisor page from footer');
   })
 
+  // GA event trackers for Join groups
+
+  $('#group-join-travelers').click(function() {
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #voyageurs');
+  })
+  $('#group-join-entrepreneurs').click(function() {
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #entrepreneurs');
+  })
+  $('#group-join-diy').click(function() {
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #bricoleurs');
+  })
+
+
   // GA event trackers for Sign up
 
   $('#sign-up-navbar').click(function() {
