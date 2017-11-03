@@ -1,6 +1,6 @@
 en:
-  title: "Papoters • On-demand expert advice"
-  description: "Papoters facilitates knowledge transfer by offering a place to exchange advisory services."
+  title: "Papoters • Expert advice on demand"
+  description: "Papoters offers a unique place to exchange expert advice."
   activerecord:
     attributes:
       offer:
