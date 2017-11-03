@@ -1,22 +1,20 @@
 .group-card {
   position: relative;
   margin-bottom: 40px;
-  border-radius: 0 0 5px 5px;
-  overflow: hidden;
 }
 
 .group-card-img {
   position: relative;
-  height: 200px;
+  height: 250px;
   background-size: cover !important;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba (48, 72, 95, 0);
   img {
     transition: all 0.1s ease;
     z-index: 7;
+    margin-bottom: 25px;
   }
 }
 
@@ -32,9 +30,13 @@
 }
 
 .group-card-text {
-  padding-top: 14px;
-  padding-bottom: 18px;
-  background-color: $extra-light-gray;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding-top: 13px;
+  padding-bottom: 16px;
+  background-color: rgba(255, 255, 255, 0.7);
   h3 {
     font-weight: normal;
     color: $blue;
@@ -53,22 +55,23 @@
       }
     }
     ~ .group-card-img-filter {
-      opacity: 0.1;
+      opacity: 0.2;
     }
   }
 }
 
 @media (max-width: $screen-xs-max) {
   .group-card-img {
-    height: 170px;
+    height: 210px;
     img {
       height: 70px;
       width: 70px;
+      margin-bottom: 20px;
     }
   }
   .group-card-text {
-    padding-top: 12px;
-    padding-bottom: 16px;
+    padding-top: 11px;
+    padding-bottom: 13px;
     h3 {
       font-size: 18px;
     }
