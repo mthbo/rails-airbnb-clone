@@ -10,11 +10,16 @@ en:
     discover: "Discover"
     need_advice: "Need for advice?"
     be_advisor: "Become advisor"
-    company: "Company"
+    ideas: "Ideas"
+    discussion_groups: "Discussion groups"
+    the_experts_travelers: "Les experts #voyageurs"
+    the_experts_entrepreneurs: "Les experts #entrepreneurs"
+    the_experts_diy: "Les experts #bricoleurs"
     legal: "Legal notices"
     terms: "Terms of Service"
     privacy: "Privacy"
     contact: "Contact us"
+    follow_us: "Follow us"
   mail_signature:
     at_your_disposal: At your disposal,
     the_papoters_team: the Papoters team

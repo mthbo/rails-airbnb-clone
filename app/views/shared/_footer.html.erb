@@ -9,7 +9,7 @@
           <% end %>
         </div>
 
-        <div class="my-footer-box">
+        <div class="my-footer-body">
 
           <div class="my-footer-left padded-bottom-xs">
             <div>
@@ -17,39 +17,66 @@
               <ul class="list-unstyled">
                 <li><%= link_to t('footer.need_advice'), root_path %></li>
                 <li><%= link_to t('footer.be_advisor'), advisor_path, id: 'footer-be-advisor-btn' %></li>
+                <li><a href="https://medium.com/papoters" target="blank"><%= t('footer.ideas') %></a></li>
               </ul>
             </div>
             <div>
-              <p class="font-weight-bolder"><%= t 'footer.company' %></p>
+              <p class="font-weight-bolder"><%= t 'footer.discussion_groups' %></p>
               <ul class="list-unstyled">
-                <li><%= link_to t('footer.legal'), legal_path %></li>
-                <li><%= link_to t('footer.terms'), terms_path %></li>
-                <li><%= link_to t('footer.privacy'), privacy_path %></li>
-                <li><%= link_to t('footer.contact'), new_contact_message_path %></li>
+                <li><a href="https://www.facebook.com/groups/les.experts.voyageurs/" target="blank" id="group-join-travelers-footer"><%= t 'footer.the_experts_travelers' %></a></li>
+                <li><a href="https://www.facebook.com/groups/les.experts.entrepreneurs/" target="blank" id="group-join-entrepreneurs-footer"><%= t 'footer.the_experts_entrepreneurs' %></a></li>
+                <li><a href="https://www.facebook.com/groups/les.experts.bricoleurs/" target="blank" id="group-join-diy-footer"><%= t 'footer.the_experts_diy' %></a></li>
               </ul>
             </div>
           </div>
 
           <div class="my-footer-right padded-bottom-xs">
+            <p class="font-weight-bolder"><%= t 'footer.follow_us' %></p>
             <ul class="list-inline">
               <li>
-                <%= link_to "https://www.facebook.com/papotersplace", target: "blank" do %>
+                <a href="https://www.facebook.com/papotersplace" target="blank">
                   <i class="fa fa-facebook fa-lg" aria-hidden="true"></i>
-                <% end %>
+                </a>
               </li>
               <li>
-                <%= link_to "https://www.instagram.com/papotersplace", target: "blank" do %>
-                  <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to "https://twitter.com/papoters_place", target: "blank" do %>
+                <a href="https://twitter.com/papoters_place" target="blank">
                   <i class="fa fa-twitter fa-lg" aria-hidden="true"></i>
-                <% end %>
+                </a>
+              </li>
+              <li>
+                <a href="https://medium.com/papoters" target="blank">
+                  <i class="fa fa-medium fa-lg" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/papotersplace" target="blank">
+                  <i class="fa fa-instagram fa-lg" aria-hidden="true"></i>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/company/11208571/" target="blank">
+                  <i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+                </a>
               </li>
             </ul>
           </div>
 
+        </div>
+
+        <div class="my-footer-bottom padded-top-xs padded-bottom-s">
+          <div>
+            <p class="font-weight-normal"><small>
+              © Papoters, 2017
+            </small></p>
+          </div>
+          <div>
+            <ul class="list-inline">
+              <li><small><%= link_to t('footer.legal'), legal_path %></small></li>
+              <li><small><%= link_to t('footer.terms'), terms_path %></small></li>
+              <li><small><%= link_to t('footer.privacy'), privacy_path %></small></li>
+              <li><small><%= link_to t('footer.contact'), new_contact_message_path %></small></li>
+            </ul>
+          </div>
         </div>
 
       </div>

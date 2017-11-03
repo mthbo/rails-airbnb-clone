@@ -3,7 +3,7 @@
   border-top: solid 1px $light-gray;
 }
 
-.my-footer-box {
+.my-footer-body {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -27,6 +27,14 @@
     margin-right: 10px;
   }
 }
+
+.my-footer-bottom {
+  border-top: solid 1px $light-gray;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 
 
 @media (max-width: $screen-xs-max) {

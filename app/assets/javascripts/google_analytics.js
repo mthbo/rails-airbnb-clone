@@ -39,13 +39,22 @@ $(document).ready(function(){
   // GA event trackers for Join groups
 
   $('#group-join-travelers').click(function() {
-    ga('send', 'event', 'Join group', 'click', 'Join Les experts #voyageurs');
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #voyageurs from homepage');
   })
   $('#group-join-entrepreneurs').click(function() {
-    ga('send', 'event', 'Join group', 'click', 'Join Les experts #entrepreneurs');
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #entrepreneurs from homepage');
   })
   $('#group-join-diy').click(function() {
-    ga('send', 'event', 'Join group', 'click', 'Join Les experts #bricoleurs');
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #bricoleurs from homepage');
+  })
+  $('#group-join-travelers-footer').click(function() {
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #voyageurs from footer');
+  })
+  $('#group-join-entrepreneurs-footer').click(function() {
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #entrepreneurs from footer');
+  })
+  $('#group-join-diy-footer').click(function() {
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #bricoleurs from footer');
   })
 
 
