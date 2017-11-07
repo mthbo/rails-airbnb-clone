@@ -13,7 +13,7 @@ class User < ApplicationRecord
   friendly_id :slug_candidates
   after_create :regenerate_slug
 
-  enum status: [:first_time, :client, :advisor]
+  enum status: [:first_time, :member, :localized_member]
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
   enum bank_status: [:no_bank, :bank_valid, :bank_invalid]
   enum legal_type: [ :individual, :company ]
@@ -36,7 +36,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { minimum: 2 }
   validate :birth_date_must_be_valid
 
-  validates :country_code, presence: true, allow_blank: false, if: :country_required?
+  validates :country_code, presence: true, allow_blank: false, if: :localized_member?
   validate :country_must_be_valid
 
   validates :birth_date, presence: true, if: :legal_details_required?
@@ -133,8 +133,12 @@ class User < ApplicationRecord
     Money::Currency.find(self.currency_code) ? Money::Currency.find(self.currency_code) : Money.default_currency
   end
 
-  def country_required?
-    self.advisor?
+  def client?
+    self.client_deals.present?
+  end
+
+  def advisor?
+    self.offers.present?
   end
 
   def legal_details_required?

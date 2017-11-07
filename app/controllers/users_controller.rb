@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def welcome
-    @user.client!
+    @user.member!
     render layout: "client_form"
   end
 
