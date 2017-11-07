@@ -86,7 +86,7 @@ if ENV['PIPELINE_ENV'] != "prod"
       bio: Faker::Lorem.paragraph(20),
       birth_date: Faker::Time.between(60.years.ago, 18.years.ago),
       confirmed_at: Faker::Time.between(0.days.ago, 10.days.ago),
-      status: 'client'
+      status: 'localized_member'
     )
     i += 1
   end
@@ -324,7 +324,6 @@ if ENV['PIPELINE_ENV'] != "prod"
   end
 
   User.all.each do |user|
-    user.advisor! if user.offers.present?
     user.pricing_pending! if user.free_deals_before_pricing.zero?
   end
 
