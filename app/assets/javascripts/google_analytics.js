@@ -45,7 +45,7 @@ $(document).ready(function(){
     ga('send', 'event', 'Join group', 'click', 'Join Les experts #entrepreneurs from homepage');
   })
   $('#group-join-diy').click(function() {
-    ga('send', 'event', 'Join group', 'click', 'Join Les experts #bricoleurs from homepage');
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #makers from homepage');
   })
   $('#group-join-travelers-footer').click(function() {
     ga('send', 'event', 'Join group', 'click', 'Join Les experts #voyageurs from footer');
@@ -54,7 +54,7 @@ $(document).ready(function(){
     ga('send', 'event', 'Join group', 'click', 'Join Les experts #entrepreneurs from footer');
   })
   $('#group-join-diy-footer').click(function() {
-    ga('send', 'event', 'Join group', 'click', 'Join Les experts #bricoleurs from footer');
+    ga('send', 'event', 'Join group', 'click', 'Join Les experts #makers from footer');
   })
 
 
