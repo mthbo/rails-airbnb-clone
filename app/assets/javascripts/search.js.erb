@@ -108,21 +108,11 @@ $(document).ready(function() {
             var languageName = $(data.name)[0].getAttribute('alt');
             data.name = I18n.t('language.' + languageName);
             data.highlighted = "<span class='flag-icon flag-icon-long'>" + data.highlighted + data.name + "</span>";
-            console.log(data);
             return data;
           }
         },
         templates: {
-          header: '<h6>' + I18n.t('offers.search.languages') + '</h6>',
-          // item: function(param) {
-          //   console.log(param);
-          //   return '<label class="ais-refinement-list--label">\
-          //   <input type="checkbox" class="ais-refinement-list--checkbox"\
-          //   value=' + param.name + '>' +
-          //   I18n.t('language.' + param.name) +
-          //   '<span class="ais-refinement-list--count">' + param.count + '</span>\
-          //   </label>'
-          // }
+          header: '<h6>' + I18n.t('offers.search.languages') + '</h6>'
         }
       })
     );
@@ -130,7 +120,7 @@ $(document).ready(function() {
     search.addWidget(
       instantsearch.widgets.refinementList({
         container: '#search-means',
-        attributeName: 'means.picto',
+        attributeName: 'means.info',
         sortBy: ['isRefined', 'count:desc', 'name:asc'],
         operator: 'or',
         limit: 4,
@@ -140,20 +130,17 @@ $(document).ready(function() {
             inactive: "<a class='ais-show-more ais-show-more__inactive'>" + I18n.t('offers.search.show_more') + "</a>"
           }
         },
+        transformData: {
+          item: function(data) {
+            var meanInfo = data.name.split(" ");
+            data.name = I18n.t('mean.' + meanInfo[1]);
+            data.highlighted = "<span class='mean-icon mean-icon-long'><i class='fa fa-" + meanInfo[0] + " fa-fw fa-lg' aria-hidden='true'></i>" + data.name + "</span>"
+            console.log(data);
+            return data;
+          }
+        },
         templates: {
-          header: '<h6>' + I18n.t('offers.search.means') + '</h6>',
-          // item: function(data) {
-          //   return '<label class="ais-refinement-list--label">\
-          //   <input type="checkbox" class="ais-refinement-list--checkbox" value="'+
-          //   data.name +
-          //   '"><span class="mean-icon mean-icon-long"><i class="fa fa-' +
-          //   data.name +
-          //   ' fa-fw fa-lg" aria-hidden="true"></i>' +
-          //   I18n.t('mean.' + data.name) +
-          //   '</span><span class="ais-refinement-list--count">' +
-          //   data.count +
-          //   '</span></label>'
-          // }
+          header: '<h6>' + I18n.t('offers.search.means') + '</h6>'
         }
       })
     );

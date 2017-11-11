@@ -46,22 +46,10 @@ class Offer < ApplicationRecord
       end
     end
     attribute :languages do
-      languages.map do |language|
-        {
-          # name: language.name.downcase.split.join("_"),
-          flag: language.flag_img
-        }
-        # language_attributes = {flag: language.flag_img}
-        # I18n.available_locales.each { |locale| language_attributes["label_#{locale}".to_sym] = language.name_illustrated(locale) }
-        # language_attributes
-      end
+      languages.map { |language| { flag: language.flag_img } }
     end
     attribute :means do
-      means.map do |mean|
-        mean_attributes = {picto: mean.picto}
-        I18n.available_locales.each { |locale| mean_attributes["label_#{locale}".to_sym] = mean.name_illustrated(locale) }
-        mean_attributes
-      end
+      means.map { |mean| { picto: mean.picto, info: "#{mean.picto} #{mean.name_formatted}" } }
     end
     attribute :advisor do
       advisor_attributes = { name: advisor.name_anonymous, avatar_img: advisor.avatar_img }

@@ -9,8 +9,12 @@ class Language < ApplicationRecord
 
   default_scope -> { order(code: :ASC) }
 
+  def name_formatted
+    name.downcase.split.join("_")
+  end
+
   def name_translated(locale=I18n.locale)
-    I18n.t("language.#{name.downcase.split.join("_")}", locale: locale)
+    I18n.t("language.#{name_formatted}", locale: locale)
   end
 
   def flag
@@ -18,11 +22,11 @@ class Language < ApplicationRecord
   end
 
   def flag_path
-    ActionController::Base.helpers.image_pathr("flags/#{self.flag}")
+    ActionController::Base.helpers.image_path("flags/#{self.flag}")
   end
 
   def flag_img
-    ActionController::Base.helpers.image_tag("flags/#{self.flag}", alt: name.downcase.split.join("_"))
+    ActionController::Base.helpers.image_tag("flags/#{self.flag}", alt: name_formatted)
   end
 
   def name_illustrated(locale=I18n.locale)
