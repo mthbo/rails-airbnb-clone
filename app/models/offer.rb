@@ -47,9 +47,13 @@ class Offer < ApplicationRecord
     end
     attribute :languages do
       languages.map do |language|
-        language_attributes = {flag: language.flag_img}
-        I18n.available_locales.each { |locale| language_attributes["label_#{locale}".to_sym] = language.name_illustrated(locale) }
-        language_attributes
+        {
+          # name: language.name.downcase.split.join("_"),
+          flag: language.flag_img
+        }
+        # language_attributes = {flag: language.flag_img}
+        # I18n.available_locales.each { |locale| language_attributes["label_#{locale}".to_sym] = language.name_illustrated(locale) }
+        # language_attributes
       end
     end
     attribute :means do

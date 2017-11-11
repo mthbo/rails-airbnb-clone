@@ -17,8 +17,12 @@ class Language < ApplicationRecord
     "#{self.code}.svg"
   end
 
+  def flag_path
+    ActionController::Base.helpers.image_pathr("flags/#{self.flag}")
+  end
+
   def flag_img
-    ActionController::Base.helpers.image_tag("flags/#{self.flag}")
+    ActionController::Base.helpers.image_tag("flags/#{self.flag}", alt: name.downcase.split.join("_"))
   end
 
   def name_illustrated(locale=I18n.locale)

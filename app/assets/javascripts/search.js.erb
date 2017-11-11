@@ -9,7 +9,11 @@ $(document).ready(function() {
       appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
       apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
       indexName: env + "_offers",
-      urlSync: false
+      urlSync: false,
+      numberLocale: I18n.locale,
+      // searchParameters: {
+      //   languages: ""
+      // }
     });
 
     search.addWidget(
@@ -22,6 +26,12 @@ $(document).ready(function() {
     search.addWidget(
       instantsearch.widgets.hits({
         container: '#search-hits',
+        // transformData: {
+        //   item: function(data) {
+        //     console.log(data);
+        //     return data;
+        //   }
+        // },
         templates: {
           item: getTemplate('search-hit'),
           empty: getTemplate('search-no-results')
@@ -83,7 +93,7 @@ $(document).ready(function() {
     search.addWidget(
       instantsearch.widgets.refinementList({
         container: '#search-languages',
-        attributeName: 'languages.label_' + I18n.locale,
+        attributeName: 'languages.flag',
         sortBy: ['isRefined', 'count:desc', 'name:asc'],
         operator: 'or',
         limit: 4,
@@ -93,8 +103,26 @@ $(document).ready(function() {
             inactive: "<a class='ais-show-more ais-show-more__inactive'>" + I18n.t('offers.search.show_more') + "</a>"
           }
         },
+        transformData: {
+          item: function(data) {
+            var languageName = $(data.name)[0].getAttribute('alt');
+            data.name = I18n.t('language.' + languageName);
+            data.highlighted = "<span class='flag-icon flag-icon-long'>" + data.highlighted + data.name + "</span>";
+            console.log(data);
+            return data;
+          }
+        },
         templates: {
           header: '<h6>' + I18n.t('offers.search.languages') + '</h6>',
+          // item: function(param) {
+          //   console.log(param);
+          //   return '<label class="ais-refinement-list--label">\
+          //   <input type="checkbox" class="ais-refinement-list--checkbox"\
+          //   value=' + param.name + '>' +
+          //   I18n.t('language.' + param.name) +
+          //   '<span class="ais-refinement-list--count">' + param.count + '</span>\
+          //   </label>'
+          // }
         }
       })
     );
@@ -102,7 +130,7 @@ $(document).ready(function() {
     search.addWidget(
       instantsearch.widgets.refinementList({
         container: '#search-means',
-        attributeName: 'means.label_' + I18n.locale,
+        attributeName: 'means.picto',
         sortBy: ['isRefined', 'count:desc', 'name:asc'],
         operator: 'or',
         limit: 4,
@@ -113,7 +141,19 @@ $(document).ready(function() {
           }
         },
         templates: {
-          header: '<h6>' + I18n.t('offers.search.means') + '</h6>'
+          header: '<h6>' + I18n.t('offers.search.means') + '</h6>',
+          // item: function(data) {
+          //   return '<label class="ais-refinement-list--label">\
+          //   <input type="checkbox" class="ais-refinement-list--checkbox" value="'+
+          //   data.name +
+          //   '"><span class="mean-icon mean-icon-long"><i class="fa fa-' +
+          //   data.name +
+          //   ' fa-fw fa-lg" aria-hidden="true"></i>' +
+          //   I18n.t('mean.' + data.name) +
+          //   '</span><span class="ais-refinement-list--count">' +
+          //   data.count +
+          //   '</span></label>'
+          // }
         }
       })
     );
