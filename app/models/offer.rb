@@ -27,23 +27,15 @@ class Offer < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch index_name: "#{ENV['PIPELINE_ENV']}_offers", if: :active? do
-    attribute :title, :slug, :description, :summary, :created_at_i, :deals_closed_count, :satisfaction
-    attribute :median_amount do
-      median_amount.nil? ? 0 : median_amount.to_i
+    attribute :title, :slug, :description, :summary, :created_at_i, :deals_closed_count, :satisfaction, :no_pricing?, :no_price_history?
+    attribute :median_amount_cents do
+      median_amount_cents.nil? ? 0 : median_amount_cents
     end
-    I18n.available_locales.each do |locale|
-      attribute "deals_closed_view_#{locale}".to_sym do
-        deals_closed_view(locale)
-      end
-      attribute "satisfaction_view_#{locale}".to_sym do
-        satisfaction_view(locale)
-      end
-      currency_codes = ['EUR', 'USD']
-      currency_codes.each do |currency_code|
-        attribute "amounts_view_#{currency_code}_#{locale}".to_sym do
-          amounts_view(locale, currency_code)
-        end
-      end
+    attribute :min_amount_cents do
+      min_amount_cents.nil? ? 0 : min_amount_cents
+    end
+    attribute :max_amount_cents do
+      max_amount_cents.nil? ? 0 : max_amount_cents
     end
     attribute :languages do
       languages.map { |language| { flag: language.flag_img } }
@@ -52,24 +44,26 @@ class Offer < ApplicationRecord
       means.map { |mean| { picto: mean.picto, info: "#{mean.picto} #{mean.name_formatted}" } }
     end
     attribute :advisor do
-      advisor_attributes = { name: advisor.name_anonymous, avatar_img: advisor.avatar_img }
-      I18n.available_locales.each do |locale|
-        advisor_attributes["grade_and_age_#{locale}".to_sym] = advisor.grade_and_age(locale)
-        advisor_attributes["address_#{locale}".to_sym] = advisor.address_short(locale)
-      end
-      advisor_attributes
+      {
+        name: advisor.name_anonymous,
+        avatar_img: advisor.avatar_img,
+        grade_img: advisor.grade_img,
+        age: advisor.age,
+        city: advisor.city,
+        country_code: advisor.country_code
+      }
     end
     searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-    customRanking ['desc(deals_closed_count)', 'desc(satisfaction)', 'asc(median_amount)', 'desc(created_at_i)']
-    attributesForFaceting [:languages, :means, :median_amount]
+    customRanking ['desc(deals_closed_count)', 'desc(satisfaction)', 'asc(median_amount_cents)', 'desc(created_at_i)']
+    attributesForFaceting [:languages, :means, :median_amount_cents]
     separatorsToIndex '+#$€'
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_price_asc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-      customRanking ['asc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount]
+      customRanking ['asc(median_amount_cents)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
+      attributesForFaceting [:languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
@@ -77,8 +71,8 @@ class Offer < ApplicationRecord
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_price_desc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-      customRanking ['desc(median_amount)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount]
+      customRanking ['desc(median_amount_cents)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
+      attributesForFaceting [:languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
@@ -86,8 +80,8 @@ class Offer < ApplicationRecord
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_satisfaction_desc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-      customRanking ['desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount]
+      customRanking ['desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount_cents)', 'desc(created_at_i)']
+      attributesForFaceting [:languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
@@ -95,8 +89,8 @@ class Offer < ApplicationRecord
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_created_at_desc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
-      customRanking ['desc(created_at_i)', 'desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount)']
-      attributesForFaceting [:languages, :means, :median_amount]
+      customRanking ['desc(created_at_i)', 'desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount_cents)']
+      attributesForFaceting [:languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
@@ -145,6 +139,10 @@ class Offer < ApplicationRecord
     deals.where(status: :closed)
   end
 
+  def deals_closed_priced
+    deals_closed.where.not(amount_cents: nil)
+  end
+
   def deals_reviewed
     deals.where.not(client_review_at: nil).order(client_review_at: :desc)
   end
@@ -179,6 +177,10 @@ class Offer < ApplicationRecord
     deals_closed.count
   end
 
+  def deals_closed_priced_count
+    deals_closed_priced.count
+  end
+
 
   # Rating stat
 
@@ -193,16 +195,24 @@ class Offer < ApplicationRecord
 
   # Pricing stat
 
+  def no_pricing?
+    free? || !self.advisor.pricing_available? || !self.advisor.pricing_enabled?
+  end
+
+  def no_price_history?
+    deals_closed_priced.blank?
+  end
+
   def min_amount_cents
-    deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.min
+    deals_closed_priced.map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.min
   end
 
   def max_amount_cents
-    deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.max
+    deals_closed_priced.map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.max
   end
 
   def median_amount_cents
-    amounts = deals_closed.where.not(amount_cents: nil).map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.sort
+    amounts = deals_closed_priced.map { |deal| deal.amount.exchange_to(Money.default_currency).cents }.sort
     len = amounts.length
     len.zero? ? nil : (amounts[(len - 1) / 2] + amounts[len / 2]) / 2
   end
@@ -225,41 +235,8 @@ class Offer < ApplicationRecord
 
   private
 
-  # For Algolia
-
   def summary
     description[0..250]
-  end
-
-  def deals_closed_view(locale)
-    "<span class='#{deals_closed_count > 0 ? "blank-nowrap" : "medium-gray"}'>#{I18n.t('offers.deals_count.sessions_html', count: deals_closed_count, locale: locale)}</span>"
-  end
-
-  def satisfaction_view(locale)
-    html = ""
-    unless satisfaction.nil?
-      html << "<i class='fa fa-star yellow' aria-hidden='true'></i>&nbsp;" * satisfaction.round
-      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * (5 - satisfaction.round)
-      html << "<span>&nbsp;&nbsp;<strong>#{(satisfaction.fdiv(5) * 100).to_i} %</strong> #{I18n.t('offers.satisfaction.happy', locale: locale)}</span>"
-    else
-      html << "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp;" * 5
-      html << "<span class='medium-gray'>&nbsp;&nbsp; #{I18n.t('offers.satisfaction.not_rated', locale: locale)}</span>"
-    end
-    html
-  end
-
-  def amounts_view(locale, currency_code)
-    html = ""
-    if free? || !self.advisor.pricing_available? || !self.advisor.pricing_enabled?
-      html << "<strong>#{I18n.t('offers.amounts.free', locale: locale)}</strong>"
-    elsif median_amount_cents.nil?
-      html << "<span class='medium-gray'>#{I18n.t('offers.amounts.no_history', locale: locale)}</span>"
-    else
-      html << "<span class='medium-gray'>#{ I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(min_amount_converted(currency_code)), currency: min_amount_converted(currency_code).symbol, locale: locale )} &mdash; </span>"
-      html << "<strong>#{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(median_amount_converted(currency_code)), currency: median_amount_converted(currency_code).symbol, locale: locale )}</strong>"
-      html << "<span class='medium-gray'> &mdash; #{I18n.t('money', amount: ActionController::Base.helpers.money_without_cents(max_amount_converted(currency_code)), currency: max_amount_converted(currency_code).symbol, locale: locale )}</span>"
-    end
-    html
   end
 
   def created_at_i

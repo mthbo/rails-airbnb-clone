@@ -195,13 +195,13 @@ class User < ApplicationRecord
 
   def grade_img
     if advisor_deals_closed_count >= 20
-      "#{ActionController::Base.helpers.image_tag('grades/grade_4.svg')}"
+      ActionController::Base.helpers.image_tag('grades/grade_4.svg', alt: 'grade_4')
     elsif advisor_deals_closed_count >= 10
-      "#{ActionController::Base.helpers.image_tag('grades/grade_3.svg')}"
+      ActionController::Base.helpers.image_tag('grades/grade_3.svg', alt: 'grade_3')
     elsif advisor_deals_closed_count >= 3
-      "#{ActionController::Base.helpers.image_tag('grades/grade_2.svg')}"
+      ActionController::Base.helpers.image_tag('grades/grade_2.svg', alt: 'grade_2')
     else
-      "#{ActionController::Base.helpers.image_tag('grades/grade_1.svg')}"
+      ActionController::Base.helpers.image_tag('grades/grade_1.svg', alt: 'grade_1')
     end
   end
 

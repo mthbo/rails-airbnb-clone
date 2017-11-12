@@ -18,7 +18,7 @@ class Mean < ApplicationRecord
   end
 
   def picto_i
-    "<i class='fa fa-#{self.picto} fa-fw fa-lg' aria-hidden='true' data-name='#{name_formatted}'></i>".html_safe
+    "<i class='fa fa-#{self.picto} fa-fw fa-lg' aria-hidden='true'></i>".html_safe
   end
 
   def name_illustrated(locale=I18n.locale)

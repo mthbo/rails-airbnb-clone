@@ -1,4 +1,5 @@
 <div id="current-locale" data-locale="<%= I18n.locale %>"></div>
+<div id="current-currency" data-currency-code="<%= current_user.currency_code %>" data-currency-symbol="<%= current_user.currency.symbol %>"></div>
 <div id="current-env" data-env="<%= ENV['PIPELINE_ENV'] %>"></div>
 <div id="fb-app-id" data-id="<%= ENV['FB_ID'] %>"></div>
 <div id="ga-id" data-id="<%= ENV['GOOGLE_ANALYTICS_ID'] %>"></div>
