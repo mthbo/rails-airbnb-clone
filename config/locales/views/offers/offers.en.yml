@@ -108,4 +108,6 @@ en:
       forget_offer: "Forget offer"
     card_instant:
       see_details: See details
+    card_small:
+      see_details: See details
 

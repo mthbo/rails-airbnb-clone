@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-height: 330px;
+  min-height: 340px;
   max-width: 390px;
   em {
     font-style: normal;
@@ -147,7 +147,7 @@
 
 @media (max-width: $screen-md-max) {
   .offer-card-small {
-    min-height: 340px;
+    min-height: 360px;
   }
 }
 
@@ -180,9 +180,9 @@
 }
 
 @media (max-width: $screen-xs-max) {
-  // .offer-card-small {
-  //   min-height: auto;
-  // }
+  .offer-card-small {
+    min-height: 340px;
+  }
   .offer-card-content {
     padding: 0 0 10px 0;
     h2 {

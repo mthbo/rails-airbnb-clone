@@ -107,7 +107,10 @@ fr:
       pin_offer: "Epingler l'offre"
       forget_offer: "Oublier l'offre"
     card_instant:
-      see_details: Voir détails
+      see_details: En détail
+    card_small:
+      see_details: En détail
+
 
 
 
