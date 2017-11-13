@@ -9,8 +9,12 @@ class Mean < ApplicationRecord
 
   default_scope -> { order(id: :ASC) }
 
+  def name_formatted
+    name.downcase.split.join("_")
+  end
+
   def name_translated(locale=I18n.locale)
-    I18n.t("mean.#{name.downcase.split.join("_")}", locale: locale)
+    I18n.t("mean.#{name_formatted}", locale: locale)
   end
 
   def picto_i

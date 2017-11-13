@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
   before_action :find_user, only: [:show, :update]
   before_action :find_current_user, only: [:welcome, :advising, :update_country, :dashboard, :details, :change_locale, :bank, :update_bank]
+  after_action :index_offers, only: [:update_country, :update]
   layout 'advisor_form', only: [:advising, :details, :bank, :update, :update_country, :update_bank]
 
   def show
@@ -82,6 +83,10 @@ class UsersController < ApplicationController
 
   def retrieve_stripe_account
     @account = @user.stripe_account_id.present? ? Stripe::Account.retrieve(@user.stripe_account_id) : nil
+  end
+
+  def index_offers
+    IndexUserOffersJob.perform_later(@user)
   end
 
 end
