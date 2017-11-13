@@ -106,4 +106,6 @@ en:
     pin_button:
       pin_offer: "Pin offer"
       forget_offer: "Forget offer"
+    card_instant:
+      see_details: See details
 

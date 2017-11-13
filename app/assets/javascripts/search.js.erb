@@ -5,6 +5,10 @@ $(document).ready(function() {
     setLocale();
     var currencySymbol = $("#current-currency").data("currency-symbol");
     var env = $("#current-env").data("env");
+    var userSignedIn = $("#current-user").length > 0;
+    var currentUserId = userSignedIn ? $("#current-user").data("user-id").toLocaleString() : null;
+    var grayStar = "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp; ";
+    var yellowStar = "<i class='fa fa-star yellow' aria-hidden='true'></i>&nbsp;";
 
     var search = instantsearch({
       appId: "<%= ENV['ALGOLIA_APPLICATION_ID'] %>",
@@ -28,7 +32,7 @@ $(document).ready(function() {
       instantsearch.widgets.hits({
         container: '#search-hits',
         transformData: {
-          item: function(data) { return transformHitData(data, currencySymbol); }
+          item: function(data) { return transformHitData(data, currencySymbol, currentUserId, grayStar, yellowStar); }
         },
         templates: {
           item: getTemplate('search-hit'),
@@ -130,6 +134,15 @@ $(document).ready(function() {
       })
     );
 
+    search.on('render', function() {
+      if (userSignedIn) {
+        var $pinButtonsInstant = $('.pin-unpin-offer-instant');
+        $pinButtonsInstant.off();
+        unactivateLoader();
+        buttonsAnimation($pinButtonsInstant);
+      }
+    });
+
     search.start();
 
     $('#home-input').on('input', function() {
@@ -212,6 +225,8 @@ $(document).ready(function() {
       $('#searchbar-input').val("");
     });
 
+
+
   }
 
 });
@@ -220,12 +235,9 @@ function getTemplate(templateName) {
   return document.getElementById(templateName + '-template').innerHTML;
 }
 
-function transformHitData(data, currencySymbol) {
-  console.log(currencySymbol);
+function transformHitData(data, currencySymbol, currentUserId, grayStar, yellowStar) {
   data.deals_closed_class = data.deals_closed_count > 0 ? "blank-nowrap" : "medium-gray";
   data.deals_closed = I18n.t('offers.deals_count.sessions_html', {count: data.deals_closed_count});
-  var grayStar = "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp; ";
-  var yellowStar = "<i class='fa fa-star yellow' aria-hidden='true'></i>&nbsp;";
   var satisfactionRound = Math.round(data.satisfaction);
   data.satisfaction_stars = yellowStar.repeat(satisfactionRound) + grayStar.repeat(5 - satisfactionRound);
   if (data.satisfaction) {
@@ -244,7 +256,22 @@ function transformHitData(data, currencySymbol) {
   data.min_amount = I18n.t('money', { amount: minAmount, currency: currencySymbol});
   data.median_amount = I18n.t('money', { amount: medianAmount, currency: currencySymbol});
   data.max_amount = I18n.t('money', { amount: maxAmount, currency: currencySymbol});
-  console.log(data);
+  data.description_cut = data.summary.length > 250 ? " &nbsp;[...]" : "";
+  var gradeName = $(data.advisor.grade_img)[0].getAttribute('alt');
+  data.advisor.grade = I18n.t('users.info.' + gradeName);
+  data.advisor.country = data.advisor.country_code ? I18n.t('countries.' + data.advisor.country_code) : null;
+  data.advisor.city = data.advisor.city && data.advisor.country ? data.advisor.city + "," : data.advisor.city;
+  data.advisor.no_location = !(data.advisor.city || data.advisor.country) ? " - " : null;
+  data.belongs_to_current_user = (currentUserId === data.advisor.id);
+  data.title_class = !currentUserId || data.belongs_to_current_user ? "col-xs-12" : "col-xs-11";
+  var currentUserPinnedOffersIds = currentUserId ? document.getElementById('current-user').dataset.pinnedOffersIds.toLocaleString().split(" ")  : [];
+  if (currentUserPinnedOffersIds.indexOf(data.objectID) >= 0) {
+    data.pin_button_class = "unpin-offer-button";
+    data.pin_button_title = I18n.t('offers.pin_button.forget_offer');
+  } else {
+    data.pin_button_class = "pin-offer-button";
+    data.pin_button_title = I18n.t('offers.pin_button.pin_offer');
+  }
   return data;
 }
 

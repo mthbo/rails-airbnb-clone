@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-height: 300px;
+  min-height: 330px;
   max-width: 390px;
   em {
     font-style: normal;
@@ -131,6 +131,13 @@
   z-index:2;
 }
 
+.offer-card-small-bottom-right {
+  position: absolute;
+  right: 15px;
+  bottom: 18px;
+  z-index:2;
+}
+
 .offer-card-summary {
   white-space: nowrap;
   width: 100%;
@@ -140,7 +147,7 @@
 
 @media (max-width: $screen-md-max) {
   .offer-card-small {
-    min-height: 320px;
+    min-height: 340px;
   }
 }
 
@@ -149,7 +156,7 @@
     flex-wrap: wrap;
   }
   .offer-card-small {
-    min-height: 300px;
+    min-height: 330px;
   }
   .offer-card-content {
     width: 100%;
@@ -173,9 +180,9 @@
 }
 
 @media (max-width: $screen-xs-max) {
-  .offer-card-small {
-    min-height: auto;
-  }
+  // .offer-card-small {
+  //   min-height: auto;
+  // }
   .offer-card-content {
     padding: 0 0 10px 0;
     h2 {

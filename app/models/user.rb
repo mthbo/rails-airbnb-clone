@@ -169,7 +169,7 @@ class User < ApplicationRecord
       ActionController::Base.helpers.cl_image_tag(photo.path, width: 100, height: 100, crop: :thumb, gravity: :face, class: "avatar-medium bg-light-gray").to_s
     else
       url = facebook_picture_url || "avatar.svg"
-      ActionController::Base.helpers.image_tag(url, class: "avatar-medium bg-light-gray").to_s
+      ActionController::Base.helpers.image_tag(url, class: "avatar-medium bg-light-gray", width: "100px", height: "100px").to_s
     end
   end
 
@@ -195,13 +195,13 @@ class User < ApplicationRecord
 
   def grade_img
     if advisor_deals_closed_count >= 20
-      ActionController::Base.helpers.image_tag('grades/grade_4.svg', alt: 'grade_4')
+      "#{ActionController::Base.helpers.image_tag('grades/grade_4.svg', alt: 'grade_4')}"
     elsif advisor_deals_closed_count >= 10
-      ActionController::Base.helpers.image_tag('grades/grade_3.svg', alt: 'grade_3')
+      "#{ActionController::Base.helpers.image_tag('grades/grade_3.svg', alt: 'grade_3')}"
     elsif advisor_deals_closed_count >= 3
-      ActionController::Base.helpers.image_tag('grades/grade_2.svg', alt: 'grade_2')
+      "#{ActionController::Base.helpers.image_tag('grades/grade_2.svg', alt: 'grade_2')}"
     else
-      ActionController::Base.helpers.image_tag('grades/grade_1.svg', alt: 'grade_1')
+      "#{ActionController::Base.helpers.image_tag('grades/grade_1.svg', alt: 'grade_1')}"
     end
   end
 
@@ -213,6 +213,12 @@ class User < ApplicationRecord
     html
   end
 
+
+  # Pinned offers
+
+  def pinned_offers_ids
+    find_liked_items.map { |offer| offer.id.to_s }.join(" ")
+  end
 
   # User offers
 

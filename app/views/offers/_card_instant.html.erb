@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
       <div class="row padded-bottom-xs">
-        <div class="col-xs-12">
+        <div class="{{title_class}}">
           <h2>{{{_highlightResult.title.value}}}</h2>
         </div>
       </div>
@@ -32,11 +32,11 @@
               <p>
                 <span class='info-icon'><%= image_tag 'amount.svg' %></span>
                 {{#no_pricing?}}
-                  <strong><%= I18n.t 'offers.amounts.free' %></strong>
+                  <strong><%= t 'offers.amounts.free' %></strong>
                 {{/no_pricing?}}
                 {{^no_pricing?}}
                   {{#no_price_history?}}
-                    <span class='medium-gray'><%= I18n.t 'offers.amounts.no_history' %></span>
+                    <span class='medium-gray'><%= t 'offers.amounts.no_history' %></span>
                   {{/no_price_history?}}
                   {{^no_price_history?}}
                     <span class='medium-gray'>{{min_amount}} &mdash; </span>
@@ -51,20 +51,45 @@
       </div>
 
       <div class="padded-bottom-xs">
-        <p>{{{_highlightResult.summary.value}}} <span class="font-weight-normal"> &nbsp;[...]</span></p>
+        <p>
+          {{{_highlightResult.summary.value}}}
+          <span class="font-weight-normal">{{{description_cut}}}</span>
+        </p>
       </div>
 
       <div class="row">
-        <div class="col-xs-12 col-sm-4">
-          <ul class = "list-inline">
-            {{#languages}}<li class="flag-icon">{{{flag}}}</li>{{/languages}}
-          </ul>
+        <div class="col-xs-7">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <ul class = "list-inline">
+                {{#languages}}<li class="flag-icon">{{{flag}}}</li>{{/languages}}
+              </ul>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <ul class="list-inline">
+                {{#means}}<li class="mean-icon"><i class="fa fa-{{picto}} fa-lg" aria-hidden="true"></i></li>{{/means}}
+              </ul>
+            </div>
+          </div>
         </div>
-        <div class="col-xs-12 col-sm-4">
-          <ul class="list-inline">
-            {{#means}}<li class="mean-icon"><i class="fa fa-{{picto}} fa-lg" aria-hidden="true"></i></li>{{/means}}
-          </ul>
+      </div>
+
+      <% if user_signed_in? %>
+        <div class="offer-card-top-right">
+          {{^belongs_to_current_user}}
+            <h2>
+              <a data-offer-id="{{objectID}}" data-no-loader="true" class="pin-unpin-offer-instant {{pin_button_class}}" title="" data-remote="true" rel="nofollow" data-method="post" href="/<%= I18n.locale == I18n.default_locale ? '' : I18n.locale.to_s + '/' %>offers/{{slug}}/pin" data-original-title="{{pin_button_title}}">
+                <i class="fa fa-thumb-tack" aria-hidden="true"></i>
+              </a>
+            </h2>
+          {{/belongs_to_current_user}}
         </div>
+      <% end %>
+
+      <div class="offer-card-bottom-right">
+        <a href="/<%= I18n.locale == I18n.default_locale ? '' : I18n.locale.to_s + '/' %>offers/{{slug}}", class="btn btn-yellow">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>  &nbsp;&nbsp;<%= t '.see_details' %>
+        </a>
       </div>
 
     </div>
@@ -76,13 +101,17 @@
     </div>
     <div class="offer-card-user-info">
       <h1>{{advisor.name}}</h1>
-      <% if I18n.locale == :fr %>
-        <h3>{{{advisor.grade_and_age_fr}}}</h3>
-        <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; {{advisor.address_fr}}</h4>
-      <% else %>
-        <h3>{{{advisor.grade_and_age_en}}}</h3>
-        <h4><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp; {{advisor.address_en}}</h4>
-      <% end %>
+      <h3>
+        {{{advisor.grade_img}}}{{advisor.grade}}
+        {{#advisor.age}}
+          &nbsp; | &nbsp; {{advisor.age}}
+          <%= t 'users.info.age' %>
+        {{/advisor.age}}
+      </h3>
+      <h4>
+        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;
+        {{advisor.city}} {{advisor.country}}{{advisor.no_location}}
+      </h4>
     </div>
   </div>
 

@@ -1,5 +1,5 @@
-$(document).ready(function() {
-  unactivateLoader()
+$(document).ready(function() {;
+  unactivateLoader();
 });
 
 $(document).on('ajaxSend', function(event, xhr, settings){
@@ -22,6 +22,12 @@ function hideloader(){
 
 function unactivateLoader(){
   $("[data-no-loader=true]").on('ajax:beforeSend', function(event, xhr, settings) {
+    settings.noLoader = true;
+  });
+}
+
+function unactivateLoaderElements($elements){
+  $elements.on('ajax:beforeSend', function(event, xhr, settings) {
     settings.noLoader = true;
   });
 }
