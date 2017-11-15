@@ -10,9 +10,12 @@
   <%= f.input :description, label: false, placeholder: t('.describe_offer'), input_html: { class: 'custom-form-input', rows: "10" } %>
 
   <div class="padded-top-xs">
-    <p><%= t '.choose_tag' %></p>
+    <p>
+      <%= t '.indicate_topics' %><br>
+      <em class="font-weight-normal"><%= t '.topics_range', max: 10 %></em>
+    </p>
     <%= f.hidden_field :topic_list, input_html: {value: @offer.topic_list.to_s } %>
-    <%= f.input :topic_list, collection: @offer.topic_list, label: false, input_html: {class: 'custom-form-input', id: 'topic_list_select2', name: 'topic_list_select2', multiple: true, data: { "no-loader": true, taggable: true, taggable_type: "Offer", context: "topics"}} %>
+    <%= f.input :topic_list, collection: @offer.topic_list, label: false, placeholder: t('.add_tags'), input_html: {id: 'topic_list_select2', name: 'topic_list_select2', multiple: true, data: { taggable: true, taggable_type: "Offer", context: "topics"}} %>
   </div>
 
   <div class="padded-top-xs">

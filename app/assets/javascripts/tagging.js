@@ -2,11 +2,13 @@ $(document).ready(function() {
   $("*[data-taggable='true']").each(function() {
     $(this).select2({
       tags: true,
+      tokenSeparators: [',', ' ', ';', ':', '.'],
       theme: "bootstrap",
       width: "100%",
-      tokenSeparators: [','],
       minimumInputLength: 1,
       language: I18n.locale,
+      placeholder: I18n.t('offers.form.add_a_key_word'),
+      maximumSelectionLength: 10,
       ajax: {
         url: "/tags",
         dataType: 'json',
