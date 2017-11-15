@@ -7,7 +7,7 @@ class Offer < ApplicationRecord
   has_many :languages, through: :offer_languages
 
   acts_as_votable
-  acts_as_taggable
+  acts_as_taggable_on :topics
 
   extend FriendlyId
   friendly_id :slug_candidates

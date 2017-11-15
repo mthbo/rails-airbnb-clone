@@ -48,8 +48,8 @@ gem 'fog-aws'
 gem 'validates_email_format_of'
 gem 'friendly_id', '~> 5.1.0'
 gem 'acts-as-taggable-on', '~> 5.0.0'
-gem 'jquery-ui-rails'
-gem 'tag-it-rails'
+gem "select2-rails"
+
 
 source "https://rails-assets.org" do
   gem 'rails-assets-smoothscroll'
