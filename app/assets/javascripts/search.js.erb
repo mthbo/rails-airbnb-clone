@@ -15,9 +15,7 @@ $(document).ready(function() {
       apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
       indexName: env + "_offers",
       urlSync: false,
-      numberLocale: I18n.locale,
-      // searchParameters: {
-      // }
+      numberLocale: I18n.locale
     });
 
     search.addWidget(

@@ -10,13 +10,18 @@
   <%= f.input :description, label: false, placeholder: t('.describe_offer'), input_html: { class: 'custom-form-input', rows: "10" } %>
 
   <div class="padded-top-xs">
+    <p><%= t '.choose_tag' %></p>
+    <%= f.input :tag_list, label: false, input_html: { class: 'custom-form-input', value: @offer.tag_list.to_s }%>
+  </div>
+
+  <div class="padded-top-xs">
     <p>
       <%= t '.select_languages' %><br>
       <em class="font-weight-normal"><%= t '.languages_range', max: Offer.validators_on(:languages)[1].options[:maximum] %></em>
     </p>
     <div class="custom-check-boxes">
-    <%= f.association :languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
-  </div>
+      <%= f.association :languages, as: :check_boxes, include_hidden: false, label: false, label_method: :name_illustrated %>
+    </div>
   </div>
 
   <div class="padded-top-xs">
