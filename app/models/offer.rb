@@ -112,6 +112,16 @@ class Offer < ApplicationRecord
     description[0..160]
   end
 
+  def topic_list_short
+    short_list = ""
+    topic_list.each do |topic|
+      short_list << topic
+      break if short_list.length > 50
+      short_list << ","
+    end
+    short_list.split(',')
+  end
+
   # Video call
 
   def video_call?

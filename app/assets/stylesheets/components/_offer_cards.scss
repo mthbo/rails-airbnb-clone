@@ -139,10 +139,26 @@
 }
 
 .offer-card-summary {
-  white-space: nowrap;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  // white-space: nowrap;
+  // width: 100%;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  position: relative;
+}
+
+.offer-card-topics {
+  position: absolute;
+  z-index: 2;
+  bottom: 0;
+  height: 50px;
+}
+
+.offer-topic {
+  color: $flash-blue;
+  cursor: pointer;
+  &:hover {
+    color: $blue;
+  }
 }
 
 @media (max-width: $screen-md-max) {

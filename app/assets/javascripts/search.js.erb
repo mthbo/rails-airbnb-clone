@@ -167,17 +167,14 @@ $(document).ready(function() {
     );
 
     search.on('render', function() {
+      bindTopicTags(this);
       if (userSignedIn) { refreshPinButtons() };
       filtersDiscloseContent();
     });
 
     search.start();
 
-    $('.offer-topic').click(function() {
-      var topicName = $(this).text();
-      search.helper.clearRefinements('topics');
-      search.helper.addHierarchicalFacetRefinement('topics', topicName).search();
-    })
+    bindTopicTags(search);
 
     $('#home-input').on('input', function() {
       if ($('#home-input').val() !== "") {
@@ -368,6 +365,22 @@ function refreshPinButtons() {
   $pinButtonsInstant.off();
   unactivateLoader();
   buttonsAnimation($pinButtonsInstant);
+}
+
+function bindTopicTags(search) {
+  var $topics = $('.offer-topic');
+  $topics.off();
+  $topics.on('click', function() {
+    event.stopPropagation();
+    var topicName = $(this).data('topic-name');
+    search.helper.clearRefinements('topics');
+    search.helper.addHierarchicalFacetRefinement('topics', topicName).search();
+    $('#searchbar').slideDown(150);
+    $('#searchbar-input').focus();
+    hideNavbarSearchIcon();
+    showSearchHideMain();
+    window.scroll({ top: 0, left: 0 });
+  })
 }
 
 function filtersDiscloseContent() {

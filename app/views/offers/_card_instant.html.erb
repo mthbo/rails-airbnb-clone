@@ -50,11 +50,18 @@
         </div>
       </div>
 
-      <div class="padded-bottom-xs">
+      <div class="{{#topics.0}}padded-bottom-m{{/topics.0}}{{^topics.0}}padded-bottom-xs{{/topics.0}} offer-card-summary">
         <p>
           {{{_highlightResult.summary.value}}}
           <span class="font-weight-normal">{{{description_cut}}}</span>
         </p>
+        <div class="offer-card-topics">
+          <ul class="list-inline">
+            {{#topics}}
+             <li class="offer-topic font-weight-normal" data-topic-name="{{.}}"># {{.}}</li>
+            {{/topics}}
+          </ul>
+        </div>
       </div>
 
       <div class="row">

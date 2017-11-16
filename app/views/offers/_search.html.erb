@@ -35,10 +35,6 @@
           </p>
         </div>
 
-        <% ActsAsTaggableOn::Tag.all.each do |tag| %>
-          <div class="offer-topic"><%= tag.name %></div>
-        <% end %>
-
         <div class="search-infos padded-top-s">
           <div id="search-stats"></div>
           <div id="search-sort-by"></div>
