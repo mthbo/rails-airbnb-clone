@@ -38,7 +38,9 @@
 
       <div class="<%= offer.topic_list.blank? ? 'padded-bottom-xs' : 'padded-bottom-m' %> offer-card-summary">
         <%= render 'offers/summary', offer: offer %>
-        <%= render 'offers/topics', offer: offer %>
+        <div class="offer-card-topics">
+          <%= render 'offers/topics_short', offer: offer %>
+        </div>
       </div>
 
       <div class="row">

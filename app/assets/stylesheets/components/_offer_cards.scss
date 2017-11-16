@@ -151,6 +151,8 @@
   z-index: 2;
   bottom: 0;
   height: 50px;
+  display: flex;
+  align-items: flex-start;
 }
 
 .offer-topic {
@@ -228,6 +230,10 @@
   .offer-card-bottom-right {
     right: 15px;
     bottom: 18px;
+  }
+  .offer-card-topics {
+    height: 60px;
+    align-items: center;
   }
 }
 

@@ -1,7 +1,5 @@
-<div class="offer-card-topics">
-  <ul class="list-inline">
-    <% offer.topic_list_short.each do |topic| %>
-      <li class="offer-topic font-weight-normal" data-topic-name="<%= topic %>"># <%= topic %></li>
-    <% end %>
-  </ul>
-</div>
+<ul class="list-inline no-margin-bottom">
+  <% offer.topic_list.each do |topic| %>
+    <li class="offer-topic font-weight-normal"># <%= topic %></li>
+  <% end %>
+</ul>
