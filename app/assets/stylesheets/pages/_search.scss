@@ -1,7 +1,6 @@
 // Searchbar
 
 #searchbar {
-  display: none;
   position: fixed;
   left: 0px;
   top: 60px;
@@ -74,6 +73,26 @@
   overflow: auto;
 }
 
+#search-current-refined-topic {
+  .ais-current-refined-values--body > div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-bottom: 15px;
+  };
+  .ais-current-refined-values--clear-all {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10px;
+  };
+  h1 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 30px;
+  }
+}
+
 #search-filters-top {
   height: 15px;
   border-radius: 4px 4px 0 0;
@@ -82,6 +101,10 @@
 #search-filters {
   padding: 1px 45px;
   display: none;
+}
+
+#search-filters-clear {
+  padding-bottom: 15px;
 }
 
 #search-filters-disclose {
@@ -287,9 +310,27 @@
   #search-page-wrapper {
     min-height: 75vh;
   };
+  #search-current-refined-topic {
+    .ais-current-refined-values--body > div {
+      margin-top: 0;
+    };
+    .ais-current-refined-values--clear-all {
+      font-size: 14px
+    };
+    h1 {
+      font-size: 24px;
+    }
+  };
   #search-filters {
     padding: 1px 15px;
+    .ais-show-more {
+      font-size: 14px;
+    }
   };
+  #search-filters-clear {
+    font-size: 14px;
+    padding-bottom: 0;
+  }
   #search-amounts {
     .ais-range-slider--header {
       margin-right: 20px;

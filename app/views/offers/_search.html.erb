@@ -1,4 +1,4 @@
-<div id="searchbar">
+<div id="searchbar" class="<%= 'display-none' unless params[:q] %>">
   <div id="searchbar-input-wrapper">
     <input type="text" id="searchbar-input" autofocus="true">
     <div id="searchbar-input-icon"><i class='fa fa-search'></i></div>
@@ -9,14 +9,14 @@
 </div>
 
 
-<div id="search-page-wrapper" class="padded-top-xxxl padded-bottom-xxl bg-light-gray hidden">
+<div id="search-page-wrapper" class="padded-top-xxxl padded-bottom-xxl bg-light-gray <%= 'hidden' unless params[:q] %>">
   <div class="container">
     <div class="row">
       <div class="col-xs-12 col-lg-10 col-lg-offset-1">
-
-        <div id="search-filters-top" class="bg-white-transparent">
-        </div>
+        <div id="search-current-refined-topic"></div>
+        <div id="search-filters-top" class="bg-white-transparent"></div>
         <div id="search-filters" class="bg-white-transparent">
+          <div id="search-filters-clear" class="text-right"></div>
           <div id="search-amounts"></div>
           <div id="search-languages" class="padded-bottom-xs"></div>
           <div id="search-means" class="padded-bottom-xs"></div>
@@ -34,6 +34,10 @@
             <%= link_to t('.clear_search'), '#', id: "search-clear", class: "hidden" %>
           </p>
         </div>
+
+        <% ActsAsTaggableOn::Tag.all.each do |tag| %>
+          <div class="offer-topic"><%= tag.name %></div>
+        <% end %>
 
         <div class="search-infos padded-top-s">
           <div id="search-stats"></div>

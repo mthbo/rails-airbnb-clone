@@ -57,7 +57,9 @@ en:
       before_removing_offer: before removing this offer.
     search:
       input_placeholder: "I need some advice for ..."
+      see_all_topics: "Search all topics"
       clear_search: "Clear search"
+      reset_filters: "Reset filters"
       show_filters: "Show filters"
       hide_filters: "Hide filters"
       median_amount: "Median amount"

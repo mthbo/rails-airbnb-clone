@@ -38,6 +38,9 @@ class Offer < ApplicationRecord
     attribute :max_amount_cents do
       max_amount_cents.nil? ? 0 : max_amount_cents
     end
+    attribute :topics do
+      topic_list
+    end
     attribute :languages do
       languages.map { |language| { flag: language.flag_img } }
     end
@@ -55,26 +58,26 @@ class Offer < ApplicationRecord
         country_code: advisor.country_code.present? ? advisor.country_code : nil
       }
     end
-    searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+    searchableAttributes ['unordered(title)', 'topics', 'unordered(description)', 'unordered(summary)']
     customRanking ['desc(deals_closed_count)', 'desc(satisfaction)', 'asc(median_amount_cents)', 'desc(created_at_i)']
-    attributesForFaceting [:languages, :means, :median_amount_cents]
+    attributesForFaceting [:topics, :languages, :means, :median_amount_cents]
     separatorsToIndex '+#$€'
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_price_asc", inherit: true do
-      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      searchableAttributes ['unordered(title)', 'topics', 'unordered(description)', 'unordered(summary)']
       customRanking ['asc(median_amount_cents)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount_cents]
+      attributesForFaceting [:topics, :languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
     end
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_price_desc", inherit: true do
-      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      searchableAttributes ['unordered(title)', 'topics', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(median_amount_cents)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount_cents]
+      attributesForFaceting [:topics, :languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
@@ -83,16 +86,16 @@ class Offer < ApplicationRecord
     add_replica "#{ENV['PIPELINE_ENV']}_offers_satisfaction_desc", inherit: true do
       searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount_cents)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount_cents]
+      attributesForFaceting [:topics, :languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
     end
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_created_at_desc", inherit: true do
-      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      searchableAttributes ['unordered(title)', 'topics', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(created_at_i)', 'desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount_cents)']
-      attributesForFaceting [:languages, :means, :median_amount_cents]
+      attributesForFaceting [:topics, :languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true

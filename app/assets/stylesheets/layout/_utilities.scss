@@ -282,6 +282,15 @@ a {
   transition: all 0.3s ease;
 }
 
+.not-active-link {
+  pointer-events: none;
+  cursor: default;
+}
+
+.display-none {
+  display: none;
+}
+
 @media (max-width: $screen-xs-max) {
   .padded-top-xxl {
     padding-top: 5em;

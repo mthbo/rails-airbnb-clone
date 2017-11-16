@@ -2,9 +2,9 @@ $(document).ready(function() {
 
   if ($('.my-navbar').length > 0) {
 
+    var env = $("#current-env").data("env");
     setLocale();
     var currencySymbol = $("#current-currency").data("currency-symbol");
-    var env = $("#current-env").data("env");
     var userSignedIn = $("#current-user").length > 0;
     var currentUserId = userSignedIn ? $("#current-user").data("user-id").toLocaleString() : null;
     var grayStar = "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp; ";
@@ -15,7 +15,14 @@ $(document).ready(function() {
       apiKey: "<%= ENV['ALGOLIA_SEARCH_ONLY_API_KEY'] %>",
       indexName: env + "_offers",
       urlSync: false,
-      numberLocale: I18n.locale
+      numberLocale: I18n.locale,
+      urlSync: true,
+      searchParameters: {
+        hierarchicalFacets: [{
+          name: 'topics',
+          attributes: ['topics']
+        }]
+      }
     });
 
     search.addWidget(
@@ -70,6 +77,24 @@ $(document).ready(function() {
       instantsearch.widgets.pagination({
         container: '#search-pagination',
         padding: 1
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.currentRefinedValues({
+        container: '#search-current-refined-topic',
+        clearAll: 'after',
+        attributes: [
+          {name:'topics'}
+        ],
+        onlyListedAttributes: true,
+        cssClasses: {
+          link: "not-active-link"
+        },
+        templates: {
+          item: "<h1># {{name}}</h1>",
+          clearAll: '<i class="fa fa-search-plus" aria-hidden="true"></i>&nbsp; ' + I18n.t('offers.search.see_all_topics')
+        }
       })
     );
 
@@ -131,16 +156,28 @@ $(document).ready(function() {
       })
     );
 
+    search.addWidget(
+      instantsearch.widgets.clearAll({
+        container: '#search-filters-clear',
+        excludeAttributes: ['topics'],
+        templates: {
+          link: I18n.t('offers.search.reset_filters')
+        }
+      })
+    );
+
     search.on('render', function() {
-      if (userSignedIn) {
-        var $pinButtonsInstant = $('.pin-unpin-offer-instant');
-        $pinButtonsInstant.off();
-        unactivateLoader();
-        buttonsAnimation($pinButtonsInstant);
-      }
+      if (userSignedIn) { refreshPinButtons() };
+      filtersDiscloseContent();
     });
 
     search.start();
+
+    $('.offer-topic').click(function() {
+      var topicName = $(this).text();
+      search.helper.clearRefinements('topics');
+      search.helper.addHierarchicalFacetRefinement('topics', topicName).search();
+    })
 
     $('#home-input').on('input', function() {
       if ($('#home-input').val() !== "") {
@@ -206,10 +243,6 @@ $(document).ready(function() {
       }
     });
 
-    search.on('render', function() {
-      filtersDiscloseContent();
-    });
-
     $('#search-filters-toggle').on('click', function(event) {
       event.preventDefault();
       $('#search-filters').slideToggle('fast');
@@ -220,9 +253,12 @@ $(document).ready(function() {
       event.preventDefault();
       $('#searchbar-input').focus();
       $('#searchbar-input').val("");
+      search.helper.clearRefinements('languages.flag')
+                   .clearRefinements('means.info')
+                   .clearRefinements('median_amount_cents')
+                   .setQueryParameter('query', '')
+                   .search();
     });
-
-
 
   }
 
@@ -327,11 +363,20 @@ function showSearchHideMain() {
   }
 }
 
+function refreshPinButtons() {
+  var $pinButtonsInstant = $('.pin-unpin-offer-instant');
+  $pinButtonsInstant.off();
+  unactivateLoader();
+  buttonsAnimation($pinButtonsInstant);
+}
+
 function filtersDiscloseContent() {
   if ($('.ais-hits__empty').length === 0) {
+    $('#search-filters').removeClass('hidden');
     $('#search-filters-toggle').removeClass('hidden');
     $('#search-clear').addClass('hidden');
   } else {
+    $('#search-filters').addClass('hidden');
     $('#search-filters-toggle').addClass('hidden');
     $('#search-clear').removeClass('hidden');
   }

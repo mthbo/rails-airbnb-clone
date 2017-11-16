@@ -57,7 +57,9 @@ fr:
       before_removing_offer: avant de supprimer cette offre.
     search:
       input_placeholder: "J'ai besoin de conseils pour ..."
+      see_all_topics: "Rechercher toutes les thématiques"
       clear_search: "Effacer la recherche"
+      reset_filters: "Réinitialiser les filtres"
       show_filters: "Afficher les filtres"
       hide_filters: "Cacher les filtres"
       median_amount: "Montant médian"
