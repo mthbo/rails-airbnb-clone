@@ -117,7 +117,7 @@ class Offer < ApplicationRecord
     short_list = ""
     topic_list.each do |topic|
       short_list_test = short_list + topic
-      break if short_list_test.length > 60
+      break if short_list_test.length > 50
       short_list = short_list_test + ","
     end
     short_list.split(',')
