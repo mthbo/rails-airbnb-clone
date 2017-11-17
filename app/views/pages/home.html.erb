@@ -45,12 +45,17 @@
     </div>
   </div>
 
-  <div class="padded-bottom-s padded-top-s bg-light-gray home-content-wrapper hidden-sm hidden-md hidden-lg">
-    <div id="home-topics-xs" class="text-center">
-      <% Offer.topics_home_page.each do |topic|  %>
-        <h2 class="offer-topic home-topic"># <%= topic %></h2>
-      <% end %>
-      <h2 class="home-topic">...</h2>
+  <div class="padded-bottom-l padded-top-l bg-light-gray hidden-sm hidden-md hidden-lg text-center">
+    <div class="home-content-wrapper">
+      <div>
+        <h2><%= t '.topics_title' %></h2>
+        <div id="home-topics-xs" class="text-center">
+          <% Offer.topics_home_page.each do |topic|  %>
+            <h2 class="offer-topic home-topic"># <%= topic %></h2>
+          <% end %>
+          <h2 class="home-topic">...</h2>
+        </div>
+      </div>
     </div>
   </div>
 
