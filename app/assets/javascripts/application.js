@@ -11,6 +11,8 @@
 //= require algolia/v3/algoliasearch.min
 //= require i18n/translations
 //= require clipboard
+//= require select2-full
+//= require select2_locale_fr
 //= require_tree .
 
 

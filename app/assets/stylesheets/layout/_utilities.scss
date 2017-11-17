@@ -102,8 +102,14 @@
 .bg-yellow-transparent {
   background-color: rgba(255, 201, 56, 0.9);
 }
+.bg-yellow-transparent-light {
+  background-color: rgba(255, 201, 56, 0.2);
+}
 .bg-blue-transparent {
   background-color: rgba(48, 72, 95, 0.9);
+}
+.bg-blue-transparent-light {
+  background-color: rgba(48, 72, 95, 0.2);
 }
 .bg-gradient {
   background: $gradient;
@@ -280,6 +286,15 @@ a {
   left: 0;
   right: 0;
   transition: all 0.3s ease;
+}
+
+.not-active-link {
+  pointer-events: none;
+  cursor: default;
+}
+
+.display-none {
+  display: none;
 }
 
 @media (max-width: $screen-xs-max) {

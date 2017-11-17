@@ -4,7 +4,7 @@ $(document).ready(function() {;
 
 $(document).on('ajaxSend', function(event, xhr, settings){
   if (settings.noLoader) return true;
-  showloader()
+  showloader();
 });
 
 $(document).on('ajaxStop', function(){

@@ -35,6 +35,10 @@
                 <div class="row">
                   <div class="col-xs-12 padded-top-xs">
                     <%= sanitize auto_link(markdown_to_html(@offer.description)) %>
+                    <div class="padded-top-xs padded-bottom-xs <%= 'hidden' if @offer.topic_list.blank? %>">
+                      <h6>Thématiques</h6>
+                      <%= render 'offers/topics', offer: @offer %>
+                    </div>
                   </div>
                 </div>
 

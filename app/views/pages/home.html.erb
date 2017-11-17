@@ -18,9 +18,16 @@
         </h1>
       </div>
     </div>
+
     <div class="home-banner-input-bar home-content-wrapper bg-yellow-transparent">
-      <input type="text" id="home-input" class="home-flex-600" autofocus="true" placeholder="<%= t '.input_placeholder' %>">
       <div id="home-input-icon"><i class='fa fa-search'></i></div>
+      <input type="text" id="home-input" class="home-flex-600" autofocus="<%= params[:q] ? 'false' : 'true' %>" placeholder="<%= t '.input_placeholder' %>">
+    </div>
+
+    <div id="home-topics" class="home-content-wrapper">
+      <% Offer.topics_home_page.each do |topic|  %>
+        <h2 class="offer-topic home-topic"># <%= topic %></h2>
+      <% end %>
     </div>
   </div>
 

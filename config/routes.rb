@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   post '/stripe/webhook', to: "stripe#webhook"
+  get '/tags' => 'tags#index'
 
   devise_for :users,
     only: :omniauth_callbacks,

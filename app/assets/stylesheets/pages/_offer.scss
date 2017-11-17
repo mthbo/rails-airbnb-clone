@@ -90,6 +90,14 @@
   justify-content: flex-end;
 }
 
+.offer-topic {
+  color: $flash-blue;
+  cursor: pointer;
+  white-space: nowrap;
+  &:hover {
+    color: $blue;
+  }
+}
 
 @media (max-width: $screen-sm-max) {
   .offer-container {

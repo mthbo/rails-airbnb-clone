@@ -1,0 +1,8 @@
+<ul class="list-inline no-margin-bottom">
+  <% offer.topic_list_short.each do |topic| %>
+    <li class="offer-topic font-weight-normal"># <%= topic %></li>
+  <% end %>
+  <% if offer.topic_list.length != offer.topic_list_short.length %>
+    <li class="font-weight-normal">[...]</li>
+  <% end %>
+</ul>

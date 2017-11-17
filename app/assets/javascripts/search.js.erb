@@ -2,9 +2,9 @@ $(document).ready(function() {
 
   if ($('.my-navbar').length > 0) {
 
+    var env = $("#current-env").data("env");
     setLocale();
     var currencySymbol = $("#current-currency").data("currency-symbol");
-    var env = $("#current-env").data("env");
     var userSignedIn = $("#current-user").length > 0;
     var currentUserId = userSignedIn ? $("#current-user").data("user-id").toLocaleString() : null;
     var grayStar = "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp; ";
@@ -16,8 +16,13 @@ $(document).ready(function() {
       indexName: env + "_offers",
       urlSync: false,
       numberLocale: I18n.locale,
-      // searchParameters: {
-      // }
+      urlSync: true,
+      searchParameters: {
+        hierarchicalFacets: [{
+          name: 'topic_list',
+          attributes: ['topic_list']
+        }]
+      }
     });
 
     search.addWidget(
@@ -72,6 +77,24 @@ $(document).ready(function() {
       instantsearch.widgets.pagination({
         container: '#search-pagination',
         padding: 1
+      })
+    );
+
+    search.addWidget(
+      instantsearch.widgets.currentRefinedValues({
+        container: '#search-current-refined-topic',
+        clearAll: 'after',
+        attributes: [
+          {name:'topic_list'}
+        ],
+        onlyListedAttributes: true,
+        cssClasses: {
+          link: "not-active-link"
+        },
+        templates: {
+          item: "<h1># {{name}}</h1>",
+          clearAll: '<i class="fa fa-search-plus" aria-hidden="true"></i>&nbsp; ' + I18n.t('offers.search.see_all_topics')
+        }
       })
     );
 
@@ -133,16 +156,25 @@ $(document).ready(function() {
       })
     );
 
+    search.addWidget(
+      instantsearch.widgets.clearAll({
+        container: '#search-filters-clear',
+        excludeAttributes: ['topic_list'],
+        templates: {
+          link: I18n.t('offers.search.reset_filters')
+        }
+      })
+    );
+
     search.on('render', function() {
-      if (userSignedIn) {
-        var $pinButtonsInstant = $('.pin-unpin-offer-instant');
-        $pinButtonsInstant.off();
-        unactivateLoader();
-        buttonsAnimation($pinButtonsInstant);
-      }
+      bindTopicTags(this);
+      if (userSignedIn) { refreshPinButtons() };
+      filtersDiscloseContent();
     });
 
     search.start();
+
+    bindTopicTags(search);
 
     $('#home-input').on('input', function() {
       if ($('#home-input').val() !== "") {
@@ -208,10 +240,6 @@ $(document).ready(function() {
       }
     });
 
-    search.on('render', function() {
-      filtersDiscloseContent();
-    });
-
     $('#search-filters-toggle').on('click', function(event) {
       event.preventDefault();
       $('#search-filters').slideToggle('fast');
@@ -222,9 +250,12 @@ $(document).ready(function() {
       event.preventDefault();
       $('#searchbar-input').focus();
       $('#searchbar-input').val("");
+      search.helper.clearRefinements('languages.flag')
+                   .clearRefinements('means.info')
+                   .clearRefinements('median_amount_cents')
+                   .setQueryParameter('query', '')
+                   .search();
     });
-
-
 
   }
 
@@ -256,6 +287,7 @@ function transformHitData(data, currencySymbol, currentUserId, grayStar, yellowS
   data.median_amount = I18n.t('money', { amount: medianAmount, currency: currencySymbol});
   data.max_amount = I18n.t('money', { amount: maxAmount, currency: currencySymbol});
   data.description_cut = data.summary.length > 250 ? " &nbsp;[...]" : "";
+  data.topics_cut = data.topic_list.length === data.topic_list_short.length ? "" : "[...]";
   var gradeName = $(data.advisor.grade_img)[0].getAttribute('alt');
   data.advisor.grade = I18n.t('users.info.' + gradeName);
   data.advisor.country = data.advisor.country_code ? I18n.t('countries.' + data.advisor.country_code) : null;
@@ -329,11 +361,36 @@ function showSearchHideMain() {
   }
 }
 
+function refreshPinButtons() {
+  var $pinButtonsInstant = $('.pin-unpin-offer-instant');
+  $pinButtonsInstant.off();
+  unactivateLoader();
+  buttonsAnimation($pinButtonsInstant);
+}
+
+function bindTopicTags(search) {
+  var $topics = $('.offer-topic');
+  $topics.off();
+  $topics.on('click', function() {
+    event.stopPropagation();
+    var topicName = $(this).text().substr(2);
+    search.helper.clearRefinements('topic_list');
+    search.helper.addHierarchicalFacetRefinement('topic_list', topicName).search();
+    $('#searchbar').slideDown(150);
+    $('#searchbar-input').focus();
+    hideNavbarSearchIcon();
+    showSearchHideMain();
+    window.scroll({ top: 0, left: 0 });
+  })
+}
+
 function filtersDiscloseContent() {
   if ($('.ais-hits__empty').length === 0) {
+    $('#search-filters').removeClass('hidden');
     $('#search-filters-toggle').removeClass('hidden');
     $('#search-clear').addClass('hidden');
   } else {
+    $('#search-filters').addClass('hidden');
     $('#search-filters-toggle').addClass('hidden');
     $('#search-clear').removeClass('hidden');
   }

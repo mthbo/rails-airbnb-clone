@@ -7,6 +7,7 @@ class Offer < ApplicationRecord
   has_many :languages, through: :offer_languages
 
   acts_as_votable
+  acts_as_taggable_on :topics
 
   extend FriendlyId
   friendly_id :slug_candidates
@@ -27,7 +28,7 @@ class Offer < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch index_name: "#{ENV['PIPELINE_ENV']}_offers", if: :active? do
-    attribute :title, :slug, :description, :summary, :created_at_i, :deals_closed_count, :satisfaction, :no_pricing?, :no_price_history?
+    attribute :title, :slug, :description, :summary, :topic_list, :topic_list_short, :created_at_i, :deals_closed_count, :satisfaction, :no_pricing?, :no_price_history?
     attribute :median_amount_cents do
       median_amount_cents.nil? ? 0 : median_amount_cents
     end
@@ -54,48 +55,52 @@ class Offer < ApplicationRecord
         country_code: advisor.country_code.present? ? advisor.country_code : nil
       }
     end
-    searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+    searchableAttributes ['unordered(title)', 'topic_list_short', 'topic_list', 'unordered(description)', 'unordered(summary)']
     customRanking ['desc(deals_closed_count)', 'desc(satisfaction)', 'asc(median_amount_cents)', 'desc(created_at_i)']
-    attributesForFaceting [:languages, :means, :median_amount_cents]
+    attributesForFaceting [:topic_list, :languages, :means, :median_amount_cents]
     separatorsToIndex '+#$€'
     removeWordsIfNoResults 'allOptional'
     ignorePlurals true
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_price_asc", inherit: true do
-      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      searchableAttributes ['unordered(title)', 'topic_list_short', 'topic_list', 'unordered(description)', 'unordered(summary)']
       customRanking ['asc(median_amount_cents)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount_cents]
+      attributesForFaceting [:topic_list, :languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
     end
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_price_desc", inherit: true do
-      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      searchableAttributes ['unordered(title)', 'topic_list_short', 'topic_list', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(median_amount_cents)', 'desc(deals_closed_count)', 'desc(satisfaction)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount_cents]
+      attributesForFaceting [:topic_list, :languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
     end
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_satisfaction_desc", inherit: true do
-      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      searchableAttributes ['unordered(title)', 'topic_list_short', 'topic_list', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount_cents)', 'desc(created_at_i)']
-      attributesForFaceting [:languages, :means, :median_amount_cents]
+      attributesForFaceting [:topic_list, :languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
     end
 
     add_replica "#{ENV['PIPELINE_ENV']}_offers_created_at_desc", inherit: true do
-      searchableAttributes ['unordered(title)', 'unordered(description)', 'unordered(summary)']
+      searchableAttributes ['unordered(title)', 'topic_list_short', 'topic_list', 'unordered(description)', 'unordered(summary)']
       customRanking ['desc(created_at_i)', 'desc(satisfaction)', 'desc(deals_closed_count)', 'asc(median_amount_cents)']
-      attributesForFaceting [:languages, :means, :median_amount_cents]
+      attributesForFaceting [:topic_list, :languages, :means, :median_amount_cents]
       separatorsToIndex '+#$€'
       removeWordsIfNoResults 'allOptional'
       ignorePlurals true
     end
+  end
+
+  def self.topics_home_page
+    ENV['TOPICS_HOME_PAGE'].split
   end
 
   # Description extracts
@@ -106,6 +111,16 @@ class Offer < ApplicationRecord
 
   def meta_description
     description[0..160]
+  end
+
+  def topic_list_short
+    short_list = ""
+    topic_list.each do |topic|
+      short_list_test = short_list + topic
+      break if short_list_test.length > 60
+      short_list = short_list_test + ","
+    end
+    short_list.split(',')
   end
 
   # Video call
