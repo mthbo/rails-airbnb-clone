@@ -24,14 +24,15 @@
       <input type="text" id="home-input" class="home-flex-600" autofocus="<%= params[:q] ? 'false' : 'true' %>" placeholder="<%= t '.input_placeholder' %>">
     </div>
 
-    <div id="home-topics" class="home-content-wrapper">
+    <div id="home-topics" class="home-content-wrapper hidden-xs">
       <% Offer.topics_home_page.each do |topic|  %>
         <h2 class="offer-topic home-topic"># <%= topic %></h2>
       <% end %>
+      <h2 class="home-topic">...</h2>
     </div>
   </div>
 
-  <div class="home-scroll-arrow">
+  <div class="home-scroll-arrow hidden-xs">
     <div id="home-arrow-down">
       <%= image_tag 'arrow_down.svg' %>
     </div>
@@ -41,6 +42,15 @@
     <div class="home-flex-700">
       <h2 class="white"><%= t '.inspirations_title' %></h2>
       <h3 class="light-gray no-margin-top"><%= t '.inspirations_subtitle' %></h3>
+    </div>
+  </div>
+
+  <div class="padded-bottom-s padded-top-s bg-light-gray home-content-wrapper hidden-sm hidden-md hidden-lg">
+    <div id="home-topics-xs" class="text-center">
+      <% Offer.topics_home_page.each do |topic|  %>
+        <h2 class="offer-topic home-topic"># <%= topic %></h2>
+      <% end %>
+      <h2 class="home-topic">...</h2>
     </div>
   </div>
 
