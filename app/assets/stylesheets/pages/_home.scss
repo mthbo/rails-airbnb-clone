@@ -75,6 +75,20 @@
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
 }
 
+#home-topics {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: rgba(245, 245, 245, 0.7);
+  .home-topic {
+    margin: 5px 15px;
+    font-weight: normal;
+    font-size: 27px;
+  }
+}
+
 .home-banner-vertical {
   background-image: image-url("backgrounds/background_disclose.png");
   background-position: 50% -46px;
@@ -127,7 +141,7 @@
 
 #home-input {
   font-size: 34px;
-  padding-right: 40px;
+  padding-left: 50px;
   border: none;
   border-bottom: 2px white solid;
   background-color: transparent;
@@ -147,8 +161,8 @@
 #home-input-icon {
   position: relative;
   font-size: 34px;
-  right: 36px;
-  top: 0;
+  left: 0;
+  top: -2px;
   color: white;
   width: 0;
 }
@@ -279,11 +293,10 @@
   #home-input {
     flex: 1 1 auto;
     font-size: 18px;
-    padding-right: 20px;
+    padding-left: 25px;
   }
   #home-input-icon {
     font-size: 18px;
-    right: 20px;
   }
   .home-banner-input-bar {
     height: 60px;
@@ -295,6 +308,17 @@
     h2 {
       font-size: 22px !important;
     }
+  }
+  #home-topics {
+    padding-bottom: 15px;
+    padding-top: 15px;
+    .home-topic {
+      font-size: 18px;
+      margin: 5px 10px;
+    }
+  }
+  .home-scroll-arrow {
+    display: none;
   }
   #home-arrow-down {
     img {

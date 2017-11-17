@@ -28,7 +28,7 @@
 #searchbar-input {
   flex: 1 1 auto;
   font-size: 22px;
-  padding-right: 40px;
+  padding-left: 30px;
   border: none;
   border-bottom: 2px white solid;
   background-color: transparent;
@@ -48,8 +48,8 @@
 #searchbar-input-icon {
   position: relative;
   font-size: 20px;
-  right: 22px;
-  top: 0;
+  left: 0;
+  top: -2px;
   color: white;
   width: 0;
 }
@@ -293,12 +293,10 @@
   #searchbar-input {
     flex: 1 1 auto;
     font-size: 16px;
-    padding-right: 40px;
+    padding-left: 25px;
   };
   #searchbar-input-icon {
     font-size: 16px;
-    right: 18px;
-    top: -2px;
   };
   #searchbar-algolia-logo {
     padding-left: 11px;

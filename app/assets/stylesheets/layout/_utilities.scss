@@ -102,8 +102,14 @@
 .bg-yellow-transparent {
   background-color: rgba(255, 201, 56, 0.9);
 }
+.bg-yellow-transparent-light {
+  background-color: rgba(255, 201, 56, 0.2);
+}
 .bg-blue-transparent {
   background-color: rgba(48, 72, 95, 0.9);
+}
+.bg-blue-transparent-light {
+  background-color: rgba(48, 72, 95, 0.2);
 }
 .bg-gradient {
   background: $gradient;

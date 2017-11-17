@@ -155,14 +155,6 @@
   align-items: flex-start;
 }
 
-.offer-topic {
-  color: $flash-blue;
-  cursor: pointer;
-  &:hover {
-    color: $blue;
-  }
-}
-
 @media (max-width: $screen-md-max) {
   .offer-card-small {
     min-height: 360px;

@@ -99,6 +99,10 @@ class Offer < ApplicationRecord
     end
   end
 
+  def self.topics_home_page
+    ENV['TOPICS_HOME_PAGE'].split
+  end
+
   # Description extracts
 
   def summary
