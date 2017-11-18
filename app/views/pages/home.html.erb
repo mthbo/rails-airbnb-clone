@@ -207,7 +207,10 @@
       </div>
     </div>
     <div class="padded-top-m">
-      <%= link_to t('.be_advisor_button'), advisor_path, { class: "btn btn-green home-btn", id: "home-be-advisor-btn" } %>
+      <%= link_to advisor_path, class: "btn btn-green home-btn", id: "home-be-advisor-btn" do %>
+        <i class="fa fa-info-circle"></i>&nbsp;&nbsp;
+        <%= t('.be_advisor_button') %>
+      <% end %>
     </div>
   </div>
 

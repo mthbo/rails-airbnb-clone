@@ -48,11 +48,14 @@
  <!-- Not appearing on small screens -->
 
   <div class="my-navbar-right hidden-xs hidden-sm">
-    <%= link_to t('navbar.be_advisor'), advisor_path, { class: "my-navbar-button btn btn-green", id: "navbar-be-advisor-btn" } %>
+    <%= link_to advisor_path, class: "my-navbar-button btn btn-green", id: "navbar-be-advisor-btn" do %>
+      <i class="fa fa-info-circle"></i>&nbsp;&nbsp;
+      <%= t('navbar.be_advisor') %>
+    <% end %>
 
     <% if user_signed_in? %>
       <%= link_to dashboard_path, { class: "btn my-navbar-button-round btn-blue", id: "my-navbar-dashboard-btn", title: t('navbar.dashboard') } do %>
-        <i class="fa fa-hashtag"></i>
+        <i class="fa fa-th-large"></i>
         <div id="my-navbar-badge">
           <%= render 'users/notifications' %>
         </div>
@@ -63,15 +66,36 @@
           <%= render 'users/avatar', user: current_user, size: 'avatar-flex' %>
         </div>
         <ul id="my-navbar-profile-menu" class="list-unstyled">
-          <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
-          <li><%= link_to t('navbar.dashboard'), dashboard_path %></li>
-          <li><%= link_to t('navbar.sign_out'), destroy_user_session_path, method: :delete %></li>
+          <li>
+            <%= link_to user_path(current_user) do %>
+              <i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;
+              <%= t('navbar.profile') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to dashboard_path do %>
+              <i class="fa fa-th-large fa-fw"></i>&nbsp;&nbsp;
+              <%= t('navbar.dashboard') %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <i class="fa fa-sign-out fa-fw"></i>&nbsp;&nbsp;
+              <%= t('navbar.sign_out') %>
+            <% end %>
+          </li>
         </ul>
       </div>
 
     <% else %>
-      <%= link_to t('navbar.sign_up'), new_user_registration_path, { class: "my-navbar-item my-navbar-link", id: "sign-up-navbar" } %>
-      <%= link_to t('navbar.sign_in'), new_user_session_path, { class: "my-navbar-item my-navbar-link" } %>
+      <%= link_to new_user_registration_path, class: "my-navbar-item my-navbar-link", id: "sign-up-navbar" do %>
+        <i class="fa fa-user-plus"></i>&nbsp;&nbsp;
+        <%= t('navbar.sign_up') %>
+      <% end %>
+      <%= link_to new_user_session_path, class: "my-navbar-item my-navbar-link" do %>
+        <i class="fa fa-sign-in"></i>&nbsp;&nbsp;
+        <%= t('navbar.sign_in') %>
+      <% end %>
 
     <% end %>
 
@@ -92,23 +116,50 @@
     </div>
 
     <ul id="my-navbar-burger-menu" class="list-unstyled">
-      <li><%= link_to t('navbar.be_advisor'), advisor_path, id: "navbar-be-advisor-btn" %></li>
+      <li>
+        <%= link_to advisor_path, id: "navbar-be-advisor-btn" do %>
+          <i class="fa fa-info-circle fa-fw"></i>&nbsp;&nbsp;
+          <%= t('navbar.be_advisor') %>
+        <% end %>
+      </li>
 
       <% if user_signed_in? %>
-        <li><%= link_to t('navbar.profile'), user_path(current_user) %></li>
+        <li>
+          <%= link_to user_path(current_user) do %>
+            <i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;
+            <%= t('navbar.profile') %>
+          <% end %>
+        </li>
         <li>
           <%= link_to dashboard_path do %>
+            <i class="fa fa-th-large fa-fw"></i>&nbsp;&nbsp;
             <%= t('navbar.dashboard') %>
             <div id="my-navbar-burger-menu-badge">
               <%= render 'users/notifications' %>
             </div>
           <% end %>
         </li>
-        <li><%= link_to t('navbar.sign_out'), destroy_user_session_path, method: :delete %></li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fa fa-sign-out fa-fw"></i>&nbsp;&nbsp;
+            <%= t('navbar.sign_out') %>
+          <% end %>
+        </li>
 
       <% else %>
-        <li><%= link_to t('navbar.sign_up'), new_user_registration_path, id: "sign-up-navbar" %></li>
-        <li><%= link_to t('navbar.sign_in'), new_user_session_path %></li>
+        <li>
+          <%= link_to new_user_registration_path, id: "sign-up-navbar" do %>
+            <i class="fa fa-user-plus fa-fw"></i>&nbsp;&nbsp;
+            <%= t('navbar.sign_up') %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path do %>
+            <i class="fa fa-sign-in fa-fw"></i>&nbsp;&nbsp;
+            <%= t('navbar.sign_in') %>
+          <% end %>
+        </li>
+
       <% end %>
     </ul>
   </div>

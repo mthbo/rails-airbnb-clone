@@ -11,7 +11,10 @@
         <% if user_signed_in? %>
           <%= link_to t('.publish_offer_button'), current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
         <% else %>
-          <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" %>
+          <%= link_to new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" do %>
+            <i class='fa fa-user-plus' aria-hidden='true'></i>&nbsp;&nbsp;
+            <%= t('.sign_up_as_papoter_button') %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -29,7 +32,10 @@
       <% if user_signed_in? %>
         <%= link_to t('.publish_offer_button'), current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
       <% else %>
-        <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" %>
+        <%= link_to new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" do %>
+          <i class='fa fa-user-plus' aria-hidden='true'></i>&nbsp;&nbsp;
+          <%= t('.sign_up_as_papoter_button') %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -136,7 +142,10 @@
       <% if user_signed_in? %>
         <%= link_to t('.publish_offer_button'), current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
       <% else %>
-        <%= link_to t('.sign_up_as_papoter_button'), new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-btn" %>
+        <%= link_to new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-btn" do %>
+          <i class='fa fa-user-plus' aria-hidden='true'></i>&nbsp;&nbsp;
+          <%= t('.sign_up_as_papoter_button') %>
+        <% end %>
       <% end %>
     </div>
   </div>
