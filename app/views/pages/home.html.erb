@@ -24,11 +24,13 @@
       <input type="text" id="home-input" class="home-flex-600" autofocus="<%= params[:q] ? 'false' : 'true' %>" placeholder="<%= t '.input_placeholder' %>">
     </div>
 
-    <div id="home-topics" class="home-content-wrapper hidden-xs">
-      <% Offer.topics_home_page.each do |topic|  %>
-        <h2 class="offer-topic home-topic"># <%= topic %></h2>
-      <% end %>
-      <h2 class="home-topic">...</h2>
+    <div class="home-content-wrapper hidden-xs">
+      <div id="home-topics" class="home-flex-600">
+        <% Offer.topics_home_page.each do |topic|  %>
+          <h2 class="offer-topic home-topic"># <%= topic %></h2>
+        <% end %>
+        <h2 class="home-topic">...</h2>
+      </div>
     </div>
   </div>
 
