@@ -371,7 +371,7 @@ function refreshPinButtons() {
 function bindTopicTags(search) {
   var $topics = $('.offer-topic');
   $topics.off();
-  $topics.on('click', function() {
+  $topics.on('click', function(event) {
     event.stopPropagation();
     var topicName = $(this).text().substr(2);
     search.helper.clearRefinements('topic_list');
