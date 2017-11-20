@@ -79,7 +79,7 @@ $(document).ready(function(){
     ga('send', 'event', 'New offer', 'click', 'Publish offer from advisor page banner');
   })
   $('#publish-offer-advisor-btn').click(function() {
-    ga('send', 'event', 'New offer', 'click', 'Publish offer from advisor page banner');
+    ga('send', 'event', 'New offer', 'click', 'Publish offer from advisor page button');
   })
   $('#publish-offer-user-profile').click(function() {
     ga('send', 'event', 'New offer', 'click', 'Publish offer from user page');

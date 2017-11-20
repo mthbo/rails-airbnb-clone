@@ -49,7 +49,7 @@ fr:
       banner_title: "Vos savoirs et votre temps sont précieux."
       banner_subtitle: "Mettez les à profit en donnant des conseils."
       publish_offer_button: "Publier une offre de conseil"
-      sign_up_as_papoter_button: "S'inscrire comme Papoter"
+      sign_up_as_papoter_button: "S'inscrire"
       benefits_title: "Proposez vos services comme conseiller."
       benefits_title_1: Une vitrine pour vos expertises
       benefits_text_1: Publiez une offre de conseil pour chacune de vos expertises.
@@ -64,8 +64,8 @@ fr:
       benefits_title_6: Conseillez où que vous soyez
       benefits_text_6: Communiquez avec vos interlocuteurs grâce à l’interface de session.
       offer_example_title: "Publiez une offre et devenez une référence."
-      find_advisor_title: "La communauté Papoters s'agrandit!"
-      find_advisor_subtitle: "Trouvez votre inspiration dans les offres déjà publiées."
+      find_advisor_title: "Rejoignez une communauté d'experts."
+      find_advisor_subtitle: "Découvrez les domaines d'expertise de nos conseillers."
       find_advisor_button: "Trouver un conseiller"
     legal:
       legal_notices: Mentions légales

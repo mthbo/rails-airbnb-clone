@@ -49,7 +49,7 @@ en:
       banner_title: "Your knowledge and your time are valuable."
       banner_subtitle: "Give advice and leverage both of them."
       publish_offer_button: "Publish an offer"
-      sign_up_as_papoter_button: "Sign up as Papoter"
+      sign_up_as_papoter_button: "Sign up"
       benefits_title: "Offer your services as advisor."
       benefits_title_1: Showcase your expertises
       benefits_text_1: "Publish a service offer for each of your expertises."
@@ -64,8 +64,8 @@ en:
       benefits_title_6: Advise wherever you are
       benefits_text_6: Communicate with your interlocutors through the session interface.
       offer_example_title: "Publish an offer and become a reference."
-      find_advisor_title: "Papoters community is growing!"
-      find_advisor_subtitle: "Get inspired by the offers already published."
+      find_advisor_title: "Join a community of experts."
+      find_advisor_subtitle: "Discover the areas of expertise of our advisors."
       find_advisor_button: "Find an advisor"
     legal:
       legal_notices: Legal notices

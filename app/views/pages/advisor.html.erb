@@ -9,7 +9,10 @@
       <h2><%= t '.banner_subtitle' %></h2>
       <div class="padded-top-m">
         <% if user_signed_in? %>
-          <%= link_to t('.publish_offer_button'), current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
+          <%= link_to current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" do %>
+            <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp;
+            <%= t('.publish_offer_button') %>
+          <% end %>
         <% else %>
           <%= link_to new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" do %>
             <i class='fa fa-user-plus' aria-hidden='true'></i>&nbsp;&nbsp;
@@ -30,7 +33,10 @@
     </div>
     <div class="padded-top-m">
       <% if user_signed_in? %>
-        <%= link_to t('.publish_offer_button'), current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" %>
+        <%= link_to current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-banner" do %>
+          <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp;
+          <%= t('.publish_offer_button') %>
+        <% end %>
       <% else %>
         <%= link_to new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-banner" do %>
           <i class='fa fa-user-plus' aria-hidden='true'></i>&nbsp;&nbsp;
@@ -140,7 +146,10 @@
 
     <div class="home-content-wrapper padded-top-m padded-bottom-xs text-center">
       <% if user_signed_in? %>
-        <%= link_to t('.publish_offer_button'), current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" %>
+        <%= link_to current_user.advisor? ? new_offer_path : advising_path, class: "btn btn-green home-btn", id: "publish-offer-advisor-btn" do %>
+          <i class='fa fa-plus' aria-hidden='true'></i>&nbsp;&nbsp;
+          <%= t('.publish_offer_button') %>
+        <% end %>
       <% else %>
         <%= link_to new_user_registration_path, class: "btn btn-green home-btn", id: "sign-up-advisor-btn" do %>
           <i class='fa fa-user-plus' aria-hidden='true'></i>&nbsp;&nbsp;
@@ -150,25 +159,17 @@
     </div>
   </div>
 
-  <div class="bg-white padded-top-m padded-bottom-xl text-center ">
-    <%= link_to root_path, class: "home-bottom-img" do %>
-      <%= image_tag "papoters_icon.svg", width: '70px', height: '70px' %>
-    <% end %>
+  <div class="bg-white padded-top-l padded-bottom-xl text-center ">
     <div class="home-content-wrapper">
       <div class="home-flex-700">
-        <h2 class="no-margin-bottom"><%= t '.find_advisor_title' %></h2>
+        <h2><%= t '.find_advisor_title' %></h2>
+        <h3 class="medium-dark-gray no-margin-top"><%= t '.find_advisor_subtitle' %></h3>
+        <div class="home-topics padded-top-m padded-bottom-xs">
+          <% Offer.topics_home_page.each do |topic|  %>
+            <h2 class="offer-topic home-topic"># <%= topic %></h2>
+          <% end %>
+        </div>
       </div>
-    </div>
-    <div class="padded-bottom-s home-content-wrapper">
-      <div class="home-flex-600">
-        <h3 class="medium-dark-gray"><%= t '.find_advisor_subtitle' %></h3>
-      </div>
-    </div>
-    <div class="padded-top-xs">
-      <button id="advisor-btn-search-trigger" class="btn btn btn-yellow home-btn">
-        <i class='fa fa-search'></i>&nbsp;
-        <%= t '.find_advisor_button' %>
-      </button>
     </div>
   </div>
 

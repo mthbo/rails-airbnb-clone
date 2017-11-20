@@ -213,19 +213,6 @@ $(document).ready(function() {
       });
     });
 
-    $('#advisor-btn-search-trigger').on('click', function(event) {
-      event.stopPropagation();
-      $('#searchbar').slideToggle(150, function() {
-        $('#searchbar-input').focus();
-        if ($('#searchbar').is(':visible')) {
-          hideNavbarSearchIcon();
-          ga('send', 'event', 'Search', 'click', 'Search from advisor page button');
-        } else {
-          showNavbarSearchIcon();
-        }
-      });
-    });
-
     $('#main').on('click', function() {
       if ($('#searchbar').is(':visible')) {
         $('#searchbar').slideUp(150);
@@ -381,6 +368,7 @@ function bindTopicTags(search) {
     hideNavbarSearchIcon();
     showSearchHideMain();
     window.scroll({ top: 0, left: 0 });
+    ga('send', 'event', 'Search', 'click', 'Search for topic: ' + topicName);
   })
 }
 

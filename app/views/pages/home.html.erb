@@ -5,7 +5,7 @@
 
   <div class="home-banner bg-gray-transparent">
     <div class="home-banner-top home-content-wrapper">
-      <div class="home-flex-600 padded-top-m">
+      <div class="home-flex-600 padded-top-l">
         <div class="hidden-sm hidden-md hidden-lg">
           <%= image_tag "papoters_no_icon.svg", width: '160px', height: '42px' %>
         </div>
@@ -25,16 +25,17 @@
     </div>
 
     <div class="home-content-wrapper hidden-xs">
-      <div id="home-topics" class="home-flex-600">
-        <% Offer.topics_home_page.each do |topic|  %>
-          <h2 class="offer-topic home-topic"># <%= topic %></h2>
-        <% end %>
-        <h2 class="home-topic">...</h2>
+      <div class="home-flex-700">
+        <div class="home-topics padded-top-s padded-bottom-s">
+          <% Offer.topics_home_page.each do |topic|  %>
+            <h2 class="offer-topic home-topic"># <%= topic %></h2>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="home-scroll-arrow hidden-xs">
+  <div class="home-scroll-arrow">
     <div id="home-arrow-down">
       <%= image_tag 'arrow_down.svg' %>
     </div>
@@ -49,13 +50,12 @@
 
   <div class="padded-bottom-l padded-top-l bg-light-gray hidden-sm hidden-md hidden-lg text-center">
     <div class="home-content-wrapper">
-      <div>
+      <div class="home-flex-700">
         <h2><%= t '.topics_title' %></h2>
-        <div id="home-topics-xs" class="text-center">
+        <div class="home-topics padded-top-s padded-bottom-xs">
           <% Offer.topics_home_page.each do |topic|  %>
             <h2 class="offer-topic home-topic"># <%= topic %></h2>
           <% end %>
-          <h2 class="home-topic">...</h2>
         </div>
       </div>
     </div>
