@@ -285,17 +285,13 @@ class Deal < ApplicationRecord
   end
 
   def update_client_unread_messages
-    if self.client.no_messages? && self.client_notifications != 0
-      self.client.to_notify!
-    elsif !self.client.no_messages? && self.client_notifications == 0 && self.client.deals_all_notifications == 0
+    if !self.client.no_messages? && self.client_notifications == 0 && self.client.deals_all_notifications == 0
       self.client.no_messages!
     end
   end
 
   def update_advisor_unread_messages
-    if self.advisor.no_messages? && self.advisor_notifications != 0
-      self.advisor.to_notify!
-    elsif !self.advisor.no_messages? && self.advisor_notifications == 0 && self.advisor.deals_all_notifications == 0
+    if !self.advisor.no_messages? && self.advisor_notifications == 0 && self.advisor.deals_all_notifications == 0
       self.advisor.no_messages!
     end
   end

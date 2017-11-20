@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
       @deal.increment_notifications(@receiver)
       @deal.reset_notifications(current_user)
       @deal.save(validate: false)
+      @receiver.to_notify! if @receiver.no_messages?
       DealNotificationsBroadcastJob.perform_later(@deal)
     end
   end
