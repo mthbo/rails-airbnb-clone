@@ -1,0 +1,10 @@
+<p><%= t('.greeting', user: @user.first_name) %></p>
+
+<p style="font-weight: normal; color: #EE5F5B;"><%= t('.message') %></p>
+<p><%= t('.instructions') %></p>
+
+<div style="text-align: center; padding: 30px 0;">
+  <%= link_to t('.action'), dashboard_url(locale: I18n.locale), style: "font-weight: normal; text-decoration: none; padding: 10px 15px; border-radius: 4px; border: none; color: white; background-color: #30485F;" %>
+</div>
+
+<%= render 'shared/mail_signature' %>

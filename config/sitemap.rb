@@ -21,7 +21,7 @@ SitemapGenerator::Sitemap.create do
 
   add '/advisor', priority: 1, changefreq: 'always'
   add '/signup', priority: 1, changefreq: 'daily'
-  add '/contact', priority: 0.7
+  add '/contact'
   add '/login'
   add '/welcome'
   add '/dashboard'

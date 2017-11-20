@@ -7,3 +7,9 @@ en:
       instructions_1: "Thanks to your new status, you will be able to price your services."
       instructions_2: "To enable pricing, provide the required legal and banking details so as we can verify your identity."
       action: Enable pricing
+    unread_messages:
+      subject: "You have unread messages"
+      greeting: "Hello %{user},"
+      message: One or more of your sessions on Papoters have unread messages.
+      instructions: Consult your dashboard to find out more and to answer your interlocutors.
+      action: See my dashboard

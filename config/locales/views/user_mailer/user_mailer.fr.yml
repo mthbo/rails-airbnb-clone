@@ -7,3 +7,9 @@ fr:
       instructions_1: "Grâce à votre nouveau statut, vous allez pouvoir proposer des services payants."
       instructions_2: "Pour activer les paiments, fournissez les informations légales et bancaires requises afin que nous vérifions votre identité."
       action: Activer les paiements
+    unread_messages:
+      subject: "Vous avez des messages non lus"
+      greeting: "Bonjour %{user},"
+      message: Une ou plusieurs de vos sessions sur Papoters comportent des messages non lus.
+      instructions: Consultez votre tableau de bord pour en savoir plus et répondre à vos interlocuteurs.
+      action: Voir mon tableau de bord

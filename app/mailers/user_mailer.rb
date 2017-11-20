@@ -8,4 +8,11 @@ class UserMailer < ApplicationMailer
       mail(to: advisor.email, subject: t('user_mailer.pricing_pending.subject'))
     end
   end
+
+  def unread_messages(user)
+    @user = user
+    I18n.with_locale(user.locale.to_sym) do
+      mail(to: user.email, subject: t('user_mailer.unread_messages.subject'))
+    end
+  end
 end

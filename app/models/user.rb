@@ -17,6 +17,7 @@ class User < ApplicationRecord
   enum pricing: [ :no_pricing, :pricing_pending, :pricing_enabled, :pricing_disabled ]
   enum bank_status: [:no_bank, :bank_valid, :bank_invalid]
   enum legal_type: [ :individual, :company ]
+  enum unread_messages: [:no_messages, :to_notify, :notified]
 
   has_many :offers, foreign_key: 'advisor_id', dependent: :destroy
   has_many :client_deals, foreign_key: 'client_id', class_name: 'Deal', dependent: :nullify

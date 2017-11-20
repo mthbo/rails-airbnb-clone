@@ -16,4 +16,5 @@ module Notifications
       self.advisor_notifications = 0
     end
   end
+
 end

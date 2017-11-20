@@ -45,6 +45,8 @@ class Deal < ApplicationRecord
   validates :advisor_rating, numericality: { only_integer: true }, inclusion: { in: [1,2,3,4,5] }, if: :advisor_is_reviewing?
 
   after_create_commit :create_first_message
+  after_save :update_client_unread_messages
+  after_save :update_advisor_unread_messages
 
   def advisor
     offer.advisor unless offer.nil?
@@ -280,6 +282,22 @@ class Deal < ApplicationRecord
   def create_first_message
     message = Message.new(deal: self, user: self.client, content: self.request)
     message.save
+  end
+
+  def update_client_unread_messages
+    if self.client.no_messages? && self.client_notifications != 0
+      self.client.to_notify!
+    elsif !self.client.no_messages? && self.client_notifications == 0 && self.client.deals_all_notifications == 0
+      self.client.no_messages!
+    end
+  end
+
+  def update_advisor_unread_messages
+    if self.advisor.no_messages? && self.advisor_notifications != 0
+      self.advisor.to_notify!
+    elsif !self.advisor.no_messages? && self.advisor_notifications == 0 && self.advisor.deals_all_notifications == 0
+      self.advisor.no_messages!
+    end
   end
 
   # Validations
