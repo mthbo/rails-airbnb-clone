@@ -49,6 +49,7 @@ gem 'validates_email_format_of'
 gem 'friendly_id', '~> 5.1.0'
 gem 'acts-as-taggable-on', '~> 5.0.0'
 gem "select2-rails"
+gem 'bootstrap-slider-rails'
 
 
 source "https://rails-assets.org" do

@@ -204,6 +204,7 @@ class DealsController < ApplicationController
       :status,
       :messages_disabled,
       :deadline,
+      :duration,
       :amount,
       :currency_code,
       :proposition,

@@ -13,7 +13,7 @@ fr:
       notice_removed: "L'offre '%{title}' a été supprimée."
     form:
       describe_offer_and_give_title: Décrivez votre offre et donnez-lui un titre accrocheur.
-      convince: "Soyez clair(e), soyez spécifique et soyez original(e): votre mission est de convaincre que vos conseils sont précieux!"
+      convince: "Soyez clair(e), soyez spécifique et soyez original(e): votre mission est de convaincre que vos services sont précieux!"
       give_title: Donnez un titre à votre offre
       describe_offer: "Décrivez les services proposés, vos méthodes, vos connaissances, vos expériences, vos références, etc."
       indicate_topics: "Aidez les utilisateurs à trouver votre offre en lui associant une ou plusieurs thématique(s)."

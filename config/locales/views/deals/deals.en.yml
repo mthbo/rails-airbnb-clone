@@ -22,12 +22,12 @@ en:
     new:
       request: Request
       new_request_to: New request to %{name}
-      explain_your_need: "Explain what you need advice for. Provide all the essential details to help %{name} makes a proposition that meets your need."
+      explain_your_need: "Explain to %{name} what you need advice for."
       detail_your_need: Detail your need
-      what_is_your_deadline: What is your deadline?
+      what_is_your_deadline: What is your deadline for this request?
       pick_date: Pick a date
-      select_languages: "Select the language(s) you accept to communicate with %{name}."
-      select_means: "Select the mean(s) you accept to communicate with %{name}."
+      select_languages: "Select one or more language(s) to communicate with %{name}."
+      select_means: "Select one or more mean(s) to communicate with %{name}."
       send: Send
       sending: Sending...
       back_to_offer: Go back to offer
@@ -68,14 +68,16 @@ en:
     proposition:
       new_proposition: New proposition
       new_proposition_for: New proposition for %{name}
-      unveil_action_plan: "Propose an action plan for this session to meet the need of %{name}."
-      set_targets: "Start by setting some targets you will be committed to achieve."
+      unveil_action_plan: "Propose an action plan to meet the need of %{name}. Start by setting some targets you will be committed to achieve."
       objective_range: "min: 1 - max: %{max}"
       set_one_target: Set at least one target
       back_to_session: Back to session
     proposition_form:
       describe_service_and_not_included: "Describe the service you propose to %{name} for this session. If necessary, indicate also what is not included in your service."
       describe_service: Describe the service proposed
+      set_duration:
+      slider_to_daily:
+      slider_to_hourly:
       pick_date: Pick a date
       set_amount: Set the amount owed by %{name} for this session (transactional fees will be withheld on this amount).
       amount_range: "min: %{currency}%{min}"
