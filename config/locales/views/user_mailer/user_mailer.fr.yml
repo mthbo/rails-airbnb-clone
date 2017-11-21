@@ -10,6 +10,6 @@ fr:
     unread_messages:
       subject: "Vous avez des messages non lus"
       greeting: "Bonjour %{user},"
-      message: Une ou plusieurs de vos sessions sur Papoters comportent des messages non lus.
-      instructions: Consultez votre tableau de bord pour en savoir plus et répondre à vos interlocuteurs.
+      message: Une ou plusieurs de vos sessions comportent des messages non lus.
+      instructions: Consultez votre tableau de bord pour en savoir plus et pour répondre à vos interlocuteurs.
       action: Voir mon tableau de bord
