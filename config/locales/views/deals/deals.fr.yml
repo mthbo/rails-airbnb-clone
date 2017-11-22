@@ -68,15 +68,15 @@ fr:
     proposition:
       new_proposition: Nouvelle proposition
       new_proposition_for: Nouvelle proposition pour %{name}
-      unveil_action_plan: "Porposez un plan d'action pour répondre au besoin de %{name}, en commençant par définir les objectifs que vous vous engagez à atteindre."
+      unveil_action_plan: "Porposez un plan d'action pour répondre au besoin de %{name}. Commencez par définir les objectifs de la session que vous vous engagez à atteindre."
       objective_range: "min: 1 - max: %{max}"
       set_one_target: Définissez au moins un objectif
       back_to_session: Revenir à la session
     proposition_form:
       describe_service: Décrivez le service proposé
-      set_duration: Estimez le temps que vous comptez accorder à %{name} pour cette session.
-      slider_to_daily: Durée en jours
-      slider_to_hourly: Durée en heures
+      set_duration: Estimez le temps que vous comptez accorder pour cette session (vérifiez votre disponibilité avant le %{deadline}).
+      slider_to_daily: Passer en jours
+      slider_to_hourly: Passer en heures
       pick_date: Sélectionnez une date
       set_amount: Déterminez le montant dû par %{name} pour la session (des frais de transaction seront retenus sur ce montant).
       amount_range: "min: %{min} %{currency}"

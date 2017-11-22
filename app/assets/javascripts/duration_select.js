@@ -43,49 +43,66 @@ function durationSlider() {
 };
 
 function setHourlySlider() {
+  var hours = I18n.t('hours_short');
   var hourlySlider = $('#deal_duration').slider({
-    ticks_labels: ["1 h", "2 h", "3 h"],
+    ticks_labels: ["1 " + hours, "2 " + hours, "3 " + hours],
     min: 30,
     max: 210,
     step: 30,
     tooltip: "hide"
   });
   setDurationValue(hourlySlider);
+  setSuggestedAmount(hourlySlider)
   hourlySlider.on('change', function() {
     setDurationValue($(this));
+    setSuggestedAmount($(this));
   });
   return hourlySlider;
 }
 
 function setDailySlider() {
+  var days = I18n.t('days_short');
   var dailySlider = $('#deal_duration').slider({
-    ticks_labels: ["1 j", "2 j", "3 j", "4 j", "5 j"],
+    ticks_labels: ["1 " + days, "2 " + days, "3 " + days, "4 " + days, "5 " + days],
     min: 240,
     max: 2640,
     step: 240,
     tooltip: "hide"
   });
   setDurationValue(dailySlider);
+  setSuggestedAmount(dailySlider)
   dailySlider.on('change', function() {
     setDurationValue($(this));
+    setSuggestedAmount($(this));
   });
   return dailySlider;
 }
 
 function setDurationValue(slider) {
   var sliderValue = slider.slider('getValue');
-  var days = Math.floor( sliderValue * 10 / 480) / 10;
-  var hours = Math.floor( sliderValue / 60);
-  var minutes = ("0" + (sliderValue % 60)).slice(-2);
+  var daysValue = Math.floor( sliderValue * 10 / 480) / 10;
+  var hoursValue = Math.floor( sliderValue / 60);
+  var minutesValue = ("0" + (sliderValue % 60)).slice(-2);
+  var days = I18n.t('days', {count: daysValue});
+  var hours = I18n.t('hours_short');
+  var minutes = I18n.t('minutes_short');
   var duration = "";
+  var durationSymbol = "<i class='fa fa-clock-o medium-dark-gray' aria-hidden='true'></i>&nbsp;&nbsp; ";
   if (sliderValue < 60) {
-    duration = minutes + " min"
+    duration = minutesValue + ' ' + minutes;
   } else if (sliderValue < 240) {
-    duration = hours + ' h ' + minutes;
+    duration = hoursValue + ' ' + hours + ' ' + minutesValue;
   } else {
-    duration = days + " jours"
+    duration = daysValue.toLocaleString(I18n.locale) + ' ' + days;
+    durationSymbol = "<i class='fa fa-calendar medium-dark-gray' aria-hidden='true'></i>&nbsp;&nbsp; "
   }
-  $('#deal-slider-duration-display').text(duration);
+  $('#deal-slider-duration-display').html(durationSymbol + duration);
+}
+
+function setSuggestedAmount(slider) {
+  var sliderValue = slider.slider('getValue');
+  var suggestedAmount = sliderValue / 30 * 10;
+  $('#deal_amount').val(suggestedAmount.toLocaleString(I18n.locale));
 }
 
 $(document).ready(durationSlider());

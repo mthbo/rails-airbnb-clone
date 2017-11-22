@@ -16,12 +16,12 @@ fr:
       convince: "Soyez clair(e), soyez spécifique et soyez original(e): votre mission est de convaincre que vos services sont précieux!"
       give_title: Donnez un titre à votre offre
       describe_offer: "Décrivez les services proposés, vos méthodes, vos connaissances, vos expériences, vos références, etc."
-      indicate_topics: "Aidez les utilisateurs à trouver votre offre en lui associant une ou plusieurs thématique(s)."
+      indicate_topics: "Aidez les utilisateurs à vous trouver en précisant les thématiques de votre offre."
       add_a_key_word: "Ajoutez un mot clé"
       topics_range: "max: %{max}"
-      select_languages: "Sélectionnez la ou les langue(s) que vous acceptez pour communiquer avec vos interlocuteurs."
+      select_languages: "Sélectionnez les langues acceptées pour communiquer avec vos interlocuteurs."
       languages_range: "min: 1 - max: %{max}"
-      select_means: "Sélectionnez le(s) moyen(s) que vous acceptez pour communiquer avec vos interlocuteurs."
+      select_means: "Sélectionnez les moyens acceptés pour communiquer avec vos interlocuteurs."
       means_range: "min: 1"
       select_pricing: Sélectionnez le mode de tarification pour cette offre.
       publish: Publier

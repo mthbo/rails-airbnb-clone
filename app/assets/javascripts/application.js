@@ -15,5 +15,3 @@
 //= require select2_locale_fr
 //= require bootstrap-slider
 //= require_tree .
-
-

@@ -28,6 +28,9 @@ class Deal < ApplicationRecord
   validates :proposition, presence: true, length: { minimum: 30 }, if: :not_new_nor_cancelled?
   validates :objectives, presence: true, length: { maximum: 10 }, if: :not_new_nor_cancelled?
 
+  validates :duration, presence: true, if: :pending_not_new?
+  validate :duration_must_be_compatible_with_dealdine, if: :pending_not_new?
+
   validate :amount_must_be_greater_than_min_amount, if: :pending_not_new?
   validate :amount_must_be_less_than_or_equal_to_max_amount, if: :pending_not_new?
 
@@ -297,6 +300,11 @@ class Deal < ApplicationRecord
   end
 
   # Validations
+
+  def duration_must_be_compatible_with_dealdine
+    errors.add(:duration, :after_deadline) if
+      duration.present? && (DateTime.current.in_time_zone + duration.minutes).end_of_day > deadline.end_of_day
+  end
 
   def amount_must_be_greater_than_min_amount
     errors.add(:amount, :greater_than_or_equal_to, amount: min_amount.to_i, currency: advisor.currency.symbol ) if

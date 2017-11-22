@@ -13,7 +13,7 @@
   </div>
 
   <div class="padded-top-xs">
-    <p><%= t '.set_duration', name: deal.client.first_name %></p>
+    <p><%= t '.set_duration', deadline: l(@deal.deadline.to_date, format: :long)  %></p>
   </div>
 
   <div class="row">
@@ -31,7 +31,7 @@
     </div>
     <div class="col-xs-12 col-sm-5">
       <div class="padded-bottom-xs padded-top-xs deal-slider-control">
-        <p id="deal-slider-duration-display" class="bg-white-transparent"></p>
+        <div id="deal-slider-duration-display" class="bg-white-transparent"></div>
         <p class="btn btn-green <%= 'hidden' if deal.duration.to_i >= 240 %>" id="deal-slider-to-daily" title="<%= t '.slider_to_daily' %>">
           <i class='fa fa-calendar' aria-hidden='true'></i>
         </p>
@@ -42,7 +42,7 @@
     </div>
   </div>
 
-  <div>
+  <div class="padded-top-xs">
     <% if deal.offer.priced? && deal.advisor.pricing_available? && deal.advisor.pricing_enabled? %>
       <p>
         <%= t '.set_amount', name: deal.client.first_name %><br>

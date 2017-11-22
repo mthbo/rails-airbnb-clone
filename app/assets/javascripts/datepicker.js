@@ -1,6 +1,5 @@
 function datePicker () {
 
-  setLocale();
   $.fn.datepicker.dates['en']['format'] = 'yyyy-mm-dd';
 
   $('.datepicker').datepicker({

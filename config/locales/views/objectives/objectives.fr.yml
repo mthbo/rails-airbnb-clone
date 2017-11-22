@@ -2,3 +2,4 @@ fr:
   objectives:
     form:
       new_target: "Nouvel objectif pour cette session"
+      add_objective: Ajouter l'objectif

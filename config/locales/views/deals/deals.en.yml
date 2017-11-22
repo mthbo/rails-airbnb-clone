@@ -68,16 +68,15 @@ en:
     proposition:
       new_proposition: New proposition
       new_proposition_for: New proposition for %{name}
-      unveil_action_plan: "Propose an action plan to meet the need of %{name}. Start by setting some targets you will be committed to achieve."
+      unveil_action_plan: "Propose an action plan to meet the need of %{name}. Start by setting the session targets you will be committed to achieve."
       objective_range: "min: 1 - max: %{max}"
       set_one_target: Set at least one target
       back_to_session: Back to session
     proposition_form:
-      describe_service_and_not_included: "Describe the service you propose to %{name} for this session. If necessary, indicate also what is not included in your service."
       describe_service: Describe the service proposed
-      set_duration:
-      slider_to_daily:
-      slider_to_hourly:
+      set_duration: Estimate how much time you plan to allow for this session (check your availability by %{deadline}).
+      slider_to_daily: Switch to days
+      slider_to_hourly: Switch to hours
       pick_date: Pick a date
       set_amount: Set the amount owed by %{name} for this session (transactional fees will be withheld on this amount).
       amount_range: "min: %{currency}%{min}"

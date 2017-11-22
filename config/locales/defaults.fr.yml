@@ -123,6 +123,18 @@ fr:
   money: "%{amount} %{currency}"
   session: session
   free: GRATUIT
+  minutes:
+    one: minute
+    other: minutes
+  hours:
+    one: heur
+    other: heures
+  days:
+    one: jour
+    other: jours
+  minutes_short: min
+  hours_short: h
+  days_short: j
   views:
     pagination:
       first: "&laquo;"
