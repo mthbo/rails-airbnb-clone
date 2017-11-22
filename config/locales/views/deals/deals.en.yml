@@ -79,6 +79,7 @@ en:
       slider_to_hourly: Switch to hours
       pick_date: Pick a date
       set_amount: Set the amount owed by %{name} for this session (transactional fees will be withheld on this amount).
+      free_session: Free session!
       amount_range: "min: %{currency}%{min}"
       leave_blank_if_free: Leave it blank for a free session.
       set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."

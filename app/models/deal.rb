@@ -55,6 +55,12 @@ class Deal < ApplicationRecord
     offer.advisor unless offer.nil?
   end
 
+  # Duration
+
+  def duration_days_equivalent
+    duration < 480 ? duration.minutes : duration.fdiv(480).ceil.days
+  end
+
   # Money
 
   def currency
@@ -302,8 +308,8 @@ class Deal < ApplicationRecord
   # Validations
 
   def duration_must_be_compatible_with_dealdine
-    errors.add(:duration, :after_deadline) if
-      duration.present? && (DateTime.current.in_time_zone + duration.minutes).end_of_day > deadline.end_of_day
+    errors.add(:duration, :not_compatible_with_deadline) if
+      duration.present? && DateTime.current.in_time_zone + duration_days_equivalent > deadline.end_of_day
   end
 
   def amount_must_be_greater_than_min_amount

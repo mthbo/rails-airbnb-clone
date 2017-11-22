@@ -263,6 +263,13 @@
   border-radius: 50%;
 }
 
+.btn-square {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 @media (max-width: $screen-xs-max) {
   .btn {
@@ -292,5 +299,9 @@
   .activate-offer-btn {
     left: 2px;
     right: 18px;
+  }
+  .btn-square {
+    width: 40px;
+    height: 40px;
   }
 }

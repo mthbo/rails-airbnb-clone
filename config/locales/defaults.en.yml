@@ -41,9 +41,12 @@ en:
               blank: "Please specify an expiry date"
               past: "The expiry date must be future"
               after_deadline: "The expiry date must be before the session deadline"
+            duration:
+              blank: "Please specify an estimated duration."
+              not_compatible_with_deadline: The duration specified is not compatible with the deadline of the session.
             amount:
               less_than_or_equal_to: "The amount can't be higher than %{currency}%{amount}"
-              greater_than_or_equal_to: "The amount can't be lower than %{currency}%{amount}"
+              greater_than_or_equal_to: "The amount must be higher than %{currency}%{amount}"
             client_review:
               blank: "Please leave a review for this session"
               too_long: "Your review is too long (max: %{count} characters)"

@@ -1,6 +1,8 @@
 function durationSlider() {
 
   var $dealDuration = $('#deal_duration');
+  var $dealAmount = $('#deal_amount');
+
   if ($dealDuration.length > 0 ) {
 
     var $toDailySliderBtn = $('#deal-slider-to-daily');
@@ -18,6 +20,7 @@ function durationSlider() {
     }
 
     var durationValue = $dealDuration.data('slider-value');
+
     if (durationValue < 240) {
       var durationSlider = setHourlySlider();
     } else {
@@ -25,19 +28,46 @@ function durationSlider() {
     }
 
     $toDailySliderBtn.on('click', function() {
-      durationSlider.slider('destroy');
-      durationSlider = setDailySlider();
       $(this).addClass('hidden');
       $toHourlySliderBtn.removeClass('hidden');
+      durationSlider.slider('destroy');
+      durationSlider = setDailySlider();
+      setSuggestedAmount(durationSlider);
     })
 
     $toHourlySliderBtn.on('click', function() {
-      durationSlider.slider('destroy');
-      durationSlider = setHourlySlider();
       $(this).addClass('hidden');
       $toDailySliderBtn.removeClass('hidden');
+      durationSlider.slider('destroy');
+      durationSlider = setHourlySlider();
+      setSuggestedAmount(durationSlider);
     })
 
+  }
+
+  if ($dealAmount.length > 0 ) {
+    var $freeBtn = $('#deal-amount-free-btn');
+    var $amountPlusBtn = $('#deal-amount-plus');
+    var $amountMinusBtn = $('#deal-amount-minus');
+
+    if (!isMobile()) {
+      $freeBtn.tooltip({
+        trigger: 'hover',
+        placement: 'bottom'
+      });
+    }
+
+    $freeBtn.on('click', function() {
+      clearAmount($dealAmount);
+    });
+
+    $amountPlusBtn.on('click', function() {
+      increaseAmount($dealAmount);
+    });
+
+    $amountMinusBtn.on('click', function() {
+      decreaseAmount($dealAmount);
+    });
   }
 
 };
@@ -52,7 +82,6 @@ function setHourlySlider() {
     tooltip: "hide"
   });
   setDurationValue(hourlySlider);
-  setSuggestedAmount(hourlySlider)
   hourlySlider.on('change', function() {
     setDurationValue($(this));
     setSuggestedAmount($(this));
@@ -70,7 +99,6 @@ function setDailySlider() {
     tooltip: "hide"
   });
   setDurationValue(dailySlider);
-  setSuggestedAmount(dailySlider)
   dailySlider.on('change', function() {
     setDurationValue($(this));
     setSuggestedAmount($(this));
@@ -102,7 +130,41 @@ function setDurationValue(slider) {
 function setSuggestedAmount(slider) {
   var sliderValue = slider.slider('getValue');
   var suggestedAmount = sliderValue / 30 * 10;
+  var maxAmount = suggestedAmount * 2;
   $('#deal_amount').val(suggestedAmount.toLocaleString(I18n.locale));
+  $('#deal_amount').attr('max', maxAmount);
+}
+
+function clearAmount($dealAmount) {
+  $dealAmount.val("");
+}
+
+function increaseAmount($dealAmount) {
+  var currentAmount = parseInt($dealAmount.val());
+  var minAmount = $dealAmount.attr('min');
+  var maxAmount = $dealAmount.attr('max');
+  if (!isNaN(currentAmount)) {
+    if(currentAmount < maxAmount) {
+      $dealAmount.val(currentAmount + 1).change();
+    }
+    if(currentAmount == maxAmount) {
+      $(this).attr('disabled', true);
+    }
+  }
+}
+
+function decreaseAmount($dealAmount) {
+  var currentAmount = parseInt($dealAmount.val());
+  var minAmount = $dealAmount.attr('min');
+  var maxAmount = $dealAmount.attr('max');
+  if (!isNaN(currentAmount)) {
+    if(currentAmount > minAmount) {
+      $dealAmount.val(currentAmount - 1).change();
+    }
+    if(currentAmount == minAmount) {
+      $(this).attr('disabled', true);
+    }
+  }
 }
 
 $(document).ready(durationSlider());

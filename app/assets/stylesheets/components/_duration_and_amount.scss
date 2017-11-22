@@ -1,0 +1,136 @@
+.slider-box {
+  margin: 12px 10px 20px 10px;
+  .has-error .help-block {
+    margin-top: 30px;
+    margin-bottom: 0;
+  }
+}
+
+.slider.slider-horizontal {
+  width: 100%;
+  .slider-track {
+    height: 8px;
+    margin-top: -4px;
+  };
+  .slider-track-high {
+    background: white;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  };
+  .slider-selection {
+    background: $green;
+    box-shadow: none;
+  };
+  .slider-handle {
+    background: white;
+    border: 1px solid $green;
+  };
+  .slider-tick-label-container {
+    display: flex;
+    justify-content: space-around;
+  };
+  .slider-tick-label {
+    font-size: 14px;
+    color: $medium-dark-gray;
+  };
+}
+
+.deal-slider-control {
+  display: flex;
+}
+
+#deal-slider-duration-display {
+  border-radius: 3px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+  border: 1px solid #ccc;
+  flex: 1 1 auto;
+  margin-right: 20px;
+}
+
+.deal-amount-box {
+  display: flex;
+}
+
+.deal-amount-input-box {
+  position: relative;
+}
+
+.deal_amount {
+  margin-bottom: 0;
+}
+
+#deal_amount {
+  font-weight: normal;
+  padding-right: 22px;
+  padding-left: 58px;
+}
+
+#deal-amount-currency {
+  position: absolute;
+  padding-left: 15px;
+  padding-right: 15px;
+  left: 60px;
+  top: 2px;
+  height: 41px;
+  border-right: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $medium-dark-gray;
+  z-index: 3;
+}
+
+.deal-amount-btn {
+  height: 20px;
+  width: 35px;
+  position: absolute;
+  right: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bolder;
+  z-index: 3;
+}
+
+#deal-amount-plus {
+  top: 2px;
+  border-radius: 0 2px 0 0;
+}
+
+#deal-amount-minus {
+  top: 23px;
+  border-radius: 0 0 2px 0;
+}
+
+#deal-amount-free-btn {
+  margin-left: 50px;
+  img {
+    height: 20px;
+  }
+}
+
+@media (max-width: $screen-xs-max) {
+  #deal-slider-duration-display {
+    height: 40px;
+    font-size: 15px !important;
+  };
+  #deal-amount-currency {
+    height: 36px;
+  }
+  .deal-amount-btn {
+    height: 17.5px;
+  }
+  #deal-amount-minus {
+    top: 20.5px;
+  }
+  #deal-amount-free-btn {
+    margin-left: 20px;
+    img {
+      height: 18px;
+    }
+  }
+}
