@@ -32,6 +32,7 @@ class Deal < ApplicationRecord
   validate :duration_must_be_compatible_with_dealdine, if: :pending_not_new?
 
   validate :amount_must_be_greater_than_min_amount, if: :pending_not_new?
+  validate :amount_must_be_less_than_or_equal_to_max_amount_for_duration, if: :pending_not_new?
   validate :amount_must_be_less_than_or_equal_to_max_amount, if: :pending_not_new?
 
   validates :proposition_deadline, presence: true, if: :pending_not_new?
@@ -103,6 +104,14 @@ class Deal < ApplicationRecord
 
   def max_amount
     Money.new(ENV['PRICING_MAX_AMOUNT'].to_i, "EUR").exchange_to(self.advisor.currency_code)
+  end
+
+  def suggested_amount_for_duration
+    duration.present? ? min_amount * duration / 30 : min_amount
+  end
+
+  def max_amount_for_duration
+    suggested_amount_for_duration * ENV['PRICING_MAX_SUGGESTED_AMOUNT_RATIO'].to_i
   end
 
   def amount_converted(currency_code=Money.default_currency.to_s)
@@ -320,6 +329,11 @@ class Deal < ApplicationRecord
   def amount_must_be_less_than_or_equal_to_max_amount
     errors.add(:amount, :less_than_or_equal_to, amount: max_amount.to_i, currency: advisor.currency.symbol ) if
       amount.present? && amount.to_i > max_amount.to_i
+  end
+
+  def amount_must_be_less_than_or_equal_to_max_amount_for_duration
+    errors.add(:amount, :less_than_or_equal_to, amount: max_amount_for_duration.to_i, currency: advisor.currency.symbol ) if
+      amount.present? && amount.to_i > max_amount_for_duration.to_i
   end
 
   def deadline_must_be_future

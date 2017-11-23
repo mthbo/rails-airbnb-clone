@@ -81,7 +81,8 @@ fr:
       set_amount: Déterminez le montant dû par %{name} pour la session.
       free_session: Session gratuite!
       amount_range: "min: %{min} %{currency}"
-      leave_blank_if_free: Des frais de transaction seront retenus sur ce montant.
+      suggested_amount: Montant de base suggéré selon la durée de la session.
+      fees_withheld: Les frais de services seront retenus par la plateforme sur la base du montant proposé.
       set_expiry_date: "Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée."
       review_and_submit: Vérifier et soumettre
       reviewing: Vérification...

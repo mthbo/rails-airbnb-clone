@@ -2,6 +2,7 @@
   $('#edit_deal_<%= @deal.id %>').html("<%= j render 'proposition_form', deal: @deal %>");
   datePicker();
   durationSlider();
+  dealAmountInput();
   checkBox();
   window.scroll({ top: 0, left: 0 });
 <% else %>

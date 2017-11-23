@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 20171121102208) do
     t.string   "title"
     t.string   "currency_code"
     t.json     "payout"
-    t.integer  "duration"
+    t.integer  "duration",              default: 30
     t.index ["offer_id"], name: "index_deals_on_offer_id", using: :btree
   end
 

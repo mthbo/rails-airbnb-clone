@@ -78,11 +78,12 @@ en:
       slider_to_daily: Switch to days
       slider_to_hourly: Switch to hours
       pick_date: Pick a date
-      set_amount: Set the amount owed by %{name} for this session (transactional fees will be withheld on this amount).
+      set_amount: Set the amount owed by %{name} for this session.
       free_session: Free session!
       amount_range: "min: %{currency}%{min}"
-      leave_blank_if_free: Leave it blank for a free session.
-      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."
+      suggested_amount: Suggested amount depends on the session duration.
+      fees_withheld: Service fees will be withheld by the plateform based on the proposed amount.
+      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} hasn't accepted it."
       review_and_submit: Review and submit
       reviewing: Reviewing...
     pricing_info:

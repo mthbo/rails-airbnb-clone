@@ -45,7 +45,7 @@ en:
               blank: "Please specify an estimated duration."
               not_compatible_with_deadline: The duration specified is not compatible with the deadline of the session.
             amount:
-              less_than_or_equal_to: "The amount can't be higher than %{currency}%{amount}"
+              less_than_or_equal_to: "The amount must be less than %{currency}%{amount} for the proposed session duration."
               greater_than_or_equal_to: "The amount must be higher than %{currency}%{amount}"
             client_review:
               blank: "Please leave a review for this session"
