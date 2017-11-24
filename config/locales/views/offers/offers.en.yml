@@ -16,12 +16,12 @@ en:
       convince: "Be clear, be specific and be original : your mission is to convince people you are the advisor they need!"
       give_title: Give your offer a title
       describe_offer: "Describe the services proposes, your methods, your knowledge, your track record, etc."
-      indicate_topics: "Help users to find your offer by associating one or several topic(s)."
+      indicate_topics: "Help users to find you by specifying your offer's topics."
       add_a_key_word: "Add a key word"
       topics_range: "max: %{max}"
-      select_languages: "Select the language(s) you accept to communicate with people."
+      select_languages: "Select the language(s) you accept to communicate with other users."
       languages_range: "min: 1 - max: %{max}"
-      select_means: "Select the mean(s) you accept to communicate with people."
+      select_means: "Select the mean(s) you accept to communicate with other users."
       means_range: "min: 1"
       select_pricing: Select the pricing option for this offer.
       publish: Publish

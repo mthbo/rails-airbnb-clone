@@ -17,15 +17,9 @@
     <div class="deal-card-info text-left">
       <p>
         <span class="info-icon text-center">
-          <%= image_tag 'date.svg' %>
-        </span>
-        <strong class="deal-card-info-text" id="deal-card-deadline"><%= l(deal.deadline.to_date, format: :default) %></strong>
-      </p>
-      <p>
-        <span class="info-icon text-center">
           <%= image_tag 'amount.svg' %>
         </span>
-        <strong class="deal-card-info-text" id="deal-card-price">
+        <span class="deal-card-info-text">
           <% if deal.free? %>
             <%= t('.free') %>
           <% elsif deal.request? %>
@@ -33,7 +27,23 @@
           <% else %>
             <%= t('money', amount: humanized_money(deal.amount_converted(current_user.currency_code)), currency: deal.amount_converted(current_user.currency_code).symbol ) %>
           <% end %>
-        </strong>
+        </span>
+      </p>
+      <p>
+        <span class="info-icon text-center">
+          <%= image_tag 'duration.svg' %>
+        </span>
+        <span class="deal-card-info-text">
+          <%= deal.request? ? '&mdash;'.html_safe : deal.duration_display %>
+        </span>
+      </p>
+      <p>
+        <span class="info-icon text-center">
+          <%= image_tag 'date.svg' %>
+        </span>
+        <span class="deal-card-info-text">
+          <%= l(deal.deadline.to_date, format: :default) %>
+        </span>
       </p>
     </div>
   </div>

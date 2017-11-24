@@ -9,25 +9,38 @@
   <span style="font-weight: normal;"><%= @deal.title %></span>
 </p>
 
-<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-  <p style='margin-bottom: 0'>
-    <span style="font-weight: normal;"><%= t '.amount' %>:</span>&nbsp;
-    <% if (@deal.amount_cents.blank? || @deal.amount_cents.zero?) %>
-      <span style="color: #30485F; font-weight: normal;"><%= t('.free') %></span>
-    <% else %>
-      <span style="color: #30485F; font-weight: normal;">
-        <%= t('money', amount: humanized_money(@deal.amount_converted(receiver.currency_code)), currency: @deal.amount_converted(receiver.currency_code).symbol)  %>
-      </span>&nbsp;
-      <em>( <%= t('.including_fees') %>
-        <%= t('money', amount: humanized_money(@deal.fees_converted(receiver.currency_code)), currency: @deal.fees_converted(receiver.currency_code).symbol) %> )
-      </em>
-    <% end %>
-    &nbsp;&nbsp;
-  </p>
-  <p style='font-weight: normal; margin-bottom: 0'>
-    <%= t '.deadline' %>: &nbsp;
-    <span style="color: #30485F"><%= l(@deal.deadline.to_date) if @deal.deadline %></span>
-  </p>
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: flex-start;">
+
+  <div style="flex: 1 1 130px;">
+    <p style="margin-bottom: 0;">
+      <span style="font-weight: normal;"><%= t '.amount' %></span>&nbsp;
+      <% if @deal.free? %>
+        <span style="color: #30485F; font-weight: normal;"><%= t('.free') %></span>
+      <% else %>
+        <span style="color: #30485F; font-weight: normal;">
+          <%= t('money', amount: humanized_money(@deal.amount_converted(receiver.currency_code)), currency: @deal.amount_converted(receiver.currency_code).symbol)  %>
+        </span>
+        <br>
+        <span style="white-space: nowrap;">
+          <%= t('.including_fees') %>&nbsp;
+          <%= t('money', amount: humanized_money(@deal.fees_converted(receiver.currency_code)), currency: @deal.fees_converted(receiver.currency_code).symbol) %>
+        </span>
+      <% end %>
+      &nbsp;&nbsp;
+    </p>
+  </div>
+
+  <div style="flex: 1 1 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+    <p style='font-weight: normal; margin-bottom: 0;'>
+      <%= t '.duration' %>&nbsp;
+      <span style="color: #30485F"><%= @deal.duration_display %></span>
+    </p>
+    <p style='font-weight: normal; margin-bottom: 0;'>
+      <%= t '.deadline' %>&nbsp;
+      <span style="color: #30485F"><%= l(@deal.deadline.to_date) if @deal.deadline %></span>
+    </p>
+  </div>
+
 </div>
 
 <p style='font-weight: normal;'><%= t '.targets', count: @deal.objectives.count %></p>

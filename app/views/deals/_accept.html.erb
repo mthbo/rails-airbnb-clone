@@ -11,6 +11,12 @@
       </div>
       <div class="modal-body">
         <p class="font-weight-normal blue"><%= t '.review_proposition', name: deal.advisor.first_name  %></p>
+        <% unless deal.free? %>
+          <p class="deal-proposition-warning">
+            <i class="fa fa-exclamation-triangle red fa-lg" aria-hidden="true"></i>
+            <span><%= t '.commited_after_submission', name: deal.advisor.first_name %></span>
+          </p>
+        <% end %>
         <div class="form-separation padded-top-s padded-bottom-xs">
           <div></div>
           <p><strong><%= t '.proposition' %></strong></p>

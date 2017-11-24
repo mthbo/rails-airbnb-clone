@@ -40,10 +40,13 @@ fr:
             proposition_deadline:
               blank: "Veuillez spécifier une date d'expiration"
               past: "La date d'expiration doit être future"
-              after_deadline: "La date d'expiration doit être avant la date limite de la session"
+              after_deadline: "La date d'expiration doit être antérieure à la date limite de la session"
+            duration:
+              blank: "Veuillez indiquez une durée estimée."
+              not_compatible_with_deadline: La durée indiquée n'est pas compatible avec la date limite de la session.
             amount:
-              less_than_or_equal_to: "Le montant ne peut être supérieur à %{amount} %{currency}"
-              greater_than_or_equal_to: "Le montant ne peut être inférieur à %{amount} %{currency}"
+              less_than_or_equal_to: "Le montant doit être inférieur à %{amount} %{currency} pour la durée de session proposée."
+              greater_than_or_equal_to: "Le montant doit être supérieur à %{amount} %{currency}"
             client_review:
               blank: "Veuillez laisser un avis pour cette session"
               too_long: "Votre avis est trop long (max: %{count} caractères)"
@@ -123,6 +126,18 @@ fr:
   money: "%{amount} %{currency}"
   session: session
   free: GRATUIT
+  minutes:
+    one: minute
+    other: minutes
+  hours:
+    one: heur
+    other: heures
+  days:
+    one: jour
+    other: jours
+  minutes_short: min
+  hours_short: h
+  days_short: j
   views:
     pagination:
       first: "&laquo;"

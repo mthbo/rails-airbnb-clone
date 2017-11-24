@@ -3,10 +3,9 @@ $(document).ready(function() {
   if ($('.my-navbar').length > 0) {
 
     var env = $("#current-env").data("env");
-    setLocale();
     var currencySymbol = $("#current-currency").data("currency-symbol");
     var userSignedIn = $("#current-user").length > 0;
-    var currentUserId = userSignedIn ? $("#current-user").data("user-id").toLocaleString() : null;
+    var currentUserId = userSignedIn ? $("#current-user").data("user-id").toString() : null;
     var grayStar = "<i class='fa fa-star-o medium-gray' aria-hidden='true'></i>&nbsp; ";
     var yellowStar = "<i class='fa fa-star yellow' aria-hidden='true'></i>&nbsp;";
 
@@ -266,9 +265,9 @@ function transformHitData(data, currencySymbol, currentUserId, grayStar, yellowS
     data.satisfaction_percents = "";
     data.satisfaction_text = I18n.t('offers.satisfaction.not_rated');
   }
-  var minAmount = Math.round(data.min_amount_cents / 100).toLocaleString();
-  var medianAmount = Math.round(data.median_amount_cents / 100).toLocaleString();
-  var maxAmount = Math.round(data.max_amount_cents / 100).toLocaleString();
+  var minAmount = Math.round(data.min_amount_cents / 100).toLocaleString(I18n.locale);
+  var medianAmount = Math.round(data.median_amount_cents / 100).toLocaleString(I18n.locale);
+  var maxAmount = Math.round(data.max_amount_cents / 100).toLocaleString(I18n.locale);
   // amounts should be converted with current_user currency
   data.min_amount = I18n.t('money', { amount: minAmount, currency: currencySymbol});
   data.median_amount = I18n.t('money', { amount: medianAmount, currency: currencySymbol});
@@ -282,7 +281,7 @@ function transformHitData(data, currencySymbol, currentUserId, grayStar, yellowS
   data.advisor.no_location = !(data.advisor.city || data.advisor.country) ? " - " : null;
   data.belongs_to_current_user = (currentUserId === data.advisor.id);
   data.title_class = !currentUserId || data.belongs_to_current_user ? "col-xs-12" : "col-xs-11";
-  var currentUserPinnedOffersIds = currentUserId ? document.getElementById('current-user').dataset.pinnedOffersIds.toLocaleString().split(" ")  : [];
+  var currentUserPinnedOffersIds = currentUserId ? document.getElementById('current-user').dataset.pinnedOffersIds.split(" ")  : [];
   if (currentUserPinnedOffersIds.indexOf(data.objectID) >= 0) {
     data.pin_button_class = "unpin-offer-button";
     data.pin_button_title = I18n.t('offers.pin_button.forget_offer');
@@ -316,7 +315,7 @@ function showMoreTemplate() {
 }
 
 function amountTooltipFormatted(rawValue, currencySymbol) {
-  var amount = Math.round(rawValue / 100).toLocaleString();
+  var amount = Math.round(rawValue / 100).toLocaleString(I18n.locale);
   // amount should be converted with current_user currency
   return I18n.t('money', {amount: amount, currency: currencySymbol});
 }

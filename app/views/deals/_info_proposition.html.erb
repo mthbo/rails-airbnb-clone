@@ -5,21 +5,27 @@
     <div class="deal-proposition-figures">
       <p>
         <span class="info-icon">
-          <%= image_tag 'objective.svg' %>
+          <%= image_tag 'amount.svg' %>
         </span>
-        <strong><%= deal.objectives_count %></strong>
+        <span class="font-weight-normal blank-nowrap">
+          <%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : t('money', amount: humanized_money(deal.amount_converted(current_user.currency_code)), currency: deal.amount_converted(current_user.currency_code).symbol) %>
+        </span>
       </p>
       <p>
         <span class="info-icon">
-          <%= image_tag 'amount.svg' %>
+          <%= image_tag 'duration.svg' %>
         </span>
-        <strong><%= (deal.amount_cents.blank? || deal.amount_cents.zero?) ? t('.free') : t('money', amount: humanized_money(deal.amount_converted(current_user.currency_code)), currency: deal.amount_converted(current_user.currency_code).symbol) %></strong>
+        <span class="font-weight-normal blank-nowrap">
+          <%= deal.duration_display %>
+        </span>
       </p>
       <p>
         <span class="info-icon">
           <%= image_tag 'date.svg' %>
         </span>
-        <strong><%= l(deal.deadline.to_date) %></strong>
+        <span class="font-weight-normal blank-nowrap">
+          <%= l(deal.deadline.to_date) %>
+        </span>
       </p>
     </div>
   </div>

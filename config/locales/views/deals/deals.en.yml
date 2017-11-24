@@ -22,12 +22,12 @@ en:
     new:
       request: Request
       new_request_to: New request to %{name}
-      explain_your_need: "Explain what you need advice for. Provide all the essential details to help %{name} makes a proposition that meets your need."
+      explain_your_need: "Explain to %{name} what you need advice for."
       detail_your_need: Detail your need
-      what_is_your_deadline: What is your deadline?
+      what_is_your_deadline: What is your deadline for this request?
       pick_date: Pick a date
-      select_languages: "Select the language(s) you accept to communicate with %{name}."
-      select_means: "Select the mean(s) you accept to communicate with %{name}."
+      select_languages: "Select one or more language(s) to communicate with %{name}."
+      select_means: "Select one or more mean(s) to communicate with %{name}."
       send: Send
       sending: Sending...
       back_to_offer: Go back to offer
@@ -68,19 +68,22 @@ en:
     proposition:
       new_proposition: New proposition
       new_proposition_for: New proposition for %{name}
-      unveil_action_plan: "Propose an action plan for this session to meet the need of %{name}."
-      set_targets: "Start by setting some targets you will be committed to achieve."
+      unveil_action_plan: "Propose an action plan to meet the need of %{name}. Start by setting the session targets you will be committed to achieve."
       objective_range: "min: 1 - max: %{max}"
       set_one_target: Set at least one target
       back_to_session: Back to session
     proposition_form:
-      describe_service_and_not_included: "Describe the service you propose to %{name} for this session. If necessary, indicate also what is not included in your service."
       describe_service: Describe the service proposed
+      set_duration: Estimate how much time you plan to allow for this session (check your availability by %{deadline}).
+      slider_to_daily: Switch to days
+      slider_to_hourly: Switch to hours
       pick_date: Pick a date
-      set_amount: Set the amount owed by %{name} for this session (transactional fees will be withheld on this amount).
+      set_amount: Set the amount owed by %{name} for this session.
+      free_session: Free session!
       amount_range: "min: %{currency}%{min}"
-      leave_blank_if_free: Leave it blank for a free session.
-      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} didn't accept it."
+      suggested_amount: Suggested amount depends on the session duration.
+      fees_withheld: Service fees will be withheld by the plateform based on the proposed amount.
+      set_expiry_date: "Set the expiry date of your proposition. After this date, the propsoition will be automatically denied if %{name} hasn't accepted it."
       review_and_submit: Review and submit
       reviewing: Reviewing...
     pricing_info:
@@ -105,10 +108,11 @@ en:
       submit: Submit
       submitting: Submitting...
     proposition_recap:
-      amount: Amount
+      amount: "Amount:"
       free: FREE
-      including_fees: including fees
-      deadline: Deadline
+      including_fees: "including service fees:"
+      deadline: "Deadline:"
+      duration: "Duration:"
       targets:
         one: Target
         other: Targets
@@ -154,6 +158,7 @@ en:
       accept: Accept
       accept_proposition: Accept proposition
       review_proposition: "Review the proposition of %{name} before accepting it."
+      commited_after_submission: "If you accept the proposition, %{name} will be committed to deliver the service described. The opening of the session will be effective after payment confirmation."
       proposition: Proposition
       go_back: Go back
     stripe_payment:

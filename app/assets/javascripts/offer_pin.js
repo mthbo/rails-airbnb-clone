@@ -12,8 +12,8 @@ function buttonsAnimation(buttons) {
   }
 
   buttons.click(function() {
-    var offerId = $(this).data("offer-id").toLocaleString();
-    var currentUserPinnedOffersIds = document.getElementById('current-user').dataset.pinnedOffersIds.toLocaleString().split(" ");
+    var offerId = $(this).data("offer-id").toString();
+    var currentUserPinnedOffersIds = document.getElementById('current-user').dataset.pinnedOffersIds.split(" ");
     animateButton($(this), offerId, currentUserPinnedOffersIds);
   });
 }

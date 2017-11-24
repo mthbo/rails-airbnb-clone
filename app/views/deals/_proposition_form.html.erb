@@ -2,15 +2,43 @@
   <%= f.error_notification %>
 
   <div class="padded-top-xs">
-    <p><%= t '.describe_service_and_not_included', name: deal.client.first_name %></p>
-    <%= f.input :proposition, label: false, placeholder: t('.describe_service'), input_html: { class: 'custom-form-input', rows: "7" } %>
+    <%= f.input :proposition,
+      label: false,
+      placeholder: t('.describe_service'),
+      input_html: {
+        class: 'custom-form-input',
+        rows: "7"
+      }
+    %>
   </div>
 
   <div class="padded-top-xs">
-    <p><%= t '.set_expiry_date', name: deal.client.first_name %></p>
-    <div class="row">
-      <div class="col-xs-12 col-sm-6">
-        <%= f.input :proposition_deadline, as: :custom, symbol: "<i class='fa fa-fire fa-fw' aria-hidden='true'></i>".html_safe ,label: false, placeholder: t('.pick_date'), input_html: { class: 'custom-form-input datepicker', readonly: true, data: { date_end_date: l(deal.deadline.to_date), date_start_date: "0d", date_start_view: "month"}, value: deal.proposition_deadline ? l(deal.proposition_deadline.to_date) : nil } %>
+    <p><%= t '.set_duration', deadline: l(@deal.deadline.to_date, format: :long)  %></p>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-7">
+      <div class="slider-box">
+        <%= f.input :duration,
+          label: false,
+          value: deal.duration.present? ? deal.duration : '30',
+          input_html: {
+            data: {
+              "slider-value" => deal.duration.present? ? deal.duration : '30',
+            }
+          }
+        %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-sm-5">
+      <div class="padded-bottom-xs padded-top-xs deal-slider-control">
+        <div id="deal-slider-duration-display" class="bg-white-transparent"></div>
+        <p class="btn btn-green btn-square <%= 'hidden' if deal.duration >= 240 %>" id="deal-slider-to-daily" title="<%= t '.slider_to_daily' %>">
+          <i class='fa fa-calendar' aria-hidden='true'></i>
+        </p>
+        <p class="btn btn-green btn-square <%= 'hidden' if deal.duration < 240 %>" id="deal-slider-to-hourly" title="<%= t '.slider_to_hourly' %>">
+          <i class='fa fa-clock-o fa-lg' aria-hidden='true'></i>
+        </p>
       </div>
     </div>
   </div>
@@ -19,23 +47,82 @@
     <% if deal.offer.priced? && deal.advisor.pricing_available? && deal.advisor.pricing_enabled? %>
       <p>
         <%= t '.set_amount', name: deal.client.first_name %><br>
-        <em  class="font-weight-normal"><%= t '.amount_range', min: deal.min_amount.to_i, currency: deal.min_amount.currency.symbol %> &nbsp; | &nbsp; <%= t '.leave_blank_if_free' %></em>
+        <em  class="font-weight-normal">
+          <%= t '.amount_range', min: deal.min_amount.to_i, currency: deal.min_amount.currency.symbol %>
+          &nbsp; | &nbsp;
+          <%= t '.suggested_amount' %>
+        </em>
       </p>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6">
-          <%= f.input :amount, as: :custom, symbol: deal.advisor.currency.symbol, label: false, placeholder: "0", input_html: { class: 'custom-form-input', type: "Number", value: deal.amount ? deal.amount.to_f : nil } %>
+      <div class="row padded-bottom-xs">
+        <div class="col-xs-12 col-sm-8">
+          <div class="deal-amount-box">
+            <div class="deal-amount-input-box">
+              <%= f.input :amount,
+                as: :custom,
+                symbol: image_tag('amount.svg', height: '20px'),
+                label: false,
+                placeholder: I18n.t('free'),
+                input_html: {
+                  class: 'custom-form-input',
+                  type: "Number",
+                  value: deal.amount ? deal.amount.to_i : deal.min_amount.to_i,
+                  min: deal.min_amount.to_i,
+                  max: deal.max_amount_for_duration.to_i,
+                  data: {
+                    suggested: deal.suggested_amount_for_duration.to_i,
+                    ratio: ENV['PRICING_MAX_SUGGESTED_AMOUNT_RATIO'].to_i
+                  }
+                }
+              %>
+              <div id="deal-amount-currency"><%= deal.advisor.currency.symbol %></div>
+              <div class="btn btn-white-gray deal-amount-btn" id="deal-amount-plus" name="plus-btn">+</div>
+              <div class="btn btn-white-gray deal-amount-btn" id="deal-amount-minus" name="minus-btn">-</div>
+            </div>
+            <div class="btn btn-white btn-square" id="deal-amount-free-btn" title="<%= t '.free_session' %>">
+              <%= image_tag 'no_amount.svg', height: '20px' %>
+            </div>
+          </div>
         </div>
       </div>
+      <p><em><small>
+        <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;
+        <%= t '.fees_withheld' %>
+      </em></small></p>
       <%= f.hidden_field :currency_code, value: deal.advisor.currency_code %>
     <% else %>
       <%= render 'pricing_info', deal: deal %>
-      <%= f.hidden_field :amount, value: nil %>
     <% end %>
+  </div>
+
+  <div class="padded-top-xs">
+    <p><%= t '.set_expiry_date', name: deal.client.first_name %></p>
+    <div class="row">
+      <div class="col-xs-12 col-sm-6">
+        <%= f.input :proposition_deadline,
+          as: :custom,
+          symbol: "<i class='fa fa-fire fa-fw' aria-hidden='true'></i>".html_safe ,
+          label: false,
+          placeholder: t('.pick_date'),
+          input_html: {
+            class: 'custom-form-input datepicker',
+            readonly: true,
+            data: {
+              date_end_date: l(deal.deadline.to_date),
+              date_start_date: "0d",
+              date_start_view: "month"
+            },
+            value: deal.proposition_deadline ? l(deal.proposition_deadline.to_date) : nil
+          }
+        %>
+      </div>
+    </div>
   </div>
 
   <div class="text-right padded-top-xs">
     <%= button_tag(type: 'submit', class: "btn btn-form btn-green", data: {disable_with: t('.reviewing') }) do %>
-      <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>&nbsp;&nbsp; <%= t '.review_and_submit' %>
+      <i class='fa fa-file-text-o fa-lg' aria-hidden='true'></i>
+      &nbsp;&nbsp;
+      <%= t '.review_and_submit' %>
     <% end %>
   </div>
 <% end %>

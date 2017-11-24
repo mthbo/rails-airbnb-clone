@@ -22,12 +22,12 @@ fr:
     new:
       request: Demande
       new_request_to: Nouvelle demande à %{name}
-      explain_your_need: "Expliquez pourquoi vous avez besoin de conseils. Donnez tous les détails nécessaires afin d'aider %{name} à faire une proposition qui répond à votre besoin."
+      explain_your_need: "Expliquez à %{name} pourquoi vous avez besoin de ses services."
       detail_your_need: Précisez votre besoin
-      what_is_your_deadline: Quelle est votre date limite?
+      what_is_your_deadline: Quelle est votre date limite pour cette demande?
       pick_date: Sélectionnez une date
-      select_languages: "Selectionnez la ou les langue(s) que vous acceptez pour communiquer avec %{name}."
-      select_means: "Selectionnez le ou les moyen(s) que vous acceptez pour communiquer avec %{name}."
+      select_languages: "Selectionnez une ou plusieurs langue(s) pour communiquer avec %{name}."
+      select_means: "Selectionnez un ou plusieurs moyen(s) pour communiquer avec %{name}."
       send: Envoyer
       sending: Envoi...
       back_to_offer: Revenir à l'offre
@@ -68,18 +68,21 @@ fr:
     proposition:
       new_proposition: Nouvelle proposition
       new_proposition_for: Nouvelle proposition pour %{name}
-      unveil_action_plan: "Porposez un plan d'action pour cette session afin de répondre au besoin de %{name}."
-      set_targets: "Commencez par définir des objectifs que vous vous engagez à atteindre."
+      unveil_action_plan: "Porposez un plan d'action pour répondre au besoin de %{name}. Commencez par définir les objectifs de la session que vous vous engagez à atteindre."
       objective_range: "min: 1 - max: %{max}"
       set_one_target: Définissez au moins un objectif
       back_to_session: Revenir à la session
     proposition_form:
-      describe_service_and_not_included: "Décrivez le service que vous proposez à %{name} pour cette session. Si nécessaire, indiquez également ce qui n'est pas inclu dans votre service."
       describe_service: Décrivez le service proposé
+      set_duration: Estimez le temps que vous comptez accorder pour cette session (vérifiez votre disponibilité avant le %{deadline}).
+      slider_to_daily: Passer en jours
+      slider_to_hourly: Passer en heures
       pick_date: Sélectionnez une date
-      set_amount: Déterminez le montant dû par %{name} pour la session (des frais de transaction seront retenus sur ce montant).
+      set_amount: Déterminez le montant dû par %{name} pour la session.
+      free_session: Session gratuite!
       amount_range: "min: %{min} %{currency}"
-      leave_blank_if_free: Laissez le champ vide pour une session gratuite.
+      suggested_amount: Montant de base suggéré selon la durée de la session.
+      fees_withheld: Des frais de services seront retenus par la plateforme sur la base du montant proposé.
       set_expiry_date: "Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée."
       review_and_submit: Vérifier et soumettre
       reviewing: Vérification...
@@ -105,10 +108,11 @@ fr:
       submit: Soumettre
       submitting: Soumission...
     proposition_recap:
-      amount: Montant
+      amount: "Montant :"
       free: GRATUIT
-      including_fees: frais inclus
-      deadline: Date limite
+      including_fees: "dont frais de service :"
+      deadline: "Date limite :"
+      duration: "Durée :"
       targets:
         one: Objectif
         other: Objectifs
@@ -154,6 +158,7 @@ fr:
       accept: Accepter
       accept_proposition: Accepter la proposition
       review_proposition: "Vérifiez la proposition de %{name} avant de l'accepter."
+      commited_after_submission: "Si vous acceptez la proposition, %{name} sera engagé à fournir le service décrit. L'ouverture de la session sera effective après confirmation du paiement."
       proposition: Proposition
       go_back: Revenir
     stripe_payment:

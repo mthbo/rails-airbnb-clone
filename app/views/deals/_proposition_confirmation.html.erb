@@ -7,7 +7,10 @@
       </div>
       <div class="modal-body">
         <p class="font-weight-normal blue"><%= t '.review_before_submitting' %></p>
-        <p><%= t '.commited_after_submission', name: deal.client.first_name %></p>
+        <p class="deal-proposition-warning">
+          <i class="fa fa-exclamation-triangle red fa-lg" aria-hidden="true"></i>
+          <span><%= t '.commited_after_submission', name: deal.client.first_name %></span>
+        </p>
         <div class="form-separation padded-top-s padded-bottom-xs">
           <div></div>
           <p>

@@ -30,13 +30,15 @@ fr:
       subject: "#session-%{id} | Nouvelle proposition reçue"
       greeting: Bonjour %{client},
       message: "Vous avez reçu une proposition de %{advisor} faisant suite à votre demande. Acceptez ou refusez cette proposition pour continuer."
+      instructions: "Si vous acceptez la proposition, %{advisor} sera engagé à fournir le service décrit. L'ouverture de la session sera effective après confirmation du paiement."
       proposition_expiry_on: Proposition expirant le %{date}
       action: Accepter ou refuser
     proposition_recap:
-      amount: Montant
+      amount: "Montant :"
       free: GRATUIT
-      including_fees: frais inclus
-      deadline: Date limite
+      including_fees: "dont frais de service :"
+      deadline: "Date limite :"
+      duration: "Durée :"
       targets:
         one: Objectif
         other: Objectifs

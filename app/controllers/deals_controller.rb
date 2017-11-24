@@ -44,6 +44,7 @@ class DealsController < ApplicationController
 
   def save_proposition
     if @deal.update(deal_params)
+      @deal.amount = nil unless @deal.offer.priced? && @deal.advisor.pricing_available? && @deal.advisor.pricing_enabled?
       @deal.set_fees if @deal.amount
       @deal.save
       respond_to do |format|
@@ -204,6 +205,7 @@ class DealsController < ApplicationController
       :status,
       :messages_disabled,
       :deadline,
+      :duration,
       :amount,
       :currency_code,
       :proposition,

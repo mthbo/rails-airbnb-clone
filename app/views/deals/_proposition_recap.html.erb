@@ -1,20 +1,38 @@
-<h6><strong class="blue">#<%= t 'session' %>-<%= deal.id %></strong> &nbsp;|&nbsp; <%= deal.title %></h6>
+<h6>
+  <strong class="blue">#<%= t 'session' %>-<%= deal.id %></strong>
+  &nbsp;|&nbsp;
+  <%= deal.title %>
+</h6>
 
 <div class="padded-top-xs deal-proposition-recap-figures">
+  <div class="deal-proposition-recap-figures-left">
     <p>
-      <span class="font-weight-normal"><%= t '.amount' %>:</span>&nbsp;
-      <% if (deal.amount_cents.blank? || deal.amount_cents.zero?) %>
+      <span class="font-weight-normal"><%= t '.amount' %></span>&nbsp;
+      <% if deal.free? %>
         <span class="font-weight-normal blue"><%= t('.free') %></span>
       <% else %>
-        <span class="font-weight-normal blue"><%= t('money', amount: humanized_money(deal.amount_converted(current_user.currency_code)), currency: deal.amount_converted(current_user.currency_code).symbol )  %></span>&nbsp;
-        <em>( <%= t('.including_fees') %> <%= t('money', amount: humanized_money(deal.fees_converted(current_user.currency_code)), currency: deal.fees_converted(current_user.currency_code).symbol ) %> )</em>
+        <span class="font-weight-normal blue">
+          <%= t('money', amount: humanized_money(deal.amount_converted(current_user.currency_code)), currency: deal.amount_converted(current_user.currency_code).symbol )  %>
+        </span>
+        <br>
+        <small class="blank-nowrap">
+          <%= t('.including_fees') %>&nbsp;
+          <%= t('money', amount: humanized_money(deal.fees_converted(current_user.currency_code)), currency: deal.fees_converted(current_user.currency_code).symbol ) %>
+        </small>
       <% end %>
       &nbsp;&nbsp;
     </p>
+  </div>
+  <div class="deal-proposition-recap-figures-right">
     <p class="font-weight-normal">
-      <%= t '.deadline' %>: &nbsp;
+      <%= t '.duration' %>&nbsp;
+      <span class="blue"><%= deal.duration_display %></span>
+    </p>
+    <p class="font-weight-normal">
+      <%= t '.deadline' %>&nbsp;
       <span class="blue"><%= l(deal.deadline.to_date) if deal.deadline %></span>
     </p>
+  </div>
 </div>
 
 <h6 class="extra-dark-gray"><%= t '.targets', count: deal.objectives.count %></h6>
