@@ -153,16 +153,37 @@
   }
 }
 
+.deal-proposition-warning {
+  display: flex;
+  align-items: center;
+  i {
+    margin-right: 15px;
+  }
+}
+
 .deal-proposition-figures {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  p {
+    margin-right: 5px;
+  }
 }
 
 .deal-proposition-recap-figures {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  flex-wrap: wrap;
+}
+
+.deal-proposition-recap-figures-left {
+  flex: 1 1 130px;
+}
+
+.deal-proposition-recap-figures-right {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 

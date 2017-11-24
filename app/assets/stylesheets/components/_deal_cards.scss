@@ -45,7 +45,7 @@
 }
 
 .deal-card-avatar {
-  flex: 0 1 100px;
+  flex: 0 1 130px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -64,13 +64,17 @@
   justify-content: space-around;
   flex-wrap: wrap;
   p {
-    flex: 0 1 150px;
-    font-size: 14px;
-    margin-bottom: 5px;
+    flex: 1 1 118px;
+    font-size: 14px !important;
+    margin-bottom: 2px;
     display: flex;
+    font-weight: bold;
   };
   .info-icon {
     flex: 0 0 36px;
+    img {
+      height: 16px;
+    }
   }
   .deal-card-info-text {
     flex: 1 1 auto;
@@ -131,6 +135,14 @@
     }
     .deal-card-notifications {
       right: 20px;
+    }
+  }
+  .deal-card-info {
+    p {
+      font-size: 13px !important;
+    };
+    .info-icon {
+      margin-right: 10px;
     }
   }
 }

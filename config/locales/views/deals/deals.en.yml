@@ -108,10 +108,11 @@ en:
       submit: Submit
       submitting: Submitting...
     proposition_recap:
-      amount: Amount
+      amount: "Amount:"
       free: FREE
-      including_fees: including fees
-      deadline: Deadline
+      including_fees: "including service fees:"
+      deadline: "Deadline:"
+      duration: "Duration:"
       targets:
         one: Target
         other: Targets
@@ -157,6 +158,7 @@ en:
       accept: Accept
       accept_proposition: Accept proposition
       review_proposition: "Review the proposition of %{name} before accepting it."
+      commited_after_submission: "If you accept the proposition, %{name} will be committed to deliver the service described. The opening of the session will be effective after payment confirmation."
       proposition: Proposition
       go_back: Go back
     stripe_payment:

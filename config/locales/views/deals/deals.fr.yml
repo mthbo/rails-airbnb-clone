@@ -82,7 +82,7 @@ fr:
       free_session: Session gratuite!
       amount_range: "min: %{min} %{currency}"
       suggested_amount: Montant de base suggéré selon la durée de la session.
-      fees_withheld: Les frais de services seront retenus par la plateforme sur la base du montant proposé.
+      fees_withheld: Des frais de services seront retenus par la plateforme sur la base du montant proposé.
       set_expiry_date: "Déterminez la date d'expiration de votre proposition. A l'issue de cette date, la proposition sera automatiquement refusée si %{name} ne l'a pas acceptée."
       review_and_submit: Vérifier et soumettre
       reviewing: Vérification...
@@ -108,10 +108,11 @@ fr:
       submit: Soumettre
       submitting: Soumission...
     proposition_recap:
-      amount: Montant
+      amount: "Montant :"
       free: GRATUIT
-      including_fees: frais inclus
-      deadline: Date limite
+      including_fees: "dont frais de service :"
+      deadline: "Date limite :"
+      duration: "Durée :"
       targets:
         one: Objectif
         other: Objectifs
@@ -157,6 +158,7 @@ fr:
       accept: Accepter
       accept_proposition: Accepter la proposition
       review_proposition: "Vérifiez la proposition de %{name} avant de l'accepter."
+      commited_after_submission: "Si vous acceptez la proposition, %{name} sera engagé à fournir le service proposé. L'ouverture de la session sera effective après confirmation du paiement."
       proposition: Proposition
       go_back: Revenir
     stripe_payment:

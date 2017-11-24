@@ -33,10 +33,11 @@ fr:
       proposition_expiry_on: Proposition expirant le %{date}
       action: Accepter ou refuser
     proposition_recap:
-      amount: Montant
+      amount: "Montant :"
       free: GRATUIT
-      including_fees: frais inclus
-      deadline: Date limite
+      including_fees: "dont frais de service :"
+      deadline: "Date limite :"
+      duration: "Durée :"
       targets:
         one: Objectif
         other: Objectifs

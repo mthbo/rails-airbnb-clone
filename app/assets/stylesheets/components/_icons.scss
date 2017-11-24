@@ -69,8 +69,11 @@
 }
 
 @media (max-width: $screen-xs-max) {
-  .info-icon img {
-    height: 18px;
+  .info-icon {
+    margin-right: 5px;
+    img {
+      height: 18px;
+    }
   }
   .flag-icon img {
     height: 20px;

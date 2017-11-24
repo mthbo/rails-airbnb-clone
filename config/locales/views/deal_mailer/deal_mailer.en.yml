@@ -33,10 +33,11 @@ en:
       proposition_expiry_on: Proposition expiring on %{date}
       action: Accept or decline
     proposition_recap:
-      amount: Amount
+      amount: "Amount:"
       free: FREE
-      including_fees: including fees
-      deadline: Deadline
+      including_fees: "including service fees:"
+      deadline: "Deadline:"
+      duration: "Duration:"
       targets:
         one: Target
         other: Targets

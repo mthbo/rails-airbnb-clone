@@ -73,7 +73,7 @@ class Deal < ApplicationRecord
         hours = duration / 60
         "#{hours} #{I18n.t('hours_short')} #{minutes}"
       else
-        days_count = duration.fdiv(480)
+        days_count = duration.fdiv(480).round(1)
         days = ActionController::Base.helpers.number_to_human(days_count)
         "#{days} #{I18n.t('days', count: days_count)}"
       end
