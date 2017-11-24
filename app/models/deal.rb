@@ -59,7 +59,25 @@ class Deal < ApplicationRecord
   # Duration
 
   def duration_days_equivalent
-    duration < 480 ? duration.minutes : duration.fdiv(480).ceil.days
+    if duration
+      duration < 480 ? duration.minutes : duration.fdiv(480).ceil.days
+    end
+  end
+
+  def duration_display
+    if duration
+      if duration < 60
+        "#{duration} #{I18n.t('minutes_short')}"
+      elsif duration < 240
+        minutes = sprintf('%02d', duration % 60)
+        hours = duration / 60
+        "#{hours} #{I18n.t('hours_short')} #{minutes}"
+      else
+        days_count = duration.fdiv(480)
+        days = ActionController::Base.helpers.number_to_human(days_count)
+        "#{days} #{I18n.t('days', count: days_count)}"
+      end
+    end
   end
 
   # Money
