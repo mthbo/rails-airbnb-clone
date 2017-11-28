@@ -20,19 +20,17 @@ SitemapGenerator::Sitemap.create do
   #           :lastmod => Time.now, :host => default_host
 
   add '/advisor', priority: 1, changefreq: 'always'
-  add '/signup', priority: 1, changefreq: 'daily'
+  add '/signup', priority: 0.9
   add '/contact'
   add '/login'
-  add '/welcome'
-  add '/dashboard'
   add '/terms'
   add '/privacy'
 
   User.find_each do |user|
-    add user_path(id: user.slug), lastmod: user.updated_at
+    add user_path(id: user.slug), lastmod: user.updated_at, priority: 0.8, changefreq: 'daily'
   end
 
   Offer.where.not(status: :archived).find_each do |offer|
-    add offer_path(id: offer.slug), lastmod: offer.updated_at
+    add offer_path(id: offer.slug), lastmod: offer.updated_at, priority: 0.9, changefreq: 'daily'
   end
 end
