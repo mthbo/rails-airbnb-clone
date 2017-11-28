@@ -1,7 +1,7 @@
 <p><%= t('.greeting', client: @deal.client.first_name) %></p>
 
 <p><%= t('.message', advisor: @deal.advisor.first_name) %></p>
-<% unless @deal.free? %>
+<% unless @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
   <p><%= t('.instructions', advisor: @deal.advisor.first_name) %></p>
 <% end %>
 

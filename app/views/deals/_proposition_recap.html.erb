@@ -8,7 +8,7 @@
   <div class="deal-proposition-recap-figures-left">
     <p>
       <span class="font-weight-normal"><%= t '.amount' %></span>&nbsp;
-      <% if deal.free? %>
+      <% if deal.amount_cents.blank? || deal.amount_cents.zero? %>
         <span class="font-weight-normal blue"><%= t('.free') %></span>
       <% else %>
         <span class="font-weight-normal blue">

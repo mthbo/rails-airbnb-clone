@@ -14,7 +14,7 @@
   <div style="flex: 1 1 130px;">
     <p style="margin-bottom: 0;">
       <span style="font-weight: normal;"><%= t '.amount' %></span>&nbsp;
-      <% if @deal.free? %>
+      <% if @deal.amount_cents.blank? || @deal.amount_cents.zero? %>
         <span style="color: #30485F; font-weight: normal;"><%= t('.free') %></span>
       <% else %>
         <span style="color: #30485F; font-weight: normal;">
