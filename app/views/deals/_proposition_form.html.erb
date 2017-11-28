@@ -90,6 +90,7 @@
       </em></small></p>
       <%= f.hidden_field :currency_code, value: deal.advisor.currency_code %>
     <% else %>
+      <%= f.hidden_field :amount, value: nil, id: "deal_amount_free" %>
       <%= render 'pricing_info', deal: deal %>
     <% end %>
   </div>
