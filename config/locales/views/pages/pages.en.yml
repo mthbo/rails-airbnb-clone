@@ -4,15 +4,15 @@ en:
       title: Ask experts for advice
       meta_description: "Find an advisor to help you out with any of your projects."
       banner_title: "Find an advisor to"
-      rot_1: arrange a trip
+      rot_1: develop a website
       rot_2: start a business
-      rot_3: organize an event
-      rot_4: renovate a house
-      rot_5: plan a route
-      rot_6: develop an activity
-      rot_7: buy a product
+      rot_3: arrange a trip
+      rot_4: monetize an activity
+      rot_5: make a product
+      rot_6: set up an association
+      rot_7: organize an event
       rot_8: relocate
-      rot_9: prepare an exam
+      rot_9: work abroad
       rot_10: change your life!
       input_placeholder: "I need some advice for ..."
       inspirations_title: "A project in mind?"

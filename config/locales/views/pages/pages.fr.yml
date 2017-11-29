@@ -4,15 +4,15 @@ fr:
       title: Demandez conseil à des experts
       meta_description: "Trouvez un conseiller pour vous accompagner dans tous vos projets."
       banner_title: "Trouvez un conseiller pour"
-      rot_1: préparer un voyage
+      rot_1: développer un site web
       rot_2: créer une entreprise
-      rot_3: organiser un événement
-      rot_4: rénover un logement
-      rot_5: planifier un itinéraire
-      rot_6: développer une activité
-      rot_7: acheter un produit
+      rot_3: préparer un voyage
+      rot_4: monétiser une activité
+      rot_5: fabriquer un produit
+      rot_6: monter une association
+      rot_7: organiser un événement
       rot_8: vous expatrier
-      rot_9: préparer un examen
+      rot_9: travailler à distance
       rot_10: changer de vie!
       input_placeholder: "J'ai besoin de conseils pour ..."
       inspirations_title: "Un projet en tête?"
