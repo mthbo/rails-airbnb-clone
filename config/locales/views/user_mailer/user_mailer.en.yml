@@ -10,6 +10,6 @@ en:
     unread_messages:
       subject: "You have unread messages"
       greeting: "Hello %{user},"
-      message: One or more of your sessions have unread messages.
-      instructions: Consult your dashboard to find out more and to answer your interlocutors.
+      message: You have unread messages.
+      instructions: Consult your dashboard to see your messages and to answer your interlocutors.
       action: See my dashboard
