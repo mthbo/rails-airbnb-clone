@@ -2,6 +2,7 @@
   "name": "papoters",
   "scripts": {
   },
+  "stack": "heroku-18",
   "env": {
     "ALGOLIA_API_KEY": {
       "required": true
